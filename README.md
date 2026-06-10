@@ -8,8 +8,9 @@ S級リーグの公式ハブサイトです。Cloudflare Pages で公開しま�
 sqls-hub/
 └── public/
     ├── index.html   ← ハブページ
-    ├── roster.html  ← ロスター（今後追加）
-    └── rules.html   ← ルール（今後追加）
+    ├── S1.html  ← 
+    └── S2.html   ← 
+プラスで時渡DMも追加しておく。
 ```
 
 ## セットアップ
