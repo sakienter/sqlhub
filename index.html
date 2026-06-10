@@ -1,276 +1,676 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>S級リーグ</title>
-  <meta name="description" content="S級リーグの公式ハブサイト。ロスター・ルール・シーズン結果にアクセスできます。" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AQL Hub</title>
+
   <style>
     :root {
-      --bg-page:       #0a0f0d;
-      --bg-card:       #0f1610;
-      --bg-surface:    #141f16;
-      --accent:        #00e676;
-      --accent-dim:    rgba(0, 230, 118, 0.10);
-      --accent-border: rgba(0, 230, 118, 0.30);
-      --text-primary:  #e0f2e9;
-      --text-secondary:#7a9e85;
-      --text-muted:    #3d5c45;
-      --border:        rgba(255,255,255,0.07);
-      --border-strong: rgba(255,255,255,0.13);
-      --font: -apple-system, BlinkMacSystemFont, "Segoe UI",
-              "Hiragino Kaku Gothic ProN", "Hiragino Sans",
-              "Yu Gothic", Meiryo, sans-serif;
+      --bg: #f7f3ec;
+      --paper: #fffaf2;
+      --paper-strong: #ffffff;
+      --text: #2f2a24;
+      --muted: #746b60;
+      --line: #e3d7c8;
+      --accent: #b7794b;
+      --accent-dark: #8f5632;
+      --accent-soft: #f1dfcd;
+      --green: #6f8f72;
+      --shadow: 0 18px 45px rgba(70, 45, 25, 0.10);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html, body {
-      background: var(--bg-page);
-      color: var(--text-primary);
-      font-family: var(--font);
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
       min-height: 100vh;
-      line-height: 1.6;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Hiragino Sans",
+        "Yu Gothic",
+        "YuGothic",
+        "Segoe UI",
+        sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(183, 121, 75, 0.18), transparent 34rem),
+        radial-gradient(circle at bottom right, rgba(111, 143, 114, 0.16), transparent 30rem),
+        var(--bg);
+      line-height: 1.75;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    /* ── layout ── */
-    .shell {
-      max-width: 860px;
+    .site {
+      width: min(1120px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 72px 24px 96px;
     }
 
-    /* ── eyebrow ── */
-    .eyebrow {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 14px;
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(247, 243, 236, 0.82);
+      border-bottom: 1px solid rgba(227, 215, 200, 0.75);
     }
 
-    /* ── hero ── */
-    .hero-title {
-      font-size: clamp(42px, 7vw, 72px);
+    .topbar-inner {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1.0;
-      color: var(--text-primary);
+      letter-spacing: 0.04em;
     }
 
-    .hero-title span {
-      color: var(--accent);
-    }
-
-    .hero-sub {
-      margin-top: 16px;
-      font-size: 15px;
-      color: var(--text-secondary);
-      max-width: 480px;
-    }
-
-    /* ── divider ── */
-    .divider {
-      width: 40px;
-      height: 1px;
-      background: var(--accent-border);
-      margin: 40px 0;
-    }
-
-    /* ── nav grid ── */
-    .nav-grid {
+    .brand-mark {
+      width: 38px;
+      height: 38px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      place-items: center;
+      border-radius: 14px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      box-shadow: 0 10px 22px rgba(143, 86, 50, 0.22);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav a {
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+
+    .nav a:hover {
+      background: rgba(183, 121, 75, 0.12);
+      color: var(--accent-dark);
+    }
+
+    .hero {
+      padding: 58px 0 32px;
+    }
+
+    .hero-card {
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(227, 215, 200, 0.9);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(135deg, rgba(255, 250, 242, 0.96), rgba(255, 255, 255, 0.86)),
+        var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -80px -100px auto;
+      width: 310px;
+      height: 310px;
+      border-radius: 999px;
+      background: rgba(183, 121, 75, 0.12);
+    }
+
+    .hero-content {
+      position: relative;
+      padding: 54px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+      margin-bottom: 18px;
+    }
+
+    .hero-lead {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+      border: 1px solid transparent;
+    }
+
+    .button.primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      box-shadow: 0 10px 22px rgba(143, 86, 50, 0.18);
+    }
+
+    .button.secondary {
+      color: var(--accent-dark);
+      background: rgba(255, 255, 255, 0.65);
+      border-color: var(--line);
+    }
+
+    .summary-panel {
+      display: grid;
       gap: 12px;
     }
 
-    .nav-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 20px 22px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-strong);
-      border-radius: 5px;
-      transition: border-color 0.14s, background 0.14s;
-      min-height: 110px;
-      cursor: pointer;
+    .summary-item {
+      padding: 18px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.74);
+      border: 1px solid rgba(227, 215, 200, 0.8);
     }
 
-    .nav-card:hover {
-      border-color: var(--accent-border);
-      background: var(--accent-dim);
-    }
-
-    .nav-card.disabled {
-      opacity: 0.45;
-      cursor: default;
-      pointer-events: none;
-    }
-
-    .nav-card-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .nav-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .nav-badge {
-      font-size: 10px;
+    .summary-label {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 2px 8px;
-      border-radius: 2px;
+    }
+
+    .summary-value {
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .section {
+      padding: 34px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 20px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(24px, 3vw, 34px);
+      letter-spacing: -0.03em;
+    }
+
+    .section-heading p {
+      margin-top: 6px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      border: 1px solid rgba(227, 215, 200, 0.95);
+      border-radius: var(--radius-md);
+      background: rgba(255, 250, 242, 0.88);
+      box-shadow: 0 12px 28px rgba(70, 45, 25, 0.07);
+      padding: 22px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .season-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 220px;
+    }
+
+    .season-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 18px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .season-card .button {
+      margin-top: auto;
+      width: fit-content;
+    }
+
+    .notice {
+      border-left: 5px solid var(--accent);
+      background: rgba(255, 255, 255, 0.68);
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .list li {
+      position: relative;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .list li::before {
+      content: "";
+      position: absolute;
+      top: 0.78em;
+      left: 0;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .roster-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      background: var(--paper-strong);
+      border: 1px solid var(--line);
+    }
+
+    .roster-table th,
+    .roster-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .roster-table th {
+      width: 34%;
+      color: var(--accent-dark);
+      background: #fbefe3;
+      font-size: 14px;
       white-space: nowrap;
     }
 
-    .nav-badge.live {
-      background: var(--accent-dim);
-      color: var(--accent);
-      border: 1px solid var(--accent-border);
+    .roster-table tr:last-child th,
+    .roster-table tr:last-child td {
+      border-bottom: none;
     }
 
-    .nav-badge.soon {
-      background: rgba(255,255,255,0.05);
-      color: var(--text-muted);
-      border: 1px solid var(--border);
+    .rule-block {
+      display: grid;
+      gap: 14px;
     }
 
-    .nav-badge.done {
-      background: rgba(255,255,255,0.04);
-      color: var(--text-muted);
-      border: 1px solid var(--border);
+    .rule-item {
+      padding: 18px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
     }
 
-    .nav-title {
-      margin-top: 14px;
+    .rule-item h3 {
+      margin-bottom: 6px;
+      color: var(--accent-dark);
       font-size: 17px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      color: var(--text-primary);
     }
 
-    .nav-card:hover .nav-title {
-      color: var(--accent);
-    }
-
-    .nav-arrow {
-      display: inline-block;
-      font-size: 13px;
-      color: var(--text-muted);
-      transition: transform 0.12s, color 0.12s;
-      margin-top: 6px;
-    }
-
-    .nav-card:hover .nav-arrow {
-      color: var(--accent);
-      transform: translateX(3px);
-    }
-
-    /* ── season section title ── */
-    .section-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    /* ── footer ── */
     .footer {
-      margin-top: 64px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-      font-size: 12px;
-      color: var(--text-muted);
-      letter-spacing: 0.04em;
+      margin-top: 36px;
+      padding: 34px 0 44px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 820px) {
+      .topbar-inner {
+        min-height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 2px;
+      }
+
+      .nav a {
+        white-space: nowrap;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        padding: 30px;
+      }
+
+      .grid.two,
+      .grid.three {
+        grid-template-columns: 1fr;
+      }
+
+      .roster-table,
+      .roster-table tbody,
+      .roster-table tr,
+      .roster-table th,
+      .roster-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .roster-table th {
+        border-bottom: none;
+      }
+
+      .roster-table td {
+        padding-top: 8px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="shell">
-
-    <header>
-      <p class="eyebrow">Official Hub</p>
-      <h1 class="hero-title">S級<span>リーグ</span></h1>
-      <p class="hero-sub">ロスター・ルール・各シーズンの試合結果はこちらから。</p>
-    </header>
-
-    <div class="divider"></div>
-
-    <!-- General -->
-    <div class="section-label">General</div>
-    <div class="nav-grid" style="margin-bottom: 32px;">
-
-      <a class="nav-card" href="https://sqlhub.23mm0402.workers.dev/roster.html">
-        <div class="nav-card-top">
-          <span class="nav-label">Roster</span>
-          <span class="nav-badge done">参加者</span>
-        </div>
-        <div>
-          <div class="nav-title">ロスター</div>
-          <div class="nav-arrow">→</div>
-        </div>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="AQL Hub トップへ">
+        <span class="brand-mark">A</span>
+        <span>AQL Hub</span>
       </a>
 
-      <a class="nav-card" href="https://sqlhub.23mm0402.workers.dev/rules.html">
-        <div class="nav-card-top">
-          <span class="nav-label">Rules</span>
-          <span class="nav-badge done">規定</span>
-        </div>
-        <div>
-          <div class="nav-title">ルール</div>
-          <div class="nav-arrow">→</div>
-        </div>
-      </a>
-
+      <nav class="nav" aria-label="ページ内ナビゲーション">
+        <a href="#seasons">大会ページ</a>
+        <a href="#overview">概要</a>
+        <a href="#roster">ロスター</a>
+        <a href="#rules">ルール</a>
+        <a href="#contact">連絡</a>
+      </nav>
     </div>
+  </header>
 
-    <!-- Seasons -->
-    <div class="section-label">Seasons</div>
-    <div class="nav-grid">
+  <main id="top" class="site">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="hero-content">
+          <div>
+            <span class="eyebrow">AQL community hub</span>
+            <h1>AQL大会情報を、ここから確認できます。</h1>
+            <p class="hero-lead">
+              シーズンごとの大会ページ、参加ロスター、基本ルール、連絡事項をまとめたハブサイトです。
+              まずは必要な情報を1枚のHTMLに直接書き込み、あとから少しずつ整えていく構成にしています。
+            </p>
 
-      <a class="nav-card" href="https://sqls1.pages.dev/">
-        <div class="nav-card-top">
-          <span class="nav-label">Season 1</span>
-          <span class="nav-badge done">終了</span>
-        </div>
-        <div>
-          <div class="nav-title">S1 結果</div>
-          <div class="nav-arrow">→</div>
-        </div>
-      </a>
+            <div class="hero-actions">
+              <a class="button primary" href="#seasons">大会ページを見る</a>
+              <a class="button secondary" href="#roster">ロスターを見る</a>
+            </div>
+          </div>
 
-      <a class="nav-card disabled" href="#">
-        <div class="nav-card-top">
-          <span class="nav-label">Season 2</span>
-          <span class="nav-badge soon">近日公開</span>
+          <aside class="summary-panel" aria-label="大会概要">
+            <div class="summary-item">
+              <span class="summary-label">CURRENT SEASON</span>
+              <span class="summary-value">Season 2</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">STATUS</span>
+              <span class="summary-value">準備中</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">UPDATE</span>
+              <span class="summary-value">随時更新</span>
+            </div>
+          </aside>
         </div>
-        <div>
-          <div class="nav-title">S2 結果</div>
-          <div class="nav-arrow">→</div>
-        </div>
-      </a>
+      </div>
+    </section>
 
+    <section id="seasons" class="section">
+      <div class="section-heading">
+        <h2>大会ページ</h2>
+        <p>各シーズンの詳細ページへ移動できます。リンク先は必要に応じて差し替えてください。</p>
+      </div>
+
+      <div class="grid two">
+        <article class="card season-card">
+          <h3>Season 1</h3>
+          <p>
+            Season 1 の大会結果、順位表、試合情報などを確認するページです。
+          </p>
+          <div class="season-meta">
+            <span class="tag">過去シーズン</span>
+            <span class="tag">結果確認</span>
+          </div>
+          <a class="button secondary" href="./season1/">Season 1を見る</a>
+        </article>
+
+        <article class="card season-card">
+          <h3>Season 2</h3>
+          <p>
+            Season 2 の大会情報、進行状況、スコアボードなどを確認するページです。
+          </p>
+          <div class="season-meta">
+            <span class="tag">開催中 / 準備中</span>
+            <span class="tag">最新情報</span>
+          </div>
+          <a class="button primary" href="./season2/">Season 2を見る</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="overview" class="section">
+      <div class="section-heading">
+        <h2>概要</h2>
+        <p>このハブサイトで扱う情報です。</p>
+      </div>
+
+      <div class="grid three">
+        <article class="card">
+          <h3>大会ページへの導線</h3>
+          <p>
+            Season 1、Season 2 など、各大会ページへアクセスするための入口として使います。
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>ロスター確認</h3>
+          <p>
+            出場者やチーム情報は、このページ内に直接記載します。別ページは作りません。
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>ルール確認</h3>
+          <p>
+            基本ルールや注意事項も、このページ内に直接記載します。必要に応じて後から増やせます。
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <article class="card notice">
+        <h3>お知らせ</h3>
+        <ul class="list">
+          <li>現在、ハブサイトは改装中です。</li>
+          <li>ロスターとルールは個別ページ化せず、このHTML内に直接記載します。</li>
+          <li>大会ページへのリンクは、実際の公開URLに合わせて後から変更してください。</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="roster" class="section">
+      <div class="section-heading">
+        <h2>Season Roster</h2>
+        <p>ロスターページは作らず、この場所に直接書き込みます。</p>
+      </div>
+
+      <table class="roster-table">
+        <tbody>
+          <tr>
+            <th>Player 1</th>
+            <td>ここにプレイヤー名、所属、補足などを書く</td>
+          </tr>
+          <tr>
+            <th>Player 2</th>
+            <td>ここにプレイヤー名、所属、補足などを書く</td>
+          </tr>
+          <tr>
+            <th>Player 3</th>
+            <td>ここにプレイヤー名、所属、補足などを書く</td>
+          </tr>
+          <tr>
+            <th>Player 4</th>
+            <td>ここにプレイヤー名、所属、補足などを書く</td>
+          </tr>
+          <tr>
+            <th>Player 5</th>
+            <td>ここにプレイヤー名、所属、補足などを書く</td>
+          </tr>
+          <tr>
+            <th>Player 6</th>
+            <td>ここにプレイヤー名、所属、補足などを書く</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="rules" class="section">
+      <div class="section-heading">
+        <h2>Rules</h2>
+        <p>ルールページは作らず、この場所に直接書き込みます。</p>
+      </div>
+
+      <div class="rule-block">
+        <article class="rule-item">
+          <h3>基本ルール</h3>
+          <p>
+            ここに大会の基本ルールを書きます。例：試合形式、参加条件、順位決定方法など。
+          </p>
+        </article>
+
+        <article class="rule-item">
+          <h3>順位決定</h3>
+          <p>
+            ここに順位決定の条件を書きます。例：勝敗、得点、直接対決、タイブレークなど。
+          </p>
+        </article>
+
+        <article class="rule-item">
+          <h3>欠場・遅刻</h3>
+          <p>
+            ここに欠場や遅刻が発生した場合の扱いを書きます。
+          </p>
+        </article>
+
+        <article class="rule-item">
+          <h3>注意事項</h3>
+          <p>
+            ここに配信、連絡、提出期限、トラブル時の対応などを書きます。
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="section-heading">
+        <h2>Contact</h2>
+        <p>連絡先や更新方針を書いておく場所です。</p>
+      </div>
+
+      <article class="card">
+        <h3>問い合わせ</h3>
+        <p>
+          問い合わせ先、Discord、X、Googleフォームなどがある場合はここに記載してください。
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="site">
+      <p>© AQL Hub. This page is maintained as a simple static HTML hub.</p>
     </div>
-
-    <footer class="footer">
-      <p>S級リーグ &mdash; 公式サイト</p>
-    </footer>
-
-  </div>
+  </footer>
 </body>
 </html>
