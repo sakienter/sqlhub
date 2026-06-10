@@ -1,13 +1,81 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>SQL Season 2</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>S級リーグS2</title>
+  <meta name="description" content="S級リーグS2の総合結果と各DAY・各GAMEの試合結果を掲載する大会結果ページです。" />
+  <meta property="og:title" content="S級リーグS2" />
+  <meta property="og:description" content="S級リーグS2の大会結果ページ" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <h1>SQL Season 2</h1>
-  <p>Season 2ページは準備中です。</p>
-  <p><a href="../">ハブに戻る</a></p>
+  <div id="loading-overlay" aria-live="polite" aria-label="読み込み中">
+    <div class="loading-card">
+      <div class="loading-logo">S級リーグ S2</div>
+      <div class="loading-track"><div class="loading-bar"></div></div>
+      <div class="loading-label">結果データを読み込んでいます<span id="ld-dots"></span></div>
+      <p class="loading-note">初回表示・更新直後は、データ取得に時間がかかる場合があります。</p>
+    </div>
+  </div>
+
+  <main class="page-shell">
+    <header class="hero">
+      <a class="back-link" href="../">← Hubへ戻る</a>
+      <p class="eyebrow">Tournament Result</p>
+      <h1 id="event-title">S級リーグS2</h1>
+      <p class="lead">総合結果と各DAY・各GAMEの試合結果を掲載しています。</p>
+      <div class="meta-line">
+        <span id="data-status">読み込み中...</span>
+        <span id="updated-at"></span>
+      </div>
+      <p class="cache-note">初回表示・更新直後はデータ取得に時間がかかる場合があります。2回目以降はキャッシュにより速く表示されます。</p>
+    </header>
+
+    <section class="score-card summary-card">
+      <div class="section-title purple">League Total</div>
+      <div class="table-wrap"><table id="summary-table" aria-label="総合順位表"><thead></thead><tbody></tbody></table></div>
+    </section>
+
+    <section class="score-card day-card">
+      <div class="section-title orange">DAY別結果</div>
+      <div id="day-tabs" class="day-tabs" aria-label="DAY切り替え"></div>
+      <div class="day-current"><p class="day-kicker">Selected Day</p><h2 id="day-title">DAY1</h2></div>
+
+      <section class="day-section">
+        <div class="mini-section-title">Daily Score</div>
+        <div class="table-wrap"><table id="daily-score-table" aria-label="日別スコア表"><thead></thead><tbody></tbody></table></div>
+      </section>
+
+      <section class="day-section">
+        <div class="mini-section-title">ポイント集計</div>
+        <div class="table-wrap"><table id="day-points-table" aria-label="DAY別ポイント集計表"><thead></thead><tbody></tbody></table></div>
+      </section>
+
+      <section class="day-section">
+        <div class="mini-section-title">順位入力</div>
+        <div class="table-wrap"><table id="day-placements-table" aria-label="DAY別順位入力表"><thead></thead><tbody></tbody></table></div>
+      </section>
+
+      <section class="day-section game-detail-section">
+        <div class="mini-section-title">ゲーム別詳細</div>
+        <div id="game-tabs" class="game-tabs" aria-label="ゲーム切り替え"></div>
+        <div class="game-current">
+          <div><p class="game-kicker">Selected Game</p><h3 id="game-title">GAME1</h3></div>
+          <div class="game-meta">
+            <span id="game-start-time">開始: -</span>
+            <span id="game-end-time">終了: -</span>
+            <span id="game-ban">BAN: -</span>
+            <span id="game-anomaly">異常: -</span>
+          </div>
+        </div>
+        <div class="table-wrap"><table id="game-detail-table" aria-label="ゲーム別詳細表"><thead></thead><tbody></tbody></table></div>
+      </section>
+    </section>
+
+    <footer class="footer-note"><p>S級リーグS2 Result Page</p></footer>
+  </main>
+  <script src="./script.js"></script>
 </body>
 </html>
