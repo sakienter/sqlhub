@@ -11,18 +11,18 @@
   <link rel="stylesheet" href="./common.css" />
   <style>
     .button.secondary{color:#fff;background:linear-gradient(90deg,var(--green-dark),var(--green));border-color:rgba(24,33,40,.1)}
-    .season-card.card-link{position:relative;overflow:hidden;isolation:isolate;min-height:118px;padding:16px;color:inherit;text-decoration:none;cursor:pointer;background:#fffaf2;border-color:rgba(24,33,40,.1);transform:translateZ(0);transition:transform .24s cubic-bezier(.2,.8,.2,1),border-color .24s ease,box-shadow .24s ease}
-    .season-card.card-link::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,#fffaf2 0%,#eafdff 34%,#fff3de 66%,#fff1ed 100%);background-size:220% 220%;background-position:0% 50%;opacity:0;transition:opacity .26s ease,background-position .62s cubic-bezier(.2,.8,.2,1);pointer-events:none}
-    .season-card.card-link::after{content:"";position:absolute;left:14px;right:14px;bottom:9px;height:3px;z-index:0;border-radius:999px;background:linear-gradient(90deg,var(--green),var(--accent),var(--crimson));transform:scaleX(.24);transform-origin:left center;opacity:.28;transition:transform .26s cubic-bezier(.2,.8,.2,1),opacity .26s ease;pointer-events:none}
+    .season-card.card-link{position:relative;overflow:hidden;isolation:isolate;min-height:118px;padding:16px;color:inherit;text-decoration:none;cursor:pointer;background:#fffaf2;border-color:rgba(24,33,40,.1);transform:translateZ(0);transition:transform .24s cubic-bezier(.2,.8,.2,1),border-color .24s ease,box-shadow .24s ease,color .24s ease}
+    .season-card.card-link::before{content:"";position:absolute;top:0;bottom:0;left:-22%;width:144%;z-index:0;background:linear-gradient(105deg,var(--green-dark) 0%,var(--green) 34%,var(--accent) 62%,var(--crimson-dark) 100%);transform:translateX(-104%) skewX(-13deg);transform-origin:left center;transition:transform .42s cubic-bezier(.18,.86,.28,1);pointer-events:none}
+    .season-card.card-link::after{content:"";position:absolute;left:14px;right:14px;bottom:9px;height:3px;z-index:0;border-radius:999px;background:rgba(255,255,255,.78);transform:scaleX(.22);transform-origin:left center;opacity:.34;transition:transform .3s cubic-bezier(.2,.8,.2,1),opacity .24s ease;pointer-events:none}
     .season-card.card-link>*{position:relative;z-index:1}
-    .season-card.card-link:hover{transform:translateY(-6px);border-color:rgba(25,182,217,.42);box-shadow:0 20px 38px rgba(3,14,24,.22),0 0 0 1px rgba(255,255,255,.72) inset}
-    .season-card.card-link:hover::before{opacity:1;background-position:100% 50%}
-    .season-card.card-link:hover::after{transform:scaleX(1);opacity:.92}
-    .season-card.card-link h2{font-size:clamp(20px,2.2vw,28px);line-height:1.15;transition:color .22s ease,transform .22s ease}
-    .season-card.card-link:hover h2{color:var(--crimson-dark);transform:translateX(3px)}
-    .season-card.card-link:hover .card-cta{color:#fff;background:linear-gradient(90deg,var(--green-dark),var(--green),var(--crimson-dark));transform:translateX(3px)}
+    .season-card.card-link:hover{transform:translateY(-7px);border-color:rgba(255,255,255,.72);box-shadow:0 22px 44px rgba(3,14,24,.28),0 0 0 1px rgba(255,255,255,.3) inset}
+    .season-card.card-link:hover::before{transform:translateX(0) skewX(-13deg)}
+    .season-card.card-link:hover::after{transform:scaleX(1);opacity:.86}
+    .season-card.card-link h2{font-size:clamp(20px,2.2vw,28px);line-height:1.15;transition:color .2s ease,transform .24s ease,text-shadow .24s ease}
+    .season-card.card-link:hover h2{color:#fff;transform:translateX(5px);text-shadow:0 2px 16px rgba(3,14,24,.34)}
+    .season-card.card-link:hover .card-cta{color:var(--crimson-dark);background:rgba(255,250,242,.92);transform:translateX(5px);box-shadow:0 8px 18px rgba(3,14,24,.18)}
     .season-card.card-link:focus-visible{outline:3px solid var(--crimson);outline-offset:4px}
-    .card-cta{display:inline-flex;align-items:center;width:fit-content;margin-top:auto;padding:5px 9px;border-radius:999px;color:var(--crimson-dark);font-size:12px;font-weight:900;transition:color .22s ease,background .22s ease,transform .22s ease}
+    .card-cta{display:inline-flex;align-items:center;width:fit-content;margin-top:auto;padding:5px 9px;border-radius:999px;color:var(--crimson-dark);font-size:12px;font-weight:900;transition:color .22s ease,background .22s ease,transform .24s ease,box-shadow .24s ease}
     @media (prefers-reduced-motion: reduce){.season-card.card-link,.season-card.card-link::before,.season-card.card-link::after,.season-card.card-link h2,.card-cta{transition:none}.season-card.card-link:hover{transform:none}.season-card.card-link:hover h2,.season-card.card-link:hover .card-cta{transform:none}}
   </style>
 </head>
