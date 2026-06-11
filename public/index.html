@@ -8,161 +8,7 @@
   <meta property="og:title" content="S級リーグ Hub" />
   <meta property="og:description" content="S級リーグの大会情報ハブページ" />
   <meta property="og:type" content="website" />
-
-  <style>
-    :root {
-      --bg-page: #eefcff;
-      --bg-card: #ffffff;
-      --bg-surface: #f7f9fb;
-      --bg-raised: #eef3f6;
-      --accent: #1976d2;
-      --accent-dark: #0f5fad;
-      --accent-dim: rgba(25, 118, 210, 0.08);
-      --accent-border: rgba(25, 118, 210, 0.28);
-      --green: #2e7d32;
-      --green-dark: #276b2b;
-      --green-dim: rgba(46, 125, 50, 0.08);
-      --danger: #d94141;
-      --danger-dim: rgba(217, 65, 65, 0.12);
-      --text-primary: #202124;
-      --text-secondary: #4f5b67;
-      --text-muted: #7d8791;
-      --border: rgba(32, 33, 36, 0.12);
-      --border-strong: rgba(32, 33, 36, 0.2);
-      --winner-bg: rgba(46, 125, 50, 0.08);
-      --winner-border: rgba(46, 125, 50, 0.24);
-      --radius-lg: 4px;
-      --radius-md: 4px;
-      --radius-sm: 4px;
-      --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.18);
-      --shadow-soft: 0 1px 4px rgba(0, 0, 0, 0.14);
-      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
-    }
-
-    * { box-sizing: border-box; }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      color: var(--text-primary);
-      font-family: var(--font);
-      background:
-        linear-gradient(135deg, rgba(31, 205, 226, 0.28) 0%, rgba(31, 205, 226, 0.0) 32%),
-        linear-gradient(225deg, rgba(31, 205, 226, 0.2) 0%, rgba(31, 205, 226, 0.0) 30%),
-        radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.32) 34%, rgba(31, 205, 226, 0.14) 68%),
-        #eafdff;
-    }
-
-    html { scroll-behavior: smooth; }
-    body { position: relative; overflow-x: hidden; }
-    body::before, body::after { content: ""; position: fixed; z-index: -1; pointer-events: none; }
-    body::before {
-      left: -120px; bottom: -80px; width: 520px; height: 620px;
-      background:
-        linear-gradient(135deg, rgba(0,188,212,.42), rgba(0,188,212,.08) 54%, transparent 55%),
-        linear-gradient(45deg, rgba(255,255,255,.36), transparent 62%);
-      clip-path: polygon(0 20%, 80% 0, 100% 100%, 0 84%);
-      opacity: .8;
-    }
-    body::after {
-      right: -110px; top: -70px; width: 520px; height: 620px;
-      background:
-        linear-gradient(225deg, rgba(0,188,212,.28), rgba(0,188,212,.06) 58%, transparent 59%),
-        linear-gradient(135deg, rgba(255,255,255,.42), transparent 64%);
-      clip-path: polygon(20% 0, 100% 0, 100% 88%, 0 100%);
-      opacity: .72;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .page-shell { width: min(1180px, calc(100vw - 48px)); margin: 0 auto; padding: 34px 0 72px; }
-    .hero {
-      margin: 0 auto 26px; padding: 22px 20px 18px; text-align: center;
-      background: rgba(255,255,255,.34);
-      border-bottom: 1px solid rgba(32,33,36,.16);
-      backdrop-filter: blur(2px);
-    }
-    .eyebrow { margin: 0 0 8px; font-size: 13px; font-weight: 800; color: var(--text-muted); }
-    .hero h1 { margin: 0; color: var(--text-primary); font-size: clamp(34px, 4.6vw, 48px); font-weight: 900; letter-spacing: -.04em; line-height: 1.1; }
-    .lead { margin: 16px auto 0; max-width: 720px; color: var(--text-secondary); font-size: 15px; font-weight: 600; line-height: 1.8; }
-    .meta-line { margin-top: 18px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-    .meta-line span { display: inline-flex; align-items: center; min-height: 30px; padding: 0 12px; color: var(--text-secondary); background: rgba(255,255,255,.72); border: 1px solid rgba(32,33,36,.12); border-radius: 999px; font-size: 12px; font-weight: 700; }
-    .cache-note { margin: 14px auto 0; max-width: 680px; color: var(--text-muted); font-size: 12px; font-weight: 700; line-height: 1.7; }
-
-    .hub-tabs { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; margin-top: 22px; padding: 0 14px; background: rgba(255,255,255,.68); border: 1px solid rgba(32,33,36,.14); border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); }
-    .hub-tab {
-      min-height: 52px; padding: 0 18px; border-bottom: 3px solid transparent;
-      color: var(--text-secondary); transition: color .14s ease, border-color .14s ease, background .14s ease;
-      display: inline-flex; flex-direction: column; justify-content: center; align-items: center; gap: 3px;
-      font-size: 14px; font-weight: 850; line-height: 1.1;
-    }
-    .hub-tab:hover, .hub-tab.active { color: var(--accent); border-bottom-color: var(--accent); background: rgba(25,118,210,.04); }
-
-    .score-card { overflow: hidden; margin-top: 22px; background: var(--bg-card); border: 1px solid rgba(32,33,36,.1); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
-    .section-title { padding: 14px 18px; color: #fff; font-size: 16px; font-weight: 900; text-align: center; border-bottom: 1px solid rgba(32,33,36,.1); background: var(--green); }
-    .section-body { padding: 18px; }
-
-    .season-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-    .season-card { display: flex; flex-direction: column; min-height: 190px; padding: 18px; background: #fff; border: 1px solid rgba(32,33,36,.1); border-radius: var(--radius-md); box-shadow: var(--shadow-soft); }
-    .season-card h2 { margin: 0; color: var(--text-primary); font-size: 26px; font-weight: 900; letter-spacing: -.03em; line-height: 1.2; }
-    .season-card p { margin: 12px 0 16px; color: var(--text-secondary); font-size: 14px; font-weight: 600; line-height: 1.75; }
-    .season-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
-    .tag { display: inline-flex; align-items: center; min-height: 28px; padding: 0 10px; color: var(--text-secondary); background: rgba(255,255,255,.72); border: 1px solid rgba(32,33,36,.12); border-radius: 999px; font-size: 12px; font-weight: 800; }
-    .season-card .button { margin-top: auto; }
-    .button { display: inline-flex; align-items: center; justify-content: center; width: fit-content; min-height: 38px; padding: 0 14px; color: #fff; background: var(--green); border: 1px solid rgba(32,33,36,.1); border-radius: 4px; box-shadow: var(--shadow-soft); font-size: 13px; font-weight: 900; }
-    .button.secondary { color: var(--accent-dark); background: #fff; border-color: rgba(25,118,210,.24); }
-    .button:hover { filter: brightness(.98); }
-
-    .notice-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
-    .notice-list li { position: relative; padding-left: 18px; color: var(--text-secondary); font-size: 14px; font-weight: 600; line-height: 1.75; }
-    .notice-list li::before { content: ""; position: absolute; top: .76em; left: 0; width: 7px; height: 7px; border-radius: 999px; background: var(--green); }
-
-    .table-wrap { width: calc(100% - 28px); margin: 0 auto; overflow-x: auto; padding-bottom: 2px; }
-    .table-wrap::-webkit-scrollbar { height: 10px; }
-    .table-wrap::-webkit-scrollbar-track { background: rgba(32,33,36,.06); }
-    .table-wrap::-webkit-scrollbar-thumb { background: rgba(32,33,36,.22); border-radius: 999px; }
-    table { width: 100%; min-width: 760px; border-collapse: separate; border-spacing: 0 8px; table-layout: auto; background: transparent; }
-    thead th { padding: 10px 12px; color: var(--text-primary); background: #fff; border-top: 1px solid rgba(32,33,36,.1); border-bottom: 1px solid rgba(32,33,36,.16); font-size: 12px; font-weight: 900; white-space: nowrap; }
-    thead th:first-child { border-left: 1px solid rgba(32,33,36,.1); border-radius: 4px 0 0 4px; }
-    thead th:last-child { border-right: 1px solid rgba(32,33,36,.1); border-radius: 0 4px 4px 0; }
-    tbody td { padding: 12px 12px; color: var(--text-primary); background: #fff; border-top: 1px solid rgba(32,33,36,.08); border-bottom: 1px solid rgba(32,33,36,.16); font-size: 14px; line-height: 1.45; vertical-align: middle; }
-    tbody td:first-child { border-left: 1px solid rgba(32,33,36,.08); border-radius: 4px 0 0 4px; }
-    tbody td:last-child { border-right: 1px solid rgba(32,33,36,.08); border-radius: 0 4px 4px 0; }
-    tbody tr { box-shadow: var(--shadow-soft); }
-    tbody tr:hover td { background: #f8fbff; }
-    th { text-align: left; }
-    td.number-cell, th.number-cell { width: 72px; text-align: right; font-weight: 900; color: var(--text-muted); }
-    td.name-cell { font-weight: 900; }
-    td.text-cell { color: var(--text-secondary); font-weight: 600; }
-
-    .rule-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-    .rule-item { padding: 18px; background: #fff; border: 1px solid rgba(32,33,36,.1); border-radius: var(--radius-md); box-shadow: var(--shadow-soft); }
-    .rule-item h3 { margin: 0 0 8px; color: var(--text-primary); font-size: 17px; font-weight: 900; }
-    .rule-item p { margin: 0; color: var(--text-secondary); font-size: 14px; font-weight: 600; line-height: 1.75; }
-
-    .footer-note { margin-top: 28px; color: var(--text-muted); font-size: 12px; font-weight: 700; line-height: 1.7; text-align: center; }
-
-    @media (max-width: 900px) {
-      .page-shell { width: min(100% - 24px, 1180px); padding: 24px 0 56px; }
-      .hero { padding: 20px 12px 16px; }
-      .section-title { padding: 13px 14px; font-size: 15px; }
-      .hub-tabs { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
-      .hub-tab { flex: 0 0 auto; min-height: 48px; padding: 0 13px; }
-      .season-grid, .rule-grid { grid-template-columns: 1fr; }
-      .table-wrap { width: calc(100% - 16px); }
-    }
-
-    @media (max-width: 640px) {
-      body::before, body::after { opacity: .42; }
-      .hero h1 { font-size: 34px; }
-      .lead { font-size: 14px; }
-      .meta-line { gap: 6px; }
-      .meta-line span { min-height: 28px; padding: 0 10px; font-size: 11px; }
-      table { min-width: 660px; }
-      thead th, tbody td { padding: 9px 8px; font-size: 12px; }
-    }
-  </style>
+  <link rel="stylesheet" href="./common.css" />
 </head>
 
 <body>
@@ -242,36 +88,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="number-cell">1</td>
-                <td class="name-cell">Player 1</td>
-                <td class="text-cell">ここにプレイヤー名、所属、補足などを書く</td>
-              </tr>
-              <tr>
-                <td class="number-cell">2</td>
-                <td class="name-cell">Player 2</td>
-                <td class="text-cell">ここにプレイヤー名、所属、補足などを書く</td>
-              </tr>
-              <tr>
-                <td class="number-cell">3</td>
-                <td class="name-cell">Player 3</td>
-                <td class="text-cell">ここにプレイヤー名、所属、補足などを書く</td>
-              </tr>
-              <tr>
-                <td class="number-cell">4</td>
-                <td class="name-cell">Player 4</td>
-                <td class="text-cell">ここにプレイヤー名、所属、補足などを書く</td>
-              </tr>
-              <tr>
-                <td class="number-cell">5</td>
-                <td class="name-cell">Player 5</td>
-                <td class="text-cell">ここにプレイヤー名、所属、補足などを書く</td>
-              </tr>
-              <tr>
-                <td class="number-cell">6</td>
-                <td class="name-cell">Player 6</td>
-                <td class="text-cell">ここにプレイヤー名、所属、補足などを書く</td>
-              </tr>
+              <tr><td class="number-cell">1</td><td class="name-cell">Player 1</td><td class="text-cell">ここにプレイヤー名、所属、補足などを書く</td></tr>
+              <tr><td class="number-cell">2</td><td class="name-cell">Player 2</td><td class="text-cell">ここにプレイヤー名、所属、補足などを書く</td></tr>
+              <tr><td class="number-cell">3</td><td class="name-cell">Player 3</td><td class="text-cell">ここにプレイヤー名、所属、補足などを書く</td></tr>
+              <tr><td class="number-cell">4</td><td class="name-cell">Player 4</td><td class="text-cell">ここにプレイヤー名、所属、補足などを書く</td></tr>
+              <tr><td class="number-cell">5</td><td class="name-cell">Player 5</td><td class="text-cell">ここにプレイヤー名、所属、補足などを書く</td></tr>
+              <tr><td class="number-cell">6</td><td class="name-cell">Player 6</td><td class="text-cell">ここにプレイヤー名、所属、補足などを書く</td></tr>
             </tbody>
           </table>
         </div>
@@ -282,25 +104,10 @@
       <div class="section-title">Rules</div>
       <div class="section-body">
         <div class="rule-grid">
-          <article class="rule-item">
-            <h3>基本ルール</h3>
-            <p>ここに大会の基本ルールを書きます。例：試合形式、参加条件、順位決定方法など。</p>
-          </article>
-
-          <article class="rule-item">
-            <h3>順位決定</h3>
-            <p>ここに順位決定の条件を書きます。例：勝敗、得点、直接対決、タイブレークなど。</p>
-          </article>
-
-          <article class="rule-item">
-            <h3>欠場・遅刻</h3>
-            <p>ここに欠場や遅刻が発生した場合の扱いを書きます。</p>
-          </article>
-
-          <article class="rule-item">
-            <h3>注意事項</h3>
-            <p>ここに配信、連絡、提出期限、トラブル時の対応などを書きます。</p>
-          </article>
+          <article class="rule-item"><h3>基本ルール</h3><p>ここに大会の基本ルールを書きます。例：試合形式、参加条件、順位決定方法など。</p></article>
+          <article class="rule-item"><h3>順位決定</h3><p>ここに順位決定の条件を書きます。例：勝敗、得点、直接対決、タイブレークなど。</p></article>
+          <article class="rule-item"><h3>欠場・遅刻</h3><p>ここに欠場や遅刻が発生した場合の扱いを書きます。</p></article>
+          <article class="rule-item"><h3>注意事項</h3><p>ここに配信、連絡、提出期限、トラブル時の対応などを書きます。</p></article>
         </div>
       </div>
     </section>
