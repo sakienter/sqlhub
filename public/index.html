@@ -11,19 +11,6 @@
   <link rel="stylesheet" href="./common.css" />
   <style>
     .button.secondary{color:#fff;background:linear-gradient(90deg,var(--green-dark),var(--green));border-color:rgba(24,33,40,.1)}
-    .season-card.card-link{position:relative;overflow:hidden;isolation:isolate;min-height:118px;padding:16px;color:inherit;text-decoration:none;cursor:pointer;background:#fffaf2;border-color:rgba(24,33,40,.1);transform:translateZ(0);transition:transform .52s cubic-bezier(.4,0,.2,1),border-color .52s cubic-bezier(.4,0,.2,1),box-shadow .52s cubic-bezier(.4,0,.2,1)}
-    .season-card.card-link::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,var(--green-dark) 0%,var(--green) 36%,var(--accent) 68%,var(--crimson-dark) 100%);transform:scaleX(0);transform-origin:left;transition:transform .9s cubic-bezier(.4,0,.2,1);pointer-events:none}
-    .season-card.card-link::after{content:"";position:absolute;left:14px;right:14px;bottom:9px;height:3px;z-index:0;border-radius:999px;background:rgba(255,255,255,.76);transform:scaleX(0);transform-origin:left;opacity:.86;transition:transform .9s cubic-bezier(.4,0,.2,1);pointer-events:none}
-    .season-card.card-link>*{position:relative;z-index:1}
-    .season-card.card-link:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.72);box-shadow:0 20px 40px rgba(3,14,24,.26),0 0 0 1px rgba(255,255,255,.3) inset}
-    .season-card.card-link:hover::before{transform:scaleX(1)}
-    .season-card.card-link:hover::after{transform:scaleX(1)}
-    .season-card.card-link h2{font-size:clamp(20px,2.2vw,28px);line-height:1.15;transition:color .62s cubic-bezier(.4,0,.2,1),transform .62s cubic-bezier(.4,0,.2,1),text-shadow .62s cubic-bezier(.4,0,.2,1)}
-    .season-card.card-link:hover h2{color:#fff;transform:translateX(5px);text-shadow:0 2px 16px rgba(3,14,24,.34)}
-    .season-card.card-link:hover .card-cta{color:var(--crimson-dark);background:rgba(255,250,242,.92);transform:translateX(5px);box-shadow:0 8px 18px rgba(3,14,24,.18)}
-    .season-card.card-link:focus-visible{outline:3px solid var(--crimson);outline-offset:4px}
-    .card-cta{display:inline-flex;align-items:center;width:fit-content;margin-top:auto;padding:5px 9px;border-radius:999px;color:var(--crimson-dark);font-size:12px;font-weight:900;transition:color .62s cubic-bezier(.4,0,.2,1),background .62s cubic-bezier(.4,0,.2,1),transform .62s cubic-bezier(.4,0,.2,1),box-shadow .62s cubic-bezier(.4,0,.2,1)}
-    @media (prefers-reduced-motion: reduce){.season-card.card-link,.season-card.card-link::before,.season-card.card-link::after,.season-card.card-link h2,.card-cta{transition:none}.season-card.card-link:hover{transform:none}.season-card.card-link:hover h2,.season-card.card-link:hover .card-cta{transform:none}}
   </style>
 </head>
 <body>
