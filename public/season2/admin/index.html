@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>S2 Tribe Admin</title>
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="../../common.css" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <header class="hero">
+      <a class="back-link" href="../">← Season 2へ戻る</a>
+      <p class="eyebrow">Admin</p>
+      <h1>S2 Tribe Admin</h1>
+      <p class="lead">DAY / GAMEごとの登場種族・非登場種族を設定します。</p>
+    </header>
+
+    <section class="score-card admin-card">
+      <div class="section-title">Tribe Editor</div>
+      <div class="section-body">
+        <div class="admin-form-grid">
+          <label class="admin-field">
+            <span>管理パスワード</span>
+            <input id="admin-password" type="password" autocomplete="current-password" placeholder="ADMIN_PASSWORD" />
+          </label>
+          <label class="admin-field">
+            <span>DAY</span>
+            <select id="admin-day">
+              <option value="DAY1">DAY1</option>
+              <option value="DAY2">DAY2</option>
+              <option value="DAY3">DAY3</option>
+              <option value="DAY4">DAY4</option>
+            </select>
+          </label>
+          <label class="admin-field">
+            <span>GAME</span>
+            <select id="admin-game">
+              <option value="GAME1">GAME1</option>
+              <option value="GAME2">GAME2</option>
+              <option value="GAME3">GAME3</option>
+              <option value="GAME4">GAME4</option>
+              <option value="GAME5">GAME5</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="tribe-editor admin-tribe-editor">
+          <div class="tribe-editor-head">
+            <div>
+              <p class="game-kicker">ON = 登場種族 / OFF = 非登場種族</p>
+              <h4>種族を選択</h4>
+            </div>
+            <button id="tribe-save-button" class="tribe-save-button" type="button">確定</button>
+          </div>
+          <p class="tribe-editor-note">種族ボタンを押すとON/OFFが切り替わります。確定するとCloudflare KVに保存され、公開ページに反映されます。</p>
+          <div id="tribe-buttons" class="tribe-buttons"></div>
+          <p id="tribe-save-status" class="tribe-save-status"></p>
+        </div>
+
+        <div class="admin-preview">
+          <h2>表示プレビュー</h2>
+          <p id="admin-preview-text">BAN）登場種族：-<br><span class="ban-subline">非登場種族：-</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="./script.js"></script>
+</body>
+</html>
