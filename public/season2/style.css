@@ -32,6 +32,54 @@
   white-space: nowrap;
 }
 
+.meta-line,
+.game-meta {
+  gap: 8px 18px;
+}
+
+.meta-line span,
+.game-meta span {
+  display: inline;
+  min-height: 0;
+  padding: 0;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.7;
+}
+
+.meta-line span + span::before,
+.game-meta span + span::before {
+  content: "/";
+  display: inline-block;
+  margin: 0 12px 0 0;
+  color: rgba(83, 97, 109, 0.58);
+  font-weight: 700;
+}
+
+.game-current {
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .game-meta {
+    display: block;
+  }
+
+  .game-meta span {
+    display: block;
+  }
+
+  .game-meta span + span::before {
+    content: "";
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
   #summary-table {
     min-width: 680px;
