@@ -54,6 +54,21 @@
       font-weight: 950;
     }
 
+    .archive-table .past-game {
+      background: rgba(24, 33, 40, 0.18);
+    }
+
+    .archive-table .final-game {
+      background: #fff600;
+      color: #001018;
+    }
+
+    .archive-table .winner-name {
+      color: #001018;
+      background: #fff600;
+      font-weight: 950;
+    }
+
     .anomaly-table th,
     .anomaly-table td {
       min-width: 150px;
@@ -62,22 +77,26 @@
       line-height: 1.45;
     }
 
-    .anomaly-table .anomaly-head {
+    .anomaly-table .anomaly-title {
       color: #001018;
       background: #18d9d6;
-      font-size: 18px;
+      border-bottom: 4px solid #001018;
+      font-size: 20px;
       font-style: italic;
       font-weight: 950;
     }
 
-    .anomaly-table thead th {
-      font-size: 17px;
+    .anomaly-table thead tr:nth-child(2) th {
+      border-bottom: 4px solid #001018;
+      font-size: 18px;
       font-weight: 950;
+      text-transform: lowercase;
     }
 
     .anomaly-table tbody td {
       height: 64px;
-      font-size: 15px;
+      border-bottom: 4px solid #001018;
+      font-size: 16px;
       font-weight: 800;
     }
 
@@ -142,7 +161,7 @@
       <div class="section-body">
         <ul class="archive-rule-list">
           <li><span class="archive-rule-label">試合形式：</span>3試合の合計ポイントを競う。チェックルールはなし。</li>
-          <li><span class="archive-rule-label">ポイント：</span>1位 7pt / 2位 6pt / 3位 5pt / 4位 4pt / 5位 3pt / 6位 2pt / 7位 1pt / 8位 0pt</li>
+          <li><span class="archive-rule-label">ポイント：</span>最終戦のみポイントを反映。1位 7pt / 2位 6pt / 3位 5pt / 4位 4pt / 5位 3pt / 6位 2pt / 7位 1pt / 8位 0pt</li>
           <li><span class="archive-rule-label">順位判定：</span>同時落ちの折半なし。順位はゲーム内の左表示を参照。</li>
           <li><span class="archive-rule-label">タイブレーク：</span>3試合後に合計1位が2名以上の場合のみ第4試合を実施。4試合目1位が優勝。</li>
         </ul>
@@ -152,92 +171,110 @@
     <section class="score-card">
       <div class="section-title purple">Results</div>
       <div class="section-body">
+        <section class="day-section game-detail-section">
+          <div class="table-wrap">
+            <table class="archive-table anomaly-table" aria-label="アノマリー">
+              <thead>
+                <tr>
+                  <th class="anomaly-title" colspan="4">Anomaly</th>
+                </tr>
+                <tr>
+                  <th>game1</th>
+                  <th>game2</th>
+                  <th>game3</th>
+                  <th>game4</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>先行する斥候</td>
+                  <td>ノルガノンの秘密</td>
+                  <td>オースストーンの召喚</td>
+                  <td>黄金の矢</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
         <section class="day-section">
           <div class="mini-section-title">ポイント集計</div>
           <div class="table-wrap">
             <table class="archive-table" aria-label="ポイント集計">
               <thead>
                 <tr>
-                  <th>順位</th>
                   <th class="name-head">Name</th>
-                  <th>Total</th>
-                  <th>Game 1</th>
-                  <th>Game 2</th>
-                  <th>Game 3</th>
-                  <th>Game 4</th>
+                  <th>Total Pt</th>
+                  <th>Pt 順位</th>
+                  <th class="past-game">game1</th>
+                  <th class="past-game">game2</th>
+                  <th class="past-game">game3</th>
+                  <th class="final-game">game4</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="winner-row">
-                  <td class="rank-gold">1st</td>
-                  <td class="name-cell">MATSURI</td>
-                  <td class="total-cell">25</td><td>7</td><td>14</td><td>18</td><td>25</td>
-                </tr>
                 <tr>
-                  <td class="rank-silver">2nd</td>
                   <td class="name-cell">Yanase</td>
-                  <td class="total-cell">22</td><td>6</td><td>11</td><td>18</td><td>22</td>
+                  <td class="total-cell">4</td><td>4th</td><td class="past-game">6</td><td class="past-game">5</td><td class="past-game">7</td><td class="final-game">4</td>
                 </tr>
                 <tr>
-                  <td class="rank-bronze">3rd</td>
-                  <td class="name-cell">gaiabot</td>
-                  <td class="total-cell">17</td><td>5</td><td>6</td><td>11</td><td>17</td>
-                </tr>
-                <tr>
-                  <td>4th</td>
-                  <td class="name-cell">Alutemu</td>
-                  <td class="total-cell">17</td><td>4</td><td>8</td><td>14</td><td>17</td>
-                </tr>
-                <tr>
-                  <td>5th</td>
-                  <td class="name-cell">あれっくす</td>
-                  <td class="total-cell">9</td><td>2</td><td>2</td><td>4</td><td>9</td>
-                </tr>
-                <tr>
-                  <td>6th</td>
-                  <td class="name-cell">Yoshiyuki</td>
-                  <td class="total-cell">9</td><td>3</td><td>6</td><td>7</td><td>9</td>
-                </tr>
-                <tr>
-                  <td>7th</td>
                   <td class="name-cell">Thundurus</td>
-                  <td class="total-cell">8</td><td>1</td><td>7</td><td>7</td><td>8</td>
+                  <td class="total-cell">1</td><td>7th</td><td class="past-game">1</td><td class="past-game">6</td><td class="past-game">0</td><td class="final-game">1</td>
                 </tr>
                 <tr>
-                  <td>8th</td>
+                  <td class="name-cell">Alutemu</td>
+                  <td class="total-cell">3</td><td>5th</td><td class="past-game">4</td><td class="past-game">4</td><td class="past-game">6</td><td class="final-game">3</td>
+                </tr>
+                <tr>
                   <td class="name-cell">SeseiSei</td>
-                  <td class="total-cell">5</td><td>0</td><td>2</td><td>5</td><td>5</td>
+                  <td class="total-cell">0</td><td>8th</td><td class="past-game">0</td><td class="past-game">2</td><td class="past-game">3</td><td class="final-game">0</td>
+                </tr>
+                <tr class="winner-row">
+                  <td class="name-cell winner-name">MATSURI</td>
+                  <td class="total-cell">7</td><td class="rank-gold">1st</td><td class="past-game">7</td><td class="past-game">7</td><td class="past-game">4</td><td class="final-game">7</td>
+                </tr>
+                <tr>
+                  <td class="name-cell">あれっくす</td>
+                  <td class="total-cell">5</td><td>3rd</td><td class="past-game">2</td><td class="past-game">0</td><td class="past-game">2</td><td class="final-game">5</td>
+                </tr>
+                <tr>
+                  <td class="name-cell">Yoshiyuki</td>
+                  <td class="total-cell">2</td><td>6th</td><td class="past-game">3</td><td class="past-game">3</td><td class="past-game">1</td><td class="final-game">2</td>
+                </tr>
+                <tr>
+                  <td class="name-cell">gaiabot</td>
+                  <td class="total-cell">6</td><td>2nd</td><td class="past-game">5</td><td class="past-game">1</td><td class="past-game">5</td><td class="final-game">6</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <p class="archive-note">※ 4試合目を含む。</p>
+          <p class="archive-note">※ 特殊ルールにより、Total Pt と Pt 順位は最終戦（game4）のポイントのみを反映。</p>
         </section>
 
         <section class="day-section">
-          <div class="mini-section-title">各試合の順位</div>
+          <div class="mini-section-title">順位</div>
           <div class="table-wrap">
             <table class="archive-table" aria-label="各試合の順位">
               <thead>
                 <tr>
-                  <th class="name-head">Name</th>
-                  <th>1位回数</th>
-                  <th>平均順位</th>
-                  <th>Game 1</th>
-                  <th>Game 2</th>
-                  <th>Game 3</th>
-                  <th>Game 4</th>
+                  <th class="name-head">Placement</th>
+                  <th>1st count</th>
+                  <th>average</th>
+                  <th class="past-game">game1</th>
+                  <th class="past-game">game2</th>
+                  <th class="past-game">game3</th>
+                  <th>game4</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="winner-row"><td class="name-cell">MATSURI</td><td>3</td><td>1.8</td><td>1</td><td>1</td><td>4</td><td>1</td></tr>
-                <tr><td class="name-cell">Yanase</td><td>1</td><td>2.5</td><td>2</td><td>3</td><td>1</td><td>4</td></tr>
-                <tr><td class="name-cell">gaiabot</td><td>0</td><td>3.8</td><td>3</td><td>7</td><td>3</td><td>2</td></tr>
-                <tr><td class="name-cell">Alutemu</td><td>0</td><td>3.8</td><td>4</td><td>4</td><td>2</td><td>5</td></tr>
-                <tr><td class="name-cell">あれっくす</td><td>0</td><td>5.8</td><td>6</td><td>8</td><td>6</td><td>3</td></tr>
-                <tr><td class="name-cell">Yoshiyuki</td><td>0</td><td>5.8</td><td>5</td><td>5</td><td>7</td><td>6</td></tr>
-                <tr><td class="name-cell">Thundurus</td><td>0</td><td>6.0</td><td>7</td><td>2</td><td>8</td><td>7</td></tr>
-                <tr><td class="name-cell">SeseiSei</td><td>0</td><td>6.8</td><td>8</td><td>6</td><td>5</td><td>8</td></tr>
+                <tr><td class="name-cell">Yanase</td><td>1</td><td>2.5</td><td class="past-game">2</td><td class="past-game">3</td><td class="past-game">1</td><td>4</td></tr>
+                <tr><td class="name-cell">Thundurus</td><td>0</td><td>6.0</td><td class="past-game">7</td><td class="past-game">2</td><td class="past-game">8</td><td>7</td></tr>
+                <tr><td class="name-cell">Alutemu</td><td>0</td><td>3.8</td><td class="past-game">4</td><td class="past-game">4</td><td class="past-game">2</td><td>5</td></tr>
+                <tr><td class="name-cell">SeseiSei</td><td>0</td><td>6.8</td><td class="past-game">8</td><td class="past-game">6</td><td class="past-game">5</td><td>8</td></tr>
+                <tr class="winner-row"><td class="name-cell winner-name">MATSURI</td><td>3</td><td>1.8</td><td class="past-game">1</td><td class="past-game">1</td><td class="past-game">4</td><td>1</td></tr>
+                <tr><td class="name-cell">あれっくす</td><td>0</td><td>5.8</td><td class="past-game">6</td><td class="past-game">8</td><td class="past-game">6</td><td>3</td></tr>
+                <tr><td class="name-cell">Yoshiyuki</td><td>0</td><td>5.8</td><td class="past-game">5</td><td class="past-game">5</td><td class="past-game">7</td><td>6</td></tr>
+                <tr><td class="name-cell">gaiabot</td><td>0</td><td>3.8</td><td class="past-game">3</td><td class="past-game">7</td><td class="past-game">3</td><td>2</td></tr>
               </tbody>
             </table>
           </div>
@@ -261,36 +298,10 @@
                 <tr><td class="name-cell">Thundurus</td><td>ロー</td><td>ホームズ</td><td>ユードラ</td><td>ピンゾロ</td></tr>
                 <tr><td class="name-cell">Alutemu</td><td>アランナ</td><td>ピュートリサイド</td><td>サイラス</td><td>ミュターヌス</td></tr>
                 <tr><td class="name-cell">SeseiSei</td><td>パッチワーク</td><td>オム</td><td>ミロクー</td><td>テス</td></tr>
-                <tr class="winner-row"><td class="name-cell">MATSURI</td><td>アラキア</td><td>ETC</td><td>オザール</td><td>クラッグ</td></tr>
+                <tr class="winner-row"><td class="name-cell winner-name">MATSURI</td><td>アラキア</td><td>ETC</td><td>オザール</td><td>クラッグ</td></tr>
                 <tr><td class="name-cell">あれっくす</td><td>スニード</td><td>ヴーン</td><td>デナスリアス</td><td>トーリム</td></tr>
                 <tr><td class="name-cell">Yoshiyuki</td><td>ザイレラ</td><td>レノ</td><td>マスターウェン</td><td>テロン</td></tr>
                 <tr><td class="name-cell">gaiabot</td><td>リッチキング</td><td>ロー</td><td>ETC</td><td>ケリガン</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="day-section game-detail-section">
-          <div class="mini-section-title">アノマリー</div>
-          <div class="table-wrap">
-            <table class="archive-table anomaly-table" aria-label="アノマリー">
-              <thead>
-                <tr>
-                  <th class="anomaly-head">Anomaly</th>
-                  <th>Game 1</th>
-                  <th>Game 2</th>
-                  <th>Game 3</th>
-                  <th>Game 4</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td></td>
-                  <td>先行する斥候</td>
-                  <td>ノルガノンの秘密</td>
-                  <td>オースストーンの召喚</td>
-                  <td>黄金の矢</td>
-                </tr>
               </tbody>
             </table>
           </div>
