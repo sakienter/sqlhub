@@ -1,11 +1,10 @@
 const API_URL = '/api/season2/results';
-const TRIBES = ['アンデッド', 'エレメンタル', 'ドラゴン', 'キルボア', 'ナーガ', 'マーロック', 'メカ', '悪魔', '海賊', '獣'];
-const STORAGE_KEY = 'season2TribeConfig';
+const TRIBE_API_URL = '/api/season2/tribes';
 
 let loadedData = null;
+let tribeConfig = {};
 let selectedDayIndex = 0;
 let selectedGameIndex = 0;
-let tribeDraft = loadTribeConfig();
 
 const $ = id => document.getElementById(id);
 const elements = {
@@ -24,25 +23,27 @@ const elements = {
   gameEndTime: $('game-end-time'),
   gameBan: $('game-ban'),
   gameAnomaly: $('game-anomaly'),
-  gameDetailTable: $('game-detail-table'),
-  tribeButtons: $('tribe-buttons'),
-  tribeSaveButton: $('tribe-save-button'),
-  tribeSaveStatus: $('tribe-save-status')
+  gameDetailTable: $('game-detail-table')
 };
 
 init();
 
 async function init() {
   startLoadingDots();
-  bindTribeEditor();
 
   try {
     setStatus('読み込み中...');
-    const r = await fetch(API_URL, { cache: 'default' });
-    if (!r.ok) throw new Error(`API error: ${r.status}`);
-    const data = await r.json();
-    loadedData = data;
-    renderPage(data);
+    const [resultsResponse, tribeResponse] = await Promise.all([
+      fetch(API_URL, { cache: 'default' }),
+      fetch(TRIBE_API_URL, { cache: 'no-store' })
+    ]);
+
+    if (!resultsResponse.ok) throw new Error(`API error: ${resultsResponse.status}`);
+
+    loadedData = await resultsResponse.json();
+    tribeConfig = tribeResponse.ok ? await tribeResponse.json() : {};
+
+    renderPage(loadedData);
     setStatus('読み込み完了');
   } catch (e) {
     console.error(e);
@@ -88,7 +89,6 @@ function renderSummary(summary) {
 function renderDayTabs(days) {
   if (!elements.dayTabs) return;
   elements.dayTabs.innerHTML = '';
-
   days.forEach((d, i) => {
     const b = document.createElement('button');
     b.type = 'button';
@@ -119,7 +119,6 @@ function renderSelectedDay(i) {
 function renderGameTabs(day) {
   if (!elements.gameTabs) return;
   elements.gameTabs.innerHTML = '';
-
   (day.gameDetails || []).forEach((g, i) => {
     const b = document.createElement('button');
     b.type = 'button';
@@ -139,12 +138,10 @@ function renderSelectedGame(i) {
   if (!game) {
     renderGameMeta(null);
     renderTable(elements.gameDetailTable, [], [], {});
-    renderTribeEditor();
     return;
   }
 
   renderGameMeta(game);
-  renderTribeEditor();
   renderTable(elements.gameDetailTable, game.headers || [], game.rows || [], { winnerKey: 'placement' });
 }
 
@@ -162,121 +159,24 @@ function renderGameMeta(g) {
 }
 
 function renderTribeInfo(g) {
-  const info = getManualTribeInfo(g);
+  const info = getTribeInfo(g);
   const available = info.available.length ? info.available.join(', ') : '-';
   const unavailable = info.unavailable.length ? info.unavailable.join(', ') : '-';
   return `BAN）登場種族：${esc(available)}<br><span class="ban-subline">非登場種族：${esc(unavailable)}</span>`;
 }
 
-function getManualTribeInfo(g) {
-  const key = getCurrentConfigKey(g);
-  const info = getTribeConfigByKey(key);
+function getTribeInfo(g) {
+  const day = loadedData?.days?.[selectedDayIndex];
+  const dayKey = normalizeKey(day?.label || `DAY${selectedDayIndex + 1}`);
+  const gameKey = normalizeKey(g?.label || `GAME${selectedGameIndex + 1}`);
+  const info = tribeConfig?.[dayKey]?.[gameKey] || {};
   return {
     available: Array.isArray(info.available) ? info.available.filter(Boolean) : [],
     unavailable: Array.isArray(info.unavailable) ? info.unavailable.filter(Boolean) : []
   };
 }
 
-function bindTribeEditor() {
-  if (!elements.tribeSaveButton) return;
-  elements.tribeSaveButton.addEventListener('click', () => {
-    saveTribeConfig();
-    if (elements.tribeSaveStatus) {
-      elements.tribeSaveStatus.textContent = '保存しました。';
-      setTimeout(() => elements.tribeSaveStatus.textContent = '', 1800);
-    }
-  });
-}
-
-function renderTribeEditor() {
-  if (!elements.tribeButtons) return;
-  const game = loadedData?.days?.[selectedDayIndex]?.gameDetails?.[selectedGameIndex];
-  const key = getCurrentConfigKey(game);
-  const info = getTribeConfigByKey(key);
-  const availableSet = new Set(info.available || []);
-
-  elements.tribeButtons.innerHTML = '';
-  TRIBES.forEach(tribe => {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'tribe-toggle ' + (availableSet.has(tribe) ? 'is-available' : 'is-unavailable');
-    button.textContent = tribe;
-    button.onclick = () => {
-      toggleTribe(key, tribe);
-      renderGameMeta(game);
-      renderTribeEditor();
-    };
-    elements.tribeButtons.appendChild(button);
-  });
-}
-
-function toggleTribe(key, tribe) {
-  const info = getTribeConfigByKey(key);
-  const available = new Set(info.available || []);
-
-  if (available.has(tribe)) available.delete(tribe);
-  else available.add(tribe);
-
-  const availableList = TRIBES.filter(t => available.has(t));
-  const unavailableList = TRIBES.filter(t => !available.has(t));
-  setTribeConfigByKey(key, { available: availableList, unavailable: unavailableList });
-}
-
-function getCurrentConfigKey(g) {
-  const day = loadedData?.days?.[selectedDayIndex];
-  const dayKey = normalizeGameKey(day?.label || `DAY${selectedDayIndex + 1}`);
-  const gameKey = normalizeGameKey(g?.label || `GAME${selectedGameIndex + 1}`);
-  return { dayKey, gameKey };
-}
-
-function getTribeConfigByKey({ dayKey, gameKey }) {
-  if (!tribeDraft[dayKey]) tribeDraft[dayKey] = {};
-  if (!tribeDraft[dayKey][gameKey]) tribeDraft[dayKey][gameKey] = buildDefaultTribeInfo();
-  return tribeDraft[dayKey][gameKey];
-}
-
-function setTribeConfigByKey({ dayKey, gameKey }, info) {
-  if (!tribeDraft[dayKey]) tribeDraft[dayKey] = {};
-  tribeDraft[dayKey][gameKey] = info;
-}
-
-function buildDefaultTribeInfo() {
-  return {
-    available: [],
-    unavailable: [...TRIBES]
-  };
-}
-
-function loadTribeConfig() {
-  const base = structuredCloneSafe(window.SEASON2_TRIBE_CONFIG || {});
-  try {
-    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-    return mergeDeep(base, saved);
-  } catch (_) {
-    return base;
-  }
-}
-
-function saveTribeConfig() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(tribeDraft));
-}
-
-function mergeDeep(base, extra) {
-  const result = structuredCloneSafe(base);
-  Object.keys(extra || {}).forEach(dayKey => {
-    if (!result[dayKey]) result[dayKey] = {};
-    Object.keys(extra[dayKey] || {}).forEach(gameKey => {
-      result[dayKey][gameKey] = extra[dayKey][gameKey];
-    });
-  });
-  return result;
-}
-
-function structuredCloneSafe(value) {
-  return JSON.parse(JSON.stringify(value || {}));
-}
-
-function normalizeGameKey(value) {
+function normalizeKey(value) {
   return String(value || '').trim().toUpperCase().replace(/\s+/g, '');
 }
 
