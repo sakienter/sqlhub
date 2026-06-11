@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>S級リーグ Hub</title>
-  <meta name="description" content="S級リーグのSeason 1 / Season 2、ロスター、ルール、連絡事項をまとめた公式ハブページです。" />
+  <meta name="description" content="S級リーグの開催中シーズン、ニュース、ルール、連絡先、過去シーズンをまとめた公式ハブページです。" />
   <meta property="og:title" content="S級リーグ Hub" />
   <meta property="og:description" content="S級リーグの大会情報ハブページ" />
   <meta property="og:type" content="website" />
@@ -16,7 +16,7 @@
     <header class="hero">
       <p class="eyebrow">Tournament Hub</p>
       <h1>S級リーグ Hub</h1>
-      <p class="lead">Season 1 / Season 2 の大会ページ、ロスター、基本ルール、連絡事項をまとめたハブページです。</p>
+      <p class="lead">開催中シーズン、ニュース、ルール、連絡先、各シーズンページへの導線をまとめたハブページです。</p>
       <div class="meta-line">
         <span>Current Season: S2</span>
         <span>Status: 準備中 / 更新中</span>
@@ -25,13 +25,95 @@
       <p class="cache-note">各シーズンページと同じデザイン基調で、必要な情報にすぐ移動できる入口として整理しています。</p>
 
       <nav class="hub-tabs" aria-label="ページ内ナビゲーション">
-        <a class="hub-tab active" href="#seasons">大会ページ</a>
-        <a class="hub-tab" href="#notice">お知らせ</a>
-        <a class="hub-tab" href="#roster">ロスター</a>
+        <a class="hub-tab active" href="#current-season">開催中</a>
+        <a class="hub-tab" href="#news">ニュース</a>
         <a class="hub-tab" href="#rules">ルール</a>
         <a class="hub-tab" href="#contact">連絡</a>
+        <a class="hub-tab" href="#seasons">シーズン選択</a>
       </nav>
     </header>
+
+    <section id="current-season" class="score-card">
+      <div class="section-title">Current Season</div>
+      <div class="section-body">
+        <article class="season-card">
+          <div>
+            <h2>Season 2</h2>
+            <p>現在のメインシーズンです。大会情報、進行状況、スコアボードなどはこちらから確認できます。</p>
+            <div class="season-meta">
+              <span class="tag">開催中 / 準備中</span>
+              <span class="tag">最新情報</span>
+              <span class="tag">S級リーグ</span>
+            </div>
+          </div>
+          <a class="button" href="./season2/">Season 2を見る</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="news" class="score-card">
+      <div class="section-title">News</div>
+      <div class="section-body">
+        <ul class="notice-list">
+          <li><strong>2026.06.11</strong> ハブページの構成を更新しました。今後のお知らせはこのニュース欄に追加していきます。</li>
+          <li><strong>2026.06.11</strong> Season 2 のページ導線を上部の「開催中シーズン」に移動しました。</li>
+        </ul>
+
+        <details class="rule-item" style="margin-top: 16px;">
+          <summary><strong>過去のお知らせアーカイブ</strong></summary>
+          <ul class="notice-list" style="margin-top: 12px;">
+            <li>過去のお知らせはここに追記していきます。</li>
+          </ul>
+        </details>
+      </div>
+    </section>
+
+    <section id="rules" class="score-card">
+      <div class="section-title">Rules</div>
+      <div class="section-body">
+        <div class="rule-grid">
+          <article class="rule-item">
+            <h3>ルール掲載予定</h3>
+            <p>後から共有されるメモをもとに、この欄を書き直します。</p>
+          </article>
+          <article class="rule-item">
+            <h3>更新方針</h3>
+            <p>試合形式、順位決定、欠場・遅刻、連絡事項などを整理して掲載します。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="score-card">
+      <div class="section-title">Contact</div>
+      <div class="section-body">
+        <div class="season-grid">
+          <article class="season-card">
+            <div>
+              <h2>X</h2>
+              <p>大会の告知・更新情報はこちらで確認できます。</p>
+              <div class="season-meta">
+                <span class="tag">SNS</span>
+                <span class="tag">告知</span>
+              </div>
+            </div>
+            <a class="button secondary" href="https://x.com/YOUR_X_ID" target="_blank" rel="noopener">Xを見る</a>
+          </article>
+
+          <article class="season-card">
+            <div>
+              <h2>Discord</h2>
+              <p>参加者向けの連絡・確認はこちらを使用します。</p>
+              <div class="season-meta">
+                <span class="tag">連絡</span>
+                <span class="tag">コミュニティ</span>
+              </div>
+            </div>
+            <a class="button" href="https://discord.gg/YOUR_INVITE" target="_blank" rel="noopener">Discordに参加</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <section id="seasons" class="score-card">
       <div class="section-title">Season Select</div>
@@ -61,61 +143,6 @@
             <a class="button" href="./season2/">Season 2を見る</a>
           </article>
         </div>
-      </div>
-    </section>
-
-    <section id="notice" class="score-card">
-      <div class="section-title">Information</div>
-      <div class="section-body">
-        <ul class="notice-list">
-          <li>現在、ハブサイトは改装中です。</li>
-          <li>ロスターとルールは個別ページ化せず、このHTML内に直接記載します。</li>
-          <li>大会ページへのリンクは、実際の公開URLに合わせて後から変更してください。</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="roster" class="score-card">
-      <div class="section-title">Season Roster</div>
-      <div class="section-body">
-        <div class="table-wrap">
-          <table aria-label="ロスター表">
-            <thead>
-              <tr>
-                <th class="number-cell">#</th>
-                <th>PLAYER</th>
-                <th>MEMO</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td class="number-cell">1</td><td class="name-cell">Player 1</td><td class="text-cell">ここにプレイヤー名、所属、補足などを書く</td></tr>
-              <tr><td class="number-cell">2</td><td class="name-cell">Player 2</td><td class="text-cell">ここにプレイヤー名、所属、補足などを書く</td></tr>
-              <tr><td class="number-cell">3</td><td class="name-cell">Player 3</td><td class="text-cell">ここにプレイヤー名、所属、補足などを書く</td></tr>
-              <tr><td class="number-cell">4</td><td class="name-cell">Player 4</td><td class="text-cell">ここにプレイヤー名、所属、補足などを書く</td></tr>
-              <tr><td class="number-cell">5</td><td class="name-cell">Player 5</td><td class="text-cell">ここにプレイヤー名、所属、補足などを書く</td></tr>
-              <tr><td class="number-cell">6</td><td class="name-cell">Player 6</td><td class="text-cell">ここにプレイヤー名、所属、補足などを書く</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="rules" class="score-card">
-      <div class="section-title">Rules</div>
-      <div class="section-body">
-        <div class="rule-grid">
-          <article class="rule-item"><h3>基本ルール</h3><p>ここに大会の基本ルールを書きます。例：試合形式、参加条件、順位決定方法など。</p></article>
-          <article class="rule-item"><h3>順位決定</h3><p>ここに順位決定の条件を書きます。例：勝敗、得点、直接対決、タイブレークなど。</p></article>
-          <article class="rule-item"><h3>欠場・遅刻</h3><p>ここに欠場や遅刻が発生した場合の扱いを書きます。</p></article>
-          <article class="rule-item"><h3>注意事項</h3><p>ここに配信、連絡、提出期限、トラブル時の対応などを書きます。</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="score-card">
-      <div class="section-title">Contact</div>
-      <div class="section-body">
-        <p class="lead" style="margin: 0; text-align: left; max-width: none;">問い合わせ先、Discord、X、Googleフォームなどがある場合はここに記載してください。</p>
       </div>
     </section>
 
