@@ -13,6 +13,9 @@
   --amber: #e79a5f;
   --amber-dark: #9a463c;
   --amber-dim: rgba(231, 154, 95, 0.16);
+  --crimson: #c94b4b;
+  --crimson-dark: #7f2634;
+  --crimson-dim: rgba(201, 75, 75, 0.16);
   --danger: #d85f43;
   --danger-dim: rgba(216, 95, 67, 0.12);
   --text-primary: #182128;
@@ -41,7 +44,8 @@ html, body {
   background:
     radial-gradient(circle at 18% 8%, rgba(29, 191, 226, 0.26), transparent 26%),
     radial-gradient(circle at 88% 10%, rgba(231, 154, 95, 0.22), transparent 24%),
-    linear-gradient(155deg, #071827 0%, #0a2b42 44%, #124f70 76%, #2b6687 100%);
+    radial-gradient(circle at 72% 82%, rgba(201, 75, 75, 0.2), transparent 28%),
+    linear-gradient(155deg, #071827 0%, #0a2b42 40%, #123c57 66%, #492438 100%);
   scroll-behavior: smooth;
 }
 
@@ -51,6 +55,7 @@ body::before {
   left: -140px; bottom: -110px; width: 620px; height: 680px;
   background:
     radial-gradient(circle at 35% 70%, rgba(23, 179, 214, 0.38), transparent 48%),
+    radial-gradient(circle at 68% 32%, rgba(201, 75, 75, 0.18), transparent 44%),
     linear-gradient(135deg, rgba(10, 52, 82, 0.48), rgba(5, 21, 36, 0));
   clip-path: polygon(0 15%, 86% 0, 100% 100%, 0 86%);
   opacity: .78;
@@ -59,6 +64,7 @@ body::after {
   right: -130px; top: -90px; width: 600px; height: 660px;
   background:
     radial-gradient(circle at 70% 22%, rgba(231, 154, 95, 0.4), transparent 42%),
+    radial-gradient(circle at 44% 68%, rgba(201, 75, 75, 0.28), transparent 44%),
     linear-gradient(225deg, rgba(25, 182, 217, 0.22), rgba(5, 21, 36, 0));
   clip-path: polygon(20% 0, 100% 0, 100% 88%, 0 100%);
   opacity: .74;
@@ -93,9 +99,9 @@ a { color: inherit; text-decoration: none; }
 .hero {
   margin: 0 auto 26px; padding: 34px 22px 30px; text-align: center;
   background:
-    linear-gradient(135deg, rgba(255, 250, 242, 0.96), rgba(230, 249, 252, 0.92) 58%, rgba(255, 222, 185, 0.84));
+    linear-gradient(135deg, rgba(255, 250, 242, 0.96), rgba(230, 249, 252, 0.9) 48%, rgba(255, 226, 190, 0.88) 72%, rgba(255, 218, 210, 0.82));
   border: 1px solid rgba(255,255,255,.42);
-  border-bottom: 4px solid var(--accent);
+  border-bottom: 4px solid var(--crimson);
   box-shadow: var(--shadow-card);
   backdrop-filter: blur(2px);
 }
@@ -104,7 +110,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--accent-dark); background: rgba(255,250,242,.88); border: 1px solid rgba(25,182,217,.28); border-radius: 999px;
   font-size: 12px; font-weight: 800; text-decoration: none;
 }
-.eyebrow { margin: 0 0 8px; font-size: 13px; font-weight: 900; color: var(--accent-dark); letter-spacing: .04em; text-transform: uppercase; }
+.eyebrow { margin: 0 0 8px; font-size: 13px; font-weight: 900; color: var(--crimson-dark); letter-spacing: .04em; text-transform: uppercase; }
 .hero h1 { margin: 0; color: var(--text-primary); font-size: clamp(42px, 6vw, 72px); font-weight: 950; letter-spacing: -.055em; line-height: 1.02; }
 .lead { margin: 16px auto 0; max-width: 720px; color: var(--text-secondary); font-size: 15px; font-weight: 700; line-height: 1.85; }
 .meta-line { margin-top: 18px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
@@ -112,8 +118,8 @@ a { color: inherit; text-decoration: none; }
 .cache-note { margin: 14px auto 0; max-width: 640px; color: var(--text-muted); font-size: 12px; font-weight: 700; line-height: 1.7; }
 
 .score-card { overflow: hidden; margin-top: 22px; background: var(--bg-card); border: 1px solid rgba(255,255,255,.44); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
-.section-title { padding: 14px 18px; color: #fff; font-size: 16px; font-weight: 950; text-align: center; border-bottom: 1px solid rgba(24,33,40,.12); background: linear-gradient(90deg, var(--green-dark), var(--green), var(--accent-dark)); }
-.section-title.purple, .section-title.orange { background: linear-gradient(90deg, var(--green-dark), var(--green), var(--accent-dark)); }
+.section-title { padding: 14px 18px; color: #fff; font-size: 16px; font-weight: 950; text-align: center; border-bottom: 1px solid rgba(24,33,40,.12); background: linear-gradient(90deg, var(--green-dark), var(--green), var(--crimson-dark)); }
+.section-title.purple, .section-title.orange { background: linear-gradient(90deg, var(--green-dark), var(--green), var(--crimson-dark)); }
 .section-body { padding: 18px; }
 
 .day-tabs, .game-tabs, .hub-tabs { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; padding: 0 14px; background: rgba(255,250,242,.72); border-bottom: 1px solid rgba(24,33,40,.16); }
@@ -125,8 +131,8 @@ a { color: inherit; text-decoration: none; }
   transition: color .14s ease, border-color .14s ease, background .14s ease;
   display: inline-flex; flex-direction: column; justify-content: center; align-items: center; gap: 3px;
 }
-.day-tab:hover, .game-tab:hover, .hub-tab:hover { color: var(--accent-dark); background: rgba(25,182,217,.07); }
-.day-tab.active, .game-tab.active, .hub-tab.active { color: var(--accent-dark); border-bottom-color: var(--accent); background: rgba(25,182,217,.08); }
+.day-tab:hover, .game-tab:hover, .hub-tab:hover { color: var(--crimson-dark); background: var(--crimson-dim); }
+.day-tab.active, .game-tab.active, .hub-tab.active { color: var(--crimson-dark); border-bottom-color: var(--crimson); background: var(--crimson-dim); }
 .tab-main, .hub-tab { font-size: 14px; font-weight: 850; line-height: 1.1; }
 .tab-sub { font-size: 11px; font-weight: 600; opacity: .82; line-height: 1.1; }
 
@@ -145,7 +151,7 @@ a { color: inherit; text-decoration: none; }
 .table-wrap { width: calc(100% - 28px); margin: 0 auto; overflow-x: auto; padding-bottom: 2px; }
 .table-wrap::-webkit-scrollbar { height: 10px; }
 .table-wrap::-webkit-scrollbar-track { background: rgba(24,33,40,.06); }
-.table-wrap::-webkit-scrollbar-thumb { background: rgba(13,127,153,.38); border-radius: 999px; }
+.table-wrap::-webkit-scrollbar-thumb { background: rgba(201,75,75,.38); border-radius: 999px; }
 table { width: 100%; min-width: 760px; border-collapse: separate; border-spacing: 0 8px; table-layout: auto; background: transparent; }
 #game-detail-table { min-width: 1120px; }
 thead th { padding: 10px 12px; color: var(--text-primary); background: #fffaf2; border-top: 1px solid rgba(24,33,40,.1); border-bottom: 1px solid rgba(24,33,40,.16); font-size: 12px; font-weight: 900; white-space: nowrap; }
@@ -155,7 +161,7 @@ tbody td { padding: 12px 12px; color: var(--text-primary); background: #fffaf2; 
 tbody td:first-child { border-left: 1px solid rgba(24,33,40,.08); border-radius: 4px 0 0 4px; }
 tbody td:last-child { border-right: 1px solid rgba(24,33,40,.08); border-radius: 0 4px 4px 0; }
 tbody tr { box-shadow: var(--shadow-soft); }
-tbody tr:hover td { background: #effbfe; }
+tbody tr:hover td { background: #fff1ed; }
 tbody tr.winner-row td { background: var(--winner-bg); border-top-color: var(--winner-border); border-bottom-color: var(--winner-border); }
 td.name-cell, th:first-child { font-weight: 900; text-align: left; }
 td.number-cell, td.rank-cell { text-align: right; }
@@ -163,7 +169,7 @@ th { text-align: right; }
 th:first-child { text-align: left; }
 td.text-cell { text-align: left; }
 td.wide-cell { min-width: 130px; white-space: normal; }
-td.first-rank-cell { font-weight: 900; color: var(--accent-dark); }
+td.first-rank-cell { font-weight: 900; color: var(--crimson-dark); }
 td.total-cell { font-weight: 900; }
 td.empty-cell { padding: 26px; color: var(--text-muted); text-align: center; font-weight: 800; }
 
@@ -189,14 +195,14 @@ td.empty-cell { padding: 26px; color: var(--text-muted); text-align: center; fon
 .season-card h2 { margin: 0; color: var(--text-primary); font-size: 26px; font-weight: 900; letter-spacing: -.03em; line-height: 1.2; }
 .season-card p { margin: 12px 0 16px; color: var(--text-secondary); font-size: 14px; font-weight: 600; line-height: 1.75; }
 .season-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
-.tag { display: inline-flex; align-items: center; min-height: 28px; padding: 0 10px; color: var(--text-secondary); background: rgba(232,248,251,.86); border: 1px solid rgba(25,182,217,.24); border-radius: 999px; font-size: 12px; font-weight: 800; }
+.tag { display: inline-flex; align-items: center; min-height: 28px; padding: 0 10px; color: var(--text-secondary); background: rgba(255,241,237,.9); border: 1px solid rgba(201,75,75,.22); border-radius: 999px; font-size: 12px; font-weight: 800; }
 .season-card .button { margin-top: auto; }
-.button { display: inline-flex; align-items: center; justify-content: center; width: fit-content; min-height: 38px; padding: 0 14px; color: #fff; background: var(--green); border: 1px solid rgba(24,33,40,.1); border-radius: 4px; box-shadow: var(--shadow-soft); font-size: 13px; font-weight: 900; }
-.button.secondary { color: var(--amber-dark); background: #fffaf2; border-color: rgba(154,70,60,.24); }
+.button { display: inline-flex; align-items: center; justify-content: center; width: fit-content; min-height: 38px; padding: 0 14px; color: #fff; background: linear-gradient(90deg, var(--green-dark), var(--green)); border: 1px solid rgba(24,33,40,.1); border-radius: 4px; box-shadow: var(--shadow-soft); font-size: 13px; font-weight: 900; }
+.button.secondary { color: var(--crimson-dark); background: #fffaf2; border-color: rgba(201,75,75,.28); }
 .button:hover { filter: brightness(.98); }
 .notice-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
 .notice-list li { position: relative; padding-left: 18px; color: var(--text-secondary); font-size: 14px; font-weight: 600; line-height: 1.75; }
-.notice-list li::before { content: ""; position: absolute; top: .76em; left: 0; width: 7px; height: 7px; border-radius: 999px; background: var(--amber); }
+.notice-list li::before { content: ""; position: absolute; top: .76em; left: 0; width: 7px; height: 7px; border-radius: 999px; background: var(--crimson); }
 .rule-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .rule-item { padding: 18px; background: #fffaf2; border: 1px solid rgba(24,33,40,.1); border-radius: var(--radius-md); box-shadow: var(--shadow-soft); }
 .rule-item h3 { margin: 0 0 8px; color: var(--text-primary); font-size: 17px; font-weight: 900; }
