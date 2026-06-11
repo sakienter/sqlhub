@@ -58,12 +58,30 @@
       background: rgba(24, 33, 40, 0.18);
     }
 
+    .hero-game-table {
+      table-layout: fixed;
+      width: 100%;
+    }
+
+    .hero-game-table th,
+    .hero-game-table td {
+      width: 20%;
+    }
+
+    .hero-game-table .name-head,
+    .hero-game-table .name-cell {
+      min-width: 0;
+      width: 20%;
+    }
+
     .hero-game-table .anomaly-row td {
-      border-top: 12px solid rgba(24, 33, 40, 0.10);
+      height: 58px;
+      border-top: 2px solid rgba(24, 33, 40, 0.12);
       white-space: normal;
       word-break: keep-all;
       line-height: 1.45;
       font-weight: 850;
+      vertical-align: middle;
     }
 
     .hero-game-table .anomaly-label {
@@ -76,7 +94,7 @@
     }
 
     .hero-game-table .anomaly-cell {
-      min-height: 56px;
+      background: #fffaf2;
       font-size: 15px;
     }
 
