@@ -9,39 +9,320 @@
   <meta property="og:description" content="時渡りドリームマッチの大会情報ページ" />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="../../common.css" />
+  <style>
+    /* ページ固有スタイル */
+    .result-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    .result-table th,
+    .result-table td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      white-space: nowrap;
+    }
+    .result-table th {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.6;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    .result-table td:first-child,
+    .result-table th:first-child {
+      text-align: left;
+    }
+    .result-table tbody tr:hover {
+      background: rgba(255,255,255,0.04);
+    }
+    .result-table .champion {
+      font-weight: 700;
+    }
+    .rank-1  { color: #f5c842; }
+    .rank-2  { color: #c0c0c0; }
+    .rank-3  { color: #cd7f32; }
+    .badge-champion {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: #f5c842;
+      color: #111;
+      border-radius: 3px;
+      padding: 1px 5px;
+      margin-left: 6px;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+    .table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .rule-list {
+      margin: 0;
+      padding: 0 0 0 1.2rem;
+      line-height: 1.8;
+    }
+    .rule-list li + li {
+      margin-top: 0.25rem;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .meta-item dt {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.55;
+      margin-bottom: 2px;
+    }
+    .meta-item dd {
+      margin: 0;
+      font-weight: 600;
+    }
+    .spreadsheet-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      opacity: 0.75;
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 1px;
+    }
+    .spreadsheet-link:hover { opacity: 1; }
+    .section-sub-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.5;
+      margin: 1.5rem 0 0.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 0.4rem;
+    }
+    .section-sub-title:first-child { margin-top: 0; }
+  </style>
 </head>
 <body>
   <main class="page-shell">
     <header class="hero">
-      <a class="back-link" href="../../">← Avenge Hubへ戻る</a>
+      <a class="back-link" href="../../">← Avenge Hub へ戻る</a>
       <p class="eyebrow">Past Tournament</p>
       <h1>時渡りドリームマッチ</h1>
-      <p class="lead">大会概要、告知、結果、関連リンクをまとめるためのアーカイブページです。</p>
+      <p class="lead">2026年4月11日開催のバトルグラウンド大会アーカイブです。</p>
     </header>
 
+    <!-- Overview -->
     <section class="score-card">
       <div class="section-title">Overview</div>
       <div class="section-body">
-        <div class="rule-grid">
-          <article class="rule-item">
-            <h3>大会概要</h3>
-            <p>ここに大会形式、開催日、参加者、配信情報などを記載します。</p>
-          </article>
-          <article class="rule-item">
-            <h3>掲載予定</h3>
-            <p>告知ポスト、結果、アーカイブ、関連資料などを後から追加できます。</p>
-          </article>
-        </div>
+        <dl class="meta-grid">
+          <div class="meta-item">
+            <dt>開催日</dt>
+            <dd>2026年4月11日（土）</dd>
+          </div>
+          <div class="meta-item">
+            <dt>試合数</dt>
+            <dd>4試合（タイブレーク含む）</dd>
+          </div>
+          <div class="meta-item">
+            <dt>参加者</dt>
+            <dd>8名</dd>
+          </div>
+          <div class="meta-item">
+            <dt>優勝</dt>
+            <dd>MATSURI</dd>
+          </div>
+        </dl>
+
+        <p class="section-sub-title">ルール</p>
+        <ul class="rule-list">
+          <li>3試合の合計ポイントを競う（チェックルールなし）</li>
+          <li>ポイント：1位 7pt / 2位 6pt / 3位 5pt / 4位 4pt / 5位 3pt / 6位 2pt / 7位 1pt / 8位 0pt</li>
+          <li>同時落ちの折半なし。順位はゲーム内（左表示）を参照</li>
+          <li>3試合後に合計1位が2名以上の場合のみ第4試合を実施。4試合目1位が優勝</li>
+        </ul>
+
+        <p class="section-sub-title">BANリスト（全試合共通）</p>
+        <p>アンデッド / エレメンタル / ドラゴン / キルボア / ナーガ / マーロック / メカ / 悪魔 / 海賊 / 獣</p>
       </div>
     </section>
 
+    <!-- Results -->
+    <section class="score-card">
+      <div class="section-title">Results</div>
+      <div class="section-body">
+
+        <p class="section-sub-title">ポイント集計</p>
+        <div class="table-scroll">
+          <table class="result-table">
+            <thead>
+              <tr>
+                <th>順位</th>
+                <th>Name</th>
+                <th>Total</th>
+                <th>Game 1</th>
+                <th>Game 2</th>
+                <th>Game 3</th>
+                <th>Game 4</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="champion">
+                <td class="rank-1">1st</td>
+                <td>MATSURI <span class="badge-champion">優勝</span></td>
+                <td>25</td><td>7</td><td>14</td><td>18</td><td>25</td>
+              </tr>
+              <tr>
+                <td class="rank-2">2nd</td>
+                <td>Yanase</td>
+                <td>22</td><td>6</td><td>11</td><td>18</td><td>22</td>
+              </tr>
+              <tr>
+                <td class="rank-3">3rd</td>
+                <td>gaiabot</td>
+                <td>17</td><td>5</td><td>6</td><td>11</td><td>17</td>
+              </tr>
+              <tr>
+                <td>4th</td>
+                <td>Alutemu</td>
+                <td>17</td><td>4</td><td>8</td><td>14</td><td>17</td>
+              </tr>
+              <tr>
+                <td>5th</td>
+                <td>あれっくす</td>
+                <td>9</td><td>2</td><td>2</td><td>4</td><td>9</td>
+              </tr>
+              <tr>
+                <td>6th</td>
+                <td>Yoshiyuki</td>
+                <td>9</td><td>3</td><td>6</td><td>7</td><td>9</td>
+              </tr>
+              <tr>
+                <td>7th</td>
+                <td>Thundurus</td>
+                <td>8</td><td>1</td><td>7</td><td>7</td><td>8</td>
+              </tr>
+              <tr>
+                <td>8th</td>
+                <td>SeseiSei</td>
+                <td>5</td><td>0</td><td>2</td><td>5</td><td>5</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.78rem;opacity:0.5;margin-top:0.5rem;">※ スコア推移（累計）を表示。Game 4 はタイブレーク。</p>
+
+        <p class="section-sub-title">各試合の順位</p>
+        <div class="table-scroll">
+          <table class="result-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>1位回数</th>
+                <th>平均順位</th>
+                <th>Game 1</th>
+                <th>Game 2</th>
+                <th>Game 3</th>
+                <th>Game 4</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="champion">
+                <td>MATSURI <span class="badge-champion">優勝</span></td>
+                <td>3</td><td>1.8</td><td>1</td><td>1</td><td>4</td><td>1</td>
+              </tr>
+              <tr><td>Yanase</td>      <td>1</td><td>2.5</td><td>2</td><td>3</td><td>1</td><td>4</td></tr>
+              <tr><td>gaiabot</td>     <td>0</td><td>3.8</td><td>3</td><td>7</td><td>3</td><td>2</td></tr>
+              <tr><td>Alutemu</td>     <td>0</td><td>3.8</td><td>4</td><td>4</td><td>2</td><td>5</td></tr>
+              <tr><td>あれっくす</td>  <td>0</td><td>5.8</td><td>6</td><td>8</td><td>6</td><td>3</td></tr>
+              <tr><td>Yoshiyuki</td>   <td>0</td><td>5.8</td><td>5</td><td>5</td><td>7</td><td>6</td></tr>
+              <tr><td>Thundurus</td>   <td>0</td><td>6.0</td><td>7</td><td>2</td><td>8</td><td>7</td></tr>
+              <tr><td>SeseiSei</td>    <td>0</td><td>6.8</td><td>8</td><td>6</td><td>5</td><td>8</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="section-sub-title">ヒーロー選択</p>
+        <div class="table-scroll">
+          <table class="result-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Game 1</th>
+                <th>Game 2</th>
+                <th>Game 3</th>
+                <th>Game 4</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Yanase</td>      <td>シンドラゴサ</td><td>ザイレラ</td><td>クロミー</td><td>レノ</td></tr>
+              <tr><td>Thundurus</td>   <td>ロー</td><td>ホームズ</td><td>ユードラ</td><td>ピンゾロ</td></tr>
+              <tr><td>Alutemu</td>     <td>アランナ</td><td>ピュートリサイド</td><td>サイラス</td><td>ミュターヌス</td></tr>
+              <tr><td>SeseiSei</td>    <td>パッチワーク</td><td>オム</td><td>ミロクー</td><td>テス</td></tr>
+              <tr class="champion">
+                <td>MATSURI <span class="badge-champion">優勝</span></td>
+                <td>アラキア</td><td>ETC</td><td>オザール</td><td>クラッグ</td>
+              </tr>
+              <tr><td>あれっくす</td>  <td>スニード</td><td>ヴーン</td><td>デナスリアス</td><td>トーリム</td></tr>
+              <tr><td>Yoshiyuki</td>   <td>ザイレラ</td><td>レノ</td><td>マスターウェン</td><td>テロン</td></tr>
+              <tr><td>gaiabot</td>     <td>リッチキング</td><td>ロー</td><td>ETC</td><td>ケリガン</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="section-sub-title">アノマリー</p>
+        <div class="table-scroll">
+          <table class="result-table">
+            <thead>
+              <tr><th>Game 1</th><th>Game 2</th><th>Game 3</th><th>Game 4</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>先行する斥候</td>
+                <td>ノルガノンの秘密</td>
+                <td>オースストーンの召喚</td>
+                <td>黄金の矢</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="section-sub-title">タイムスケジュール</p>
+        <div class="table-scroll">
+          <table class="result-table">
+            <thead>
+              <tr><th></th><th>Game 1</th><th>Game 2</th><th>Game 3</th><th>Game 4</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>開始</td><td>19:04</td><td>19:40</td><td>20:17</td><td>20:49</td></tr>
+              <tr><td>終了</td><td>19:37</td><td>20:15</td><td>20:43</td><td>21:30</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Archive -->
     <section class="score-card">
       <div class="section-title">Archive</div>
       <div class="section-body">
         <ul class="notice-list">
-          <li>結果・順位表：準備中</li>
-          <li>配信アーカイブ：準備中</li>
-          <li>告知・関連リンク：準備中</li>
+          <li>
+            集計スプレッドシート：
+            <a class="spreadsheet-link"
+               href="https://docs.google.com/spreadsheets/d/1-minkQuRxbTB_4O7ftOVJKQ0Sh9leEaoLFwFHk29aPA/edit?gid=1494300901#gid=1494300901"
+               target="_blank" rel="noopener">
+              Google Sheets で開く ↗
+            </a>
+          </li>
+          <li>配信アーカイブ：なし</li>
+          <li>告知・関連リンク：なし</li>
         </ul>
       </div>
     </section>
