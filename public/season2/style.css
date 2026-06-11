@@ -1,1 +1,39 @@
-body{background:#eafdff;color:#202124;font-family:sans-serif}.page-shell{max-width:1180px;margin:0 auto;padding:32px 24px}.score-card{background:#fff;margin-top:24px;border:1px solid #ddd}.section-title{background:#2e7d32;color:#fff;padding:14px;text-align:center;font-weight:900}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;background:#fff}th,td{border:1px solid #ddd;padding:8px}.day-tabs,.game-tabs{display:flex;gap:8px;flex-wrap:wrap;padding:12px}.day-tab,.game-tab{padding:8px 12px}.active{color:#1976d2;font-weight:900}.hero{text-align:center}.back-link{color:#1976d2}.hidden{display:none}
+#summary-table {
+  width: 100%;
+  min-width: 760px;
+  table-layout: auto;
+}
+
+#summary-table th,
+#summary-table td {
+  text-align: center;
+  white-space: nowrap;
+}
+
+#summary-table th:first-child,
+#summary-table td:first-child {
+  text-align: left;
+  min-width: 140px;
+}
+
+#game-detail-table th,
+#game-detail-table td {
+  text-align: center;
+}
+
+#game-detail-table td.name-cell,
+#game-detail-table th:first-child {
+  text-align: center;
+}
+
+#game-detail-table td.hero-cell,
+#game-detail-table th:nth-child(3) {
+  min-width: 110px;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  #summary-table {
+    min-width: 680px;
+  }
+}
