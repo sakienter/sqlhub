@@ -58,40 +58,26 @@
       background: rgba(24, 33, 40, 0.18);
     }
 
-    .anomaly-table {
-      width: 100%;
-      table-layout: fixed;
-    }
-
-    .anomaly-table th,
-    .anomaly-table td {
-      min-width: 150px;
+    .hero-game-table .anomaly-row td {
+      border-top: 12px solid rgba(24, 33, 40, 0.10);
       white-space: normal;
       word-break: keep-all;
       line-height: 1.45;
+      font-weight: 850;
     }
 
-    .anomaly-table .anomaly-title {
+    .hero-game-table .anomaly-label {
       color: #001018;
       background: #18d9d6;
-      border-bottom: 4px solid #001018;
-      font-size: 20px;
+      font-size: 17px;
       font-style: italic;
       font-weight: 950;
+      text-align: center;
     }
 
-    .anomaly-table thead tr:nth-child(2) th {
-      border-bottom: 4px solid #001018;
-      font-size: 18px;
-      font-weight: 950;
-      text-transform: lowercase;
-    }
-
-    .anomaly-table tbody td {
-      height: 64px;
-      border-bottom: 4px solid #001018;
-      font-size: 16px;
-      font-weight: 800;
+    .hero-game-table .anomaly-cell {
+      min-height: 56px;
+      font-size: 15px;
     }
 
     .rank-gold,
@@ -249,9 +235,9 @@
         </section>
 
         <section class="day-section">
-          <div class="mini-section-title">ヒーロー選択</div>
+          <div class="mini-section-title">ヒーロー選択 / アノマリー</div>
           <div class="table-wrap">
-            <table class="archive-table" aria-label="ヒーロー選択">
+            <table class="archive-table hero-game-table" aria-label="ヒーロー選択とアノマリー">
               <thead>
                 <tr>
                   <th class="name-head">Name</th>
@@ -270,31 +256,12 @@
                 <tr><td class="name-cell">あれっくす</td><td>スニード</td><td>ヴーン</td><td>デナスリアス</td><td>トーリム</td></tr>
                 <tr><td class="name-cell">Yoshiyuki</td><td>ザイレラ</td><td>レノ</td><td>マスターウェン</td><td>テロン</td></tr>
                 <tr><td class="name-cell">gaiabot</td><td>リッチキング</td><td>ロー</td><td>ETC</td><td>ケリガン</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="day-section game-detail-section">
-          <div class="table-wrap">
-            <table class="archive-table anomaly-table" aria-label="アノマリー">
-              <thead>
-                <tr>
-                  <th class="anomaly-title" colspan="4">Anomaly</th>
-                </tr>
-                <tr>
-                  <th>game1</th>
-                  <th>game2</th>
-                  <th>game3</th>
-                  <th>game4</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>先行する斥候</td>
-                  <td>ノルガノンの秘密</td>
-                  <td>オースストーンの召喚</td>
-                  <td>黄金の矢</td>
+                <tr class="anomaly-row">
+                  <td class="name-cell anomaly-label">Anomaly</td>
+                  <td class="anomaly-cell">先行する斥候</td>
+                  <td class="anomaly-cell">ノルガノンの秘密</td>
+                  <td class="anomaly-cell">オースストーンの召喚</td>
+                  <td class="anomaly-cell">黄金の矢</td>
                 </tr>
               </tbody>
             </table>
