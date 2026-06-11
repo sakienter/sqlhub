@@ -9,26 +9,30 @@
   <meta property="og:description" content="Tournament info by Stuntdrake" />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="./common.css" />
-  <style>.button.secondary{color:#fff;background:linear-gradient(90deg,var(--green-dark),var(--green));border-color:rgba(24,33,40,.1)}</style>
+  <style>
+    .button.secondary{color:#fff;background:linear-gradient(90deg,var(--green-dark),var(--green));border-color:rgba(24,33,40,.1)}
+    .season-card.card-link{color:inherit;text-decoration:none;cursor:pointer;transition:transform .16s ease,background .16s ease,border-color .16s ease,box-shadow .16s ease}
+    .season-card.card-link:hover{transform:translateY(-4px);background:#fff1ed;border-color:rgba(201,75,75,.34);box-shadow:0 18px 34px rgba(3,14,24,.24)}
+    .season-card.card-link:hover h2{color:var(--crimson-dark)}
+    .season-card.card-link:focus-visible{outline:3px solid var(--crimson);outline-offset:4px}
+    .card-cta{margin-top:auto;color:var(--crimson-dark);font-size:13px;font-weight:900}
+  </style>
 </head>
 <body>
   <main class="page-shell">
     <header class="hero" style="background: #eafdff; backdrop-filter: none;">
-      <p class="eyebrow">Tournament info by Stuntdrake</p>
       <h1>Avenge Hub</h1>
-      <p class="lead">当サイトは、主に大会の運営協力、告知、戦績分析を目的としたものです。</p>
+      <p class="lead">当サイトは、主に大会の運営協力、告知、戦績分析を目的としたものです。<br>大会情報、戦績情報のまとめサイト</p>
+      <p class="cache-note">Supported by Stuntdrake</p>
     </header>
 
     <section id="current-season" class="score-card">
       <div class="section-title">Current Season</div>
       <div class="section-body">
-        <article class="season-card">
-          <div>
-            <h2>S級リーグ Season 2</h2>
-            <p>現在のメインシーズンです。大会情報、進行状況、スコアボードなどはこちらから確認できます。</p>
-          </div>
-          <a class="button" href="./season2/">Season 2を見る</a>
-        </article>
+        <a class="season-card card-link" href="./season2/">
+          <div><h2>S級リーグ Season 2</h2><p>現在のメインシーズンです。大会情報、進行状況、スコアボードなどはこちらから確認できます。</p></div>
+          <span class="card-cta">ページを見る →</span>
+        </a>
       </div>
     </section>
 
@@ -48,20 +52,15 @@
 
     <section id="rules" class="score-card">
       <div class="section-title">Rules</div>
-      <div class="section-body">
-        <div class="rule-grid">
-          <article class="rule-item"><h3>ルール掲載予定</h3><p>後から共有されるメモをもとに、この欄を書き直します。</p></article>
-          <article class="rule-item"><h3>更新方針</h3><p>試合形式、順位決定、欠場・遅刻、連絡事項などを整理して掲載します。</p></article>
-        </div>
-      </div>
+      <div class="section-body"><div class="rule-grid"><article class="rule-item"><h3>ルール掲載予定</h3><p>後から共有されるメモをもとに、この欄を書き直します。</p></article><article class="rule-item"><h3>更新方針</h3><p>試合形式、順位決定、欠場・遅刻、連絡事項などを整理して掲載します。</p></article></div></div>
     </section>
 
     <section id="seasons" class="score-card">
       <div class="section-title">Season Select</div>
       <div class="section-body">
         <div class="season-grid">
-          <article class="season-card"><div><h2>Season 1</h2><p>Season 1 の大会結果、順位表、試合情報などを確認するページです。</p></div><a class="button secondary" href="./season1/">Season 1を見る</a></article>
-          <article class="season-card"><div><h2>Season 2</h2><p>Season 2 の大会情報、進行状況、スコアボードなどを確認するページです。</p></div><a class="button" href="./season2/">Season 2を見る</a></article>
+          <a class="season-card card-link" href="./season1/"><div><h2>Season 1</h2><p>Season 1 の大会結果、順位表、試合情報などを確認するページです。</p></div><span class="card-cta">ページを見る →</span></a>
+          <a class="season-card card-link" href="./season2/"><div><h2>Season 2</h2><p>Season 2 の大会情報、進行状況、スコアボードなどを確認するページです。</p></div><span class="card-cta">ページを見る →</span></a>
         </div>
       </div>
     </section>
@@ -70,9 +69,9 @@
       <div class="section-title">Past Tournaments</div>
       <div class="section-body">
         <div class="season-grid">
-          <article class="season-card"><div><h2>時渡りドリームマッチ</h2><p>大会概要、結果、関連リンクをまとめるアーカイブページです。</p></div><a class="button secondary" href="./tournaments/timewalk-dream-match/">ページを見る</a></article>
-          <article class="season-card"><div><h2>バトグラ【裏】頂上戦</h2><p>大会概要、結果、関連リンクをまとめるアーカイブページです。</p></div><a class="button secondary" href="./tournaments/ura-choujousen/">ページを見る</a></article>
-          <article class="season-card"><div><h2>バトグラ頂上戦 #1〜#9</h2><p>ナンバリング大会をまとめたシリーズアーカイブページです。</p></div><a class="button" href="./tournaments/choujousen/">ページを見る</a></article>
+          <a class="season-card card-link" href="./tournaments/timewalk-dream-match/"><div><h2>時渡りドリームマッチ</h2><p>大会概要、結果、関連リンクをまとめるアーカイブページです。</p></div><span class="card-cta">ページを見る →</span></a>
+          <a class="season-card card-link" href="./tournaments/ura-choujousen/"><div><h2>バトグラ【裏】頂上戦</h2><p>大会概要、結果、関連リンクをまとめるアーカイブページです。</p></div><span class="card-cta">ページを見る →</span></a>
+          <a class="season-card card-link" href="./tournaments/choujousen/"><div><h2>バトグラ頂上戦 #1〜#9</h2><p>ナンバリング大会をまとめたシリーズアーカイブページです。</p></div><span class="card-cta">ページを見る →</span></a>
         </div>
       </div>
     </section>
