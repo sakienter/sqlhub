@@ -20,7 +20,7 @@ async function readConfig(context) {
     return DEFAULT_TRIBE_CONFIG;
   }
 
-  const data = await kv.get('season2-tribes', 'json');
+  const data = await kv.get('season1-tribes', 'json');
   return data || DEFAULT_TRIBE_CONFIG;
 }
 
