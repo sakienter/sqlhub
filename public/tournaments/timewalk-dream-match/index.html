@@ -10,54 +10,25 @@
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="../../common.css" />
   <style>
-    .archive-overview-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .archive-stat {
-      padding: 16px;
-      background: #fffaf2;
-      border: 1px solid rgba(24, 33, 40, 0.1);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .archive-stat dt {
-      margin: 0 0 6px;
-      color: var(--text-muted);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-    }
-
-    .archive-stat dd {
+    .archive-rule-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
       margin: 0;
+      padding-left: 1.25rem;
       color: var(--text-primary);
-      font-size: 18px;
-      font-weight: 900;
-      line-height: 1.45;
+      font-size: 15px;
+      font-weight: 750;
+      line-height: 1.8;
     }
 
-    .archive-stat dd.champion-name {
-      color: var(--crimson-dark);
+    .archive-rule-list li {
+      padding-left: 2px;
     }
 
-    .archive-rule-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .archive-rule-grid .rule-item p + p {
-      margin-top: 8px;
-    }
-
-    .archive-ban-list {
-      justify-content: center;
-      margin: 0;
+    .archive-rule-label {
+      color: var(--text-primary);
+      font-weight: 950;
     }
 
     .archive-table th,
@@ -136,13 +107,6 @@
     .archive-link:hover {
       filter: brightness(.98);
     }
-
-    @media (max-width: 900px) {
-      .archive-overview-grid,
-      .archive-rule-grid {
-        grid-template-columns: 1fr;
-      }
-    }
   </style>
 </head>
 <body>
@@ -162,60 +126,14 @@
     </header>
 
     <section class="score-card">
-      <div class="section-title">Overview</div>
+      <div class="section-title">Rules</div>
       <div class="section-body">
-        <dl class="archive-overview-grid">
-          <div class="archive-stat">
-            <dt>開催日</dt>
-            <dd>2026年4月11日（土）</dd>
-          </div>
-          <div class="archive-stat">
-            <dt>試合数</dt>
-            <dd>4試合<br>タイブレーク含む</dd>
-          </div>
-          <div class="archive-stat">
-            <dt>参加者</dt>
-            <dd>8名</dd>
-          </div>
-          <div class="archive-stat">
-            <dt>優勝</dt>
-            <dd class="champion-name">MATSURI</dd>
-          </div>
-        </dl>
-
-        <div class="mini-section-title">ルール</div>
-        <div class="archive-rule-grid">
-          <article class="rule-item">
-            <h3>試合形式</h3>
-            <p>3試合の合計ポイントを競う。チェックルールはなし。</p>
-          </article>
-          <article class="rule-item">
-            <h3>ポイント</h3>
-            <p>1位 7pt / 2位 6pt / 3位 5pt / 4位 4pt / 5位 3pt / 6位 2pt / 7位 1pt / 8位 0pt</p>
-          </article>
-          <article class="rule-item">
-            <h3>順位判定</h3>
-            <p>同時落ちの折半なし。順位はゲーム内の左表示を参照。</p>
-          </article>
-          <article class="rule-item">
-            <h3>タイブレーク</h3>
-            <p>3試合後に合計1位が2名以上の場合のみ第4試合を実施。4試合目1位が優勝。</p>
-          </article>
-        </div>
-
-        <div class="mini-section-title">BANリスト（全試合共通）</div>
-        <div class="season-meta archive-ban-list" aria-label="BANリスト">
-          <span class="tag">アンデッド</span>
-          <span class="tag">エレメンタル</span>
-          <span class="tag">ドラゴン</span>
-          <span class="tag">キルボア</span>
-          <span class="tag">ナーガ</span>
-          <span class="tag">マーロック</span>
-          <span class="tag">メカ</span>
-          <span class="tag">悪魔</span>
-          <span class="tag">海賊</span>
-          <span class="tag">獣</span>
-        </div>
+        <ul class="archive-rule-list">
+          <li><span class="archive-rule-label">試合形式：</span>3試合の合計ポイントを競う。チェックルールはなし。</li>
+          <li><span class="archive-rule-label">ポイント：</span>1位 7pt / 2位 6pt / 3位 5pt / 4位 4pt / 5位 3pt / 6位 2pt / 7位 1pt / 8位 0pt</li>
+          <li><span class="archive-rule-label">順位判定：</span>同時落ちの折半なし。順位はゲーム内の左表示を参照。</li>
+          <li><span class="archive-rule-label">タイブレーク：</span>3試合後に合計1位が2名以上の場合のみ第4試合を実施。4試合目1位が優勝。</li>
+        </ul>
       </div>
     </section>
 
