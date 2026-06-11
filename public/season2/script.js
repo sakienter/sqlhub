@@ -1,10 +1,14 @@
 const API_URL = '/api/season2/results';
 const TRIBE_API_URL = '/api/season2/tribes';
+const RESULTS_CACHE_KEY = 'sqlhub:season2:results:v2';
+const TRIBE_CACHE_KEY = 'sqlhub:season2:tribes:v1';
+const CACHE_MAX_AGE_MS = 24 * 60 * 60 * 1000;
 
 let loadedData = null;
 let tribeConfig = {};
 let selectedDayIndex = 0;
 let selectedGameIndex = 0;
+let hasRenderedCachedData = false;
 
 const $ = id => document.getElementById(id);
 const elements = {
@@ -30,27 +34,79 @@ init();
 
 async function init() {
   startLoadingDots();
+  setStatus('読み込み中...');
+
+  const cachedResults = readLocalCache(RESULTS_CACHE_KEY);
+  const cachedTribes = readLocalCache(TRIBE_CACHE_KEY);
+
+  if (cachedTribes) tribeConfig = cachedTribes;
+
+  if (cachedResults) {
+    hasRenderedCachedData = true;
+    loadedData = cachedResults;
+    renderPage(loadedData);
+    setStatus('キャッシュ表示中 / 最新データ確認中...');
+    hideLoadingOverlay();
+  }
+
+  const tribePromise = fetchJson(TRIBE_API_URL, { cache: 'default' })
+    .then(data => {
+      tribeConfig = data || {};
+      writeLocalCache(TRIBE_CACHE_KEY, tribeConfig);
+      refreshCurrentGameMeta();
+    })
+    .catch(error => {
+      console.warn('tribe config fetch failed', error);
+    });
 
   try {
-    setStatus('読み込み中...');
-    const [resultsResponse, tribeResponse] = await Promise.all([
-      fetch(API_URL, { cache: 'default' }),
-      fetch(TRIBE_API_URL, { cache: 'no-store' })
-    ]);
-
-    if (!resultsResponse.ok) throw new Error(`API error: ${resultsResponse.status}`);
-
-    loadedData = await resultsResponse.json();
-    tribeConfig = tribeResponse.ok ? await tribeResponse.json() : {};
-
-    renderPage(loadedData);
-    setStatus('読み込み完了');
+    const data = await fetchJson(API_URL, { cache: 'default' });
+    loadedData = data;
+    writeLocalCache(RESULTS_CACHE_KEY, data);
+    renderPage(loadedData, { keepSelection: hasRenderedCachedData });
+    setStatus(hasRenderedCachedData ? '最新データに更新しました' : '読み込み完了');
+    hideLoadingOverlay();
   } catch (e) {
     console.error(e);
-    setStatus('読み込みに失敗しました');
-    renderError(e);
+    if (hasRenderedCachedData) {
+      setStatus('キャッシュ表示中 / 最新データの取得に失敗しました');
+    } else {
+      setStatus('読み込みに失敗しました');
+      renderError(e);
+      hideLoadingOverlay();
+    }
   } finally {
-    hideLoadingOverlay();
+    await tribePromise;
+  }
+}
+
+async function fetchJson(url, options = {}) {
+  const response = await fetch(url, options);
+  if (!response.ok) throw new Error(`API error: ${response.status}`);
+  return response.json();
+}
+
+function readLocalCache(key) {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return null;
+
+    const parsed = JSON.parse(raw);
+    if (!parsed || !parsed.data || !parsed.savedAt) return null;
+    if (Date.now() - parsed.savedAt > CACHE_MAX_AGE_MS) return null;
+
+    return parsed.data;
+  } catch (error) {
+    console.warn('local cache read failed', error);
+    return null;
+  }
+}
+
+function writeLocalCache(key, data) {
+  try {
+    localStorage.setItem(key, JSON.stringify({ savedAt: Date.now(), data }));
+  } catch (error) {
+    console.warn('local cache write failed', error);
   }
 }
 
@@ -64,13 +120,13 @@ function startLoadingDots() {
 
 function hideLoadingOverlay() {
   const o = $('loading-overlay');
-  if (!o) return;
+  if (!o || o.classList.contains('hidden')) return;
   clearInterval(window._ldTimer);
   o.classList.add('hidden');
   setTimeout(() => o.remove(), 500);
 }
 
-function renderPage(data) {
+function renderPage(data, options = {}) {
   if (data.title && elements.eventTitle) {
     elements.eventTitle.textContent = data.title;
     document.title = data.title;
@@ -78,8 +134,17 @@ function renderPage(data) {
   if (data.updatedAt && elements.updatedAt) elements.updatedAt.textContent = '更新: ' + formatDateTime(data.updatedAt);
 
   renderSummary(data.summary || {});
-  renderDayTabs(data.days || []);
-  if (data.days?.length) renderSelectedDay(0);
+
+  const days = data.days || [];
+  if (options.keepSelection && days.length) {
+    selectedDayIndex = Math.min(selectedDayIndex, days.length - 1);
+  } else {
+    selectedDayIndex = 0;
+    selectedGameIndex = 0;
+  }
+
+  renderDayTabs(days);
+  if (days.length) renderSelectedDay(selectedDayIndex, { keepGameSelection: options.keepSelection });
 }
 
 function renderSummary(summary) {
@@ -99,12 +164,16 @@ function renderDayTabs(days) {
   });
 }
 
-function renderSelectedDay(i) {
+function renderSelectedDay(i, options = {}) {
   const day = loadedData?.days?.[i];
   if (!day) return;
 
   selectedDayIndex = i;
-  selectedGameIndex = 0;
+  if (options.keepGameSelection) {
+    selectedGameIndex = Math.min(selectedGameIndex, Math.max((day.gameDetails || []).length - 1, 0));
+  } else {
+    selectedGameIndex = 0;
+  }
   updateActive(elements.dayTabs, '.day-tab', i);
 
   if (elements.dayTitle) elements.dayTitle.textContent = (day.label || `DAY${i + 1}`) + (day.date ? ` / ${day.date}` : '');
@@ -113,7 +182,7 @@ function renderSelectedDay(i) {
   renderTable(elements.dayPointsTable, day.points?.headers || [], day.points?.rows || [], { winnerKey: 'rank' });
   renderTable(elements.dayPlacementsTable, day.placements?.headers || [], day.placements?.rows || [], {});
   renderGameTabs(day);
-  renderSelectedGame(0);
+  renderSelectedGame(selectedGameIndex);
 }
 
 function renderGameTabs(day) {
@@ -143,6 +212,12 @@ function renderSelectedGame(i) {
 
   renderGameMeta(game);
   renderTable(elements.gameDetailTable, game.headers || [], game.rows || [], { winnerKey: 'placement' });
+}
+
+function refreshCurrentGameMeta() {
+  const day = loadedData?.days?.[selectedDayIndex];
+  const game = day?.gameDetails?.[selectedGameIndex];
+  if (game) renderGameMeta(game);
 }
 
 function updateActive(parent, selector, index) {
@@ -259,5 +334,5 @@ function isFirst(v) {
 }
 
 function esc(v) {
-  return String(v).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+  return String(v ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 }
