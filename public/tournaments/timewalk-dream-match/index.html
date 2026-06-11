@@ -74,28 +74,39 @@
       width: 20%;
     }
 
-    .hero-game-table .anomaly-row td {
-      height: 58px;
+    .hero-game-table .info-row td {
+      min-height: 58px;
       border-top: 2px solid rgba(24, 33, 40, 0.12);
       white-space: normal;
-      word-break: keep-all;
+      word-break: normal;
+      overflow-wrap: anywhere;
       line-height: 1.45;
       font-weight: 850;
       vertical-align: middle;
     }
 
-    .hero-game-table .anomaly-label {
+    .hero-game-table .info-label {
       color: #001018;
       background: #18d9d6;
-      font-size: 17px;
+      font-size: 16px;
       font-style: italic;
       font-weight: 950;
       text-align: center;
     }
 
-    .hero-game-table .anomaly-cell {
+    .hero-game-table .active-label {
+      background: #dff7f4;
+      font-style: normal;
+    }
+
+    .hero-game-table .ban-label {
+      background: #fff1ed;
+      font-style: normal;
+    }
+
+    .hero-game-table .info-cell {
       background: #fffaf2;
-      font-size: 15px;
+      font-size: 13px;
     }
 
     .rank-gold,
@@ -253,9 +264,9 @@
         </section>
 
         <section class="day-section">
-          <div class="mini-section-title">ヒーロー選択 / アノマリー</div>
+          <div class="mini-section-title">ヒーロー選択 / アノマリー / 種族</div>
           <div class="table-wrap">
-            <table class="archive-table hero-game-table" aria-label="ヒーロー選択とアノマリー">
+            <table class="archive-table hero-game-table" aria-label="ヒーロー選択とアノマリーと種族">
               <thead>
                 <tr>
                   <th class="name-head">Name</th>
@@ -274,12 +285,26 @@
                 <tr><td class="name-cell">あれっくす</td><td>スニード</td><td>ヴーン</td><td>デナスリアス</td><td>トーリム</td></tr>
                 <tr><td class="name-cell">Yoshiyuki</td><td>ザイレラ</td><td>レノ</td><td>マスターウェン</td><td>テロン</td></tr>
                 <tr><td class="name-cell">gaiabot</td><td>リッチキング</td><td>ロー</td><td>ETC</td><td>ケリガン</td></tr>
-                <tr class="anomaly-row">
-                  <td class="name-cell anomaly-label">Anomaly</td>
-                  <td class="anomaly-cell">先行する斥候</td>
-                  <td class="anomaly-cell">ノルガノンの秘密</td>
-                  <td class="anomaly-cell">オースストーンの召喚</td>
-                  <td class="anomaly-cell">黄金の矢</td>
+                <tr class="info-row">
+                  <td class="name-cell info-label">Anomaly</td>
+                  <td class="info-cell">先行する斥候</td>
+                  <td class="info-cell">ノルガノンの秘密</td>
+                  <td class="info-cell">オースストーンの召喚</td>
+                  <td class="info-cell">黄金の矢</td>
+                </tr>
+                <tr class="info-row">
+                  <td class="name-cell info-label active-label">Active</td>
+                  <td class="info-cell">アンデッド、キルボア、マーロック、海賊、獣</td>
+                  <td class="info-cell">アンデッド、エレメンタル、キルボア、マーロック、海賊</td>
+                  <td class="info-cell">エレメンタル、ナーガ、メカ、悪魔、獣</td>
+                  <td class="info-cell">アンデッド、キルボア、マーロック、海賊、獣</td>
+                </tr>
+                <tr class="info-row">
+                  <td class="name-cell info-label ban-label">BAN</td>
+                  <td class="info-cell">エレメンタル、ドラゴン、ナーガ、メカ、悪魔</td>
+                  <td class="info-cell">ドラゴン、ナーガ、メカ、悪魔、獣</td>
+                  <td class="info-cell">アンデッド、ドラゴン、キルボア、マーロック、海賊</td>
+                  <td class="info-cell">アンデッド、ドラゴン、キルボア、ナーガ、海賊</td>
                 </tr>
               </tbody>
             </table>
