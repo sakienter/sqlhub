@@ -54,6 +54,33 @@
       font-weight: 950;
     }
 
+    .anomaly-table th,
+    .anomaly-table td {
+      min-width: 150px;
+      white-space: normal;
+      word-break: keep-all;
+      line-height: 1.45;
+    }
+
+    .anomaly-table .anomaly-head {
+      color: #001018;
+      background: #18d9d6;
+      font-size: 18px;
+      font-style: italic;
+      font-weight: 950;
+    }
+
+    .anomaly-table thead th {
+      font-size: 17px;
+      font-weight: 950;
+    }
+
+    .anomaly-table tbody td {
+      height: 64px;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
     .rank-gold,
     .rank-silver,
     .rank-bronze {
@@ -63,21 +90,6 @@
     .rank-gold { color: var(--crimson-dark); }
     .rank-silver { color: var(--green-dark); }
     .rank-bronze { color: var(--amber-dark); }
-
-    .champion-badge {
-      display: inline-flex;
-      align-items: center;
-      min-height: 24px;
-      margin-left: 8px;
-      padding: 0 8px;
-      color: #fff;
-      background: linear-gradient(90deg, var(--crimson-dark), var(--crimson));
-      border-radius: 999px;
-      box-shadow: var(--shadow-soft);
-      font-size: 11px;
-      font-weight: 900;
-      vertical-align: middle;
-    }
 
     .archive-note {
       margin: 10px 14px 0;
@@ -158,7 +170,7 @@
               <tbody>
                 <tr class="winner-row">
                   <td class="rank-gold">1st</td>
-                  <td class="name-cell">MATSURI </td>
+                  <td class="name-cell">MATSURI</td>
                   <td class="total-cell">25</td><td>7</td><td>14</td><td>18</td><td>25</td>
                 </tr>
                 <tr>
@@ -218,7 +230,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="winner-row"><td class="name-cell">MATSURI </td><td>3</td><td>1.8</td><td>1</td><td>1</td><td>4</td><td>1</td></tr>
+                <tr class="winner-row"><td class="name-cell">MATSURI</td><td>3</td><td>1.8</td><td>1</td><td>1</td><td>4</td><td>1</td></tr>
                 <tr><td class="name-cell">Yanase</td><td>1</td><td>2.5</td><td>2</td><td>3</td><td>1</td><td>4</td></tr>
                 <tr><td class="name-cell">gaiabot</td><td>0</td><td>3.8</td><td>3</td><td>7</td><td>3</td><td>2</td></tr>
                 <tr><td class="name-cell">Alutemu</td><td>0</td><td>3.8</td><td>4</td><td>4</td><td>2</td><td>5</td></tr>
@@ -249,7 +261,7 @@
                 <tr><td class="name-cell">Thundurus</td><td>ロー</td><td>ホームズ</td><td>ユードラ</td><td>ピンゾロ</td></tr>
                 <tr><td class="name-cell">Alutemu</td><td>アランナ</td><td>ピュートリサイド</td><td>サイラス</td><td>ミュターヌス</td></tr>
                 <tr><td class="name-cell">SeseiSei</td><td>パッチワーク</td><td>オム</td><td>ミロクー</td><td>テス</td></tr>
-                <tr class="winner-row"><td class="name-cell">MATSURI </td><td>アラキア</td><td>ETC</td><td>オザール</td><td>クラッグ</td></tr>
+                <tr class="winner-row"><td class="name-cell">MATSURI</td><td>アラキア</td><td>ETC</td><td>オザール</td><td>クラッグ</td></tr>
                 <tr><td class="name-cell">あれっくす</td><td>スニード</td><td>ヴーン</td><td>デナスリアス</td><td>トーリム</td></tr>
                 <tr><td class="name-cell">Yoshiyuki</td><td>ザイレラ</td><td>レノ</td><td>マスターウェン</td><td>テロン</td></tr>
                 <tr><td class="name-cell">gaiabot</td><td>リッチキング</td><td>ロー</td><td>ETC</td><td>ケリガン</td></tr>
@@ -259,27 +271,26 @@
         </section>
 
         <section class="day-section game-detail-section">
-          <div class="mini-section-title">ゲーム情報</div>
-          <div class="game-current">
-            <div>
-              <p class="game-kicker">Anomaly</p>
-              <h3>アノマリー</h3>
-            </div>
-            <div class="game-meta">
-              <span>Game 1：先行する斥候</span>
-              <span>Game 2：ノルガノンの秘密</span>
-              <span>Game 3：オースストーンの召喚</span>
-              <span>Game 4：黄金の矢</span>
-            </div>
-          </div>
+          <div class="mini-section-title">アノマリー</div>
           <div class="table-wrap">
-            <table class="archive-table" aria-label="タイムスケジュール">
+            <table class="archive-table anomaly-table" aria-label="アノマリー">
               <thead>
-                <tr><th></th><th>Game 1</th><th>Game 2</th><th>Game 3</th><th>Game 4</th></tr>
+                <tr>
+                  <th class="anomaly-head">Anomaly</th>
+                  <th>Game 1</th>
+                  <th>Game 2</th>
+                  <th>Game 3</th>
+                  <th>Game 4</th>
+                </tr>
               </thead>
               <tbody>
-                <tr><td class="name-cell">開始</td><td>19:04</td><td>19:40</td><td>20:17</td><td>20:49</td></tr>
-                <tr><td class="name-cell">終了</td><td>19:37</td><td>20:15</td><td>20:43</td><td>21:30</td></tr>
+                <tr>
+                  <td></td>
+                  <td>先行する斥候</td>
+                  <td>ノルガノンの秘密</td>
+                  <td>オースストーンの召喚</td>
+                  <td>黄金の矢</td>
+                </tr>
               </tbody>
             </table>
           </div>
