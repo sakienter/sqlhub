@@ -54,11 +54,8 @@
 
 .meta-line span + span::before,
 .game-meta span + span::before {
-  content: "/";
-  display: inline-block;
-  margin: 0 12px 0 0;
-  color: rgba(83, 97, 109, 0.58);
-  font-weight: 700;
+  content: "";
+  display: none;
 }
 
 .game-current {
@@ -72,11 +69,6 @@
 
   .game-meta span {
     display: block;
-  }
-
-  .game-meta span + span::before {
-    content: "";
-    display: none;
   }
 }
 
