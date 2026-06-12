@@ -4,17 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>バトグラ頂上戦 #1〜#9 | Avenge Hub</title>
-  <meta name="description" content="バトグラ頂上戦 #1〜#9 の大会概要とルール、各回のスコアボードとリキャップをまとめるページです。" />
+  <meta name="description" content="バトグラ頂上戦 #1〜#9 の大会概要とルール、各回のスコアボードとスプレッドシートをまとめるページです。" />
   <meta property="og:title" content="バトグラ頂上戦 #1〜#9 | Avenge Hub" />
   <meta property="og:description" content="バトグラ頂上戦 #1〜#9 の大会情報まとめページ" />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="../../common.css" />
   <style>
-    .hero.choujousen-hero{
-      position:relative;isolation:isolate;overflow:hidden;margin:0 auto 26px;padding:2.5rem 2rem;text-align:center;
-      background:linear-gradient(135deg,#f7f3ef 0%,#f4efea 52%,#f1e7e3 100%);
-      border:1px solid rgba(24,33,40,.16);border-bottom:1px solid rgba(24,33,40,.16);border-radius:12px;box-shadow:0 18px 34px rgba(3,14,24,.24);backdrop-filter:none;
-    }
+    .hero.choujousen-hero{position:relative;isolation:isolate;overflow:hidden;margin:0 auto 26px;padding:2.5rem 2rem;text-align:center;background:linear-gradient(135deg,#f7f3ef 0%,#f4efea 52%,#f1e7e3 100%);border:1px solid rgba(24,33,40,.16);border-bottom:1px solid rgba(24,33,40,.16);border-radius:12px;box-shadow:0 18px 34px rgba(3,14,24,.24);backdrop-filter:none}
     .hero.choujousen-hero::before{content:none;display:none}
     .hero.choujousen-hero::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(#c9342c,#c9342c) left 32px top 32px/48px 1px no-repeat,linear-gradient(#c9342c,#c9342c) left 32px top 32px/1px 48px no-repeat,linear-gradient(#c9342c,#c9342c) right 32px top 32px/48px 1px no-repeat,linear-gradient(#c9342c,#c9342c) right 32px top 32px/1px 48px no-repeat,linear-gradient(#c9342c,#c9342c) left 32px bottom 32px/48px 1px no-repeat,linear-gradient(#c9342c,#c9342c) left 32px bottom 32px/1px 48px no-repeat,linear-gradient(#c9342c,#c9342c) right 32px bottom 32px/48px 1px no-repeat,linear-gradient(#c9342c,#c9342c) right 32px bottom 32px/1px 48px no-repeat;pointer-events:none}
     .choujousen-hero .back-link{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;min-height:38px;margin:0 0 1.55rem;padding:0 18px;color:#1c6f8e;background:rgba(255,255,255,.86);border:1px solid rgba(24,33,40,.08);border-radius:999px;box-shadow:0 2px 10px rgba(3,14,24,.06);font-size:14px;font-weight:900;letter-spacing:-.02em;text-decoration:none;backdrop-filter:none}
@@ -37,7 +33,7 @@
     .series-accordion[open] summary{background:linear-gradient(90deg,rgba(13,127,153,.10),rgba(201,75,75,.10));border-bottom:1px solid rgba(24,33,40,.12)}
     .series-accordion[open] summary::after{content:"−"}
     .series-summary-label{display:block}
-    .series-winner-placeholder{color:var(--crimson-dark);font-weight:950;white-space:nowrap}
+    .series-winner{color:var(--crimson-dark);font-weight:950;white-space:nowrap}
     .series-panel{padding:18px}
 
     .scoreboard-title{margin:0 0 12px;color:var(--text-primary);font-size:17px;font-weight:950;letter-spacing:-.02em}
@@ -81,7 +77,7 @@
       .series-accordion summary{align-items:flex-start;flex-direction:column;gap:8px;padding:14px 16px;font-size:15px}
       .series-accordion summary::after{position:absolute;right:14px;top:14px;width:28px;height:28px}
       .series-summary-label{padding-right:42px}
-      .series-winner-placeholder{white-space:normal}
+      .series-winner{white-space:normal}
       .series-panel{padding:16px 12px}
       .scoreboard-table th,.scoreboard-table td{padding:6px 4px;font-size:10.5px;letter-spacing:-.02em}
       .winner-note{display:block}
@@ -94,14 +90,14 @@
       <a class="back-link" href="../../">← Avenge Hubへ戻る</a>
       <p class="eyebrow">Tournament Series</p>
       <h1>バトグラ頂上戦 <span class="title-accent">#1〜#9</span></h1>
-      <p class="lead">バトグラ頂上戦シリーズの大会概要、ルール、各回のスコアボードとリキャップを整理するためのアーカイブページです。</p>
-      <div class="meta-line"><span>Series Archive</span><span>#9〜#1</span><span>Scoreboard / Recap</span></div>
+      <p class="lead">バトグラ頂上戦シリーズの大会概要、ルール、各回のスコアボードとスプレッドシートを整理するためのアーカイブページです。</p>
+      <div class="meta-line"><span>Series Archive</span><span>#9〜#1</span><span>Scoreboard / Spreadsheet</span></div>
     </header>
 
     <section class="score-card">
       <div class="section-title">大会概要とルール</div>
       <div class="section-body">
-        <p class="overview-lead">バトグラ頂上戦は、ハースストーン・バトルグラウンドの大会シリーズです。ここでは、シリーズ全体の概要、基本ルール、各回の優勝者、スコアボード、リキャップURLをまとめます。</p>
+        <p class="overview-lead">バトグラ頂上戦は、ハースストーン・バトルグラウンドの大会シリーズです。ここでは、シリーズ全体の概要、基本ルール、各回の優勝者、スコアボード、スプレッドシートURLをまとめます。</p>
         <div class="overview-text">
           <p><strong>参加資格：</strong>運営が事前に告知した時刻のアジアサーバーレート上位8名。連絡がつかない場合は繰り下げ等を行う。</p>
           <p><strong>試合形式：</strong>20ptのチェックルール（リミットゲーム数はありません。勝者が決まるまで行います。）</p>
@@ -116,85 +112,132 @@
     <section class="score-card">
       <div class="section-title">頂上戦一覧 #9〜#1</div>
       <div class="section-body">
-        <div class="series-accordion-list">
-          <details class="series-accordion" data-series="9">
-            <summary><span class="series-summary-label">バトグラ頂上戦 #9　<span class="series-winner-placeholder">勝者【Thundurus】</span></span></summary>
-            <div class="series-panel">
-              <p class="scoreboard-title">Score Board</p>
-              <div class="table-wrap">
-                <table class="scoreboard-table scoreboard-wide">
-                  <thead><tr><th>Name</th><th>Total</th><th>順位</th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th><th>game8</th></tr></thead>
-                  <tbody>
-                    <tr><td>Thundurus <span class="winner-note">【連覇】</span></td><td class="num">27</td><td class="rank">1st</td><td class="num">5</td><td class="num">4</td><td class="num score-second">6</td><td class="num">5</td><td class="num score-first">7</td><td class="empty-cell">-</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>Alutemu</td><td class="num">16</td><td class="rank">4th</td><td class="num">2</td><td class="num">5</td><td class="num">0</td><td class="num score-first">7</td><td class="num">2</td><td class="empty-cell">-</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>MATSURI</td><td class="num">16</td><td class="rank">4th</td><td class="num score-first">7</td><td class="num">0</td><td class="num">4</td><td class="num">4</td><td class="num">1</td><td class="empty-cell">-</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>SeseiSei</td><td class="num">19</td><td class="rank">2nd</td><td class="num score-second">6</td><td class="num score-first">7</td><td class="num">2</td><td class="num">0</td><td class="num">4</td><td class="empty-cell">-</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>あれっくす</td><td class="num">17</td><td class="rank">3rd</td><td class="num">3</td><td class="num">1</td><td class="num score-first">7</td><td class="num">3</td><td class="num">3</td><td class="empty-cell">-</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>Barrette</td><td class="num">16</td><td class="rank">4th</td><td class="num">1</td><td class="num score-second">6</td><td class="num">3</td><td class="num">1</td><td class="num">5</td><td class="empty-cell">-</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>gaiabot</td><td class="num">14</td><td class="rank">8th</td><td class="num">4</td><td class="num">3</td><td class="num">1</td><td class="num score-second">6</td><td class="num">0</td><td class="empty-cell">-</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>ぎゃん</td><td class="num">15</td><td class="rank">7th</td><td class="num">0</td><td class="num">2</td><td class="num">5</td><td class="num">2</td><td class="num score-second">6</td><td class="empty-cell">-</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="recap-area"><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTDKz57LEBSgpOQacLGijWTDOS2-A4afcHVHKQdu6oYpXAlVfDcq75ycmTJnHcslfyjSU8G_iZ_wxh4/pubhtml" target="_blank" rel="noopener">スプレッドシートを開く</a></div>
-            </div>
-          </details>
-          <details class="series-accordion" data-series="8">
-            <summary><span class="series-summary-label">バトグラ頂上戦 #8　<span class="series-winner-placeholder">勝者【Thundurus】</span></span></summary>
-            <div class="series-panel">
-              <p class="scoreboard-title">Score Board</p>
-              <div class="table-wrap">
-                <table class="scoreboard-table scoreboard-wide">
-                  <thead><tr><th>Name</th><th>Total</th><th>順位</th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th><th>game8</th></tr></thead>
-                  <tbody>
-                    <tr><td>Barrette</td><td class="num">20</td><td class="rank">3rd</td><td class="num">2</td><td class="num">5</td><td class="num">0</td><td class="num score-first">7</td><td class="num score-second">6</td><td class="empty-cell">-</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>Alutemu</td><td class="num">20</td><td class="rank">3rd</td><td class="num score-first">7</td><td class="num">3</td><td class="num">3</td><td class="num">3</td><td class="num">4</td><td class="empty-cell">-</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>MATSURI</td><td class="num">11</td><td class="rank">7th</td><td class="num">1</td><td class="num">4</td><td class="num">5</td><td class="num">0</td><td class="num">1</td><td class="empty-cell">-</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>あれっくす</td><td class="num">25</td><td class="rank">2nd</td><td class="num">3</td><td class="num score-second">6</td><td class="num score-second">6</td><td class="num">5</td><td class="num">5</td><td class="empty-cell">-</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>Thundurus <span class="winner-note">【優勝】</span></td><td class="num">31</td><td class="rank">1st</td><td class="num score-second">6</td><td class="num score-first">7</td><td class="num score-first">7</td><td class="num">4</td><td class="num score-first">7</td><td class="empty-cell">-</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>Ryuzo</td><td class="num">13</td><td class="rank">6th</td><td class="num">5</td><td class="num">1</td><td class="num">1</td><td class="num score-second">6</td><td class="num">0</td><td class="empty-cell">-</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>あまつか</td><td class="num">5</td><td class="rank">8th</td><td class="num">0</td><td class="num">0</td><td class="num">2</td><td class="num">1</td><td class="num">2</td><td class="empty-cell">-</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>ohaguro</td><td class="num">15</td><td class="rank">5th</td><td class="num">4</td><td class="num">2</td><td class="num">4</td><td class="num">2</td><td class="num">3</td><td class="empty-cell">-</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="recap-area"><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRGpoG137Wjtw2PWSChAw4mVYUsn21Eo12VQ_QfpuZR6gnzMO7TPDjzJA5LnYoXTBEryn1uz5x-Mfm8/pubhtml" target="_blank" rel="noopener">スプレッドシートを開く</a></div>
-            </div>
-          </details>
-          <details class="series-accordion" data-series="7">
-            <summary><span class="series-summary-label">バトグラ頂上戦 #7　<span class="series-winner-placeholder">勝者【Barrette】</span></span></summary>
-            <div class="series-panel">
-              <p class="scoreboard-title">Score Board</p>
-              <div class="table-wrap">
-                <table class="scoreboard-table scoreboard-wide">
-                  <thead><tr><th>Name</th><th>Total</th><th>順位</th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th><th>game8</th></tr></thead>
-                  <tbody>
-                    <tr><td>あれっくす</td><td class="num">18</td><td class="rank">7th</td><td class="num">4</td><td class="num">2</td><td class="num">2</td><td class="num">2</td><td class="num">2</td><td class="num score-second">6</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>Alutemu</td><td class="num">20</td><td class="rank">3rd</td><td class="num">5</td><td class="num">1</td><td class="num">3</td><td class="num">4</td><td class="num score-first">7</td><td class="num">0</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>Barrette <span class="winner-note">【優勝】</span></td><td class="num">37</td><td class="rank">1st</td><td class="num score-first">7</td><td class="num score-first">7</td><td class="num">5</td><td class="num score-second">6</td><td class="num">5</td><td class="num score-first">7</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>MATSURI</td><td class="num">12</td><td class="rank">8th</td><td class="num">3</td><td class="num">0</td><td class="num">1</td><td class="num">1</td><td class="num score-second">6</td><td class="num">1</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>SeseiSei</td><td class="num">20</td><td class="rank">3rd</td><td class="num score-second">6</td><td class="num">4</td><td class="num score-second">6</td><td class="num">0</td><td class="num">0</td><td class="num">4</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>Thundurus</td><td class="num">19</td><td class="rank">5th</td><td class="num">2</td><td class="num">5</td><td class="num">4</td><td class="num">3</td><td class="num">3</td><td class="num">2</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>ぎゃん</td><td class="num">19</td><td class="rank">5th</td><td class="num">0</td><td class="num">3</td><td class="num score-first">7</td><td class="num">5</td><td class="num">1</td><td class="num">3</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                    <tr><td>haguren</td><td class="num">23</td><td class="rank">2nd</td><td class="num">1</td><td class="num score-second">6</td><td class="num">0</td><td class="num score-first">7</td><td class="num">4</td><td class="num">5</td><td class="empty-cell">-</td><td class="empty-cell">-</td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="recap-area"><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQj8Vdx6uZwGZAyfsVJYVwD05wALSqKLTjJ6N3lm7kW3qiU73TuqEeVd90yN3ZC8KBjwBX-hF3WO14u/pubhtml" target="_blank" rel="noopener">スプレッドシートを開く</a></div>
-            </div>
-          </details>
-          <details class="series-accordion" data-series="6"><summary><span class="series-summary-label">バトグラ頂上戦 #6　<span class="series-winner-placeholder">勝者【あれっくす】</span></span></summary><div class="series-panel"><p class="scoreboard-title">Score Board</p><div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div><div class="recap-area"><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRCchM6m0N5EYKrJdVmSXP9mBAQkfOEsiS2ykDjYWBCqrIe7lWHJB2KBD5L4AUTmvDBVFr5GBQzXsQP/pubhtml" target="_blank" rel="noopener">スプレッドシートを開く</a></div></div></details>
-          <details class="series-accordion" data-series="5"><summary><span class="series-summary-label">バトグラ頂上戦 #5　<span class="series-winner-placeholder">勝者【Alutemu】</span></span></summary><div class="series-panel"><p class="scoreboard-title">Score Board</p><div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div><div class="recap-area"><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRtFN-R5GfFPX8mIcKBIY_aVPOP5V5afpm7ynVN8QJQEAc6_vUgPOCmXrsHhfGNBtzlxlcrxuVjtnj4/pubhtml" target="_blank" rel="noopener">スプレッドシートを開く</a></div></div></details>
-          <details class="series-accordion" data-series="4"><summary><span class="series-summary-label">バトグラ頂上戦 #4　<span class="series-winner-placeholder">勝者【MATSURI】</span></span></summary><div class="series-panel"><p class="scoreboard-title">Score Board</p><div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div><div class="recap-area"><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSHyKil9Sb1OE2Y0D1rWGGfQMxooTo293-P3KnkytmtL-V8ts9XtdpmUQUa9W6ljZmb1rVXXIfYX7qr/pubhtml" target="_blank" rel="noopener">スプレッドシートを開く</a></div></div></details>
-          <details class="series-accordion" data-series="3"><summary><span class="series-summary-label">バトグラ頂上戦 #3　<span class="series-winner-placeholder">勝者【あれっくす】</span></span></summary><div class="series-panel"><p class="scoreboard-title">Score Board</p><div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div><div class="recap-area"><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQreLXZRtuirBVIcmZt1s5xTq9IoiECCA739tOginXG7bHTJuvat-TslDXcKkYNwLaIerlN3RbmUOpF/pubhtml" target="_blank" rel="noopener">スプレッドシートを開く</a></div></div></details>
-          <details class="series-accordion" data-series="2"><summary><span class="series-summary-label">バトグラ頂上戦 #2　<span class="series-winner-placeholder">勝者【cogicorgi】</span></span></summary><div class="series-panel"><p class="scoreboard-title">Score Board</p><div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div><div class="recap-area"><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRfM9DKmB-LMqV3LWRc88hIPMwbSbi7TVBgPy4EhGabZ1l6E6-lBExPJ3cxbS6r1-byuInu1tnNjbGe/pubhtml" target="_blank" rel="noopener">スプレッドシートを開く</a></div></div></details>
-          <details class="series-accordion" data-series="1"><summary><span class="series-summary-label">バトグラ頂上戦 #1　<span class="series-winner-placeholder">勝者【Alutemu】</span></span></summary><div class="series-panel"><p class="scoreboard-title">Score Board</p><div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div><div class="recap-area"><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWTwJ9sxMblq3vysZZFBL6Hm9E6AvkUPoz2-oflrMlflYs6q7W0JV-v3JpNoPw97WpHWxmkbJE632T/pubhtml" target="_blank" rel="noopener">スプレッドシートを開く</a></div></div></details>
-        </div>
-        <p class="series-note">スコアボード詳細は、各回の折りたたみ内で後から差し替えます。</p>
+        <div class="series-accordion-list" id="seriesList"></div>
+        <p class="series-note">スコアボード詳細は、各回の折りたたみ内で管理します。</p>
       </div>
     </section>
 
     <footer class="footer-note"><p>Avenge Hub / Tournament info by Stuntdrake</p></footer>
   </main>
+
+  <script>
+    const recapLinks = {
+      1: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTWTwJ9sxMblq3vysZZFBL6Hm9E6AvkUPoz2-oflrMlflYs6q7W0JV-v3JpNoPw97WpHWxmkbJE632T/pubhtml",
+      2: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRfM9DKmB-LMqV3LWRc88hIPMwbSbi7TVBgPy4EhGabZ1l6E6-lBExPJ3cxbS6r1-byuInu1tnNjbGe/pubhtml",
+      3: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQreLXZRtuirBVIcmZt1s5xTq9IoiECCA739tOginXG7bHTJuvat-TslDXcKkYNwLaIerlN3RbmUOpF/pubhtml",
+      4: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSHyKil9Sb1OE2Y0D1rWGGfQMxooTo293-P3KnkytmtL-V8ts9XtdpmUQUa9W6ljZmb1rVXXIfYX7qr/pubhtml",
+      5: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRtFN-R5GfFPX8mIcKBIY_aVPOP5V5afpm7ynVN8QJQEAc6_vUgPOCmXrsHhfGNBtzlxlcrxuVjtnj4/pubhtml",
+      6: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRCchM6m0N5EYKrJdVmSXP9mBAQkfOEsiS2ykDjYWBCqrIe7lWHJB2KBD5L4AUTmvDBVFr5GBQzXsQP/pubhtml",
+      7: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQj8Vdx6uZwGZAyfsVJYVwD05wALSqKLTjJ6N3lm7kW3qiU73TuqEeVd90yN3ZC8KBjwBX-hF3WO14u/pubhtml",
+      8: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRGpoG137Wjtw2PWSChAw4mVYUsn21Eo12VQ_QfpuZR6gnzMO7TPDjzJA5LnYoXTBEryn1uz5x-Mfm8/pubhtml",
+      9: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTDKz57LEBSgpOQacLGijWTDOS2-A4afcHVHKQdu6oYpXAlVfDcq75ycmTJnHcslfyjSU8G_iZ_wxh4/pubhtml"
+    };
+
+    const winners = {1:"Alutemu",2:"cogicorgi",3:"あれっくす",4:"MATSURI",5:"Alutemu",6:"あれっくす",7:"Barrette",8:"Thundurus",9:"Thundurus"};
+
+    const scoreboards = {
+      9: [
+        ["Thundurus", "【連覇】", 27, "1st", [5,4,6,5,7,"","",""]],
+        ["Alutemu", "", 16, "4th", [2,5,0,7,2,"","",""]],
+        ["MATSURI", "", 16, "4th", [7,0,4,4,1,"","",""]],
+        ["SeseiSei", "", 19, "2nd", [6,7,2,0,4,"","",""]],
+        ["あれっくす", "", 17, "3rd", [3,1,7,3,3,"","",""]],
+        ["Barrette", "", 16, "4th", [1,6,3,1,5,"","",""]],
+        ["gaiabot", "", 14, "8th", [4,3,1,6,0,"","",""]],
+        ["ぎゃん", "", 15, "7th", [0,2,5,2,6,"","",""]]
+      ],
+      8: [
+        ["Barrette", "", 20, "3rd", [2,5,0,7,6,"","",""]],
+        ["Alutemu", "", 20, "3rd", [7,3,3,3,4,"","",""]],
+        ["MATSURI", "", 11, "7th", [1,4,5,0,1,"","",""]],
+        ["あれっくす", "", 25, "2nd", [3,6,6,5,5,"","",""]],
+        ["Thundurus", "【優勝】", 31, "1st", [6,7,7,4,7,"","",""]],
+        ["Ryuzo", "", 13, "6th", [5,1,1,6,0,"","",""]],
+        ["あまつか", "", 5, "8th", [0,0,2,1,2,"","",""]],
+        ["ohaguro", "", 15, "5th", [4,2,4,2,3,"","",""]]
+      ],
+      7: [
+        ["あれっくす", "", 18, "7th", [4,2,2,2,2,6,"",""]],
+        ["Alutemu", "", 20, "3rd", [5,1,3,4,7,0,"",""]],
+        ["Barrette", "【優勝】", 37, "1st", [7,7,5,6,5,7,"",""]],
+        ["MATSURI", "", 12, "8th", [3,0,1,1,6,1,"",""]],
+        ["SeseiSei", "", 20, "3rd", [6,4,6,0,0,4,"",""]],
+        ["Thundurus", "", 19, "5th", [2,5,4,3,3,2,"",""]],
+        ["ぎゃん", "", 19, "5th", [0,3,7,5,1,3,"",""]],
+        ["haguren", "", 23, "2nd", [1,6,0,7,4,5,"",""]]
+      ],
+      6: [
+        ["Alutemu", "", 27, "6th", [6,6,4,4,0,5,1,1]],
+        ["Barrette", "", 38, "2nd", [2,7,6,6,4,1,6,6]],
+        ["Sato9kado", "", 30, "3rd", [7,5,3,2,1,6,2,4]],
+        ["MATSURI", "", 18, "8th", [0,0,0,0,7,2,7,2]],
+        ["あれっくす", "【優勝】", 30, "1st", [1,3,7,3,2,7,0,7]],
+        ["ぎゃん", "", 23, "7th", [3,2,5,1,5,0,4,3]],
+        ["テオ", "", 29, "4th", [4,4,1,5,3,4,3,5]],
+        ["haguren", "", 29, "4th", [5,1,2,7,6,3,5,0]]
+      ],
+      5: [
+        ["MATSURI", "", 19, "5th", [1,4,2,1,7,4,"",""]],
+        ["Yoshiyuki", "", 23, "3rd", [5,7,6,2,0,3,"",""]],
+        ["Alutemu", "【優勝】", 28, "1st", [6,2,0,7,6,7,"",""]],
+        ["Barrette", "", 27, "2nd", [7,5,1,3,5,6,"",""]],
+        ["haguren", "", 14, "8th", [4,1,3,0,1,5,"",""]],
+        ["あれっくす", "", 21, "4th", [0,6,5,6,4,0,"",""]],
+        ["SeseiSei", "", 18, "6th", [3,0,7,5,2,1,"",""]],
+        ["テオ", "", 18, "6th", [2,3,4,4,3,2,"",""]]
+      ],
+      4: [
+        ["Alutemu", "", 28, "3rd", [6,5,0,4,1,7,5,""]],
+        ["MATSURI", "【優勝】", 32, "1st", [0,3,6,7,5,4,7,""]],
+        ["Yoshiyuki", "", 31, "2nd", [1,7,5,5,6,5,2,""]],
+        ["SeseiSei", "", 19, "7th", [7,1,4,3,0,3,1,""]],
+        ["Barrette", "", 26, "4th", [2,6,2,6,4,0,6,""]],
+        ["あれっくす", "", 22, "6th", [5,0,7,1,3,2,4,""]],
+        ["haguren", "", 25, "5th", [3,4,3,2,7,6,0,""]],
+        ["キジル博士", "", 13, "8th", [4,2,1,0,2,1,3,""]]
+      ]
+    };
+
+    const seriesOrder = [9,8,7,6,5,4,3,2,1];
+
+    function escapeHtml(value){
+      return String(value).replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;","\"":"&quot;"}[c]));
+    }
+    function cellClass(score){
+      if(score === "" || score === null || score === undefined) return "empty-cell";
+      if(score === 7) return "num score-first";
+      if(score === 6) return "num score-second";
+      return "num";
+    }
+    function renderScoreboard(no){
+      const rows = scoreboards[no];
+      if(!rows){
+        return `<table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table>`;
+      }
+      const header = `<thead><tr><th>Name</th><th>Total</th><th>順位</th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th><th>game8</th></tr></thead>`;
+      const body = rows.map(([name,note,total,rank,games]) => {
+        const nameCell = `${escapeHtml(name)}${note ? ` <span class="winner-note">${escapeHtml(note)}</span>` : ""}`;
+        const gameCells = Array.from({length:8}, (_,i) => {
+          const score = games[i] ?? "";
+          return `<td class="${cellClass(score)}">${score === "" ? "-" : escapeHtml(score)}</td>`;
+        }).join("");
+        return `<tr><td>${nameCell}</td><td class="num">${escapeHtml(total)}</td><td class="rank">${escapeHtml(rank)}</td>${gameCells}</tr>`;
+      }).join("");
+      return `<table class="scoreboard-table scoreboard-wide">${header}<tbody>${body}</tbody></table>`;
+    }
+    function renderSeries(no){
+      const winner = winners[no];
+      return `<details class="series-accordion" data-series="${no}">
+        <summary><span class="series-summary-label">バトグラ頂上戦 #${no}　<span class="series-winner">勝者【${escapeHtml(winner)}】</span></span></summary>
+        <div class="series-panel">
+          <p class="scoreboard-title">Score Board</p>
+          <div class="table-wrap">${renderScoreboard(no)}</div>
+          <div class="recap-area"><a class="button secondary recap-link" href="${recapLinks[no]}" target="_blank" rel="noopener">スプレッドシートを開く</a></div>
+        </div>
+      </details>`;
+    }
+
+    document.getElementById("seriesList").innerHTML = seriesOrder.map(renderSeries).join("");
+  </script>
 </body>
 </html>
