@@ -37,7 +37,11 @@
     .rank-gold{color:var(--crimson-dark)}.rank-silver{color:var(--green-dark)}.rank-bronze{color:var(--amber-dark)}
     .day-score{color:var(--text-primary);font-weight:900}
     .winner-row td{font-weight:950}
-    .past-game{background:rgba(24,33,40,.2)}
+    .past-game{background:#b7b9b4!important}
+    .archive-table tbody tr:hover td{background:#fffaf2}
+    .archive-table tbody tr:hover td.past-game{background:#b7b9b4!important}
+    .archive-table tbody tr.winner-row:hover td:not(.past-game):not(.tribe-active){background:var(--winner-bg)}
+    .archive-table tbody tr:hover td.tribe-active{background:#ff9800!important}
     .tribe-active{color:#111;background:#ff9800!important;font-weight:950}
     .ban-table th,.ban-table td{text-align:left;font-weight:900}
     .archive-link{display:inline-flex;align-items:center;width:fit-content;min-height:34px;margin-top:8px;padding:0 12px;color:#fff;background:linear-gradient(90deg,var(--green-dark),var(--green));border:1px solid rgba(24,33,40,.1);border-radius:4px;box-shadow:var(--shadow-soft);font-size:13px;font-weight:900;text-decoration:none}
