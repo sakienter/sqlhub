@@ -12,15 +12,16 @@
   <style>
     .button.secondary{color:#fff;background:linear-gradient(90deg,var(--green-dark),var(--green));border-color:rgba(24,33,40,.1)}
 
-    .hub-hero{position:relative;overflow:hidden;isolation:isolate;min-height:620px;aspect-ratio:16/9;padding:0;text-align:left;display:flex;align-items:center;justify-content:flex-start;background:#071827;border:1px solid rgba(255,255,255,.34);border-bottom:4px solid var(--crimson);box-shadow:var(--shadow-card);backdrop-filter:none}
-    .hub-hero-image{position:absolute;inset:-9% -12%;z-index:0;width:124%;height:118%;object-fit:cover;object-position:62% center;transform:translateX(7%) scale(1.06);transform-origin:62% center;filter:saturate(1.12) contrast(1.05) brightness(1.04);pointer-events:none;user-select:none}
-    .hub-hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.68) 11%,rgba(255,255,255,.20) 28%,rgba(255,255,255,0) 47%),linear-gradient(180deg,rgba(255,255,255,.28) 0%,rgba(255,255,255,0) 24%)}
-    .hub-hero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(6,23,41,.20) 0%,rgba(6,23,41,.07) 38%,rgba(6,23,41,0) 62%),linear-gradient(0deg,rgba(7,24,39,.34) 0%,rgba(7,24,39,0) 34%)}
-    .hub-hero-panel{position:relative;z-index:3;width:min(760px,52%);margin-left:clamp(18px,4vw,44px);padding:34px 38px 36px;border-radius:28px;background:rgba(6,23,41,.74);border:1px solid rgba(255,255,255,.24);box-shadow:0 22px 48px rgba(3,14,24,.34);backdrop-filter:blur(12px)}
-    .hub-hero .eyebrow{color:rgba(255,255,255,.86);letter-spacing:.05em;font-size:17px;font-weight:900;margin:0 0 18px}
-    .hub-hero h1{margin:0;max-width:640px;text-align:left;font-size:clamp(64px,7.8vw,104px);line-height:.96;letter-spacing:-.07em;color:#fff;text-shadow:0 3px 18px rgba(3,14,24,.46)}
-    .hub-hero .lead{max-width:620px;margin:28px 0 0;text-align:left;color:rgba(255,255,255,.94);font-size:18px;font-weight:800;line-height:1.9;text-shadow:0 2px 10px rgba(3,14,24,.42)}
-    .hub-hero .cache-note{display:inline-flex;align-items:center;min-height:42px;max-width:610px;margin:30px 0 0;padding:0 20px;text-align:left;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.20);border-radius:999px;font-size:17px;font-weight:800;backdrop-filter:blur(6px)}
+    body:has(.hub-hero) .page-shell{width:min(1180px,calc(100vw - 48px))!important;margin:0 auto!important;padding-top:26px!important}
+    body:has(.hub-hero) .hub-hero{position:relative!important;overflow:hidden!important;isolation:isolate!important;width:100%!important;height:clamp(360px,24vw,460px)!important;min-height:360px!important;margin:0 auto 26px!important;padding:0!important;text-align:left!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;background:#071827!important;border:1px solid rgba(255,255,255,.34)!important;border-bottom:4px solid var(--crimson)!important;box-shadow:var(--shadow-card)!important;backdrop-filter:none!important}
+    body:has(.hub-hero) .hub-hero-image{position:absolute!important;inset:0!important;z-index:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:63% center!important;transform:scale(1.02)!important;filter:saturate(1.08) contrast(1.03) brightness(1.02)!important;pointer-events:none!important;user-select:none!important}
+    body:has(.hub-hero) .hub-hero::before{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;pointer-events:none!important;background:linear-gradient(90deg,rgba(255,255,255,.82) 0%,rgba(255,255,255,.48) 14%,rgba(255,255,255,.10) 32%,rgba(255,255,255,0) 54%),linear-gradient(180deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,0) 28%)!important}
+    body:has(.hub-hero) .hub-hero::after{content:""!important;position:absolute!important;inset:0!important;z-index:2!important;pointer-events:none!important;background:linear-gradient(0deg,rgba(7,24,39,.25) 0%,rgba(7,24,39,0) 32%)!important}
+    body:has(.hub-hero) .hub-hero-panel{position:relative!important;z-index:3!important;width:min(620px,54%)!important;margin-left:clamp(22px,5.8vw,72px)!important;padding:26px 30px 28px!important;border-radius:20px!important;background:rgba(6,23,41,.74)!important;border:1px solid rgba(255,255,255,.24)!important;box-shadow:0 18px 40px rgba(3,14,24,.32)!important;backdrop-filter:blur(12px)!important;transform:none!important}
+    body:has(.hub-hero) .hub-hero .eyebrow{margin:0 0 12px!important;color:rgba(255,255,255,.86)!important;letter-spacing:.05em!important;font-size:14px!important;font-weight:900!important}
+    body:has(.hub-hero) .hub-hero h1{margin:0!important;max-width:560px!important;text-align:left!important;font-size:clamp(48px,5vw,78px)!important;line-height:.96!important;letter-spacing:-.07em!important;color:#fff!important;text-shadow:0 3px 18px rgba(3,14,24,.46)!important}
+    body:has(.hub-hero) .hub-hero .lead{max-width:560px!important;margin:20px 0 0!important;text-align:left!important;color:rgba(255,255,255,.94)!important;font-size:14px!important;font-weight:800!important;line-height:1.75!important;text-shadow:0 2px 10px rgba(3,14,24,.42)!important}
+    body:has(.hub-hero) .hub-hero .cache-note{display:inline-flex!important;align-items:center!important;min-height:34px!important;max-width:520px!important;margin:20px 0 0!important;padding:0 14px!important;text-align:left!important;color:#fff!important;background:rgba(255,255,255,.12)!important;border:1px solid rgba(255,255,255,.22)!important;border-radius:999px!important;font-size:13px!important;font-weight:850!important;backdrop-filter:blur(6px)!important}
 
     #current-season{--current-season-wipe-duration:.86s}
     #current-season .section-title{padding:22px 18px;font-size:clamp(24px,3vw,36px);font-weight:950;letter-spacing:.02em}
@@ -39,23 +40,16 @@
     #current-season .card-cta{margin-top:0;font-size:17px;padding:8px 14px;white-space:nowrap;transition:color .34s var(--wipe-easing),background .34s var(--wipe-easing),box-shadow .34s var(--wipe-easing),transform .34s var(--wipe-easing)}
     #current-season .season-card.card-link:hover .card-cta{color:#fff;background:linear-gradient(90deg,var(--wipe-purple),var(--wipe-pink));box-shadow:0 8px 18px rgba(127,119,221,.24);transform:translateX(2px)}
 
-    @media (max-width:720px){.hub-hero{min-height:430px;aspect-ratio:auto;padding:0;align-items:center}.hub-hero-image{inset:-8% -18%;width:132%;height:116%;object-position:64% center;transform:translateX(4%) scale(1.03)}.hub-hero::before{background:linear-gradient(90deg,rgba(255,255,255,.56) 0%,rgba(255,255,255,.20) 25%,rgba(255,255,255,0) 54%),linear-gradient(180deg,rgba(255,255,255,.18) 0%,rgba(255,255,255,0) 28%)}.hub-hero-panel{width:calc(100% - 32px);max-width:none;margin-left:16px;margin-right:16px;padding:24px 22px 26px;border-radius:22px;background:rgba(6,23,41,.76)}.hub-hero .eyebrow{font-size:13px;margin:0 0 12px}.hub-hero h1{font-size:clamp(44px,14vw,62px);line-height:1}.hub-hero .lead{font-size:14px;line-height:1.8;margin-top:20px}.hub-hero .cache-note{font-size:13px;min-height:36px;margin-top:20px;padding:0 14px}#current-season .section-title{font-size:24px;padding:18px 12px}#current-season .section-body{padding:18px}#current-season .season-card.card-link{min-height:132px;padding:24px;flex-direction:column;align-items:flex-start}#current-season .season-card.card-link h2{font-size:clamp(38px,11vw,52px)}#current-season .current-subtitle{font-size:16px}#current-season .card-cta{font-size:14px}}
-
     #seasons{--hub-card-wipe-duration:.72s}
-    #seasons .season-card.card-link,
-    #past-tournaments .season-card.card-link{min-height:118px;padding:14px 18px}
-    #seasons .season-grid,
-    #past-tournaments .season-grid{grid-template-columns:repeat(auto-fit,minmax(260px,340px));justify-content:center}
-    #seasons .season-card.card-link h2,
-    #past-tournaments .season-card.card-link h2{font-size:clamp(20px,2vw,26px)}
-
+    #seasons .season-card.card-link,#past-tournaments .season-card.card-link{min-height:118px;padding:14px 18px}
+    #seasons .season-grid,#past-tournaments .season-grid{grid-template-columns:repeat(auto-fit,minmax(260px,340px));justify-content:center}
+    #seasons .season-card.card-link h2,#past-tournaments .season-card.card-link h2{font-size:clamp(20px,2vw,26px)}
     #seasons .card-link{background:#fffaf2;transition:color var(--hub-card-wipe-duration) var(--wipe-easing),border-color .28s var(--wipe-easing),box-shadow .28s var(--wipe-easing)}
     #seasons .card-link:hover{background:#fffaf2;border-color:var(--wipe-purple);box-shadow:0 12px 24px rgba(127,119,221,.18)}
     #seasons .card-link::before{content:"";position:absolute;inset:0;z-index:0;background-image:linear-gradient(90deg,var(--wipe-purple) 0%,#9d68de 52%,var(--wipe-pink) 100%);background-size:cover;background-position:center;background-repeat:no-repeat;clip-path:inset(0 100% 0 0);transition:clip-path var(--hub-card-wipe-duration) var(--wipe-easing);pointer-events:none}
     #seasons .card-link:hover::before{clip-path:inset(0 0 0 0)}
     #seasons .card-link > *{position:relative;z-index:1}
-    #seasons .card-link h2,
-    #seasons .card-cta{transition:color .36s var(--wipe-easing),text-shadow .36s var(--wipe-easing),background .28s var(--wipe-easing),box-shadow .28s var(--wipe-easing)}
+    #seasons .card-link h2,#seasons .card-cta{transition:color .36s var(--wipe-easing),text-shadow .36s var(--wipe-easing),background .28s var(--wipe-easing),box-shadow .28s var(--wipe-easing)}
     #seasons .card-link:hover h2{color:#fff;text-shadow:0 2px 12px rgba(3,14,24,.38)}
     #seasons .card-link:hover .card-cta{color:#fff;background:transparent;box-shadow:none}
 
@@ -74,19 +68,13 @@
     #past-tournaments .tournament-subtitle{margin:0 0 16px;color:var(--text-primary);font-size:18px;font-weight:950;text-align:center}
     #past-tournaments .dummy-wipe-card{--wipe-image:linear-gradient(135deg,#102638 0%,#0d7f99 46%,#d84a86 100%);--wipe-image-position:center}
 
-    body:has(.hub-hero) .hub-hero{height:clamp(380px,24vw,500px)!important;min-height:380px!important}
-    body:has(.hub-hero) .hub-hero-image{inset:-5% -7%!important;width:114%!important;height:110%!important;object-position:62% center!important;transform:translateX(3%) scale(1.02)!important}
-    body:has(.hub-hero) .hub-hero-panel{width:min(680px,42vw)!important;margin-left:clamp(24px,8vw,160px)!important;padding:28px 32px 30px!important;border-radius:20px!important;transform:translateY(10px)!important}
-    body:has(.hub-hero) .hub-hero h1{font-size:clamp(50px,4.6vw,82px)!important}
-    body:has(.hub-hero) .hub-hero .eyebrow{font-size:15px!important;margin-bottom:14px!important}
-    body:has(.hub-hero) .hub-hero .lead{font-size:15px!important;margin-top:22px!important;line-height:1.75!important}
-    body:has(.hub-hero) .hub-hero .cache-note{min-height:34px!important;margin-top:22px!important;padding:0 14px!important;font-size:13px!important}
+    @media (max-width:720px){body:has(.hub-hero) .page-shell{width:min(100% - 24px,1180px)!important;padding-top:18px!important}body:has(.hub-hero) .hub-hero{height:auto!important;min-height:360px!important}body:has(.hub-hero) .hub-hero-panel{width:calc(100% - 32px)!important;max-width:none!important;margin-left:16px!important;margin-right:16px!important;padding:24px 22px 26px!important}body:has(.hub-hero) .hub-hero h1{font-size:clamp(44px,14vw,62px)!important}body:has(.hub-hero) .hub-hero .lead{font-size:14px!important}#current-season .section-title{font-size:24px;padding:18px 12px}#current-season .section-body{padding:18px}#current-season .season-card.card-link{min-height:132px;padding:24px;flex-direction:column;align-items:flex-start}#current-season .season-card.card-link h2{font-size:clamp(38px,11vw,52px)}#current-season .current-subtitle{font-size:16px}#current-season .card-cta{font-size:14px}}
   </style>
 </head>
 <body>
   <main class="page-shell">
     <header class="hero hub-hero">
-      <img class="hub-hero-image" src="/sutant.webp?v=dragon-focus-20260612" alt="" aria-hidden="true" loading="eager" decoding="async" />
+      <img class="hub-hero-image" src="/sutant.webp?v=card-width-dragon-20260612" alt="" aria-hidden="true" loading="eager" decoding="async" />
       <div class="hub-hero-panel">
         <p class="eyebrow">Tournament info by Stuntdrake</p>
         <h1>Avenge Hub</h1>
