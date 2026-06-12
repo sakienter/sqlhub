@@ -94,13 +94,27 @@
     }
     .archive-table td.total-cell { color: var(--crimson-dark); font-size: 15px; font-weight: 950; }
 
-    .detail-table { min-width: 1080px; }
-    .detail-table th,
-    .detail-table td { padding: 9px 10px; font-size: 13px; }
-    .text-data-table td:not(:first-child) { text-align: left; min-width: 130px; }
-    .schedule-result-table { min-width: 760px; }
-    .schedule-result-table th:first-child,
-    .schedule-result-table td:first-child { text-align: left; min-width: 160px; font-weight: 950; }
+    .day-detail-table {
+      min-width: 1260px;
+      table-layout: fixed;
+    }
+    .day-detail-table th,
+    .day-detail-table td {
+      padding: 9px 10px;
+      font-size: 13px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .day-detail-table col.name-col { width: 190px; }
+    .day-detail-table col.stat-col { width: 92px; }
+    .day-detail-table col.rank-col { width: 92px; }
+    .day-detail-table col.game-col { width: 126px; }
+    .day-detail-table .spacer-cell {
+      color: transparent;
+      background: #fffaf2;
+    }
+    .text-data-table td.game-data { text-align: left; }
+    .schedule-result-table td.game-data { text-align: center; }
 
     .rank-gold,
     .rank-silver,
@@ -261,7 +275,8 @@
         <section class="day-section">
           <div class="mini-section-title">ポイント表</div>
           <div class="table-wrap">
-            <table class="archive-table detail-table" aria-label="Day 1 ポイント表">
+            <table class="archive-table day-detail-table" aria-label="Day 1 ポイント表">
+              <colgroup><col class="name-col"><col class="stat-col"><col class="rank-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"></colgroup>
               <thead><tr><th class="name-head">Name</th><th>Total Pt</th><th>Pt 順位</th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th></tr></thead>
               <tbody>
                 <tr><td class="name-cell">Thundurus</td><td class="total-cell">18.5</td><td>8th</td><td>2</td><td>5</td><td>3</td><td>2</td><td>1.5</td><td>1</td><td>4</td></tr>
@@ -280,7 +295,8 @@
         <section class="day-section">
           <div class="mini-section-title">順位入力</div>
           <div class="table-wrap">
-            <table class="archive-table detail-table" aria-label="Day 1 順位入力">
+            <table class="archive-table day-detail-table" aria-label="Day 1 順位入力">
+              <colgroup><col class="name-col"><col class="stat-col"><col class="rank-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"></colgroup>
               <thead><tr><th class="name-head">Placement</th><th>1st count</th><th>average</th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th></tr></thead>
               <tbody>
                 <tr><td class="name-cell">Thundurus</td><td>0</td><td>6.4</td><td>7</td><td>4</td><td>6</td><td>7</td><td>7.5</td><td>8</td><td>5</td></tr>
@@ -297,38 +313,20 @@
         </section>
 
         <section class="day-section">
-          <div class="mini-section-title">Total Point</div>
-          <div class="table-wrap">
-            <table class="archive-table detail-table" aria-label="Day 1 累計ポイント推移">
-              <thead><tr><th class="name-head">Name</th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th></tr></thead>
-              <tbody>
-                <tr><td class="name-cell">Thundurus</td><td>2</td><td>7</td><td>10</td><td>12</td><td>13.5</td><td>14.5</td><td>18.5</td></tr>
-                <tr><td class="name-cell">Alutemu</td><td>2</td><td>3</td><td>5</td><td>6</td><td>10.5</td><td>19.5</td><td>23.5</td></tr>
-                <tr><td class="name-cell">MATSURI</td><td>9</td><td>11</td><td>20</td><td>25.5</td><td>31.5</td><td>36</td><td>40</td></tr>
-                <tr><td class="name-cell">SeseiSei</td><td>2</td><td>6</td><td>11.5</td><td>17</td><td>24</td><td>27</td><td>28</td></tr>
-                <tr><td class="name-cell">haguren</td><td>4</td><td>11</td><td>12</td><td>21</td><td>24</td><td>31</td><td>40</td></tr>
-                <tr><td class="name-cell">yoshiyuki</td><td>6</td><td>15</td><td>20.5</td><td>27.5</td><td>36.5</td><td>42.5</td><td>48.5</td></tr>
-                <tr><td class="name-cell">あれっくす</td><td>7</td><td>13</td><td>20</td><td>23.5</td><td>28</td><td>32.5</td><td>39.5</td></tr>
-                <tr><td class="name-cell">Yanase</td><td>5</td><td>8</td><td>12</td><td>15.5</td><td>17</td><td>19</td><td>21</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="day-section">
           <div class="mini-section-title">Hero Pick</div>
           <div class="table-wrap">
-            <table class="archive-table detail-table text-data-table" aria-label="Day 1 Hero Pick">
-              <thead><tr><th class="name-head">Name</th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th></tr></thead>
+            <table class="archive-table day-detail-table text-data-table" aria-label="Day 1 Hero Pick">
+              <colgroup><col class="name-col"><col class="stat-col"><col class="rank-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"></colgroup>
+              <thead><tr><th class="name-head">Name</th><th class="spacer-cell"></th><th class="spacer-cell"></th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th></tr></thead>
               <tbody>
-                <tr><td class="name-cell">Thundurus</td><td>マスターウェン</td><td>セナリウス</td><td>サイラス</td><td>マスターウェン</td><td>サーフィンレー</td><td>ゲイルウィング</td><td>AFケイ</td></tr>
-                <tr><td class="name-cell">Alutemu</td><td>シルヴァナス</td><td>ゲイルウィング</td><td>マスターウェン</td><td>レノ</td><td>ホームズ</td><td class="first-cell">ムロゾンド</td><td>ピュートリサイド</td></tr>
-                <tr><td class="name-cell">MATSURI</td><td class="first-cell">クロミー</td><td>ガフ</td><td class="first-cell">ンゾス</td><td>ムロゾンド</td><td>ムロゾンド</td><td>エリーズ</td><td>リッチキング</td></tr>
-                <tr><td class="name-cell">SeseiSei</td><td>ゼレク</td><td>カートラス</td><td>ワグトグル</td><td>リッチキング</td><td class="second-cell">オニクシア</td><td>ブラン</td><td>クラッグ</td></tr>
-                <tr><td class="name-cell">haguren</td><td>エリーズ</td><td class="second-cell">スニード</td><td>獄吏王</td><td class="first-cell">ヨグサロン</td><td>ンゾス</td><td class="second-cell">ケリガン</td><td class="first-cell">ネズミの王</td></tr>
-                <tr><td class="name-cell">yoshiyuki</td><td>タムシン</td><td class="first-cell">シンドラゴサ</td><td>AFケイ</td><td class="second-cell">オニクシア</td><td class="first-cell">テロン</td><td>クロミー</td><td>ムロゾンド</td></tr>
-                <tr><td class="name-cell">あれっくす</td><td class="second-cell">ヤシャラージュ</td><td>サイラス</td><td class="second-cell">ブルカン</td><td>サイラス</td><td>ブルカン</td><td>バズィアル</td><td class="second-cell">スニード</td></tr>
-                <tr><td class="name-cell">Yanase</td><td>ピュートリサイド</td><td>ワグトグル</td><td>オニクシア</td><td>ゼレク</td><td>クッキー</td><td>サーフィンレー</td><td>ザイレラ</td></tr>
+                <tr><td class="name-cell">Thundurus</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">マスターウェン</td><td class="game-data">セナリウス</td><td class="game-data">サイラス</td><td class="game-data">マスターウェン</td><td class="game-data">サーフィンレー</td><td class="game-data">ゲイルウィング</td><td class="game-data">AFケイ</td></tr>
+                <tr><td class="name-cell">Alutemu</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">シルヴァナス</td><td class="game-data">ゲイルウィング</td><td class="game-data">マスターウェン</td><td class="game-data">レノ</td><td class="game-data">ホームズ</td><td class="game-data first-cell">ムロゾンド</td><td class="game-data">ピュートリサイド</td></tr>
+                <tr><td class="name-cell">MATSURI</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data first-cell">クロミー</td><td class="game-data">ガフ</td><td class="game-data first-cell">ンゾス</td><td class="game-data">ムロゾンド</td><td class="game-data">ムロゾンド</td><td class="game-data">エリーズ</td><td class="game-data">リッチキング</td></tr>
+                <tr><td class="name-cell">SeseiSei</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">ゼレク</td><td class="game-data">カートラス</td><td class="game-data">ワグトグル</td><td class="game-data">リッチキング</td><td class="game-data second-cell">オニクシア</td><td class="game-data">ブラン</td><td class="game-data">クラッグ</td></tr>
+                <tr><td class="name-cell">haguren</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">エリーズ</td><td class="game-data second-cell">スニード</td><td class="game-data">獄吏王</td><td class="game-data first-cell">ヨグサロン</td><td class="game-data">ンゾス</td><td class="game-data second-cell">ケリガン</td><td class="game-data first-cell">ネズミの王</td></tr>
+                <tr><td class="name-cell">yoshiyuki</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">タムシン</td><td class="game-data first-cell">シンドラゴサ</td><td class="game-data">AFケイ</td><td class="game-data second-cell">オニクシア</td><td class="game-data first-cell">テロン</td><td class="game-data">クロミー</td><td class="game-data">ムロゾンド</td></tr>
+                <tr><td class="name-cell">あれっくす</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data second-cell">ヤシャラージュ</td><td class="game-data">サイラス</td><td class="game-data second-cell">ブルカン</td><td class="game-data">サイラス</td><td class="game-data">ブルカン</td><td class="game-data">バズィアル</td><td class="game-data second-cell">スニード</td></tr>
+                <tr><td class="name-cell">Yanase</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">ピュートリサイド</td><td class="game-data">ワグトグル</td><td class="game-data">オニクシア</td><td class="game-data">ゼレク</td><td class="game-data">クッキー</td><td class="game-data">サーフィンレー</td><td class="game-data">ザイレラ</td></tr>
               </tbody>
             </table>
           </div>
@@ -337,39 +335,32 @@
         <section class="day-section">
           <div class="mini-section-title">Comp</div>
           <div class="table-wrap">
-            <table class="archive-table detail-table text-data-table" aria-label="Day 1 Comp">
-              <thead><tr><th class="name-head">Name</th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th></tr></thead>
+            <table class="archive-table day-detail-table text-data-table" aria-label="Day 1 Comp">
+              <colgroup><col class="name-col"><col class="stat-col"><col class="rank-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"></colgroup>
+              <thead><tr><th class="name-head">Name</th><th class="spacer-cell"></th><th class="spacer-cell"></th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th></tr></thead>
               <tbody>
-                <tr><td class="name-cell">Thundurus</td><td>ゴルドリン</td><td>テック構成</td><td>甲殻アンデ</td><td>甲殻アンデ</td><td>甲殻アンデ</td><td>板歩き</td><td>アンデッド</td></tr>
-                <tr><td class="name-cell">Alutemu</td><td>ハンドバフマーロック</td><td>エレメンタル</td><td>板歩き</td><td>甲殻アンデ</td><td>フェルボア</td><td class="first-cell">酸性降雨</td><td>甲殻アンデ</td></tr>
-                <tr><td class="name-cell">MATSURI</td><td class="first-cell">エレクトロン</td><td>ナラァ</td><td class="first-cell">甲殻アンデ</td><td>ナラァ</td><td>純キルボア</td><td>サイカステック</td><td>甲殻アンデ</td></tr>
-                <tr><td class="name-cell">SeseiSei</td><td>ナラァ</td><td>テック構成</td><td>プリズムスケイル</td><td>ツァリナ</td><td class="second-cell">甲殻アンデ</td><td>動物語</td><td>甲殻アンデ</td></tr>
-                <tr><td class="name-cell">haguren</td><td>先見性ツァリナ</td><td class="second-cell">テック構成</td><td>甲殻アンデ</td><td class="first-cell">シリシッド</td><td>雨キルボア</td><td class="second-cell">酸性降雨</td><td class="first-cell">甲殻アンデ</td></tr>
-                <tr><td class="name-cell">yoshiyuki</td><td>インコ負け犬</td><td class="first-cell">板歩き</td><td>甲殻アンデ</td><td class="second-cell">甲殻アンデ</td><td class="first-cell">甲殻アンデ</td><td>テック構成</td><td>甲殻アンデ</td></tr>
-                <tr><td class="name-cell">あれっくす</td><td class="second-cell">ポイズンマーロックチェンジ</td><td>Wニュウザオ</td><td class="second-cell">エヴォーカー</td><td>ドローンドラッカリ</td><td>2回し</td><td>時渡ナラァ</td><td class="second-cell">甲殻アンデ</td></tr>
-                <tr><td class="name-cell">Yanase</td><td>混成</td><td>海賊</td><td>甲殻アンデ</td><td>甲殻アンデ</td><td>アンデッド</td><td>画家マーロック</td><td>ユードラ</td></tr>
+                <tr><td class="name-cell">Thundurus</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">ゴルドリン</td><td class="game-data">テック構成</td><td class="game-data">甲殻アンデ</td><td class="game-data">甲殻アンデ</td><td class="game-data">甲殻アンデ</td><td class="game-data">板歩き</td><td class="game-data">アンデッド</td></tr>
+                <tr><td class="name-cell">Alutemu</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">ハンドバフマーロック</td><td class="game-data">エレメンタル</td><td class="game-data">板歩き</td><td class="game-data">甲殻アンデ</td><td class="game-data">フェルボア</td><td class="game-data first-cell">酸性降雨</td><td class="game-data">甲殻アンデ</td></tr>
+                <tr><td class="name-cell">MATSURI</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data first-cell">エレクトロン</td><td class="game-data">ナラァ</td><td class="game-data first-cell">甲殻アンデ</td><td class="game-data">ナラァ</td><td class="game-data">純キルボア</td><td class="game-data">サイカステック</td><td class="game-data">甲殻アンデ</td></tr>
+                <tr><td class="name-cell">SeseiSei</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">ナラァ</td><td class="game-data">テック構成</td><td class="game-data">プリズムスケイル</td><td class="game-data">ツァリナ</td><td class="game-data second-cell">甲殻アンデ</td><td class="game-data">動物語</td><td class="game-data">甲殻アンデ</td></tr>
+                <tr><td class="name-cell">haguren</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">先見性ツァリナ</td><td class="game-data second-cell">テック構成</td><td class="game-data">甲殻アンデ</td><td class="game-data first-cell">シリシッド</td><td class="game-data">雨キルボア</td><td class="game-data second-cell">酸性降雨</td><td class="game-data first-cell">甲殻アンデ</td></tr>
+                <tr><td class="name-cell">yoshiyuki</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">インコ負け犬</td><td class="game-data first-cell">板歩き</td><td class="game-data">甲殻アンデ</td><td class="game-data second-cell">甲殻アンデ</td><td class="game-data first-cell">甲殻アンデ</td><td class="game-data">テック構成</td><td class="game-data">甲殻アンデ</td></tr>
+                <tr><td class="name-cell">あれっくす</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data second-cell">ポイズンマーロックチェンジ</td><td class="game-data">Wニュウザオ</td><td class="game-data second-cell">エヴォーカー</td><td class="game-data">ドローンドラッカリ</td><td class="game-data">2回し</td><td class="game-data">時渡ナラァ</td><td class="game-data second-cell">甲殻アンデ</td></tr>
+                <tr><td class="name-cell">Yanase</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">混成</td><td class="game-data">海賊</td><td class="game-data">甲殻アンデ</td><td class="game-data">甲殻アンデ</td><td class="game-data">アンデッド</td><td class="game-data">画家マーロック</td><td class="game-data">ユードラ</td></tr>
               </tbody>
             </table>
           </div>
         </section>
 
         <section class="day-section">
-          <div class="mini-section-title">Information</div>
-          <ul class="notice-list">
-            <li>Thundurus：スキャブス</li>
-            <li>Yanase：シンドラゴサ</li>
-          </ul>
-          <p class="archive-note">※ 元データ上の補足情報を掲載。該当ゲーム列は未確定のため、プレイヤー単位で記載しています。</p>
-        </section>
-
-        <section class="day-section">
           <div class="mini-section-title">Schedule</div>
           <div class="table-wrap">
-            <table class="archive-table schedule-result-table" aria-label="Day 1 試合時刻">
-              <thead><tr><th>Time</th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th></tr></thead>
+            <table class="archive-table day-detail-table schedule-result-table" aria-label="Day 1 試合時刻">
+              <colgroup><col class="name-col"><col class="stat-col"><col class="rank-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"></colgroup>
+              <thead><tr><th class="name-head">Time</th><th class="spacer-cell"></th><th class="spacer-cell"></th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th></tr></thead>
               <tbody>
-                <tr><td>START TIME</td><td>13:01</td><td>13:42</td><td>14:17</td><td>14:54</td><td>15:32</td><td>16:16</td><td>16:53</td></tr>
-                <tr><td>END TIME</td><td>13:38</td><td>14:16</td><td>14:50</td><td>15:30</td><td>16:10</td><td>16:52</td><td>17:30</td></tr>
+                <tr><td class="name-cell">START TIME</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">13:01</td><td class="game-data">13:42</td><td class="game-data">14:17</td><td class="game-data">14:54</td><td class="game-data">15:32</td><td class="game-data">16:16</td><td class="game-data">16:53</td></tr>
+                <tr><td class="name-cell">END TIME</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">13:38</td><td class="game-data">14:16</td><td class="game-data">14:50</td><td class="game-data">15:30</td><td class="game-data">16:10</td><td class="game-data">16:52</td><td class="game-data">17:30</td></tr>
               </tbody>
             </table>
           </div>
