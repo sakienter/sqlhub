@@ -11,6 +11,15 @@
   <link rel="stylesheet" href="./common.css" />
   <style>
     .button.secondary{color:#fff;background:linear-gradient(90deg,var(--green-dark),var(--green));border-color:rgba(24,33,40,.1)}
+    #current-season .season-card.card-link,
+    #seasons .season-card.card-link,
+    #past-tournaments .season-card.card-link{min-height:118px;padding:14px 18px}
+    #current-season .season-card.card-link{max-width:420px;margin:0 auto}
+    #seasons .season-grid,
+    #past-tournaments .season-grid{grid-template-columns:repeat(auto-fit,minmax(260px,340px));justify-content:center}
+    #current-season .season-card.card-link h2,
+    #seasons .season-card.card-link h2,
+    #past-tournaments .season-card.card-link h2{font-size:clamp(20px,2vw,26px)}
   </style>
 </head>
 <body>
@@ -46,7 +55,7 @@
     </section>
 
     <section id="seasons" class="score-card">
-      <div class="section-title">Season Select</div>
+      <div class="section-title">S級リーグ</div>
       <div class="section-body">
         <div class="season-grid">
           <a class="season-card card-link" href="./season1/"><div><h2>Season 1</h2></div><span class="card-cta">ページを見る →</span></a>
