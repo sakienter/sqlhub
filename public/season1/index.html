@@ -9,7 +9,7 @@
   <meta property="og:description" content="S級リーグS1の大会結果ページ" />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="../common.css" />
-  <link rel="stylesheet" href="./style.css?v=s1-result-collapse-20260612" />
+  <link rel="stylesheet" href="./style.css?v=s1-total-score-20260612" />
 </head>
 <body>
   <div id="loading-overlay" aria-live="polite" aria-label="読み込み中">
@@ -50,7 +50,31 @@
 
     <section class="score-card summary-card">
       <div class="section-title purple">Total Score</div>
-      <div class="table-wrap"><table id="summary-table" aria-label="総合順位表"><thead></thead><tbody></tbody></table></div>
+      <div class="table-wrap">
+        <table id="total-score-table" aria-label="S1総合順位表">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Day1</th>
+              <th>Day2</th>
+              <th>Day3</th>
+              <th>Day4</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="winner-row"><td>1</td><td class="name-cell">Alutemu</td><td>28</td><td>23</td><td>27</td><td>27</td><td class="total-cell">105</td></tr>
+            <tr><td>2</td><td class="name-cell">Yoshiyuki</td><td>14</td><td>23</td><td>14</td><td>44</td><td class="total-cell">95</td></tr>
+            <tr><td>3</td><td class="name-cell">あれっくす</td><td>21</td><td>25</td><td>17</td><td>28</td><td class="total-cell">91</td></tr>
+            <tr><td>4</td><td class="name-cell">SeseiSei</td><td>14</td><td>24</td><td>20</td><td>22</td><td class="total-cell">80</td></tr>
+            <tr><td>5</td><td class="name-cell">Thundurus</td><td>21</td><td>13</td><td>14</td><td>30</td><td class="total-cell">78</td></tr>
+            <tr><td>6</td><td class="name-cell">ぎゃん</td><td>23</td><td>11</td><td>16</td><td>22</td><td class="total-cell">72</td></tr>
+            <tr><td>7</td><td class="name-cell">MATSURI</td><td>12</td><td>17</td><td>20</td><td>10</td><td class="total-cell">59</td></tr>
+            <tr><td>8</td><td class="name-cell">jp</td><td>7</td><td>4</td><td>12</td><td>13</td><td class="total-cell">36</td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section class="score-card day-card">
@@ -64,8 +88,8 @@
       </section>
 
       <details class="day-section collapsible-section" open>
-        <summary class="mini-section-title collapsible-title">順位</summary>
-        <div class="table-wrap"><table id="day-placements-table" aria-label="DAY別順位表"><thead></thead><tbody></tbody></table></div>
+        <summary class="mini-section-title collapsible-title"><span class="collapsible-heading">Placement</span><span class="collapsible-state" aria-hidden="true"></span></summary>
+        <div class="table-wrap"><table id="day-placements-table" aria-label="DAY別Placement表"><thead></thead><tbody></tbody></table></div>
       </details>
 
       <section class="day-section game-detail-section">
