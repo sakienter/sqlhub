@@ -174,7 +174,7 @@
     }
     .scoreboard-table{
       width:100%;
-      min-width:640px;
+      min-width:1080px;
       border-collapse:separate;
       border-spacing:0 8px;
       table-layout:auto;
@@ -207,7 +207,13 @@
     }
     .scoreboard-table td:first-child{border-left:1px solid rgba(24,33,40,.08);border-radius:6px 0 0 6px;color:var(--text-primary);font-weight:950;white-space:nowrap}
     .scoreboard-table td:last-child{border-right:1px solid rgba(24,33,40,.08);border-radius:0 6px 6px 0}
+    .scoreboard-table .num{text-align:right;font-weight:900;color:var(--text-primary)}
+    .scoreboard-table .rank{text-align:center;font-weight:950;color:var(--text-primary)}
+    .scoreboard-table .score-first{background:#ffff00!important;color:#000!important;font-weight:950!important}
+    .scoreboard-table .score-second{background:#c9c9c9!important;color:#000!important;font-weight:900!important}
+    .scoreboard-table .empty-cell{color:transparent!important}
     .scoreboard-empty{color:var(--text-muted)!important;text-align:center!important;font-weight:850!important}
+    .winner-note{font-weight:950;color:#000}
     .recap-area{
       display:flex;
       align-items:center;
@@ -286,7 +292,131 @@
             <summary><span class="series-summary-label">バトグラ頂上戦 #9　<span class="series-winner-placeholder">勝者【Thundurus】</span></span></summary>
             <div class="series-panel">
               <p class="scoreboard-title">Score Board</p>
-              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
+              <div class="table-wrap">
+                <table class="scoreboard-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Total</th>
+                      <th>順位</th>
+                      <th>game1</th>
+                      <th>game2</th>
+                      <th>game3</th>
+                      <th>game4</th>
+                      <th>game5</th>
+                      <th>game6</th>
+                      <th>game7</th>
+                      <th>game8</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Thundurus <span class="winner-note">【連覇】</span></td>
+                      <td class="num">27</td>
+                      <td class="rank">1st</td>
+                      <td class="num">5</td>
+                      <td class="num">4</td>
+                      <td class="num score-second">6</td>
+                      <td class="num">5</td>
+                      <td class="num score-first">7</td>
+                      <td class="empty-cell">-</td>
+                      <td class="empty-cell">-</td>
+                      <td class="empty-cell">-</td>
+                    </tr>
+                    <tr>
+                      <td>Alutemu</td>
+                      <td class="num">16</td>
+                      <td class="rank">4th</td>
+                      <td class="num">2</td>
+                      <td class="num">5</td>
+                      <td class="num">0</td>
+                      <td class="num score-first">7</td>
+                      <td class="num">2</td>
+                      <td class="empty-cell">-</td>
+                      <td class="empty-cell">-</td>
+                      <td class="empty-cell">-</td>
+                    </tr>
+                    <tr>
+                      <td>MATSURI</td>
+                      <td class="num">16</td>
+                      <td class="rank">4th</td>
+                      <td class="num score-first">7</td>
+                      <td class="num">0</td>
+                      <td class="num">4</td>
+                      <td class="num">4</td>
+                      <td class="num">1</td>
+                      <td class="empty-cell">-</td>
+                      <td class="empty-cell">-</td>
+                      <td class="empty-cell">-</td>
+                    </tr>
+                    <tr>
+                      <td>SeseiSei</td>
+                      <td class="num">19</td>
+                      <td class="rank">2nd</td>
+                      <td class="num score-second">6</td>
+                      <td class="num score-first">7</td>
+                      <td class="num">2</td>
+                      <td class="num">0</td>
+                      <td class="num">4</td>
+                      <td class="empty-cell">-</td>
+                      <td class="empty-cell">-</td>
+                      <td class="empty-cell">-</td>
+                    </tr>
+                    <tr>
+                      <td>あれっくす</td>
+                      <td class="num">17</td>
+                      <td class="rank">3rd</td>
+                      <td class="num">3</td>
+                      <td class="num">1</td>
+                      <td class="num score-first">7</td>
+                      <td class="num">3</td>
+                      <td class="num">3</td>
+                      <td class="empty-cell">-</td>
+                      <td class="empty-cell">-</td>
+                      <td class="empty-cell">-</td>
+                    </tr>
+                    <tr>
+                      <td>Barrette</td>
+                      <td class="num">16</td>
+                      <td class="rank">4th</td>
+                      <td class="num">1</td>
+                      <td class="num score-second">6</td>
+                      <td class="num">3</td>
+                      <td class="num">1</td>
+                      <td class="num">5</td>
+                      <td class="empty-cell">-</td>
+                      <td class="empty-cell">-</td>
+                      <td class="empty-cell">-</td>
+                    </tr>
+                    <tr>
+                      <td>gaiabot</td>
+                      <td class="num">14</td>
+                      <td class="rank">8th</td>
+                      <td class="num">4</td>
+                      <td class="num">3</td>
+                      <td class="num">1</td>
+                      <td class="num score-second">6</td>
+                      <td class="num">0</td>
+                      <td class="empty-cell">-</td>
+                      <td class="empty-cell">-</td>
+                      <td class="empty-cell">-</td>
+                    </tr>
+                    <tr>
+                      <td>ぎゃん</td>
+                      <td class="num">15</td>
+                      <td class="rank">7th</td>
+                      <td class="num">0</td>
+                      <td class="num">2</td>
+                      <td class="num">5</td>
+                      <td class="num">2</td>
+                      <td class="num score-second">6</td>
+                      <td class="empty-cell">-</td>
+                      <td class="empty-cell">-</td>
+                      <td class="empty-cell">-</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTDKz57LEBSgpOQacLGijWTDOS2-A4afcHVHKQdu6oYpXAlVfDcq75ycmTJnHcslfyjSU8G_iZ_wxh4/pubhtml" target="_blank" rel="noopener">リキャップはこちら</a></div>
             </div>
           </details>
