@@ -24,7 +24,7 @@ export async function onRequest(context) {
   try {
     const response = await fetch(gasUrl, {
       headers: { 'User-Agent': 'Cloudflare Pages Function' },
-      cf: { cacheTtl: 300, cacheEverything: true }
+      cf: { cacheTtl: 180, cacheEverything: true }
     });
 
     if (!response.ok) {
@@ -43,7 +43,7 @@ export async function onRequest(context) {
 
     const data = await response.json();
     const result = jsonResponse(data, 200, {
-      'Cache-Control': 'public, max-age=60, s-maxage=300, stale-while-revalidate=900'
+      'Cache-Control': 'public, max-age=180, s-maxage=180, stale-while-revalidate=180'
     });
 
     context.waitUntil(cache.put(cacheKey, result.clone()));
