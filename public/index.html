@@ -10,6 +10,7 @@
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="./common.css" />
   <style>
+    :root{--wipe-duration:.62s}
     .button.secondary{color:#fff;background:linear-gradient(90deg,var(--green-dark),var(--green));border-color:rgba(24,33,40,.1)}
     #current-season .section-body{padding:26px 34px 32px}
     #current-season .season-card.card-link{min-height:230px;padding:34px 40px;max-width:none;margin:0}
@@ -22,22 +23,22 @@
     #seasons .season-card.card-link h2,
     #past-tournaments .season-card.card-link h2{font-size:clamp(20px,2vw,26px)}
     #seasons .card-link,
-    #past-tournaments .card-link{background:#fffaf2;transition:color var(--wipe-duration) var(--wipe-easing),border-color .42s var(--wipe-easing),box-shadow .42s var(--wipe-easing)}
+    #past-tournaments .card-link{background:#fffaf2;transition:color var(--wipe-duration) var(--wipe-easing),border-color .28s var(--wipe-easing),box-shadow .28s var(--wipe-easing)}
     #seasons .card-link:hover,
-    #past-tournaments .card-link:hover{background:#fffaf2;border-color:var(--wipe-purple);box-shadow:0 16px 32px rgba(127,119,221,.22)}
+    #past-tournaments .card-link:hover{background:#fffaf2;border-color:var(--wipe-purple);box-shadow:0 12px 24px rgba(127,119,221,.18)}
     #seasons .card-link::before,
-    #past-tournaments .card-link::before{content:"";position:absolute;inset:0;z-index:0;background-image:linear-gradient(90deg,var(--wipe-purple) 0%,#9d68de 52%,var(--wipe-pink) 100%);background-size:cover;background-position:center;background-repeat:no-repeat;transform:scaleX(0);transform-origin:left center;transition:transform var(--wipe-duration) var(--wipe-easing);pointer-events:none}
+    #past-tournaments .card-link::before{content:"";position:absolute;top:0;bottom:0;left:0;width:0;z-index:0;background-image:linear-gradient(90deg,var(--wipe-purple) 0%,#9d68de 52%,var(--wipe-pink) 100%);background-size:cover;background-position:center;background-repeat:no-repeat;transition:width var(--wipe-duration) var(--wipe-easing);pointer-events:none}
     #seasons .card-link:hover::before,
-    #past-tournaments .card-link:hover::before{transform:scaleX(1)}
+    #past-tournaments .card-link:hover::before{width:100%}
     #seasons .card-link > *,
     #past-tournaments .card-link > *{position:relative;z-index:1}
-    #past-tournaments .image-wipe-card::before{background-image:linear-gradient(90deg,rgba(7,14,28,.78),rgba(7,14,28,.22)),var(--wipe-image);background-size:cover,cover;background-position:center,var(--wipe-image-position,center 42%)}
+    #past-tournaments .image-wipe-card::before{background-image:linear-gradient(90deg,rgba(7,14,28,.62),rgba(7,14,28,.18)),var(--wipe-image);background-size:cover,cover;background-position:center,var(--wipe-image-position,center 42%)}
     #seasons .card-link h2,
     #past-tournaments .card-link h2,
     #seasons .card-cta,
-    #past-tournaments .card-cta{transition:color var(--wipe-duration) var(--wipe-easing),text-shadow var(--wipe-duration) var(--wipe-easing),background .42s var(--wipe-easing),box-shadow .42s var(--wipe-easing)}
+    #past-tournaments .card-cta{transition:color .36s var(--wipe-easing),text-shadow .36s var(--wipe-easing),background .28s var(--wipe-easing),box-shadow .28s var(--wipe-easing)}
     #seasons .card-link:hover h2,
-    #past-tournaments .card-link:hover h2{color:#fff;text-shadow:0 2px 14px rgba(3,14,24,.42)}
+    #past-tournaments .card-link:hover h2{color:#fff;text-shadow:0 2px 12px rgba(3,14,24,.38)}
     #seasons .card-link:hover .card-cta,
     #past-tournaments .card-link:hover .card-cta{color:#fff;background:transparent;box-shadow:none}
   </style>
