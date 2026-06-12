@@ -56,13 +56,7 @@
     #past-tournaments .image-wipe-card:hover .card-cta{background:rgba(255,255,255,.22);transform:translateX(2px)}
     #past-tournaments .tournament-subgroup{margin-top:22px;padding-top:20px;border-top:1px solid rgba(24,33,40,.12)}
     #past-tournaments .tournament-subtitle{margin:0 0 14px;color:var(--text-primary);font-size:18px;font-weight:950;text-align:center}
-    #past-tournaments .placeholder-card{min-height:148px;background:linear-gradient(135deg,#102638 0%,#0d7f99 46%,#d84a86 100%);color:#fff;overflow:hidden;border-color:rgba(255,255,255,.16);box-shadow:0 10px 22px rgba(3,14,24,.16);transition:transform .36s var(--wipe-easing),border-color .36s var(--wipe-easing),box-shadow .36s var(--wipe-easing)}
-    #past-tournaments .placeholder-card::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(115deg,rgba(255,255,255,.12),rgba(255,255,255,0) 48%),radial-gradient(circle at 18% 22%,rgba(255,255,255,.24),transparent 28%),radial-gradient(circle at 84% 78%,rgba(255,255,255,.18),transparent 32%);opacity:.8;transition:opacity .42s var(--wipe-easing),transform .62s var(--wipe-easing);pointer-events:none}
-    #past-tournaments .placeholder-card:hover{border-color:rgba(255,255,255,.38);box-shadow:0 16px 32px rgba(3,14,24,.28);transform:translateY(-2px)}
-    #past-tournaments .placeholder-card:hover::before{opacity:1;transform:scale(1.08)}
-    #past-tournaments .placeholder-card > *{position:relative;z-index:1}
-    #past-tournaments .placeholder-card h2{color:#fff;text-shadow:0 2px 14px rgba(3,14,24,.62)}
-    #past-tournaments .placeholder-card .card-cta{color:#fff;background:rgba(255,255,255,.14);box-shadow:none;backdrop-filter:blur(6px)}
+    #past-tournaments .dummy-wipe-card{--wipe-image:linear-gradient(135deg,#102638 0%,#0d7f99 46%,#d84a86 100%);--wipe-image-position:center}
   </style>
 </head>
 <body>
@@ -118,9 +112,9 @@
         <div class="tournament-subgroup">
           <h3 class="tournament-subtitle">別母体の大会</h3>
           <div class="season-grid">
-            <a class="season-card card-link placeholder-card" href="./tournaments/independent-demo-1/"><div><h2>別母体大会 Demo 1</h2></div><span class="card-cta">ページを見る →</span></a>
-            <a class="season-card card-link placeholder-card" href="./tournaments/independent-demo-2/"><div><h2>別母体大会 Demo 2</h2></div><span class="card-cta">ページを見る →</span></a>
-            <a class="season-card card-link placeholder-card" href="./tournaments/independent-demo-3/"><div><h2>別母体大会 Demo 3</h2></div><span class="card-cta">ページを見る →</span></a>
+            <a class="season-card card-link image-wipe-card dummy-wipe-card" href="./tournaments/independent-demo-1/"><div><h2>別母体大会 Demo 1</h2></div><span class="card-cta">ページを見る →</span></a>
+            <a class="season-card card-link image-wipe-card dummy-wipe-card" href="./tournaments/independent-demo-2/"><div><h2>別母体大会 Demo 2</h2></div><span class="card-cta">ページを見る →</span></a>
+            <a class="season-card card-link image-wipe-card dummy-wipe-card" href="./tournaments/independent-demo-3/"><div><h2>別母体大会 Demo 3</h2></div><span class="card-cta">ページを見る →</span></a>
           </div>
         </div>
       </div>
