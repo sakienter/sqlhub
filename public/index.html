@@ -14,9 +14,9 @@
 
     body:has(.hub-hero) .page-shell{width:min(1180px,calc(100vw - 48px))!important;margin:0 auto!important;padding-top:26px!important}
     body:has(.hub-hero) .hub-hero{position:relative!important;overflow:hidden!important;isolation:isolate!important;width:100%!important;height:clamp(340px,24vw,430px)!important;min-height:340px!important;margin:0 auto 26px!important;padding:0!important;text-align:left!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;background:#fff!important;border:none!important;border-bottom:none!important;box-shadow:none!important;backdrop-filter:none!important}
-    body:has(.hub-hero) .hub-hero-image{position:absolute!important;inset:0!important;z-index:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:right center!important;transform:scale(1.04)!important;transform-origin:right center!important;filter:saturate(1.08) contrast(1.03) brightness(1.03)!important;pointer-events:none!important;user-select:none!important}
-    body:has(.hub-hero) .hub-hero::before{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;pointer-events:none!important;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.98) 14%,rgba(255,255,255,.84) 27%,rgba(255,255,255,.48) 40%,rgba(255,255,255,.18) 53%,rgba(255,255,255,0) 70%),linear-gradient(180deg,rgba(255,255,255,.82) 0%,rgba(255,255,255,.20) 18%,rgba(255,255,255,0) 40%)!important}
-    body:has(.hub-hero) .hub-hero::after{content:""!important;position:absolute!important;inset:auto 0 0 0!important;height:45%!important;z-index:2!important;pointer-events:none!important;background:linear-gradient(0deg,rgba(255,255,255,.88) 0%,rgba(255,255,255,.34) 34%,rgba(255,255,255,0) 100%)!important}
+    body:has(.hub-hero) .hub-hero-image{position:absolute!important;inset:0!important;z-index:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important;transform:none!important;transform-origin:center center!important;filter:none!important;pointer-events:none!important;user-select:none!important}
+    body:has(.hub-hero) .hub-hero::before{content:none!important}
+    body:has(.hub-hero) .hub-hero::after{content:none!important}
     body:has(.hub-hero) .hub-hero-panel{position:relative!important;z-index:3!important;width:min(520px,50%)!important;margin-left:20px!important;padding:22px 26px 24px!important;border-radius:18px!important;background:rgba(6,23,41,.78)!important;border:1px solid rgba(255,255,255,.22)!important;box-shadow:0 18px 40px rgba(3,14,24,.28)!important;backdrop-filter:blur(12px)!important;transform:translateY(16px)!important}
     body:has(.hub-hero) .hub-hero .eyebrow{margin:0 0 10px!important;color:rgba(255,255,255,.86)!important;letter-spacing:.05em!important;font-size:12px!important;font-weight:900!important}
     body:has(.hub-hero) .hub-hero h1{margin:0!important;max-width:460px!important;text-align:left!important;font-size:clamp(42px,4.6vw,68px)!important;line-height:.96!important;letter-spacing:-.07em!important;color:#fff!important;text-shadow:0 3px 18px rgba(3,14,24,.46)!important}
@@ -68,13 +68,13 @@
     #past-tournaments .tournament-subtitle{margin:0 0 16px;color:var(--text-primary);font-size:18px;font-weight:950;text-align:center}
     #past-tournaments .dummy-wipe-card{--wipe-image:linear-gradient(135deg,#102638 0%,#0d7f99 46%,#d84a86 100%);--wipe-image-position:center}
 
-    @media (max-width:720px){body:has(.hub-hero) .page-shell{width:min(100% - 24px,1180px)!important;padding-top:18px!important}body:has(.hub-hero) .hub-hero{height:auto!important;min-height:340px!important}body:has(.hub-hero) .hub-hero-image{inset:0!important;width:100%!important;height:100%!important;object-position:right center!important;transform:scale(1.04)!important}body:has(.hub-hero) .hub-hero-panel{width:calc(100% - 32px)!important;max-width:none!important;margin-left:16px!important;margin-right:16px!important;padding:24px 22px 26px!important;transform:none!important}body:has(.hub-hero) .hub-hero h1{font-size:clamp(44px,14vw,62px)!important}body:has(.hub-hero) .hub-hero .lead{font-size:14px!important}#current-season .section-title{font-size:24px;padding:18px 12px}#current-season .section-body{padding:18px}#current-season .season-card.card-link{min-height:132px;padding:24px;flex-direction:column;align-items:flex-start}#current-season .season-card.card-link h2{font-size:clamp(38px,11vw,52px)}#current-season .current-subtitle{font-size:16px}#current-season .card-cta{font-size:14px}}
+    @media (max-width:720px){body:has(.hub-hero) .page-shell{width:min(100% - 24px,1180px)!important;padding-top:18px!important}body:has(.hub-hero) .hub-hero{height:auto!important;min-height:340px!important}body:has(.hub-hero) .hub-hero-image{inset:0!important;width:100%!important;height:100%!important;object-position:center center!important;transform:none!important}body:has(.hub-hero) .hub-hero-panel{width:calc(100% - 32px)!important;max-width:none!important;margin-left:16px!important;margin-right:16px!important;padding:24px 22px 26px!important;transform:none!important}body:has(.hub-hero) .hub-hero h1{font-size:clamp(44px,14vw,62px)!important}body:has(.hub-hero) .hub-hero .lead{font-size:14px!important}#current-season .section-title{font-size:24px;padding:18px 12px}#current-season .section-body{padding:18px}#current-season .season-card.card-link{min-height:132px;padding:24px;flex-direction:column;align-items:flex-start}#current-season .season-card.card-link h2{font-size:clamp(38px,11vw,52px)}#current-season .current-subtitle{font-size:16px}#current-season .card-cta{font-size:14px}}
   </style>
 </head>
 <body>
   <main class="page-shell">
     <header class="hero hub-hero">
-      <img class="hub-hero-image" src="/sutant.webp?v=smooth-fade-20260612" alt="" aria-hidden="true" loading="eager" decoding="async" />
+      <img class="hub-hero-image" src="/white.webp?v=prepared-header-20260612" alt="" aria-hidden="true" loading="eager" decoding="async" />
       <div class="hub-hero-panel">
         <p class="eyebrow">Tournament info by Stuntdrake</p>
         <h1>Avenge Hub</h1>
@@ -93,6 +93,20 @@
           </div>
           <span class="card-cta">ページを見る →</span>
         </a>
+      </div>
+    </section>
+
+    <section id="news" class="score-card">
+      <div class="section-title">News</div>
+      <div class="section-body">
+        <ul class="notice-list">
+          <li><strong>2026.06.11</strong> ハブページの構成を更新しました。今後のお知らせはこのニュース欄に追加していきます。</li>
+          <li><strong>2026.06.11</strong> Season 2 のページ導線を上部の「開催中シーズン」に移動しました。</li>
+        </ul>
+        <details class="rule-item" style="margin-top: 16px;">
+          <summary><strong>過去のお知らせアーカイブ</strong></summary>
+          <ul class="notice-list" style="margin-top: 12px;"><li>過去のお知らせはここに追記していきます。</li></ul>
+        </details>
       </div>
     </section>
 
