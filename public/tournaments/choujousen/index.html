@@ -9,13 +9,138 @@
   <meta property="og:description" content="バトグラ頂上戦 #1〜#9 の大会情報まとめページ" />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="../../common.css" />
+  <style>
+    .hero.choujousen-hero{
+      position:relative;
+      isolation:isolate;
+      overflow:hidden;
+      margin:0 auto 30px;
+      padding:82px 28px 64px;
+      text-align:center;
+      background:linear-gradient(135deg,#f7f3ef 0%,#f4efea 52%,#f1e7e3 100%);
+      border:1px solid rgba(24,33,40,.16);
+      border-bottom:1px solid rgba(24,33,40,.16);
+      border-radius:22px;
+      box-shadow:0 18px 34px rgba(3,14,24,.28);
+      backdrop-filter:none;
+    }
+    .hero.choujousen-hero::before{
+      content:"ARCHIVE / CHOUJOUSEN SERIES / #01-#09";
+      position:absolute;
+      top:24px;
+      left:32px;
+      right:32px;
+      z-index:-1;
+      color:rgba(83,97,109,.36);
+      font-size:20px;
+      font-weight:850;
+      letter-spacing:.18em;
+      line-height:1;
+      text-align:left;
+      white-space:nowrap;
+      overflow:hidden;
+      pointer-events:none;
+    }
+    .hero.choujousen-hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:0;
+      background:
+        linear-gradient(#c9342c,#c9342c) left 32px top 32px/48px 1px no-repeat,
+        linear-gradient(#c9342c,#c9342c) left 32px top 32px/1px 48px no-repeat,
+        linear-gradient(#c9342c,#c9342c) right 32px top 32px/48px 1px no-repeat,
+        linear-gradient(#c9342c,#c9342c) right 32px top 32px/1px 48px no-repeat,
+        linear-gradient(#c9342c,#c9342c) left 32px bottom 32px/48px 1px no-repeat,
+        linear-gradient(#c9342c,#c9342c) left 32px bottom 32px/1px 48px no-repeat,
+        linear-gradient(#c9342c,#c9342c) right 32px bottom 32px/48px 1px no-repeat,
+        linear-gradient(#c9342c,#c9342c) right 32px bottom 32px/1px 48px no-repeat;
+      pointer-events:none;
+    }
+    .choujousen-hero .back-link{
+      position:relative;
+      z-index:1;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:72px;
+      margin:0 0 48px;
+      padding:0 40px;
+      color:#1c6f8e;
+      background:rgba(255,255,255,.86);
+      border:1px solid rgba(24,33,40,.08);
+      border-radius:999px;
+      box-shadow:0 2px 10px rgba(3,14,24,.06);
+      font-size:28px;
+      font-weight:900;
+      letter-spacing:-.04em;
+      text-decoration:none;
+      backdrop-filter:none;
+    }
+    .choujousen-hero .eyebrow{
+      position:relative;
+      z-index:1;
+      margin:0 0 28px;
+      color:#c9342c;
+      font-size:26px;
+      font-weight:900;
+      letter-spacing:.34em;
+      line-height:1.2;
+      text-transform:uppercase;
+    }
+    .choujousen-hero h1{
+      position:relative;
+      z-index:1;
+      margin:0;
+      color:#182128;
+      font-size:clamp(58px,8vw,104px);
+      font-weight:950;
+      letter-spacing:-.06em;
+      line-height:1.12;
+      text-shadow:none;
+    }
+    .choujousen-hero h1 .title-accent{
+      color:#c9342c;
+      letter-spacing:-.045em;
+    }
+    .choujousen-hero .lead{
+      position:relative;
+      z-index:1;
+      margin:44px auto 0;
+      max-width:980px;
+      color:#5d6b78;
+      font-size:28px;
+      font-weight:800;
+      line-height:1.55;
+      letter-spacing:.02em;
+    }
+    @media (max-width:720px){
+      .hero.choujousen-hero{padding:64px 18px 54px;border-radius:18px}
+      .hero.choujousen-hero::before{top:20px;left:22px;right:22px;font-size:13px;letter-spacing:.13em}
+      .hero.choujousen-hero::after{
+        background:
+          linear-gradient(#c9342c,#c9342c) left 20px top 20px/32px 1px no-repeat,
+          linear-gradient(#c9342c,#c9342c) left 20px top 20px/1px 32px no-repeat,
+          linear-gradient(#c9342c,#c9342c) right 20px top 20px/32px 1px no-repeat,
+          linear-gradient(#c9342c,#c9342c) right 20px top 20px/1px 32px no-repeat,
+          linear-gradient(#c9342c,#c9342c) left 20px bottom 20px/32px 1px no-repeat,
+          linear-gradient(#c9342c,#c9342c) left 20px bottom 20px/1px 32px no-repeat,
+          linear-gradient(#c9342c,#c9342c) right 20px bottom 20px/32px 1px no-repeat,
+          linear-gradient(#c9342c,#c9342c) right 20px bottom 20px/1px 32px no-repeat;
+      }
+      .choujousen-hero .back-link{min-height:52px;margin-bottom:34px;padding:0 24px;font-size:18px}
+      .choujousen-hero .eyebrow{margin-bottom:20px;font-size:15px;letter-spacing:.26em}
+      .choujousen-hero h1{font-size:clamp(44px,13vw,62px)}
+      .choujousen-hero .lead{margin-top:30px;font-size:18px;line-height:1.7}
+    }
+  </style>
 </head>
 <body>
   <main class="page-shell">
-    <header class="hero">
+    <header class="hero choujousen-hero">
       <a class="back-link" href="../../">← Avenge Hubへ戻る</a>
       <p class="eyebrow">Tournament Series</p>
-      <h1>バトグラ頂上戦 #1〜#9</h1>
+      <h1>バトグラ頂上戦 <span class="title-accent">#1〜#9</span></h1>
       <p class="lead">バトグラ頂上戦シリーズの大会情報、結果、関連リンクをまとめるためのアーカイブページです。</p>
     </header>
 
