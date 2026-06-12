@@ -2,7 +2,7 @@ const API_URL = '/api/season2/results';
 const TRIBE_API_URL = '/api/season2/tribes';
 const RESULTS_CACHE_KEY = 'sqlhub:season2:results:v2';
 const TRIBE_CACHE_KEY = 'sqlhub:season2:tribes:v1';
-const CACHE_MAX_AGE_MS = 24 * 60 * 60 * 1000;
+const CACHE_MAX_AGE_MS = 3 * 60 * 1000;
 
 let loadedData = null;
 let tribeConfig = {};
