@@ -1,11 +1,14 @@
-#summary-table {
+#summary-table,
+#total-score-table {
   width: 100%;
   min-width: 760px;
   table-layout: auto;
 }
 
 #summary-table th,
-#summary-table td {
+#summary-table td,
+#total-score-table th,
+#total-score-table td {
   text-align: center;
   white-space: nowrap;
 }
@@ -14,6 +17,23 @@
 #summary-table td:first-child {
   text-align: left;
   min-width: 140px;
+}
+
+#total-score-table th:nth-child(2),
+#total-score-table td.name-cell {
+  text-align: left;
+  min-width: 140px;
+}
+
+#total-score-table th:first-child,
+#total-score-table td:first-child {
+  width: 72px;
+  font-weight: 900;
+}
+
+#total-score-table th:last-child,
+#total-score-table td:last-child {
+  font-weight: 900;
 }
 
 #day-points-table th,
@@ -47,7 +67,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   cursor: pointer;
   user-select: none;
   list-style: none;
@@ -57,15 +77,27 @@
   display: none;
 }
 
-.collapsible-title::after {
-  content: "+";
-  color: var(--text-muted);
-  font-size: 14px;
+.collapsible-state {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 58px;
+  min-height: 28px;
+  padding: 0 10px;
+  color: var(--crimson-dark);
+  background: #fffaf2;
+  border: 1px solid rgba(201, 75, 75, 0.28);
+  border-radius: 999px;
+  font-size: 12px;
   font-weight: 900;
 }
 
-.collapsible-section[open] .collapsible-title::after {
-  content: "-";
+.collapsible-state::before {
+  content: "開く";
+}
+
+.collapsible-section[open] .collapsible-state::before {
+  content: "閉じる";
 }
 
 #game-detail-table th,
@@ -223,7 +255,8 @@
 }
 
 @media (max-width: 640px) {
-  #summary-table {
+  #summary-table,
+  #total-score-table {
     min-width: 680px;
   }
 
