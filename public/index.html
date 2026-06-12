@@ -22,10 +22,12 @@
     #current-season .season-card.card-link:hover::after{opacity:1}
     #current-season .season-card.card-link > *{position:relative;z-index:1}
     #current-season .season-card.card-link h2{font-size:clamp(46px,5.6vw,74px);line-height:1.05;color:var(--text-primary);text-shadow:none;transition:color .42s var(--wipe-easing),text-shadow .42s var(--wipe-easing)}
+    #current-season .current-subtitle{margin:10px 0 0;color:#53616d;font-size:clamp(17px,1.8vw,26px);font-weight:900;line-height:1.28;letter-spacing:.01em;transition:color .42s var(--wipe-easing),text-shadow .42s var(--wipe-easing)}
     #current-season .season-card.card-link:hover h2{color:#102638;text-shadow:0 3px 18px rgba(255,255,255,.58)}
+    #current-season .season-card.card-link:hover .current-subtitle{color:#263847;text-shadow:0 2px 14px rgba(255,255,255,.52)}
     #current-season .card-cta{margin-top:0;font-size:17px;padding:8px 14px;white-space:nowrap;transition:color .34s var(--wipe-easing),background .34s var(--wipe-easing),box-shadow .34s var(--wipe-easing),transform .34s var(--wipe-easing)}
     #current-season .season-card.card-link:hover .card-cta{color:#fff;background:linear-gradient(90deg,var(--wipe-purple),var(--wipe-pink));box-shadow:0 8px 18px rgba(127,119,221,.24);transform:translateX(2px)}
-    @media (max-width:720px){#current-season .section-title{font-size:24px;padding:18px 12px}#current-season .section-body{padding:18px}#current-season .season-card.card-link{min-height:132px;padding:24px;flex-direction:column;align-items:flex-start}#current-season .season-card.card-link h2{font-size:clamp(38px,11vw,52px)}#current-season .card-cta{font-size:14px}}
+    @media (max-width:720px){#current-season .section-title{font-size:24px;padding:18px 12px}#current-season .section-body{padding:18px}#current-season .season-card.card-link{min-height:132px;padding:24px;flex-direction:column;align-items:flex-start}#current-season .season-card.card-link h2{font-size:clamp(38px,11vw,52px)}#current-season .current-subtitle{font-size:16px}#current-season .card-cta{font-size:14px}}
 
     #seasons{--hub-card-wipe-duration:.72s}
     #seasons .season-card.card-link,
@@ -76,7 +78,10 @@
       <div class="section-title">開催中のシーズン！</div>
       <div class="section-body">
         <a class="season-card card-link" href="./season2/">
-          <div><h2>S級リーグ Season 2</h2></div>
+          <div>
+            <h2>S級リーグ Season 2</h2>
+            <p class="current-subtitle">試合速報、ポイント状況はコチラ！</p>
+          </div>
           <span class="card-cta">ページを見る →</span>
         </a>
       </div>
