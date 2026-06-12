@@ -18,14 +18,14 @@
     .archive-hero h1{position:relative;z-index:1;margin:1rem 0 0;color:#f5f8fc;font-size:clamp(36px,5.8vw,56px);font-weight:500;letter-spacing:.06em;line-height:1.3;text-shadow:0 0 24px rgba(226,80,74,.45)}
     .archive-hero .title-line{position:relative;z-index:1;width:160px;height:1px;margin:1.5rem auto 0;background:linear-gradient(90deg,transparent,#e2504a,transparent)}
     .overview-subsection{margin-top:24px}.overview-subsection:first-child{margin-top:0}
-    .archive-rule-list,.schedule-text-list{display:flex;flex-direction:column;gap:10px;margin:0;padding-left:1.25rem;color:var(--text-primary);font-size:15px;font-weight:750;line-height:1.8}
-    .archive-rule-label,.schedule-text-list strong{font-weight:950}
-    .players-details,.section-details{width:calc(100% - 28px);margin:0 auto;background:#fffaf2;border:1px solid rgba(24,33,40,.12);border-radius:var(--radius-md);box-shadow:var(--shadow-soft);overflow:hidden}
-    .players-details summary,.section-details summary{min-height:52px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:15px;font-weight:950;list-style:none}
-    .players-details summary::-webkit-details-marker,.section-details summary::-webkit-details-marker{display:none}
-    .players-details summary::after,.section-details summary::after{content:"開く";color:var(--crimson-dark);font-size:12px;font-weight:900}
-    .players-details[open] summary::after,.section-details[open] summary::after{content:"閉じる"}
-    .players-details-body,.section-details-body{padding:0 0 16px;border-top:1px solid rgba(24,33,40,.1)}
+    .archive-rule-list{display:flex;flex-direction:column;gap:10px;margin:0;padding-left:1.25rem;color:var(--text-primary);font-size:15px;font-weight:750;line-height:1.8}
+    .archive-rule-label{font-weight:950}
+    .section-details{width:calc(100% - 28px);margin:0 auto;background:#fffaf2;border:1px solid rgba(24,33,40,.12);border-radius:var(--radius-md);box-shadow:var(--shadow-soft);overflow:hidden}
+    .section-details summary{min-height:52px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:15px;font-weight:950;list-style:none}
+    .section-details summary::-webkit-details-marker{display:none}
+    .section-details summary::after{content:"開く";color:var(--crimson-dark);font-size:12px;font-weight:900}
+    .section-details[open] summary::after{content:"閉じる"}
+    .section-details-body{padding:0 0 16px;border-top:1px solid rgba(24,33,40,.1)}
     .table-wrap{overflow-x:visible;padding-bottom:0}
     table.archive-table{width:100%;min-width:0;table-layout:fixed}
     .archive-table th,.archive-table td{text-align:center;white-space:nowrap}
@@ -37,7 +37,9 @@
     .rank-gold{color:var(--crimson-dark)}.rank-silver{color:var(--green-dark)}.rank-bronze{color:var(--amber-dark)}
     .day-score{color:var(--text-primary);font-weight:900}
     .winner-row td{font-weight:950}
-    .past-game{background:rgba(24,33,40,.08)}
+    .past-game{background:rgba(24,33,40,.2)}
+    .tribe-active{color:#111;background:#ff9800!important;font-weight:950}
+    .ban-table th,.ban-table td{text-align:left;font-weight:900}
     .archive-link{display:inline-flex;align-items:center;width:fit-content;min-height:34px;margin-top:8px;padding:0 12px;color:#fff;background:linear-gradient(90deg,var(--green-dark),var(--green));border:1px solid rgba(24,33,40,.1);border-radius:4px;box-shadow:var(--shadow-soft);font-size:13px;font-weight:900;text-decoration:none}
     .archive-link:hover{filter:brightness(.98)}
     .archive-note{margin:10px 14px 0;color:var(--text-muted);font-size:12px;font-weight:700;line-height:1.7}
@@ -63,30 +65,6 @@
             <li><span class="archive-rule-label">順位判定：</span>同時落ちの折半なし。順位はゲーム内の左表示を参照します。</li>
             <li><span class="archive-rule-label">タイブレーク：</span>3試合後に合計獲得ポイント1位が2名以上の場合のみ第4試合を実施し、4試合目で1位を獲得したプレイヤーが優勝となります。</li>
           </ul>
-        </section>
-        <section class="overview-subsection">
-          <div class="mini-section-title">Players</div>
-          <details class="players-details">
-            <summary>出場選手一覧</summary>
-            <div class="players-details-body">
-              <div class="table-wrap">
-                <table class="archive-table" aria-label="出場選手一覧">
-                  <thead><tr><th class="name-head">Name</th><th>備考</th></tr></thead>
-                  <tbody>
-                    <tr><td class="name-cell">Yanase</td><td>-</td></tr>
-                    <tr><td class="name-cell">Thundurus</td><td>-</td></tr>
-                    <tr><td class="name-cell">Alutemu</td><td>-</td></tr>
-                    <tr><td class="name-cell">SeseiSei</td><td>-</td></tr>
-                    <tr><td class="name-cell">MATSURI</td><td>Winner</td></tr>
-                    <tr><td class="name-cell">あれっくす</td><td>-</td></tr>
-                    <tr><td class="name-cell">Yoshiyuki</td><td>-</td></tr>
-                    <tr><td class="name-cell">gaiabot</td><td>-</td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <p class="archive-note">※ 出場選手名は敬称略。</p>
-            </div>
-          </details>
         </section>
       </div>
     </section>
@@ -157,6 +135,31 @@
                     <tr><td class="name-cell">あれっくす</td><td>スニード</td><td>ヴーン</td><td>デナスリアス</td><td>トーリム</td></tr>
                     <tr><td class="name-cell">Yoshiyuki</td><td>ザイレラ</td><td>レノ</td><td>マスターウェン</td><td>テロン</td></tr>
                     <tr><td class="name-cell">gaiabot</td><td>リッチキング</td><td>ロー</td><td>ETC</td><td>ケリガン</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+        </section>
+
+        <section class="day-section">
+          <details class="section-details">
+            <summary>BAN LIST</summary>
+            <div class="section-details-body">
+              <div class="table-wrap">
+                <table class="archive-table ban-table" aria-label="BAN LIST">
+                  <thead><tr><th class="name-head">※登場種族が色付き</th><th>game1</th><th>game2</th><th>game3</th><th>game4</th></tr></thead>
+                  <tbody>
+                    <tr><td class="name-cell"></td><td class="tribe-active">アンデッド</td><td class="tribe-active">アンデッド</td><td>アンデッド</td><td>アンデッド</td></tr>
+                    <tr><td class="name-cell"></td><td>エレメンタル</td><td class="tribe-active">エレメンタル</td><td class="tribe-active">エレメンタル</td><td class="tribe-active">エレメンタル</td></tr>
+                    <tr><td class="name-cell"></td><td>ドラゴン</td><td>ドラゴン</td><td>ドラゴン</td><td>ドラゴン</td></tr>
+                    <tr><td class="name-cell"></td><td class="tribe-active">キルボア</td><td class="tribe-active">キルボア</td><td>キルボア</td><td>キルボア</td></tr>
+                    <tr><td class="name-cell"></td><td>ナーガ</td><td>ナーガ</td><td class="tribe-active">ナーガ</td><td>ナーガ</td></tr>
+                    <tr><td class="name-cell"></td><td class="tribe-active">マーロック</td><td class="tribe-active">マーロック</td><td>マーロック</td><td class="tribe-active">マーロック</td></tr>
+                    <tr><td class="name-cell"></td><td>メカ</td><td>メカ</td><td class="tribe-active">メカ</td><td class="tribe-active">メカ</td></tr>
+                    <tr><td class="name-cell"></td><td>悪魔</td><td>悪魔</td><td class="tribe-active">悪魔</td><td class="tribe-active">悪魔</td></tr>
+                    <tr><td class="name-cell"></td><td class="tribe-active">海賊</td><td class="tribe-active">海賊</td><td>海賊</td><td>海賊</td></tr>
+                    <tr><td class="name-cell"></td><td class="tribe-active">獣</td><td>獣</td><td class="tribe-active">獣</td><td class="tribe-active">獣</td></tr>
                   </tbody>
                 </table>
               </div>
