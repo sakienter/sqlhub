@@ -10,13 +10,21 @@
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="../../common.css" />
   <style>
-    .hero.archive-hero{position:relative;overflow:hidden;padding:2.5rem 2rem;text-align:center;background:linear-gradient(135deg,#050810 0%,#0a1628 60%,#0d1f33 100%);border:1px solid rgba(226,80,74,.25);border-radius:12px;box-shadow:0 18px 48px rgba(5,12,20,.28)}
-    .hero.archive-hero::before{content:"";position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(226,80,74,.15) 0%,transparent 70%);pointer-events:none}
+    .hero.archive-hero{position:relative;overflow:hidden;padding:2.5rem 2rem;text-align:center;background:linear-gradient(135deg,#1a1006 0%,#2a1808 50%,#120a14 100%);border:1px solid rgba(255,209,102,.3);border-radius:12px;box-shadow:0 18px 48px rgba(5,12,20,.28)}
+    .hero.archive-hero::before{content:"";position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(255,209,102,.20) 0%,transparent 70%);pointer-events:none}
     .hero.archive-hero::after{content:none;display:none}
-    .archive-hero .back-link{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;margin:0 0 1.75rem;color:#e6edf5;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:8px 20px;font-size:13px;font-weight:500;backdrop-filter:none;text-decoration:none}
-    .archive-hero .eyebrow{position:relative;z-index:1;margin:0;color:#9aa8bb;font-size:11px;font-weight:500;letter-spacing:.3em;text-transform:uppercase}
-    .archive-hero h1{position:relative;z-index:1;margin:1rem 0 0;color:#f5f8fc;font-size:clamp(36px,5.8vw,56px);font-weight:500;letter-spacing:.06em;line-height:1.3;text-shadow:0 0 24px rgba(226,80,74,.45)}
-    .archive-hero .title-line{position:relative;z-index:1;width:160px;height:1px;margin:1.5rem auto 0;background:linear-gradient(90deg,transparent,#e2504a,transparent)}
+    .archive-hero .hero-back-row{position:relative;z-index:1;display:flex;justify-content:center;margin-bottom:1.75rem}
+    .archive-hero .back-link{display:inline-flex;align-items:center;gap:8px;color:#e6edf5;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:8px 20px;font-size:13px;font-weight:500;backdrop-filter:none;text-decoration:none;transition:background .24s ease,border-color .24s ease,transform .24s ease}
+    .archive-hero .back-link:hover{background:rgba(255,255,255,.09);border-color:rgba(255,209,102,.36);transform:translateY(-1px)}
+    .archive-hero .eyebrow-wrap{position:relative;z-index:1;text-align:center}
+    .archive-hero .eyebrow{color:#bba07a;font-size:11px;font-weight:500;letter-spacing:.3em;text-transform:uppercase}
+    .archive-hero .title-cluster{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:28px;margin-top:1rem}
+    .archive-hero .hourglass{width:48px;height:64px;flex-shrink:0}
+    .archive-hero .hourglass.reverse{transform:rotate(180deg)}
+    .archive-hero h1{margin:0;color:#f5f8fc;font-size:clamp(34px,5.8vw,56px);font-weight:500;letter-spacing:.06em;line-height:1.3;text-shadow:0 0 24px rgba(255,209,102,.55)}
+    .archive-hero h1 .title-accent{color:#ffd166}
+    .archive-hero .title-line{position:relative;z-index:1;width:160px;height:1px;margin:1.5rem auto 0;background:linear-gradient(90deg,transparent,#ffd166,transparent)}
+    @media (max-width:720px){.hero.archive-hero{padding:2.1rem 1.2rem}.archive-hero .title-cluster{gap:12px}.archive-hero .hourglass{width:34px;height:46px}.archive-hero h1{font-size:clamp(30px,9vw,44px);letter-spacing:.03em}}
     .overview-subsection{margin-top:24px}.overview-subsection:first-child{margin-top:0}
     .archive-rule-list{display:flex;flex-direction:column;gap:10px;margin:0;padding-left:1.25rem;color:var(--text-primary);font-size:15px;font-weight:750;line-height:1.8}
     .archive-rule-label{font-weight:950}
@@ -52,9 +60,29 @@
 <body>
   <main class="page-shell">
     <header class="hero archive-hero">
-      <a class="back-link" href="../../">← Avenge Hub へ戻る</a>
-      <p class="eyebrow">Past Tournament</p>
-      <h1>時渡りドリームマッチ</h1>
+      <div class="hero-back-row"><a class="back-link" href="../../">← Avenge Hub へ戻る</a></div>
+      <div class="eyebrow-wrap"><span class="eyebrow">PAST TOURNAMENT</span></div>
+      <div class="title-cluster">
+        <svg class="hourglass" viewBox="0 0 48 64" aria-hidden="true">
+          <path d="M6 4 H42 V14 L24 30 L6 14 Z" fill="none" stroke="#ffd166" stroke-width="2"/>
+          <path d="M6 60 H42 V50 L24 34 L6 50 Z" fill="none" stroke="#ffd166" stroke-width="2"/>
+          <line x1="6" y1="4" x2="6" y2="60" stroke="#ffd166" stroke-width="2" opacity="0.4"/>
+          <line x1="42" y1="4" x2="42" y2="60" stroke="#ffd166" stroke-width="2" opacity="0.4"/>
+          <path d="M10 8 H38 V13 L24 27 L10 13 Z" fill="#ffd166" opacity="0.85"/>
+          <path d="M22 30 L26 30 L26 33 L22 33 Z" fill="#ffd166"/>
+          <path d="M14 56 H34 V52 L24 42 L14 52 Z" fill="#ffd166" opacity="0.5"/>
+        </svg>
+        <h1>時渡り<span class="title-accent">ドリーム</span>マッチ</h1>
+        <svg class="hourglass reverse" viewBox="0 0 48 64" aria-hidden="true">
+          <path d="M6 4 H42 V14 L24 30 L6 14 Z" fill="none" stroke="#ffd166" stroke-width="2"/>
+          <path d="M6 60 H42 V50 L24 34 L6 50 Z" fill="none" stroke="#ffd166" stroke-width="2"/>
+          <line x1="6" y1="4" x2="6" y2="60" stroke="#ffd166" stroke-width="2" opacity="0.4"/>
+          <line x1="42" y1="4" x2="42" y2="60" stroke="#ffd166" stroke-width="2" opacity="0.4"/>
+          <path d="M10 8 H38 V13 L24 27 L10 13 Z" fill="#ffd166" opacity="0.85"/>
+          <path d="M22 30 L26 30 L26 33 L22 33 Z" fill="#ffd166"/>
+          <path d="M14 56 H34 V52 L24 42 L14 52 Z" fill="#ffd166" opacity="0.5"/>
+        </svg>
+      </div>
       <div class="title-line" aria-hidden="true"></div>
     </header>
 
