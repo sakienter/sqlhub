@@ -79,16 +79,8 @@
     .players-details[open] summary::after { content: "閉じる"; }
     .players-details-body { padding: 0 0 16px; border-top: 1px solid rgba(24, 33, 40, 0.1); }
 
-    .table-wrap {
-      overflow-x: visible;
-      padding-bottom: 0;
-    }
-
-    table.archive-table {
-      width: 100%;
-      min-width: 0;
-    }
-
+    .table-wrap { overflow-x: visible; padding-bottom: 0; }
+    table.archive-table { width: 100%; min-width: 0; }
     .archive-table th,
     .archive-table td { text-align: center; white-space: nowrap; }
     .archive-table th:first-child,
@@ -104,11 +96,7 @@
     }
     .archive-table td.total-cell { color: var(--crimson-dark); font-size: 15px; font-weight: 950; }
 
-    .day-detail-table {
-      width: 100%;
-      min-width: 0;
-      table-layout: fixed;
-    }
+    .day-detail-table { width: 100%; min-width: 0; table-layout: fixed; }
     .day-detail-table th,
     .day-detail-table td {
       padding: 8px 6px;
@@ -116,14 +104,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .day-detail-table col.name-col { width: 14%; }
-    .day-detail-table col.stat-col { width: 8%; }
-    .day-detail-table col.rank-col { width: 8%; }
-    .day-detail-table col.game-col { width: 10%; }
-    .day-detail-table .spacer-cell {
-      color: transparent;
-      background: #fffaf2;
-    }
+    .day-detail-table .spacer-cell { color: transparent; background: #fffaf2; }
     .text-data-table td.game-data { text-align: left; }
     .schedule-result-table td.game-data { text-align: center; }
 
@@ -154,23 +135,6 @@
     }
     .player-link:hover { filter: brightness(.98); }
 
-    .day-panel { display: none; }
-    .day-panel.active { display: block; }
-    .day-placeholder {
-      width: calc(100% - 28px);
-      margin: 0 auto 18px;
-      padding: 18px;
-      color: var(--text-secondary);
-      background: #fffaf2;
-      border: 1px solid rgba(24, 33, 40, 0.12);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-soft);
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 1.8;
-      text-align: center;
-    }
-
     .archive-note {
       margin: 10px 14px 0;
       color: var(--text-muted);
@@ -187,11 +151,7 @@
       <p class="eyebrow">Past Tournament</p>
       <h1>バトグラ【裏】頂上戦</h1>
       <p class="lead">3日間で20試合を消化し、合計獲得ポイントを競うバトルグラウンド大会です。</p>
-      <div class="meta-line">
-        <span>2026.01.24 - 2026.01.26</span>
-        <span>20 Matches</span>
-        <span>8 Players</span>
-      </div>
+      <div class="meta-line"><span>2026.01.24 - 2026.01.26</span><span>20 Matches</span><span>8 Players</span></div>
     </header>
 
     <section class="score-card">
@@ -223,9 +183,7 @@
             <div class="players-details-body">
               <div class="table-wrap">
                 <table class="archive-table" aria-label="出場選手">
-                  <thead>
-                    <tr><th class="name-head">Name</th><th>選手情報</th><th>X</th></tr>
-                  </thead>
+                  <thead><tr><th class="name-head">Name</th><th>選手情報</th><th>X</th></tr></thead>
                   <tbody>
                     <tr><td class="name-cell">Thundurus</td><td class="info-cell">頂上戦制覇者</td><td><a class="player-link" href="https://x.com/sunfrg" target="_blank" rel="noopener">Xを見る ↗</a></td></tr>
                     <tr><td class="name-cell">Alutemu</td><td class="info-cell">CNvsWorld 招待選手</td><td><a class="player-link" href="https://x.com/Alutemu" target="_blank" rel="noopener">Xを見る ↗</a></td></tr>
@@ -250,9 +208,7 @@
       <div class="section-body">
         <div class="table-wrap">
           <table class="archive-table" aria-label="最終結果">
-            <thead>
-              <tr><th class="name-head">Name</th><th>Total</th><th>順位</th><th>Day1</th><th>Day2</th><th>Day3</th></tr>
-            </thead>
+            <thead><tr><th class="name-head">Name</th><th>Total</th><th>順位</th><th>Day1</th><th>Day2</th><th>Day3</th></tr></thead>
             <tbody>
               <tr class="winner-row"><td class="name-cell">yoshiyuki</td><td class="total-cell">131</td><td class="rank-gold">1st</td><td class="day-score">48.5</td><td class="day-score">46</td><td class="day-score">36.5</td></tr>
               <tr><td class="name-cell">MATSURI</td><td class="total-cell">109</td><td class="rank-silver">2nd</td><td class="day-score">40</td><td class="day-score">37</td><td class="day-score">32</td></tr>
@@ -270,145 +226,179 @@
 
     <section class="score-card day-card">
       <div class="section-title orange">DAY別結果</div>
-      <div class="day-tabs" aria-label="DAY切り替え">
-        <button class="day-tab active" type="button" data-day-tab="day1" aria-pressed="true"><span class="tab-main">Day 1</span><span class="tab-sub">7試合</span></button>
-        <button class="day-tab" type="button" data-day-tab="day2" aria-pressed="false"><span class="tab-main">Day 2</span><span class="tab-sub">7試合</span></button>
-        <button class="day-tab" type="button" data-day-tab="day3" aria-pressed="false"><span class="tab-main">Day 3</span><span class="tab-sub">6試合</span></button>
-      </div>
-
-      <section class="day-panel active" id="day1" aria-label="Day 1 結果">
-        <div class="day-current">
-          <p class="day-kicker">Selected Day</p>
-          <h2>Day 1</h2>
-          <div class="meta-line"><span>2026/01/24（土）</span><span>13:00 Start</span><span>7 Matches</span></div>
-        </div>
-
-        <section class="day-section">
-          <div class="mini-section-title">ポイント表</div>
-          <div class="table-wrap">
-            <table class="archive-table day-detail-table" aria-label="Day 1 ポイント表">
-              <colgroup><col class="name-col"><col class="stat-col"><col class="rank-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"></colgroup>
-              <thead><tr><th class="name-head">Name</th><th>Total Pt</th><th>Pt 順位</th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th></tr></thead>
-              <tbody>
-                <tr><td class="name-cell">Thundurus</td><td class="total-cell">18.5</td><td>8th</td><td>2</td><td>5</td><td>3</td><td>2</td><td>1.5</td><td>1</td><td>4</td></tr>
-                <tr><td class="name-cell">Alutemu</td><td class="total-cell">23.5</td><td>6th</td><td>2</td><td>1</td><td>2</td><td>1</td><td>4.5</td><td class="first-cell">9</td><td>4</td></tr>
-                <tr><td class="name-cell">MATSURI</td><td class="total-cell">40</td><td class="rank-silver">2nd</td><td class="first-cell">9</td><td>2</td><td class="first-cell">9</td><td>5.5</td><td>6</td><td>4.5</td><td>4</td></tr>
-                <tr><td class="name-cell">SeseiSei</td><td class="total-cell">28</td><td>5th</td><td>2</td><td>4</td><td>5.5</td><td>5.5</td><td class="second-cell">7</td><td>3</td><td>1</td></tr>
-                <tr><td class="name-cell">haguren</td><td class="total-cell">40</td><td class="rank-silver">2nd</td><td>4</td><td class="second-cell">7</td><td>1</td><td class="first-cell">9</td><td>3</td><td class="second-cell">7</td><td class="first-cell">9</td></tr>
-                <tr><td class="name-cell">yoshiyuki</td><td class="total-cell">48.5</td><td class="rank-gold">1st</td><td>6</td><td class="first-cell">9</td><td>5.5</td><td class="second-cell">7</td><td class="first-cell">9</td><td>6</td><td>6</td></tr>
-                <tr><td class="name-cell">あれっくす</td><td class="total-cell">39.5</td><td>4th</td><td class="second-cell">7</td><td>6</td><td class="second-cell">7</td><td>3.5</td><td>4.5</td><td>4.5</td><td class="second-cell">7</td></tr>
-                <tr><td class="name-cell">Yanase</td><td class="total-cell">21</td><td>7th</td><td>5</td><td>3</td><td>4</td><td>3.5</td><td>1.5</td><td>2</td><td>2</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="day-section">
-          <div class="mini-section-title">順位入力</div>
-          <div class="table-wrap">
-            <table class="archive-table day-detail-table" aria-label="Day 1 順位入力">
-              <colgroup><col class="name-col"><col class="stat-col"><col class="rank-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"></colgroup>
-              <thead><tr><th class="name-head">Placement</th><th>1st count</th><th>average</th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th></tr></thead>
-              <tbody>
-                <tr><td class="name-cell">Thundurus</td><td>0</td><td>6.4</td><td>7</td><td>4</td><td>6</td><td>7</td><td>7.5</td><td>8</td><td>5</td></tr>
-                <tr><td class="name-cell">Alutemu</td><td>1</td><td>5.8</td><td>7</td><td>8</td><td>7</td><td>8</td><td>4.5</td><td class="first-cell">1</td><td>5</td></tr>
-                <tr><td class="name-cell">MATSURI</td><td>2</td><td>3.6</td><td class="first-cell">1</td><td>7</td><td class="first-cell">1</td><td>3.5</td><td>3</td><td>4.5</td><td>5</td></tr>
-                <tr><td class="name-cell">SeseiSei</td><td>0</td><td>5.0</td><td>7</td><td>5</td><td>3.5</td><td>3.5</td><td class="second-cell">2</td><td>6</td><td>8</td></tr>
-                <tr><td class="name-cell">haguren</td><td>2</td><td>3.6</td><td>5</td><td class="second-cell">2</td><td>8</td><td class="first-cell">1</td><td>6</td><td class="second-cell">2</td><td class="first-cell">1</td></tr>
-                <tr><td class="name-cell">yoshiyuki</td><td>2</td><td>2.4</td><td>3</td><td class="first-cell">1</td><td>3.5</td><td class="second-cell">2</td><td class="first-cell">1</td><td>3</td><td>3</td></tr>
-                <tr><td class="name-cell">あれっくす</td><td>0</td><td>3.4</td><td class="second-cell">2</td><td>3</td><td class="second-cell">2</td><td>5.5</td><td>4.5</td><td>4.5</td><td class="second-cell">2</td></tr>
-                <tr><td class="name-cell">Yanase</td><td>0</td><td>6.0</td><td>4</td><td>6</td><td>5</td><td>5.5</td><td>7.5</td><td>7</td><td>7</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="day-section">
-          <div class="mini-section-title">Hero Pick</div>
-          <div class="table-wrap">
-            <table class="archive-table day-detail-table text-data-table" aria-label="Day 1 Hero Pick">
-              <colgroup><col class="name-col"><col class="stat-col"><col class="rank-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"></colgroup>
-              <thead><tr><th class="name-head">Name</th><th class="spacer-cell"></th><th class="spacer-cell"></th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th></tr></thead>
-              <tbody>
-                <tr><td class="name-cell">Thundurus</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">マスターウェン</td><td class="game-data">セナリウス</td><td class="game-data">サイラス</td><td class="game-data">マスターウェン</td><td class="game-data">サーフィンレー</td><td class="game-data">ゲイルウィング</td><td class="game-data">AFケイ</td></tr>
-                <tr><td class="name-cell">Alutemu</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">シルヴァナス</td><td class="game-data">ゲイルウィング</td><td class="game-data">マスターウェン</td><td class="game-data">レノ</td><td class="game-data">ホームズ</td><td class="game-data first-cell">ムロゾンド</td><td class="game-data">ピュートリサイド</td></tr>
-                <tr><td class="name-cell">MATSURI</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data first-cell">クロミー</td><td class="game-data">ガフ</td><td class="game-data first-cell">ンゾス</td><td class="game-data">ムロゾンド</td><td class="game-data">ムロゾンド</td><td class="game-data">エリーズ</td><td class="game-data">リッチキング</td></tr>
-                <tr><td class="name-cell">SeseiSei</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">ゼレク</td><td class="game-data">カートラス</td><td class="game-data">ワグトグル</td><td class="game-data">リッチキング</td><td class="game-data second-cell">オニクシア</td><td class="game-data">ブラン</td><td class="game-data">クラッグ</td></tr>
-                <tr><td class="name-cell">haguren</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">エリーズ</td><td class="game-data second-cell">スニード</td><td class="game-data">獄吏王</td><td class="game-data first-cell">ヨグサロン</td><td class="game-data">ンゾス</td><td class="game-data second-cell">ケリガン</td><td class="game-data first-cell">ネズミの王</td></tr>
-                <tr><td class="name-cell">yoshiyuki</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">タムシン</td><td class="game-data first-cell">シンドラゴサ</td><td class="game-data">AFケイ</td><td class="game-data second-cell">オニクシア</td><td class="game-data first-cell">テロン</td><td class="game-data">クロミー</td><td class="game-data">ムロゾンド</td></tr>
-                <tr><td class="name-cell">あれっくす</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data second-cell">ヤシャラージュ</td><td class="game-data">サイラス</td><td class="game-data second-cell">ブルカン</td><td class="game-data">サイラス</td><td class="game-data">ブルカン</td><td class="game-data">バズィアル</td><td class="game-data second-cell">スニード</td></tr>
-                <tr><td class="name-cell">Yanase</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">ピュートリサイド</td><td class="game-data">ワグトグル</td><td class="game-data">オニクシア</td><td class="game-data">ゼレク</td><td class="game-data">クッキー</td><td class="game-data">サーフィンレー</td><td class="game-data">ザイレラ</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="day-section">
-          <div class="mini-section-title">Comp</div>
-          <div class="table-wrap">
-            <table class="archive-table day-detail-table text-data-table" aria-label="Day 1 Comp">
-              <colgroup><col class="name-col"><col class="stat-col"><col class="rank-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"></colgroup>
-              <thead><tr><th class="name-head">Name</th><th class="spacer-cell"></th><th class="spacer-cell"></th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th></tr></thead>
-              <tbody>
-                <tr><td class="name-cell">Thundurus</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">ゴルドリン</td><td class="game-data">テック構成</td><td class="game-data">甲殻アンデ</td><td class="game-data">甲殻アンデ</td><td class="game-data">甲殻アンデ</td><td class="game-data">板歩き</td><td class="game-data">アンデッド</td></tr>
-                <tr><td class="name-cell">Alutemu</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">ハンドバフマーロック</td><td class="game-data">エレメンタル</td><td class="game-data">板歩き</td><td class="game-data">甲殻アンデ</td><td class="game-data">フェルボア</td><td class="game-data first-cell">酸性降雨</td><td class="game-data">甲殻アンデ</td></tr>
-                <tr><td class="name-cell">MATSURI</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data first-cell">エレクトロン</td><td class="game-data">ナラァ</td><td class="game-data first-cell">甲殻アンデ</td><td class="game-data">ナラァ</td><td class="game-data">純キルボア</td><td class="game-data">サイカステック</td><td class="game-data">甲殻アンデ</td></tr>
-                <tr><td class="name-cell">SeseiSei</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">ナラァ</td><td class="game-data">テック構成</td><td class="game-data">プリズムスケイル</td><td class="game-data">ツァリナ</td><td class="game-data second-cell">甲殻アンデ</td><td class="game-data">動物語</td><td class="game-data">甲殻アンデ</td></tr>
-                <tr><td class="name-cell">haguren</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">先見性ツァリナ</td><td class="game-data second-cell">テック構成</td><td class="game-data">甲殻アンデ</td><td class="game-data first-cell">シリシッド</td><td class="game-data">雨キルボア</td><td class="game-data second-cell">酸性降雨</td><td class="game-data first-cell">甲殻アンデ</td></tr>
-                <tr><td class="name-cell">yoshiyuki</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">インコ負け犬</td><td class="game-data first-cell">板歩き</td><td class="game-data">甲殻アンデ</td><td class="game-data second-cell">甲殻アンデ</td><td class="game-data first-cell">甲殻アンデ</td><td class="game-data">テック構成</td><td class="game-data">甲殻アンデ</td></tr>
-                <tr><td class="name-cell">あれっくす</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data second-cell">ポイズンマーロックチェンジ</td><td class="game-data">Wニュウザオ</td><td class="game-data second-cell">エヴォーカー</td><td class="game-data">ドローンドラッカリ</td><td class="game-data">2回し</td><td class="game-data">時渡ナラァ</td><td class="game-data second-cell">甲殻アンデ</td></tr>
-                <tr><td class="name-cell">Yanase</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">混成</td><td class="game-data">海賊</td><td class="game-data">甲殻アンデ</td><td class="game-data">甲殻アンデ</td><td class="game-data">アンデッド</td><td class="game-data">画家マーロック</td><td class="game-data">ユードラ</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="day-section">
-          <div class="mini-section-title">Schedule</div>
-          <div class="table-wrap">
-            <table class="archive-table day-detail-table schedule-result-table" aria-label="Day 1 試合時刻">
-              <colgroup><col class="name-col"><col class="stat-col"><col class="rank-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"><col class="game-col"></colgroup>
-              <thead><tr><th class="name-head">Time</th><th class="spacer-cell"></th><th class="spacer-cell"></th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th></tr></thead>
-              <tbody>
-                <tr><td class="name-cell">START TIME</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">13:01</td><td class="game-data">13:42</td><td class="game-data">14:17</td><td class="game-data">14:54</td><td class="game-data">15:32</td><td class="game-data">16:16</td><td class="game-data">16:53</td></tr>
-                <tr><td class="name-cell">END TIME</td><td class="spacer-cell"></td><td class="spacer-cell"></td><td class="game-data">13:38</td><td class="game-data">14:16</td><td class="game-data">14:50</td><td class="game-data">15:30</td><td class="game-data">16:10</td><td class="game-data">16:52</td><td class="game-data">17:30</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="archive-note">※ game5 後に休憩。</p>
-        </section>
-      </section>
-
-      <section class="day-panel" id="day2" aria-label="Day 2 結果">
-        <div class="day-current"><p class="day-kicker">Selected Day</p><h2>Day 2</h2><div class="meta-line"><span>2026/01/25（日）</span><span>13:00 Start</span><span>7 Matches</span></div></div>
-        <section class="day-section"><div class="mini-section-title">Day Total</div><div class="table-wrap"><table class="archive-table" aria-label="Day 2 合計ポイント"><thead><tr><th class="name-head">Name</th><th>Day Total</th></tr></thead><tbody><tr><td class="name-cell">yoshiyuki</td><td class="total-cell">46</td></tr><tr><td class="name-cell">SeseiSei</td><td class="total-cell">39</td></tr><tr><td class="name-cell">MATSURI</td><td class="total-cell">37</td></tr><tr><td class="name-cell">Thundurus</td><td class="total-cell">32</td></tr><tr><td class="name-cell">あれっくす</td><td class="total-cell">28.5</td></tr><tr><td class="name-cell">Alutemu</td><td class="total-cell">28.5</td></tr><tr><td class="name-cell">haguren</td><td class="total-cell">28</td></tr><tr><td class="name-cell">Yanase</td><td class="total-cell">20</td></tr></tbody></table></div></section>
-        <div class="day-placeholder">各ゲームの詳細結果は準備中です。</div>
-      </section>
-
-      <section class="day-panel" id="day3" aria-label="Day 3 結果">
-        <div class="day-current"><p class="day-kicker">Selected Day</p><h2>Day 3</h2><div class="meta-line"><span>2026/01/26（月）</span><span>21:00 Start</span><span>6 Matches</span></div></div>
-        <section class="day-section"><div class="mini-section-title">Day Total</div><div class="table-wrap"><table class="archive-table" aria-label="Day 3 合計ポイント"><thead><tr><th class="name-head">Name</th><th>Day Total</th></tr></thead><tbody><tr><td class="name-cell">SeseiSei</td><td class="total-cell">38.5</td></tr><tr><td class="name-cell">yoshiyuki</td><td class="total-cell">36.5</td></tr><tr><td class="name-cell">MATSURI</td><td class="total-cell">32</td></tr><tr><td class="name-cell">Yanase</td><td class="total-cell">28.5</td></tr><tr><td class="name-cell">Thundurus</td><td class="total-cell">24</td></tr><tr><td class="name-cell">haguren</td><td class="total-cell">22.5</td></tr><tr><td class="name-cell">あれっくす</td><td class="total-cell">21.5</td></tr><tr><td class="name-cell">Alutemu</td><td class="total-cell">18.5</td></tr></tbody></table></div></section>
-        <div class="day-placeholder">各ゲームの詳細結果は準備中です。</div>
-      </section>
+      <div class="day-tabs" id="day-tabs" aria-label="DAY切り替え"></div>
+      <div id="day-detail-root"></div>
     </section>
 
     <footer class="footer-note"><p>Avenge Hub / Tournament info by Stuntdrake</p></footer>
   </main>
 
   <script>
-    document.querySelectorAll('[data-day-tab]').forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const target = tab.dataset.dayTab;
-        document.querySelectorAll('[data-day-tab]').forEach((button) => {
-          const isActive = button.dataset.dayTab === target;
-          button.classList.toggle('active', isActive);
-          button.setAttribute('aria-pressed', String(isActive));
-        });
-        document.querySelectorAll('.day-panel').forEach((panel) => {
-          panel.classList.toggle('active', panel.id === target);
-        });
+    const DAY_RESULTS = {
+      day1: {
+        tab: "Day 1", sub: "7試合", title: "Day 1", meta: ["2026/01/24（土）", "13:00 Start", "7 Matches"], games: ["game1", "game2", "game3", "game4", "game5", "game6", "game7"],
+        points: [["Thundurus", "18.5", "8th", "2", "5", "3", "2", "1.5", "1", "4"], ["Alutemu", "23.5", "6th", "2", "1", "2", "1", "4.5", "9", "4"], ["MATSURI", "40", "2nd", "9", "2", "9", "5.5", "6", "4.5", "4"], ["SeseiSei", "28", "5th", "2", "4", "5.5", "5.5", "7", "3", "1"], ["haguren", "40", "2nd", "4", "7", "1", "9", "3", "7", "9"], ["yoshiyuki", "48.5", "1st", "6", "9", "5.5", "7", "9", "6", "6"], ["あれっくす", "39.5", "4th", "7", "6", "7", "3.5", "4.5", "4.5", "7"], ["Yanase", "21", "7th", "5", "3", "4", "3.5", "1.5", "2", "2"]],
+        placements: [["Thundurus", "0", "6.4", "7", "4", "6", "7", "7.5", "8", "5"], ["Alutemu", "1", "5.8", "7", "8", "7", "8", "4.5", "1", "5"], ["MATSURI", "2", "3.6", "1", "7", "1", "3.5", "3", "4.5", "5"], ["SeseiSei", "0", "5.0", "7", "5", "3.5", "3.5", "2", "6", "8"], ["haguren", "2", "3.6", "5", "2", "8", "1", "6", "2", "1"], ["yoshiyuki", "2", "2.4", "3", "1", "3.5", "2", "1", "3", "3"], ["あれっくす", "0", "3.4", "2", "3", "2", "5.5", "4.5", "4.5", "2"], ["Yanase", "0", "6.0", "4", "6", "5", "5.5", "7.5", "7", "7"]],
+        heroes: [["Thundurus", "マスターウェン", "セナリウス", "サイラス", "マスターウェン", "サーフィンレー", "ゲイルウィング", "AFケイ"], ["Alutemu", "シルヴァナス", "ゲイルウィング", "マスターウェン", "レノ", "ホームズ", "ムロゾンド", "ピュートリサイド"], ["MATSURI", "クロミー", "ガフ", "ンゾス", "ムロゾンド", "ムロゾンド", "エリーズ", "リッチキング"], ["SeseiSei", "ゼレク", "カートラス", "ワグトグル", "リッチキング", "オニクシア", "ブラン", "クラッグ"], ["haguren", "エリーズ", "スニード", "獄吏王", "ヨグサロン", "ンゾス", "ケリガン", "ネズミの王"], ["yoshiyuki", "タムシン", "シンドラゴサ", "AFケイ", "オニクシア", "テロン", "クロミー", "ムロゾンド"], ["あれっくす", "ヤシャラージュ", "サイラス", "ブルカン", "サイラス", "ブルカン", "バズィアル", "スニード"], ["Yanase", "ピュートリサイド", "ワグトグル", "オニクシア", "ゼレク", "クッキー", "サーフィンレー", "ザイレラ"]],
+        comps: [["Thundurus", "ゴルドリン", "テック構成", "甲殻アンデ", "甲殻アンデ", "甲殻アンデ", "板歩き", "アンデッド"], ["Alutemu", "ハンドバフマーロック", "エレメンタル", "板歩き", "甲殻アンデ", "フェルボア", "酸性降雨", "甲殻アンデ"], ["MATSURI", "エレクトロン", "ナラァ", "甲殻アンデ", "ナラァ", "純キルボア", "サイカステック", "甲殻アンデ"], ["SeseiSei", "ナラァ", "テック構成", "プリズムスケイル", "ツァリナ", "甲殻アンデ", "動物語", "甲殻アンデ"], ["haguren", "先見性ツァリナ", "テック構成", "甲殻アンデ", "シリシッド", "雨キルボア", "酸性降雨", "甲殻アンデ"], ["yoshiyuki", "インコ負け犬", "板歩き", "甲殻アンデ", "甲殻アンデ", "甲殻アンデ", "テック構成", "甲殻アンデ"], ["あれっくす", "ポイズンマーロックチェンジ", "Wニュウザオ", "エヴォーカー", "ドローンドラッカリ", "2回し", "時渡ナラァ", "甲殻アンデ"], ["Yanase", "混成", "海賊", "甲殻アンデ", "甲殻アンデ", "アンデッド", "画家マーロック", "ユードラ"]],
+        schedule: [["START TIME", "13:01", "13:42", "14:17", "14:54", "15:32", "16:16", "16:53"], ["END TIME", "13:38", "14:16", "14:50", "15:30", "16:10", "16:52", "17:30"]], note: "※ game5 後に休憩。"
+      },
+      day2: {
+        tab: "Day 2", sub: "7試合", title: "Day 2", meta: ["2026/01/25（日）", "13:00 Start", "7 Matches"], games: ["game1", "game2", "game3", "game4", "game5", "game6", "game7"],
+        points: [["Thundurus", "32", "4th", "7", "2.5", "4", "4", "4.5", "7", "3"], ["Alutemu", "28.5", "5th", "1", "4", "2.5", "5", "9", "4", "3"], ["MATSURI", "37", "3rd", "6", "7", "9", "6", "2", "6", "1"], ["SeseiSei", "39", "2nd", "4", "6", "7", "9", "2", "4", "7"], ["haguren", "28", "7th", "9", "2.5", "2.5", "1.5", "6", "1.5", "5"], ["yoshiyuki", "46", "1st", "5", "9", "5", "7", "2", "9", "9"], ["あれっくす", "28.5", "5th", "2.5", "5", "6", "3", "4.5", "1.5", "6"], ["Yanase", "20", "8th", "2.5", "1", "1", "1.5", "7", "4", "3"]],
+        placements: [["Thundurus", "0", "4.4", "2", "6.5", "5", "5", "4.5", "2", "6"], ["Alutemu", "1", "5.1", "8", "5", "6.5", "4", "1", "5", "6"], ["MATSURI", "1", "3.9", "3", "2", "1", "3", "7", "3", "8"], ["SeseiSei", "1", "3.6", "5", "3", "2", "1", "7", "5", "2"], ["haguren", "1", "5.1", "1", "6.5", "6.5", "7.5", "3", "7.5", "4"], ["yoshiyuki", "3", "2.9", "4", "1", "4", "2", "7", "1", "1"], ["あれっくす", "0", "4.9", "6.5", "4", "3", "6", "4.5", "7.5", "3"], ["Yanase", "0", "6.1", "6.5", "8", "8", "7.5", "2", "5", "6"]],
+        heroes: [["Thundurus", "ネズミの王", "サイラス", "ムロゾンド", "マイエヴ", "デナスリアス", "ブルカン", "ヨグサロン"], ["Alutemu", "シャダウォック", "ETC", "サーフィンレー", "ヨグサロン", "セナリウス", "サイラス", "ザイレラ"], ["MATSURI", "シンドラゴサ", "ユードラ", "スニード", "ゲイルウィング", "ムロゾンド", "ユードラ", "マリン"], ["SeseiSei", "灰枝", "クロミー", "ネズミの王", "ヴーン", "ガリー", "サーフィンレー", "ネズミの王"], ["haguren", "ガフ", "ドレクサー", "ワグトグル", "ムロゾンド", "ヨグサロン", "マスターウェン", "ジョージ"], ["yoshiyuki", "クロミー", "マイエヴ", "ブルカン", "ETC", "クロミー", "クロミー", "ETC"], ["あれっくす", "ゲイルウィング", "ゲイルウィング", "サイラス", "ブラン", "ガラクロンド", "ケルサス", "ヴーン"], ["Yanase", "ムロゾンド", "カートラス", "ヴーン", "デナスリアス", "シンドラゴサ", "獄吏王", "サーフィンレー"]],
+        comps: [["Thundurus", "酸性降雨", "動物語フェルバット", "時渡りナラァ", "スペルバフ混成", "エヴォーカー", "甲殻アンデ", "動物語"], ["Alutemu", "先見性アンデ", "バイオレットピラマッドバディ", "プロトスメカ", "スペルバフ混成", "先見性APM", "2回し+テック", "動物語"], ["MATSURI", "酸性降雨", "ポイズンマーロック", "断末魔フェルストンパー", "シリシッド", "先見性APM", "APMアンデッド", "ナーガ"], ["SeseiSei", "甲殻アンデ", "酸性降雨", "時渡りグリース", "酸性降雨", "先見性APM", "エレメンタル", "ツァリナ+グリース"], ["haguren", "甲殻スタント", "マーロック", "テック構成", "ナラァ", "シリシッド", "酸性降雨＋マーロック", "ツァリナ+グリース"], ["yoshiyuki", "2回し", "酸性降雨", "セイレーンナーガ", "アゼパマジックフィン", "スタントドレイク", "酸性降雨→山火事", "ツァリナ"], ["あれっくす", "スタントドレイク", "酸性降雨", "爆音機長電磁構成", "スタントドレイク", "インコユードラ", "板歩き", "シリシッド"], ["Yanase", "2回し", "瓦礫悪魔", "ポイズンマーロック", "ヒョウAPM獣", "ヒョウAPM獣", "酸性降雨", "エヴォーカー"]],
+        schedule: [["START TIME", "13:02", "13:38", "14:17", "14:54", "15:33", "16:06", "16:47"], ["END TIME", "13:37", "14:16", "14:54", "15:27", "16:05", "16:45", "17:31"]], note: "※ game5 後に休憩。"
+      },
+      day3: {
+        tab: "Day 3", sub: "6試合", title: "Day 3", meta: ["2026/01/26（月）", "21:00 Start", "6 Matches"], games: ["game1", "game2", "game3", "game4", "game5", "game6"],
+        points: [["Thundurus", "24", "5th", "1.5", "4", "7", "3", "2", "6.5"], ["Alutemu", "18.5", "8th", "9", "4", "1.5", "1", "2", "1"], ["MATSURI", "32", "3rd", "7", "1", "3", "7", "9", "5"], ["SeseiSei", "38.5", "1st", "6", "4", "9", "9", "4", "6.5"], ["haguren", "22.5", "6th", "1.5", "7", "4", "2", "6", "2"], ["yoshiyuki", "36.5", "2nd", "5", "6", "6", "5.5", "5", "9"], ["あれっくす", "21.5", "7th", "3.5", "2", "5", "5.5", "2", "3.5"], ["Yanase", "28.5", "4th", "3.5", "9", "1.5", "4", "7", "3.5"]],
+        placements: [["Thundurus", "0", "5.0", "7.5", "5", "2", "6", "7", "2.5"], ["Alutemu", "1", "6.1", "1", "5", "7.5", "8", "7", "8"], ["MATSURI", "1", "3.8", "2", "8", "6", "2", "1", "4"], ["SeseiSei", "2", "2.9", "3", "5", "1", "1", "5", "2.5"], ["haguren", "0", "5.3", "7.5", "2", "5", "7", "3", "7"], ["yoshiyuki", "1", "3.1", "4", "3", "3", "3.5", "4", "1"], ["あれっくす", "0", "5.4", "5.5", "7", "4", "3.5", "7", "5.5"], ["Yanase", "1", "4.4", "5.5", "1", "7.5", "5", "2", "5.5"]],
+        heroes: [["Thundurus", "マリン", "ジョージ", "ホームズ", "トーリム", "クロミー", "クロミー"], ["Alutemu", "セナリウス", "獄吏王", "ETC", "デナスリアス", "ホガー", "ビグルスワース"], ["MATSURI", "クラッグ", "ドレクサー", "ムロゾンド", "セナリウス", "リッチキング", "ゲイルウィング"], ["SeseiSei", "サイラス", "オニクシア", "ガフ", "ヤシャラージュ", "スニード", "スニード"], ["haguren", "トグワグル", "クロミー", "トーリム", "ムロゾンド", "ラファーム", "リッチキング"], ["yoshiyuki", "シンドラゴサ", "サーフィンレー", "ノブンド", "ガリー", "マイエヴ", "デナスリアス"], ["あれっくす", "デナスリアス", "アカザムザラク", "ミルハウス", "ミルハウス", "セナリウス", "ムロゾンド"], ["Yanase", "トーリム", "ゼレク", "AFケイ", "ホームズ", "ETC", "パッチワーク"]],
+        comps: [["Thundurus", "エレメンタル", "瓦礫執行者プリズム", "酸性降雨＋バイオレット", "先見性APMマーロック", "先見性ツァリナ", "雨キルボア"], ["Alutemu", "甲殻アンデ＋テック", "甲殻アンデ", "フェルボア", "先見性APM", "酸性降雨", "ナラァ"], ["MATSURI", "先見性ツァリナテック", "板歩き", "ゴルドリン+実験用ラット", "エレクトロン", "甲殻アンデ", "雨キルボア"], ["SeseiSei", "2回し", "甲殻アンデ", "先見性APMキルボア", "先見性エヴォーカー", "甲殻アンデ", "手数アンデッド"], ["haguren", "先見性APM", "甲殻アンデ", "爆音機ループ", "プリズムスケイル", "エレクトロン +ツァリナ", "ご馳走グール構成"], ["yoshiyuki", "ツァリナ", "先見性APM", "先見性APM時渡ナラァ", "ツァリナ", "ツァリナ", "APM画家マーロック"], ["あれっくす", "先見性アンデ", "甲殻アンデ", "先見性APMキルボア", "エヴォーカー", "ノミエレメンタル", "APM獣"], ["Yanase", "甲殻アンデ", "先見性APM→酸性降雨", "酸性降雨", "先見性APM", "2回し", "テック構成"]],
+        schedule: [["START TIME", "21:05", "21:45", "22:19", "22:59", "23:34", "0:16"], ["END TIME", "21:42", "22:18", "22:56", "23:32", "0:12", "0:49"]], note: ""
+      }
+    };
+
+    function getPlacementMap(day) {
+      const map = {};
+      day.placements.forEach((row) => {
+        map[row[0]] = row.slice(3).map((v) => Number(v));
       });
-    });
+      return map;
+    }
+
+    function rankClass(value) {
+      const n = Number(value);
+      if (n === 1) return "first-cell";
+      if (n > 1 && n <= 2.5) return "second-cell";
+      return "";
+    }
+
+    function makeColgroup(gameCount) {
+      const group = document.createElement("colgroup");
+      const base = [{ name: "name", width: 14 }, { name: "stat", width: 8 }, { name: "rank", width: 8 }];
+      const gameWidth = (70 / gameCount).toFixed(3);
+      base.forEach((col) => {
+        const el = document.createElement("col");
+        el.style.width = `${col.width}%`;
+        group.appendChild(el);
+      });
+      for (let i = 0; i < gameCount; i += 1) {
+        const el = document.createElement("col");
+        el.style.width = `${gameWidth}%`;
+        group.appendChild(el);
+      }
+      return group;
+    }
+
+    function buildTable({ title, headers, rows, day, mode }) {
+      const section = document.createElement("section");
+      section.className = "day-section";
+      const heading = document.createElement("div");
+      heading.className = "mini-section-title";
+      heading.textContent = title;
+      section.appendChild(heading);
+
+      const wrap = document.createElement("div");
+      wrap.className = "table-wrap";
+      const table = document.createElement("table");
+      table.className = `archive-table day-detail-table ${mode === "text" ? "text-data-table" : ""} ${mode === "schedule" ? "schedule-result-table" : ""}`;
+      table.setAttribute("aria-label", `${day.title} ${title}`);
+      table.appendChild(makeColgroup(day.games.length));
+
+      const thead = document.createElement("thead");
+      const headRow = document.createElement("tr");
+      headers.forEach((header, index) => {
+        const th = document.createElement("th");
+        th.textContent = header;
+        if (index === 0) th.className = "name-head";
+        if (header === "") th.className = "spacer-cell";
+        headRow.appendChild(th);
+      });
+      thead.appendChild(headRow);
+      table.appendChild(thead);
+
+      const placementMap = getPlacementMap(day);
+      const tbody = document.createElement("tbody");
+      rows.forEach((row) => {
+        const tr = document.createElement("tr");
+        row.forEach((value, index) => {
+          const td = document.createElement("td");
+          td.textContent = value;
+          const classes = [];
+          if (index === 0) classes.push("name-cell");
+          if (headers[index] === "") classes.push("spacer-cell");
+          if (mode === "text" && index >= 3) classes.push("game-data");
+          if (mode === "schedule" && index >= 3) classes.push("game-data");
+          if (mode === "points" && index === 1) classes.push("total-cell");
+          if (mode === "points" && index === 2 && value === "1st") classes.push("rank-gold");
+          if (mode === "points" && index === 2 && value === "2nd") classes.push("rank-silver");
+          if (mode === "points" && index === 2 && value === "3rd") classes.push("rank-bronze");
+          if (["points", "placement", "text"].includes(mode) && index >= 3) {
+            const player = row[0];
+            const placeValue = mode === "placement" ? value : placementMap[player]?.[index - 3];
+            const cls = rankClass(placeValue);
+            if (cls) classes.push(cls);
+          }
+          td.className = classes.join(" ");
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody);
+      wrap.appendChild(table);
+      section.appendChild(wrap);
+      return section;
+    }
+
+    function renderDay(dayKey) {
+      const day = DAY_RESULTS[dayKey];
+      const root = document.getElementById("day-detail-root");
+      root.innerHTML = "";
+
+      const current = document.createElement("div");
+      current.className = "day-current";
+      current.innerHTML = `<p class="day-kicker">Selected Day</p><h2>${day.title}</h2><div class="meta-line">${day.meta.map((m) => `<span>${m}</span>`).join("")}</div>`;
+      root.appendChild(current);
+
+      root.appendChild(buildTable({ title: "ポイント表", headers: ["Name", "Total Pt", "Pt 順位", ...day.games], rows: day.points, day, mode: "points" }));
+      root.appendChild(buildTable({ title: "順位入力", headers: ["Placement", "1st count", "average", ...day.games], rows: day.placements, day, mode: "placement" }));
+      root.appendChild(buildTable({ title: "Hero Pick", headers: ["Name", "", "", ...day.games], rows: day.heroes.map((r) => [r[0], "", "", ...r.slice(1)]), day, mode: "text" }));
+      root.appendChild(buildTable({ title: "Comp", headers: ["Name", "", "", ...day.games], rows: day.comps.map((r) => [r[0], "", "", ...r.slice(1)]), day, mode: "text" }));
+      root.appendChild(buildTable({ title: "Schedule", headers: ["Time", "", "", ...day.games], rows: day.schedule.map((r) => [r[0], "", "", ...r.slice(1)]), day, mode: "schedule" }));
+      if (day.note) {
+        const note = document.createElement("p");
+        note.className = "archive-note";
+        note.textContent = day.note;
+        root.appendChild(note);
+      }
+    }
+
+    function initTabs() {
+      const tabs = document.getElementById("day-tabs");
+      Object.entries(DAY_RESULTS).forEach(([key, day], index) => {
+        const button = document.createElement("button");
+        button.className = `day-tab${index === 0 ? " active" : ""}`;
+        button.type = "button";
+        button.dataset.dayTab = key;
+        button.setAttribute("aria-pressed", String(index === 0));
+        button.innerHTML = `<span class="tab-main">${day.tab}</span><span class="tab-sub">${day.sub}</span>`;
+        button.addEventListener("click", () => {
+          document.querySelectorAll("[data-day-tab]").forEach((tab) => {
+            const isActive = tab.dataset.dayTab === key;
+            tab.classList.toggle("active", isActive);
+            tab.setAttribute("aria-pressed", String(isActive));
+          });
+          renderDay(key);
+        });
+        tabs.appendChild(button);
+      });
+      renderDay("day1");
+    }
+
+    initTabs();
   </script>
 </body>
 </html>
