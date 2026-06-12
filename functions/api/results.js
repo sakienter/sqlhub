@@ -42,7 +42,7 @@ export async function onRequest(context) {
 
     const data = await response.json();
     const result = jsonResponse(data, 200, {
-      'Cache-Control': 'public, max-age=30, s-maxage=120, stale-while-revalidate=300'
+      'Cache-Control': 'public, max-age=172800, s-maxage=172800, stale-while-revalidate=604800'
     });
 
     context.waitUntil(cache.put(cacheKey, result.clone()));
