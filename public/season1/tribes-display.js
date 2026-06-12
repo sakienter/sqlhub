@@ -1,4 +1,4 @@
-const S1_TRIBE_API_URL = '/api/season1/tribes';
+const S1_TRIBE_API_URL = './tribes.json?v=s1-static-20260613';
 let s1TribeConfig = {};
 
 fetch(S1_TRIBE_API_URL, { cache: 'no-store' })
