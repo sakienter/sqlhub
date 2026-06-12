@@ -1,6 +1,6 @@
 (() => {
   const API_PATH = '/api/results';
-  const ARCHIVE_VERSION = 's1-archive-pdf-20260613-corrections';
+  const ARCHIVE_VERSION = 's1-archive-pdf-20260613-corrections-v2';
   const ARCHIVE_PARTS = [
     './archive/summary.json',
     './archive/day1.json',
@@ -8,7 +8,10 @@
     './archive/day3.json',
     './archive/day4.json'
   ];
-  const CORRECTIONS_PATH = './archive/corrections.json';
+  const CORRECTION_PATHS = [
+    './archive/corrections.json',
+    './archive/corrections/day1-game4.json'
+  ];
   const originalFetch = window.fetch.bind(window);
 
   window.fetch = async (input, init = {}) => {
@@ -53,14 +56,35 @@
   }
 
   async function loadCorrections(init) {
-    try {
-      const response = await originalFetch(`${CORRECTIONS_PATH}?v=${encodeURIComponent(ARCHIVE_VERSION)}`, { ...init, cache: 'no-store' });
-      if (!response.ok) return {};
-      return await response.json();
-    } catch (error) {
-      console.warn('S1 correction load failed', error);
-      return {};
+    const merged = {};
+
+    for (const path of CORRECTION_PATHS) {
+      try {
+        const response = await originalFetch(`${path}?v=${encodeURIComponent(ARCHIVE_VERSION)}`, { ...init, cache: 'no-store' });
+        if (!response.ok) continue;
+        mergeCorrections(merged, await response.json());
+      } catch (error) {
+        console.warn('S1 correction load failed', path, error);
+      }
     }
+
+    return merged;
+  }
+
+  function mergeCorrections(target, source) {
+    if (!source || typeof source !== 'object') return target;
+
+    Object.keys(source).forEach(dayKey => {
+      target[dayKey] = target[dayKey] || {};
+      Object.keys(source[dayKey] || {}).forEach(gameKey => {
+        target[dayKey][gameKey] = {
+          ...(target[dayKey][gameKey] || {}),
+          ...(source[dayKey][gameKey] || {})
+        };
+      });
+    });
+
+    return target;
   }
 
   function applyCorrections(days, corrections) {
