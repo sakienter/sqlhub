@@ -79,12 +79,22 @@
     .players-details[open] summary::after { content: "閉じる"; }
     .players-details-body { padding: 0 0 16px; border-top: 1px solid rgba(24, 33, 40, 0.1); }
 
+    .table-wrap {
+      overflow-x: visible;
+      padding-bottom: 0;
+    }
+
+    table.archive-table {
+      width: 100%;
+      min-width: 0;
+    }
+
     .archive-table th,
     .archive-table td { text-align: center; white-space: nowrap; }
     .archive-table th:first-child,
     .archive-table td:first-child { text-align: center; }
     .archive-table td.name-cell,
-    .archive-table th.name-head { text-align: left; min-width: 150px; }
+    .archive-table th.name-head { text-align: left; min-width: 0; }
     .archive-table td.info-cell {
       color: var(--text-secondary);
       font-size: 13px;
@@ -95,20 +105,21 @@
     .archive-table td.total-cell { color: var(--crimson-dark); font-size: 15px; font-weight: 950; }
 
     .day-detail-table {
-      min-width: 1260px;
+      width: 100%;
+      min-width: 0;
       table-layout: fixed;
     }
     .day-detail-table th,
     .day-detail-table td {
-      padding: 9px 10px;
-      font-size: 13px;
+      padding: 8px 6px;
+      font-size: 12px;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .day-detail-table col.name-col { width: 190px; }
-    .day-detail-table col.stat-col { width: 92px; }
-    .day-detail-table col.rank-col { width: 92px; }
-    .day-detail-table col.game-col { width: 126px; }
+    .day-detail-table col.name-col { width: 14%; }
+    .day-detail-table col.stat-col { width: 8%; }
+    .day-detail-table col.rank-col { width: 8%; }
+    .day-detail-table col.game-col { width: 10%; }
     .day-detail-table .spacer-cell {
       color: transparent;
       background: #fffaf2;
