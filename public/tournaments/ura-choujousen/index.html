@@ -50,14 +50,16 @@
     }
     .schedule-text-list strong { color: var(--text-primary); font-weight: 950; }
 
-    .players-details {
+    .players-details,
+    .ban-details {
       background: #fffaf2;
       border: 1px solid rgba(24, 33, 40, 0.12);
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-soft);
       overflow: hidden;
     }
-    .players-details summary {
+    .players-details summary,
+    .ban-details summary {
       min-height: 52px;
       padding: 0 18px;
       display: flex;
@@ -69,15 +71,19 @@
       font-weight: 950;
       list-style: none;
     }
-    .players-details summary::-webkit-details-marker { display: none; }
-    .players-details summary::after {
+    .players-details summary::-webkit-details-marker,
+    .ban-details summary::-webkit-details-marker { display: none; }
+    .players-details summary::after,
+    .ban-details summary::after {
       content: "開く";
       color: var(--crimson-dark);
       font-size: 12px;
       font-weight: 900;
     }
-    .players-details[open] summary::after { content: "閉じる"; }
-    .players-details-body { padding: 0 0 16px; border-top: 1px solid rgba(24, 33, 40, 0.1); }
+    .players-details[open] summary::after,
+    .ban-details[open] summary::after { content: "閉じる"; }
+    .players-details-body,
+    .ban-details-body { padding: 0 0 16px; border-top: 1px solid rgba(24, 33, 40, 0.1); }
 
     .table-wrap { overflow-x: visible; padding-bottom: 0; }
     table.archive-table { width: 100%; min-width: 0; }
@@ -107,6 +113,19 @@
     .day-detail-table .spacer-cell { color: transparent; background: #fffaf2; }
     .text-data-table td.game-data { text-align: left; }
     .schedule-result-table td.game-data { text-align: center; }
+
+    .tribe-active {
+      color: #111;
+      background: #ff9800 !important;
+      font-weight: 950;
+    }
+    .tribe-missing {
+      margin: 14px 18px 0;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 750;
+      line-height: 1.7;
+    }
 
     .rank-gold,
     .rank-silver,
@@ -234,12 +253,14 @@
   </main>
 
   <script>
+    const TRIBES = ["アンデッド", "エレメンタル", "ドラゴン", "キルボア", "ナーガ", "マーロック", "メカ", "悪魔", "海賊", "獣"];
     const DAY_RESULTS = {
       day1: {
         tab: "Day 1", sub: "7試合", title: "Day 1", meta: ["2026/01/24（土）", "13:00 Start", "7 Matches"], games: ["game1", "game2", "game3", "game4", "game5", "game6", "game7"],
         points: [["Thundurus", "18.5", "8th", "2", "5", "3", "2", "1.5", "1", "4"], ["Alutemu", "23.5", "6th", "2", "1", "2", "1", "4.5", "9", "4"], ["MATSURI", "40", "2nd", "9", "2", "9", "5.5", "6", "4.5", "4"], ["SeseiSei", "28", "5th", "2", "4", "5.5", "5.5", "7", "3", "1"], ["haguren", "40", "2nd", "4", "7", "1", "9", "3", "7", "9"], ["yoshiyuki", "48.5", "1st", "6", "9", "5.5", "7", "9", "6", "6"], ["あれっくす", "39.5", "4th", "7", "6", "7", "3.5", "4.5", "4.5", "7"], ["Yanase", "21", "7th", "5", "3", "4", "3.5", "1.5", "2", "2"]],
         placements: [["Thundurus", "0", "6.4", "7", "4", "6", "7", "7.5", "8", "5"], ["Alutemu", "1", "5.8", "7", "8", "7", "8", "4.5", "1", "5"], ["MATSURI", "2", "3.6", "1", "7", "1", "3.5", "3", "4.5", "5"], ["SeseiSei", "0", "5.0", "7", "5", "3.5", "3.5", "2", "6", "8"], ["haguren", "2", "3.6", "5", "2", "8", "1", "6", "2", "1"], ["yoshiyuki", "2", "2.4", "3", "1", "3.5", "2", "1", "3", "3"], ["あれっくす", "0", "3.4", "2", "3", "2", "5.5", "4.5", "4.5", "2"], ["Yanase", "0", "6.0", "4", "6", "5", "5.5", "7.5", "7", "7"]],
         heroes: [["Thundurus", "マスターウェン", "セナリウス", "サイラス", "マスターウェン", "サーフィンレー", "ゲイルウィング", "AFケイ"], ["Alutemu", "シルヴァナス", "ゲイルウィング", "マスターウェン", "レノ", "ホームズ", "ムロゾンド", "ピュートリサイド"], ["MATSURI", "クロミー", "ガフ", "ンゾス", "ムロゾンド", "ムロゾンド", "エリーズ", "リッチキング"], ["SeseiSei", "ゼレク", "カートラス", "ワグトグル", "リッチキング", "オニクシア", "ブラン", "クラッグ"], ["haguren", "エリーズ", "スニード", "獄吏王", "ヨグサロン", "ンゾス", "ケリガン", "ネズミの王"], ["yoshiyuki", "タムシン", "シンドラゴサ", "AFケイ", "オニクシア", "テロン", "クロミー", "ムロゾンド"], ["あれっくす", "ヤシャラージュ", "サイラス", "ブルカン", "サイラス", "ブルカン", "バズィアル", "スニード"], ["Yanase", "ピュートリサイド", "ワグトグル", "オニクシア", "ゼレク", "クッキー", "サーフィンレー", "ザイレラ"]],
+        banAvailable: [["アンデッド", "マーロック", "メカ", "海賊", "獣"], ["エレメンタル", "ドラゴン", "マーロック", "海賊", "獣"], ["アンデッド", "ドラゴン", "ナーガ", "メカ", "海賊"], ["アンデッド", "ドラゴン", "メカ", "海賊", "獣"], ["アンデッド", "エレメンタル", "ドラゴン", "キルボア", "悪魔"], ["エレメンタル", "ナーガ", "マーロック", "悪魔", "海賊"], ["アンデッド", "ドラゴン", "メカ", "海賊", "獣"]],
         comps: [["Thundurus", "ゴルドリン", "テック構成", "甲殻アンデ", "甲殻アンデ", "甲殻アンデ", "板歩き", "アンデッド"], ["Alutemu", "ハンドバフマーロック", "エレメンタル", "板歩き", "甲殻アンデ", "フェルボア", "酸性降雨", "甲殻アンデ"], ["MATSURI", "エレクトロン", "ナラァ", "甲殻アンデ", "ナラァ", "純キルボア", "サイカステック", "甲殻アンデ"], ["SeseiSei", "ナラァ", "テック構成", "プリズムスケイル", "ツァリナ", "甲殻アンデ", "動物語", "甲殻アンデ"], ["haguren", "先見性ツァリナ", "テック構成", "甲殻アンデ", "シリシッド", "雨キルボア", "酸性降雨", "甲殻アンデ"], ["yoshiyuki", "インコ負け犬", "板歩き", "甲殻アンデ", "甲殻アンデ", "甲殻アンデ", "テック構成", "甲殻アンデ"], ["あれっくす", "ポイズンマーロックチェンジ", "Wニュウザオ", "エヴォーカー", "ドローンドラッカリ", "2回し", "時渡ナラァ", "甲殻アンデ"], ["Yanase", "混成", "海賊", "甲殻アンデ", "甲殻アンデ", "アンデッド", "画家マーロック", "ユードラ"]],
         schedule: [["START TIME", "13:01", "13:42", "14:17", "14:54", "15:32", "16:16", "16:53"], ["END TIME", "13:38", "14:16", "14:50", "15:30", "16:10", "16:52", "17:30"]], note: "※ game5 後に休憩。"
       },
@@ -263,36 +284,17 @@
 
     function getPlacementMap(day) {
       const map = {};
-      day.placements.forEach((row) => {
-        map[row[0]] = row.slice(3).map((v) => Number(v));
-      });
+      day.placements.forEach((row) => { map[row[0]] = row.slice(3).map((v) => Number(v)); });
       return map;
     }
-
-    function rankClass(value) {
-      const n = Number(value);
-      if (n === 1) return "first-cell";
-      if (n > 1 && n <= 2.5) return "second-cell";
-      return "";
-    }
-
+    function rankClass(value) { const n = Number(value); if (n === 1) return "first-cell"; if (n > 1 && n <= 2.5) return "second-cell"; return ""; }
     function makeColgroup(gameCount) {
       const group = document.createElement("colgroup");
-      const base = [{ name: "name", width: 14 }, { name: "stat", width: 8 }, { name: "rank", width: 8 }];
+      [{ width: 14 }, { width: 8 }, { width: 8 }].forEach((col) => { const el = document.createElement("col"); el.style.width = `${col.width}%`; group.appendChild(el); });
       const gameWidth = (70 / gameCount).toFixed(3);
-      base.forEach((col) => {
-        const el = document.createElement("col");
-        el.style.width = `${col.width}%`;
-        group.appendChild(el);
-      });
-      for (let i = 0; i < gameCount; i += 1) {
-        const el = document.createElement("col");
-        el.style.width = `${gameWidth}%`;
-        group.appendChild(el);
-      }
+      for (let i = 0; i < gameCount; i += 1) { const el = document.createElement("col"); el.style.width = `${gameWidth}%`; group.appendChild(el); }
       return group;
     }
-
     function buildTable({ title, headers, rows, day, mode }) {
       const section = document.createElement("section");
       section.className = "day-section";
@@ -300,26 +302,17 @@
       heading.className = "mini-section-title";
       heading.textContent = title;
       section.appendChild(heading);
-
       const wrap = document.createElement("div");
       wrap.className = "table-wrap";
       const table = document.createElement("table");
       table.className = `archive-table day-detail-table ${mode === "text" ? "text-data-table" : ""} ${mode === "schedule" ? "schedule-result-table" : ""}`;
       table.setAttribute("aria-label", `${day.title} ${title}`);
       table.appendChild(makeColgroup(day.games.length));
-
       const thead = document.createElement("thead");
       const headRow = document.createElement("tr");
-      headers.forEach((header, index) => {
-        const th = document.createElement("th");
-        th.textContent = header;
-        if (index === 0) th.className = "name-head";
-        if (header === "") th.className = "spacer-cell";
-        headRow.appendChild(th);
-      });
+      headers.forEach((header, index) => { const th = document.createElement("th"); th.textContent = header; if (index === 0) th.className = "name-head"; if (header === "") th.className = "spacer-cell"; headRow.appendChild(th); });
       thead.appendChild(headRow);
       table.appendChild(thead);
-
       const placementMap = getPlacementMap(day);
       const tbody = document.createElement("tbody");
       rows.forEach((row) => {
@@ -352,30 +345,77 @@
       section.appendChild(wrap);
       return section;
     }
-
+    function buildBanList(day) {
+      const section = document.createElement("section");
+      section.className = "day-section";
+      const heading = document.createElement("div");
+      heading.className = "mini-section-title";
+      heading.textContent = "BAN LIST";
+      section.appendChild(heading);
+      const details = document.createElement("details");
+      details.className = "ban-details";
+      const summary = document.createElement("summary");
+      summary.textContent = "登場種族・非登場種族";
+      details.appendChild(summary);
+      const body = document.createElement("div");
+      body.className = "ban-details-body";
+      if (!Array.isArray(day.banAvailable) || !day.banAvailable.length) {
+        const missing = document.createElement("p");
+        missing.className = "tribe-missing";
+        missing.textContent = "登場種族データは準備中です。色付きセルが登場種族になります。";
+        body.appendChild(missing);
+      } else {
+        const wrap = document.createElement("div");
+        wrap.className = "table-wrap";
+        const table = document.createElement("table");
+        table.className = "archive-table day-detail-table";
+        table.setAttribute("aria-label", `${day.title} BAN LIST`);
+        table.appendChild(makeColgroup(day.games.length));
+        const thead = document.createElement("thead");
+        const headRow = document.createElement("tr");
+        ["Tribe", "", "", ...day.games].forEach((header, index) => { const th = document.createElement("th"); th.textContent = header; if (index === 0) th.className = "name-head"; if (header === "") th.className = "spacer-cell"; headRow.appendChild(th); });
+        thead.appendChild(headRow);
+        table.appendChild(thead);
+        const tbody = document.createElement("tbody");
+        TRIBES.forEach((tribe) => {
+          const tr = document.createElement("tr");
+          [tribe, "", ""].forEach((value, index) => { const td = document.createElement("td"); td.textContent = value; td.className = index === 0 ? "name-cell" : "spacer-cell"; tr.appendChild(td); });
+          day.games.forEach((_, gameIndex) => {
+            const td = document.createElement("td");
+            td.textContent = tribe;
+            if ((day.banAvailable[gameIndex] || []).includes(tribe)) td.className = "tribe-active";
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        wrap.appendChild(table);
+        body.appendChild(wrap);
+        const note = document.createElement("p");
+        note.className = "archive-note";
+        note.textContent = "※ 色付きセルが登場種族です。";
+        body.appendChild(note);
+      }
+      details.appendChild(body);
+      section.appendChild(details);
+      return section;
+    }
     function renderDay(dayKey) {
       const day = DAY_RESULTS[dayKey];
       const root = document.getElementById("day-detail-root");
       root.innerHTML = "";
-
       const current = document.createElement("div");
       current.className = "day-current";
       current.innerHTML = `<p class="day-kicker">Selected Day</p><h2>${day.title}</h2><div class="meta-line">${day.meta.map((m) => `<span>${m}</span>`).join("")}</div>`;
       root.appendChild(current);
-
       root.appendChild(buildTable({ title: "ポイント表", headers: ["Name", "Total Pt", "Pt 順位", ...day.games], rows: day.points, day, mode: "points" }));
       root.appendChild(buildTable({ title: "順位入力", headers: ["Placement", "1st count", "average", ...day.games], rows: day.placements, day, mode: "placement" }));
       root.appendChild(buildTable({ title: "Hero Pick", headers: ["Name", "", "", ...day.games], rows: day.heroes.map((r) => [r[0], "", "", ...r.slice(1)]), day, mode: "text" }));
+      root.appendChild(buildBanList(day));
       root.appendChild(buildTable({ title: "Comp", headers: ["Name", "", "", ...day.games], rows: day.comps.map((r) => [r[0], "", "", ...r.slice(1)]), day, mode: "text" }));
       root.appendChild(buildTable({ title: "Schedule", headers: ["Time", "", "", ...day.games], rows: day.schedule.map((r) => [r[0], "", "", ...r.slice(1)]), day, mode: "schedule" }));
-      if (day.note) {
-        const note = document.createElement("p");
-        note.className = "archive-note";
-        note.textContent = day.note;
-        root.appendChild(note);
-      }
+      if (day.note) { const note = document.createElement("p"); note.className = "archive-note"; note.textContent = day.note; root.appendChild(note); }
     }
-
     function initTabs() {
       const tabs = document.getElementById("day-tabs");
       Object.entries(DAY_RESULTS).forEach(([key, day], index) => {
@@ -386,18 +426,13 @@
         button.setAttribute("aria-pressed", String(index === 0));
         button.innerHTML = `<span class="tab-main">${day.tab}</span><span class="tab-sub">${day.sub}</span>`;
         button.addEventListener("click", () => {
-          document.querySelectorAll("[data-day-tab]").forEach((tab) => {
-            const isActive = tab.dataset.dayTab === key;
-            tab.classList.toggle("active", isActive);
-            tab.setAttribute("aria-pressed", String(isActive));
-          });
+          document.querySelectorAll("[data-day-tab]").forEach((tab) => { const isActive = tab.dataset.dayTab === key; tab.classList.toggle("active", isActive); tab.setAttribute("aria-pressed", String(isActive)); });
           renderDay(key);
         });
         tabs.appendChild(button);
       });
       renderDay("day1");
     }
-
     initTabs();
   </script>
 </body>
