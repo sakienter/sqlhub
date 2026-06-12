@@ -316,10 +316,31 @@ function renderObjectTable(table, columns, rows, options = {}) {
       const value = row[column.key];
       td.textContent = formatCellValue(value);
       if (isFirstRank(value) || (Number(value) === 1 && column.key === 'placement')) td.classList.add('first-rank-cell');
+      const highlightClass = getCellHighlightClass(table.id, column.key, value);
+      if (highlightClass) td.classList.add(highlightClass);
       tr.appendChild(td);
     });
     tbody.appendChild(tr);
   });
+}
+
+function getCellHighlightClass(tableId, columnKey, value) {
+  const num = Number(value);
+  const isGameColumn = /^game\d+$/.test(String(columnKey));
+
+  if (!Number.isFinite(num) || !isGameColumn) return '';
+
+  if (tableId === 'day-points-table') {
+    if (num === 7) return 'score-gold';
+    if (num === 6) return 'score-silver';
+  }
+
+  if (tableId === 'day-placements-table') {
+    if (num === 1) return 'score-gold';
+    if (num === 2) return 'score-silver';
+  }
+
+  return '';
 }
 
 function renderError(error) {
