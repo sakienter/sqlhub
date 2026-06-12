@@ -4,17 +4,41 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CN vs JP | Avenge Hub</title>
-  <meta name="description" content="CN vs JP の大会情報をまとめるページです。" />
+  <meta name="description" content="CN vs JP 2025 July の大会情報、ルール、日程、決勝メンバー、結果スプレッドシートをまとめるページです。" />
   <link rel="stylesheet" href="../../common.css" />
   <style>
-    .tournament-hero{min-height:260px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(135deg,#071421 0%,#0d4352 52%,#7f2634 100%);border:1px solid rgba(255,255,255,.22);border-radius:18px;box-shadow:0 22px 40px rgba(3,14,24,.34)}
-    .tournament-hero .back-link{align-self:flex-start;color:#fff;background:rgba(4,18,23,.42);border-color:rgba(255,255,255,.24)}
-    .tournament-title-block{margin:2.2rem 0 0}
+    .tournament-hero{min-height:260px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(135deg,#071421 0%,#0d4352 52%,#7f2634 100%);border:1px solid rgba(255,255,255,.22);border-radius:18px;box-shadow:0 22px 40px rgba(3,14,24,.34);position:relative;overflow:hidden}
+    .tournament-hero::before{content:"";position:absolute;inset:-40% 38% auto auto;width:420px;height:420px;background:radial-gradient(circle,rgba(255,250,242,.18),transparent 68%);pointer-events:none}
+    .tournament-hero .back-link{align-self:flex-start;color:#fff;background:rgba(4,18,23,.42);border-color:rgba(255,255,255,.24);position:relative;z-index:1}
+    .tournament-title-block{margin:2.2rem 0 0;position:relative;z-index:1}
     .tournament-hero h1{margin:0;color:#fff;font-size:clamp(42px,6vw,76px);font-weight:950;letter-spacing:-.06em;text-shadow:0 10px 24px rgba(3,14,24,.48)}
     .tournament-hero .hero-subtitle{margin:10px 0 0;color:rgba(255,255,255,.88);font-size:clamp(18px,2vw,28px);font-weight:900;letter-spacing:.04em;text-shadow:0 5px 16px rgba(3,14,24,.45)}
-    .rule-text-list{margin:0;padding-left:1.35rem;color:var(--text-secondary);font-size:15px;font-weight:750;line-height:1.95}
-    .rule-text-list strong{color:var(--text-primary);font-weight:950}
-    .placeholder-box{padding:18px 20px;color:var(--text-secondary);background:rgba(25,182,217,.08);border:1px solid rgba(25,182,217,.22);border-radius:10px;font-size:15px;font-weight:800;line-height:1.85}
+    .rule-text{margin:0;color:var(--text-secondary);font-size:15px;font-weight:750;line-height:1.95}
+    .rule-text p{margin:0 0 10px}
+    .rule-text p:last-child{margin-bottom:0}
+    .rule-text strong{color:var(--text-primary);font-weight:950}
+    .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+    .info-card{padding:16px 18px;background:#fffaf2;border:1px solid rgba(24,33,40,.12);border-radius:10px;box-shadow:var(--shadow-soft)}
+    .info-card h3{margin:0 0 8px;color:var(--text-primary);font-size:16px;font-weight:950;letter-spacing:-.02em}
+    .info-card p{margin:0;color:var(--text-secondary);font-size:14px;font-weight:760;line-height:1.75}
+    .schedule-table{min-width:720px;border-spacing:0 8px}
+    .schedule-table td,.schedule-table th{vertical-align:top}
+    .schedule-date{font-weight:950;color:var(--text-primary);white-space:nowrap}
+    .schedule-note{font-size:13px;color:var(--text-muted);font-weight:760;line-height:1.65}
+    .player-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+    .player-card{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;background:#fffaf2;border:1px solid rgba(24,33,40,.12);border-radius:10px;box-shadow:var(--shadow-soft)}
+    .player-name{color:var(--text-primary);font-size:15px;font-weight:950;line-height:1.35}
+    .player-tag{flex:0 0 auto;display:inline-flex;align-items:center;min-height:26px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:950;border:1px solid rgba(24,33,40,.12);background:rgba(25,182,217,.10);color:var(--accent-dark)}
+    .player-tag.cn{background:rgba(201,75,75,.12);color:var(--crimson-dark)}
+    .link-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+    .link-card{display:flex;flex-direction:column;gap:10px;padding:16px 18px;background:#fffaf2;border:1px solid rgba(24,33,40,.12);border-radius:10px;box-shadow:var(--shadow-soft)}
+    .link-card h3{margin:0;color:var(--text-primary);font-size:16px;font-weight:950}
+    .link-card p{margin:0;color:var(--text-secondary);font-size:13px;font-weight:760;line-height:1.65}
+    .button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+    .button.external{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 14px;color:#fff;background:linear-gradient(90deg,var(--green-dark),var(--green));border:1px solid rgba(24,33,40,.1);border-radius:999px;font-size:13px;font-weight:900;text-decoration:none;box-shadow:var(--shadow-soft)}
+    .thanks-box{padding:18px 20px;color:var(--text-primary);background:rgba(25,182,217,.08);border:1px solid rgba(25,182,217,.22);border-radius:10px;font-size:15px;font-weight:850;line-height:1.85}
+    .thanks-box strong{font-weight:950}
+    @media (max-width:720px){.tournament-hero{min-height:230px}.tournament-hero h1{font-size:clamp(40px,13vw,58px)}.section-body{padding:16px}.player-card{align-items:flex-start;flex-direction:column}.schedule-table{min-width:640px}}
   </style>
 </head>
 <body>
@@ -30,17 +54,105 @@
     <section class="score-card">
       <div class="section-title">概要とルール</div>
       <div class="section-body">
-        <ul class="rule-text-list">
-          <li><strong>大会名：</strong>CN vs JP</li>
-          <li><strong>詳細：</strong>準備中です。大会概要、ルール、出場選手、リンク等を受け取り次第、ここに反映します。</li>
-        </ul>
+        <div class="rule-text">
+          <p><strong>CN vs JP</strong> は、中国勢と日本勢によるハースストーン・バトルグラウンドの招待制対抗戦です。</p>
+          <p><strong>DAY 1：</strong>ポイント制。上位4人抜けルール、7試合。</p>
+          <p><strong>DAY 2：</strong>チェックルール。40ptでチェック、優勝者が出るまで実施。</p>
+        </div>
       </div>
     </section>
 
     <section class="score-card">
-      <div class="section-title orange">Tournament Links</div>
+      <div class="section-title orange">Schedule</div>
       <div class="section-body">
-        <div class="placeholder-box">リンク情報は準備中です。</div>
+        <div class="table-wrap">
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th>日程</th>
+                <th>内容</th>
+                <th>補足</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="schedule-date">2025/07/04</td>
+                <td>中国勢で予選</td>
+                <td class="schedule-note">中国勢16人 → 8人</td>
+              </tr>
+              <tr>
+                <td class="schedule-date">2025/07/05</td>
+                <td>日中合同で予選</td>
+                <td class="schedule-note">中国勢8人＋日本勢8人で2卓。<br>13時頃 Lobby A：haguren、梁瀬、SeseiSei、Thundurus<br>19時頃 Lobby B：Alutemu、MATSURI、Satellite、yoshiyuki</td>
+              </tr>
+              <tr>
+                <td class="schedule-date">2025/07/06</td>
+                <td>決勝</td>
+                <td class="schedule-note">5日の勝ち上がり8人で決勝</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="score-card">
+      <div class="section-title">決勝メンバー</div>
+      <div class="section-body">
+        <div class="player-grid">
+          <div class="player-card"><span class="player-name">幻林（HuYaSisyphus）</span><span class="player-tag cn">中</span></div>
+          <div class="player-card"><span class="player-name">SeseiSei</span><span class="player-tag">日</span></div>
+          <div class="player-card"><span class="player-name">梁瀬</span><span class="player-tag">日</span></div>
+          <div class="player-card"><span class="player-name">仙居呆呆兽</span><span class="player-tag cn">中</span></div>
+          <div class="player-card"><span class="player-name">lighting（LOUDER）</span><span class="player-tag cn">中</span></div>
+          <div class="player-card"><span class="player-name">新娘（huyaVigo）</span><span class="player-tag cn">中</span></div>
+          <div class="player-card"><span class="player-name">yoshiyuki</span><span class="player-tag">日</span></div>
+          <div class="player-card"><span class="player-name">小孩无敌（huyagaoshou）</span><span class="player-tag cn">中</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="score-card">
+      <div class="section-title orange">Score Board</div>
+      <div class="section-body">
+        <div class="link-grid">
+          <article class="link-card">
+            <h3>結果スプレッドシート 1</h3>
+            <p>CN vs JP の結果確認用スプレッドシートです。</p>
+            <div class="button-row">
+              <a class="button external" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vS6tdpN3Vg_Vf1fuyTsQTvbo8RE4yDsYgBHGriIGynKucO58e7Kjd9Ftk-lfFOkbdxvTpOGA1ELkvSh/pubhtml" target="_blank" rel="noopener">スプレッドシートを開く</a>
+            </div>
+          </article>
+          <article class="link-card">
+            <h3>結果スプレッドシート 2</h3>
+            <p>CN vs JP の結果確認用スプレッドシートです。</p>
+            <div class="button-row">
+              <a class="button external" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTAPNlQE50ZcjAHA24TpLbGyKAzN-JwAtX-sCxYXRpgU6K3hGlg50olqMLnUwznPm3Z4VK9-bmJHihY/pubhtml" target="_blank" rel="noopener">スプレッドシートを開く</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="score-card">
+      <div class="section-title">Tournament Links</div>
+      <div class="section-body">
+        <div class="link-grid">
+          <article class="link-card">
+            <h3>大会について</h3>
+            <p>外部サイトに掲載されている大会告知・情報ページです。</p>
+            <div class="button-row">
+              <a class="button external" href="https://www.iyingdi.com/tz/post/5609636" target="_blank" rel="noopener">外部リンクを開く</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="score-card">
+      <div class="section-title">Credit</div>
+      <div class="section-body">
+        <div class="thanks-box">情報提供：<strong>MATSURIさん、Alutemuさん</strong></div>
       </div>
     </section>
 
