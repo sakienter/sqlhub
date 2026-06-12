@@ -21,7 +21,7 @@
     #past-tournaments .season-grid{grid-template-columns:repeat(auto-fit,minmax(260px,340px));justify-content:center}
     #seasons .season-card.card-link h2,
     #past-tournaments .season-card.card-link h2{font-size:clamp(20px,2vw,26px)}
-    .image-wipe-card{background:#fffaf2}
+    .image-wipe-card{background:#fffaf2;transition:color .72s var(--wipe-easing),transform .42s var(--wipe-easing),border-color .42s var(--wipe-easing),box-shadow .42s var(--wipe-easing)}
     .image-wipe-card:hover{background:#fffaf2}
     .image-wipe-card::before{content:"";position:absolute;inset:0;z-index:0;background-image:linear-gradient(90deg,rgba(7,14,28,.78),rgba(7,14,28,.22)),var(--wipe-image);background-size:cover,cover;background-position:center,var(--wipe-image-position,center 42%);background-repeat:no-repeat;clip-path:inset(0 100% 0 0);transition:clip-path var(--wipe-duration) var(--wipe-easing);pointer-events:none}
     .image-wipe-card:hover::before{clip-path:inset(0 0 0 0)}
