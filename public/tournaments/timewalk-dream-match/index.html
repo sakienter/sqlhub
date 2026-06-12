@@ -10,321 +10,184 @@
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="../../common.css" />
   <style>
-    .archive-rule-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin: 0;
-      padding-left: 1.25rem;
-      color: var(--text-primary);
-      font-size: 15px;
-      font-weight: 750;
-      line-height: 1.8;
-    }
-
-    .archive-rule-list li {
-      padding-left: 2px;
-    }
-
-    .archive-rule-label {
-      color: var(--text-primary);
-      font-weight: 950;
-    }
-
-    .archive-table th,
-    .archive-table td {
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    .archive-table th:first-child,
-    .archive-table td:first-child {
-      text-align: center;
-    }
-
-    .archive-table td.name-cell,
-    .archive-table th.name-head {
-      text-align: left;
-      min-width: 150px;
-    }
-
-    .archive-table td.total-cell {
-      color: var(--crimson-dark);
-      font-size: 15px;
-      font-weight: 950;
-    }
-
-    .archive-table .past-game {
-      background: rgba(24, 33, 40, 0.18);
-    }
-
-    .hero-game-table {
-      table-layout: fixed;
-      width: 100%;
-    }
-
-    .hero-game-table th,
-    .hero-game-table td {
-      width: 20%;
-    }
-
-    .hero-game-table .name-head,
-    .hero-game-table .name-cell {
-      min-width: 0;
-      width: 20%;
-    }
-
-    .hero-game-table .info-row td {
-      min-height: 58px;
-      border-top: 2px solid rgba(24, 33, 40, 0.12);
-      white-space: normal;
-      word-break: normal;
-      overflow-wrap: anywhere;
-      line-height: 1.45;
-      font-weight: 850;
-      vertical-align: middle;
-    }
-
-    .hero-game-table .info-label {
-      color: #001018;
-      background: #18d9d6;
-      font-size: 16px;
-      font-style: italic;
-      font-weight: 950;
-      text-align: center;
-    }
-
-    .hero-game-table .active-label {
-      background: #dff7f4;
-      font-style: normal;
-    }
-
-    .hero-game-table .ban-label {
-      background: #fff1ed;
-      font-style: normal;
-    }
-
-    .hero-game-table .info-cell {
-      background: #fffaf2;
-      font-size: 13px;
-    }
-
-    .rank-gold,
-    .rank-silver,
-    .rank-bronze {
-      font-weight: 950;
-    }
-
-    .rank-gold { color: var(--crimson-dark); }
-    .rank-silver { color: var(--green-dark); }
-    .rank-bronze { color: var(--amber-dark); }
-
-    .archive-note {
-      margin: 10px 14px 0;
-      color: var(--text-muted);
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 1.7;
-    }
-
-    .archive-link {
-      display: inline-flex;
-      align-items: center;
-      width: fit-content;
-      min-height: 34px;
-      margin-top: 8px;
-      padding: 0 12px;
-      color: #fff;
-      background: linear-gradient(90deg, var(--green-dark), var(--green));
-      border: 1px solid rgba(24, 33, 40, 0.1);
-      border-radius: 4px;
-      box-shadow: var(--shadow-soft);
-      font-size: 13px;
-      font-weight: 900;
-      text-decoration: none;
-    }
-
-    .archive-link:hover {
-      filter: brightness(.98);
-    }
+    .hero.archive-hero{position:relative;overflow:hidden;padding:2.5rem 2rem;text-align:center;background:linear-gradient(135deg,#050810 0%,#0a1628 60%,#0d1f33 100%);border:1px solid rgba(226,80,74,.25);border-radius:12px;box-shadow:0 18px 48px rgba(5,12,20,.28)}
+    .hero.archive-hero::before{content:"";position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(226,80,74,.15) 0%,transparent 70%);pointer-events:none}
+    .hero.archive-hero::after{content:none;display:none}
+    .archive-hero .back-link{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;margin:0 0 1.75rem;color:#e6edf5;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:8px 20px;font-size:13px;font-weight:500;backdrop-filter:none;text-decoration:none}
+    .archive-hero .eyebrow{position:relative;z-index:1;margin:0;color:#9aa8bb;font-size:11px;font-weight:500;letter-spacing:.3em;text-transform:uppercase}
+    .archive-hero h1{position:relative;z-index:1;margin:1rem 0 0;color:#f5f8fc;font-size:clamp(36px,5.8vw,56px);font-weight:500;letter-spacing:.06em;line-height:1.3;text-shadow:0 0 24px rgba(226,80,74,.45)}
+    .archive-hero .title-line{position:relative;z-index:1;width:160px;height:1px;margin:1.5rem auto 0;background:linear-gradient(90deg,transparent,#e2504a,transparent)}
+    .overview-subsection{margin-top:24px}.overview-subsection:first-child{margin-top:0}
+    .archive-rule-list,.schedule-text-list{display:flex;flex-direction:column;gap:10px;margin:0;padding-left:1.25rem;color:var(--text-primary);font-size:15px;font-weight:750;line-height:1.8}
+    .archive-rule-label,.schedule-text-list strong{font-weight:950}
+    .players-details,.section-details{width:calc(100% - 28px);margin:0 auto;background:#fffaf2;border:1px solid rgba(24,33,40,.12);border-radius:var(--radius-md);box-shadow:var(--shadow-soft);overflow:hidden}
+    .players-details summary,.section-details summary{min-height:52px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:15px;font-weight:950;list-style:none}
+    .players-details summary::-webkit-details-marker,.section-details summary::-webkit-details-marker{display:none}
+    .players-details summary::after,.section-details summary::after{content:"開く";color:var(--crimson-dark);font-size:12px;font-weight:900}
+    .players-details[open] summary::after,.section-details[open] summary::after{content:"閉じる"}
+    .players-details-body,.section-details-body{padding:0 0 16px;border-top:1px solid rgba(24,33,40,.1)}
+    .table-wrap{overflow-x:visible;padding-bottom:0}
+    table.archive-table{width:100%;min-width:0;table-layout:fixed}
+    .archive-table th,.archive-table td{text-align:center;white-space:nowrap}
+    .archive-table td{overflow:hidden;text-overflow:ellipsis}
+    .archive-table td[title]{cursor:help}
+    .archive-table td.name-cell,.archive-table th.name-head{text-align:left;min-width:0}
+    .archive-table td.total-cell{color:var(--crimson-dark);font-size:15px;font-weight:950}
+    .rank-gold,.rank-silver,.rank-bronze{font-weight:950}
+    .rank-gold{color:var(--crimson-dark)}.rank-silver{color:var(--green-dark)}.rank-bronze{color:var(--amber-dark)}
+    .day-score{color:var(--text-primary);font-weight:900}
+    .winner-row td{font-weight:950}
+    .past-game{background:rgba(24,33,40,.08)}
+    .archive-link{display:inline-flex;align-items:center;width:fit-content;min-height:34px;margin-top:8px;padding:0 12px;color:#fff;background:linear-gradient(90deg,var(--green-dark),var(--green));border:1px solid rgba(24,33,40,.1);border-radius:4px;box-shadow:var(--shadow-soft);font-size:13px;font-weight:900;text-decoration:none}
+    .archive-link:hover{filter:brightness(.98)}
+    .archive-note{margin:10px 14px 0;color:var(--text-muted);font-size:12px;font-weight:700;line-height:1.7}
   </style>
 </head>
 <body>
   <main class="page-shell">
-    <header class="hero">
+    <header class="hero archive-hero">
       <a class="back-link" href="../../">← Avenge Hub へ戻る</a>
       <p class="eyebrow">Past Tournament</p>
       <h1>時渡りドリームマッチ</h1>
+      <div class="title-line" aria-hidden="true"></div>
     </header>
 
     <section class="score-card">
-      <div class="section-title">Rules</div>
+      <div class="section-title">Overview</div>
       <div class="section-body">
-        <ul class="archive-rule-list">
-          <li><span class="archive-rule-label">試合形式：</span>3試合の合計ポイントを競う。チェックフォーマットではありません。</li>
-          <li><span class="archive-rule-label">ポイント：</span>最終戦のみポイントを反映。1位 7pt / 2位 6pt / 3位 5pt / 4位 4pt / 5位 3pt / 6位 2pt / 7位 1pt / 8位 0pt</li>
-          <li><span class="archive-rule-label">順位判定：</span>同時落ちの折半なし。順位はゲーム内の左表示を参照。</li>
-          <li><span class="archive-rule-label">タイブレーク：</span>3試合後に合計獲得ポイント1位が2名以上の場合のみ第4試合を実施し、4試合目で1位を獲得したプレイヤーが優勝となります。</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="score-card">
-      <div class="section-title purple">Results</div>
-      <div class="section-body">
-        <section class="day-section">
-          <div class="mini-section-title">ポイント集計</div>
-          <div class="table-wrap">
-            <table class="archive-table" aria-label="ポイント集計">
-              <thead>
-                <tr>
-                  <th class="name-head">Name</th>
-                  <th>Total Pt</th>
-                  <th>Pt 順位</th>
-                  <th class="past-game">game1</th>
-                  <th class="past-game">game2</th>
-                  <th class="past-game">game3</th>
-                  <th>game4</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="name-cell">Yanase</td>
-                  <td class="total-cell">4</td><td>4th</td><td class="past-game">6</td><td class="past-game">5</td><td class="past-game">7</td><td>4</td>
-                </tr>
-                <tr>
-                  <td class="name-cell">Thundurus</td>
-                  <td class="total-cell">1</td><td>7th</td><td class="past-game">1</td><td class="past-game">6</td><td class="past-game">0</td><td>1</td>
-                </tr>
-                <tr>
-                  <td class="name-cell">Alutemu</td>
-                  <td class="total-cell">3</td><td>5th</td><td class="past-game">4</td><td class="past-game">4</td><td class="past-game">6</td><td>3</td>
-                </tr>
-                <tr>
-                  <td class="name-cell">SeseiSei</td>
-                  <td class="total-cell">0</td><td>8th</td><td class="past-game">0</td><td class="past-game">2</td><td class="past-game">3</td><td>0</td>
-                </tr>
-                <tr class="winner-row">
-                  <td class="name-cell">MATSURI</td>
-                  <td class="total-cell">7</td><td class="rank-gold">1st</td><td class="past-game">7</td><td class="past-game">7</td><td class="past-game">4</td><td>7</td>
-                </tr>
-                <tr>
-                  <td class="name-cell">あれっくす</td>
-                  <td class="total-cell">5</td><td>3rd</td><td class="past-game">2</td><td class="past-game">0</td><td class="past-game">2</td><td>5</td>
-                </tr>
-                <tr>
-                  <td class="name-cell">Yoshiyuki</td>
-                  <td class="total-cell">2</td><td>6th</td><td class="past-game">3</td><td class="past-game">3</td><td class="past-game">1</td><td>2</td>
-                </tr>
-                <tr>
-                  <td class="name-cell">gaiabot</td>
-                  <td class="total-cell">6</td><td>2nd</td><td class="past-game">5</td><td class="past-game">1</td><td class="past-game">5</td><td>6</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="archive-note">※ 特殊ルールにより、Total Pt と Pt 順位は最終戦（game4）のポイントのみを反映。</p>
+        <section class="overview-subsection">
+          <div class="mini-section-title">Rules</div>
+          <ul class="archive-rule-list">
+            <li><span class="archive-rule-label">試合形式：</span>3試合の合計ポイントを競います。チェックフォーマットではありません。</li>
+            <li><span class="archive-rule-label">ポイント：</span>1位 7pt / 2位 6pt / 3位 5pt / 4位 4pt / 5位 3pt / 6位 2pt / 7位 1pt / 8位 0pt</li>
+            <li><span class="archive-rule-label">順位判定：</span>同時落ちの折半なし。順位はゲーム内の左表示を参照します。</li>
+            <li><span class="archive-rule-label">タイブレーク：</span>3試合後に合計獲得ポイント1位が2名以上の場合のみ第4試合を実施し、4試合目で1位を獲得したプレイヤーが優勝となります。</li>
+          </ul>
         </section>
-
-        <section class="day-section">
-          <div class="mini-section-title">順位</div>
-          <div class="table-wrap">
-            <table class="archive-table" aria-label="各試合の順位">
-              <thead>
-                <tr>
-                  <th class="name-head">Placement</th>
-                  <th>1st count</th>
-                  <th>average</th>
-                  <th class="past-game">game1</th>
-                  <th class="past-game">game2</th>
-                  <th class="past-game">game3</th>
-                  <th>game4</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td class="name-cell">Yanase</td><td>1</td><td>2.5</td><td class="past-game">2</td><td class="past-game">3</td><td class="past-game">1</td><td>4</td></tr>
-                <tr><td class="name-cell">Thundurus</td><td>0</td><td>6.0</td><td class="past-game">7</td><td class="past-game">2</td><td class="past-game">8</td><td>7</td></tr>
-                <tr><td class="name-cell">Alutemu</td><td>0</td><td>3.8</td><td class="past-game">4</td><td class="past-game">4</td><td class="past-game">2</td><td>5</td></tr>
-                <tr><td class="name-cell">SeseiSei</td><td>0</td><td>6.8</td><td class="past-game">8</td><td class="past-game">6</td><td class="past-game">5</td><td>8</td></tr>
-                <tr class="winner-row"><td class="name-cell">MATSURI</td><td>3</td><td>1.8</td><td class="past-game">1</td><td class="past-game">1</td><td class="past-game">4</td><td>1</td></tr>
-                <tr><td class="name-cell">あれっくす</td><td>0</td><td>5.8</td><td class="past-game">6</td><td class="past-game">8</td><td class="past-game">6</td><td>3</td></tr>
-                <tr><td class="name-cell">Yoshiyuki</td><td>0</td><td>5.8</td><td class="past-game">5</td><td class="past-game">5</td><td class="past-game">7</td><td>6</td></tr>
-                <tr><td class="name-cell">gaiabot</td><td>0</td><td>3.8</td><td class="past-game">3</td><td class="past-game">7</td><td class="past-game">3</td><td>2</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="day-section">
-          <div class="mini-section-title">ヒーロー選択 / アノマリー / 種族</div>
-          <div class="table-wrap">
-            <table class="archive-table hero-game-table" aria-label="ヒーロー選択とアノマリーと種族">
-              <thead>
-                <tr>
-                  <th class="name-head">Name</th>
-                  <th>Game 1</th>
-                  <th>Game 2</th>
-                  <th>Game 3</th>
-                  <th>Game 4</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td class="name-cell">Yanase</td><td>シンドラゴサ</td><td>ザイレラ</td><td>クロミー</td><td>レノ</td></tr>
-                <tr><td class="name-cell">Thundurus</td><td>ロー</td><td>ホームズ</td><td>ユードラ</td><td>ピンゾロ</td></tr>
-                <tr><td class="name-cell">Alutemu</td><td>アランナ</td><td>ピュートリサイド</td><td>サイラス</td><td>ミュターヌス</td></tr>
-                <tr><td class="name-cell">SeseiSei</td><td>パッチワーク</td><td>オム</td><td>ミロクー</td><td>テス</td></tr>
-                <tr class="winner-row"><td class="name-cell">MATSURI</td><td>アラキア</td><td>ETC</td><td>オザール</td><td>クラッグ</td></tr>
-                <tr><td class="name-cell">あれっくす</td><td>スニード</td><td>ヴーン</td><td>デナスリアス</td><td>トーリム</td></tr>
-                <tr><td class="name-cell">Yoshiyuki</td><td>ザイレラ</td><td>レノ</td><td>マスターウェン</td><td>テロン</td></tr>
-                <tr><td class="name-cell">gaiabot</td><td>リッチキング</td><td>ロー</td><td>ETC</td><td>ケリガン</td></tr>
-                <tr class="info-row">
-                  <td class="name-cell info-label">Anomaly</td>
-                  <td class="info-cell">先行する斥候</td>
-                  <td class="info-cell">ノルガノンの秘密</td>
-                  <td class="info-cell">オースストーンの召喚</td>
-                  <td class="info-cell">黄金の矢</td>
-                </tr>
-                <tr class="info-row">
-                  <td class="name-cell info-label active-label">Active</td>
-                  <td class="info-cell">アンデッド、キルボア、マーロック、海賊、獣</td>
-                  <td class="info-cell">アンデッド、エレメンタル、キルボア、マーロック、海賊</td>
-                  <td class="info-cell">エレメンタル、ナーガ、メカ、悪魔、獣</td>
-                  <td class="info-cell">アンデッド、キルボア、マーロック、海賊、獣</td>
-                </tr>
-                <tr class="info-row">
-                  <td class="name-cell info-label ban-label">BAN</td>
-                  <td class="info-cell">エレメンタル、ドラゴン、ナーガ、メカ、悪魔</td>
-                  <td class="info-cell">ドラゴン、ナーガ、メカ、悪魔、獣</td>
-                  <td class="info-cell">アンデッド、ドラゴン、キルボア、マーロック、海賊</td>
-                  <td class="info-cell">アンデッド、ドラゴン、キルボア、ナーガ、海賊</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <section class="overview-subsection">
+          <div class="mini-section-title">Players</div>
+          <details class="players-details">
+            <summary>出場選手一覧</summary>
+            <div class="players-details-body">
+              <div class="table-wrap">
+                <table class="archive-table" aria-label="出場選手一覧">
+                  <thead><tr><th class="name-head">Name</th><th>備考</th></tr></thead>
+                  <tbody>
+                    <tr><td class="name-cell">Yanase</td><td>-</td></tr>
+                    <tr><td class="name-cell">Thundurus</td><td>-</td></tr>
+                    <tr><td class="name-cell">Alutemu</td><td>-</td></tr>
+                    <tr><td class="name-cell">SeseiSei</td><td>-</td></tr>
+                    <tr><td class="name-cell">MATSURI</td><td>Winner</td></tr>
+                    <tr><td class="name-cell">あれっくす</td><td>-</td></tr>
+                    <tr><td class="name-cell">Yoshiyuki</td><td>-</td></tr>
+                    <tr><td class="name-cell">gaiabot</td><td>-</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="archive-note">※ 出場選手名は敬称略。</p>
+            </div>
+          </details>
         </section>
       </div>
     </section>
 
     <section class="score-card">
-      <div class="section-title orange">Archive</div>
+      <div class="section-title purple">Final Results</div>
+      <div class="section-body">
+        <div class="table-wrap">
+          <table class="archive-table" aria-label="最終結果">
+            <thead>
+              <tr><th class="name-head">Name</th><th>Total</th><th>順位</th><th class="past-game">game1</th><th class="past-game">game2</th><th class="past-game">game3</th><th>game4</th></tr>
+            </thead>
+            <tbody>
+              <tr class="winner-row"><td class="name-cell">MATSURI</td><td class="total-cell">7</td><td class="rank-gold">1st</td><td class="past-game">7</td><td class="past-game">7</td><td class="past-game">4</td><td class="day-score">7</td></tr>
+              <tr><td class="name-cell">gaiabot</td><td class="total-cell">6</td><td class="rank-silver">2nd</td><td class="past-game">5</td><td class="past-game">1</td><td class="past-game">5</td><td class="day-score">6</td></tr>
+              <tr><td class="name-cell">あれっくす</td><td class="total-cell">5</td><td class="rank-bronze">3rd</td><td class="past-game">2</td><td class="past-game">0</td><td class="past-game">2</td><td class="day-score">5</td></tr>
+              <tr><td class="name-cell">Yanase</td><td class="total-cell">4</td><td>4th</td><td class="past-game">6</td><td class="past-game">5</td><td class="past-game">7</td><td class="day-score">4</td></tr>
+              <tr><td class="name-cell">Alutemu</td><td class="total-cell">3</td><td>5th</td><td class="past-game">4</td><td class="past-game">4</td><td class="past-game">6</td><td class="day-score">3</td></tr>
+              <tr><td class="name-cell">Yoshiyuki</td><td class="total-cell">2</td><td>6th</td><td class="past-game">3</td><td class="past-game">3</td><td class="past-game">1</td><td class="day-score">2</td></tr>
+              <tr><td class="name-cell">Thundurus</td><td class="total-cell">1</td><td>7th</td><td class="past-game">1</td><td class="past-game">6</td><td class="past-game">0</td><td class="day-score">1</td></tr>
+              <tr><td class="name-cell">SeseiSei</td><td class="total-cell">0</td><td>8th</td><td class="past-game">0</td><td class="past-game">2</td><td class="past-game">3</td><td class="day-score">0</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="archive-note">※ 特殊ルールにより、Total と順位はタイブレークの game4 を反映。</p>
+      </div>
+    </section>
+
+    <section class="score-card day-card">
+      <div class="section-title orange">Match Details</div>
+      <div class="section-body">
+        <section class="day-section">
+          <details class="section-details">
+            <summary>順位入力</summary>
+            <div class="section-details-body">
+              <div class="table-wrap">
+                <table class="archive-table" aria-label="各試合の順位">
+                  <thead><tr><th class="name-head">Placement</th><th>1st count</th><th>average</th><th class="past-game">game1</th><th class="past-game">game2</th><th class="past-game">game3</th><th>game4</th></tr></thead>
+                  <tbody>
+                    <tr><td class="name-cell">Yanase</td><td>1</td><td>2.5</td><td class="past-game">2</td><td class="past-game">3</td><td class="past-game">1</td><td>4</td></tr>
+                    <tr><td class="name-cell">Thundurus</td><td>0</td><td>6.0</td><td class="past-game">7</td><td class="past-game">2</td><td class="past-game">8</td><td>7</td></tr>
+                    <tr><td class="name-cell">Alutemu</td><td>0</td><td>3.8</td><td class="past-game">4</td><td class="past-game">4</td><td class="past-game">2</td><td>5</td></tr>
+                    <tr><td class="name-cell">SeseiSei</td><td>0</td><td>6.8</td><td class="past-game">8</td><td class="past-game">6</td><td class="past-game">5</td><td>8</td></tr>
+                    <tr class="winner-row"><td class="name-cell">MATSURI</td><td>3</td><td>1.8</td><td class="past-game">1</td><td class="past-game">1</td><td class="past-game">4</td><td>1</td></tr>
+                    <tr><td class="name-cell">あれっくす</td><td>0</td><td>5.8</td><td class="past-game">6</td><td class="past-game">8</td><td class="past-game">6</td><td>3</td></tr>
+                    <tr><td class="name-cell">Yoshiyuki</td><td>0</td><td>5.8</td><td class="past-game">5</td><td class="past-game">5</td><td class="past-game">7</td><td>6</td></tr>
+                    <tr><td class="name-cell">gaiabot</td><td>0</td><td>3.8</td><td class="past-game">3</td><td class="past-game">7</td><td class="past-game">3</td><td>2</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+        </section>
+
+        <section class="day-section">
+          <details class="section-details">
+            <summary>Hero Pick</summary>
+            <div class="section-details-body">
+              <div class="table-wrap">
+                <table class="archive-table" aria-label="ヒーロー選択">
+                  <thead><tr><th class="name-head">Name</th><th>game1</th><th>game2</th><th>game3</th><th>game4</th></tr></thead>
+                  <tbody>
+                    <tr><td class="name-cell">Yanase</td><td>シンドラゴサ</td><td>ザイレラ</td><td>クロミー</td><td>レノ</td></tr>
+                    <tr><td class="name-cell">Thundurus</td><td>ロー</td><td>ホームズ</td><td>ユードラ</td><td>ピンゾロ</td></tr>
+                    <tr><td class="name-cell">Alutemu</td><td>アランナ</td><td>ピュートリサイド</td><td>サイラス</td><td>ミュターヌス</td></tr>
+                    <tr><td class="name-cell">SeseiSei</td><td>パッチワーク</td><td>オム</td><td>ミロクー</td><td>テス</td></tr>
+                    <tr class="winner-row"><td class="name-cell">MATSURI</td><td>アラキア</td><td>ETC</td><td>オザール</td><td>クラッグ</td></tr>
+                    <tr><td class="name-cell">あれっくす</td><td>スニード</td><td>ヴーン</td><td>デナスリアス</td><td>トーリム</td></tr>
+                    <tr><td class="name-cell">Yoshiyuki</td><td>ザイレラ</td><td>レノ</td><td>マスターウェン</td><td>テロン</td></tr>
+                    <tr><td class="name-cell">gaiabot</td><td>リッチキング</td><td>ロー</td><td>ETC</td><td>ケリガン</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+        </section>
+
+        <section class="day-section">
+          <details class="section-details">
+            <summary>Anomaly</summary>
+            <div class="section-details-body">
+              <div class="table-wrap">
+                <table class="archive-table" aria-label="異常環境">
+                  <thead><tr><th class="name-head">Data</th><th>game1</th><th>game2</th><th>game3</th><th>game4</th></tr></thead>
+                  <tbody>
+                    <tr><td class="name-cell">Anomaly</td><td>先行する斥候</td><td>ノルガノンの秘密</td><td>オースストーンの召喚</td><td>黄金の矢</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+        </section>
+      </div>
+    </section>
+
+    <section class="score-card">
+      <div class="section-title green">Archive</div>
       <div class="section-body">
         <ul class="notice-list">
-          <li>
-            集計スプレッドシート<br>
-            <a class="archive-link"
-               href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLo3yUuVxKPDZ6Jj4Pl6fyQ_x1zH_W8jW_AP2dQHqxvXy6Xa5CU0qSlo1khEBGg0bIqM_fXPlcxkxt/pubhtml"
-               target="_blank" rel="noopener">
-              Google Sheets で開く ↗
-            </a>
-          </li>
-          <li>
-            配信アーカイブ<br>
-            <a class="archive-link"
-               href="https://www.youtube.com/watch?v=MsJp2A9i_Xs"
-               target="_blank" rel="noopener">
-              YouTube で見る ↗
-            </a>
-          </li>
+          <li>集計スプレッドシート<br><a class="archive-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLo3yUuVxKPDZ6Jj4Pl6fyQ_x1zH_W8jW_AP2dQHqxvXy6Xa5CU0qSlo1khEBGg0bIqM_fXPlcxkxt/pubhtml" target="_blank" rel="noopener">Google Sheets で開く ↗</a></li>
+          <li>配信アーカイブ<br><a class="archive-link" href="https://www.youtube.com/watch?v=MsJp2A9i_Xs" target="_blank" rel="noopener">YouTube で見る ↗</a></li>
         </ul>
       </div>
     </section>
