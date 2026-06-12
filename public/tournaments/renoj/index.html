@@ -116,90 +116,61 @@
       font-weight:900;
       backdrop-filter:blur(8px);
     }
-    .overview-copy{
-      margin:0 0 16px;
+    .plain-copy{
+      margin:0 0 1.2rem;
       color:var(--text-secondary);
       font-size:15px;
       font-weight:750;
-      line-height:1.9;
+      line-height:1.95;
     }
-    .series-grid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:14px;
-    }
-    .series-card{
-      display:flex;
-      flex-direction:column;
-      min-height:176px;
-      padding:18px;
-      background:#fffaf2;
-      border:1px solid rgba(24,33,40,.10);
-      border-radius:var(--radius-md);
-      box-shadow:var(--shadow-soft);
-    }
-    .series-card h3{
-      margin:0 0 12px;
-      color:var(--text-primary);
-      font-size:24px;
-      font-weight:950;
-      letter-spacing:-.04em;
-    }
-    .series-card dl{
-      display:grid;
-      grid-template-columns:auto 1fr;
-      gap:8px 10px;
-      margin:0 0 16px;
-      color:var(--text-secondary);
-      font-size:13px;
-      font-weight:800;
-      line-height:1.55;
-    }
-    .series-card dt{color:var(--text-muted);font-weight:950}
-    .series-card dd{margin:0}
-    .series-card .card-cta{
-      margin-top:auto;
-      align-self:flex-start;
-    }
-    .simple-rule-list{
-      display:grid;
-      gap:12px;
+    .rule-text-list{
       margin:0;
-      padding:0;
-      list-style:none;
-    }
-    .simple-rule-list li{
-      position:relative;
-      padding:15px 16px 15px 50px;
+      padding-left:1.35rem;
       color:var(--text-secondary);
-      background:#fffaf2;
-      border:1px solid rgba(24,33,40,.10);
-      border-radius:var(--radius-md);
-      box-shadow:var(--shadow-soft);
-      font-size:14px;
-      font-weight:750;
-      line-height:1.75;
-    }
-    .simple-rule-list li::before{
-      content:"";
-      position:absolute;
-      left:18px;
-      top:20px;
-      width:14px;
-      height:14px;
-      border-radius:999px;
-      background:linear-gradient(135deg,#0d7e83,#f0b74d);
-      box-shadow:0 0 0 5px rgba(13,126,131,.10);
-    }
-    .simple-rule-list strong{
-      display:block;
-      margin-bottom:2px;
-      color:var(--text-primary);
       font-size:15px;
+      font-weight:750;
+      line-height:1.95;
+    }
+    .rule-text-list li{
+      margin:.25rem 0;
+      padding-left:.2rem;
+    }
+    .rule-text-list strong{
+      color:var(--text-primary);
       font-weight:950;
+    }
+    .tournament-text-list{
+      display:grid;
+      gap:0;
+    }
+    .tournament-text-item{
+      padding:0 0 1rem;
+      margin:0 0 1rem;
+      border-bottom:1px solid rgba(24,33,40,.12);
+    }
+    .tournament-text-item:last-child{
+      margin-bottom:0;
+      padding-bottom:0;
+      border-bottom:none;
+    }
+    .tournament-text-item h3{
+      margin:0 0 .45rem;
+      color:var(--text-primary);
+      font-size:20px;
+      font-weight:950;
+      letter-spacing:-.03em;
+    }
+    .tournament-text-item p{
+      margin:.2rem 0;
+      color:var(--text-secondary);
+      font-size:15px;
+      font-weight:750;
+      line-height:1.8;
+    }
+    .tournament-text-item a{
+      font-weight:900;
     }
     @media (max-width:900px){
-      .series-grid{grid-template-columns:1fr}
       .hero.renoj-hero{min-height:360px;padding:1.55rem}
       .renoj-title-block{margin-top:2rem}
     }
@@ -230,14 +201,14 @@
     <section class="score-card">
       <div class="section-title">概要とルール</div>
       <div class="section-body">
-        <p class="overview-copy">
+        <p class="plain-copy">
           レノ・ジャクソン杯は、ハースストーン・バトルグラウンドのオープン大会です。定員32名で予選を行い、予選を突破した8名が決勝ラウンドへ進出します。
         </p>
-        <ul class="simple-rule-list">
-          <li><strong>定員</strong>32名。</li>
-          <li><strong>予選</strong>4卓で実施し、各卓の上位2名が決勝ラウンドへ進出します。</li>
-          <li><strong>予選方式</strong>2game制の合計ポイント上位で決定します。同時落ちによるポイント折半はありません。</li>
-          <li><strong>決勝</strong>1game制で、その回の優勝者を決定します。</li>
+        <ul class="rule-text-list">
+          <li><strong>定員：</strong>32名。</li>
+          <li><strong>予選：</strong>4卓で実施し、各卓の上位2名が決勝ラウンドへ進出します。</li>
+          <li><strong>予選方式：</strong>2game制の合計ポイント上位で決定します。同時落ちによるポイント折半はありません。</li>
+          <li><strong>決勝：</strong>1game制で、その回の優勝者を決定します。</li>
         </ul>
       </div>
     </section>
@@ -245,31 +216,22 @@
     <section class="score-card">
       <div class="section-title orange">Tournament Links</div>
       <div class="section-body">
-        <div class="series-grid">
-          <article class="series-card">
+        <div class="tournament-text-list">
+          <section class="tournament-text-item">
             <h3>第1回</h3>
-            <dl>
-              <dt>開催日</dt><dd>2026/01/14(水) 21:00 〜</dd>
-              <dt>Tonamel</dt><dd><a href="https://tonamel.com/competition/90YEW" target="_blank" rel="noopener">大会ページ</a></dd>
-            </dl>
-            <a class="card-cta" href="https://tonamel.com/competition/90YEW" target="_blank" rel="noopener">Tonamelを見る →</a>
-          </article>
-          <article class="series-card">
+            <p>開催日：2026/01/14(水) 21:00 〜</p>
+            <p>Tonamel：<a href="https://tonamel.com/competition/90YEW" target="_blank" rel="noopener">大会ページ</a></p>
+          </section>
+          <section class="tournament-text-item">
             <h3>第2回</h3>
-            <dl>
-              <dt>開催日</dt><dd>2026/02/11(水) 21:00 〜</dd>
-              <dt>Tonamel</dt><dd><a href="https://tonamel.com/competition/QBAoB" target="_blank" rel="noopener">大会ページ</a></dd>
-            </dl>
-            <a class="card-cta" href="https://tonamel.com/competition/QBAoB" target="_blank" rel="noopener">Tonamelを見る →</a>
-          </article>
-          <article class="series-card">
+            <p>開催日：2026/02/11(水) 21:00 〜</p>
+            <p>Tonamel：<a href="https://tonamel.com/competition/QBAoB" target="_blank" rel="noopener">大会ページ</a></p>
+          </section>
+          <section class="tournament-text-item">
             <h3>第3回</h3>
-            <dl>
-              <dt>開催日</dt><dd>2026/03/18(水) 21:00 〜</dd>
-              <dt>Tonamel</dt><dd><a href="https://tonamel.com/competition/tFMTx" target="_blank" rel="noopener">大会ページ</a></dd>
-            </dl>
-            <a class="card-cta" href="https://tonamel.com/competition/tFMTx" target="_blank" rel="noopener">Tonamelを見る →</a>
-          </article>
+            <p>開催日：2026/03/18(水) 21:00 〜</p>
+            <p>Tonamel：<a href="https://tonamel.com/competition/tFMTx" target="_blank" rel="noopener">大会ページ</a></p>
+          </section>
         </div>
       </div>
     </section>
