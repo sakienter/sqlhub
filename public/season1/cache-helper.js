@@ -1,6 +1,6 @@
 (() => {
   const API_PATH = '/api/results';
-  const ARCHIVE_VERSION = 's1-archive-pdf-20260613-corrections-v3';
+  const ARCHIVE_VERSION = 's1-archive-pdf-20260613-corrections-v4';
   const ARCHIVE_PARTS = [
     './archive/summary.json',
     './archive/day1.json',
@@ -10,6 +10,7 @@
   ];
   const CORRECTION_PATHS = [
     './archive/corrections.json',
+    './archive/corrections/day1-game1.json',
     './archive/corrections/day1-game4.json',
     './archive/corrections/day1-game5.json'
   ];
