@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>バトグラ頂上戦 #1〜#9 | Avenge Hub</title>
-  <meta name="description" content="バトグラ頂上戦 #1〜#9 の大会情報まとめページです。" />
+  <meta name="description" content="バトグラ頂上戦 #1〜#9 の大会概要、参加資格、ルール、各回の結果リンクをまとめるページです。" />
   <meta property="og:title" content="バトグラ頂上戦 #1〜#9 | Avenge Hub" />
   <meta property="og:description" content="バトグラ頂上戦 #1〜#9 の大会情報まとめページ" />
   <meta property="og:type" content="website" />
@@ -101,6 +101,161 @@
       line-height:1.75;
       letter-spacing:.02em;
     }
+    .choujousen-hero .meta-line{
+      position:relative;
+      z-index:1;
+    }
+
+    .overview-lead{
+      margin:0;
+      color:var(--text-secondary);
+      font-size:15px;
+      font-weight:700;
+      line-height:1.9;
+    }
+    .overview-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+      margin-top:16px;
+    }
+    .overview-panel{
+      padding:18px;
+      background:#fffaf2;
+      border:1px solid rgba(24,33,40,.1);
+      border-radius:var(--radius-md);
+      box-shadow:var(--shadow-soft);
+    }
+    .overview-panel h3{
+      margin:0 0 10px;
+      color:var(--text-primary);
+      font-size:17px;
+      font-weight:950;
+      letter-spacing:-.02em;
+    }
+    .overview-panel ul{
+      display:grid;
+      gap:8px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+    .overview-panel li{
+      position:relative;
+      padding-left:16px;
+      color:var(--text-secondary);
+      font-size:14px;
+      font-weight:650;
+      line-height:1.7;
+    }
+    .overview-panel li::before{
+      content:"";
+      position:absolute;
+      top:.72em;
+      left:0;
+      width:6px;
+      height:6px;
+      border-radius:999px;
+      background:var(--crimson);
+    }
+    .edit-note{
+      margin:14px 0 0;
+      color:var(--text-muted);
+      font-size:12px;
+      font-weight:800;
+      line-height:1.65;
+    }
+
+    .series-table{
+      width:100%;
+      min-width:820px;
+      border-collapse:separate;
+      border-spacing:0 8px;
+      table-layout:auto;
+    }
+    .series-table th,
+    .series-table td{
+      padding:12px 14px;
+      vertical-align:middle;
+      font-size:14px;
+      line-height:1.45;
+    }
+    .series-table th{
+      color:var(--text-primary);
+      background:#fffaf2;
+      border-top:1px solid rgba(24,33,40,.1);
+      border-bottom:1px solid rgba(24,33,40,.16);
+      font-size:12px;
+      font-weight:950;
+      white-space:nowrap;
+      text-align:left;
+    }
+    .series-table th:first-child{
+      border-left:1px solid rgba(24,33,40,.1);
+      border-radius:6px 0 0 6px;
+    }
+    .series-table th:last-child{
+      border-right:1px solid rgba(24,33,40,.1);
+      border-radius:0 6px 6px 0;
+    }
+    .series-table td{
+      color:var(--text-secondary);
+      background:#fffaf2;
+      border-top:1px solid rgba(24,33,40,.08);
+      border-bottom:1px solid rgba(24,33,40,.1);
+      font-weight:750;
+    }
+    .series-table td:first-child{
+      border-left:1px solid rgba(24,33,40,.08);
+      border-radius:6px 0 0 6px;
+      color:var(--text-primary);
+      font-weight:950;
+      white-space:nowrap;
+    }
+    .series-table td:last-child{
+      border-right:1px solid rgba(24,33,40,.08);
+      border-radius:0 6px 6px 0;
+    }
+    .series-table .winner-cell{
+      color:var(--text-primary);
+      font-weight:900;
+    }
+    .status-pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:28px;
+      padding:0 10px;
+      color:var(--crimson-dark);
+      background:var(--crimson-dim);
+      border:1px solid rgba(201,75,75,.22);
+      border-radius:999px;
+      font-size:12px;
+      font-weight:950;
+      white-space:nowrap;
+    }
+    .series-url{
+      min-height:34px;
+      padding:0 12px;
+      font-size:12px;
+    }
+    .series-url.is-disabled{
+      pointer-events:none;
+      color:var(--text-muted);
+      background:#f4efe7;
+      border-color:rgba(24,33,40,.1);
+      box-shadow:none;
+      filter:none;
+      cursor:default;
+    }
+    .series-note{
+      margin:12px 0 0;
+      color:var(--text-muted);
+      font-size:12px;
+      font-weight:750;
+      line-height:1.7;
+    }
+
     @media (max-width:720px){
       .hero.choujousen-hero{padding:2.25rem 1.15rem;border-radius:12px}
       .hero.choujousen-hero::after{
@@ -118,6 +273,7 @@
       .choujousen-hero .eyebrow{margin-bottom:.85rem;font-size:11px;letter-spacing:.24em}
       .choujousen-hero h1{font-size:clamp(34px,11vw,48px)}
       .choujousen-hero .lead{margin-top:1.2rem;font-size:14px;line-height:1.7}
+      .overview-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -127,39 +283,114 @@
       <a class="back-link" href="../../">← Avenge Hubへ戻る</a>
       <p class="eyebrow">Tournament Series</p>
       <h1>バトグラ頂上戦 <span class="title-accent">#1〜#9</span></h1>
-      <p class="lead">バトグラ頂上戦シリーズの大会情報、結果、関連リンクをまとめるためのアーカイブページです。</p>
+      <p class="lead">バトグラ頂上戦シリーズの大会概要、参加資格、ルール、各回の結果リンクを整理するためのアーカイブページです。</p>
+      <div class="meta-line">
+        <span>Series Archive</span>
+        <span>#1〜#9</span>
+        <span>Winner / URL 管理用</span>
+      </div>
     </header>
 
     <section class="score-card">
-      <div class="section-title">Series List</div>
+      <div class="section-title">大会概要</div>
       <div class="section-body">
-        <ul class="notice-list">
-          <li>バトグラ頂上戦 #9：準備中</li>
-          <li>バトグラ頂上戦 #8：準備中</li>
-          <li>バトグラ頂上戦 #7：準備中</li>
-          <li>バトグラ頂上戦 #6：準備中</li>
-          <li>バトグラ頂上戦 #5：準備中</li>
-          <li>バトグラ頂上戦 #4：準備中</li>
-          <li>バトグラ頂上戦 #3：準備中</li>
-          <li>バトグラ頂上戦 #2：準備中</li>
-          <li>バトグラ頂上戦 #1：準備中</li>
-        </ul>
+        <p class="overview-lead">
+          バトグラ頂上戦は、ハースストーン・バトルグラウンドの大会シリーズです。ここでは、シリーズ全体の概要、参加資格、基本ルール、各回の優勝者と関連URLをまとめます。
+        </p>
+        <div class="overview-grid">
+          <article class="overview-panel">
+            <h3>参加資格</h3>
+            <ul>
+              <li>参加資格は、各回の募集要項にあわせて記載します。</li>
+              <li>招待枠、予選枠、レート条件などがある場合はここに追記します。</li>
+              <li>詳細な参加条件は、各回のURL先を正式情報として扱います。</li>
+            </ul>
+          </article>
+          <article class="overview-panel">
+            <h3>ルール</h3>
+            <ul>
+              <li>試合数、ポイント形式、同時落ち処理などの基本ルールを記載します。</li>
+              <li>大会ごとに例外ルールがある場合は、各回のURL先に記載された内容を優先します。</li>
+              <li>ルール確定後、この欄を正式版に差し替えます。</li>
+            </ul>
+          </article>
+        </div>
+        <p class="edit-note">※文言は仮置きです。正式な参加資格・ルールが固まり次第、この欄だけ差し替えられる構成にしています。</p>
       </div>
     </section>
 
     <section class="score-card">
-      <div class="section-title">Archive</div>
+      <div class="section-title">Series List</div>
       <div class="section-body">
-        <div class="rule-grid">
-          <article class="rule-item">
-            <h3>結果・順位表</h3>
-            <p>各回の結果や順位表を整理して掲載します。</p>
-          </article>
-          <article class="rule-item">
-            <h3>関連リンク</h3>
-            <p>告知、配信アーカイブ、参加者情報などを後から追加できます。</p>
-          </article>
+        <div class="table-wrap">
+          <table class="series-table">
+            <thead>
+              <tr>
+                <th>大会</th>
+                <th>状態</th>
+                <th>優勝者</th>
+                <th>URL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>バトグラ頂上戦 #9</td>
+                <td><span class="status-pill">準備中</span></td>
+                <td class="winner-cell">未定</td>
+                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
+              </tr>
+              <tr>
+                <td>バトグラ頂上戦 #8</td>
+                <td><span class="status-pill">準備中</span></td>
+                <td class="winner-cell">未定</td>
+                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
+              </tr>
+              <tr>
+                <td>バトグラ頂上戦 #7</td>
+                <td><span class="status-pill">準備中</span></td>
+                <td class="winner-cell">未定</td>
+                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
+              </tr>
+              <tr>
+                <td>バトグラ頂上戦 #6</td>
+                <td><span class="status-pill">準備中</span></td>
+                <td class="winner-cell">未定</td>
+                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
+              </tr>
+              <tr>
+                <td>バトグラ頂上戦 #5</td>
+                <td><span class="status-pill">準備中</span></td>
+                <td class="winner-cell">未定</td>
+                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
+              </tr>
+              <tr>
+                <td>バトグラ頂上戦 #4</td>
+                <td><span class="status-pill">準備中</span></td>
+                <td class="winner-cell">未定</td>
+                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
+              </tr>
+              <tr>
+                <td>バトグラ頂上戦 #3</td>
+                <td><span class="status-pill">準備中</span></td>
+                <td class="winner-cell">未定</td>
+                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
+              </tr>
+              <tr>
+                <td>バトグラ頂上戦 #2</td>
+                <td><span class="status-pill">準備中</span></td>
+                <td class="winner-cell">未定</td>
+                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
+              </tr>
+              <tr>
+                <td>バトグラ頂上戦 #1</td>
+                <td><span class="status-pill">準備中</span></td>
+                <td class="winner-cell">未定</td>
+                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+        <p class="series-note">URLを追加する場合は、該当行の <code>href="#"</code> を実URLに変更し、<code>is-disabled</code> / <code>aria-disabled</code> / <code>tabindex</code> を外してください。</p>
       </div>
     </section>
 
