@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>レノ・ジャクソン杯 | Avenge Hub</title>
-  <meta name="description" content="レノ・ジャクソン杯の大会情報まとめページです。" />
+  <meta name="description" content="レノ・ジャクソン杯の大会概要、簡易ルール、開催リンクをまとめたページです。" />
   <meta property="og:title" content="レノ・ジャクソン杯 | Avenge Hub" />
-  <meta property="og:description" content="レノ・ジャクソン杯の大会情報まとめページ" />
+  <meta property="og:description" content="レノ・ジャクソン杯の大会概要、簡易ルール、開催リンク" />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="../../common.css" />
   <style>
@@ -14,110 +14,222 @@
       position:relative;
       isolation:isolate;
       overflow:hidden;
-      margin:0 auto 26px;
-      padding:2.5rem 2rem;
-      text-align:center;
-      background:linear-gradient(135deg,#f7f3ef 0%,#f4efea 52%,#f1e7e3 100%);
-      border:1px solid rgba(24,33,40,.16);
-      border-bottom:1px solid rgba(24,33,40,.16);
-      border-radius:12px;
-      box-shadow:0 18px 34px rgba(3,14,24,.24);
+      margin:0 auto 28px;
+      min-height:330px;
+      padding:2.1rem 2rem 2.35rem;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      text-align:left;
+      background:
+        radial-gradient(circle at 12% 18%,rgba(255,215,128,.24) 0%,rgba(255,215,128,0) 32%),
+        linear-gradient(90deg,rgba(10,28,34,.92) 0%,rgba(13,42,48,.82) 44%,rgba(49,35,20,.58) 72%,rgba(49,35,20,.28) 100%),
+        url('/tournaments/reno.webp') center center/cover no-repeat;
+      border:1px solid rgba(240,204,133,.30);
+      border-radius:18px;
+      box-shadow:0 22px 40px rgba(3,14,24,.34);
       backdrop-filter:none;
     }
     .hero.renoj-hero::before{
-      content:none;
-      display:none;
-    }
-    .hero.renoj-hero::after{
       content:"";
       position:absolute;
-      inset:0;
+      inset:18px;
       z-index:0;
-      background:
-        linear-gradient(#c9342c,#c9342c) left 32px top 32px/48px 1px no-repeat,
-        linear-gradient(#c9342c,#c9342c) left 32px top 32px/1px 48px no-repeat,
-        linear-gradient(#c9342c,#c9342c) right 32px top 32px/48px 1px no-repeat,
-        linear-gradient(#c9342c,#c9342c) right 32px top 32px/1px 48px no-repeat,
-        linear-gradient(#c9342c,#c9342c) left 32px bottom 32px/48px 1px no-repeat,
-        linear-gradient(#c9342c,#c9342c) left 32px bottom 32px/1px 48px no-repeat,
-        linear-gradient(#c9342c,#c9342c) right 32px bottom 32px/48px 1px no-repeat,
-        linear-gradient(#c9342c,#c9342c) right 32px bottom 32px/1px 48px no-repeat;
+      border:1px solid rgba(255,235,182,.20);
+      border-radius:14px;
+      pointer-events:none;
+    }
+    .hero.renoj-hero::after{
+      content:"RENO JACKSON CUP";
+      position:absolute;
+      right:26px;
+      bottom:22px;
+      z-index:0;
+      color:rgba(255,235,182,.12);
+      font-size:clamp(38px,7vw,86px);
+      font-weight:950;
+      line-height:1;
+      letter-spacing:-.06em;
+      white-space:nowrap;
       pointer-events:none;
     }
     .renoj-hero .back-link{
       position:relative;
       z-index:1;
+      align-self:flex-start;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-height:38px;
-      margin:0 0 1.55rem;
-      padding:0 18px;
-      color:#1c6f8e;
-      background:rgba(255,255,255,.86);
-      border:1px solid rgba(24,33,40,.08);
+      min-height:36px;
+      padding:0 16px;
+      color:#f8e6b7;
+      background:rgba(4,18,23,.42);
+      border:1px solid rgba(255,235,182,.26);
       border-radius:999px;
-      box-shadow:0 2px 10px rgba(3,14,24,.06);
-      font-size:14px;
-      font-weight:900;
-      letter-spacing:-.02em;
-      text-decoration:none;
-      backdrop-filter:none;
-    }
-    .renoj-hero .eyebrow{
-      position:relative;
-      z-index:1;
-      margin:0 0 1rem;
-      color:#c9342c;
+      box-shadow:0 8px 18px rgba(3,14,24,.18);
       font-size:13px;
       font-weight:900;
-      letter-spacing:.34em;
-      line-height:1.2;
-      text-transform:uppercase;
+      text-decoration:none;
+      backdrop-filter:blur(8px);
     }
-    .renoj-hero h1{
+    .renoj-title-block{
       position:relative;
       z-index:1;
-      margin:0;
-      color:#182128;
-      font-size:clamp(42px,5.8vw,56px);
+      max-width:760px;
+      margin-top:2.4rem;
+    }
+    .renoj-hero .eyebrow{
+      margin:0 0 .75rem;
+      color:#ffd98a;
+      font-size:13px;
       font-weight:950;
-      letter-spacing:-.055em;
-      line-height:1.18;
-      text-shadow:none;
+      letter-spacing:.22em;
+      line-height:1.2;
+      text-transform:uppercase;
+      text-shadow:0 2px 12px rgba(3,14,24,.45);
+    }
+    .renoj-hero h1{
+      margin:0;
+      color:#fff7e2;
+      font-size:clamp(42px,6.4vw,72px);
+      font-weight:950;
+      letter-spacing:-.06em;
+      line-height:1.08;
+      text-shadow:0 10px 22px rgba(3,14,24,.45);
     }
     .renoj-hero h1 .title-accent{
-      color:#c9342c;
+      color:#ffd98a;
       letter-spacing:-.045em;
     }
     .renoj-hero .lead{
-      position:relative;
-      z-index:1;
-      margin:1.55rem auto 0;
-      max-width:820px;
-      color:#5d6b78;
+      margin:1.15rem 0 0;
+      max-width:720px;
+      color:rgba(255,250,235,.88);
       font-size:16px;
       font-weight:800;
-      line-height:1.75;
+      line-height:1.85;
       letter-spacing:.02em;
+      text-shadow:0 2px 12px rgba(3,14,24,.45);
     }
-    @media (max-width:720px){
-      .hero.renoj-hero{padding:2.25rem 1.15rem;border-radius:12px}
-      .hero.renoj-hero::after{
-        background:
-          linear-gradient(#c9342c,#c9342c) left 20px top 20px/32px 1px no-repeat,
-          linear-gradient(#c9342c,#c9342c) left 20px top 20px/1px 32px no-repeat,
-          linear-gradient(#c9342c,#c9342c) right 20px top 20px/32px 1px no-repeat,
-          linear-gradient(#c9342c,#c9342c) right 20px top 20px/1px 32px no-repeat,
-          linear-gradient(#c9342c,#c9342c) left 20px bottom 20px/32px 1px no-repeat,
-          linear-gradient(#c9342c,#c9342c) left 20px bottom 20px/1px 32px no-repeat,
-          linear-gradient(#c9342c,#c9342c) right 20px bottom 20px/32px 1px no-repeat,
-          linear-gradient(#c9342c,#c9342c) right 20px bottom 20px/1px 32px no-repeat;
-      }
-      .renoj-hero .back-link{min-height:34px;margin-bottom:1.35rem;padding:0 16px;font-size:13px}
-      .renoj-hero .eyebrow{margin-bottom:.85rem;font-size:11px;letter-spacing:.24em}
-      .renoj-hero h1{font-size:clamp(34px,11vw,48px)}
-      .renoj-hero .lead{margin-top:1.2rem;font-size:14px;line-height:1.7}
+    .renoj-meta{
+      position:relative;
+      z-index:1;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:1.25rem;
+      padding:0;
+      list-style:none;
+    }
+    .renoj-meta li{
+      display:inline-flex;
+      align-items:center;
+      min-height:34px;
+      padding:0 13px;
+      color:#fff7e2;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,235,182,.20);
+      border-radius:999px;
+      font-size:12px;
+      font-weight:900;
+      backdrop-filter:blur(8px);
+    }
+    .overview-copy{
+      margin:0;
+      color:var(--text-secondary);
+      font-size:15px;
+      font-weight:750;
+      line-height:1.9;
+    }
+    .series-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
+    }
+    .series-card{
+      display:flex;
+      flex-direction:column;
+      min-height:166px;
+      padding:18px;
+      background:#fffaf2;
+      border:1px solid rgba(24,33,40,.10);
+      border-radius:var(--radius-md);
+      box-shadow:var(--shadow-soft);
+    }
+    .series-card h3{
+      margin:0 0 12px;
+      color:var(--text-primary);
+      font-size:24px;
+      font-weight:950;
+      letter-spacing:-.04em;
+    }
+    .series-card dl{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:8px 10px;
+      margin:0 0 16px;
+      color:var(--text-secondary);
+      font-size:13px;
+      font-weight:800;
+      line-height:1.55;
+    }
+    .series-card dt{color:var(--text-muted);font-weight:950}
+    .series-card dd{margin:0}
+    .series-card .card-cta{
+      margin-top:auto;
+      align-self:flex-start;
+    }
+    .series-card.disabled{opacity:.76}
+    .series-card.disabled .card-cta{color:var(--text-muted)}
+    .simple-rule-list{
+      display:grid;
+      gap:12px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+    .simple-rule-list li{
+      position:relative;
+      padding:15px 16px 15px 50px;
+      color:var(--text-secondary);
+      background:#fffaf2;
+      border:1px solid rgba(24,33,40,.10);
+      border-radius:var(--radius-md);
+      box-shadow:var(--shadow-soft);
+      font-size:14px;
+      font-weight:750;
+      line-height:1.75;
+    }
+    .simple-rule-list li::before{
+      content:"";
+      position:absolute;
+      left:18px;
+      top:20px;
+      width:14px;
+      height:14px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#0d7e83,#f0b74d);
+      box-shadow:0 0 0 5px rgba(13,126,131,.10);
+    }
+    .simple-rule-list strong{
+      display:block;
+      margin-bottom:2px;
+      color:var(--text-primary);
+      font-size:15px;
+      font-weight:950;
+    }
+    @media (max-width:900px){
+      .series-grid{grid-template-columns:1fr}
+      .hero.renoj-hero{min-height:360px;padding:1.55rem}
+      .renoj-title-block{margin-top:2rem}
+    }
+    @media (max-width:640px){
+      .hero.renoj-hero{min-height:390px;border-radius:14px}
+      .hero.renoj-hero::before{inset:12px;border-radius:11px}
+      .hero.renoj-hero::after{right:16px;bottom:16px;font-size:36px}
+      .renoj-hero h1{font-size:clamp(36px,12vw,52px)}
+      .renoj-hero .lead{font-size:14px;line-height:1.75}
+      .renoj-meta li{font-size:11px}
     }
   </style>
 </head>
@@ -125,37 +237,65 @@
   <main class="page-shell">
     <header class="hero renoj-hero">
       <a class="back-link" href="../../">← Avenge Hubへ戻る</a>
-      <p class="eyebrow">Independent Tournament</p>
-      <h1>レノ・ジャクソン杯 <span class="title-accent">Archive</span></h1>
-      <p class="lead">レノ・ジャクソン杯の大会情報、開催リンク、関連情報をまとめるためのアーカイブページです。</p>
+      <div class="renoj-title-block">
+        <p class="eyebrow">Independent Tournament</p>
+        <h1>レノ・ジャクソン杯 <span class="title-accent">Archive</span></h1>
+        <p class="lead">誰でも参加できるオープン戦。大会ごとのTonamelページ、開催日、簡単なルールをまとめます。</p>
+        <ul class="renoj-meta">
+          <li>Open Match</li>
+          <li>32 Players</li>
+          <li>Final Table: 8 Players</li>
+        </ul>
+      </div>
     </header>
 
     <section class="score-card">
-      <div class="section-title">Series List</div>
+      <div class="section-title">Overview</div>
       <div class="section-body">
-        <ul class="notice-list">
-          <li>レノ・ジャクソン杯 第三回：<a href="https://tonamel.com/competition/tFMTx" target="_blank" rel="noopener">Tonamel大会ページ</a></li>
-          <li>レノ・ジャクソン杯 第二回：リンク未設定</li>
-          <li>レノ・ジャクソン杯 第一回：リンク未設定</li>
+        <p class="overview-copy">
+          レノ・ジャクソン杯は、ハースストーン・バトルグラウンドのオープン大会です。参加者を複数卓に分けて予選を行い、各卓の上位者が決勝卓へ進出します。ここでは各回の開催情報、Tonamelリンク、簡単なルール説明を整理します。
+        </p>
+      </div>
+    </section>
+
+    <section class="score-card">
+      <div class="section-title purple">Simple Rules</div>
+      <div class="section-body">
+        <ul class="simple-rule-list">
+          <li><strong>参加形式</strong>誰でも参加できるオープン戦として募集します。定員は32名を想定しています。</li>
+          <li><strong>予選</strong>参加者を4卓に分け、各卓の上位2名が決勝卓へ進出します。</li>
+          <li><strong>決勝</strong>決勝卓は8名で実施します。決勝は1ゲーム制で、その回の優勝者を決定します。</li>
         </ul>
       </div>
     </section>
 
     <section class="score-card">
-      <div class="section-title">Archive</div>
+      <div class="section-title orange">Tournament Links</div>
       <div class="section-body">
-        <div class="rule-grid">
-          <article class="rule-item">
-            <h3>大会概要</h3>
-            <p>オープン戦、定員32名、4卓上位2名が決勝卓へ進出する形式です。</p>
+        <div class="series-grid">
+          <article class="series-card disabled">
+            <h3>第1回</h3>
+            <dl>
+              <dt>開催日</dt><dd>未設定</dd>
+              <dt>Tonamel</dt><dd>リンク未設定</dd>
+            </dl>
+            <span class="card-cta">準備中</span>
           </article>
-          <article class="rule-item">
-            <h3>進行形式</h3>
-            <p>決勝卓は8名による1ゲーム制で、その回の優勝者を決定します。</p>
+          <article class="series-card disabled">
+            <h3>第2回</h3>
+            <dl>
+              <dt>開催日</dt><dd>未設定</dd>
+              <dt>Tonamel</dt><dd>リンク未設定</dd>
+            </dl>
+            <span class="card-cta">準備中</span>
           </article>
-          <article class="rule-item">
-            <h3>関連リンク</h3>
-            <p>告知、配信アーカイブ、参加者情報などを後から追加できます。</p>
+          <article class="series-card">
+            <h3>第3回</h3>
+            <dl>
+              <dt>開催日</dt><dd>未設定</dd>
+              <dt>Tonamel</dt><dd><a href="https://tonamel.com/competition/tFMTx" target="_blank" rel="noopener">大会ページ</a></dd>
+            </dl>
+            <a class="card-cta" href="https://tonamel.com/competition/tFMTx" target="_blank" rel="noopener">Tonamelを見る →</a>
           </article>
         </div>
       </div>
