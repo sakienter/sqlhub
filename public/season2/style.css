@@ -1,11 +1,14 @@
-#summary-table {
+#summary-table,
+#total-score-table {
   width: 100%;
   min-width: 760px;
   table-layout: auto;
 }
 
 #summary-table th,
-#summary-table td {
+#summary-table td,
+#total-score-table th,
+#total-score-table td {
   text-align: center;
   white-space: nowrap;
 }
@@ -16,11 +19,180 @@
   min-width: 140px;
 }
 
-#game-detail-table th,
-#game-detail-table td {
+#total-score-table th:nth-child(2),
+#total-score-table td.name-cell {
+  text-align: left;
+  min-width: 140px;
+}
+
+#total-score-table th:first-child,
+#total-score-table td.final-rank-cell {
+  width: 112px;
+}
+
+#total-score-table td.final-rank-cell {
   text-align: center;
 }
 
+#total-score-table th:last-child,
+#total-score-table td:last-child {
+  font-weight: 900;
+}
+
+.final-rank-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 64px;
+  min-height: 28px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.final-rank-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+}
+
+.final-rank-icon svg {
+  display: block;
+  width: 15px;
+  height: 15px;
+}
+
+.final-rank-label {
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.final-rank-simple {
+  display: inline;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border-radius: 0;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 0;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.final-rank-chip.rank-1 {
+  color: #7a531c;
+  background: rgba(239, 230, 209, 0.52);
+}
+
+.final-rank-chip.rank-2 {
+  color: #6f6e6a;
+  background: rgba(229, 228, 224, 0.52);
+}
+
+.final-rank-chip.rank-3 {
+  color: #954925;
+  background: rgba(232, 223, 218, 0.52);
+}
+
+#day-points-table th,
+#day-points-table td,
+#day-placements-table th,
+#day-placements-table td {
+  white-space: nowrap;
+}
+
+#day-points-table th:not(:first-child),
+#day-points-table td.number-cell,
+#day-points-table td.rank-cell,
+#day-placements-table th:not(:first-child),
+#day-placements-table td.number-cell,
+#day-placements-table td.rank-cell {
+  text-align: center;
+}
+
+#day-points-table th:first-child,
+#day-points-table td.name-cell,
+#day-placements-table th:first-child,
+#day-placements-table td.name-cell {
+  text-align: left;
+}
+
+#day-points-table td.score-gold,
+#day-placements-table td.score-gold {
+  color: #111;
+  background: #ffff00;
+  font-weight: 900;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+#day-points-table td.score-silver,
+#day-placements-table td.score-silver {
+  color: #111;
+  background: #c8c8c8;
+  font-weight: 900;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+#day-points-table tr:hover td.score-gold,
+#day-placements-table tr:hover td.score-gold {
+  background: #ffff00;
+}
+
+#day-points-table tr:hover td.score-silver,
+#day-placements-table tr:hover td.score-silver {
+  background: #c8c8c8;
+}
+
+.collapsible-section {
+  padding-bottom: 18px;
+}
+
+.collapsible-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+
+.collapsible-title::-webkit-details-marker {
+  display: none;
+}
+
+.collapsible-state {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 58px;
+  min-height: 28px;
+  padding: 0 10px;
+  color: var(--crimson-dark);
+  background: #fffaf2;
+  border: 1px solid rgba(201, 75, 75, 0.28);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.collapsible-state::before {
+  content: "開く";
+}
+
+.collapsible-section[open] .collapsible-state::before {
+  content: "閉じる";
+}
+
+#game-detail-table th,
+#game-detail-table td,
 #game-detail-table td.name-cell,
 #game-detail-table th:first-child {
   text-align: center;
@@ -175,8 +347,26 @@
 }
 
 @media (max-width: 640px) {
-  #summary-table {
-    min-width: 680px;
+  #summary-table,
+  #total-score-table {
+    min-width: 660px;
+  }
+
+  .final-rank-chip {
+    min-width: 58px;
+    min-height: 26px;
+    padding: 3px 5px;
+    gap: 4px;
+  }
+
+  .final-rank-label {
+    font-size: 14px;
+  }
+
+  .final-rank-icon,
+  .final-rank-icon svg {
+    width: 14px;
+    height: 14px;
   }
 
   #game-ban .ban-subline {
