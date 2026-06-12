@@ -115,10 +115,7 @@
     }
     .overview-text strong{color:var(--text-primary);font-weight:950}
 
-    .series-accordion-list{
-      display:grid;
-      gap:12px;
-    }
+    .series-accordion-list{display:grid;gap:12px}
     .series-accordion{
       overflow:hidden;
       background:#fffaf2;
@@ -166,11 +163,7 @@
     }
     .series-accordion[open] summary::after{content:"−"}
     .series-summary-label{display:block}
-    .series-winner-placeholder{
-      color:var(--crimson-dark);
-      font-weight:950;
-      white-space:nowrap;
-    }
+    .series-winner-placeholder{color:var(--crimson-dark);font-weight:950;white-space:nowrap}
     .series-panel{padding:18px}
     .scoreboard-title{
       margin:0 0 12px;
@@ -214,11 +207,7 @@
     }
     .scoreboard-table td:first-child{border-left:1px solid rgba(24,33,40,.08);border-radius:6px 0 0 6px;color:var(--text-primary);font-weight:950;white-space:nowrap}
     .scoreboard-table td:last-child{border-right:1px solid rgba(24,33,40,.08);border-radius:0 6px 6px 0}
-    .scoreboard-empty{
-      color:var(--text-muted)!important;
-      text-align:center!important;
-      font-weight:850!important;
-    }
+    .scoreboard-empty{color:var(--text-muted)!important;text-align:center!important;font-weight:850!important}
     .recap-area{
       display:flex;
       align-items:center;
@@ -229,28 +218,9 @@
       padding-top:14px;
       border-top:1px solid rgba(24,33,40,.12);
     }
-    .recap-label{
-      color:var(--text-secondary);
-      font-size:13px;
-      font-weight:850;
-    }
+    .recap-label{color:var(--text-secondary);font-size:13px;font-weight:850}
     .recap-link{min-height:34px;padding:0 12px;font-size:12px}
-    .recap-link.is-disabled{
-      pointer-events:none;
-      color:var(--text-muted);
-      background:#f4efe7;
-      border-color:rgba(24,33,40,.1);
-      box-shadow:none;
-      filter:none;
-      cursor:default;
-    }
-    .series-note{
-      margin:14px 0 0;
-      color:var(--text-muted);
-      font-size:12px;
-      font-weight:750;
-      line-height:1.7;
-    }
+    .series-note{margin:14px 0 0;color:var(--text-muted);font-size:12px;font-weight:750;line-height:1.7}
 
     @media (max-width:720px){
       .hero.choujousen-hero{padding:2.25rem 1.15rem;border-radius:12px}
@@ -286,7 +256,7 @@
       <p class="lead">バトグラ頂上戦シリーズの大会概要、ルール、各回のスコアボードとリキャップを整理するためのアーカイブページです。</p>
       <div class="meta-line">
         <span>Series Archive</span>
-        <span>#1〜#9</span>
+        <span>#9〜#1</span>
         <span>Scoreboard / Recap</span>
       </div>
     </header>
@@ -309,9 +279,73 @@
     </section>
 
     <section class="score-card">
-      <div class="section-title">頂上戦一覧 #1〜#9</div>
+      <div class="section-title">頂上戦一覧 #9〜#1</div>
       <div class="section-body">
         <div class="series-accordion-list">
+          <details class="series-accordion" data-series="9">
+            <summary><span class="series-summary-label">バトグラ頂上戦 #9　<span class="series-winner-placeholder">勝者【Thundurus】</span></span></summary>
+            <div class="series-panel">
+              <p class="scoreboard-title">Score Board</p>
+              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
+              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTDKz57LEBSgpOQacLGijWTDOS2-A4afcHVHKQdu6oYpXAlVfDcq75ycmTJnHcslfyjSU8G_iZ_wxh4/pubhtml" target="_blank" rel="noopener">リキャップはこちら</a></div>
+            </div>
+          </details>
+          <details class="series-accordion" data-series="8">
+            <summary><span class="series-summary-label">バトグラ頂上戦 #8　<span class="series-winner-placeholder">勝者【Thundurus】</span></span></summary>
+            <div class="series-panel">
+              <p class="scoreboard-title">Score Board</p>
+              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
+              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRGpoG137Wjtw2PWSChAw4mVYUsn21Eo12VQ_QfpuZR6gnzMO7TPDjzJA5LnYoXTBEryn1uz5x-Mfm8/pubhtml" target="_blank" rel="noopener">リキャップはこちら</a></div>
+            </div>
+          </details>
+          <details class="series-accordion" data-series="7">
+            <summary><span class="series-summary-label">バトグラ頂上戦 #7　<span class="series-winner-placeholder">勝者【Barrette】</span></span></summary>
+            <div class="series-panel">
+              <p class="scoreboard-title">Score Board</p>
+              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
+              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQj8Vdx6uZwGZAyfsVJYVwD05wALSqKLTjJ6N3lm7kW3qiU73TuqEeVd90yN3ZC8KBjwBX-hF3WO14u/pubhtml" target="_blank" rel="noopener">リキャップはこちら</a></div>
+            </div>
+          </details>
+          <details class="series-accordion" data-series="6">
+            <summary><span class="series-summary-label">バトグラ頂上戦 #6　<span class="series-winner-placeholder">勝者【あれっくす】</span></span></summary>
+            <div class="series-panel">
+              <p class="scoreboard-title">Score Board</p>
+              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
+              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRCchM6m0N5EYKrJdVmSXP9mBAQkfOEsiS2ykDjYWBCqrIe7lWHJB2KBD5L4AUTmvDBVFr5GBQzXsQP/pubhtml" target="_blank" rel="noopener">リキャップはこちら</a></div>
+            </div>
+          </details>
+          <details class="series-accordion" data-series="5">
+            <summary><span class="series-summary-label">バトグラ頂上戦 #5　<span class="series-winner-placeholder">勝者【Alutemu】</span></span></summary>
+            <div class="series-panel">
+              <p class="scoreboard-title">Score Board</p>
+              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
+              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRtFN-R5GfFPX8mIcKBIY_aVPOP5V5afpm7ynVN8QJQEAc6_vUgPOCmXrsHhfGNBtzlxlcrxuVjtnj4/pubhtml" target="_blank" rel="noopener">リキャップはこちら</a></div>
+            </div>
+          </details>
+          <details class="series-accordion" data-series="4">
+            <summary><span class="series-summary-label">バトグラ頂上戦 #4　<span class="series-winner-placeholder">勝者【MATSURI】</span></span></summary>
+            <div class="series-panel">
+              <p class="scoreboard-title">Score Board</p>
+              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
+              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSHyKil9Sb1OE2Y0D1rWGGfQMxooTo293-P3KnkytmtL-V8ts9XtdpmUQUa9W6ljZmb1rVXXIfYX7qr/pubhtml" target="_blank" rel="noopener">リキャップはこちら</a></div>
+            </div>
+          </details>
+          <details class="series-accordion" data-series="3">
+            <summary><span class="series-summary-label">バトグラ頂上戦 #3　<span class="series-winner-placeholder">勝者【あれっくす】</span></span></summary>
+            <div class="series-panel">
+              <p class="scoreboard-title">Score Board</p>
+              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
+              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQreLXZRtuirBVIcmZt1s5xTq9IoiECCA739tOginXG7bHTJuvat-TslDXcKkYNwLaIerlN3RbmUOpF/pubhtml" target="_blank" rel="noopener">リキャップはこちら</a></div>
+            </div>
+          </details>
+          <details class="series-accordion" data-series="2">
+            <summary><span class="series-summary-label">バトグラ頂上戦 #2　<span class="series-winner-placeholder">勝者【cogicorgi】</span></span></summary>
+            <div class="series-panel">
+              <p class="scoreboard-title">Score Board</p>
+              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
+              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRfM9DKmB-LMqV3LWRc88hIPMwbSbi7TVBgPy4EhGabZ1l6E6-lBExPJ3cxbS6r1-byuInu1tnNjbGe/pubhtml" target="_blank" rel="noopener">リキャップはこちら</a></div>
+            </div>
+          </details>
           <details class="series-accordion" data-series="1">
             <summary><span class="series-summary-label">バトグラ頂上戦 #1　<span class="series-winner-placeholder">勝者【Alutemu】</span></span></summary>
             <div class="series-panel">
@@ -323,70 +357,6 @@
                 </table>
               </div>
               <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWTwJ9sxMblq3vysZZFBL6Hm9E6AvkUPoz2-oflrMlflYs6q7W0JV-v3JpNoPw97WpHWxmkbJE632T/pubhtml" target="_blank" rel="noopener">リキャップはこちら</a></div>
-            </div>
-          </details>
-          <details class="series-accordion" data-series="2">
-            <summary><span class="series-summary-label">バトグラ頂上戦 #2　<span class="series-winner-placeholder">勝者【cogicorgi】</span></span></summary>
-            <div class="series-panel">
-              <p class="scoreboard-title">Score Board</p>
-              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
-              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRfM9DKmB-LMqV3LWRc88hIPMwbSbi7TVBgPy4EhGabZ1l6E6-lBExPJ3cxbS6r1-byuInu1tnNjbGe/pubhtml" target="_blank" rel="noopener">リキャップはこちら</a></div>
-            </div>
-          </details>
-          <details class="series-accordion" data-series="3">
-            <summary><span class="series-summary-label">バトグラ頂上戦 #3　<span class="series-winner-placeholder">勝者【あれっくす】</span></span></summary>
-            <div class="series-panel">
-              <p class="scoreboard-title">Score Board</p>
-              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
-              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQreLXZRtuirBVIcmZt1s5xTq9IoiECCA739tOginXG7bHTJuvat-TslDXcKkYNwLaIerlN3RbmUOpF/pubhtml" target="_blank" rel="noopener">リキャップはこちら</a></div>
-            </div>
-          </details>
-          <details class="series-accordion" data-series="4">
-            <summary><span class="series-summary-label">バトグラ頂上戦 #4　<span class="series-winner-placeholder">勝者【MATSURI】</span></span></summary>
-            <div class="series-panel">
-              <p class="scoreboard-title">Score Board</p>
-              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
-              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSHyKil9Sb1OE2Y0D1rWGGfQMxooTo293-P3KnkytmtL-V8ts9XtdpmUQUa9W6ljZmb1rVXXIfYX7qr/pubhtml" target="_blank" rel="noopener">リキャップはこちら</a></div>
-            </div>
-          </details>
-          <details class="series-accordion" data-series="5">
-            <summary><span class="series-summary-label">バトグラ頂上戦 #5　<span class="series-winner-placeholder">勝者【Alutemu】</span></span></summary>
-            <div class="series-panel">
-              <p class="scoreboard-title">Score Board</p>
-              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
-              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRtFN-R5GfFPX8mIcKBIY_aVPOP5V5afpm7ynVN8QJQEAc6_vUgPOCmXrsHhfGNBtzlxlcrxuVjtnj4/pubhtml" target="_blank" rel="noopener">リキャップはこちら</a></div>
-            </div>
-          </details>
-          <details class="series-accordion" data-series="6">
-            <summary><span class="series-summary-label">バトグラ頂上戦 #6　<span class="series-winner-placeholder">勝者【あれっくす】</span></span></summary>
-            <div class="series-panel">
-              <p class="scoreboard-title">Score Board</p>
-              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
-              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRCchM6m0N5EYKrJdVmSXP9mBAQkfOEsiS2ykDjYWBCqrIe7lWHJB2KBD5L4AUTmvDBVFr5GBQzXsQP/pubhtml" target="_blank" rel="noopener">リキャップはこちら</a></div>
-            </div>
-          </details>
-          <details class="series-accordion" data-series="7">
-            <summary><span class="series-summary-label">バトグラ頂上戦 #7　<span class="series-winner-placeholder">勝者【Barrette】</span></span></summary>
-            <div class="series-panel">
-              <p class="scoreboard-title">Score Board</p>
-              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
-              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQj8Vdx6uZwGZAyfsVJYVwD05wALSqKLTjJ6N3lm7kW3qiU73TuqEeVd90yN3ZC8KBjwBX-hF3WO14u/pubhtml" target="_blank" rel="noopener">リキャップはこちら</a></div>
-            </div>
-          </details>
-          <details class="series-accordion" data-series="8">
-            <summary><span class="series-summary-label">バトグラ頂上戦 #8　<span class="series-winner-placeholder">勝者【Thundurus】</span></span></summary>
-            <div class="series-panel">
-              <p class="scoreboard-title">Score Board</p>
-              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
-              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRGpoG137Wjtw2PWSChAw4mVYUsn21Eo12VQ_QfpuZR6gnzMO7TPDjzJA5LnYoXTBEryn1uz5x-Mfm8/pubhtml" target="_blank" rel="noopener">リキャップはこちら</a></div>
-            </div>
-          </details>
-          <details class="series-accordion" data-series="9">
-            <summary><span class="series-summary-label">バトグラ頂上戦 #9　<span class="series-winner-placeholder">勝者【Thundurus】</span></span></summary>
-            <div class="series-panel">
-              <p class="scoreboard-title">Score Board</p>
-              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
-              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTDKz57LEBSgpOQacLGijWTDOS2-A4afcHVHKQdu6oYpXAlVfDcq75ycmTJnHcslfyjSU8G_iZ_wxh4/pubhtml" target="_blank" rel="noopener">リキャップはこちら</a></div>
             </div>
           </details>
         </div>
