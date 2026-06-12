@@ -121,6 +121,87 @@
   align-items: center;
 }
 
+.tribe-editor {
+  width: calc(100% - 28px);
+  margin: 16px auto 18px;
+  padding: 16px;
+  background: rgba(255, 250, 242, 0.72);
+  border: 1px solid rgba(24, 33, 40, 0.12);
+  border-radius: 6px;
+}
+
+.tribe-editor-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.tribe-editor h4 {
+  margin: 4px 0 0;
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.tribe-editor-note,
+.tribe-save-status {
+  margin: 0 0 12px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.tribe-save-status {
+  min-height: 1.4em;
+  margin: 10px 0 0;
+  color: var(--crimson-dark);
+}
+
+.tribe-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.tribe-toggle,
+.tribe-save-button {
+  border: 1px solid rgba(24, 33, 40, 0.16);
+  border-radius: 6px;
+  font-family: var(--font);
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform .14s ease, background .14s ease, color .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+
+.tribe-toggle {
+  min-height: 42px;
+  padding: 8px 10px;
+  color: var(--text-secondary);
+  background: #fffaf2;
+}
+
+.tribe-toggle.is-available {
+  color: #fff;
+  background: linear-gradient(90deg, var(--green-dark), var(--green));
+  border-color: rgba(13, 127, 153, 0.42);
+  box-shadow: var(--shadow-soft);
+}
+
+.tribe-toggle:hover,
+.tribe-save-button:hover {
+  transform: translateY(-1px);
+}
+
+.tribe-save-button {
+  min-height: 38px;
+  padding: 0 16px;
+  color: #fff;
+  background: linear-gradient(90deg, var(--crimson-dark), var(--crimson));
+}
+
 @media (max-width: 900px) {
   .game-meta {
     display: block;
@@ -128,6 +209,10 @@
 
   .game-meta span {
     display: block;
+  }
+
+  .tribe-buttons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -138,5 +223,14 @@
 
   #game-ban .ban-subline {
     padding-left: 0;
+  }
+
+  .tribe-editor-head {
+    display: block;
+  }
+
+  .tribe-save-button {
+    margin-top: 12px;
+    width: 100%;
   }
 }
