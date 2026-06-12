@@ -26,9 +26,12 @@
 }
 
 #total-score-table th:first-child,
-#total-score-table td:first-child {
-  width: 96px;
-  font-weight: 900;
+#total-score-table td.final-rank-cell {
+  width: 180px;
+}
+
+#total-score-table td.final-rank-cell {
+  text-align: center;
 }
 
 #total-score-table th:last-child,
@@ -36,23 +39,68 @@
   font-weight: 900;
 }
 
-#total-score-table .rank-badge {
+.final-rank-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  min-width: 132px;
+  min-height: 64px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.final-rank-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 54px;
-  min-height: 30px;
-  padding: 0 12px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 950;
-  letter-spacing: .02em;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
 }
 
-#total-score-table .rank-badge.plain {
+.final-rank-icon svg {
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+
+.final-rank-label {
+  font-size: 24px;
+  font-weight: 950;
+  letter-spacing: 0.01em;
+}
+
+.final-rank-simple {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  min-height: 34px;
+  padding: 8px 14px;
+  border-radius: 999px;
   color: var(--text-secondary);
   background: rgba(255, 250, 242, 0.86);
   border: 1px solid rgba(24, 33, 40, 0.12);
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.final-rank-chip.rank-1 {
+  color: #7a531c;
+  background: #efe6d1;
+}
+
+.final-rank-chip.rank-2 {
+  color: #6f6e6a;
+  background: #e5e4e0;
+}
+
+.final-rank-chip.rank-3 {
+  color: #954925;
+  background: #e8dfda;
 }
 
 #day-points-table th,
@@ -302,7 +350,18 @@
 @media (max-width: 640px) {
   #summary-table,
   #total-score-table {
-    min-width: 680px;
+    min-width: 720px;
+  }
+
+  .final-rank-chip {
+    min-width: 118px;
+    min-height: 56px;
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .final-rank-label {
+    font-size: 21px;
   }
 
   #game-ban .ban-subline {
