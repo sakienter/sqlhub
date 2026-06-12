@@ -3,44 +3,227 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ディープブルー杯 | Avenge Hub</title>
-  <meta name="description" content="ディープブルー杯 の大会情報ページです。" />
-  <meta property="og:title" content="ディープブルー杯 | Avenge Hub" />
-  <meta property="og:description" content="ディープブルー杯 の大会情報ページ" />
+  <title>ディープ・ブルー杯 | Avenge Hub</title>
+  <meta name="description" content="ディープ・ブルー杯の大会概要、ルール、開催リンクをまとめたページです。" />
+  <meta property="og:title" content="ディープ・ブルー杯 | Avenge Hub" />
+  <meta property="og:description" content="ディープ・ブルー杯の大会概要、ルール、開催リンク" />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="../../common.css" />
   <style>
-    .dummy-hero{position:relative;overflow:hidden;min-height:300px;padding:48px 52px;text-align:left;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(90deg,rgba(5,10,18,.86) 0%,rgba(5,10,18,.66) 42%,rgba(5,10,18,.22) 70%,rgba(5,10,18,.04) 100%),url('/tournaments/dp.webp') center center/cover no-repeat;border-color:rgba(255,255,255,.18)}
-    .dummy-hero h1,.dummy-hero .eyebrow,.dummy-hero .lead{max-width:640px;text-align:left;color:#fff;text-shadow:0 2px 14px rgba(3,14,24,.56)}
-    .dummy-hero .back-link{align-self:flex-start;color:#fff;background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.22);backdrop-filter:blur(6px)}
+    .hero.deepblue-hero{
+      position:relative;
+      isolation:isolate;
+      overflow:hidden;
+      margin:0 auto 28px;
+      min-height:330px;
+      padding:2.1rem 2rem 2.35rem;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      text-align:left;
+      background:
+        radial-gradient(circle at 16% 18%,rgba(108,216,255,.26) 0%,rgba(108,216,255,0) 34%),
+        radial-gradient(circle at 78% 76%,rgba(127,119,221,.20) 0%,rgba(127,119,221,0) 30%),
+        linear-gradient(90deg,rgba(3,12,27,.94) 0%,rgba(5,24,48,.84) 44%,rgba(6,38,72,.48) 72%,rgba(6,38,72,.18) 100%),
+        url('/tournaments/dp.webp') center center/cover no-repeat;
+      border:1px solid rgba(108,216,255,.30);
+      border-radius:18px;
+      box-shadow:0 22px 40px rgba(3,14,24,.34);
+      backdrop-filter:none;
+    }
+    .hero.deepblue-hero::before,
+    .hero.deepblue-hero::after{
+      content:none;
+      display:none;
+    }
+    .deepblue-hero .back-link{
+      position:relative;
+      z-index:1;
+      align-self:flex-start;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:36px;
+      padding:0 16px;
+      color:#d8f5ff;
+      background:rgba(3,14,28,.44);
+      border:1px solid rgba(183,238,255,.26);
+      border-radius:999px;
+      box-shadow:0 8px 18px rgba(3,14,24,.18);
+      font-size:13px;
+      font-weight:900;
+      text-decoration:none;
+      backdrop-filter:blur(8px);
+    }
+    .deepblue-title-block{
+      position:relative;
+      z-index:1;
+      max-width:760px;
+      margin-top:2.4rem;
+    }
+    .deepblue-hero .eyebrow{
+      margin:0 0 .75rem;
+      color:#95e8ff;
+      font-size:13px;
+      font-weight:950;
+      letter-spacing:.22em;
+      line-height:1.2;
+      text-transform:uppercase;
+      text-shadow:0 2px 12px rgba(3,14,24,.45);
+    }
+    .deepblue-hero h1{
+      margin:0;
+      color:#f4fcff;
+      font-size:clamp(42px,6.4vw,72px);
+      font-weight:950;
+      letter-spacing:-.06em;
+      line-height:1.08;
+      text-shadow:0 10px 22px rgba(3,14,24,.50);
+    }
+    .deepblue-hero h1 .title-accent{
+      color:#95e8ff;
+      letter-spacing:-.045em;
+    }
+    .deepblue-hero .lead{
+      margin:1.15rem 0 0;
+      max-width:720px;
+      color:rgba(244,252,255,.90);
+      font-size:16px;
+      font-weight:800;
+      line-height:1.85;
+      letter-spacing:.02em;
+      text-shadow:0 2px 12px rgba(3,14,24,.50);
+    }
+    .deepblue-meta{
+      position:relative;
+      z-index:1;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:1.25rem;
+      padding:0;
+      list-style:none;
+    }
+    .deepblue-meta li{
+      display:inline-flex;
+      align-items:center;
+      min-height:34px;
+      padding:0 13px;
+      color:#f4fcff;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(183,238,255,.20);
+      border-radius:999px;
+      font-size:12px;
+      font-weight:900;
+      backdrop-filter:blur(8px);
+    }
+    .plain-copy{
+      margin:0 0 1.2rem;
+      color:var(--text-secondary);
+      font-size:15px;
+      font-weight:750;
+      line-height:1.95;
+    }
+    .rule-text-list{
+      margin:0;
+      padding-left:1.35rem;
+      color:var(--text-secondary);
+      font-size:15px;
+      font-weight:750;
+      line-height:1.95;
+    }
+    .rule-text-list li{
+      margin:.25rem 0;
+      padding-left:.2rem;
+    }
+    .rule-text-list strong{
+      color:var(--text-primary);
+      font-weight:950;
+    }
+    .tournament-text-list{
+      display:grid;
+      gap:0;
+    }
+    .tournament-text-item{
+      padding:0 0 1rem;
+      margin:0 0 1rem;
+      border-bottom:1px solid rgba(24,33,40,.12);
+    }
+    .tournament-text-item:last-child{
+      margin-bottom:0;
+      padding-bottom:0;
+      border-bottom:none;
+    }
+    .tournament-text-item h3{
+      margin:0 0 .45rem;
+      color:var(--text-primary);
+      font-size:20px;
+      font-weight:950;
+      letter-spacing:-.03em;
+    }
+    .tournament-text-item p{
+      margin:.2rem 0;
+      color:var(--text-secondary);
+      font-size:15px;
+      font-weight:750;
+      line-height:1.8;
+    }
+    .tournament-text-item a{
+      font-weight:900;
+    }
+    @media (max-width:900px){
+      .hero.deepblue-hero{min-height:360px;padding:1.55rem}
+      .deepblue-title-block{margin-top:2rem}
+    }
+    @media (max-width:640px){
+      .hero.deepblue-hero{min-height:390px;border-radius:14px}
+      .deepblue-hero h1{font-size:clamp(36px,12vw,52px)}
+      .deepblue-hero .lead{font-size:14px;line-height:1.75}
+      .deepblue-meta li{font-size:11px}
+    }
   </style>
 </head>
 <body>
   <main class="page-shell">
-    <header class="hero dummy-hero">
-      <a class="back-link" href="../../">← Avenge Hub へ戻る</a>
-      <p class="eyebrow">Independent Tournament</p>
-      <h1>ディープブルー杯</h1>
-      <p class="lead">別母体で開催された大会情報を掲載するためのページです。正式な日程、ルール、結果は後から差し替えできます。</p>
+    <header class="hero deepblue-hero">
+      <a class="back-link" href="../../">← Avenge Hubへ戻る</a>
+      <div class="deepblue-title-block">
+        <p class="eyebrow">Independent Tournament</p>
+        <h1>ディープ・ブルー杯 <span class="title-accent">Archive</span></h1>
+        <p class="lead">ディープ・ブルー杯の大会情報を整理するページです。概要、簡単なルール、開催リンクをまとめます。</p>
+        <ul class="deepblue-meta">
+          <li>概要整理中</li>
+          <li>ルール追記予定</li>
+          <li>開催リンク追加予定</li>
+        </ul>
+      </div>
     </header>
 
     <section class="score-card">
-      <div class="section-title">Overview</div>
+      <div class="section-title">概要とルール</div>
       <div class="section-body">
-        <div class="rule-grid">
-          <article class="rule-item"><h3>大会情報</h3><p>大会概要、主催、開催日、参加条件などをここに掲載します。</p></article>
-          <article class="rule-item"><h3>進行状況</h3><p>エントリー受付、配信URL、結果反映などの状態管理に使えます。</p></article>
-        </div>
+        <p class="plain-copy">
+          ディープ・ブルー杯は、ハースストーン・バトルグラウンドの大会情報を掲載するためのページです。大会形式や参加条件などの詳細は、確定した情報から順次追記します。
+        </p>
+        <ul class="rule-text-list">
+          <li><strong>大会概要：</strong>大会の趣旨、主催、対象者などをここに掲載します。</li>
+          <li><strong>ルール：</strong>予選方式、決勝方式、ポイント条件などをここに追記します。</li>
+          <li><strong>開催情報：</strong>開催日、開始時刻、エントリーリンクを下部のリンク欄にまとめます。</li>
+          <li><strong>結果情報：</strong>順位表、ポイント表、配信アーカイブなどを必要に応じて追加します。</li>
+        </ul>
       </div>
     </section>
 
     <section class="score-card">
-      <div class="section-title purple">Results</div>
+      <div class="section-title orange">Tournament Links</div>
       <div class="section-body">
-        <ul class="notice-list">
-          <li>結果データは未登録です。</li>
-          <li>順位表、ポイント表、配信アーカイブのリンクを後から追加できます。</li>
-        </ul>
+        <div class="tournament-text-list">
+          <section class="tournament-text-item">
+            <h3>開催情報</h3>
+            <p>開催日：追加予定</p>
+            <p>Tonamel：追加予定</p>
+          </section>
+        </div>
       </div>
     </section>
 
