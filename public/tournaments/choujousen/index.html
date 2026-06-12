@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>バトグラ頂上戦 #1〜#9 | Avenge Hub</title>
-  <meta name="description" content="バトグラ頂上戦 #1〜#9 の大会概要とルール、各回の結果リンクをまとめるページです。" />
+  <meta name="description" content="バトグラ頂上戦 #1〜#9 の大会概要とルール、各回のスコアボードとリキャップをまとめるページです。" />
   <meta property="og:title" content="バトグラ頂上戦 #1〜#9 | Avenge Hub" />
   <meta property="og:description" content="バトグラ頂上戦 #1〜#9 の大会情報まとめページ" />
   <meta property="og:type" content="website" />
@@ -115,65 +115,129 @@
     }
     .overview-text strong{color:var(--text-primary);font-weight:950}
 
-    .series-table{
-      width:100%;
-      min-width:820px;
-      border-collapse:separate;
-      border-spacing:0 8px;
-      table-layout:auto;
+    .series-accordion-list{
+      display:grid;
+      gap:12px;
     }
-    .series-table th,
-    .series-table td{
-      padding:12px 14px;
-      vertical-align:middle;
-      font-size:14px;
-      line-height:1.45;
-      text-align:left;
-    }
-    .series-table th{
-      color:var(--text-primary);
+    .series-accordion{
+      overflow:hidden;
       background:#fffaf2;
-      border-top:1px solid rgba(24,33,40,.1);
-      border-bottom:1px solid rgba(24,33,40,.16);
-      font-size:12px;
-      font-weight:950;
-      white-space:nowrap;
+      border:1px solid rgba(24,33,40,.12);
+      border-radius:8px;
+      box-shadow:0 4px 14px rgba(3,14,24,.10);
     }
-    .series-table th:first-child{border-left:1px solid rgba(24,33,40,.1);border-radius:6px 0 0 6px}
-    .series-table th:last-child{border-right:1px solid rgba(24,33,40,.1);border-radius:0 6px 6px 0}
-    .series-table td{
-      color:var(--text-secondary);
-      background:#fffaf2;
-      border-top:1px solid rgba(24,33,40,.08);
-      border-bottom:1px solid rgba(24,33,40,.1);
-      font-weight:750;
-    }
-    .series-table td:first-child{
-      border-left:1px solid rgba(24,33,40,.08);
-      border-radius:6px 0 0 6px;
+    .series-accordion summary{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      min-height:58px;
+      padding:14px 18px;
       color:var(--text-primary);
+      cursor:pointer;
+      list-style:none;
+      font-size:16px;
       font-weight:950;
-      white-space:nowrap;
+      line-height:1.4;
+      letter-spacing:-.01em;
+      transition:background .18s ease,color .18s ease;
     }
-    .series-table td:last-child{border-right:1px solid rgba(24,33,40,.08);border-radius:0 6px 6px 0}
-    .series-no{width:86px;color:var(--crimson-dark)!important;font-weight:950!important}
-    .series-table .winner-cell{color:var(--text-primary);font-weight:900}
-    .status-pill{
+    .series-accordion summary::-webkit-details-marker{display:none}
+    .series-accordion summary::after{
+      content:"＋";
+      flex:0 0 auto;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-height:28px;
-      padding:0 10px;
+      width:30px;
+      height:30px;
       color:var(--crimson-dark);
       background:var(--crimson-dim);
       border:1px solid rgba(201,75,75,.22);
       border-radius:999px;
-      font-size:12px;
+      font-size:18px;
+      font-weight:950;
+      line-height:1;
+    }
+    .series-accordion[open] summary{
+      background:linear-gradient(90deg,rgba(13,127,153,.10),rgba(201,75,75,.10));
+      border-bottom:1px solid rgba(24,33,40,.12);
+    }
+    .series-accordion[open] summary::after{content:"−"}
+    .series-summary-label{display:block}
+    .series-winner-placeholder{
+      color:var(--crimson-dark);
       font-weight:950;
       white-space:nowrap;
     }
-    .series-url{min-height:34px;padding:0 12px;font-size:12px}
-    .series-url.is-disabled{
+    .series-panel{
+      padding:18px;
+    }
+    .scoreboard-title{
+      margin:0 0 12px;
+      color:var(--text-primary);
+      font-size:16px;
+      font-weight:950;
+      letter-spacing:-.02em;
+    }
+    .scoreboard-table{
+      width:100%;
+      min-width:640px;
+      border-collapse:separate;
+      border-spacing:0 8px;
+      table-layout:auto;
+      background:transparent;
+    }
+    .scoreboard-table th,
+    .scoreboard-table td{
+      padding:11px 12px;
+      text-align:left;
+      vertical-align:middle;
+      font-size:13px;
+      line-height:1.45;
+    }
+    .scoreboard-table th{
+      color:var(--text-primary);
+      background:#fff6eb;
+      border-top:1px solid rgba(24,33,40,.10);
+      border-bottom:1px solid rgba(24,33,40,.16);
+      font-weight:950;
+      white-space:nowrap;
+    }
+    .scoreboard-table th:first-child{border-left:1px solid rgba(24,33,40,.10);border-radius:6px 0 0 6px}
+    .scoreboard-table th:last-child{border-right:1px solid rgba(24,33,40,.10);border-radius:0 6px 6px 0}
+    .scoreboard-table td{
+      color:var(--text-secondary);
+      background:#fff6eb;
+      border-top:1px solid rgba(24,33,40,.08);
+      border-bottom:1px solid rgba(24,33,40,.10);
+      font-weight:750;
+    }
+    .scoreboard-table td:first-child{border-left:1px solid rgba(24,33,40,.08);border-radius:6px 0 0 6px;color:var(--text-primary);font-weight:950;white-space:nowrap}
+    .scoreboard-table td:last-child{border-right:1px solid rgba(24,33,40,.08);border-radius:0 6px 6px 0}
+    .scoreboard-empty{
+      color:var(--text-muted)!important;
+      text-align:center!important;
+      font-weight:850!important;
+    }
+    .recap-area{
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+      padding-top:14px;
+      border-top:1px solid rgba(24,33,40,.12);
+    }
+    .recap-label{
+      color:var(--text-secondary);
+      font-size:13px;
+      font-weight:850;
+    }
+    .recap-link{min-height:34px;padding:0 12px;font-size:12px}
+    .recap-link.is-disabled{
       pointer-events:none;
       color:var(--text-muted);
       background:#f4efe7;
@@ -183,7 +247,7 @@
       cursor:default;
     }
     .series-note{
-      margin:12px 0 0;
+      margin:14px 0 0;
       color:var(--text-muted);
       font-size:12px;
       font-weight:750;
@@ -207,6 +271,11 @@
       .choujousen-hero .eyebrow{margin-bottom:.85rem;font-size:11px;letter-spacing:.24em}
       .choujousen-hero h1{font-size:clamp(34px,11vw,48px)}
       .choujousen-hero .lead{margin-top:1.2rem;font-size:14px;line-height:1.7}
+      .series-accordion summary{align-items:flex-start;flex-direction:column;gap:8px;padding:14px 16px;font-size:15px}
+      .series-accordion summary::after{position:absolute;right:14px;top:14px;width:28px;height:28px}
+      .series-summary-label{padding-right:42px}
+      .series-winner-placeholder{white-space:normal}
+      .series-panel{padding:16px 12px}
     }
   </style>
 </head>
@@ -216,11 +285,11 @@
       <a class="back-link" href="../../">← Avenge Hubへ戻る</a>
       <p class="eyebrow">Tournament Series</p>
       <h1>バトグラ頂上戦 <span class="title-accent">#1〜#9</span></h1>
-      <p class="lead">バトグラ頂上戦シリーズの大会概要、ルール、各回の結果リンクを整理するためのアーカイブページです。</p>
+      <p class="lead">バトグラ頂上戦シリーズの大会概要、ルール、各回のスコアボードとリキャップを整理するためのアーカイブページです。</p>
       <div class="meta-line">
         <span>Series Archive</span>
         <span>#1〜#9</span>
-        <span>Winner / URL</span>
+        <span>Scoreboard / Recap</span>
       </div>
     </header>
 
@@ -228,7 +297,7 @@
       <div class="section-title">大会概要とルール</div>
       <div class="section-body">
         <p class="overview-lead">
-          バトグラ頂上戦は、ハースストーン・バトルグラウンドの大会シリーズです。ここでは、シリーズ全体の概要、基本ルール、各回の優勝者と関連URLをまとめます。
+          バトグラ頂上戦は、ハースストーン・バトルグラウンドの大会シリーズです。ここでは、シリーズ全体の概要、基本ルール、各回の優勝者、スコアボード、リキャップURLをまとめます。
         </p>
         <div class="overview-text">
           <p><strong>参加資格：</strong>運営が事前に告知した時刻のアジアサーバーレート上位8名。連絡がつかない場合は繰り下げ等を行う。</p>
@@ -244,85 +313,86 @@
     <section class="score-card">
       <div class="section-title">頂上戦一覧 #1〜#9</div>
       <div class="section-body">
-        <div class="table-wrap">
-          <table class="series-table">
-            <thead>
-              <tr>
-                <th>No.</th>
-                <th>大会</th>
-                <th>状態</th>
-                <th>優勝者</th>
-                <th>URL</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-series="1">
-                <td class="series-no">#1</td>
-                <td>バトグラ頂上戦 #1</td>
-                <td><span class="status-pill">準備中</span></td>
-                <td class="winner-cell">未定</td>
-                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
-              </tr>
-              <tr data-series="2">
-                <td class="series-no">#2</td>
-                <td>バトグラ頂上戦 #2</td>
-                <td><span class="status-pill">準備中</span></td>
-                <td class="winner-cell">未定</td>
-                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
-              </tr>
-              <tr data-series="3">
-                <td class="series-no">#3</td>
-                <td>バトグラ頂上戦 #3</td>
-                <td><span class="status-pill">準備中</span></td>
-                <td class="winner-cell">未定</td>
-                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
-              </tr>
-              <tr data-series="4">
-                <td class="series-no">#4</td>
-                <td>バトグラ頂上戦 #4</td>
-                <td><span class="status-pill">準備中</span></td>
-                <td class="winner-cell">未定</td>
-                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
-              </tr>
-              <tr data-series="5">
-                <td class="series-no">#5</td>
-                <td>バトグラ頂上戦 #5</td>
-                <td><span class="status-pill">準備中</span></td>
-                <td class="winner-cell">未定</td>
-                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
-              </tr>
-              <tr data-series="6">
-                <td class="series-no">#6</td>
-                <td>バトグラ頂上戦 #6</td>
-                <td><span class="status-pill">準備中</span></td>
-                <td class="winner-cell">未定</td>
-                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
-              </tr>
-              <tr data-series="7">
-                <td class="series-no">#7</td>
-                <td>バトグラ頂上戦 #7</td>
-                <td><span class="status-pill">準備中</span></td>
-                <td class="winner-cell">未定</td>
-                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
-              </tr>
-              <tr data-series="8">
-                <td class="series-no">#8</td>
-                <td>バトグラ頂上戦 #8</td>
-                <td><span class="status-pill">準備中</span></td>
-                <td class="winner-cell">未定</td>
-                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
-              </tr>
-              <tr data-series="9">
-                <td class="series-no">#9</td>
-                <td>バトグラ頂上戦 #9</td>
-                <td><span class="status-pill">準備中</span></td>
-                <td class="winner-cell">未定</td>
-                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="series-accordion-list">
+          <details class="series-accordion" data-series="1">
+            <summary><span class="series-summary-label">バトグラ頂上戦 #1　<span class="series-winner-placeholder">勝者【名前】</span></span></summary>
+            <div class="series-panel">
+              <p class="scoreboard-title">Score Board</p>
+              <div class="table-wrap">
+                <table class="scoreboard-table">
+                  <thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead>
+                  <tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody>
+                </table>
+              </div>
+              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link is-disabled" href="#" aria-disabled="true" tabindex="-1">リキャップはこちら</a></div>
+            </div>
+          </details>
+          <details class="series-accordion" data-series="2">
+            <summary><span class="series-summary-label">バトグラ頂上戦 #2　<span class="series-winner-placeholder">勝者【名前】</span></span></summary>
+            <div class="series-panel">
+              <p class="scoreboard-title">Score Board</p>
+              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
+              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link is-disabled" href="#" aria-disabled="true" tabindex="-1">リキャップはこちら</a></div>
+            </div>
+          </details>
+          <details class="series-accordion" data-series="3">
+            <summary><span class="series-summary-label">バトグラ頂上戦 #3　<span class="series-winner-placeholder">勝者【名前】</span></span></summary>
+            <div class="series-panel">
+              <p class="scoreboard-title">Score Board</p>
+              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
+              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link is-disabled" href="#" aria-disabled="true" tabindex="-1">リキャップはこちら</a></div>
+            </div>
+          </details>
+          <details class="series-accordion" data-series="4">
+            <summary><span class="series-summary-label">バトグラ頂上戦 #4　<span class="series-winner-placeholder">勝者【名前】</span></span></summary>
+            <div class="series-panel">
+              <p class="scoreboard-title">Score Board</p>
+              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
+              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link is-disabled" href="#" aria-disabled="true" tabindex="-1">リキャップはこちら</a></div>
+            </div>
+          </details>
+          <details class="series-accordion" data-series="5">
+            <summary><span class="series-summary-label">バトグラ頂上戦 #5　<span class="series-winner-placeholder">勝者【名前】</span></span></summary>
+            <div class="series-panel">
+              <p class="scoreboard-title">Score Board</p>
+              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
+              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link is-disabled" href="#" aria-disabled="true" tabindex="-1">リキャップはこちら</a></div>
+            </div>
+          </details>
+          <details class="series-accordion" data-series="6">
+            <summary><span class="series-summary-label">バトグラ頂上戦 #6　<span class="series-winner-placeholder">勝者【名前】</span></span></summary>
+            <div class="series-panel">
+              <p class="scoreboard-title">Score Board</p>
+              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
+              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link is-disabled" href="#" aria-disabled="true" tabindex="-1">リキャップはこちら</a></div>
+            </div>
+          </details>
+          <details class="series-accordion" data-series="7">
+            <summary><span class="series-summary-label">バトグラ頂上戦 #7　<span class="series-winner-placeholder">勝者【名前】</span></span></summary>
+            <div class="series-panel">
+              <p class="scoreboard-title">Score Board</p>
+              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
+              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link is-disabled" href="#" aria-disabled="true" tabindex="-1">リキャップはこちら</a></div>
+            </div>
+          </details>
+          <details class="series-accordion" data-series="8">
+            <summary><span class="series-summary-label">バトグラ頂上戦 #8　<span class="series-winner-placeholder">勝者【名前】</span></span></summary>
+            <div class="series-panel">
+              <p class="scoreboard-title">Score Board</p>
+              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
+              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link is-disabled" href="#" aria-disabled="true" tabindex="-1">リキャップはこちら</a></div>
+            </div>
+          </details>
+          <details class="series-accordion" data-series="9">
+            <summary><span class="series-summary-label">バトグラ頂上戦 #9　<span class="series-winner-placeholder">勝者【名前】</span></span></summary>
+            <div class="series-panel">
+              <p class="scoreboard-title">Score Board</p>
+              <div class="table-wrap"><table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table></div>
+              <div class="recap-area"><span class="recap-label">詳しいリキャップはこちら</span><a class="button secondary recap-link is-disabled" href="#" aria-disabled="true" tabindex="-1">リキャップはこちら</a></div>
+            </div>
+          </details>
         </div>
-        <p class="series-note">各回の優勝者名とURLは、該当行の「未定」「URL未設定」を差し替えて管理します。</p>
+        <p class="series-note">スコアボード詳細とスプレッドシートURLは、各回の折りたたみ内で後から差し替えます。</p>
       </div>
     </section>
 
