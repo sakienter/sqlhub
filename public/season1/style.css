@@ -55,54 +55,6 @@
   border: 1px solid rgba(24, 33, 40, 0.12);
 }
 
-#total-score-table tr.rank-first td {
-  background: linear-gradient(90deg, rgba(255, 238, 167, 0.88), rgba(255, 250, 242, 0.98));
-  border-top-color: rgba(207, 153, 38, 0.36);
-  border-bottom-color: rgba(207, 153, 38, 0.36);
-}
-
-#total-score-table tr.rank-second td {
-  background: linear-gradient(90deg, rgba(228, 236, 244, 0.94), rgba(255, 250, 242, 0.98));
-  border-top-color: rgba(126, 144, 159, 0.32);
-  border-bottom-color: rgba(126, 144, 159, 0.32);
-}
-
-#total-score-table tr.rank-third td {
-  background: linear-gradient(90deg, rgba(232, 193, 154, 0.72), rgba(255, 250, 242, 0.98));
-  border-top-color: rgba(165, 101, 52, 0.30);
-  border-bottom-color: rgba(165, 101, 52, 0.30);
-}
-
-#total-score-table tr.rank-first .rank-badge {
-  color: #6e4600;
-  background: linear-gradient(135deg, #fff3a8, #e6a93f);
-  border: 1px solid rgba(146, 97, 12, 0.28);
-  box-shadow: 0 0 0 3px rgba(230, 169, 63, 0.12);
-}
-
-#total-score-table tr.rank-second .rank-badge {
-  color: #45515c;
-  background: linear-gradient(135deg, #f8fbff, #b9c6d3);
-  border: 1px solid rgba(94, 110, 123, 0.24);
-  box-shadow: 0 0 0 3px rgba(185, 198, 211, 0.12);
-}
-
-#total-score-table tr.rank-third .rank-badge {
-  color: #70411d;
-  background: linear-gradient(135deg, #f5d1ad, #c17a42);
-  border: 1px solid rgba(135, 77, 33, 0.24);
-  box-shadow: 0 0 0 3px rgba(193, 122, 66, 0.12);
-}
-
-#total-score-table tr.rank-first td.name-cell,
-#total-score-table tr.rank-second td.name-cell,
-#total-score-table tr.rank-third td.name-cell,
-#total-score-table tr.rank-first td.total-cell,
-#total-score-table tr.rank-second td.total-cell,
-#total-score-table tr.rank-third td.total-cell {
-  font-weight: 950;
-}
-
 #day-points-table th,
 #day-points-table td,
 #day-placements-table th,
@@ -124,6 +76,32 @@
 #day-placements-table th:first-child,
 #day-placements-table td.name-cell {
   text-align: left;
+}
+
+#day-points-table td.score-gold,
+#day-placements-table td.score-gold {
+  color: #111;
+  background: #ffff00;
+  font-weight: 900;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+#day-points-table td.score-silver,
+#day-placements-table td.score-silver {
+  color: #111;
+  background: #c8c8c8;
+  font-weight: 900;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+#day-points-table tr:hover td.score-gold,
+#day-placements-table tr:hover td.score-gold {
+  background: #ffff00;
+}
+
+#day-points-table tr:hover td.score-silver,
+#day-placements-table tr:hover td.score-silver {
+  background: #c8c8c8;
 }
 
 .collapsible-section {
