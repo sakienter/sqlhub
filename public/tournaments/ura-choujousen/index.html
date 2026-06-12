@@ -99,6 +99,27 @@
       font-weight: 950;
     }
 
+    .archive-table td.total-cell {
+      color: var(--crimson-dark);
+      font-size: 15px;
+      font-weight: 950;
+    }
+
+    .rank-gold,
+    .rank-silver,
+    .rank-bronze {
+      font-weight: 950;
+    }
+
+    .rank-gold { color: var(--crimson-dark); }
+    .rank-silver { color: var(--green-dark); }
+    .rank-bronze { color: var(--amber-dark); }
+
+    .day-score {
+      color: var(--text-primary);
+      font-weight: 900;
+    }
+
     .player-link {
       display: inline-flex;
       align-items: center;
@@ -147,6 +168,29 @@
       color: var(--crimson-dark);
       font-size: 18px;
       font-weight: 950;
+    }
+
+    .day-panel {
+      display: none;
+    }
+
+    .day-panel.active {
+      display: block;
+    }
+
+    .day-placeholder {
+      width: calc(100% - 28px);
+      margin: 0 auto 18px;
+      padding: 18px;
+      color: var(--text-secondary);
+      background: #fffaf2;
+      border: 1px solid rgba(24, 33, 40, 0.12);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.8;
+      text-align: center;
     }
 
     .archive-note {
@@ -200,6 +244,191 @@
           </article>
         </div>
       </div>
+    </section>
+
+    <section class="score-card">
+      <div class="section-title purple">Final Results</div>
+      <div class="section-body">
+        <div class="table-wrap">
+          <table class="archive-table" aria-label="最終結果">
+            <thead>
+              <tr>
+                <th class="name-head">Name</th>
+                <th>Total</th>
+                <th>順位</th>
+                <th>Day1</th>
+                <th>Day2</th>
+                <th>Day3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="winner-row">
+                <td class="name-cell">yoshiyuki</td>
+                <td class="total-cell">131</td>
+                <td class="rank-gold">1st</td>
+                <td class="day-score">48.5</td>
+                <td class="day-score">46</td>
+                <td class="day-score">36.5</td>
+              </tr>
+              <tr>
+                <td class="name-cell">MATSURI</td>
+                <td class="total-cell">109</td>
+                <td class="rank-silver">2nd</td>
+                <td class="day-score">40</td>
+                <td class="day-score">37</td>
+                <td class="day-score">32</td>
+              </tr>
+              <tr>
+                <td class="name-cell">SeseiSei</td>
+                <td class="total-cell">105.5</td>
+                <td class="rank-bronze">3rd</td>
+                <td class="day-score">28</td>
+                <td class="day-score">39</td>
+                <td class="day-score">38.5</td>
+              </tr>
+              <tr>
+                <td class="name-cell">haguren</td>
+                <td class="total-cell">90.5</td>
+                <td>4th</td>
+                <td class="day-score">40</td>
+                <td class="day-score">28</td>
+                <td class="day-score">22.5</td>
+              </tr>
+              <tr>
+                <td class="name-cell">あれっくす</td>
+                <td class="total-cell">89.5</td>
+                <td>5th</td>
+                <td class="day-score">39.5</td>
+                <td class="day-score">28.5</td>
+                <td class="day-score">21.5</td>
+              </tr>
+              <tr>
+                <td class="name-cell">Thundurus</td>
+                <td class="total-cell">74.5</td>
+                <td>6th</td>
+                <td class="day-score">18.5</td>
+                <td class="day-score">32</td>
+                <td class="day-score">24</td>
+              </tr>
+              <tr>
+                <td class="name-cell">Alutemu</td>
+                <td class="total-cell">70.5</td>
+                <td>7th</td>
+                <td class="day-score">23.5</td>
+                <td class="day-score">28.5</td>
+                <td class="day-score">18.5</td>
+              </tr>
+              <tr>
+                <td class="name-cell">Yanase</td>
+                <td class="total-cell">69.5</td>
+                <td>8th</td>
+                <td class="day-score">21</td>
+                <td class="day-score">20</td>
+                <td class="day-score">28.5</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="score-card day-card">
+      <div class="section-title orange">DAY別結果</div>
+      <div class="day-tabs" aria-label="DAY切り替え">
+        <button class="day-tab active" type="button" data-day-tab="day1" aria-pressed="true">
+          <span class="tab-main">Day 1</span>
+          <span class="tab-sub">7試合</span>
+        </button>
+        <button class="day-tab" type="button" data-day-tab="day2" aria-pressed="false">
+          <span class="tab-main">Day 2</span>
+          <span class="tab-sub">7試合</span>
+        </button>
+        <button class="day-tab" type="button" data-day-tab="day3" aria-pressed="false">
+          <span class="tab-main">Day 3</span>
+          <span class="tab-sub">6試合</span>
+        </button>
+      </div>
+
+      <section class="day-panel active" id="day1" aria-label="Day 1 結果">
+        <div class="day-current">
+          <p class="day-kicker">Selected Day</p>
+          <h2>Day 1</h2>
+          <div class="meta-line"><span>2026/01/24（土）</span><span>13:00 Start</span><span>7 Matches</span></div>
+        </div>
+        <section class="day-section">
+          <div class="mini-section-title">Day Total</div>
+          <div class="table-wrap">
+            <table class="archive-table" aria-label="Day 1 合計ポイント">
+              <thead><tr><th class="name-head">Name</th><th>Day Total</th></tr></thead>
+              <tbody>
+                <tr><td class="name-cell">yoshiyuki</td><td class="total-cell">48.5</td></tr>
+                <tr><td class="name-cell">MATSURI</td><td class="total-cell">40</td></tr>
+                <tr><td class="name-cell">haguren</td><td class="total-cell">40</td></tr>
+                <tr><td class="name-cell">あれっくす</td><td class="total-cell">39.5</td></tr>
+                <tr><td class="name-cell">SeseiSei</td><td class="total-cell">28</td></tr>
+                <tr><td class="name-cell">Alutemu</td><td class="total-cell">23.5</td></tr>
+                <tr><td class="name-cell">Yanase</td><td class="total-cell">21</td></tr>
+                <tr><td class="name-cell">Thundurus</td><td class="total-cell">18.5</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <div class="day-placeholder">各ゲームの詳細結果は準備中です。</div>
+      </section>
+
+      <section class="day-panel" id="day2" aria-label="Day 2 結果">
+        <div class="day-current">
+          <p class="day-kicker">Selected Day</p>
+          <h2>Day 2</h2>
+          <div class="meta-line"><span>2026/01/25（日）</span><span>13:00 Start</span><span>7 Matches</span></div>
+        </div>
+        <section class="day-section">
+          <div class="mini-section-title">Day Total</div>
+          <div class="table-wrap">
+            <table class="archive-table" aria-label="Day 2 合計ポイント">
+              <thead><tr><th class="name-head">Name</th><th>Day Total</th></tr></thead>
+              <tbody>
+                <tr><td class="name-cell">yoshiyuki</td><td class="total-cell">46</td></tr>
+                <tr><td class="name-cell">SeseiSei</td><td class="total-cell">39</td></tr>
+                <tr><td class="name-cell">MATSURI</td><td class="total-cell">37</td></tr>
+                <tr><td class="name-cell">Thundurus</td><td class="total-cell">32</td></tr>
+                <tr><td class="name-cell">あれっくす</td><td class="total-cell">28.5</td></tr>
+                <tr><td class="name-cell">Alutemu</td><td class="total-cell">28.5</td></tr>
+                <tr><td class="name-cell">haguren</td><td class="total-cell">28</td></tr>
+                <tr><td class="name-cell">Yanase</td><td class="total-cell">20</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <div class="day-placeholder">各ゲームの詳細結果は準備中です。</div>
+      </section>
+
+      <section class="day-panel" id="day3" aria-label="Day 3 結果">
+        <div class="day-current">
+          <p class="day-kicker">Selected Day</p>
+          <h2>Day 3</h2>
+          <div class="meta-line"><span>2026/01/26（月）</span><span>21:00 Start</span><span>6 Matches</span></div>
+        </div>
+        <section class="day-section">
+          <div class="mini-section-title">Day Total</div>
+          <div class="table-wrap">
+            <table class="archive-table" aria-label="Day 3 合計ポイント">
+              <thead><tr><th class="name-head">Name</th><th>Day Total</th></tr></thead>
+              <tbody>
+                <tr><td class="name-cell">SeseiSei</td><td class="total-cell">38.5</td></tr>
+                <tr><td class="name-cell">yoshiyuki</td><td class="total-cell">36.5</td></tr>
+                <tr><td class="name-cell">MATSURI</td><td class="total-cell">32</td></tr>
+                <tr><td class="name-cell">Yanase</td><td class="total-cell">28.5</td></tr>
+                <tr><td class="name-cell">Thundurus</td><td class="total-cell">24</td></tr>
+                <tr><td class="name-cell">haguren</td><td class="total-cell">22.5</td></tr>
+                <tr><td class="name-cell">あれっくす</td><td class="total-cell">21.5</td></tr>
+                <tr><td class="name-cell">Alutemu</td><td class="total-cell">18.5</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <div class="day-placeholder">各ゲームの詳細結果は準備中です。</div>
+      </section>
     </section>
 
     <section class="score-card">
@@ -323,17 +552,25 @@
       </div>
     </section>
 
-    <section class="score-card">
-      <div class="section-title">Results</div>
-      <div class="section-body">
-        <ul class="notice-list">
-          <li>最終結果・順位表：準備中</li>
-          <li>各試合のヒーロー、アノマリー、種族情報：準備中</li>
-        </ul>
-      </div>
-    </section>
-
     <footer class="footer-note"><p>Avenge Hub / Tournament info by Stuntdrake</p></footer>
   </main>
+
+  <script>
+    document.querySelectorAll('[data-day-tab]').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.dayTab;
+
+        document.querySelectorAll('[data-day-tab]').forEach((button) => {
+          const isActive = button.dataset.dayTab === target;
+          button.classList.toggle('active', isActive);
+          button.setAttribute('aria-pressed', String(isActive));
+        });
+
+        document.querySelectorAll('.day-panel').forEach((panel) => {
+          panel.classList.toggle('active', panel.id === target);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
