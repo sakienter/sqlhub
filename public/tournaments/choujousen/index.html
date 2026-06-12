@@ -14,13 +14,9 @@
     .hero.choujousen-hero::before{content:none;display:none}
     .hero.choujousen-hero::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(#c9342c,#c9342c) left 32px top 32px/48px 1px no-repeat,linear-gradient(#c9342c,#c9342c) left 32px top 32px/1px 48px no-repeat,linear-gradient(#c9342c,#c9342c) right 32px top 32px/48px 1px no-repeat,linear-gradient(#c9342c,#c9342c) right 32px top 32px/1px 48px no-repeat,linear-gradient(#c9342c,#c9342c) left 32px bottom 32px/48px 1px no-repeat,linear-gradient(#c9342c,#c9342c) left 32px bottom 32px/1px 48px no-repeat,linear-gradient(#c9342c,#c9342c) right 32px bottom 32px/48px 1px no-repeat,linear-gradient(#c9342c,#c9342c) right 32px bottom 32px/1px 48px no-repeat;pointer-events:none}
     .choujousen-hero .back-link{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;min-height:38px;margin:0 0 1.55rem;padding:0 18px;color:#1c6f8e;background:rgba(255,255,255,.86);border:1px solid rgba(24,33,40,.08);border-radius:999px;box-shadow:0 2px 10px rgba(3,14,24,.06);font-size:14px;font-weight:900;letter-spacing:-.02em;text-decoration:none;backdrop-filter:none}
-    .choujousen-hero .eyebrow{position:relative;z-index:1;margin:0 0 1rem;color:#c9342c;font-size:13px;font-weight:900;letter-spacing:.34em;line-height:1.2;text-transform:uppercase}
     .choujousen-hero h1{position:relative;z-index:1;margin:0;color:#182128;font-size:clamp(42px,5.8vw,56px);font-weight:950;letter-spacing:-.055em;line-height:1.18;text-shadow:none}
     .choujousen-hero h1 .title-accent{color:#c9342c;letter-spacing:-.045em}
-    .choujousen-hero .lead{position:relative;z-index:1;margin:1.55rem auto 0;max-width:820px;color:#5d6b78;font-size:16px;font-weight:800;line-height:1.75;letter-spacing:.02em}
-    .choujousen-hero .meta-line{position:relative;z-index:1}
 
-    .overview-lead{margin:0 0 18px;color:var(--text-secondary);font-size:15px;font-weight:700;line-height:1.9}
     .overview-text{display:grid;gap:12px;margin:0}
     .overview-text p{margin:0;color:var(--text-secondary);font-size:14px;font-weight:750;line-height:1.85;letter-spacing:.01em}
     .overview-text strong{color:var(--text-primary);font-weight:950}
@@ -65,15 +61,12 @@
     .recap-area{display:flex;align-items:center;justify-content:flex-start;gap:10px;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid #d0d0d0}
     .recap-link{min-height:36px;padding:0 14px!important;color:#7f2634!important;background:#fff!important;border:1px solid rgba(127,38,52,.35)!important;border-radius:4px!important;box-shadow:none!important;font-size:13px;font-weight:950;filter:none!important}
     .recap-link:hover{background:#f7f0ec!important;border-color:rgba(127,38,52,.55)!important}
-    .series-note{margin:14px 0 0;color:var(--text-muted);font-size:12px;font-weight:750;line-height:1.7}
 
     @media (max-width:720px){
       .hero.choujousen-hero{padding:2.25rem 1.15rem;border-radius:12px}
       .hero.choujousen-hero::after{background:linear-gradient(#c9342c,#c9342c) left 20px top 20px/32px 1px no-repeat,linear-gradient(#c9342c,#c9342c) left 20px top 20px/1px 32px no-repeat,linear-gradient(#c9342c,#c9342c) right 20px top 20px/32px 1px no-repeat,linear-gradient(#c9342c,#c9342c) right 20px top 20px/1px 32px no-repeat,linear-gradient(#c9342c,#c9342c) left 20px bottom 20px/32px 1px no-repeat,linear-gradient(#c9342c,#c9342c) left 20px bottom 20px/1px 32px no-repeat,linear-gradient(#c9342c,#c9342c) right 20px bottom 20px/32px 1px no-repeat,linear-gradient(#c9342c,#c9342c) right 20px bottom 20px/1px 32px no-repeat}
       .choujousen-hero .back-link{min-height:34px;margin-bottom:1.35rem;padding:0 16px;font-size:13px}
-      .choujousen-hero .eyebrow{margin-bottom:.85rem;font-size:11px;letter-spacing:.24em}
       .choujousen-hero h1{font-size:clamp(34px,11vw,48px)}
-      .choujousen-hero .lead{margin-top:1.2rem;font-size:14px;line-height:1.7}
       .series-accordion summary{align-items:flex-start;flex-direction:column;gap:8px;padding:14px 16px;font-size:15px}
       .series-accordion summary::after{position:absolute;right:14px;top:14px;width:28px;height:28px}
       .series-summary-label{padding-right:42px}
@@ -88,16 +81,12 @@
   <main class="page-shell">
     <header class="hero choujousen-hero">
       <a class="back-link" href="../../">← Avenge Hubへ戻る</a>
-      <p class="eyebrow">Tournament Series</p>
       <h1>バトグラ頂上戦 <span class="title-accent">#1〜#9</span></h1>
-      <p class="lead">バトグラ頂上戦シリーズの大会概要、ルール、各回のスコアボードとスプレッドシートを整理するためのアーカイブページです。</p>
-      <div class="meta-line"><span>Series Archive</span><span>#9〜#1</span><span>Scoreboard / Spreadsheet</span></div>
     </header>
 
     <section class="score-card">
       <div class="section-title">大会概要とルール</div>
       <div class="section-body">
-        <p class="overview-lead">バトグラ頂上戦は、ハースストーン・バトルグラウンドの大会シリーズです。ここでは、シリーズ全体の概要、基本ルール、各回の優勝者、スコアボード、スプレッドシートURLをまとめます。</p>
         <div class="overview-text">
           <p><strong>参加資格：</strong>運営が事前に告知した時刻のアジアサーバーレート上位8名。連絡がつかない場合は繰り下げ等を行う。</p>
           <p><strong>試合形式：</strong>20ptのチェックルール（リミットゲーム数はありません。勝者が決まるまで行います。）</p>
@@ -113,7 +102,6 @@
       <div class="section-title">頂上戦一覧 #9〜#1</div>
       <div class="section-body">
         <div class="series-accordion-list" id="seriesList"></div>
-        <p class="series-note">スコアボード詳細は、各回の折りたたみ内で管理します。</p>
       </div>
     </section>
 
@@ -136,135 +124,35 @@
     const winners = {1:"Alutemu",2:"cogicorgi",3:"あれっくす",4:"MATSURI",5:"Alutemu",6:"あれっくす",7:"Barrette",8:"Thundurus",9:"Thundurus"};
 
     const scoreboards = {
-      9: [
-        ["Thundurus", "【連覇】", 27, "1st", [5,4,6,5,7,"","",""]],
-        ["Alutemu", "", 16, "4th", [2,5,0,7,2,"","",""]],
-        ["MATSURI", "", 16, "4th", [7,0,4,4,1,"","",""]],
-        ["SeseiSei", "", 19, "2nd", [6,7,2,0,4,"","",""]],
-        ["あれっくす", "", 17, "3rd", [3,1,7,3,3,"","",""]],
-        ["Barrette", "", 16, "4th", [1,6,3,1,5,"","",""]],
-        ["gaiabot", "", 14, "8th", [4,3,1,6,0,"","",""]],
-        ["ぎゃん", "", 15, "7th", [0,2,5,2,6,"","",""]]
-      ],
-      8: [
-        ["Barrette", "", 20, "3rd", [2,5,0,7,6,"","",""]],
-        ["Alutemu", "", 20, "3rd", [7,3,3,3,4,"","",""]],
-        ["MATSURI", "", 11, "7th", [1,4,5,0,1,"","",""]],
-        ["あれっくす", "", 25, "2nd", [3,6,6,5,5,"","",""]],
-        ["Thundurus", "【優勝】", 31, "1st", [6,7,7,4,7,"","",""]],
-        ["Ryuzo", "", 13, "6th", [5,1,1,6,0,"","",""]],
-        ["あまつか", "", 5, "8th", [0,0,2,1,2,"","",""]],
-        ["ohaguro", "", 15, "5th", [4,2,4,2,3,"","",""]]
-      ],
-      7: [
-        ["あれっくす", "", 18, "7th", [4,2,2,2,2,6,"",""]],
-        ["Alutemu", "", 20, "3rd", [5,1,3,4,7,0,"",""]],
-        ["Barrette", "【優勝】", 37, "1st", [7,7,5,6,5,7,"",""]],
-        ["MATSURI", "", 12, "8th", [3,0,1,1,6,1,"",""]],
-        ["SeseiSei", "", 20, "3rd", [6,4,6,0,0,4,"",""]],
-        ["Thundurus", "", 19, "5th", [2,5,4,3,3,2,"",""]],
-        ["ぎゃん", "", 19, "5th", [0,3,7,5,1,3,"",""]],
-        ["haguren", "", 23, "2nd", [1,6,0,7,4,5,"",""]]
-      ],
-      6: [
-        ["Alutemu", "", 27, "6th", [6,6,4,4,0,5,1,1]],
-        ["Barrette", "", 38, "2nd", [2,7,6,6,4,1,6,6]],
-        ["Sato9kado", "", 30, "3rd", [7,5,3,2,1,6,2,4]],
-        ["MATSURI", "", 18, "8th", [0,0,0,0,7,2,7,2]],
-        ["あれっくす", "【優勝】", 30, "1st", [1,3,7,3,2,7,0,7]],
-        ["ぎゃん", "", 23, "7th", [3,2,5,1,5,0,4,3]],
-        ["テオ", "", 29, "4th", [4,4,1,5,3,4,3,5]],
-        ["haguren", "", 29, "4th", [5,1,2,7,6,3,5,0]]
-      ],
-      5: [
-        ["MATSURI", "", 19, "5th", [1,4,2,1,7,4,"",""]],
-        ["Yoshiyuki", "", 23, "3rd", [5,7,6,2,0,3,"",""]],
-        ["Alutemu", "【優勝】", 28, "1st", [6,2,0,7,6,7,"",""]],
-        ["Barrette", "", 27, "2nd", [7,5,1,3,5,6,"",""]],
-        ["haguren", "", 14, "8th", [4,1,3,0,1,5,"",""]],
-        ["あれっくす", "", 21, "4th", [0,6,5,6,4,0,"",""]],
-        ["SeseiSei", "", 18, "6th", [3,0,7,5,2,1,"",""]],
-        ["テオ", "", 18, "6th", [2,3,4,4,3,2,"",""]]
-      ],
-      4: [
-        ["Alutemu", "", 28, "3rd", [6,5,0,4,1,7,5,""]],
-        ["MATSURI", "【優勝】", 32, "1st", [0,3,6,7,5,4,7,""]],
-        ["Yoshiyuki", "", 31, "2nd", [1,7,5,5,6,5,2,""]],
-        ["SeseiSei", "", 19, "7th", [7,1,4,3,0,3,1,""]],
-        ["Barrette", "", 26, "4th", [2,6,2,6,4,0,6,""]],
-        ["あれっくす", "", 22, "6th", [5,0,7,1,3,2,4,""]],
-        ["haguren", "", 25, "5th", [3,4,3,2,7,6,0,""]],
-        ["キジル博士", "", 13, "8th", [4,2,1,0,2,1,3,""]]
-      ],
-      3: [
-        ["Alutemu", "", 14, "6th", [0,2,2,3,1,6,"",""]],
-        ["MATSURI", "", 27, "2nd", [6,3,3,7,3,5,"",""]],
-        ["テオ", "", 22, "5th", [7,1,1,5,4,4,"",""]],
-        ["wakka53", "", 7, "8th", [1,0,0,1,2,3,"",""]],
-        ["Barrette", "", 26, "3rd", [3,6,4,6,6,1,"",""]],
-        ["Yoshiyuki", "", 14, "6th", [4,5,5,0,0,0,"",""]],
-        ["あれっくす", "【優勝】", 33, "1st", [2,7,6,4,7,7,"",""]],
-        ["haguren", "", 25, "4th", [5,4,7,2,5,2,"",""]]
-      ],
-      2: [
-        ["Alutemu", "", 22, "6th", [5,3,7,1,4,0,2,""]],
-        ["テオ", "", 29, "2nd", [2,6,4,5,5,3,4,""]],
-        ["Barrette", "", 19, "7th", [3,0,5,3,0,5,3,""]],
-        ["wakka53", "", 24, "4th", [1,2,1,7,6,1,6,""]],
-        ["MATSURI", "", 18, "8th", [0,4,3,2,3,6,0,""]],
-        ["cogicorgi", "【優勝】", 28, "3rd", [4,7,2,0,1,7,7,""]],
-        ["あれっくす", "", 33, "1st", [6,5,0,6,7,4,5,""]],
-        ["sato9kado", "", 23, "5th", [7,1,6,4,2,2,1,""]]
-      ],
-      1: [
-        ["Alutemu", "【優勝】", 30, "1st", [7,6,7,3,7,"","",""]],
-        ["テオ", "", 18, "4th", [4,4,6,2,2,"","",""]],
-        ["Satellite", "", 18, "4th", [1,3,5,6,3,"","",""]],
-        ["wakka53", "", 2, "8th", [0,1,0,1,0,"","",""]],
-        ["MATSURI", "", 16, "6th", [2,0,4,5,5,"","",""]],
-        ["cogicorgi", "", 12, "7th", [5,5,1,0,1,"","",""]],
-        ["あれっくす", "", 24, "2nd", [6,7,3,4,4,"","",""]],
-        ["sato9kado", "", 20, "3rd", [3,2,2,7,6,"","",""]]
-      ]
+      9: [["Thundurus","【連覇】",27,"1st",[5,4,6,5,7,"","",""]],["Alutemu","",16,"4th",[2,5,0,7,2,"","",""]],["MATSURI","",16,"4th",[7,0,4,4,1,"","",""]],["SeseiSei","",19,"2nd",[6,7,2,0,4,"","",""]],["あれっくす","",17,"3rd",[3,1,7,3,3,"","",""]],["Barrette","",16,"4th",[1,6,3,1,5,"","",""]],["gaiabot","",14,"8th",[4,3,1,6,0,"","",""]],["ぎゃん","",15,"7th",[0,2,5,2,6,"","",""]]],
+      8: [["Barrette","",20,"3rd",[2,5,0,7,6,"","",""]],["Alutemu","",20,"3rd",[7,3,3,3,4,"","",""]],["MATSURI","",11,"7th",[1,4,5,0,1,"","",""]],["あれっくす","",25,"2nd",[3,6,6,5,5,"","",""]],["Thundurus","【優勝】",31,"1st",[6,7,7,4,7,"","",""]],["Ryuzo","",13,"6th",[5,1,1,6,0,"","",""]],["あまつか","",5,"8th",[0,0,2,1,2,"","",""]],["ohaguro","",15,"5th",[4,2,4,2,3,"","",""]]],
+      7: [["あれっくす","",18,"7th",[4,2,2,2,2,6,"",""]],["Alutemu","",20,"3rd",[5,1,3,4,7,0,"",""]],["Barrette","【優勝】",37,"1st",[7,7,5,6,5,7,"",""]],["MATSURI","",12,"8th",[3,0,1,1,6,1,"",""]],["SeseiSei","",20,"3rd",[6,4,6,0,0,4,"",""]],["Thundurus","",19,"5th",[2,5,4,3,3,2,"",""]],["ぎゃん","",19,"5th",[0,3,7,5,1,3,"",""]],["haguren","",23,"2nd",[1,6,0,7,4,5,"",""]]],
+      6: [["Alutemu","",27,"6th",[6,6,4,4,0,5,1,1]],["Barrette","",38,"2nd",[2,7,6,6,4,1,6,6]],["Sato9kado","",30,"3rd",[7,5,3,2,1,6,2,4]],["MATSURI","",18,"8th",[0,0,0,0,7,2,7,2]],["あれっくす","【優勝】",30,"1st",[1,3,7,3,2,7,0,7]],["ぎゃん","",23,"7th",[3,2,5,1,5,0,4,3]],["テオ","",29,"4th",[4,4,1,5,3,4,3,5]],["haguren","",29,"4th",[5,1,2,7,6,3,5,0]]],
+      5: [["MATSURI","",19,"5th",[1,4,2,1,7,4,"",""]],["Yoshiyuki","",23,"3rd",[5,7,6,2,0,3,"",""]],["Alutemu","【優勝】",28,"1st",[6,2,0,7,6,7,"",""]],["Barrette","",27,"2nd",[7,5,1,3,5,6,"",""]],["haguren","",14,"8th",[4,1,3,0,1,5,"",""]],["あれっくす","",21,"4th",[0,6,5,6,4,0,"",""]],["SeseiSei","",18,"6th",[3,0,7,5,2,1,"",""]],["テオ","",18,"6th",[2,3,4,4,3,2,"",""]]],
+      4: [["Alutemu","",28,"3rd",[6,5,0,4,1,7,5,""]],["MATSURI","【優勝】",32,"1st",[0,3,6,7,5,4,7,""]],["Yoshiyuki","",31,"2nd",[1,7,5,5,6,5,2,""]],["SeseiSei","",19,"7th",[7,1,4,3,0,3,1,""]],["Barrette","",26,"4th",[2,6,2,6,4,0,6,""]],["あれっくす","",22,"6th",[5,0,7,1,3,2,4,""]],["haguren","",25,"5th",[3,4,3,2,7,6,0,""]],["キジル博士","",13,"8th",[4,2,1,0,2,1,3,""]]],
+      3: [["Alutemu","",14,"6th",[0,2,2,3,1,6,"",""]],["MATSURI","",27,"2nd",[6,3,3,7,3,5,"",""]],["テオ","",22,"5th",[7,1,1,5,4,4,"",""]],["wakka53","",7,"8th",[1,0,0,1,2,3,"",""]],["Barrette","",26,"3rd",[3,6,4,6,6,1,"",""]],["Yoshiyuki","",14,"6th",[4,5,5,0,0,0,"",""]],["あれっくす","【優勝】",33,"1st",[2,7,6,4,7,7,"",""]],["haguren","",25,"4th",[5,4,7,2,5,2,"",""]]],
+      2: [["Alutemu","",22,"6th",[5,3,7,1,4,0,2,""]],["テオ","",29,"2nd",[2,6,4,5,5,3,4,""]],["Barrette","",19,"7th",[3,0,5,3,0,5,3,""]],["wakka53","",24,"4th",[1,2,1,7,6,1,6,""]],["MATSURI","",18,"8th",[0,4,3,2,3,6,0,""]],["cogicorgi","【優勝】",28,"3rd",[4,7,2,0,1,7,7,""]],["あれっくす","",33,"1st",[6,5,0,6,7,4,5,""]],["sato9kado","",23,"5th",[7,1,6,4,2,2,1,""]]],
+      1: [["Alutemu","【優勝】",30,"1st",[7,6,7,3,7,"","",""]],["テオ","",18,"4th",[4,4,6,2,2,"","",""]],["Satellite","",18,"4th",[1,3,5,6,3,"","",""]],["wakka53","",2,"8th",[0,1,0,1,0,"","",""]],["MATSURI","",16,"6th",[2,0,4,5,5,"","",""]],["cogicorgi","",12,"7th",[5,5,1,0,1,"","",""]],["あれっくす","",24,"2nd",[6,7,3,4,4,"","",""]],["sato9kado","",20,"3rd",[3,2,2,7,6,"","",""]]]
     };
 
     const seriesOrder = [9,8,7,6,5,4,3,2,1];
 
-    function escapeHtml(value){
-      return String(value).replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;","\"":"&quot;"}[c]));
-    }
-    function cellClass(score){
-      if(score === "" || score === null || score === undefined) return "empty-cell";
-      if(score === 7) return "num score-first";
-      if(score === 6) return "num score-second";
-      return "num";
-    }
+    function escapeHtml(value){return String(value).replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;","\"":"&quot;"}[c]));}
+    function cellClass(score){if(score === "" || score === null || score === undefined) return "empty-cell";if(score === 7) return "num score-first";if(score === 6) return "num score-second";return "num";}
     function renderScoreboard(no){
       const rows = scoreboards[no];
-      if(!rows){
-        return `<table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table>`;
-      }
+      if(!rows){return `<table class="scoreboard-table"><thead><tr><th>順位</th><th>選手</th><th>ポイント</th><th>備考</th></tr></thead><tbody><tr><td colspan="4" class="scoreboard-empty">スコアボード詳細は後ほど追加します。</td></tr></tbody></table>`;}
       const header = `<thead><tr><th>Name</th><th>Total</th><th>順位</th><th>game1</th><th>game2</th><th>game3</th><th>game4</th><th>game5</th><th>game6</th><th>game7</th><th>game8</th></tr></thead>`;
       const body = rows.map(([name,note,total,rank,games]) => {
         const nameCell = `${escapeHtml(name)}${note ? ` <span class="winner-note">${escapeHtml(note)}</span>` : ""}`;
-        const gameCells = Array.from({length:8}, (_,i) => {
-          const score = games[i] ?? "";
-          return `<td class="${cellClass(score)}">${score === "" ? "-" : escapeHtml(score)}</td>`;
-        }).join("");
+        const gameCells = Array.from({length:8}, (_,i) => {const score = games[i] ?? "";return `<td class="${cellClass(score)}">${score === "" ? "-" : escapeHtml(score)}</td>`;}).join("");
         return `<tr><td>${nameCell}</td><td class="num">${escapeHtml(total)}</td><td class="rank">${escapeHtml(rank)}</td>${gameCells}</tr>`;
       }).join("");
       return `<table class="scoreboard-table scoreboard-wide">${header}<tbody>${body}</tbody></table>`;
     }
     function renderSeries(no){
       const winner = winners[no];
-      return `<details class="series-accordion" data-series="${no}">
-        <summary><span class="series-summary-label">バトグラ頂上戦 #${no}　<span class="series-winner">勝者【${escapeHtml(winner)}】</span></span></summary>
-        <div class="series-panel">
-          <p class="scoreboard-title">Score Board</p>
-          <div class="table-wrap">${renderScoreboard(no)}</div>
-          <div class="recap-area"><a class="button secondary recap-link" href="${recapLinks[no]}" target="_blank" rel="noopener">スプレッドシートを開く</a></div>
-        </div>
-      </details>`;
+      return `<details class="series-accordion" data-series="${no}"><summary><span class="series-summary-label">バトグラ頂上戦 #${no}　<span class="series-winner">勝者【${escapeHtml(winner)}】</span></span></summary><div class="series-panel"><p class="scoreboard-title">Score Board</p><div class="table-wrap">${renderScoreboard(no)}</div><div class="recap-area"><a class="button secondary recap-link" href="${recapLinks[no]}" target="_blank" rel="noopener">スプレッドシートを開く</a></div></div></details>`;
     }
 
     document.getElementById("seriesList").innerHTML = seriesOrder.map(renderSeries).join("");
