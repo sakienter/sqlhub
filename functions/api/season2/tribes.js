@@ -9,7 +9,7 @@ export async function onRequestGet(context) {
   const config = await readConfig(context);
 
   return jsonResponse(config, 200, {
-    'Cache-Control': 'no-store'
+    'Cache-Control': 'public, max-age=180, s-maxage=180, stale-while-revalidate=180'
   });
 }
 
