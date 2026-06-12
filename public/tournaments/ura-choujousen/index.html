@@ -9,37 +9,352 @@
   <meta property="og:description" content="バトグラ【裏】頂上戦の大会情報ページ" />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="../../common.css" />
+  <style>
+    .tournament-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 0;
+    }
+
+    .summary-item {
+      padding: 16px 18px;
+      background: #fffaf2;
+      border: 1px solid rgba(24, 33, 40, 0.12);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .summary-label {
+      margin: 0 0 6px;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+
+    .summary-value {
+      margin: 0;
+      color: var(--text-primary);
+      font-size: 18px;
+      font-weight: 950;
+      line-height: 1.45;
+    }
+
+    .archive-rule-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 0;
+      padding-left: 1.25rem;
+      color: var(--text-primary);
+      font-size: 15px;
+      font-weight: 750;
+      line-height: 1.8;
+    }
+
+    .archive-rule-list li {
+      padding-left: 2px;
+    }
+
+    .archive-rule-label {
+      color: var(--text-primary);
+      font-weight: 950;
+    }
+
+    .archive-table th,
+    .archive-table td {
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .archive-table th:first-child,
+    .archive-table td:first-child {
+      text-align: center;
+    }
+
+    .archive-table td.name-cell,
+    .archive-table th.name-head {
+      text-align: left;
+      min-width: 150px;
+    }
+
+    .archive-table td.info-cell {
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: normal;
+      line-height: 1.55;
+    }
+
+    .archive-table td.schedule-date {
+      color: var(--text-primary);
+      font-weight: 950;
+    }
+
+    .archive-table td.schedule-time,
+    .archive-table td.schedule-games {
+      color: var(--crimson-dark);
+      font-weight: 950;
+    }
+
+    .player-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 10px;
+      color: #fff;
+      background: linear-gradient(90deg, var(--green-dark), var(--green));
+      border: 1px solid rgba(24, 33, 40, 0.1);
+      border-radius: 4px;
+      box-shadow: var(--shadow-soft);
+      font-size: 12px;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .player-link:hover {
+      filter: brightness(.98);
+    }
+
+    .point-grid {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(70px, 1fr));
+      gap: 8px;
+      margin: 14px 0 0;
+    }
+
+    .point-chip {
+      padding: 10px 8px;
+      background: #fffaf2;
+      border: 1px solid rgba(24, 33, 40, 0.12);
+      border-radius: 4px;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .point-rank {
+      display: block;
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .point-value {
+      display: block;
+      margin-top: 2px;
+      color: var(--crimson-dark);
+      font-size: 18px;
+      font-weight: 950;
+    }
+
+    .archive-link {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      min-height: 34px;
+      margin-top: 8px;
+      padding: 0 12px;
+      color: #fff;
+      background: linear-gradient(90deg, var(--green-dark), var(--green));
+      border: 1px solid rgba(24, 33, 40, 0.1);
+      border-radius: 4px;
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .archive-note {
+      margin: 10px 14px 0;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 760px) {
+      .point-grid {
+        grid-template-columns: repeat(4, minmax(64px, 1fr));
+      }
+    }
+  </style>
 </head>
 <body>
   <main class="page-shell">
     <header class="hero">
-      <a class="back-link" href="../../">← Avenge Hubへ戻る</a>
+      <a class="back-link" href="../../">← Avenge Hub へ戻る</a>
       <p class="eyebrow">Past Tournament</p>
       <h1>バトグラ【裏】頂上戦</h1>
-      <p class="lead">大会概要、告知、結果、関連リンクをまとめるためのアーカイブページです。</p>
+      <p class="lead">3日間で20試合を消化し、合計獲得ポイントを競うバトルグラウンド大会です。</p>
+      <div class="meta-line">
+        <span>2026.01.24 - 2026.01.26</span>
+        <span>20 Matches</span>
+        <span>8 Players</span>
+      </div>
     </header>
 
     <section class="score-card">
       <div class="section-title">Overview</div>
       <div class="section-body">
-        <div class="rule-grid">
-          <article class="rule-item">
-            <h3>大会概要</h3>
-            <p>ここに大会形式、開催日、参加者、配信情報などを記載します。</p>
+        <div class="tournament-summary">
+          <article class="summary-item">
+            <p class="summary-label">Format</p>
+            <p class="summary-value">3日間 / 全20試合</p>
           </article>
-          <article class="rule-item">
-            <h3>掲載予定</h3>
-            <p>告知ポスト、結果、アーカイブ、関連資料などを後から追加できます。</p>
+          <article class="summary-item">
+            <p class="summary-label">Scoring</p>
+            <p class="summary-value">合計獲得ポイント制</p>
+          </article>
+          <article class="summary-item">
+            <p class="summary-label">Tie Rule</p>
+            <p class="summary-value">同着折半あり</p>
+          </article>
+          <article class="summary-item">
+            <p class="summary-label">Standard</p>
+            <p class="summary-value">CN大会準拠</p>
           </article>
         </div>
       </div>
     </section>
 
     <section class="score-card">
-      <div class="section-title">Archive</div>
+      <div class="section-title">Rules</div>
+      <div class="section-body">
+        <ul class="archive-rule-list">
+          <li><span class="archive-rule-label">試合形式：</span>3日間で20試合を消化し、合計獲得ポイントを競います。</li>
+          <li><span class="archive-rule-label">試合数：</span>Day1・Day2 は各7試合、Day3 は6試合を行います。</li>
+          <li><span class="archive-rule-label">ポイント：</span>1位 9pt / 2位 7pt / 3位 6pt / 4位 5pt / 5位 4pt / 6位 3pt / 7位 2pt / 8位 1pt</li>
+          <li><span class="archive-rule-label">同着：</span>同着折半あり。CN大会準拠の形式で実施します。</li>
+        </ul>
+
+        <div class="point-grid" aria-label="ポイント配分">
+          <div class="point-chip"><span class="point-rank">1位</span><span class="point-value">9pt</span></div>
+          <div class="point-chip"><span class="point-rank">2位</span><span class="point-value">7pt</span></div>
+          <div class="point-chip"><span class="point-rank">3位</span><span class="point-value">6pt</span></div>
+          <div class="point-chip"><span class="point-rank">4位</span><span class="point-value">5pt</span></div>
+          <div class="point-chip"><span class="point-rank">5位</span><span class="point-value">4pt</span></div>
+          <div class="point-chip"><span class="point-rank">6位</span><span class="point-value">3pt</span></div>
+          <div class="point-chip"><span class="point-rank">7位</span><span class="point-value">2pt</span></div>
+          <div class="point-chip"><span class="point-rank">8位</span><span class="point-value">1pt</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="score-card">
+      <div class="section-title purple">Schedule</div>
+      <div class="section-body">
+        <div class="table-wrap">
+          <table class="archive-table" aria-label="日程">
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>日程</th>
+                <th>開始時刻</th>
+                <th>試合数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Day 1</td>
+                <td class="schedule-date">2026/01/24（土）</td>
+                <td class="schedule-time">13:00</td>
+                <td class="schedule-games">7試合</td>
+              </tr>
+              <tr>
+                <td>Day 2</td>
+                <td class="schedule-date">2026/01/25（日）</td>
+                <td class="schedule-time">13:00</td>
+                <td class="schedule-games">7試合</td>
+              </tr>
+              <tr>
+                <td>Day 3</td>
+                <td class="schedule-date">2026/01/26（月）</td>
+                <td class="schedule-time">21:00</td>
+                <td class="schedule-games">6試合</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="score-card">
+      <div class="section-title orange">Players</div>
+      <div class="section-body">
+        <div class="table-wrap">
+          <table class="archive-table" aria-label="出場選手">
+            <thead>
+              <tr>
+                <th class="name-head">Name</th>
+                <th>選手情報</th>
+                <th>X</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="name-cell">Thundurus</td>
+                <td class="info-cell">頂上戦制覇者</td>
+                <td><a class="player-link" href="https://x.com/sunfrg" target="_blank" rel="noopener">Xを見る ↗</a></td>
+              </tr>
+              <tr>
+                <td class="name-cell">Alutemu</td>
+                <td class="info-cell">CNvsWorld 招待選手</td>
+                <td><a class="player-link" href="https://x.com/Alutemu" target="_blank" rel="noopener">Xを見る ↗</a></td>
+              </tr>
+              <tr>
+                <td class="name-cell">MATSURI</td>
+                <td class="info-cell">CNvsWorld ファイナリスト</td>
+                <td><a class="player-link" href="https://x.com/matsuri_hs" target="_blank" rel="noopener">Xを見る ↗</a></td>
+              </tr>
+              <tr>
+                <td class="name-cell">SeseiSei</td>
+                <td class="info-cell">CNvsWorld ファイナリスト</td>
+                <td><a class="player-link" href="https://x.com/seseisei1" target="_blank" rel="noopener">Xを見る ↗</a></td>
+              </tr>
+              <tr>
+                <td class="name-cell">haguren</td>
+                <td class="info-cell">頂上戦#3, #4, #5, #6, #7 出場者</td>
+                <td><a class="player-link" href="https://x.com/poketoketokei" target="_blank" rel="noopener">Xを見る ↗</a></td>
+              </tr>
+              <tr>
+                <td class="name-cell">yoshiyuki</td>
+                <td class="info-cell">CNvsWorld 招待選手</td>
+                <td><a class="player-link" href="https://x.com/Yoshiyuki_hs" target="_blank" rel="noopener">Xを見る ↗</a></td>
+              </tr>
+              <tr>
+                <td class="name-cell">あれっくす</td>
+                <td class="info-cell">頂上戦#3, #6 優勝者</td>
+                <td><a class="player-link" href="https://x.com/chunchunner" target="_blank" rel="noopener">Xを見る ↗</a></td>
+              </tr>
+              <tr>
+                <td class="name-cell">Yanase</td>
+                <td class="info-cell">CNvsWorld 招待選手 / 主催</td>
+                <td><a class="player-link" href="https://x.com/ydbqm" target="_blank" rel="noopener">Xを見る ↗</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="archive-note">※ 出場選手名は敬称略。</p>
+      </div>
+    </section>
+
+    <section class="score-card">
+      <div class="section-title">Results</div>
       <div class="section-body">
         <ul class="notice-list">
-          <li>結果・順位表：準備中</li>
+          <li>最終結果・順位表：準備中</li>
+          <li>各試合のヒーロー、アノマリー、種族情報：準備中</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="score-card">
+      <div class="section-title orange">Archive</div>
+      <div class="section-body">
+        <ul class="notice-list">
+          <li>集計スプレッドシート：準備中</li>
           <li>配信アーカイブ：準備中</li>
           <li>告知・関連リンク：準備中</li>
         </ul>
