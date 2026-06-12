@@ -27,7 +27,7 @@
 
 #total-score-table th:first-child,
 #total-score-table td.final-rank-cell {
-  width: 180px;
+  width: 128px;
 }
 
 #total-score-table td.final-rank-cell {
@@ -43,11 +43,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 14px;
-  min-width: 132px;
-  min-height: 64px;
-  padding: 14px 18px;
-  border-radius: 18px;
+  gap: 8px;
+  min-width: 86px;
+  min-height: 38px;
+  padding: 7px 10px;
+  border-radius: 10px;
   font-weight: 950;
   line-height: 1;
 }
@@ -56,35 +56,33 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
-  flex: 0 0 34px;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
 }
 
 .final-rank-icon svg {
   display: block;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
 }
 
 .final-rank-label {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 950;
   letter-spacing: 0.01em;
 }
 
 .final-rank-simple {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 72px;
-  min-height: 34px;
-  padding: 8px 14px;
-  border-radius: 999px;
+  display: inline;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border-radius: 0;
   color: var(--text-secondary);
-  background: rgba(255, 250, 242, 0.86);
-  border: 1px solid rgba(24, 33, 40, 0.12);
-  font-size: 16px;
+  background: transparent;
+  border: 0;
+  font-size: 15px;
   font-weight: 900;
 }
 
@@ -350,18 +348,24 @@
 @media (max-width: 640px) {
   #summary-table,
   #total-score-table {
-    min-width: 720px;
+    min-width: 680px;
   }
 
   .final-rank-chip {
-    min-width: 118px;
-    min-height: 56px;
-    padding: 12px 14px;
-    gap: 10px;
+    min-width: 78px;
+    min-height: 34px;
+    padding: 6px 9px;
+    gap: 7px;
   }
 
   .final-rank-label {
-    font-size: 21px;
+    font-size: 17px;
+  }
+
+  .final-rank-icon,
+  .final-rank-icon svg {
+    width: 18px;
+    height: 18px;
   }
 
   #game-ban .ban-subline {
