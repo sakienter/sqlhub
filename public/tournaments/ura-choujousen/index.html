@@ -10,49 +10,13 @@
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="../../common.css" />
   <style>
-    .tournament-summary {
-      display: grid;
-      gap: 7px;
-      margin: 0;
-      padding: 0 2px;
-    }
-
-    .summary-item {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      padding: 0;
-      background: transparent;
-      border: none;
-      border-radius: 0;
-      box-shadow: none;
-    }
-
-    .summary-label {
-      min-width: 86px;
-      margin: 0;
-      color: var(--text-muted);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .03em;
-      text-transform: uppercase;
-    }
-
-    .summary-label::after {
-      content: "：";
-    }
-
-    .summary-value {
-      margin: 0;
-      color: var(--text-primary);
-      font-size: 15px;
-      font-weight: 850;
-      line-height: 1.65;
-    }
-
     .overview-subsection {
       margin-top: 24px;
       padding-top: 4px;
+    }
+
+    .overview-subsection:first-child {
+      margin-top: 0;
     }
 
     .archive-rule-list {
@@ -259,25 +223,6 @@
     <section class="score-card">
       <div class="section-title">Overview</div>
       <div class="section-body">
-        <div class="tournament-summary">
-          <article class="summary-item">
-            <p class="summary-label">Format</p>
-            <p class="summary-value">3日間 / 全20試合</p>
-          </article>
-          <article class="summary-item">
-            <p class="summary-label">Scoring</p>
-            <p class="summary-value">合計獲得ポイント制</p>
-          </article>
-          <article class="summary-item">
-            <p class="summary-label">Tie Rule</p>
-            <p class="summary-value">同着折半あり</p>
-          </article>
-          <article class="summary-item">
-            <p class="summary-label">Standard</p>
-            <p class="summary-value">CN大会準拠</p>
-          </article>
-        </div>
-
         <section class="overview-subsection">
           <div class="mini-section-title">Rules</div>
           <ul class="archive-rule-list">
