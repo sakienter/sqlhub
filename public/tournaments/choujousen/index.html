@@ -25,21 +25,8 @@
       backdrop-filter:none;
     }
     .hero.choujousen-hero::before{
-      content:"ARCHIVE / CHOUJOUSEN SERIES / #01-#09";
-      position:absolute;
-      top:20px;
-      left:28px;
-      right:28px;
-      z-index:-1;
-      color:rgba(83,97,109,.30);
-      font-size:14px;
-      font-weight:850;
-      letter-spacing:.16em;
-      line-height:1;
-      text-align:left;
-      white-space:nowrap;
-      overflow:hidden;
-      pointer-events:none;
+      content:none;
+      display:none;
     }
     .hero.choujousen-hero::after{
       content:"";
@@ -116,7 +103,6 @@
     }
     @media (max-width:720px){
       .hero.choujousen-hero{padding:2.25rem 1.15rem;border-radius:12px}
-      .hero.choujousen-hero::before{top:18px;left:22px;right:22px;font-size:11px;letter-spacing:.12em}
       .hero.choujousen-hero::after{
         background:
           linear-gradient(#c9342c,#c9342c) left 20px top 20px/32px 1px no-repeat,
