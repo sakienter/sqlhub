@@ -1,6 +1,7 @@
 (() => {
   const API_PATH = '/api/results';
-  const CACHE_KEY = 'sqlhub:season1:results:v1';
+  const API_VERSION = 'trinket-name-fix-20260612';
+  const CACHE_KEY = 'sqlhub:season1:results:v2';
   const CACHE_MAX_AGE_MS = 30 * 24 * 60 * 60 * 1000;
   const FIRST_VIEW_DELAY_MS = 900;
   const originalFetch = window.fetch.bind(window);
@@ -16,14 +17,14 @@
 
     if (cachedData) {
       setStatus('キャッシュ表示中 / 最新データ確認中...');
-      refreshCacheInBackground(input, init);
+      refreshCacheInBackground(init);
       return new Response(JSON.stringify(cachedData), {
         status: 200,
         headers: { 'Content-Type': 'application/json; charset=utf-8' }
       });
     }
 
-    return originalFetch(input, init).then(cacheResponse);
+    return originalFetch(versionedResultsUrl(), init).then(cacheResponse);
   };
 
   window.setTimeout(() => {
@@ -46,8 +47,12 @@
     }
   }
 
-  function refreshCacheInBackground(input, init) {
-    originalFetch(input, { ...init, cache: 'reload' })
+  function versionedResultsUrl() {
+    return `${API_PATH}?v=${encodeURIComponent(API_VERSION)}`;
+  }
+
+  function refreshCacheInBackground(init) {
+    originalFetch(versionedResultsUrl(), { ...init, cache: 'reload' })
       .then(cacheResponse)
       .catch(error => console.warn('S1 background cache refresh failed', error));
   }
