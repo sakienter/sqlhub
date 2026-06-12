@@ -27,7 +27,7 @@
 
 #total-score-table th:first-child,
 #total-score-table td.final-rank-cell {
-  width: 128px;
+  width: 112px;
 }
 
 #total-score-table td.final-rank-cell {
@@ -42,13 +42,13 @@
 .final-rank-chip {
   display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 8px;
-  min-width: 86px;
-  min-height: 38px;
-  padding: 7px 10px;
-  border-radius: 10px;
-  font-weight: 950;
+  justify-content: center;
+  gap: 5px;
+  min-width: 64px;
+  min-height: 28px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-weight: 900;
   line-height: 1;
 }
 
@@ -56,21 +56,21 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  flex: 0 0 20px;
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
 }
 
 .final-rank-icon svg {
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
 }
 
 .final-rank-label {
-  font-size: 18px;
-  font-weight: 950;
-  letter-spacing: 0.01em;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0;
 }
 
 .final-rank-simple {
@@ -88,17 +88,17 @@
 
 .final-rank-chip.rank-1 {
   color: #7a531c;
-  background: #efe6d1;
+  background: rgba(239, 230, 209, 0.52);
 }
 
 .final-rank-chip.rank-2 {
   color: #6f6e6a;
-  background: #e5e4e0;
+  background: rgba(229, 228, 224, 0.52);
 }
 
 .final-rank-chip.rank-3 {
   color: #954925;
-  background: #e8dfda;
+  background: rgba(232, 223, 218, 0.52);
 }
 
 #day-points-table th,
@@ -348,24 +348,24 @@
 @media (max-width: 640px) {
   #summary-table,
   #total-score-table {
-    min-width: 680px;
+    min-width: 660px;
   }
 
   .final-rank-chip {
-    min-width: 78px;
-    min-height: 34px;
-    padding: 6px 9px;
-    gap: 7px;
+    min-width: 58px;
+    min-height: 26px;
+    padding: 3px 5px;
+    gap: 4px;
   }
 
   .final-rank-label {
-    font-size: 17px;
+    font-size: 14px;
   }
 
   .final-rank-icon,
   .final-rank-icon svg {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
   }
 
   #game-ban .ban-subline {
