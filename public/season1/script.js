@@ -331,6 +331,13 @@ function getCellHighlightClass(tableId, columnKey, value) {
   if (!Number.isFinite(num) || !isGameColumn) return '';
 
   if (tableId === 'day-points-table') {
+    const isGame20 = selectedDayIndex === 3 && String(columnKey) === 'game5';
+    if (isGame20) {
+      if (num === 21) return 'score-gold';
+      if (num === 18) return 'score-silver';
+      return '';
+    }
+
     if (num === 7) return 'score-gold';
     if (num === 6) return 'score-silver';
   }
