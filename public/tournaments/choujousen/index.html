@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>バトグラ頂上戦 #1〜#9 | Avenge Hub</title>
-  <meta name="description" content="バトグラ頂上戦 #1〜#9 の大会概要、参加資格、ルール、各回の結果リンクをまとめるページです。" />
+  <meta name="description" content="バトグラ頂上戦 #1〜#9 の大会概要とルール、各回の結果リンクをまとめるページです。" />
   <meta property="og:title" content="バトグラ頂上戦 #1〜#9 | Avenge Hub" />
   <meta property="og:description" content="バトグラ頂上戦 #1〜#9 の大会情報まとめページ" />
   <meta property="og:type" content="website" />
@@ -107,63 +107,28 @@
     }
 
     .overview-lead{
-      margin:0;
+      margin:0 0 18px;
       color:var(--text-secondary);
       font-size:15px;
       font-weight:700;
       line-height:1.9;
     }
-    .overview-grid{
+    .overview-text{
       display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:14px;
-      margin-top:16px;
-    }
-    .overview-panel{
-      padding:18px;
-      background:#fffaf2;
-      border:1px solid rgba(24,33,40,.1);
-      border-radius:var(--radius-md);
-      box-shadow:var(--shadow-soft);
-    }
-    .overview-panel h3{
-      margin:0 0 10px;
-      color:var(--text-primary);
-      font-size:17px;
-      font-weight:950;
-      letter-spacing:-.02em;
-    }
-    .overview-panel ul{
-      display:grid;
-      gap:8px;
+      gap:12px;
       margin:0;
-      padding:0;
-      list-style:none;
     }
-    .overview-panel li{
-      position:relative;
-      padding-left:16px;
+    .overview-text p{
+      margin:0;
       color:var(--text-secondary);
       font-size:14px;
-      font-weight:650;
-      line-height:1.7;
+      font-weight:750;
+      line-height:1.85;
+      letter-spacing:.01em;
     }
-    .overview-panel li::before{
-      content:"";
-      position:absolute;
-      top:.72em;
-      left:0;
-      width:6px;
-      height:6px;
-      border-radius:999px;
-      background:var(--crimson);
-    }
-    .edit-note{
-      margin:14px 0 0;
-      color:var(--text-muted);
-      font-size:12px;
-      font-weight:800;
-      line-height:1.65;
+    .overview-text strong{
+      color:var(--text-primary);
+      font-weight:950;
     }
 
     .series-table{
@@ -273,7 +238,6 @@
       .choujousen-hero .eyebrow{margin-bottom:.85rem;font-size:11px;letter-spacing:.24em}
       .choujousen-hero h1{font-size:clamp(34px,11vw,48px)}
       .choujousen-hero .lead{margin-top:1.2rem;font-size:14px;line-height:1.7}
-      .overview-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -283,7 +247,7 @@
       <a class="back-link" href="../../">← Avenge Hubへ戻る</a>
       <p class="eyebrow">Tournament Series</p>
       <h1>バトグラ頂上戦 <span class="title-accent">#1〜#9</span></h1>
-      <p class="lead">バトグラ頂上戦シリーズの大会概要、参加資格、ルール、各回の結果リンクを整理するためのアーカイブページです。</p>
+      <p class="lead">バトグラ頂上戦シリーズの大会概要、ルール、各回の結果リンクを整理するためのアーカイブページです。</p>
       <div class="meta-line">
         <span>Series Archive</span>
         <span>#1〜#9</span>
@@ -292,30 +256,18 @@
     </header>
 
     <section class="score-card">
-      <div class="section-title">大会概要</div>
+      <div class="section-title">大会概要とルール</div>
       <div class="section-body">
         <p class="overview-lead">
-          バトグラ頂上戦は、ハースストーン・バトルグラウンドの大会シリーズです。ここでは、シリーズ全体の概要、参加資格、基本ルール、各回の優勝者と関連URLをまとめます。
+          バトグラ頂上戦は、ハースストーン・バトルグラウンドの大会シリーズです。ここでは、シリーズ全体の概要、基本ルール、各回の優勝者と関連URLをまとめます。
         </p>
-        <div class="overview-grid">
-          <article class="overview-panel">
-            <h3>参加資格</h3>
-            <ul>
-              <li>参加資格は、各回の募集要項にあわせて記載します。</li>
-              <li>招待枠、予選枠、レート条件などがある場合はここに追記します。</li>
-              <li>詳細な参加条件は、各回のURL先を正式情報として扱います。</li>
-            </ul>
-          </article>
-          <article class="overview-panel">
-            <h3>ルール</h3>
-            <ul>
-              <li>試合数、ポイント形式、同時落ち処理などの基本ルールを記載します。</li>
-              <li>大会ごとに例外ルールがある場合は、各回のURL先に記載された内容を優先します。</li>
-              <li>ルール確定後、この欄を正式版に差し替えます。</li>
-            </ul>
-          </article>
+        <div class="overview-text">
+          <p><strong>試合形式：</strong>20ptのチェックルール（リミットゲーム数はありません。勝者が決まるまで行います。）</p>
+          <p><strong>ポイント：</strong>1位 7pt / 2位 6pt / 3位 5pt / 4位 4pt / 5位 3pt / 6位 2pt / 7位 1pt / 8位 0pt</p>
+          <p><strong>同着：</strong>同着時の折半はありません。</p>
+          <p><strong>頂上戦決着：</strong>2大会連続で出場し、いずれも優勝した選手を「日本一」とします。称号を授与し、併せて賞金を贈呈します。</p>
+          <p>本大会の規定は、主として Blizzard Japan 主催「Hearthstone Battlegrounds」大会規定に準拠しています。</p>
         </div>
-        <p class="edit-note">※文言は仮置きです。正式な参加資格・ルールが固まり次第、この欄だけ差し替えられる構成にしています。</p>
       </div>
     </section>
 
