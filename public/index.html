@@ -26,11 +26,11 @@
     #current-season{--current-season-wipe-duration:.86s}
     #current-season .section-title{padding:22px 18px;font-size:clamp(24px,3vw,36px);font-weight:950;letter-spacing:.02em}
     #current-season .section-body{padding:22px 34px 26px}
-    #current-season .season-card.card-link{min-height:150px;padding:26px 40px;max-width:none;margin:0;background:#fffaf2;color:inherit;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:24px;transition:transform .34s var(--wipe-easing),border-color .34s var(--wipe-easing),box-shadow .34s var(--wipe-easing)}
-    #current-season .season-card.card-link::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(115deg,rgba(25,182,217,.18),rgba(127,119,221,.16) 46%,rgba(216,74,134,.18));clip-path:inset(0 100% 0 0);transition:clip-path var(--current-season-wipe-duration) var(--wipe-easing);pointer-events:none}
+    #current-season .season-card.card-link{min-height:150px;padding:26px 40px;max-width:none;margin:0;background:#fffaf2;color:inherit;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:24px;overflow:hidden;isolation:isolate;transition:transform .34s var(--wipe-easing),border-color .34s var(--wipe-easing),box-shadow .34s var(--wipe-easing)}
+    #current-season .season-card.card-link::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(115deg,rgba(25,182,217,.18),rgba(127,119,221,.16) 46%,rgba(216,74,134,.18));clip-path:circle(0% at 50% 50%);transition:clip-path var(--current-season-wipe-duration) var(--wipe-easing);pointer-events:none}
     #current-season .season-card.card-link::after{content:"";position:absolute;inset:-40% -18%;z-index:0;background:radial-gradient(circle at 18% 44%,rgba(25,182,217,.22),transparent 34%),radial-gradient(circle at 82% 36%,rgba(216,74,134,.16),transparent 38%);opacity:0;transition:opacity .46s var(--wipe-easing);pointer-events:none}
     #current-season .season-card.card-link:hover{background:#fffaf2;color:inherit;border-color:rgba(127,119,221,.38);box-shadow:0 18px 38px rgba(3,14,24,.22);transform:translateY(-2px)}
-    #current-season .season-card.card-link:hover::before{clip-path:inset(0 0 0 0)}
+    #current-season .season-card.card-link:hover::before{clip-path:circle(150% at 50% 50%)}
     #current-season .season-card.card-link:hover::after{opacity:1}
     #current-season .season-card.card-link > *{position:relative;z-index:1}
     #current-season .season-card.card-link h2{font-size:clamp(46px,5.6vw,74px);line-height:1.05;color:var(--text-primary);text-shadow:none;transition:color .42s var(--wipe-easing),text-shadow .42s var(--wipe-easing)}
