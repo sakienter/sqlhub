@@ -273,3 +273,11 @@ body:has(.hub-hero) .hub-hero .cache-note { min-height: 38px !important; margin-
   body:has(.hub-hero) .hub-hero-image { inset: -8% -18% !important; width: 132% !important; height: 116% !important; object-position: 64% center !important; transform: translateX(4%) scale(1.03) !important; }
   body:has(.hub-hero) .hub-hero-panel { width: calc(100% - 32px) !important; max-width: none !important; margin-left: 16px !important; margin-right: 16px !important; transform: none !important; }
 }
+
+html:has(meta[name="description"][content^="CN vs Worlds"]) .tournament-hero {
+  background: linear-gradient(135deg, #1c2128 0%, #3a5a78 55%, #cfe8f0 100%) !important;
+}
+
+html:has(meta[name="description"][content^="CN vs JP"]) .tournament-hero {
+  background: linear-gradient(90deg, #5c0f1a 0%, #1a0a12 48%, #0a1525 52%, #173a5c 100%) !important;
+}
