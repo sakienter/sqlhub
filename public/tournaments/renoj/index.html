@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>レノ・ジャクソン杯 | Avenge Hub</title>
-  <meta name="description" content="レノ・ジャクソン杯の大会概要、簡易ルール、開催リンクをまとめたページです。" />
+  <meta name="description" content="レノ・ジャクソン杯の大会概要、ルール、開催リンクをまとめたページです。" />
   <meta property="og:title" content="レノ・ジャクソン杯 | Avenge Hub" />
-  <meta property="og:description" content="レノ・ジャクソン杯の大会概要、簡易ルール、開催リンク" />
+  <meta property="og:description" content="レノ・ジャクソン杯の大会概要、ルール、開催リンク" />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="../../common.css" />
   <style>
@@ -30,28 +30,10 @@
       box-shadow:0 22px 40px rgba(3,14,24,.34);
       backdrop-filter:none;
     }
-    .hero.renoj-hero::before{
-      content:"";
-      position:absolute;
-      inset:18px;
-      z-index:0;
-      border:1px solid rgba(255,235,182,.20);
-      border-radius:14px;
-      pointer-events:none;
-    }
+    .hero.renoj-hero::before,
     .hero.renoj-hero::after{
-      content:"RENO JACKSON CUP";
-      position:absolute;
-      right:26px;
-      bottom:22px;
-      z-index:0;
-      color:rgba(255,235,182,.12);
-      font-size:clamp(38px,7vw,86px);
-      font-weight:950;
-      line-height:1;
-      letter-spacing:-.06em;
-      white-space:nowrap;
-      pointer-events:none;
+      content:none;
+      display:none;
     }
     .renoj-hero .back-link{
       position:relative;
@@ -135,7 +117,7 @@
       backdrop-filter:blur(8px);
     }
     .overview-copy{
-      margin:0;
+      margin:0 0 16px;
       color:var(--text-secondary);
       font-size:15px;
       font-weight:750;
@@ -149,7 +131,7 @@
     .series-card{
       display:flex;
       flex-direction:column;
-      min-height:166px;
+      min-height:176px;
       padding:18px;
       background:#fffaf2;
       border:1px solid rgba(24,33,40,.10);
@@ -179,8 +161,6 @@
       margin-top:auto;
       align-self:flex-start;
     }
-    .series-card.disabled{opacity:.76}
-    .series-card.disabled .card-cta{color:var(--text-muted)}
     .simple-rule-list{
       display:grid;
       gap:12px;
@@ -225,8 +205,6 @@
     }
     @media (max-width:640px){
       .hero.renoj-hero{min-height:390px;border-radius:14px}
-      .hero.renoj-hero::before{inset:12px;border-radius:11px}
-      .hero.renoj-hero::after{right:16px;bottom:16px;font-size:36px}
       .renoj-hero h1{font-size:clamp(36px,12vw,52px)}
       .renoj-hero .lead{font-size:14px;line-height:1.75}
       .renoj-meta li{font-size:11px}
@@ -242,29 +220,24 @@
         <h1>レノ・ジャクソン杯 <span class="title-accent">Archive</span></h1>
         <p class="lead">誰でも参加できるオープン戦。大会ごとのTonamelページ、開催日、簡単なルールをまとめます。</p>
         <ul class="renoj-meta">
-          <li>Open Match</li>
-          <li>32 Players</li>
-          <li>Final Table: 8 Players</li>
+          <li>定員32名</li>
+          <li>予選2game制</li>
+          <li>決勝1game制</li>
         </ul>
       </div>
     </header>
 
     <section class="score-card">
-      <div class="section-title">Overview</div>
+      <div class="section-title">概要とルール</div>
       <div class="section-body">
         <p class="overview-copy">
-          レノ・ジャクソン杯は、ハースストーン・バトルグラウンドのオープン大会です。参加者を複数卓に分けて予選を行い、各卓の上位者が決勝卓へ進出します。ここでは各回の開催情報、Tonamelリンク、簡単なルール説明を整理します。
+          レノ・ジャクソン杯は、ハースストーン・バトルグラウンドのオープン大会です。定員32名で予選を行い、予選を突破した8名が決勝ラウンドへ進出します。
         </p>
-      </div>
-    </section>
-
-    <section class="score-card">
-      <div class="section-title purple">Simple Rules</div>
-      <div class="section-body">
         <ul class="simple-rule-list">
-          <li><strong>参加形式</strong>誰でも参加できるオープン戦として募集します。定員は32名を想定しています。</li>
-          <li><strong>予選</strong>参加者を4卓に分け、各卓の上位2名が決勝卓へ進出します。</li>
-          <li><strong>決勝</strong>決勝卓は8名で実施します。決勝は1ゲーム制で、その回の優勝者を決定します。</li>
+          <li><strong>定員</strong>32名。</li>
+          <li><strong>予選</strong>4卓で実施し、各卓の上位2名が決勝ラウンドへ進出します。</li>
+          <li><strong>予選方式</strong>2game制の合計ポイント上位で決定します。同時落ちによるポイント折半はありません。</li>
+          <li><strong>決勝</strong>1game制で、その回の優勝者を決定します。</li>
         </ul>
       </div>
     </section>
@@ -273,26 +246,26 @@
       <div class="section-title orange">Tournament Links</div>
       <div class="section-body">
         <div class="series-grid">
-          <article class="series-card disabled">
+          <article class="series-card">
             <h3>第1回</h3>
             <dl>
-              <dt>開催日</dt><dd>未設定</dd>
-              <dt>Tonamel</dt><dd>リンク未設定</dd>
+              <dt>開催日</dt><dd>2026/01/14(水) 21:00 〜</dd>
+              <dt>Tonamel</dt><dd><a href="https://tonamel.com/competition/90YEW" target="_blank" rel="noopener">大会ページ</a></dd>
             </dl>
-            <span class="card-cta">準備中</span>
+            <a class="card-cta" href="https://tonamel.com/competition/90YEW" target="_blank" rel="noopener">Tonamelを見る →</a>
           </article>
-          <article class="series-card disabled">
+          <article class="series-card">
             <h3>第2回</h3>
             <dl>
-              <dt>開催日</dt><dd>未設定</dd>
-              <dt>Tonamel</dt><dd>リンク未設定</dd>
+              <dt>開催日</dt><dd>2026/02/11(水) 21:00 〜</dd>
+              <dt>Tonamel</dt><dd><a href="https://tonamel.com/competition/QBAoB" target="_blank" rel="noopener">大会ページ</a></dd>
             </dl>
-            <span class="card-cta">準備中</span>
+            <a class="card-cta" href="https://tonamel.com/competition/QBAoB" target="_blank" rel="noopener">Tonamelを見る →</a>
           </article>
           <article class="series-card">
             <h3>第3回</h3>
             <dl>
-              <dt>開催日</dt><dd>未設定</dd>
+              <dt>開催日</dt><dd>2026/03/18(水) 21:00 〜</dd>
               <dt>Tonamel</dt><dd><a href="https://tonamel.com/competition/tFMTx" target="_blank" rel="noopener">大会ページ</a></dd>
             </dl>
             <a class="card-cta" href="https://tonamel.com/competition/tFMTx" target="_blank" rel="noopener">Tonamelを見る →</a>
