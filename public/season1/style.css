@@ -190,6 +190,12 @@
   box-shadow: var(--shadow-soft);
 }
 
+.tribe-toggle.is-unavailable {
+  color: var(--text-muted);
+  background: rgba(255, 250, 242, 0.52);
+  border-color: rgba(24, 33, 40, 0.1);
+}
+
 .tribe-toggle:hover,
 .tribe-save-button:hover {
   transform: translateY(-1px);
