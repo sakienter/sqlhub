@@ -258,16 +258,18 @@ td.empty-cell { padding: 26px; color: var(--text-muted); text-align: center; fon
   .season-grid, .rule-grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 640px) {
-  body::before, body::after { opacity: .42; }
-  .hero h1 { font-size: 42px; }
-  .lead { font-size: 14px; }
-  .meta-line { gap: 6px; }
-  .meta-line span { min-height: 28px; padding: 0 10px; font-size: 11px; }
-  .day-tabs, .game-tabs { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
-  .day-tab, .game-tab { flex: 0 0 auto; }
-  table { min-width: 660px; }
-  #summary-table { min-width: 1300px; }
-  #game-detail-table { min-width: 1040px; }
-  thead th, tbody td { padding: 9px 8px; font-size: 12px; }
+body:has(.hub-hero) .page-shell { padding-top: 0 !important; }
+body:has(.hub-hero) .hub-hero { width: 100vw !important; height: clamp(520px,32vw,640px) !important; min-height: 520px !important; margin-left: calc(50% - 50vw) !important; padding: 0 !important; border: 0 !important; border-bottom: 4px solid var(--crimson) !important; }
+body:has(.hub-hero) .hub-hero-image { inset: -11% -12% !important; width: 124% !important; height: 122% !important; object-fit: cover !important; object-position: 61% center !important; transform: translateX(6%) scale(1.08) !important; filter: saturate(1.10) contrast(1.04) brightness(1.03) !important; }
+body:has(.hub-hero) .hub-hero::before { z-index: 1 !important; background: linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.76) 10%,rgba(255,255,255,.32) 23%,rgba(255,255,255,.06) 38%,rgba(255,255,255,0) 54%),linear-gradient(180deg,rgba(255,255,255,.24) 0%,rgba(255,255,255,0) 26%) !important; }
+body:has(.hub-hero) .hub-hero::after { z-index: 2 !important; background: linear-gradient(0deg,rgba(7,24,39,.30) 0%,rgba(7,24,39,0) 34%) !important; }
+body:has(.hub-hero) .hub-hero-panel { width: min(720px,45vw) !important; margin-left: clamp(30px,8.6vw,170px) !important; padding: 34px 38px 36px !important; border-radius: 22px !important; transform: translateY(22px) !important; }
+body:has(.hub-hero) .hub-hero h1 { font-size: clamp(58px,5.4vw,96px) !important; }
+body:has(.hub-hero) .hub-hero .lead { font-size: 17px !important; margin-top: 26px !important; }
+body:has(.hub-hero) .hub-hero .cache-note { min-height: 38px !important; margin-top: 26px !important; padding: 0 16px !important; font-size: 14px !important; }
+
+@media (max-width: 720px) {
+  body:has(.hub-hero) .hub-hero { height: auto !important; min-height: 440px !important; }
+  body:has(.hub-hero) .hub-hero-image { inset: -8% -18% !important; width: 132% !important; height: 116% !important; object-position: 64% center !important; transform: translateX(4%) scale(1.03) !important; }
+  body:has(.hub-hero) .hub-hero-panel { width: calc(100% - 32px) !important; max-width: none !important; margin-left: 16px !important; margin-right: 16px !important; transform: none !important; }
 }
