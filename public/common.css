@@ -25,6 +25,8 @@
   --border-strong: rgba(24, 33, 40, 0.22);
   --winner-bg: rgba(25, 182, 217, 0.1);
   --winner-border: rgba(25, 182, 217, 0.32);
+  --wipe-purple: #7f77dd;
+  --wipe-pink: #d84a86;
   --radius-lg: 6px;
   --radius-md: 6px;
   --radius-sm: 4px;
@@ -194,17 +196,22 @@ td.empty-cell { padding: 26px; color: var(--text-muted); text-align: center; fon
 .season-card { display: flex; flex-direction: column; min-height: 190px; padding: 18px; background: #fffaf2; border: 1px solid rgba(24,33,40,.1); border-radius: var(--radius-md); box-shadow: var(--shadow-soft); }
 .season-card h2 { margin: 0; color: var(--text-primary); font-size: 26px; font-weight: 900; letter-spacing: -.03em; line-height: 1.2; }
 .season-card p { margin: 12px 0 16px; color: var(--text-secondary); font-size: 14px; font-weight: 600; line-height: 1.75; }
-.card-link, .wipe-hover { position: relative; overflow: hidden; isolation: isolate; color: inherit; text-decoration: none; cursor: pointer; transform: translateZ(0); transition: transform .52s cubic-bezier(.4,0,.2,1), border-color .52s cubic-bezier(.4,0,.2,1), box-shadow .52s cubic-bezier(.4,0,.2,1); }
-.card-link::before, .wipe-hover::before { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(90deg, var(--green-dark) 0%, var(--green) 36%, var(--accent) 68%, var(--crimson-dark) 100%); transform: scaleX(0); transform-origin: left; transition: transform .9s cubic-bezier(.4,0,.2,1); pointer-events: none; }
-.card-link::after, .wipe-hover::after { content: ""; position: absolute; left: 14px; right: 14px; bottom: 9px; height: 3px; z-index: 0; border-radius: 999px; background: rgba(255,255,255,.76); transform: scaleX(0); transform-origin: left; opacity: .86; transition: transform .9s cubic-bezier(.4,0,.2,1); pointer-events: none; }
+.card-link, .wipe-hover { position: relative; overflow: hidden; isolation: isolate; color: inherit; text-decoration: none; cursor: pointer; transform: translateZ(0); transition: color .38s cubic-bezier(.4,0,.2,1), transform .38s cubic-bezier(.4,0,.2,1), border-color .38s cubic-bezier(.4,0,.2,1), box-shadow .38s cubic-bezier(.4,0,.2,1); }
+.card-link::before, .wipe-hover::before { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(90deg, var(--wipe-purple) 0%, #9d68de 52%, var(--wipe-pink) 100%); transform: scaleX(0); transform-origin: left; transition: transform .48s cubic-bezier(.4,0,.2,1); pointer-events: none; }
 .card-link > *, .wipe-hover > * { position: relative; z-index: 1; }
-.card-link:hover, .wipe-hover:hover { transform: translateY(-6px); border-color: rgba(255,255,255,.72); box-shadow: 0 20px 40px rgba(3,14,24,.26), 0 0 0 1px rgba(255,255,255,.3) inset; }
-.card-link:hover::before, .card-link:hover::after, .wipe-hover:hover::before, .wipe-hover:hover::after { transform: scaleX(1); }
-.card-link h2, .wipe-hover h2 { transition: color .62s cubic-bezier(.4,0,.2,1), transform .62s cubic-bezier(.4,0,.2,1), text-shadow .62s cubic-bezier(.4,0,.2,1); }
-.card-link:hover h2, .wipe-hover:hover h2 { color: #fff; transform: translateX(5px); text-shadow: 0 2px 16px rgba(3,14,24,.34); }
-.card-link:hover .card-cta, .wipe-hover:hover .card-cta { color: var(--crimson-dark); background: rgba(255,250,242,.92); transform: translateX(5px); box-shadow: 0 8px 18px rgba(3,14,24,.18); }
-.card-link:focus-visible, .wipe-hover:focus-visible { outline: 3px solid var(--crimson); outline-offset: 4px; }
-.card-cta { display: inline-flex; align-items: center; width: fit-content; margin-top: auto; padding: 5px 9px; border-radius: 999px; color: var(--crimson-dark); font-size: 12px; font-weight: 900; transition: color .62s cubic-bezier(.4,0,.2,1), background .62s cubic-bezier(.4,0,.2,1), transform .62s cubic-bezier(.4,0,.2,1), box-shadow .62s cubic-bezier(.4,0,.2,1); }
+.card-link:hover, .wipe-hover:hover { color: #fff; border-color: var(--wipe-purple); box-shadow: 0 16px 32px rgba(127,119,221,.22); }
+.card-link:hover::before, .wipe-hover:hover::before { transform: scaleX(1); }
+.card-link h2, .wipe-hover h2, .card-link p, .wipe-hover p, .card-cta { transition: color .38s cubic-bezier(.4,0,.2,1), transform .38s cubic-bezier(.4,0,.2,1), text-shadow .38s cubic-bezier(.4,0,.2,1), background .38s cubic-bezier(.4,0,.2,1), box-shadow .38s cubic-bezier(.4,0,.2,1); }
+.card-link:hover h2, .wipe-hover:hover h2 { color: #fff; text-shadow: 0 2px 14px rgba(3,14,24,.34); }
+.card-link:hover p, .wipe-hover:hover p { color: rgba(255,255,255,.78); }
+.card-link:hover .card-cta, .wipe-hover:hover .card-cta { color: #fff; background: transparent; box-shadow: none; }
+.card-link:focus-visible, .wipe-hover:focus-visible { outline: 3px solid var(--wipe-purple); outline-offset: 4px; }
+.wipe-button { position: relative; overflow: hidden; isolation: isolate; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 11px 30px; color: var(--wipe-purple); background: transparent; border: 1.5px solid var(--wipe-purple); border-radius: 3px; font-size: 13px; font-weight: 700; letter-spacing: .08em; cursor: pointer; transition: color .38s cubic-bezier(.4,0,.2,1), border-color .38s cubic-bezier(.4,0,.2,1); }
+.wipe-button::before { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(90deg, var(--wipe-purple), var(--wipe-pink)); transform: scaleX(0); transform-origin: left; transition: transform .48s cubic-bezier(.4,0,.2,1); pointer-events: none; }
+.wipe-button:hover { color: #fff; border-color: var(--wipe-purple); }
+.wipe-button:hover::before { transform: scaleX(1); }
+.wipe-button > * { position: relative; z-index: 1; }
+.card-cta { display: inline-flex; align-items: center; width: fit-content; margin-top: auto; padding: 5px 9px; border-radius: 999px; color: var(--crimson-dark); font-size: 12px; font-weight: 900; }
 .season-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
 .tag { display: inline-flex; align-items: center; min-height: 28px; padding: 0 10px; color: var(--text-secondary); background: rgba(255,241,237,.9); border: 1px solid rgba(201,75,75,.22); border-radius: 999px; font-size: 12px; font-weight: 800; }
 .season-card .button { margin-top: auto; }
@@ -225,19 +232,17 @@ td.empty-cell { padding: 26px; color: var(--text-muted); text-align: center; fon
 @media (prefers-reduced-motion: reduce) {
   .card-link,
   .wipe-hover,
+  .wipe-button,
   .card-link::before,
-  .card-link::after,
   .wipe-hover::before,
-  .wipe-hover::after,
+  .wipe-button::before,
   .card-link h2,
   .wipe-hover h2,
+  .card-link p,
+  .wipe-hover p,
   .card-cta { transition: none; }
   .card-link:hover,
-  .wipe-hover:hover,
-  .card-link:hover h2,
-  .wipe-hover:hover h2,
-  .card-link:hover .card-cta,
-  .wipe-hover:hover .card-cta { transform: none; }
+  .wipe-hover:hover { transform: none; }
 }
 
 @media (max-width: 900px) {
