@@ -12,21 +12,25 @@
   <style>
     .tournament-summary {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
+      gap: 7px;
       margin: 0;
+      padding: 0 2px;
     }
 
     .summary-item {
-      padding: 16px 18px;
-      background: #fffaf2;
-      border: 1px solid rgba(24, 33, 40, 0.12);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      padding: 0;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
     }
 
     .summary-label {
-      margin: 0 0 6px;
+      min-width: 86px;
+      margin: 0;
       color: var(--text-muted);
       font-size: 12px;
       font-weight: 900;
@@ -34,12 +38,16 @@
       text-transform: uppercase;
     }
 
+    .summary-label::after {
+      content: "：";
+    }
+
     .summary-value {
       margin: 0;
       color: var(--text-primary);
-      font-size: 18px;
-      font-weight: 950;
-      line-height: 1.45;
+      font-size: 15px;
+      font-weight: 850;
+      line-height: 1.65;
     }
 
     .overview-subsection {
@@ -70,26 +78,29 @@
 
     .schedule-text-list {
       display: grid;
-      gap: 10px;
+      gap: 8px;
       margin: 0;
-      padding: 0;
-      list-style: none;
+      padding-left: 1.25rem;
+      color: var(--text-primary);
+      font-size: 15px;
+      font-weight: 750;
+      line-height: 1.8;
     }
 
     .schedule-text-list li {
-      padding: 14px 16px;
+      padding: 0 0 0 2px;
       color: var(--text-primary);
-      background: #fffaf2;
-      border: 1px solid rgba(24, 33, 40, 0.12);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-soft);
-      font-size: 14px;
-      font-weight: 850;
-      line-height: 1.65;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      font-size: 15px;
+      font-weight: 750;
+      line-height: 1.8;
     }
 
     .schedule-text-list strong {
-      color: var(--crimson-dark);
+      color: var(--text-primary);
       font-weight: 950;
     }
 
