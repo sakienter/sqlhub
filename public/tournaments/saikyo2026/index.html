@@ -4,47 +4,409 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>バトグラ最強決定戦2026 | Avenge Hub</title>
-  <meta name="description" content="バトグラ最強決定戦2026 の大会情報ページです。" />
+  <meta name="description" content="バトグラ最強決定戦2026 のルール、配信リンク、最終結果、ゲーム別ポイントをまとめた大会アーカイブです。" />
   <meta property="og:title" content="バトグラ最強決定戦2026 | Avenge Hub" />
-  <meta property="og:description" content="バトグラ最強決定戦2026 の大会情報ページ" />
+  <meta property="og:description" content="バトグラ最強決定戦2026 のルール、配信リンク、最終結果、ゲーム別ポイントを掲載しています。" />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="../../common.css" />
   <style>
-    .dummy-hero{position:relative;overflow:hidden;min-height:300px;padding:48px 52px;text-align:left;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(90deg,rgba(5,10,18,.86) 0%,rgba(5,10,18,.66) 42%,rgba(5,10,18,.22) 70%,rgba(5,10,18,.04) 100%),url('/tournaments/independent-demo-1/ale.webp') center center/cover no-repeat;border-color:rgba(255,255,255,.18)}
-    .dummy-hero h1,.dummy-hero .eyebrow,.dummy-hero .lead{max-width:640px;text-align:left;color:#fff;text-shadow:0 2px 14px rgba(3,14,24,.56)}
-    .dummy-hero .back-link{align-self:flex-start;color:#fff;background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.22);backdrop-filter:blur(6px)}
+    .hero.saikyo-hero{
+      position:relative;
+      overflow:hidden;
+      padding:2.5rem 2rem;
+      text-align:center;
+      background:
+        radial-gradient(circle at 50% -12%,rgba(255,245,78,.28) 0%,transparent 34%),
+        linear-gradient(135deg,#030405 0%,#10100b 48%,#241706 100%);
+      border:1px solid rgba(255,230,84,.32);
+      border-radius:12px;
+      box-shadow:0 18px 48px rgba(5,12,20,.3);
+    }
+    .hero.saikyo-hero::before{
+      content:"";
+      position:absolute;
+      top:-48%;
+      left:50%;
+      transform:translateX(-50%);
+      width:440px;
+      height:440px;
+      background:radial-gradient(circle,rgba(255,242,0,.2) 0%,transparent 70%);
+      pointer-events:none;
+    }
+    .hero.saikyo-hero::after{content:none;display:none}
+    .saikyo-hero .back-link{
+      position:relative;
+      z-index:1;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin:0 0 1.75rem;
+      color:#fffce6;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      padding:8px 20px;
+      font-size:13px;
+      font-weight:700;
+      text-decoration:none;
+      backdrop-filter:none;
+    }
+    .saikyo-hero .eyebrow{
+      position:relative;
+      z-index:1;
+      margin:0;
+      color:#ffe66d;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.34em;
+      text-transform:uppercase;
+    }
+    .saikyo-hero h1{
+      position:relative;
+      z-index:1;
+      margin:1rem 0 0;
+      color:#fffbea;
+      font-size:clamp(38px,5.8vw,58px);
+      font-weight:950;
+      letter-spacing:.02em;
+      line-height:1.25;
+      text-shadow:0 0 22px rgba(255,230,84,.36);
+    }
+    .saikyo-hero .accent-yellow{color:#fff200}
+    .saikyo-hero .title-line{
+      position:relative;
+      z-index:1;
+      width:180px;
+      height:1px;
+      margin:1.5rem auto 0;
+      background:linear-gradient(90deg,transparent,#fff200,transparent);
+    }
+    .saikyo-hero .hero-meta{
+      position:relative;
+      z-index:1;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:10px;
+      margin:1.2rem 0 0;
+    }
+    .saikyo-hero .hero-meta span{
+      display:inline-flex;
+      align-items:center;
+      min-height:30px;
+      padding:0 12px;
+      color:#fffbea;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,230,84,.22);
+      border-radius:999px;
+      font-size:12px;
+      font-weight:850;
+    }
+    .overview-subsection{margin-top:24px}
+    .overview-subsection:first-child{margin-top:0}
+    .archive-rule-list,.schedule-text-list{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin:0;
+      padding-left:1.25rem;
+      color:var(--text-primary);
+      font-size:15px;
+      font-weight:750;
+      line-height:1.8;
+    }
+    .archive-rule-label,.schedule-text-list strong{font-weight:950}
+    .link-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:12px;
+    }
+    .link-card{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      min-height:96px;
+      padding:16px;
+      background:#fffaf2;
+      border:1px solid rgba(24,33,40,.1);
+      border-radius:var(--radius-md);
+      box-shadow:var(--shadow-soft);
+    }
+    .link-label{
+      color:var(--text-muted);
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .link-card a{
+      width:fit-content;
+      margin-top:auto;
+    }
+    .champion-panel{
+      display:grid;
+      grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);
+      gap:14px;
+      align-items:stretch;
+    }
+    .champion-box,.prize-box{
+      padding:20px;
+      background:#fffaf2;
+      border:1px solid rgba(24,33,40,.1);
+      border-radius:var(--radius-md);
+      box-shadow:var(--shadow-soft);
+    }
+    .champion-box .label,.prize-box .label{
+      margin:0 0 8px;
+      color:var(--text-muted);
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+    .champion-name{
+      margin:0;
+      color:#7f2634;
+      font-size:clamp(30px,4vw,44px);
+      font-weight:950;
+      line-height:1.05;
+    }
+    .champion-box p,.prize-box p{
+      margin:10px 0 0;
+      color:var(--text-secondary);
+      font-size:14px;
+      font-weight:700;
+      line-height:1.75;
+    }
+    .prize-list{
+      display:grid;
+      gap:8px;
+      margin:0;
+      padding:0;
+      list-style:none;
+      color:var(--text-primary);
+      font-size:14px;
+      font-weight:850;
+      line-height:1.5;
+    }
+    .prize-list strong{color:var(--crimson-dark)}
+    .table-wrap{overflow-x:auto;padding-bottom:0}
+    table.saikyo-table{width:100%;min-width:920px;border-spacing:0 6px}
+    .saikyo-table th,.saikyo-table td{text-align:center;white-space:nowrap}
+    .saikyo-table td.name-cell,.saikyo-table th.name-head{text-align:left;min-width:110px}
+    .saikyo-table td.total-cell{color:var(--crimson-dark);font-size:15px;font-weight:950}
+    .saikyo-table td.rank-cell{font-weight:950;text-align:center}
+    .rank-gold{color:#a06c00}
+    .rank-silver{color:#555}
+    .rank-bronze{color:#8a4f21}
+    .first-cell{background:#fff200!important;color:#111!important;font-weight:950}
+    .second-cell{background:#d4d4d4!important;color:#111!important;font-weight:900}
+    .check-cell{background:#e8999c!important;color:#111!important;font-weight:900}
+    .blank-cell{color:var(--text-muted)!important;background:#fffaf2!important}
+    .saikyo-table tbody tr:hover td{background:#fffaf2}
+    .saikyo-table tbody tr:hover td.first-cell{background:#fff200!important}
+    .saikyo-table tbody tr:hover td.second-cell{background:#d4d4d4!important}
+    .saikyo-table tbody tr:hover td.check-cell{background:#e8999c!important}
+    .result-note{
+      margin:12px 14px 0;
+      color:var(--text-muted);
+      font-size:12px;
+      font-weight:700;
+      line-height:1.7;
+    }
+    .legend-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px 14px;
+      margin:0 14px 12px;
+      color:var(--text-secondary);
+      font-size:12px;
+      font-weight:800;
+    }
+    .legend-chip{display:inline-flex;align-items:center;gap:6px}
+    .legend-chip::before{content:"";width:14px;height:14px;border-radius:3px;border:1px solid rgba(24,33,40,.16);background:#fffaf2}
+    .legend-chip.first::before{background:#fff200}
+    .legend-chip.second::before{background:#d4d4d4}
+    .legend-chip.check::before{background:#e8999c}
+    @media (max-width:900px){
+      .hero.saikyo-hero{padding:2rem 1rem}
+      .link-grid,.champion-panel{grid-template-columns:1fr}
+      .archive-rule-list,.schedule-text-list{font-size:14px}
+    }
   </style>
 </head>
 <body>
   <main class="page-shell">
-    <header class="hero dummy-hero">
+    <header class="hero saikyo-hero">
       <a class="back-link" href="../../">← Avenge Hub へ戻る</a>
-      <p class="eyebrow">Independent Tournament</p>
-      <h1>バトグラ最強決定戦2026</h1>
-      <p class="lead">別母体で開催された大会情報を掲載するためのページです。正式な日程、ルール、結果は後から差し替えできます。</p>
+      <p class="eyebrow">Past Tournament</p>
+      <h1>バトグラ<br><span class="accent-yellow">最強決定戦 2026</span></h1>
+      <div class="title-line" aria-hidden="true"></div>
+      <div class="hero-meta">
+        <span>2026/05/10</span>
+        <span>20ポイントチェック形式</span>
+        <span>最大8ゲーム / Game 7 終了</span>
+      </div>
     </header>
 
     <section class="score-card">
       <div class="section-title">Overview</div>
       <div class="section-body">
-        <div class="rule-grid">
-          <article class="rule-item"><h3>大会情報</h3><p>大会概要、主催、開催日、参加条件などをここに掲載します。</p></article>
-          <article class="rule-item"><h3>進行状況</h3><p>エントリー受付、配信URL、結果反映などの状態管理に使えます。</p></article>
+        <div class="champion-panel">
+          <div class="champion-box">
+            <p class="label">Champion</p>
+            <h2 class="champion-name">Alutemu</h2>
+            <p>Game 6 終了時点で30ptに到達し、Game 7で1位を獲得。チェック状態の選手が1位を取ったため、Game 7で優勝が確定しました。</p>
+          </div>
+          <div class="prize-box">
+            <p class="label">Prize Distribution</p>
+            <ul class="prize-list">
+              <li><strong>1st Place:</strong> 60,000 JPY</li>
+              <li><strong>2nd Place:</strong> 30,000 JPY</li>
+              <li><strong>3rd Place:</strong> 10,000 JPY</li>
+            </ul>
+          </div>
+        </div>
+
+        <section class="overview-subsection">
+          <div class="mini-section-title">Rules</div>
+          <ul class="archive-rule-list">
+            <li><span class="archive-rule-label">日程：</span>2026/05/10</li>
+            <li><span class="archive-rule-label">形式：</span>最大8ゲーム制・20ポイントチェック形式。</li>
+            <li><span class="archive-rule-label">優勝条件：</span>規定ポイントを獲得するとチェック状態となり、チェック状態の選手が1位を獲得した時点で、その選手が優勝となります。</li>
+            <li><span class="archive-rule-label">順位決定：</span>優勝者が確定した場合、2位以下の順位は、優勝確定時点の合計ポイント順で決定します。</li>
+            <li><span class="archive-rule-label">未決着時：</span>チェック形式で優勝者が決まらなかった場合は、8ゲーム終了時点の合計ポイント順で順位を決定します。</li>
+            <li><span class="archive-rule-label">ポイント：</span>1位 8pt / 2位 6pt / 3位 5pt / 4位 4pt / 5位 3pt / 6位 2pt / 7位 1pt / 8位 0pt</li>
+            <li><span class="archive-rule-label">同時落ち：</span>ポイント折半を採用します。</li>
+            <li><span class="archive-rule-label">同点時：</span>合計ポイントが同点の場合は、「8試合目の順位」が高い選手を上位とします。最高順位や最大得点では判定しません。</li>
+          </ul>
+        </section>
+
+        <section class="overview-subsection">
+          <div class="mini-section-title">Links</div>
+          <div class="link-grid">
+            <div class="link-card"><span class="link-label">Twitch 1</span><a class="button" href="https://www.twitch.tv/matsuri_hs" target="_blank" rel="noopener noreferrer">Twitchを開く</a></div>
+            <div class="link-card"><span class="link-label">Twitch 2</span><a class="button" href="https://www.twitch.tv/alutemu_" target="_blank" rel="noopener noreferrer">Twitchを開く</a></div>
+            <div class="link-card"><span class="link-label">公認ミラー</span><a class="button" href="https://www.youtube.com/@neruko_kamitaba" target="_blank" rel="noopener noreferrer">YouTubeを開く</a></div>
+            <div class="link-card"><span class="link-label">公式ルールの出典</span><a class="button secondary" href="https://note.com/saikyou_bg/n/n813117a49688" target="_blank" rel="noopener noreferrer">noteを開く</a></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="score-card">
+      <div class="section-title purple">Final Results</div>
+      <div class="section-body">
+        <div class="table-wrap">
+          <table class="saikyo-table" id="final-table" aria-label="最終順位表"></table>
+        </div>
+        <p class="result-note">※ Game 7で優勝が確定したため、Game 8は未実施として表示しています。</p>
+      </div>
+    </section>
+
+    <section class="score-card">
+      <div class="section-title orange">ポイント集計</div>
+      <div class="section-body">
+        <div class="legend-row"><span class="legend-chip first">1位点 / 8pt</span><span class="legend-chip second">2位点 / 6pt</span></div>
+        <div class="table-wrap">
+          <table class="saikyo-table" id="points-table" aria-label="ゲーム別ポイント"></table>
         </div>
       </div>
     </section>
 
     <section class="score-card">
-      <div class="section-title purple">Results</div>
+      <div class="section-title orange">順位入力</div>
       <div class="section-body">
-        <ul class="notice-list">
-          <li>結果データは未登録です。</li>
-          <li>順位表、ポイント表、配信アーカイブのリンクを後から追加できます。</li>
-        </ul>
+        <div class="legend-row"><span class="legend-chip first">1位</span><span class="legend-chip second">2位</span></div>
+        <div class="table-wrap">
+          <table class="saikyo-table" id="placement-table" aria-label="ゲーム別順位"></table>
+        </div>
+      </div>
+    </section>
+
+    <section class="score-card">
+      <div class="section-title orange">Total Score</div>
+      <div class="section-body">
+        <div class="legend-row"><span class="legend-chip check">チェック状態 / 20pt以上</span></div>
+        <div class="table-wrap">
+          <table class="saikyo-table" id="total-table" aria-label="累計ポイント"></table>
+        </div>
+        <p class="result-note">※ 累計20pt以上のセルをチェック状態として強調しています。</p>
       </div>
     </section>
 
     <footer class="footer-note"><p>Avenge Hub / Tournament info by Stuntdrake</p></footer>
   </main>
+
+<script>
+const GAMES=['game1','game2','game3','game4','game5','game6','game7','game8'];
+const RESULTS=[
+  {name:'Alutemu',total:38,rank:'1st',points:[8,8,1,6,3,4,8,''],placements:[1,1,7,2,5,4,1,''],cumulative:[8,16,17,23,26,30,38,'']},
+  {name:'ぎゃん',total:28,rank:'2nd',points:[6,0.5,5,4.5,8,2.5,1.5,''],placements:[2,7.5,3,3.5,1,5.5,6.5,''],cumulative:[6,6.5,11.5,16,24,26.5,28,'']},
+  {name:'haguren',total:27.5,rank:'3rd',points:[0.5,2,8,0,3,8,6,''],placements:[7.5,6,1,8,5,1,2,''],cumulative:[0.5,2.5,10.5,10.5,13.5,21.5,27.5,'']},
+  {name:'MATSURI',total:26,rank:'4th',points:[0.5,6,2.5,8,3,2.5,3.5,''],placements:[7.5,2,5.5,1,5,5.5,4.5,''],cumulative:[0.5,6.5,9,17,20,22.5,26,'']},
+  {name:'あれっくす',total:23,rank:'5th',points:[3,5,2.5,1,5,5,1.5,''],placements:[5,3,5.5,7,3,3,6.5,''],cumulative:[3,8,10.5,11.5,16.5,21.5,23,'']},
+  {name:'SeseiSei',total:21,rank:'6th',points:[4.5,3.5,6,2.5,0.5,0.5,3.5,''],placements:[3.5,4.5,2,5.5,7.5,7.5,4.5,''],cumulative:[4.5,8,14,16.5,17,17.5,21,'']},
+  {name:'Barrette',total:20,rank:'7th',points:[2,3.5,4,4.5,0.5,0.5,5,''],placements:[6,4.5,4,3.5,7.5,7.5,3,''],cumulative:[2,5.5,9.5,14,14.5,15,20,'']},
+  {name:'Thundurus',total:19.5,rank:'8th',points:[4.5,0.5,0,2.5,6,6,0,''],placements:[3.5,7.5,8,5.5,2,2,8,''],cumulative:[4.5,5,5,7.5,13.5,19.5,19.5,'']}
+];
+const SCREEN_ORDER=['Alutemu','あれっくす','ぎゃん','Thundurus','SeseiSei','haguren','MATSURI','Barrette'];
+const byScreenOrder=[...RESULTS].sort((a,b)=>SCREEN_ORDER.indexOf(a.name)-SCREEN_ORDER.indexOf(b.name));
+function rankClass(rank){
+  if(rank==='1st')return 'rank-cell rank-gold';
+  if(rank==='2nd')return 'rank-cell rank-silver';
+  if(rank==='3rd')return 'rank-cell rank-bronze';
+  return 'rank-cell';
+}
+function fmt(v){return v===''?'—':v;}
+function cellClass(type,value){
+  if(value==='')return 'blank-cell';
+  const n=Number(value);
+  if(type==='points'){
+    if(n===8)return 'first-cell';
+    if(n===6)return 'second-cell';
+  }
+  if(type==='placements'){
+    if(n===1)return 'first-cell';
+    if(n===2)return 'second-cell';
+  }
+  if(type==='cumulative' && n>=20)return 'check-cell';
+  return '';
+}
+function renderTable(targetId,rows,{mode='points',orderedByResult=false}={}){
+  const target=document.getElementById(targetId);
+  const head=['Name','Total','順位',...GAMES];
+  const bodyRows=(orderedByResult?rows:byScreenOrder).map(row=>{
+    const values=mode==='points'?row.points:mode==='placements'?row.placements:row.cumulative;
+    return `<tr${row.rank==='1st'&&orderedByResult?' class="winner-row"':''}>`+
+      `<td class="name-cell">${row.name}</td>`+
+      `<td class="total-cell">${fmt(row.total)}</td>`+
+      `<td class="${rankClass(row.rank)}">${row.rank}</td>`+
+      values.map(value=>`<td class="${cellClass(mode,value)}">${fmt(value)}</td>`).join('')+
+      `</tr>`;
+  }).join('');
+  target.innerHTML=`<thead><tr>${head.map((h,i)=>`<th${i===0?' class="name-head"':''}>${h}</th>`).join('')}</tr></thead><tbody>${bodyRows}</tbody>`;
+}
+function renderPlacement(){
+  const target=document.getElementById('placement-table');
+  const head=['Placement','1st count','average',...GAMES];
+  const bodyRows=byScreenOrder.map(row=>{
+    const firstCount=row.placements.filter(v=>Number(v)===1).length;
+    const played=row.placements.filter(v=>v!=='').map(Number);
+    const avg=(played.reduce((sum,v)=>sum+v,0)/played.length).toFixed(1);
+    return `<tr>`+
+      `<td class="name-cell">${row.name}</td>`+
+      `<td class="total-cell">${firstCount}</td>`+
+      `<td class="total-cell">${avg}</td>`+
+      row.placements.map(value=>`<td class="${cellClass('placements',value)}">${fmt(value)}</td>`).join('')+
+      `</tr>`;
+  }).join('');
+  target.innerHTML=`<thead><tr>${head.map((h,i)=>`<th${i===0?' class="name-head"':''}>${h}</th>`).join('')}</tr></thead><tbody>${bodyRows}</tbody>`;
+}
+renderTable('final-table',RESULTS,{mode:'points',orderedByResult:true});
+renderTable('points-table',RESULTS,{mode:'points'});
+renderPlacement();
+renderTable('total-table',RESULTS,{mode:'cumulative'});
+</script>
 </body>
 </html>
