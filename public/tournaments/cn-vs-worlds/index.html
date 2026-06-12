@@ -9,7 +9,9 @@
   <style>
     .tournament-hero{min-height:260px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(135deg,#071421 0%,#0a2f45 52%,#451d36 100%);border:1px solid rgba(255,255,255,.22);border-radius:18px;box-shadow:0 22px 40px rgba(3,14,24,.34)}
     .tournament-hero .back-link{align-self:flex-start;color:#fff;background:rgba(4,18,23,.42);border-color:rgba(255,255,255,.24)}
-    .tournament-hero h1{margin:2.2rem 0 0;color:#fff;font-size:clamp(42px,6vw,76px);font-weight:950;letter-spacing:-.06em;text-shadow:0 10px 24px rgba(3,14,24,.48)}
+    .tournament-title-block{margin:2.2rem 0 0}
+    .tournament-hero h1{margin:0;color:#fff;font-size:clamp(42px,6vw,76px);font-weight:950;letter-spacing:-.06em;text-shadow:0 10px 24px rgba(3,14,24,.48)}
+    .tournament-hero .hero-subtitle{margin:10px 0 0;color:rgba(255,255,255,.88);font-size:clamp(18px,2vw,28px);font-weight:900;letter-spacing:.04em;text-shadow:0 5px 16px rgba(3,14,24,.45)}
     .rule-text-list{margin:0;padding-left:1.35rem;color:var(--text-secondary);font-size:15px;font-weight:750;line-height:1.95}
     .rule-text-list strong{color:var(--text-primary);font-weight:950}
     .placeholder-box{padding:18px 20px;color:var(--text-secondary);background:rgba(25,182,217,.08);border:1px solid rgba(25,182,217,.22);border-radius:10px;font-size:15px;font-weight:800;line-height:1.85}
@@ -19,7 +21,10 @@
   <main class="page-shell">
     <header class="hero tournament-hero">
       <a class="back-link" href="../../">← Avenge Hubへ戻る</a>
-      <h1>CN vs Worlds</h1>
+      <div class="tournament-title-block">
+        <h1>CN vs Worlds</h1>
+        <p class="hero-subtitle">2026 Jan-Feb</p>
+      </div>
     </header>
 
     <section class="score-card">
