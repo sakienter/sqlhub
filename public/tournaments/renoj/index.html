@@ -15,7 +15,7 @@
       isolation:isolate;
       overflow:hidden;
       margin:0 auto 28px;
-      min-height:330px;
+      min-height:260px;
       padding:2.1rem 2rem 2.35rem;
       display:flex;
       flex-direction:column;
@@ -60,16 +60,6 @@
       max-width:760px;
       margin-top:2.4rem;
     }
-    .renoj-hero .eyebrow{
-      margin:0 0 .75rem;
-      color:#ffd98a;
-      font-size:13px;
-      font-weight:950;
-      letter-spacing:.22em;
-      line-height:1.2;
-      text-transform:uppercase;
-      text-shadow:0 2px 12px rgba(3,14,24,.45);
-    }
     .renoj-hero h1{
       margin:0;
       color:#fff7e2;
@@ -78,43 +68,6 @@
       letter-spacing:-.06em;
       line-height:1.08;
       text-shadow:0 10px 22px rgba(3,14,24,.45);
-    }
-    .renoj-hero h1 .title-accent{
-      color:#ffd98a;
-      letter-spacing:-.045em;
-    }
-    .renoj-hero .lead{
-      margin:1.15rem 0 0;
-      max-width:720px;
-      color:rgba(255,250,235,.88);
-      font-size:16px;
-      font-weight:800;
-      line-height:1.85;
-      letter-spacing:.02em;
-      text-shadow:0 2px 12px rgba(3,14,24,.45);
-    }
-    .renoj-meta{
-      position:relative;
-      z-index:1;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:1.25rem;
-      padding:0;
-      list-style:none;
-    }
-    .renoj-meta li{
-      display:inline-flex;
-      align-items:center;
-      min-height:34px;
-      padding:0 13px;
-      color:#fff7e2;
-      background:rgba(255,255,255,.10);
-      border:1px solid rgba(255,235,182,.20);
-      border-radius:999px;
-      font-size:12px;
-      font-weight:900;
-      backdrop-filter:blur(8px);
     }
     .plain-copy{
       margin:0 0 1.2rem;
@@ -144,8 +97,8 @@
       gap:0;
     }
     .tournament-text-item{
-      padding:0 0 1rem;
-      margin:0 0 1rem;
+      padding:0 0 1.15rem;
+      margin:0 0 1.15rem;
       border-bottom:1px solid rgba(24,33,40,.12);
     }
     .tournament-text-item:last-child{
@@ -161,24 +114,22 @@
       letter-spacing:-.03em;
     }
     .tournament-text-item p{
-      margin:.2rem 0;
+      margin:.2rem 0 .7rem;
       color:var(--text-secondary);
       font-size:15px;
       font-weight:750;
       line-height:1.8;
     }
-    .tournament-text-item a{
-      font-weight:900;
+    .tournament-text-item .button{
+      margin-top:.1rem;
     }
     @media (max-width:900px){
-      .hero.renoj-hero{min-height:360px;padding:1.55rem}
+      .hero.renoj-hero{min-height:280px;padding:1.55rem}
       .renoj-title-block{margin-top:2rem}
     }
     @media (max-width:640px){
-      .hero.renoj-hero{min-height:390px;border-radius:14px}
+      .hero.renoj-hero{min-height:300px;border-radius:14px}
       .renoj-hero h1{font-size:clamp(36px,12vw,52px)}
-      .renoj-hero .lead{font-size:14px;line-height:1.75}
-      .renoj-meta li{font-size:11px}
     }
   </style>
 </head>
@@ -187,14 +138,7 @@
     <header class="hero renoj-hero">
       <a class="back-link" href="../../">← Avenge Hubへ戻る</a>
       <div class="renoj-title-block">
-        <p class="eyebrow">Independent Tournament</p>
-        <h1>レノ・ジャクソン杯 <span class="title-accent">Archive</span></h1>
-        <p class="lead">誰でも参加できるオープン戦。大会ごとのTonamelページ、開催日、簡単なルールをまとめます。</p>
-        <ul class="renoj-meta">
-          <li>定員32名</li>
-          <li>予選2game制</li>
-          <li>決勝1game制</li>
-        </ul>
+        <h1>レノ・ジャクソン杯</h1>
       </div>
     </header>
 
@@ -220,17 +164,17 @@
           <section class="tournament-text-item">
             <h3>第1回</h3>
             <p>開催日：2026/01/14(水) 21:00 〜</p>
-            <p>Tonamel：<a href="https://tonamel.com/competition/90YEW" target="_blank" rel="noopener">大会ページ</a></p>
+            <a class="button" href="https://tonamel.com/competition/90YEW" target="_blank" rel="noopener">トナメルで開く</a>
           </section>
           <section class="tournament-text-item">
             <h3>第2回</h3>
             <p>開催日：2026/02/11(水) 21:00 〜</p>
-            <p>Tonamel：<a href="https://tonamel.com/competition/QBAoB" target="_blank" rel="noopener">大会ページ</a></p>
+            <a class="button" href="https://tonamel.com/competition/QBAoB" target="_blank" rel="noopener">トナメルで開く</a>
           </section>
           <section class="tournament-text-item">
             <h3>第3回</h3>
             <p>開催日：2026/03/18(水) 21:00 〜</p>
-            <p>Tonamel：<a href="https://tonamel.com/competition/tFMTx" target="_blank" rel="noopener">大会ページ</a></p>
+            <a class="button" href="https://tonamel.com/competition/tFMTx" target="_blank" rel="noopener">トナメルで開く</a>
           </section>
         </div>
       </div>
