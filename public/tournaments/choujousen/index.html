@@ -24,10 +24,7 @@
       box-shadow:0 18px 34px rgba(3,14,24,.24);
       backdrop-filter:none;
     }
-    .hero.choujousen-hero::before{
-      content:none;
-      display:none;
-    }
+    .hero.choujousen-hero::before{content:none;display:none}
     .hero.choujousen-hero::after{
       content:"";
       position:absolute;
@@ -86,10 +83,7 @@
       line-height:1.18;
       text-shadow:none;
     }
-    .choujousen-hero h1 .title-accent{
-      color:#c9342c;
-      letter-spacing:-.045em;
-    }
+    .choujousen-hero h1 .title-accent{color:#c9342c;letter-spacing:-.045em}
     .choujousen-hero .lead{
       position:relative;
       z-index:1;
@@ -101,10 +95,7 @@
       line-height:1.75;
       letter-spacing:.02em;
     }
-    .choujousen-hero .meta-line{
-      position:relative;
-      z-index:1;
-    }
+    .choujousen-hero .meta-line{position:relative;z-index:1}
 
     .overview-lead{
       margin:0 0 18px;
@@ -113,11 +104,7 @@
       font-weight:700;
       line-height:1.9;
     }
-    .overview-text{
-      display:grid;
-      gap:12px;
-      margin:0;
-    }
+    .overview-text{display:grid;gap:12px;margin:0}
     .overview-text p{
       margin:0;
       color:var(--text-secondary);
@@ -126,10 +113,7 @@
       line-height:1.85;
       letter-spacing:.01em;
     }
-    .overview-text strong{
-      color:var(--text-primary);
-      font-weight:950;
-    }
+    .overview-text strong{color:var(--text-primary);font-weight:950}
 
     .series-table{
       width:100%;
@@ -144,6 +128,7 @@
       vertical-align:middle;
       font-size:14px;
       line-height:1.45;
+      text-align:left;
     }
     .series-table th{
       color:var(--text-primary);
@@ -153,16 +138,9 @@
       font-size:12px;
       font-weight:950;
       white-space:nowrap;
-      text-align:left;
     }
-    .series-table th:first-child{
-      border-left:1px solid rgba(24,33,40,.1);
-      border-radius:6px 0 0 6px;
-    }
-    .series-table th:last-child{
-      border-right:1px solid rgba(24,33,40,.1);
-      border-radius:0 6px 6px 0;
-    }
+    .series-table th:first-child{border-left:1px solid rgba(24,33,40,.1);border-radius:6px 0 0 6px}
+    .series-table th:last-child{border-right:1px solid rgba(24,33,40,.1);border-radius:0 6px 6px 0}
     .series-table td{
       color:var(--text-secondary);
       background:#fffaf2;
@@ -177,14 +155,9 @@
       font-weight:950;
       white-space:nowrap;
     }
-    .series-table td:last-child{
-      border-right:1px solid rgba(24,33,40,.08);
-      border-radius:0 6px 6px 0;
-    }
-    .series-table .winner-cell{
-      color:var(--text-primary);
-      font-weight:900;
-    }
+    .series-table td:last-child{border-right:1px solid rgba(24,33,40,.08);border-radius:0 6px 6px 0}
+    .series-no{width:86px;color:var(--crimson-dark)!important;font-weight:950!important}
+    .series-table .winner-cell{color:var(--text-primary);font-weight:900}
     .status-pill{
       display:inline-flex;
       align-items:center;
@@ -199,11 +172,7 @@
       font-weight:950;
       white-space:nowrap;
     }
-    .series-url{
-      min-height:34px;
-      padding:0 12px;
-      font-size:12px;
-    }
+    .series-url{min-height:34px;padding:0 12px;font-size:12px}
     .series-url.is-disabled{
       pointer-events:none;
       color:var(--text-muted);
@@ -251,7 +220,7 @@
       <div class="meta-line">
         <span>Series Archive</span>
         <span>#1〜#9</span>
-        <span>Winner / URL 管理用</span>
+        <span>Winner / URL</span>
       </div>
     </header>
 
@@ -273,12 +242,13 @@
     </section>
 
     <section class="score-card">
-      <div class="section-title">Series List</div>
+      <div class="section-title">頂上戦一覧 #1〜#9</div>
       <div class="section-body">
         <div class="table-wrap">
           <table class="series-table">
             <thead>
               <tr>
+                <th>No.</th>
                 <th>大会</th>
                 <th>状態</th>
                 <th>優勝者</th>
@@ -286,56 +256,65 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>バトグラ頂上戦 #9</td>
+              <tr data-series="1">
+                <td class="series-no">#1</td>
+                <td>バトグラ頂上戦 #1</td>
                 <td><span class="status-pill">準備中</span></td>
                 <td class="winner-cell">未定</td>
                 <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
               </tr>
-              <tr>
-                <td>バトグラ頂上戦 #8</td>
-                <td><span class="status-pill">準備中</span></td>
-                <td class="winner-cell">未定</td>
-                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
-              </tr>
-              <tr>
-                <td>バトグラ頂上戦 #7</td>
-                <td><span class="status-pill">準備中</span></td>
-                <td class="winner-cell">未定</td>
-                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
-              </tr>
-              <tr>
-                <td>バトグラ頂上戦 #6</td>
-                <td><span class="status-pill">準備中</span></td>
-                <td class="winner-cell">未定</td>
-                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
-              </tr>
-              <tr>
-                <td>バトグラ頂上戦 #5</td>
-                <td><span class="status-pill">準備中</span></td>
-                <td class="winner-cell">未定</td>
-                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
-              </tr>
-              <tr>
-                <td>バトグラ頂上戦 #4</td>
-                <td><span class="status-pill">準備中</span></td>
-                <td class="winner-cell">未定</td>
-                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
-              </tr>
-              <tr>
-                <td>バトグラ頂上戦 #3</td>
-                <td><span class="status-pill">準備中</span></td>
-                <td class="winner-cell">未定</td>
-                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
-              </tr>
-              <tr>
+              <tr data-series="2">
+                <td class="series-no">#2</td>
                 <td>バトグラ頂上戦 #2</td>
                 <td><span class="status-pill">準備中</span></td>
                 <td class="winner-cell">未定</td>
                 <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
               </tr>
-              <tr>
-                <td>バトグラ頂上戦 #1</td>
+              <tr data-series="3">
+                <td class="series-no">#3</td>
+                <td>バトグラ頂上戦 #3</td>
+                <td><span class="status-pill">準備中</span></td>
+                <td class="winner-cell">未定</td>
+                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
+              </tr>
+              <tr data-series="4">
+                <td class="series-no">#4</td>
+                <td>バトグラ頂上戦 #4</td>
+                <td><span class="status-pill">準備中</span></td>
+                <td class="winner-cell">未定</td>
+                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
+              </tr>
+              <tr data-series="5">
+                <td class="series-no">#5</td>
+                <td>バトグラ頂上戦 #5</td>
+                <td><span class="status-pill">準備中</span></td>
+                <td class="winner-cell">未定</td>
+                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
+              </tr>
+              <tr data-series="6">
+                <td class="series-no">#6</td>
+                <td>バトグラ頂上戦 #6</td>
+                <td><span class="status-pill">準備中</span></td>
+                <td class="winner-cell">未定</td>
+                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
+              </tr>
+              <tr data-series="7">
+                <td class="series-no">#7</td>
+                <td>バトグラ頂上戦 #7</td>
+                <td><span class="status-pill">準備中</span></td>
+                <td class="winner-cell">未定</td>
+                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
+              </tr>
+              <tr data-series="8">
+                <td class="series-no">#8</td>
+                <td>バトグラ頂上戦 #8</td>
+                <td><span class="status-pill">準備中</span></td>
+                <td class="winner-cell">未定</td>
+                <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
+              </tr>
+              <tr data-series="9">
+                <td class="series-no">#9</td>
+                <td>バトグラ頂上戦 #9</td>
                 <td><span class="status-pill">準備中</span></td>
                 <td class="winner-cell">未定</td>
                 <td><a class="button secondary series-url is-disabled" href="#" aria-disabled="true" tabindex="-1">URL未設定</a></td>
@@ -343,7 +322,7 @@
             </tbody>
           </table>
         </div>
-        <p class="series-note">URLを追加する場合は、該当行の <code>href="#"</code> を実URLに変更し、<code>is-disabled</code> / <code>aria-disabled</code> / <code>tabindex</code> を外してください。</p>
+        <p class="series-note">各回の優勝者名とURLは、該当行の「未定」「URL未設定」を差し替えて管理します。</p>
       </div>
     </section>
 
