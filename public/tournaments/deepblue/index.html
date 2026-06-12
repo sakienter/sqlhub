@@ -15,18 +15,18 @@
       isolation:isolate;
       overflow:hidden;
       margin:0 auto 28px;
-      min-height:330px;
-      padding:2.1rem 2rem 2.35rem;
+      min-height:300px;
+      padding:2rem 2rem 2.2rem;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
       text-align:left;
       background:
-        radial-gradient(circle at 16% 18%,rgba(108,216,255,.26) 0%,rgba(108,216,255,0) 34%),
-        radial-gradient(circle at 78% 76%,rgba(127,119,221,.20) 0%,rgba(127,119,221,0) 30%),
-        linear-gradient(90deg,rgba(3,12,27,.94) 0%,rgba(5,24,48,.84) 44%,rgba(6,38,72,.48) 72%,rgba(6,38,72,.18) 100%),
+        radial-gradient(circle at 16% 18%,rgba(255,255,255,.25) 0%,rgba(255,255,255,0) 32%),
+        radial-gradient(circle at 82% 74%,rgba(147,221,255,.20) 0%,rgba(147,221,255,0) 28%),
+        linear-gradient(90deg,rgba(4,18,36,.92) 0%,rgba(8,42,78,.78) 48%,rgba(13,92,139,.38) 74%,rgba(13,92,139,.16) 100%),
         url('/tournaments/dp.webp') center center/cover no-repeat;
-      border:1px solid rgba(108,216,255,.30);
+      border:1px solid rgba(204,239,255,.34);
       border-radius:18px;
       box-shadow:0 22px 40px rgba(3,14,24,.34);
       backdrop-filter:none;
@@ -45,9 +45,9 @@
       justify-content:center;
       min-height:36px;
       padding:0 16px;
-      color:#d8f5ff;
-      background:rgba(3,14,28,.44);
-      border:1px solid rgba(183,238,255,.26);
+      color:#effbff;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.24);
       border-radius:999px;
       box-shadow:0 8px 18px rgba(3,14,24,.18);
       font-size:13px;
@@ -59,70 +59,16 @@
       position:relative;
       z-index:1;
       max-width:760px;
-      margin-top:2.4rem;
-    }
-    .deepblue-hero .eyebrow{
-      margin:0 0 .75rem;
-      color:#95e8ff;
-      font-size:13px;
-      font-weight:950;
-      letter-spacing:.22em;
-      line-height:1.2;
-      text-transform:uppercase;
-      text-shadow:0 2px 12px rgba(3,14,24,.45);
+      margin-top:2.6rem;
     }
     .deepblue-hero h1{
       margin:0;
-      color:#f4fcff;
+      color:#fff;
       font-size:clamp(42px,6.4vw,72px);
       font-weight:950;
       letter-spacing:-.06em;
       line-height:1.08;
-      text-shadow:0 10px 22px rgba(3,14,24,.50);
-    }
-    .deepblue-hero h1 .title-accent{
-      color:#95e8ff;
-      letter-spacing:-.045em;
-    }
-    .deepblue-hero .lead{
-      margin:1.15rem 0 0;
-      max-width:720px;
-      color:rgba(244,252,255,.90);
-      font-size:16px;
-      font-weight:800;
-      line-height:1.85;
-      letter-spacing:.02em;
-      text-shadow:0 2px 12px rgba(3,14,24,.50);
-    }
-    .deepblue-meta{
-      position:relative;
-      z-index:1;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:1.25rem;
-      padding:0;
-      list-style:none;
-    }
-    .deepblue-meta li{
-      display:inline-flex;
-      align-items:center;
-      min-height:34px;
-      padding:0 13px;
-      color:#f4fcff;
-      background:rgba(255,255,255,.10);
-      border:1px solid rgba(183,238,255,.20);
-      border-radius:999px;
-      font-size:12px;
-      font-weight:900;
-      backdrop-filter:blur(8px);
-    }
-    .plain-copy{
-      margin:0 0 1.2rem;
-      color:var(--text-secondary);
-      font-size:15px;
-      font-weight:750;
-      line-height:1.95;
+      text-shadow:0 10px 22px rgba(3,14,24,.46);
     }
     .rule-text-list{
       margin:0;
@@ -172,14 +118,12 @@
       font-weight:900;
     }
     @media (max-width:900px){
-      .hero.deepblue-hero{min-height:360px;padding:1.55rem}
+      .hero.deepblue-hero{min-height:320px;padding:1.55rem}
       .deepblue-title-block{margin-top:2rem}
     }
     @media (max-width:640px){
-      .hero.deepblue-hero{min-height:390px;border-radius:14px}
+      .hero.deepblue-hero{min-height:340px;border-radius:14px}
       .deepblue-hero h1{font-size:clamp(36px,12vw,52px)}
-      .deepblue-hero .lead{font-size:14px;line-height:1.75}
-      .deepblue-meta li{font-size:11px}
     }
   </style>
 </head>
@@ -188,28 +132,20 @@
     <header class="hero deepblue-hero">
       <a class="back-link" href="../../">← Avenge Hubへ戻る</a>
       <div class="deepblue-title-block">
-        <p class="eyebrow">Independent Tournament</p>
-        <h1>ディープ・ブルー杯 <span class="title-accent">Archive</span></h1>
-        <p class="lead">ディープ・ブルー杯の大会情報を整理するページです。概要、簡単なルール、開催リンクをまとめます。</p>
-        <ul class="deepblue-meta">
-          <li>概要整理中</li>
-          <li>ルール追記予定</li>
-          <li>開催リンク追加予定</li>
-        </ul>
+        <h1>ディープ・ブルー杯</h1>
       </div>
     </header>
 
     <section class="score-card">
       <div class="section-title">概要とルール</div>
       <div class="section-body">
-        <p class="plain-copy">
-          ディープ・ブルー杯は、ハースストーン・バトルグラウンドの大会情報を掲載するためのページです。大会形式や参加条件などの詳細は、確定した情報から順次追記します。
-        </p>
         <ul class="rule-text-list">
-          <li><strong>大会概要：</strong>大会の趣旨、主催、対象者などをここに掲載します。</li>
-          <li><strong>ルール：</strong>予選方式、決勝方式、ポイント条件などをここに追記します。</li>
-          <li><strong>開催情報：</strong>開催日、開始時刻、エントリーリンクを下部のリンク欄にまとめます。</li>
-          <li><strong>結果情報：</strong>順位表、ポイント表、配信アーカイブなどを必要に応じて追加します。</li>
+          <li><strong>定員：</strong>32〜8名</li>
+          <li>※一部、参加レートの上限があります。</li>
+          <li><strong>形式：</strong>合計3回戦（各1game）</li>
+          <li><strong>勝ち上がり：</strong>4卓の上位4名が次のラウンドへ進みます。</li>
+          <li><strong>進行：</strong>32→16→8</li>
+          <li><strong>優勝特典：</strong>優勝者には、ゲストからのコーチング権利が与えられます。</li>
         </ul>
       </div>
     </section>
@@ -219,9 +155,24 @@
       <div class="section-body">
         <div class="tournament-text-list">
           <section class="tournament-text-item">
-            <h3>開催情報</h3>
-            <p>開催日：追加予定</p>
-            <p>Tonamel：追加予定</p>
+            <h3>第1回</h3>
+            <p>開催日：2026/02/21(土) 19:00 〜</p>
+            <p>Tonamel：<a href="https://tonamel.com/competition/n56MD" target="_blank" rel="noopener">大会ページ</a></p>
+          </section>
+          <section class="tournament-text-item">
+            <h3>第2回</h3>
+            <p>開催日：2026/03/21(土) 19:00 〜</p>
+            <p>Tonamel：<a href="https://tonamel.com/competition/GPTlm" target="_blank" rel="noopener">大会ページ</a></p>
+          </section>
+          <section class="tournament-text-item">
+            <h3>第3回</h3>
+            <p>開催日：2026/04/24(金) 19:00 〜</p>
+            <p>Tonamel：<a href="https://tonamel.com/competition/LF6kl" target="_blank" rel="noopener">大会ページ</a></p>
+          </section>
+          <section class="tournament-text-item">
+            <h3>第4回</h3>
+            <p>開催日：2026/05/30(土) 19:00 〜</p>
+            <p>Tonamel：<a href="https://tonamel.com/competition/nwS6a" target="_blank" rel="noopener">大会ページ</a></p>
           </section>
         </div>
       </div>
