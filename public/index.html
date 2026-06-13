@@ -28,15 +28,15 @@
       </div>
     </header>
 
-    <section id="current-season" class="score-card">
-      <div class="section-title">開催中のシーズン！</div>
+    <section id="current-season" class="score-card" data-season-state="upcoming">
+      <div id="current-season-title" class="section-title">開幕予定のシーズン！</div>
       <div class="section-body">
         <a class="season-card card-link" href="/sq/season2/">
           <div>
-            <h2>S級リーグ Season 2</h2>
-            <p class="current-subtitle">試合速報、ポイント状況はコチラ！</p>
+            <h2 id="current-season-card-title">S級リーグ Season 2 — 6/27 開幕！</h2>
+            <p id="current-season-subtitle" class="current-subtitle">試合速報・ポイント状況は開幕後にこちらから確認できます。</p>
           </div>
-          <span class="card-cta">ページを見る →</span>
+          <span id="current-season-cta" class="card-cta">大会概要を見る →</span>
         </a>
       </div>
     </section>
@@ -112,5 +112,6 @@
 
     <footer class="footer-note"><p>Stuntdrake's Avenge! / Tournament info by Stuntdrake</p></footer>
   </main>
+  <script src="/season-banner.js?v=20260614"></script>
 </body>
 </html>
