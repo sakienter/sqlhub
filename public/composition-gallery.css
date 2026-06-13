@@ -245,6 +245,70 @@
   display: none;
 }
 
+/* 構成欄のDAY切り替えを、ページ上部のDAYタブと同じ見た目に統一 */
+#composition-gallery .composition-body .composition-day-switcher {
+  margin: 0 -24px 18px;
+  padding: 0 14px;
+  background: rgba(255, 250, 242, 0.72);
+  border: 0;
+  border-bottom: 1px solid rgba(24, 33, 40, 0.16);
+  border-radius: 0;
+}
+
+#composition-gallery .composition-day-label {
+  display: none;
+}
+
+#composition-gallery .composition-day-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+#composition-gallery .composition-day-tabs .composition-day-tab {
+  appearance: none;
+  flex: 0 1 145px;
+  min-height: 72px;
+  padding: 0 22px;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  box-shadow: none;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: color 0.14s ease, border-color 0.14s ease, background 0.14s ease;
+}
+
+#composition-gallery .composition-day-tabs .composition-day-tab:hover {
+  color: var(--crimson-dark);
+  background: var(--crimson-dim);
+  border-color: transparent;
+}
+
+#composition-gallery .composition-day-tabs .composition-day-tab.active {
+  color: var(--crimson-dark);
+  background: var(--crimson-dim);
+  border-bottom-color: var(--crimson);
+  box-shadow: none;
+}
+
+#composition-gallery .composition-day-tabs .composition-day-tab .tab-main {
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+#composition-gallery .composition-day-tabs .composition-day-tab .tab-sub {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.1;
+  opacity: 0.82;
+}
+
 @media (max-width: 760px) {
   .collapsible-title,
   .placement-row {
@@ -282,5 +346,20 @@
 
   .composition-viewer {
     min-height: 200px;
+  }
+
+  #composition-gallery .composition-body .composition-day-switcher {
+    margin: 0 -12px 16px;
+    padding: 0 8px;
+  }
+
+  #composition-gallery .composition-day-tabs .composition-day-tab {
+    flex: 1 1 50%;
+    min-height: 62px;
+    padding: 0 10px;
+  }
+
+  #composition-gallery .composition-day-tabs .composition-day-tab .tab-main {
+    font-size: 15px;
   }
 }
