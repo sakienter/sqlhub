@@ -1,0 +1,57 @@
+name: Update page dates
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-page-dates-main
+  cancel-in-progress: false
+
+jobs:
+  update-page-dates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Collect changed files
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          CURRENT_SHA: ${{ github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          if [[ "$EVENT_NAME" == "workflow_dispatch" || -z "$BEFORE_SHA" || "$BEFORE_SHA" =~ ^0+$ ]]; then
+            git ls-files > /tmp/changed-files.txt
+          else
+            git diff --name-only "$BEFORE_SHA" "$CURRENT_SHA" > /tmp/changed-files.txt
+          fi
+
+          echo "Changed files considered for page dates:"
+          cat /tmp/changed-files.txt
+
+      - name: Update affected page footers
+        run: python3 .github/scripts/update_page_dates.py --changed-files /tmp/changed-files.txt
+
+      - name: Validate generated changes
+        run: git diff --check
+
+      - name: Commit updated dates
+        run: |
+          if git diff --quiet; then
+            echo "No page date updates to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public
+          git commit -m "chore: update page dates [skip ci]"
+          git push
