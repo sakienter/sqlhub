@@ -24,7 +24,7 @@
     MATSURI: './s1day1/MATSURI_page-0001.webp',
     SeseiSei: './s1day1/SeseiSei_page-0001.webp',
     Thundurus: './s1day1/Thundurus_page-0001.webp',
-    Yoshiyuki: './yoshiyuki_page-0001.webp',
+    Yoshiyuki: './s1day1/yoshiyuki_page-0001.webp',
     'あれっくす': './s1day1/Alex_page-0001.webp',
     'ぎゃん': './s1day1/gyan_page-0001.webp',
     jp: './s1day1/jp_page-0001.webp'
