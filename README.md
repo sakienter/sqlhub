@@ -11,7 +11,13 @@ sqlhub/
 ├── README.md
 ├── public/
 │   ├── index.html                    # Avenge Hub トップページ
-│   ├── common.css                    # サイト共通スタイル
+│   ├── common.css                    # 共通スタイルの入口
+│   ├── common-base.css               # 共通スタイル本体
+│   ├── common-overrides.css          # 共通スタイルの調整
+│   ├── home.css                      # トップページ専用スタイル
+│   ├── admin-tribes.css              # S1 / S2 管理画面共通スタイル
+│   ├── composition-gallery.css       # 構成ギャラリー共通スタイル
+│   ├── composition-gallery.js        # 構成ギャラリー共通処理
 │   ├── sutant.webp                   # トップページ用ヘッダー画像
 │   ├── season1/
 │   │   ├── index.html                # S級リーグ Season 1 結果ページ
@@ -23,8 +29,11 @@ sqlhub/
 │   ├── season2/
 │   │   ├── index.html                # S級リーグ Season 2 結果ページ
 │   │   ├── style.css
-│   │   ├── script.js                 # S2 スクリプト読み込み
-│   │   ├── parity-*.js               # S2 の表・タブ表示ロジック
+│   │   ├── data.js                   # S2 データ定義・正規化
+│   │   ├── summary.js                # S2 総合順位処理
+│   │   ├── render.js                 # S2 表・タブ描画
+│   │   ├── init.js                   # S2 初期化処理
+│   │   ├── results.css               # S2 結果表示補助スタイル
 │   │   ├── results.json              # S2 の静的な結果データ
 │   │   ├── tribes.json               # S2 の静的な種族データ
 │   │   ├── compositions/             # S2 構成画像
@@ -57,6 +66,9 @@ sqlhub/
 | `/tournaments/saikyo2026/` | バトグラ最強決定戦2026 の情報ページです。 |
 | `/tournaments/deepblue/` | ディープ・ブルー杯の概要、ルール、Tonamelリンクを表示します。 |
 | `/tournaments/renoj/` | レノ・ジャクソン杯の概要、ルール、Tonamelリンクを表示します。 |
+| `/tournaments/cn-vs-worlds/` | CN vs Worlds のルール、予選、決勝結果を表示します。 |
+| `/tournaments/cn-vs-jp/` | CN vs JP の大会情報と結果を表示します。 |
+| `/scrims/` | スクリムの開催案内と過去ロビーを表示します。 |
 
 ## データ管理の仕組み
 
@@ -79,7 +91,7 @@ S2 は外部APIやGoogle Sheetsを使用せず、以下の静的ファイルを�
 
 - 結果データ: `public/season2/results.json`
 - 登場種族・非登場種族: `public/season2/tribes.json`
-- 表示ロジック: `public/season2/parity-*.js`
+- 表示ロジック: `public/season2/data.js`、`summary.js`、`render.js`、`init.js`
 
 DAY切り替え、GAME切り替え、総合順位、Placement、ゲーム別詳細、構成画像の表示機能はJavaScriptで維持しています。データ取得先だけをリポジトリ内のJSONに固定しているため、S2用の環境変数、Pages Function、localStorageキャッシュは不要です。
 
