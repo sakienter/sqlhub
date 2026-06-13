@@ -159,20 +159,20 @@
 .composition-player-tabs {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 6px;
+  margin-bottom: 14px;
 }
 
 .composition-player-tab {
   appearance: none;
-  min-height: 42px;
-  padding: 8px 12px;
+  min-height: 36px;
+  padding: 6px 10px;
   color: var(--text-secondary);
   background: #fffaf2;
   border: 1px solid rgba(24, 33, 40, 0.16);
   border-radius: var(--radius-sm);
   font-family: var(--font);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 900;
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
@@ -245,9 +245,9 @@
   display: none;
 }
 
-/* 構成欄のDAY切り替えを、ページ上部のDAYタブと同じ見た目に統一 */
+/* 構成欄のDAY切り替えを、ページ上部のDAYタブと同じ寸法・見た目に統一 */
 #composition-gallery .composition-body .composition-day-switcher {
-  margin: 0 -24px 18px;
+  margin: 0 -24px 16px;
   padding: 0 14px;
   background: rgba(255, 250, 242, 0.72);
   border: 0;
@@ -269,9 +269,9 @@
 
 #composition-gallery .composition-day-tabs .composition-day-tab {
   appearance: none;
-  flex: 0 1 145px;
-  min-height: 72px;
-  padding: 0 22px;
+  flex: 0 0 auto;
+  min-height: 52px;
+  padding: 0 18px;
   color: var(--text-secondary);
   background: transparent;
   border: 0;
@@ -297,14 +297,14 @@
 }
 
 #composition-gallery .composition-day-tabs .composition-day-tab .tab-main {
-  font-size: 16px;
-  font-weight: 900;
+  font-size: 14px;
+  font-weight: 850;
   line-height: 1.1;
 }
 
 #composition-gallery .composition-day-tabs .composition-day-tab .tab-sub {
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 600;
   line-height: 1.1;
   opacity: 0.82;
 }
@@ -342,6 +342,7 @@
 
   .composition-player-tabs {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
   }
 
   .composition-viewer {
@@ -349,17 +350,13 @@
   }
 
   #composition-gallery .composition-body .composition-day-switcher {
-    margin: 0 -12px 16px;
+    margin: 0 -12px 14px;
     padding: 0 8px;
   }
 
   #composition-gallery .composition-day-tabs .composition-day-tab {
-    flex: 1 1 50%;
-    min-height: 62px;
-    padding: 0 10px;
-  }
-
-  #composition-gallery .composition-day-tabs .composition-day-tab .tab-main {
-    font-size: 15px;
+    flex: 0 0 auto;
+    min-height: 52px;
+    padding: 0 14px;
   }
 }
