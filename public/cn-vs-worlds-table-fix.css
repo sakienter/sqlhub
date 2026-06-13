@@ -147,9 +147,9 @@ html body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWze
 
 html body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) main.page-shell > header.hero.archive-hero > h1 {
   margin: 8px 0 0 !important;
-  font-size: clamp(52px,7vw,76px) !important;
-  line-height: 1.12 !important;
-  letter-spacing: .035em !important;
+  font-size: clamp(64px,8vw,92px) !important;
+  line-height: 1.06 !important;
+  letter-spacing: .025em !important;
 }
 
 @media (max-width: 760px) {
@@ -162,8 +162,9 @@ html body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWze
 
   html body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) main.page-shell > header.hero.archive-hero > h1 {
     margin-top: 12px !important;
-    font-size: clamp(34px,10vw,48px) !important;
-    letter-spacing: .02em !important;
+    font-size: clamp(40px,11.5vw,58px) !important;
+    line-height: 1.04 !important;
+    letter-spacing: .01em !important;
     white-space: nowrap !important;
   }
 }
@@ -197,19 +198,19 @@ html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell >
 }
 
 html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero .title-cluster {
-  margin-top: 62px !important;
-  gap: 18px !important;
+  margin-top: 60px !important;
+  gap: 14px !important;
 }
 
 html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero h1 {
-  font-size: clamp(46px,6.8vw,72px) !important;
-  line-height: 1.12 !important;
-  letter-spacing: .035em !important;
+  font-size: clamp(58px,7.5vw,88px) !important;
+  line-height: 1.06 !important;
+  letter-spacing: .02em !important;
 }
 
 html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero .hourglass {
-  width: 42px !important;
-  height: 56px !important;
+  width: 40px !important;
+  height: 54px !important;
 }
 
 @media (max-width: 760px) {
@@ -224,20 +225,20 @@ html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell >
   }
 
   html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero .title-cluster {
-    margin-top: 56px !important;
-    gap: 8px !important;
+    margin-top: 54px !important;
+    gap: 6px !important;
   }
 
   html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero h1 {
-    font-size: clamp(34px,10vw,48px) !important;
-    line-height: 1.08 !important;
-    letter-spacing: .015em !important;
+    font-size: clamp(38px,11vw,56px) !important;
+    line-height: 1.04 !important;
+    letter-spacing: .005em !important;
     white-space: nowrap !important;
   }
 
   html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero .hourglass {
-    width: 28px !important;
-    height: 38px !important;
+    width: 26px !important;
+    height: 36px !important;
   }
 }
 
