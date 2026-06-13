@@ -126,23 +126,19 @@
   height: 36px;
   border: 2px solid rgba(83, 97, 109, 0.34);
   border-radius: 50%;
-  background:
-    radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.34), transparent 22%),
-    radial-gradient(circle at 50% 55%, var(--tribe-a), var(--tribe-b) 72%);
+  background: var(--tribe-b);
   box-shadow:
     inset 0 0 0 1px rgba(12, 16, 20, 0.32),
     0 1px 4px rgba(0, 0, 0, 0.24);
   overflow: hidden;
 }
 
-#game-ban .tribe-abbr {
+#game-ban .tribe-icon img {
   display: block;
-  color: #fff;
-  font-size: 9px;
-  font-weight: 950;
-  line-height: 1;
-  letter-spacing: 0.03em;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.72);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 #game-ban .tribe-name {
@@ -169,8 +165,11 @@
   opacity: 0.84;
 }
 
-#game-ban .tribe-item.is-unavailable .tribe-icon {
+#game-ban .tribe-item.is-unavailable .tribe-icon img {
   filter: grayscale(0.68) brightness(0.76);
+}
+
+#game-ban .tribe-item.is-unavailable .tribe-icon {
   border-color: #cf4845;
 }
 
