@@ -302,9 +302,17 @@ html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell >
   height: 78px !important;
 }
 
+html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero .title-line {
+  width: 220px !important;
+}
+
 @media (max-width: 760px) {
   html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero .hourglass {
     width: 34px !important;
     height: 46px !important;
+  }
+
+  html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero .title-line {
+    width: 170px !important;
   }
 }
