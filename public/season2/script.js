@@ -21,7 +21,7 @@
   });
 
   const parityScript = document.createElement('script');
-  parityScript.src = './parity.js?v=s2-s1-parity-20260613';
+  parityScript.src = './parity.js?v=s2-s1-parity-20260613-r2';
   parityScript.async = false;
   parityScript.onerror = () => {
     const overlay = document.getElementById('loading-overlay');
