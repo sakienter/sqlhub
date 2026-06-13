@@ -50,9 +50,11 @@ jobs:
           script: |
             const fs = require('fs');
             const marker = '<!-- repository-audit-report -->';
-            const report = fs.existsSync('repository-audit-report.txt')
+            const fullReport = fs.existsSync('repository-audit-report.txt')
               ? fs.readFileSync('repository-audit-report.txt', 'utf8')
               : 'Audit report could not be generated.';
+            const summaryStart = fullReport.indexOf('=== EXTENSION SUMMARY ===');
+            const report = summaryStart >= 0 ? fullReport.slice(summaryStart) : fullReport;
             const body = `${marker}\n## Repository audit report\n\n\`\`\`text\n${report.slice(0, 60000)}\n\`\`\``;
             const comments = await github.paginate(github.rest.issues.listComments, {
               owner: context.repo.owner,
