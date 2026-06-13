@@ -83,17 +83,15 @@
     #past-tournaments .cn-jp-card{--wipe-image:linear-gradient(90deg,#5c0f1a 0%,#1a0a12 48%,#0a1525 52%,#173a5c 100%);--wipe-image-position:center}
 
     #scrims .section-body{padding:22px 34px 26px}
-    #scrims .scrim-card{min-height:132px;padding:24px 28px;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:24px;background:linear-gradient(135deg,#fffaf2 0%,#eef8fa 52%,#fff0eb 100%);border-color:rgba(16,38,56,.12);transition:transform .36s var(--wipe-easing),border-color .36s var(--wipe-easing),box-shadow .36s var(--wipe-easing)}
-    #scrims .scrim-card::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(circle at 18% 50%,rgba(25,182,217,.22),transparent 36%),radial-gradient(circle at 86% 34%,rgba(201,75,75,.18),transparent 38%);opacity:0;transition:opacity .42s var(--wipe-easing);pointer-events:none}
-    #scrims .scrim-card:hover{color:inherit;background:linear-gradient(135deg,#fffaf2 0%,#eef8fa 52%,#fff0eb 100%);background-size:auto;border-color:rgba(201,75,75,.34);box-shadow:0 16px 32px rgba(3,14,24,.18);transform:translateY(-2px)}
-    #scrims .scrim-card:hover::before{opacity:1}
-    #scrims .scrim-card > *{position:relative;z-index:1}
-    #scrims .scrim-card h2{margin:0;color:var(--text-primary);font-size:clamp(24px,2.6vw,34px);transition:color .36s var(--wipe-easing),transform .36s var(--wipe-easing)}
-    #scrims .scrim-card p{margin:8px 0 0;color:#65737e;font-size:14px;font-weight:750;line-height:1.6;transition:color .36s var(--wipe-easing),transform .36s var(--wipe-easing)}
-    #scrims .scrim-card .card-cta{flex:0 0 auto;margin-top:0;padding:0 0 4px;border-radius:0;color:#7f2634;background:transparent;border-bottom:1px solid rgba(127,38,52,.42);font-size:13px;white-space:nowrap}
-    #scrims .scrim-card:hover h2{color:#7f2634;transform:translateX(2px)}
-    #scrims .scrim-card:hover p{color:#45535f;transform:translateX(2px)}
-    #scrims .scrim-card:hover .card-cta{color:#7f2634;background:transparent;border-color:#7f2634;transform:translateX(3px)}
+    #scrims .scrim-card{min-height:132px;padding:24px 28px;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:24px;color:inherit;background:#fffaf2;background-size:auto;border-color:rgba(16,38,56,.12);transition:border-color .18s ease,box-shadow .18s ease}
+    #scrims .scrim-card::before,#scrims .scrim-card::after{content:none}
+    #scrims .scrim-card h2{margin:0;color:var(--text-primary);font-size:clamp(24px,2.6vw,34px);transition:none}
+    #scrims .scrim-card p{margin:8px 0 0;color:#65737e;font-size:14px;font-weight:750;line-height:1.6;transition:none}
+    #scrims .scrim-card .card-cta{flex:0 0 auto;margin-top:0;padding:0 0 4px;border-radius:0;color:#7f2634;background:transparent;border-bottom:1px solid rgba(127,38,52,.34);font-size:13px;white-space:nowrap;transition:border-color .18s ease}
+    #scrims .scrim-card:hover{color:inherit;background:#fffaf2;background-size:auto;border-color:rgba(16,38,56,.22);box-shadow:0 6px 16px rgba(3,14,24,.12);transform:none}
+    #scrims .scrim-card:hover h2{color:var(--text-primary);text-shadow:none;transform:none}
+    #scrims .scrim-card:hover p{color:#65737e;transform:none}
+    #scrims .scrim-card:hover .card-cta{color:#7f2634;background:transparent;border-color:#7f2634;box-shadow:none;text-shadow:none;transform:none}
 
     @media (max-width:720px){body:has(.hub-hero) .page-shell{width:min(100% - 24px,1180px)!important;padding-top:18px!important}body:has(.hub-hero) .hub-hero{height:auto!important;min-height:340px!important}body:has(.hub-hero) .hub-hero-image{inset:0!important;width:100%!important;height:100%!important;object-position:center center!important;transform:none!important}body:has(.hub-hero) .hub-hero-panel{width:calc(100% - 32px)!important;max-width:none!important;margin-left:16px!important;margin-right:16px!important;padding:24px 22px 26px!important;transform:none!important}body:has(.hub-hero) .hub-hero h1{font-size:clamp(34px,10vw,46px)!important;letter-spacing:-.02em!important;white-space:normal!important}body:has(.hub-hero) .hub-hero .hub-ja-title{font-size:13px!important}body:has(.hub-hero) .hub-hero .lead{font-size:14px!important}#current-season .section-title{font-size:24px;padding:18px 12px}#current-season .section-body{padding:18px}#current-season .season-card.card-link{min-height:132px;padding:24px;flex-direction:column;align-items:flex-start}#current-season .season-card.card-link h2{font-size:clamp(38px,11vw,52px)}#current-season .current-subtitle{font-size:16px}#current-season .card-cta{font-size:14px}}
     @media (max-width:720px){#scrims .section-body{padding:18px}#scrims .scrim-card{align-items:flex-start;flex-direction:column;padding:20px}}
