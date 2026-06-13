@@ -1,0 +1,33 @@
+/* CN vs Worlds qualification heading and table refinements. */
+body:has(.summary-stack) .score-card:has(.summary-stack) > .section-title {
+  font-size: 0 !important;
+}
+
+body:has(.summary-stack) .score-card:has(.summary-stack) > .section-title::after {
+  content: "予選結果";
+  font-size: 16px;
+}
+
+body:has(.summary-stack) .summary-table,
+body:has(.summary-stack) .results-table {
+  margin-right: auto !important;
+  margin-left: auto !important;
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+
+body:has(.summary-stack) .summary-table th,
+body:has(.summary-stack) .summary-table td,
+body:has(.summary-stack) .results-table th,
+body:has(.summary-stack) .results-table td {
+  text-align: center !important;
+  border: 1px solid rgba(24, 33, 40, .16) !important;
+  border-radius: 0 !important;
+}
+
+body:has(.summary-stack) .summary-table tbody tr,
+body:has(.summary-stack) .results-table tbody tr {
+  box-shadow: none !important;
+}
