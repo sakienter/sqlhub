@@ -1,0 +1,365 @@
+.collapsible-title,
+.placement-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 28px);
+  min-height: 56px;
+  margin: 14px auto 0;
+  padding: 12px 16px;
+  color: var(--text-primary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  list-style: none;
+  text-align: left;
+  user-select: none;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.collapsible-title::-webkit-details-marker,
+.placement-row::-webkit-details-marker {
+  display: none;
+}
+
+.collapsible-title:focus-visible,
+.placement-row:focus-visible {
+  outline: 2px solid rgba(25, 182, 217, 0.2);
+  outline-offset: 2px;
+}
+
+.placement-section {
+  padding-bottom: 0;
+}
+
+.placement-row {
+  background: rgba(255, 250, 242, 0.72);
+  border: 1px solid rgba(24, 33, 40, 0.12);
+  border-left: 3px solid rgba(13, 127, 153, 0.62);
+  box-shadow: none;
+  font-size: 16px;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+}
+
+.placement-row:hover {
+  background: rgba(232, 248, 251, 0.42);
+  border-color: rgba(13, 127, 153, 0.22);
+}
+
+.placement-section[open] .placement-row {
+  background: rgba(232, 248, 251, 0.34);
+  border-color: rgba(13, 127, 153, 0.24);
+}
+
+.placement-chevron,
+.collapsible-state {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  flex: 0 0 28px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.placement-chevron svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.placement-section[open] .placement-chevron {
+  color: var(--green-dark);
+  transform: none;
+}
+
+.placement-section > .table-wrap {
+  margin-top: 12px;
+}
+
+.composition-section {
+  margin-top: 18px;
+  padding-bottom: 18px;
+  border-top: 1px solid rgba(24, 33, 40, 0.1);
+}
+
+.composition-section[open] {
+  padding-bottom: 0;
+}
+
+.composition-section > .collapsible-title {
+  background: rgba(255, 250, 242, 0.86);
+  border: 1px solid rgba(201, 75, 75, 0.2);
+  border-left: 3px solid rgba(201, 75, 75, 0.72);
+  box-shadow: 0 2px 8px rgba(3, 14, 24, 0.06);
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+.composition-section > .collapsible-title:hover {
+  background: rgba(201, 75, 75, 0.06);
+  border-color: rgba(201, 75, 75, 0.3);
+  box-shadow: 0 3px 10px rgba(3, 14, 24, 0.08);
+}
+
+.composition-section[open] > .collapsible-title {
+  background: rgba(201, 75, 75, 0.07);
+  border-color: rgba(201, 75, 75, 0.32);
+  box-shadow: 0 3px 10px rgba(3, 14, 24, 0.08);
+}
+
+.collapsible-state {
+  position: relative;
+  color: var(--crimson-dark);
+  font-size: 0;
+}
+
+.collapsible-state::before {
+  content: none;
+}
+
+.collapsible-state::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+}
+
+.composition-section[open] .collapsible-state {
+  color: var(--crimson-dark);
+  background: transparent;
+  border: 0;
+}
+
+.composition-section[open] .collapsible-state::after {
+  transform: translateY(-2px) rotate(45deg);
+}
+
+.composition-body {
+  padding: 16px 24px 26px;
+}
+
+.composition-note {
+  display: none;
+}
+
+.composition-player-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.composition-player-tab {
+  appearance: none;
+  min-height: 36px;
+  padding: 6px 10px;
+  color: var(--text-secondary);
+  background: #fffaf2;
+  border: 1px solid rgba(24, 33, 40, 0.16);
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.composition-player-tab:hover {
+  border-color: rgba(201, 75, 75, 0.46);
+  transform: translateY(-1px);
+}
+
+.composition-player-tab.active {
+  color: #fff;
+  background: linear-gradient(90deg, var(--green-dark), var(--green), var(--crimson-dark));
+  border-color: rgba(13, 127, 153, 0.48);
+}
+
+.composition-viewer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  overflow: hidden;
+  background: rgba(255, 250, 242, 0.66);
+  border: 1px solid rgba(24, 33, 40, 0.14);
+  border-radius: var(--radius-md);
+}
+
+.composition-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+}
+
+.composition-placeholder {
+  padding: 48px 24px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.composition-open-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 40px;
+  margin: 14px 0 0 auto;
+  padding: 0 16px;
+  color: var(--crimson-dark);
+  background: #fffaf2;
+  border: 1px solid rgba(201, 75, 75, 0.34);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.composition-open-link:hover {
+  background: #fff3e5;
+  border-color: rgba(201, 75, 75, 0.56);
+}
+
+.composition-open-link[hidden],
+.composition-image[hidden],
+.composition-placeholder[hidden] {
+  display: none;
+}
+
+/* 構成欄のDAY切り替えを、ページ上部のDAYタブと同じ寸法・見た目に統一 */
+#composition-gallery .composition-body .composition-day-switcher {
+  margin: 0 -24px 16px;
+  padding: 0 14px;
+  background: rgba(255, 250, 242, 0.72);
+  border: 0;
+  border-bottom: 1px solid rgba(24, 33, 40, 0.16);
+  border-radius: 0;
+}
+
+#composition-gallery .composition-day-label {
+  display: none;
+}
+
+#composition-gallery .composition-day-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+#composition-gallery .composition-day-tabs .composition-day-tab {
+  appearance: none;
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-height: 52px;
+  padding: 0 18px;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  box-shadow: none;
+  font-family: var(--font);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.14s ease, border-color 0.14s ease, background 0.14s ease;
+}
+
+#composition-gallery .composition-day-tabs .composition-day-tab:hover {
+  color: var(--crimson-dark);
+  background: var(--crimson-dim);
+  border-color: transparent;
+}
+
+#composition-gallery .composition-day-tabs .composition-day-tab.active {
+  color: var(--crimson-dark);
+  background: var(--crimson-dim);
+  border-bottom-color: var(--crimson);
+  box-shadow: none;
+}
+
+#composition-gallery .composition-day-tabs .composition-day-tab .tab-main {
+  display: block;
+  font-size: 14px;
+  font-weight: 850;
+  line-height: 1.1;
+}
+
+#composition-gallery .composition-day-tabs .composition-day-tab .tab-sub {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.1;
+  opacity: 0.82;
+}
+
+@media (max-width: 760px) {
+  .collapsible-title,
+  .placement-row {
+    width: calc(100% - 24px);
+    min-height: 52px;
+    margin: 12px 12px 0;
+    padding: 11px 13px;
+    font-size: 15px;
+  }
+
+  .placement-chevron,
+  .collapsible-state {
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    min-height: 26px;
+    flex-basis: 26px;
+  }
+
+  .composition-section {
+    padding-bottom: 14px;
+  }
+
+  .composition-section[open] {
+    padding-bottom: 0;
+  }
+
+  .composition-body {
+    padding: 14px 12px 18px;
+  }
+
+  .composition-player-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .composition-viewer {
+    min-height: 200px;
+  }
+
+  #composition-gallery .composition-body .composition-day-switcher {
+    margin: 0 -12px 14px;
+    padding: 0 8px;
+  }
+
+  #composition-gallery .composition-day-tabs .composition-day-tab {
+    flex: 0 0 auto;
+    min-height: 52px;
+    padding: 0 14px;
+  }
+}
