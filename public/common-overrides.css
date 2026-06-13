@@ -249,3 +249,70 @@ body #scrims .scrim-card:hover {
     background-position: center, 62% center !important;
   }
 }
+
+/* Match archive header height to the compact Top Series header. */
+html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero,
+html body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) main.page-shell > header.hero.archive-hero {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  height: 270px !important;
+  min-height: 270px !important;
+  max-height: 270px !important;
+}
+
+html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero {
+  padding: 22px 24px 26px !important;
+}
+
+html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero .hero-back-row {
+  margin-bottom: 14px !important;
+}
+
+html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero .title-cluster {
+  margin-top: 8px !important;
+}
+
+html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero .title-line {
+  margin-top: 14px !important;
+}
+
+html body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) main.page-shell > header.hero.archive-hero {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 48px 24px 30px !important;
+}
+
+html body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) main.page-shell > header.hero.archive-hero h1 {
+  margin: 0 !important;
+}
+
+@media (max-width:760px) {
+  html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero,
+  html body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) main.page-shell > header.hero.archive-hero {
+    height: 240px !important;
+    min-height: 240px !important;
+    max-height: 240px !important;
+  }
+
+  html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero {
+    padding: 18px 14px 22px !important;
+  }
+
+  html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero .hero-back-row {
+    margin-bottom: 10px !important;
+  }
+
+  html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero .title-cluster {
+    margin-top: 4px !important;
+  }
+
+  html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero .title-line {
+    margin-top: 10px !important;
+  }
+
+  html body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) main.page-shell > header.hero.archive-hero {
+    padding: 44px 14px 24px !important;
+  }
+}
