@@ -10,6 +10,7 @@
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="./common.css" />
   <link rel="stylesheet" href="./home.css?v=20260613-cleanup" />
+  <link rel="stylesheet" href="./about-card.css?v=20260614-combined" />
 </head>
 <body>
   <main class="page-shell">
@@ -84,10 +85,25 @@
     <section id="about" class="score-card">
       <div class="section-title">About me</div>
       <div class="section-body">
-        <div class="season-grid">
-          <article class="season-card profile-card"><div><h2>Profile</h2><p>バトルグラウンドコミュニティ大会の運営協力をしているプレイヤーです。主にポイントの集計、スコアボードの管理、戦績の整理を担当しています。大会中は、参加者や視聴者の皆様がゲームの展開を追いやすいよう、迅速な結果速報や進行状況のリアルタイム共有に努めています。</p></div></article>
-          <article class="season-card contact-card"><div><h2>Contact</h2><p class="contact-ja-title">連絡先</p><p>大会への参加・運営協力、掲載内容の修正、その他のお問い合わせは、以下の連絡先までお願いします。<br>原則として、XのDMが最も確認しやすいです。</p><p>X: @stuntdrakebg<br>Discord: SAKI<br>Battle.net: Sakienter&#35;1365</p><p>※返信までに時間がかかる場合があります。</p></div><a class="button" href="https://x.com/stuntdrakebg" target="_blank" rel="noopener">Xを見る</a></article>
-        </div>
+        <article class="about-card">
+          <section class="about-profile-panel" aria-labelledby="about-profile-title">
+            <p class="about-kicker">PROFILE</p>
+            <h2 id="about-profile-title">Profile</h2>
+            <p class="about-copy">バトルグラウンドコミュニティ大会の運営協力をしているプレイヤーです。主にポイントの集計、スコアボードの管理、戦績の整理を担当しています。大会中は、参加者や視聴者の皆様がゲームの展開を追いやすいよう、迅速な結果速報や進行状況のリアルタイム共有に努めています。</p>
+          </section>
+          <section class="about-contact-panel" aria-labelledby="about-contact-title">
+            <p class="about-kicker">CONTACT</p>
+            <h2 id="about-contact-title">Contact</h2>
+            <p class="about-ja-title">連絡先</p>
+            <p class="about-contact-copy">大会への参加・運営協力、掲載内容の修正、その他のお問い合わせは、以下の連絡先までお願いします。原則として、XのDMが最も確認しやすいです。</p>
+            <dl class="contact-list">
+              <div class="contact-row"><dt>X</dt><dd><a class="contact-x-link" href="https://x.com/stuntdrakebg" target="_blank" rel="noopener">@stuntdrakebg ↗</a></dd></div>
+              <div class="contact-row"><dt>Discord</dt><dd>SAKI</dd></div>
+              <div class="contact-row"><dt>Battle.net</dt><dd>Sakienter&#35;1365</dd></div>
+            </dl>
+            <p class="contact-note">※返信までに時間がかかる場合があります。</p>
+          </section>
+        </article>
       </div>
     </section>
 
