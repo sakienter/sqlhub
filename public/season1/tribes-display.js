@@ -1,15 +1,16 @@
 const S1_TRIBE_API_URL = './tribes.json?v=s1-static-20260613';
+const S1_TRIBE_ICON_BASE = 'https://raw.githubusercontent.com/sakienter/sqlhub/075ec9ac21c55b9622d1cb44d95b78ca6f1cd80a/tribe_icons_256_webp';
 const S1_TRIBES = [
-  { name: 'アンデッド', label: 'Undead', abbr: 'UN', className: 'undead' },
-  { name: 'エレメンタル', label: 'Elemental', abbr: 'EL', className: 'elemental' },
-  { name: 'ドラゴン', label: 'Dragon', abbr: 'DR', className: 'dragon' },
-  { name: 'キルボア', label: 'Quilboar', abbr: 'QB', className: 'quilboar' },
-  { name: 'ナーガ', label: 'Naga', abbr: 'NG', className: 'naga' },
-  { name: 'マーロック', label: 'Murloc', abbr: 'MR', className: 'murloc' },
-  { name: 'メカ', label: 'Mech', abbr: 'MC', className: 'mech' },
-  { name: '悪魔', label: 'Demon', abbr: 'DM', className: 'demon' },
-  { name: '海賊', label: 'Pirate', abbr: 'PR', className: 'pirate' },
-  { name: '獣', label: 'Beast', abbr: 'BS', className: 'beast' }
+  { name: 'アンデッド', label: 'Undead', file: 'undead.webp', className: 'undead' },
+  { name: 'エレメンタル', label: 'Elemental', file: 'elemental.webp', className: 'elemental' },
+  { name: 'ドラゴン', label: 'Dragon', file: 'dragon.webp', className: 'dragon' },
+  { name: 'キルボア', label: 'Quilboar', file: 'quilboar.webp', className: 'quilboar' },
+  { name: 'ナーガ', label: 'Naga', file: 'naga.webp', className: 'naga' },
+  { name: 'マーロック', label: 'Murloc', file: 'murloc.webp', className: 'murloc' },
+  { name: 'メカ', label: 'Mech', file: 'mech.webp', className: 'mech' },
+  { name: '悪魔', label: 'Demon', file: 'demon.webp', className: 'demon' },
+  { name: '海賊', label: 'Pirate', file: 'pirate.webp', className: 'pirate' },
+  { name: '獣', label: 'Beast', file: 'beast.webp', className: 'beast' }
 ];
 let s1TribeConfig = {};
 
@@ -38,11 +39,12 @@ function renderS1TribeInfo(game) {
       : unavailable.has(tribe.name)
         ? 'is-unavailable'
         : 'is-unknown';
+    const imageUrl = `${S1_TRIBE_ICON_BASE}/${tribe.file}`;
 
     return `
       <span class="tribe-item ${state} tribe-${tribe.className}" data-tribe="${escapeHtml(tribe.className)}">
         <span class="tribe-icon" aria-hidden="true">
-          <span class="tribe-abbr">${escapeHtml(tribe.abbr)}</span>
+          <img src="${escapeHtml(imageUrl)}" alt="" loading="lazy" decoding="async">
         </span>
         <span class="tribe-name">${escapeHtml(tribe.label)}</span>
       </span>`;
