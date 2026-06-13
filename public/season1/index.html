@@ -12,7 +12,7 @@
   <link rel='stylesheet' href='./style.css?v=s1-meta-layout-20260613' />
   <link rel='stylesheet' href='./meta-layout.css?v=s1-tribe-images-20260613' />
   <link rel='stylesheet' href='./tribe-image-zoom.css?v=s1-tribe-image-zoom-20260613' />
-  <link rel='stylesheet' href='../composition-gallery.css?v=20260613' />
+  <link rel='stylesheet' href='../composition-gallery.css?v=20260613-2' />
 </head>
 <body>
   <div id='loading-overlay' aria-live='polite' aria-label='読み込み中'>
@@ -120,8 +120,13 @@
         <div class='table-wrap'><table id='day-points-table' aria-label='DAY別Result表'><thead></thead><tbody></tbody></table></div>
       </section>
 
-      <details class='day-section collapsible-section'>
-        <summary class='mini-section-title collapsible-title'><span class='collapsible-heading'>Placement</span><span class='collapsible-state' aria-hidden='true'></span></summary>
+      <details class='day-section collapsible-section placement-section'>
+        <summary class='placement-row'>
+          <span>Placement</span>
+          <span class='placement-chevron' aria-hidden='true'>
+            <svg viewBox='0 0 24 24' focusable='false'><path d='m6 9 6 6 6-6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>
+          </span>
+        </summary>
         <div class='table-wrap'><table id='day-placements-table' aria-label='DAY別Placement表'><thead></thead><tbody></tbody></table></div>
       </details>
 
