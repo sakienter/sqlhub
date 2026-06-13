@@ -1,0 +1,293 @@
+name: Apply physical URL migration
+
+on:
+  push:
+    branches:
+      - maintenance/physical-url-migration-20260614
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: maintenance/physical-url-migration-20260614
+          fetch-depth: 0
+
+      - name: Move directories and update references
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p public/sq
+          git mv public/season1 public/sq/season1
+          git mv public/season2 public/sq/season2
+          git mv public/tournaments/timewalk-dream-match public/tournaments/twdm
+          git mv public/tournaments/ura-choujousen public/tournaments/uratop
+          git mv public/tournaments/choujousen public/tournaments/topseries
+          git mv public/tournaments/renoj public/tournaments/reno
+
+          python <<'PY'
+          from pathlib import Path
+
+          text_suffixes = {
+              '.html', '.css', '.js', '.json', '.md', '.txt', '.toml',
+              '.yml', '.yaml', '.xml', '.svg'
+          }
+
+          replacements = [
+              ('/season1/', '/sq/season1/'),
+              ('/season2/', '/sq/season2/'),
+              ('/tournaments/timewalk-dream-match/', '/tournaments/twdm/'),
+              ('/tournaments/ura-choujousen/', '/tournaments/uratop/'),
+              ('/tournaments/choujousen/', '/tournaments/topseries/'),
+              ('/tournaments/renoj/', '/tournaments/reno/'),
+          ]
+
+          for path in Path('.').rglob('*'):
+              if not path.is_file() or '.git' in path.parts:
+                  continue
+              if path.suffix.lower() not in text_suffixes and path.name != '_redirects':
+                  continue
+              try:
+                  text = path.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              updated = text
+              for old, new in replacements:
+                  updated = updated.replace(old, new)
+              if updated != text:
+                  path.write_text(updated, encoding='utf-8')
+
+          targeted = {
+              Path('public/sq/season1/index.html'): [
+                  ("href='../common.css'", "href='../../common.css'"),
+                  ("href='../composition-gallery.css", "href='../../composition-gallery.css"),
+                  ("href='../' style=", "href='../../' style="),
+                  ("src='../composition-gallery.js", "src='../../composition-gallery.js"),
+              ],
+              Path('public/sq/season2/index.html'): [
+                  ('href="../common.css"', 'href="../../common.css"'),
+                  ('href="../sq/season1/', 'href="../season1/'),
+                  ('href="../composition-gallery.css', 'href="../../composition-gallery.css'),
+                  ('href="../" style=', 'href="../../" style='),
+                  ('src="../composition-gallery.js', 'src="../../composition-gallery.js'),
+              ],
+              Path('public/sq/season1/admin/index.html'): [
+                  ('href="../../common.css"', 'href="../../../common.css"'),
+                  ('href="../../admin-tribes.css"', 'href="../../../admin-tribes.css"'),
+              ],
+              Path('public/sq/season2/admin/index.html'): [
+                  ('href="../../common.css"', 'href="../../../common.css"'),
+                  ('href="../../admin-tribes.css"', 'href="../../../admin-tribes.css"'),
+              ],
+              Path('public/sq/season1/tribes-display.js'): [
+                  ("const S1_TRIBE_ICON_BASE = '../tribewebp';", "const S1_TRIBE_ICON_BASE = '../../tribewebp';"),
+              ],
+              Path('public/sq/season2/data.js'): [
+                  ("const S2_TRIBE_ICON_BASE = '../tribewebp';", "const S2_TRIBE_ICON_BASE = '../../tribewebp';"),
+              ],
+          }
+
+          for path, changes in targeted.items():
+              if not path.exists():
+                  raise SystemExit(f'Missing expected file: {path}')
+              text = path.read_text(encoding='utf-8')
+              for old, new in changes:
+                  if old not in text:
+                      raise SystemExit(f'Expected text not found in {path}: {old}')
+                  text = text.replace(old, new)
+              path.write_text(text, encoding='utf-8')
+
+          redirects = """# Legacy URLs retained for external links and bookmarks.
+/season1 /sq/season1/ 301
+/season1/ /sq/season1/ 301
+/season1/* /sq/season1/:splat 301
+/season2 /sq/season2/ 301
+/season2/ /sq/season2/ 301
+/season2/* /sq/season2/:splat 301
+/tournaments/timewalk-dream-match /tournaments/twdm/ 301
+/tournaments/timewalk-dream-match/ /tournaments/twdm/ 301
+/tournaments/timewalk-dream-match/* /tournaments/twdm/:splat 301
+/tournaments/ura-choujousen /tournaments/uratop/ 301
+/tournaments/ura-choujousen/ /tournaments/uratop/ 301
+/tournaments/ura-choujousen/* /tournaments/uratop/:splat 301
+/tournaments/choujousen /tournaments/topseries/ 301
+/tournaments/choujousen/ /tournaments/topseries/ 301
+/tournaments/choujousen/* /tournaments/topseries/:splat 301
+/tournaments/renoj /tournaments/reno/ 301
+/tournaments/renoj/ /tournaments/reno/ 301
+/tournaments/renoj/* /tournaments/reno/:splat 301
+
+# Normalize directory-style canonical URLs.
+/sq/season1 /sq/season1/ 301
+/sq/season2 /sq/season2/ 301
+/tournaments/twdm /tournaments/twdm/ 301
+/tournaments/uratop /tournaments/uratop/ 301
+/tournaments/topseries /tournaments/topseries/ 301
+/tournaments/reno /tournaments/reno/ 301
+/sq/ / 302
+"""
+          Path('public/_redirects').write_text(redirects, encoding='utf-8')
+          PY
+
+      - name: Update README structure
+        shell: bash
+        run: |
+          set -euo pipefail
+          python <<'PY'
+          from pathlib import Path
+          path = Path('README.md')
+          text = path.read_text(encoding='utf-8')
+          replacements = [
+              ('public/season1/', 'public/sq/season1/'),
+              ('public/season2/', 'public/sq/season2/'),
+              ('│   ├── season1/', '│   ├── sq/\n│   │   ├── season1/'),
+              ('│   ├── season2/', '│   │   └── season2/'),
+              ('│       ├── timewalk-dream-match/', '│       ├── twdm/'),
+              ('│       ├── ura-choujousen/', '│       ├── uratop/'),
+              ('│       ├── choujousen/', '│       ├── topseries/'),
+              ('│       ├── renoj/', '│       ├── reno/'),
+          ]
+          for old, new in replacements:
+              text = text.replace(old, new)
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Validate migrated tree
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          for path in \
+            public/sq/season1/index.html \
+            public/sq/season2/index.html \
+            public/sq/season1/admin/index.html \
+            public/sq/season2/admin/index.html \
+            public/tournaments/twdm/index.html \
+            public/tournaments/uratop/index.html \
+            public/tournaments/topseries/index.html \
+            public/tournaments/reno/index.html; do
+            test -f "$path"
+          done
+
+          for path in \
+            public/season1 \
+            public/season2 \
+            public/tournaments/timewalk-dream-match \
+            public/tournaments/ura-choujousen \
+            public/tournaments/choujousen \
+            public/tournaments/renoj; do
+            test ! -e "$path"
+          done
+
+          python <<'PY'
+          from pathlib import Path
+          import json
+          import re
+          from urllib.parse import unquote
+
+          public = Path('public').resolve()
+
+          for path in Path('public').rglob('*.json'):
+              json.loads(path.read_text(encoding='utf-8'))
+
+          attr_re = re.compile(r'''(?:href|src)\s*=\s*["']([^"']+)["']''', re.I)
+          css_re = re.compile(r'''url\(\s*["']?([^"')]+)''', re.I)
+
+          def validate_ref(source: Path, raw: str):
+              raw = unquote(raw.strip())
+              if not raw or raw.startswith(('#', 'http:', 'https:', 'mailto:', 'tel:', 'data:', 'javascript:', '//')):
+                  return
+              if any(token in raw for token in ('${', '{{', '<%')):
+                  return
+              clean = raw.split('#', 1)[0].split('?', 1)[0]
+              if not clean:
+                  return
+              target = (public / clean.lstrip('/')) if clean.startswith('/') else (source.parent / clean)
+              target = target.resolve()
+              try:
+                  target.relative_to(public)
+              except ValueError:
+                  raise AssertionError(f'Reference escapes public/: {source}: {raw}')
+              candidates = [target]
+              if clean.endswith('/'):
+                  candidates = [target / 'index.html']
+              elif target.suffix == '':
+                  candidates += [target / 'index.html', target.with_suffix('.html')]
+              if not any(candidate.exists() for candidate in candidates):
+                  raise AssertionError(f'Missing local reference: {source}: {raw} -> {target}')
+
+          for path in Path('public').rglob('*.html'):
+              text = path.read_text(encoding='utf-8')
+              for raw in attr_re.findall(text):
+                  validate_ref(path, raw)
+
+          for path in Path('public').rglob('*.css'):
+              text = path.read_text(encoding='utf-8')
+              for raw in css_re.findall(text):
+                  if raw.startswith(('var(', '#')):
+                      continue
+                  validate_ref(path, raw)
+
+          obsolete = [
+              '/season1/', '/season2/',
+              '/tournaments/timewalk-dream-match/',
+              '/tournaments/ura-choujousen/',
+              '/tournaments/choujousen/',
+              '/tournaments/renoj/',
+          ]
+          for path in Path('.').rglob('*'):
+              if not path.is_file() or '.git' in path.parts or path == Path('public/_redirects'):
+                  continue
+              if path.suffix.lower() not in {'.html', '.css', '.js', '.json', '.md', '.txt', '.yml', '.yaml'}:
+                  continue
+              try:
+                  text = path.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              for needle in obsolete:
+                  if needle in text:
+                      raise AssertionError(f'Obsolete URL remains in {path}: {needle}')
+
+          print('JSON, references, and obsolete URL validation passed.')
+          PY
+
+          find public functions -type f -name '*.js' -print0 | xargs -0 -n1 node --check
+
+          python -m http.server 8787 --directory public >/tmp/url-migration-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          sleep 1
+          for path in \
+            / \
+            /sq/season1/ \
+            /sq/season2/ \
+            /sq/season1/admin/ \
+            /sq/season2/admin/ \
+            /tournaments/twdm/ \
+            /tournaments/uratop/ \
+            /tournaments/topseries/ \
+            /tournaments/saikyo2026/ \
+            /tournaments/deepblue/ \
+            /tournaments/reno/ \
+            /tournaments/cn-vs-worlds/ \
+            /tournaments/cn-vs-jp/ \
+            /scrims/; do
+            curl --fail --silent --show-error "http://127.0.0.1:8787${path}" >/dev/null
+          done
+
+      - name: Commit migration
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/physical-url-migration.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          git commit -m "Move page directories to canonical URL paths"
+          git push origin HEAD:maintenance/physical-url-migration-20260614
