@@ -36,24 +36,26 @@ function isAllowedSpreadsheetUrl(value) {
 }
 
 function createLobbyCard(lobby) {
-  const card = document.createElement('article');
+  const formattedDate = formatLobbyDate(lobby.date);
+  const card = document.createElement('a');
   card.className = 'lobby-card';
+  card.href = lobby.spreadsheetUrl;
+  card.target = '_blank';
+  card.rel = 'noopener noreferrer';
+  card.setAttribute('aria-label', `${formattedDate}の結果をスプレッドシートで確認`);
 
   const title = document.createElement('h3');
-  title.textContent = formatLobbyDate(lobby.date);
+  title.textContent = formattedDate;
 
-  const link = document.createElement('a');
-  link.className = 'lobby-result-link';
-  link.href = lobby.spreadsheetUrl;
-  link.target = '_blank';
-  link.rel = 'noopener noreferrer';
-  link.textContent = '結果を確認 →';
+  const linkLabel = document.createElement('span');
+  linkLabel.className = 'lobby-result-link';
+  linkLabel.textContent = '結果を確認 →';
 
   const note = document.createElement('p');
   note.className = 'lobby-result-note';
   note.textContent = '（スプレッドシートが開きます）';
 
-  card.append(title, link, note);
+  card.append(title, linkLabel, note);
   return card;
 }
 
