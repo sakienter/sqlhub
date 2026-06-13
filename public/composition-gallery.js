@@ -8,6 +8,7 @@
   const openLink = document.getElementById('composition-open-link');
   const mainDayTabs = document.getElementById('day-tabs');
   const basePath = root.dataset.basePath || './compositions';
+  const isSeasonOne = /\/season1(?:\/|$)/i.test(window.location.pathname);
 
   ensureDaySwitcherStyles();
   const compositionDayTabs = ensureDaySwitcher();
@@ -23,15 +24,47 @@
     jp: 'jp'
   };
 
-  const dayOneImagePaths = {
-    Alutemu: './s1day1/Alutemu.webp',
-    MATSURI: './s1day1/MATSURI_page-0001.webp',
-    SeseiSei: './s1day1/SeseiSei_page-0001.webp',
-    Thundurus: './s1day1/Thundurus_page-0001.webp',
-    Yoshiyuki: './s1day1/yoshiyuki_page-0001.webp',
-    'あれっくす': './s1day1/Alex_page-0001.webp',
-    'ぎゃん': './s1day1/gyan_page-0001.webp',
-    jp: './s1day1/jp_page-0001.webp'
+  const seasonOneImagePaths = {
+    1: {
+      Alutemu: './s1day1/Alutemu.webp',
+      MATSURI: './s1day1/MATSURI_page-0001.webp',
+      SeseiSei: './s1day1/SeseiSei_page-0001.webp',
+      Thundurus: './s1day1/Thundurus_page-0001.webp',
+      Yoshiyuki: './s1day1/yoshiyuki_page-0001.webp',
+      'あれっくす': './s1day1/Alex_page-0001.webp',
+      'ぎゃん': './s1day1/gyan_page-0001.webp',
+      jp: './s1day1/jp_page-0001.webp'
+    },
+    2: {
+      Alutemu: './s1day2/sq2al_page-0001.webp',
+      MATSURI: './s1day2/sq2ma_page-0001.webp',
+      SeseiSei: './s1day2/sse_page-0001.webp',
+      Thundurus: './s1day2/sq2thun_page-0001.webp',
+      Yoshiyuki: './s1day2/sq2yo_page-0001.webp',
+      'あれっくす': './s1day2/sq2are_page-0001.webp',
+      'ぎゃん': './s1day2/sq2gya_page-0001.webp',
+      jp: './s1day2/sq2jp_page-0001.webp'
+    },
+    3: {
+      Alutemu: './s1day3/01al.webp',
+      MATSURI: './s1day3/06ma.webp',
+      SeseiSei: './s1day3/03se.webp',
+      Thundurus: './s1day3/thun.webp',
+      Yoshiyuki: './s1day3/04yo.webp',
+      'あれっくす': './s1day3/02alex.webp',
+      'ぎゃん': './s1day3/05gya.webp',
+      jp: './s1day3/08jp.webp'
+    },
+    4: {
+      Alutemu: './s1day4/alit.webp',
+      MATSURI: './s1day4/ma.webp',
+      SeseiSei: './s1day4/SESE.webp',
+      Thundurus: './s1day4/thun.webp',
+      Yoshiyuki: './s1day4/yoshiyuki.webp',
+      'あれっくす': './s1day4/alex.webp',
+      'ぎゃん': './s1day4/gyahs.webp',
+      jp: './s1day4/jp.webp'
+    }
   };
 
   const imageCache = new Map();
@@ -241,7 +274,8 @@
 
   function imagePathFor(name) {
     const day = getSelectedDayNumber();
-    if (day === 1 && dayOneImagePaths[name]) return dayOneImagePaths[name];
+    const seasonOnePath = seasonOneImagePaths[day]?.[name];
+    if (isSeasonOne && seasonOnePath) return seasonOnePath;
     return `${basePath}/day${day}/${fileBaseName(name)}.jpg`;
   }
 
