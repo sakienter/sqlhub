@@ -41,18 +41,22 @@
     #current-season .card-cta{margin-top:0;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;padding:0 0 5px;border-radius:0;background:transparent;color:#7d2635;border-bottom:2px solid rgba(125,38,53,.42);box-shadow:none;font-size:17px;font-weight:950;line-height:1.2;letter-spacing:.03em;white-space:nowrap;transition:color .34s var(--wipe-easing),border-color .34s var(--wipe-easing),text-shadow .34s var(--wipe-easing),transform .34s var(--wipe-easing)}
     #current-season .season-card.card-link:hover .card-cta{color:#7d2635;background:transparent;box-shadow:none;border-color:#7d2635;text-shadow:0 2px 14px rgba(255,255,255,.62);transform:translateX(4px)}
 
-    #seasons{--hub-card-wipe-duration:.72s}
-    #seasons .season-card.card-link,#past-tournaments .season-card.card-link{min-height:118px;padding:14px 18px}
+    #seasons{--season-card-duration:.46s}
     #seasons .season-grid,#past-tournaments .season-grid{grid-template-columns:repeat(auto-fit,minmax(260px,340px));justify-content:center}
-    #seasons .season-card.card-link h2,#past-tournaments .season-card.card-link h2{font-size:clamp(20px,2vw,26px)}
-    #seasons .card-link{background:#fffaf2;transition:color var(--hub-card-wipe-duration) var(--wipe-easing),border-color .28s var(--wipe-easing),box-shadow .28s var(--wipe-easing)}
-    #seasons .card-link:hover{background:#fffaf2;border-color:var(--wipe-purple);box-shadow:0 12px 24px rgba(127,119,221,.18)}
-    #seasons .card-link::before{content:"";position:absolute;inset:0;z-index:0;background-image:linear-gradient(90deg,var(--wipe-purple) 0%,#9d68de 52%,var(--wipe-pink) 100%);background-size:cover;background-position:center;background-repeat:no-repeat;clip-path:inset(0 100% 0 0);transition:clip-path var(--hub-card-wipe-duration) var(--wipe-easing);pointer-events:none}
-    #seasons .card-link:hover::before{clip-path:inset(0 0 0 0)}
-    #seasons .card-link > *{position:relative;z-index:1}
-    #seasons .card-link h2,#seasons .card-cta{transition:color .36s var(--wipe-easing),text-shadow .36s var(--wipe-easing),background .28s var(--wipe-easing),box-shadow .28s var(--wipe-easing)}
-    #seasons .card-link:hover h2{color:#fff;text-shadow:0 2px 12px rgba(3,14,24,.38)}
-    #seasons .card-link:hover .card-cta{color:#fff;background:transparent;box-shadow:none}
+    #past-tournaments .season-card.card-link{min-height:118px;padding:14px 18px}
+    #past-tournaments .season-card.card-link h2{font-size:clamp(20px,2vw,26px)}
+    #seasons .season-result-card{min-height:176px;padding:30px 24px 24px;flex-direction:column;align-items:center;justify-content:center;gap:15px;text-align:center;background:linear-gradient(145deg,#fffdf8 0%,#f1f5f7 100%);background-size:auto;border-color:rgba(16,38,56,.14);box-shadow:0 8px 22px rgba(3,14,24,.08);transition:transform var(--season-card-duration) var(--wipe-easing),border-color var(--season-card-duration) var(--wipe-easing),box-shadow var(--season-card-duration) var(--wipe-easing)}
+    #seasons .season-result-card::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(circle at 50% 34%,rgba(25,182,217,.27),transparent 48%),linear-gradient(145deg,#0b2031 0%,#12364c 100%);opacity:0;transform:scale(.94);transition:opacity .34s var(--wipe-easing),transform .56s var(--wipe-easing);pointer-events:none}
+    #seasons .season-result-card::after{content:"";position:absolute;inset:14px;z-index:0;border:1px solid rgba(255,255,255,.24);border-radius:4px;opacity:0;transform:scale(.96);transition:opacity .34s var(--wipe-easing),transform .50s var(--wipe-easing);pointer-events:none}
+    #seasons .season-result-card > *{position:relative;z-index:1}
+    #seasons .season-result-card:hover{color:inherit;background:linear-gradient(145deg,#fffdf8 0%,#f1f5f7 100%);background-size:auto;border-color:rgba(25,182,217,.38);box-shadow:0 17px 34px rgba(3,14,24,.22);transform:translateY(-3px)}
+    #seasons .season-result-card:hover::before{opacity:1;transform:scale(1)}
+    #seasons .season-result-card:hover::after{opacity:1;transform:scale(1)}
+    #seasons .season-result-card h2{margin:0;color:#102638;font-size:clamp(34px,3.2vw,44px);font-weight:950;line-height:1;letter-spacing:-.04em;text-shadow:none;transition:color .34s var(--wipe-easing),text-shadow .34s var(--wipe-easing),transform .34s var(--wipe-easing)}
+    #seasons .season-result-card .card-cta{margin-top:0;padding:0 0 4px;border-radius:0;color:#65737e;background:transparent;border-bottom:1px solid rgba(101,115,126,.44);box-shadow:none;font-size:13px;font-weight:900;line-height:1.2;letter-spacing:.04em;transition:color .34s var(--wipe-easing),border-color .34s var(--wipe-easing),text-shadow .34s var(--wipe-easing),transform .34s var(--wipe-easing)}
+    #seasons .season-result-card:hover h2{color:#fff;text-shadow:0 3px 16px rgba(3,14,24,.42);transform:translateY(-2px)}
+    #seasons .season-result-card:hover .card-cta{color:rgba(255,255,255,.92);background:transparent;border-color:rgba(255,255,255,.66);box-shadow:none;text-shadow:0 2px 10px rgba(3,14,24,.34);transform:translateX(3px)}
+    #seasons .season-result-card:focus-visible{outline-color:#19b6d9}
 
     #past-tournaments .image-wipe-card{min-height:168px;padding:18px 20px;background:#071421;color:#fff;overflow:hidden;border-color:rgba(255,255,255,.18);box-shadow:0 10px 24px rgba(3,14,24,.18);transition:transform .36s var(--wipe-easing),border-color .36s var(--wipe-easing),box-shadow .36s var(--wipe-easing)}
     #past-tournaments .image-wipe-card::before{content:"";position:absolute;inset:0;z-index:0;background-image:linear-gradient(90deg,rgba(7,14,28,.60),rgba(7,14,28,.30) 50%,rgba(7,14,28,.08)),var(--wipe-image);background-size:cover,cover;background-position:center,var(--wipe-image-position,center center);background-repeat:no-repeat;transform:scale(1.01);filter:saturate(1.03) contrast(1.02);transition:transform .62s var(--wipe-easing),filter .62s var(--wipe-easing),opacity .62s var(--wipe-easing);pointer-events:none}
@@ -116,8 +120,8 @@
       <div class="section-title">S級リーグ</div>
       <div class="section-body">
         <div class="season-grid">
-          <a class="season-card card-link" href="./season1/"><div><h2>Season 1</h2></div><span class="card-cta">ページを見る →</span></a>
-          <a class="season-card card-link" href="./season2/"><div><h2>Season 2</h2></div><span class="card-cta">ページを見る →</span></a>
+          <a class="season-card card-link season-result-card" href="./season1/"><div><h2>Season 1</h2></div><span class="card-cta">大会結果を見る →</span></a>
+          <a class="season-card card-link season-result-card" href="./season2/"><div><h2>Season 2</h2></div><span class="card-cta">大会結果を見る →</span></a>
         </div>
       </div>
     </section>
