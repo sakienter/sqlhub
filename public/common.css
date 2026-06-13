@@ -239,3 +239,9 @@ body #scrims .scrim-card:hover {
     background-position: center, 62% center !important;
   }
 }
+
+/* Move the CN vs Worlds character away from the right edge. */
+body:has(.summary-stack) .tournament-hero::before {
+  transform: scale(1.08) translate(-3.5%, 3%) !important;
+  transform-origin: center center !important;
+}
