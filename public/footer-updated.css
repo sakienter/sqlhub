@@ -1,0 +1,22 @@
+.footer-note {
+  text-align: center;
+}
+
+.footer-note p {
+  margin: 0;
+}
+
+.footer-note .footer-updated {
+  margin-top: 7px;
+  color: var(--text-muted, #687482);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.footer-note .footer-update-note {
+  margin-top: 1px;
+  color: var(--text-muted, #687482);
+  font-size: 11px;
+  line-height: 1.6;
+  opacity: .82;
+}
