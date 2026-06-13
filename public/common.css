@@ -1,4 +1,5 @@
 @import url("./common-overrides.css");
+@import url("./cn-vs-worlds-table-fix.css");
 
 /* CN vs JP 1:3 homepage banner */
 body #past-tournaments .cn-jp-card.gradient-banner-card::before {
