@@ -1,0 +1,38 @@
+/* Scrim card CTA: text link with underline, not a rounded button. */
+#scrims .scrim-card .card-cta {
+  display: inline-block !important;
+  flex: 0 0 auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 0 8px !important;
+  color: #7f2634 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 3px solid #7f2634 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  font-size: clamp(20px, 2.15vw, 28px) !important;
+  font-weight: 950 !important;
+  line-height: 1.15 !important;
+  letter-spacing: .01em !important;
+  white-space: nowrap !important;
+  transition: color .18s ease, border-color .18s ease, transform .18s ease !important;
+}
+
+#scrims .scrim-card:hover .card-cta {
+  color: #9a3745 !important;
+  background: transparent !important;
+  border-bottom-color: #9a3745 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  transform: translateX(3px) !important;
+}
+
+@media (max-width: 720px) {
+  #scrims .scrim-card .card-cta {
+    padding-bottom: 6px !important;
+    font-size: 18px !important;
+  }
+}
