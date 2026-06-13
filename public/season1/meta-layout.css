@@ -45,16 +45,24 @@
 
 #game-ban {
   grid-area: ban;
-  display: block !important;
+  display: grid !important;
+  grid-template-columns: max-content max-content minmax(0, 1fr);
+  align-items: start;
+  column-gap: 0;
   min-width: 0;
   max-width: 100%;
   text-align: left;
   line-height: 1.7;
 }
 
-#game-ban .ban-subline {
-  display: block;
-  padding-left: 4.1em;
+#game-ban .ban-prefix,
+#game-ban .ban-label {
+  white-space: nowrap;
+}
+
+#game-ban .ban-value {
+  min-width: 0;
+  padding-left: 0.25em;
 }
 
 #game-start-time {
@@ -102,7 +110,7 @@
     text-align: left;
   }
 
-  #game-ban .ban-subline {
-    padding-left: 0;
+  #game-ban {
+    grid-template-columns: max-content max-content minmax(0, 1fr);
   }
 }
