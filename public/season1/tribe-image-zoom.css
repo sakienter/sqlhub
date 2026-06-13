@@ -10,3 +10,7 @@
   transform: scale(1.22);
   transform-origin: center;
 }
+
+#game-ban .tribe-demon .tribe-icon img {
+  transform: scale(1.06);
+}
