@@ -45,19 +45,33 @@
       z-index:2;
       display:inline-flex;
       align-items:center;
-      min-height:38px;
-      padding:0 14px;
-      color:#fff;
-      background:rgba(4,18,23,.46);
-      border:1px solid rgba(255,255,255,.24);
-      border-radius:10px;
-      font-size:12px;
-      font-weight:850;
+      justify-content:center;
+      width:36px;
+      height:36px;
+      padding:0;
+      color:rgba(255,255,255,.82);
+      background:rgba(4,18,23,.28);
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:999px;
+      font-size:21px;
+      font-weight:500;
+      line-height:1;
       text-decoration:none;
       backdrop-filter:blur(6px);
-      transition:background .18s ease,border-color .18s ease;
+      opacity:.72;
+      transition:opacity .18s ease,background .18s ease,border-color .18s ease,transform .18s ease;
     }
-    .scrim-admin-link:hover{background:rgba(4,18,23,.68);border-color:rgba(255,255,255,.42)}
+    .scrim-admin-link:hover{
+      opacity:1;
+      background:rgba(4,18,23,.54);
+      border-color:rgba(255,255,255,.34);
+      transform:rotate(90deg);
+    }
+    .scrim-admin-link:focus-visible{
+      opacity:1;
+      outline:2px solid rgba(255,255,255,.72);
+      outline-offset:3px;
+    }
     .scrim-title-block{
       position:relative;
       z-index:1;
@@ -84,14 +98,14 @@
     .lobby-empty{grid-column:1/-1;margin:0;padding:18px 4px;color:#171b1f;font-size:14px;font-weight:650;line-height:1.7}
 
     @media (max-width:900px){.lobby-grid{grid-template-columns:1fr}}
-    @media (max-width:640px){.scrim-hero{min-height:300px;padding:1.35rem;background-position:center}.scrim-admin-link{top:1.35rem;right:1.35rem;min-height:34px;padding:0 11px;font-size:11px}.scrim-title-block{margin-top:2rem}.scrim-hero h1{font-size:clamp(40px,13vw,58px)}.scrim-hero-note{font-size:13px}.status-panel{padding:20px}.section-body{padding:16px}}
+    @media (max-width:640px){.scrim-hero{min-height:300px;padding:1.35rem;background-position:center}.scrim-admin-link{top:1.35rem;right:1.35rem;width:32px;height:32px;font-size:19px}.scrim-title-block{margin-top:2rem}.scrim-hero h1{font-size:clamp(40px,13vw,58px)}.scrim-hero-note{font-size:13px}.status-panel{padding:20px}.section-body{padding:16px}}
   </style>
 </head>
 <body>
   <main class="page-shell">
     <header class="hero scrim-hero">
       <a class="back-link" href="../">← Avenge Hubへ戻る</a>
-      <a class="scrim-admin-link" href="./admin/" rel="nofollow">管理画面を開く →</a>
+      <a class="scrim-admin-link" href="./admin/" rel="nofollow" aria-label="管理画面" title="管理">＋</a>
       <div class="scrim-title-block">
         <h1>練習会：スクリム</h1>
         <p class="scrim-hero-note">ポイント状況、スプレッドシートはページ下部にあります。</p>
