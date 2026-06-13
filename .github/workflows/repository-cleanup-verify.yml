@@ -118,3 +118,41 @@ jobs:
           while IFS= read -r -d '' file; do
             node --check "$file"
           done < <(find public functions -type f -name '*.js' -print0)
+
+      - name: Probe Cloudflare branch preview
+        shell: bash
+        run: |
+          set -euo pipefail
+          base='https://maintenance-repository-clean.sqlhub.pages.dev'
+          tmp="$(mktemp -d)"
+          trap 'rm -rf "$tmp"' EXIT
+
+          fetch() {
+            local path="$1"
+            local output="$2"
+            curl --fail --silent --show-error --location \
+              --retry 12 --retry-delay 5 --retry-all-errors \
+              "$base$path" -o "$output"
+            test -s "$output"
+          }
+
+          fetch '/' "$tmp/home.html"
+          fetch '/home.css' "$tmp/home.css"
+          fetch '/season1/' "$tmp/season1.html"
+          fetch '/season2/' "$tmp/season2.html"
+          fetch '/season2/data.js' "$tmp/data.js"
+          fetch '/season2/summary.js' "$tmp/summary.js"
+          fetch '/season2/render.js' "$tmp/render.js"
+          fetch '/season2/init.js' "$tmp/init.js"
+          fetch '/scrims/' "$tmp/scrims.html"
+          fetch '/tournaments/cn-vs-worlds/' "$tmp/cn-worlds.html"
+
+          grep -Fq './home.css?v=20260613-cleanup' "$tmp/home.html"
+          grep -Fq 'Stuntdrake' "$tmp/home.html"
+          grep -Fq 'S級リーグS1' "$tmp/season1.html"
+          grep -Fq './data.js?v=s2-static-20260613' "$tmp/season2.html"
+          grep -Fq './init.js?v=s2-static-20260613' "$tmp/season2.html"
+          grep -Fq 'const API_URL' "$tmp/data.js"
+          grep -Fq 'initSeasonTwo' "$tmp/init.js"
+          grep -Fq '練習会：スクリム' "$tmp/scrims.html"
+          grep -Fq 'CN vs Worlds' "$tmp/cn-worlds.html"
