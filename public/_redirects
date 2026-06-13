@@ -31,6 +31,9 @@
 /tournaments/renoj/index.html /tournaments/reno/ 301
 
 # Normalize canonical directory-style URLs.
+/sq / 301
+/sq/ / 301
+/sq/index.html / 301
 /sq/season1 /sq/season1/ 301
 /sq/season1/admin /sq/season1/admin/ 301
 /sq/season2 /sq/season2/ 301
@@ -39,7 +42,6 @@
 /tournaments/uratop /tournaments/uratop/ 301
 /tournaments/topseries /tournaments/topseries/ 301
 /tournaments/reno /tournaments/reno/ 301
-/sq/ / 302
 
 # Shared assets referenced relatively from the deeper /sq/ hierarchy.
 /sq/common.css /common.css 200
