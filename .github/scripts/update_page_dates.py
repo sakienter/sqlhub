@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Update page footers with the current Japan date.
+"""Update page metadata with the current Japan date and shared favicon.
 
 The script is intended to run in GitHub Actions after each push. It updates:
 - HTML pages changed directly
 - the nearest page for changed page-local assets/data
 - pages that reference changed shared CSS/JS/assets
 - any page that still lacks the standardized update-date footer
+- any HTML page that still lacks the shared favicon link
 """
 
 from __future__ import annotations
@@ -26,6 +27,7 @@ FOOTER_RE = re.compile(
 )
 
 STYLE_LINK = '<link rel="stylesheet" href="/footer-updated.css?v=20260614" />'
+FAVICON_LINK = '<link rel="icon" href="/favicon.svg" type="image/svg+xml" />'
 
 
 def read_text(path: Path) -> str:
@@ -38,6 +40,10 @@ def html_pages() -> list[Path]:
 
 def has_footer(content: str) -> bool:
     return FOOTER_RE.search(content) is not None
+
+
+def has_favicon(content: str) -> bool:
+    return "/favicon.svg" in content
 
 
 def japanese_date(date_value: datetime) -> tuple[str, str]:
@@ -58,8 +64,8 @@ def footer_markup(indent: str, date_value: datetime) -> str:
     )
 
 
-def add_stylesheet(content: str) -> str:
-    if "/footer-updated.css" in content:
+def add_head_entry(content: str, marker: str, markup: str) -> str:
+    if marker in content:
         return content
 
     head_close = re.search(r"^[ \t]*</head>", content, re.IGNORECASE | re.MULTILINE)
@@ -68,21 +74,30 @@ def add_stylesheet(content: str) -> str:
 
     indent_match = re.match(r"[ \t]*", head_close.group(0))
     indent = indent_match.group(0) if indent_match else ""
-    return content[: head_close.start()] + f"{indent}{STYLE_LINK}\n" + content[head_close.start() :]
+    return content[: head_close.start()] + f"{indent}{markup}\n" + content[head_close.start() :]
+
+
+def add_stylesheet(content: str) -> str:
+    return add_head_entry(content, "/footer-updated.css", STYLE_LINK)
+
+
+def add_favicon(content: str) -> str:
+    return add_head_entry(content, "/favicon.svg", FAVICON_LINK)
 
 
 def update_page(path: Path, date_value: datetime) -> bool:
     original = read_text(path)
-    match = FOOTER_RE.search(original)
-    if not match:
-        return False
+    updated = original
 
-    updated = FOOTER_RE.sub(
-        lambda footer_match: footer_markup(footer_match.group("indent"), date_value),
-        original,
-        count=1,
-    )
-    updated = add_stylesheet(updated)
+    if has_footer(updated):
+        updated = FOOTER_RE.sub(
+            lambda footer_match: footer_markup(footer_match.group("indent"), date_value),
+            updated,
+            count=1,
+        )
+        updated = add_stylesheet(updated)
+
+    updated = add_favicon(updated)
 
     if updated == original:
         return False
@@ -199,20 +214,22 @@ def known_asset_targets(path: Path, page_set: set[Path]) -> set[Path]:
 
 def determine_targets(changed_paths: list[Path], pages: list[Path]) -> set[Path]:
     page_contents = {page: read_text(page) for page in pages}
+    page_set = set(pages)
     footer_pages = {page for page, content in page_contents.items() if has_footer(content)}
 
-    # Always initialize pages that have the old footer but no standardized date.
+    # Initialize missing standardized metadata across the site.
     targets = {
         page
         for page, content in page_contents.items()
-        if page in footer_pages and "data-page-updated=" not in content
+        if not has_favicon(content)
+        or (page in footer_pages and "data-page-updated=" not in content)
     }
 
     public_files = [path for path in PUBLIC_DIR.rglob("*") if path.is_file()]
     text_index = build_reference_index(public_files)
 
     for changed_path in changed_paths:
-        if changed_path in footer_pages:
+        if changed_path in page_set:
             targets.add(changed_path)
 
         nearest = nearest_index_page(changed_path, footer_pages)
@@ -237,7 +254,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--all",
         action="store_true",
-        help="Update every HTML page that contains footer-note.",
+        help="Update every HTML page.",
     )
     return parser.parse_args()
 
@@ -248,7 +265,7 @@ def main() -> int:
     now_jst = datetime.now(ZoneInfo("Asia/Tokyo"))
 
     if args.all:
-        targets = {page for page in pages if has_footer(read_text(page))}
+        targets = set(pages)
     else:
         raw_changed = []
         if args.changed_files and args.changed_files.exists():
@@ -266,11 +283,11 @@ def main() -> int:
             updated_paths.append(page.as_posix())
 
     if updated_paths:
-        print("Updated page dates:")
+        print("Updated page metadata:")
         for path in updated_paths:
             print(f"- {path}")
     else:
-        print("No page date changes were needed.")
+        print("No page metadata changes were needed.")
 
     return 0
 
