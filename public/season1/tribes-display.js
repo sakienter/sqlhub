@@ -1,16 +1,16 @@
 const S1_TRIBE_API_URL = './tribes.json?v=s1-static-20260613';
-const S1_TRIBE_ICON_BASE = 'https://raw.githubusercontent.com/sakienter/sqlhub/075ec9ac21c55b9622d1cb44d95b78ca6f1cd80a/tribe_icons_256_webp';
+const S1_TRIBE_ICON_BASE = 'https://raw.githubusercontent.com/sakienter/sqlhub/502f402c517e6af60511ca6623750a59bf946d09/np';
 const S1_TRIBES = [
-  { name: 'アンデッド', label: 'Undead', file: 'undead.webp', className: 'undead' },
-  { name: 'エレメンタル', label: 'Elemental', file: 'elemental.webp', className: 'elemental' },
-  { name: 'ドラゴン', label: 'Dragon', file: 'dragon.webp', className: 'dragon' },
-  { name: 'キルボア', label: 'Quilboar', file: 'quilboar.webp', className: 'quilboar' },
-  { name: 'ナーガ', label: 'Naga', file: 'naga.webp', className: 'naga' },
-  { name: 'マーロック', label: 'Murloc', file: 'murloc.webp', className: 'murloc' },
-  { name: 'メカ', label: 'Mech', file: 'mech.webp', className: 'mech' },
-  { name: '悪魔', label: 'Demon', file: 'demon.webp', className: 'demon' },
-  { name: '海賊', label: 'Pirate', file: 'pirate.webp', className: 'pirate' },
-  { name: '獣', label: 'Beast', file: 'beast.webp', className: 'beast' }
+  { name: 'アンデッド', label: 'Undead', file: '145px-Undead_hover.webp', className: 'undead' },
+  { name: 'エレメンタル', label: 'Elemental', file: '145px-Elemental_hover.webp', className: 'elemental' },
+  { name: 'ドラゴン', label: 'Dragon', file: '145px-Dragon_hover.webp', className: 'dragon' },
+  { name: 'キルボア', label: 'Quilboar', file: '145px-Quilboar_hover.webp', className: 'quilboar' },
+  { name: 'ナーガ', label: 'Naga', file: '145px-Naga_hover.webp', className: 'naga' },
+  { name: 'マーロック', label: 'Murloc', file: '145px-Murloc_hover.webp', className: 'murloc' },
+  { name: 'メカ', label: 'Mech', file: '145px-Mech_hover.webp', className: 'mech' },
+  { name: '悪魔', label: 'Demon', file: '145px-Demon_hover.webp', className: 'demon' },
+  { name: '海賊', label: 'Pirate', file: '145px-Pirate_hover.webp', className: 'pirate' },
+  { name: '獣', label: 'Beast', file: '145px-Beast_hover.webp', className: 'beast' }
 ];
 let s1TribeConfig = {};
 
