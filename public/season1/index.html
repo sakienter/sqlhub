@@ -12,6 +12,7 @@
   <link rel='stylesheet' href='./style.css?v=s1-meta-layout-20260613' />
   <link rel='stylesheet' href='./meta-layout.css?v=s1-tribe-images-20260613' />
   <link rel='stylesheet' href='./tribe-image-zoom.css?v=s1-tribe-image-zoom-20260613' />
+  <link rel='stylesheet' href='../composition-gallery.css?v=20260613' />
 </head>
 <body>
   <div id='loading-overlay' aria-live='polite' aria-label='読み込み中'>
@@ -138,6 +139,22 @@
         </div>
         <div class='table-wrap'><table id='game-detail-table' aria-label='ゲーム別詳細表'><thead></thead><tbody></tbody></table></div>
       </section>
+
+      <details id='composition-gallery' class='day-section collapsible-section composition-section' data-base-path='./compositions'>
+        <summary class='mini-section-title collapsible-title'>
+          <span class='collapsible-heading'>構成を確認する</span>
+          <span class='collapsible-state' aria-hidden='true'></span>
+        </summary>
+        <div class='composition-body'>
+          <p class='composition-note'>選手名を選ぶと、そのDAYの構成メモを表示します。</p>
+          <div id='composition-player-tabs' class='composition-player-tabs' aria-label='構成を表示する選手'></div>
+          <div id='composition-viewer' class='composition-viewer'>
+            <div id='composition-placeholder' class='composition-placeholder'>画像を準備中です。</div>
+            <img id='composition-image' class='composition-image' alt='' loading='lazy' decoding='async' hidden />
+          </div>
+          <a id='composition-open-link' class='composition-open-link' href='#' target='_blank' rel='noopener' hidden>画像を別タブで開く</a>
+        </div>
+      </details>
     </section>
 
     <footer class='footer-note'><p>S級リーグS1 Result Page / Avenge Hub</p></footer>
@@ -145,5 +162,6 @@
   <script src='./cache-helper.js?v=s1-archive-20260613-v9'></script>
   <script src='./script.js?v=s1-meta-layout-20260613'></script>
   <script src='./tribes-display.js?v=s1-tribe-images-np-20260613'></script>
+  <script src='../composition-gallery.js?v=20260613'></script>
 </body>
 </html>
