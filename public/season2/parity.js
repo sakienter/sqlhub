@@ -1,6 +1,6 @@
 (() => {
-  const files = ['parity-config.js', 'parity-render.js', 'parity-extras.js'];
-  const version = 's2-s1-parity-20260613';
+  const files = ['parity-config.js', 'parity-summary.js', 'parity-render.js', 'parity-extras.js'];
+  const version = 's2-s1-parity-20260613-r2';
 
   const load = src => new Promise((resolve, reject) => {
     const script = document.createElement('script');
