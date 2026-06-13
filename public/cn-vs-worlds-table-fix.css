@@ -290,3 +290,21 @@ html body:has(.saikyo-hero) main.page-shell > header.hero.saikyo-hero > .title-l
     margin-top: 12px !important;
   }
 }
+
+/* Stronger archive title treatment. */
+html body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) main.page-shell > header.hero.archive-hero > h1,
+html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero h1 {
+  font-weight: 950 !important;
+}
+
+html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero .hourglass {
+  width: 58px !important;
+  height: 78px !important;
+}
+
+@media (max-width: 760px) {
+  html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero .hourglass {
+    width: 34px !important;
+    height: 46px !important;
+  }
+}
