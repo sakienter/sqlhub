@@ -23,3 +23,14 @@ body:has(a[href="https://www.iyingdi.com/tz/post/5609636"]) .tournament-hero-ima
   object-fit: cover !important;
   object-position: center center !important;
 }
+
+/* Keep every page's return link label consistent. */
+.back-link {
+  font-size: 0 !important;
+}
+
+.back-link::after {
+  content: "メインページに戻る";
+  font-size: 12px;
+  line-height: 1.4;
+}
