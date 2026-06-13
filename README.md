@@ -2,108 +2,122 @@
 
 Avenge Hub は、Stuntdrake が運営・協力する Hearthstone Battlegrounds 関連大会の情報整理サイトです。
 
-S級リーグの試合結果・ポイント状況、過去大会のアーカイブ、別母体大会の情報を掲載しています。Cloudflare Pages で公開し、Season 1 は Google Sheets / Apps Script と連携、Season 2 はリポジトリ内の静的 JSON で管理します。
+S級リーグの試合結果・ポイント状況、過去大会のアーカイブ、別母体大会、スクリムの情報を掲載しています。公開環境は Cloudflare Pages、公開ディレクトリは `public` です。
 
-## 現在の構成
+## 公開URL
+
+| パス | 内容 |
+|---|---|
+| `/` | Avenge Hub トップページ |
+| `/sq/season1/` | S級リーグ Season 1 |
+| `/sq/season2/` | S級リーグ Season 2 |
+| `/tournaments/twdm/` | 時渡りドリームマッチ |
+| `/tournaments/uratop/` | バトグラ【裏】頂上戦 |
+| `/tournaments/topseries/` | バトグラ頂上戦 #1〜#9 |
+| `/tournaments/saikyo2026/` | バトグラ最強決定戦2026 |
+| `/tournaments/deepblue/` | ディープ・ブルー杯 |
+| `/tournaments/reno/` | レノ・ジャクソン杯 |
+| `/tournaments/cn-vs-worlds/` | CN vs Worlds |
+| `/tournaments/cn-vs-jp/` | CN vs JP |
+| `/scrims/` | 練習会・スクリム |
+
+旧URLは `public/_redirects` で新URLへ301転送します。
+
+## ディレクトリ構成
 
 ```txt
 sqlhub/
 ├── README.md
 ├── public/
-│   ├── index.html                    # Avenge Hub トップページ
-│   ├── common.css                    # 共通スタイルの入口
-│   ├── common-base.css               # 共通スタイル本体
-│   ├── common-overrides.css          # 共通スタイルの調整
-│   ├── home.css                      # トップページ専用スタイル
-│   ├── admin-tribes.css              # S1 / S2 管理画面共通スタイル
-│   ├── composition-gallery.css       # 構成ギャラリー共通スタイル
-│   ├── composition-gallery.js        # 構成ギャラリー共通処理
-│   ├── sutant.webp                   # トップページ用ヘッダー画像
+│   ├── index.html
+│   ├── _redirects
+│   ├── common.css
+│   ├── common-base.css
+│   ├── common-overrides.css
+│   ├── home.css
+│   ├── admin-tribes.css
+│   ├── composition-gallery.css
+│   ├── composition-gallery.js
+│   ├── tribewebp/
+│   ├── sq/
+│   │   ├── season1/
+│   │   │   ├── index.html
+│   │   │   ├── style.css
+│   │   │   ├── script.js
+│   │   │   ├── cache-helper.js
+│   │   │   ├── tribes-display.js
+│   │   │   ├── results.json
+│   │   │   ├── tribes.json
+│   │   │   ├── admin/
+│   │   │   └── s1.webp
+│   │   └── season2/
+│   │       ├── index.html
+│   │       ├── style.css
+│   │       ├── data.js
+│   │       ├── summary.js
+│   │       ├── render.js
+│   │       ├── init.js
+│   │       ├── results.css
+│   │       ├── results.json
+│   │       ├── tribes.json
+│   │       ├── admin/
+│   │       └── S2.webp
 │   ├── season1/
-│   │   ├── index.html                # S級リーグ Season 1 結果ページ
-│   │   ├── style.css
-│   │   ├── script.js                 # S1 結果表示ロジック
-│   │   ├── cache-helper.js           # S1 表示キャッシュ補助
-│   │   ├── tribes-display.js         # S1 登場・非登場種族表示
-│   │   └── *.webp                    # S1 用画像
+│   │   ├── archive/
+│   │   └── s1day1/ ... s1day4/
 │   ├── season2/
-│   │   ├── index.html                # S級リーグ Season 2 結果ページ
-│   │   ├── style.css
-│   │   ├── data.js                   # S2 データ定義・正規化
-│   │   ├── summary.js                # S2 総合順位処理
-│   │   ├── render.js                 # S2 表・タブ描画
-│   │   ├── init.js                   # S2 初期化処理
-│   │   ├── results.css               # S2 結果表示補助スタイル
-│   │   ├── results.json              # S2 の静的な結果データ
-│   │   ├── tribes.json               # S2 の静的な種族データ
-│   │   ├── compositions/             # S2 構成画像
-│   │   └── *.webp                    # S2 用画像
-│   └── tournaments/
-│       ├── timewalk-dream-match/     # 時渡りドリームマッチ
-│       ├── ura-choujousen/           # バトグラ【裏】頂上戦
-│       ├── choujousen/               # バトグラ頂上戦 #1〜#9
-│       ├── saikyo2026/               # バトグラ最強決定戦2026
-│       ├── deepblue/                 # ディープ・ブルー杯
-│       ├── renoj/                    # レノ・ジャクソン杯
-│       └── *.webp                    # 大会バナー・ヘッダー画像
+│   │   ├── compositions/
+│   │   └── S2.webp
+│   ├── tournaments/
+│   │   ├── twdm/
+│   │   ├── uratop/
+│   │   ├── topseries/
+│   │   ├── saikyo2026/
+│   │   ├── deepblue/
+│   │   ├── reno/
+│   │   ├── cn-vs-worlds/
+│   │   └── cn-vs-jp/
+│   └── scrims/
 └── functions/
     └── api/
-        ├── results.js                # S1 結果APIプロキシ
-        └── season1/
-            └── tribes.js             # S1 種族設定API
 ```
 
-## ページ一覧
+`public/season1/` と `public/season2/` に残るファイルは、大容量の構成画像やアーカイブJSONを保管する互換資産です。公開ページ本体は `public/sq/` 以下にあります。
 
-| パス | 内容 |
-|---|---|
-| `/` | Avenge Hub トップ。開催中シーズン、S級リーグ、スクリム、Past Tournaments、About me を表示します。 |
-| `/season1/` | S級リーグ Season 1 の総合結果、DAY別結果、ゲーム別詳細を表示します。 |
-| `/season2/` | S級リーグ Season 2 の総合結果、DAY別結果、ゲーム別詳細を表示します。 |
-| `/tournaments/timewalk-dream-match/` | 時渡りドリームマッチのルール、最終結果、試合詳細、アーカイブを表示します。 |
-| `/tournaments/ura-choujousen/` | バトグラ【裏】頂上戦の概要、出場選手、最終結果、DAY別結果を表示します。 |
-| `/tournaments/choujousen/` | バトグラ頂上戦 #1〜#9 のまとめページです。 |
-| `/tournaments/saikyo2026/` | バトグラ最強決定戦2026 の情報ページです。 |
-| `/tournaments/deepblue/` | ディープ・ブルー杯の概要、ルール、Tonamelリンクを表示します。 |
-| `/tournaments/renoj/` | レノ・ジャクソン杯の概要、ルール、Tonamelリンクを表示します。 |
-| `/tournaments/cn-vs-worlds/` | CN vs Worlds のルール、予選、決勝結果を表示します。 |
-| `/tournaments/cn-vs-jp/` | CN vs JP の大会情報と結果を表示します。 |
-| `/scrims/` | スクリムの開催案内と過去ロビーを表示します。 |
+## Season 1
 
-## データ管理の仕組み
+Season 1 は終了済みのアーカイブページです。
 
-### S級リーグ Season 1
+主なファイル:
 
-- フロント側: `public/season1/script.js`
-- API: `/api/results`
-- Pages Function: `functions/api/results.js`
-- 必要な環境変数: `GAS_URL`
+- ページ: `public/sq/season1/index.html`
+- 表示処理: `public/sq/season1/script.js`
+- 静的データ読込: `public/sq/season1/cache-helper.js`
+- 基本結果: `public/sq/season1/results.json`
+- 種族設定: `public/sq/season1/tribes.json`
+- DAY別アーカイブ: `public/season1/archive/`
+- 構成画像: `public/season1/s1day1/` から `s1day4/`
 
-`GAS_URL` に指定した Apps Script の JSON エンドポイントから、S1 の総合順位、DAY別結果、ゲーム別詳細を取得します。
+`cache-helper.js` が静的アーカイブを読み込み、結果ページへ渡します。旧資産フォルダは `_redirects` の内部書き換えで新URLから参照します。
 
-S1 は表示速度改善のため、ブラウザ側の localStorage キャッシュと Cloudflare Pages Function のキャッシュを利用します。
+## Season 2
 
-S1 の登場種族・非登場種族は、`/api/season1/tribes` と Cloudflare KV の `TRIBE_CONFIG` を利用します。KV key は `season1-tribes` です。
+Season 2 はリポジトリ内の静的JSONで管理します。
 
-### S級リーグ Season 2
+主なファイル:
 
-S2 は外部APIやGoogle Sheetsを使用せず、以下の静的ファイルを読み込みます。
+- ページ: `public/sq/season2/index.html`
+- 結果データ: `public/sq/season2/results.json`
+- 種族データ: `public/sq/season2/tribes.json`
+- データ定義・正規化: `public/sq/season2/data.js`
+- 総合順位処理: `public/sq/season2/summary.js`
+- 表・タブ描画: `public/sq/season2/render.js`
+- 初期化: `public/sq/season2/init.js`
+- 構成画像: `public/season2/compositions/`
 
-- 結果データ: `public/season2/results.json`
-- 登場種族・非登場種族: `public/season2/tribes.json`
-- 表示ロジック: `public/season2/data.js`、`summary.js`、`render.js`、`init.js`
+未入力の結果は「未実施」と表示されます。
 
-DAY切り替え、GAME切り替え、総合順位、Placement、ゲーム別詳細、構成画像の表示機能はJavaScriptで維持しています。データ取得先だけをリポジトリ内のJSONに固定しているため、S2用の環境変数、Pages Function、localStorageキャッシュは不要です。
-
-結果が未入力の表は「未実施」と表示されます。
-
-## Season 2 の更新方法
-
-### 結果を更新する
-
-`public/season2/results.json` を編集します。
-
-基本構造は以下です。
+### `results.json` の基本構造
 
 ```json
 {
@@ -116,12 +130,8 @@ DAY切り替え、GAME切り替え、総合順位、Placement、ゲーム別詳�
     {
       "label": "DAY1",
       "date": "6/27",
-      "points": {
-        "rows": []
-      },
-      "placements": {
-        "rows": []
-      },
+      "points": { "rows": [] },
+      "placements": { "rows": [] },
       "gameDetails": [
         {
           "label": "GAME1",
@@ -136,39 +146,7 @@ DAY切り替え、GAME切り替え、総合順位、Placement、ゲーム別詳�
 }
 ```
 
-各行で使用する主なキーは以下です。
-
-#### DAY別ポイント
-
-```json
-{
-  "name": "Player Name",
-  "dailyTotal": 0,
-  "rank": 1,
-  "game1": 7,
-  "game2": 6,
-  "game3": 5,
-  "game4": 4,
-  "game5": 3
-}
-```
-
-#### DAY別Placement
-
-```json
-{
-  "name": "Player Name",
-  "firstCount": 1,
-  "average": 3.2,
-  "game1": 1,
-  "game2": 2,
-  "game3": 3,
-  "game4": 4,
-  "game5": 6
-}
-```
-
-#### ゲーム別詳細
+### ゲーム別詳細の行
 
 ```json
 {
@@ -184,11 +162,9 @@ DAY切り替え、GAME切り替え、総合順位、Placement、ゲーム別詳�
 }
 ```
 
-総合順位は `summary.rows` に選手名・順位・合計値を入力できます。DAY別ポイントに選手データが入っている場合は、各DAYの値も表示ロジック側でまとめられます。
+### 種族データ
 
-### 登場種族・非登場種族を更新する
-
-`public/season2/tribes.json` を編集します。
+`public/sq/season2/tribes.json` を編集します。
 
 ```json
 {
@@ -201,7 +177,7 @@ DAY切り替え、GAME切り替え、総合順位、Placement、ゲーム別詳�
 }
 ```
 
-種族名は以下の日本語表記を使用します。
+使用する種族名:
 
 - アンデッド
 - エレメンタル
@@ -214,13 +190,32 @@ DAY切り替え、GAME切り替え、総合順位、Placement、ゲーム別詳�
 - 海賊
 - 獣
 
-### 構成画像を更新する
+## トップページの更新
 
-構成画像は `public/season2/compositions/` に配置します。ファイル名と参照規則は共通の `public/composition-gallery.js` に従います。
+トップページは `public/index.html`、専用スタイルは `public/home.css` です。
 
-## Cloudflare Pages 設定
+主な管理対象:
 
-Cloudflare Pages では、以下の設定を想定しています。
+- 開催中シーズンへのリンク
+- S級リーグのカード
+- Past Tournaments
+- スクリム
+- About / Contact
+- バナー画像と表示位置
+
+内部リンクには現行の公開URLを使用してください。
+
+## URL変更と互換性
+
+URLルールは `public/_redirects` で管理します。
+
+- 旧ページURLは新URLへ `301` 転送
+-末尾スラッシュなしのURLを正規URLへ統一
+- 移動していない大容量資産は `200` の内部書き換えで参照
+
+ページ本体を移動する場合は、トップページ、各ページの戻るリンク、画像・CSS・JavaScriptの相対パス、READMEを同時に確認してください。
+
+## Cloudflare Pages
 
 | 項目 | 設定値 |
 |---|---|
@@ -228,73 +223,14 @@ Cloudflare Pages では、以下の設定を想定しています。
 | Build output directory | `public` |
 | Functions directory | `functions` |
 
-必要な環境変数・バインディングはS1用のみです。
+S1の旧API互換処理や管理画面用のFunctionsが `functions/api/` に残っています。公開結果ページは静的データを優先して表示します。
 
-| 種別 | 名前 | 用途 |
-|---|---|---|
-| Environment variable | `GAS_URL` | S1 の Apps Script JSON URL |
-| KV binding | `TRIBE_CONFIG` | S1 の登場種族・非登場種族設定 |
+## 更新時の確認項目
 
-`GAS_URL_S2` と S2用のKVデータは使用しません。
-
-## その他の更新方法
-
-### トップページを更新する
-
-`public/index.html` を編集します。共通デザインを変える場合は `public/common.css` を編集します。
-
-主に以下を管理します。
-
-- 開催中シーズンへの導線
-- S級リーグのリンク
-- スクリムへのリンク
-- Past Tournaments のリンク
-- About me / Contact
-- トップヘッダー画像や表示位置
-
-### Season 1 の結果を更新する
-
-基本的にはHTMLを直接編集せず、Google Sheets側を更新します。
-
-1. Google Sheetsのスコア・順位・ゲーム詳細を更新する
-2. Apps Scriptが返すJSONを確認する
-3. `/api/results` のレスポンスを確認する
-4. `/season1/` で表示確認する
-
-Season 1 の登場種族・非登場種族は、Cloudflare KV の `TRIBE_CONFIG` に保存している `season1-tribes` を更新します。
-
-### 過去大会ページを更新する
-
-`public/tournaments/` 配下の対象ページを編集します。
-
-大会ごとのページは基本的に静的HTMLで管理しています。Tonamelリンク、開催日、ルール、結果表、配信アーカイブなどを直接編集します。
-
-### 画像を追加・差し替えする
-
-画像は `public/` 配下に置きます。
-
-```html
-<img src="/sutant.webp" alt="" />
-```
-
-```css
-background-image: url('/tournaments/reno.webp');
-```
-
-トップページや大会カードでは、画像の見え方を CSS の `object-position`、`background-position`、`transform` で調整しています。
-
-## 実装メモ
-
-- ビルド工程を持たない静的サイト構成です。
-- `public/common.css` が全体の基調デザインを持ち、個別ページではページ内 `<style>` または各ディレクトリの `style.css` で上書きします。
-- S1は外部データ連携、S2は静的JSONという異なる運用です。
-- S2のJSON取得ではブラウザキャッシュを使用せず、更新後のデータを直接読み込みます。
-- 過去大会ページは、大会ごとの個別デザインを作りやすいよう静的HTMLとして分離しています。
-
-## 注意点
-
-- `results.json` と `tribes.json` は正しいJSON形式を維持してください。末尾カンマは使用できません。
-- S2のDAYとGAMEの配列順は、画面上のDAY1〜DAY4、GAME1〜GAME5に対応します。
-- 空の `rows` は未実施として扱われます。
-- 画像ファイル名を変更した場合は、HTML、CSS、JavaScript内の参照パスも更新してください。
-- S1の表示が古い場合は、ブラウザキャッシュ、localStorage、Cloudflareキャッシュ、Apps Script側の反映を順に確認してください。
+1. JSONが正しい形式であること
+2. JavaScriptに構文エラーがないこと
+3. HTML内の相対パスが移動後の階層と一致すること
+4. トップページのカードが現行URLを参照していること
+5. 旧URLが新URLへ転送されること
+6. 構成画像・バナー画像・種族アイコンが表示されること
+7. 管理画面から公開ページへ戻れること
