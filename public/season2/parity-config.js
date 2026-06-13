@@ -3,7 +3,7 @@ const TRIBE_API_URL = '/api/season2/tribes';
 const RESULTS_CACHE_KEY = 'sqlhub:season2:results:v4';
 const CACHE_MAX_AGE_MS = 3 * 60 * 1000;
 const S2_DATES = ['6/27', '7/4', '7/18', '7/25'];
-const S2_TRIBE_ICON_BASE = 'https://raw.githubusercontent.com/sakienter/sqlhub/502f402c517e6af60511ca6623750a59bf946d09/np';
+const S2_TRIBE_ICON_BASE = '../tribewebp';
 
 const SUMMARY_HEADERS = [
   { label: '最終順位', key: 'rank' },
@@ -42,16 +42,16 @@ const GAME_DETAIL_HEADERS = [
 ];
 
 const S2_TRIBES = [
-  { name: 'アンデッド', label: 'Undead', file: '145px-Undead_hover.webp', className: 'undead' },
-  { name: 'エレメンタル', label: 'Elemental', file: '145px-Elemental_hover.webp', className: 'elemental' },
-  { name: 'ドラゴン', label: 'Dragon', file: '145px-Dragon_hover.webp', className: 'dragon' },
-  { name: 'キルボア', label: 'Quilboar', file: '145px-Quilboar_hover.webp', className: 'quilboar' },
-  { name: 'ナーガ', label: 'Naga', file: '145px-Naga_hover.webp', className: 'naga' },
-  { name: 'マーロック', label: 'Murloc', file: '145px-Murloc_hover.webp', className: 'murloc' },
-  { name: 'メカ', label: 'Mech', file: '145px-Mech_hover.webp', className: 'mech' },
-  { name: '悪魔', label: 'Demon', file: '145px-Demon_hover.webp', className: 'demon' },
-  { name: '海賊', label: 'Pirate', file: '145px-Pirate_hover.webp', className: 'pirate' },
-  { name: '獣', label: 'Beast', file: '145px-Beast_hover.webp', className: 'beast' }
+  { name: 'アンデッド', label: 'Undead', file: 'unde.webp', className: 'undead' },
+  { name: 'エレメンタル', label: 'Elemental', file: 'ele.webp', className: 'elemental' },
+  { name: 'ドラゴン', label: 'Dragon', file: 'dragon.webp', className: 'dragon' },
+  { name: 'キルボア', label: 'Quilboar', file: 'quilboar.webp', className: 'quilboar' },
+  { name: 'ナーガ', label: 'Naga', file: 'naga.webp', className: 'naga' },
+  { name: 'マーロック', label: 'Murloc', file: 'ma.webp', className: 'murloc' },
+  { name: 'メカ', label: 'Mech', file: 'mech.webp', className: 'mech' },
+  { name: '悪魔', label: 'Demon', file: 'demon.webp', className: 'demon' },
+  { name: '海賊', label: 'Pirate', file: 'pirates.webp', className: 'pirate' },
+  { name: '獣', label: 'Beast', file: 'beast.webp', className: 'beast' }
 ];
 
 let loadedData = createFallbackData();
