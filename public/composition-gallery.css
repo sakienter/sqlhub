@@ -4,16 +4,16 @@
   align-items: center;
   justify-content: space-between;
   width: calc(100% - 28px);
-  min-height: 60px;
-  margin: 18px auto 0;
-  padding: 14px 18px;
+  min-height: 56px;
+  margin: 14px auto 0;
+  padding: 12px 16px;
   color: var(--text-primary);
   border-radius: var(--radius-md);
   cursor: pointer;
   list-style: none;
   text-align: left;
   user-select: none;
-  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
 
 .collapsible-title::-webkit-details-marker,
@@ -23,33 +23,32 @@
 
 .collapsible-title:focus-visible,
 .placement-row:focus-visible {
-  outline: 3px solid rgba(25, 182, 217, 0.22);
-  outline-offset: 3px;
+  outline: 2px solid rgba(25, 182, 217, 0.2);
+  outline-offset: 2px;
 }
 
-/* Placement: the same warm card/table language used elsewhere on the page. */
 .placement-section {
   padding-bottom: 0;
 }
 
 .placement-row {
-  background: linear-gradient(90deg, rgba(255, 246, 235, 0.94), rgba(232, 248, 251, 0.58));
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--green);
-  box-shadow: 0 3px 10px rgba(3, 14, 24, 0.07);
-  font-size: 18px;
-  font-weight: 900;
+  background: rgba(255, 250, 242, 0.72);
+  border: 1px solid rgba(24, 33, 40, 0.12);
+  border-left: 3px solid rgba(13, 127, 153, 0.62);
+  box-shadow: none;
+  font-size: 16px;
+  font-weight: 850;
   letter-spacing: -0.01em;
 }
 
 .placement-row:hover {
-  background: linear-gradient(90deg, rgba(255, 246, 235, 1), rgba(232, 248, 251, 0.86));
-  border-color: rgba(13, 127, 153, 0.28);
+  background: rgba(232, 248, 251, 0.42);
+  border-color: rgba(13, 127, 153, 0.22);
 }
 
 .placement-section[open] .placement-row {
-  border-color: rgba(13, 127, 153, 0.34);
-  box-shadow: 0 4px 12px rgba(3, 14, 24, 0.09);
+  background: rgba(232, 248, 251, 0.34);
+  border-color: rgba(13, 127, 153, 0.24);
 }
 
 .placement-chevron,
@@ -57,71 +56,63 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
-  min-width: 34px;
-  min-height: 34px;
-  flex: 0 0 34px;
-  border-radius: var(--radius-sm);
-  transition: transform 0.2s ease, background 0.15s ease, border-color 0.15s ease;
-}
-
-.placement-chevron {
-  color: var(--green-dark);
-  background: var(--green-dim);
-  border: 1px solid rgba(13, 127, 153, 0.22);
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  flex: 0 0 28px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
 }
 
 .placement-chevron svg {
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
 .placement-section[open] .placement-chevron {
-  transform: rotate(180deg);
-  background: rgba(13, 127, 153, 0.16);
-  border-color: rgba(13, 127, 153, 0.34);
+  color: var(--green-dark);
+  transform: none;
 }
 
 .placement-section > .table-wrap {
-  margin-top: 14px;
+  margin-top: 12px;
 }
 
-/* Composition: same disclosure-row structure, with a stronger accent. */
 .composition-section {
-  margin-top: 20px;
+  margin-top: 18px;
   padding-bottom: 0;
   border-top: 1px solid rgba(24, 33, 40, 0.1);
 }
 
 .composition-section > .collapsible-title {
-  background: linear-gradient(90deg, rgba(232, 248, 251, 0.98), rgba(255, 246, 235, 0.98) 58%, rgba(201, 75, 75, 0.1));
-  border: 1px solid rgba(201, 75, 75, 0.24);
-  border-left: 5px solid var(--crimson);
-  box-shadow: var(--shadow-soft);
-  font-size: 18px;
-  font-weight: 950;
+  background: rgba(255, 250, 242, 0.86);
+  border: 1px solid rgba(201, 75, 75, 0.2);
+  border-left: 3px solid rgba(201, 75, 75, 0.72);
+  box-shadow: 0 2px 8px rgba(3, 14, 24, 0.06);
+  font-size: 17px;
+  font-weight: 900;
   letter-spacing: -0.01em;
 }
 
 .composition-section > .collapsible-title:hover {
-  background: linear-gradient(90deg, rgba(232, 248, 251, 1), rgba(255, 246, 235, 1) 54%, rgba(201, 75, 75, 0.16));
-  border-color: rgba(201, 75, 75, 0.4);
-  box-shadow: 0 7px 18px rgba(3, 14, 24, 0.14);
+  background: rgba(201, 75, 75, 0.06);
+  border-color: rgba(201, 75, 75, 0.3);
+  box-shadow: 0 3px 10px rgba(3, 14, 24, 0.08);
 }
 
 .composition-section[open] > .collapsible-title {
-  border-color: rgba(201, 75, 75, 0.44);
-  box-shadow: 0 7px 18px rgba(3, 14, 24, 0.14);
+  background: rgba(201, 75, 75, 0.07);
+  border-color: rgba(201, 75, 75, 0.32);
+  box-shadow: 0 3px 10px rgba(3, 14, 24, 0.08);
 }
 
 .collapsible-state {
   position: relative;
   color: var(--crimson-dark);
-  background: var(--crimson-dim);
-  border: 1px solid rgba(201, 75, 75, 0.28);
-  box-shadow: none;
   font-size: 0;
 }
 
@@ -131,25 +122,25 @@
 
 .collapsible-state::after {
   content: "";
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border-right: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
   transform: translateY(-2px) rotate(45deg);
-  transition: transform 0.2s ease;
 }
 
 .composition-section[open] .collapsible-state {
-  background: rgba(201, 75, 75, 0.2);
-  border-color: rgba(201, 75, 75, 0.42);
+  color: var(--crimson-dark);
+  background: transparent;
+  border: 0;
 }
 
 .composition-section[open] .collapsible-state::after {
-  transform: translateY(2px) rotate(225deg);
+  transform: translateY(-2px) rotate(45deg);
 }
 
 .composition-body {
-  padding: 18px 24px 26px;
+  padding: 16px 24px 26px;
 }
 
 .composition-note {
@@ -254,23 +245,23 @@
   .collapsible-title,
   .placement-row {
     width: calc(100% - 24px);
-    min-height: 56px;
-    margin: 14px 12px 0;
-    padding: 13px 14px;
-    font-size: 16px;
+    min-height: 52px;
+    margin: 12px 12px 0;
+    padding: 11px 13px;
+    font-size: 15px;
   }
 
   .placement-chevron,
   .collapsible-state {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    min-height: 32px;
-    flex-basis: 32px;
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    min-height: 26px;
+    flex-basis: 26px;
   }
 
   .composition-body {
-    padding: 16px 12px 18px;
+    padding: 14px 12px 18px;
   }
 
   .composition-player-tabs {
