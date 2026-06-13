@@ -188,7 +188,7 @@ body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukU
   color: var(--text-muted) !important;
 }
 
-/* Timewalk Dream Match: emphasize the tie-break game4 column. */
+/* Timewalk Dream Match: emphasize the rewind match game4 column. */
 body:has(a[href="https://tonamel.com/competition/cC1Zi"]) .archive-table th:nth-child(7) {
   color: #2b1c00 !important;
   background: linear-gradient(180deg, #f1d77e, #d8ad3c) !important;
@@ -199,13 +199,13 @@ body:has(a[href="https://tonamel.com/competition/cC1Zi"]) .archive-table th:nth-
 }
 
 body:has(a[href="https://tonamel.com/competition/cC1Zi"]) .archive-table th:nth-child(7)::after {
-  content: "TIEBREAK";
+  content: "運命巻き戻しマッチ";
   display: block;
   margin-top: 2px;
   color: #6f4700;
   font-size: 9px;
   font-weight: 950;
-  letter-spacing: .12em;
+  letter-spacing: .04em;
   line-height: 1.1;
 }
 
