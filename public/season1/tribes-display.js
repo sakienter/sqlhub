@@ -1,15 +1,15 @@
 const S1_TRIBE_API_URL = './tribes.json?v=s1-static-20260613';
 const S1_TRIBES = [
-  { name: 'ドラゴン', glyph: '竜', className: 'dragon' },
-  { name: 'エレメンタル', glyph: '元', className: 'elemental' },
-  { name: 'マーロック', glyph: '魚', className: 'murloc' },
-  { name: 'ナーガ', glyph: '蛇', className: 'naga' },
-  { name: 'キルボア', glyph: '猪', className: 'quilboar' },
-  { name: '獣', glyph: '獣', className: 'beast' },
-  { name: '悪魔', glyph: '魔', className: 'demon' },
-  { name: 'メカ', glyph: '機', className: 'mech' },
-  { name: '海賊', glyph: '賊', className: 'pirate' },
-  { name: 'アンデッド', glyph: '霊', className: 'undead' }
+  { name: 'アンデッド', label: 'Undead', abbr: 'UN', className: 'undead' },
+  { name: 'エレメンタル', label: 'Elemental', abbr: 'EL', className: 'elemental' },
+  { name: 'ドラゴン', label: 'Dragon', abbr: 'DR', className: 'dragon' },
+  { name: 'キルボア', label: 'Quilboar', abbr: 'QB', className: 'quilboar' },
+  { name: 'ナーガ', label: 'Naga', abbr: 'NG', className: 'naga' },
+  { name: 'マーロック', label: 'Murloc', abbr: 'MR', className: 'murloc' },
+  { name: 'メカ', label: 'Mech', abbr: 'MC', className: 'mech' },
+  { name: '悪魔', label: 'Demon', abbr: 'DM', className: 'demon' },
+  { name: '海賊', label: 'Pirate', abbr: 'PR', className: 'pirate' },
+  { name: '獣', label: 'Beast', abbr: 'BS', className: 'beast' }
 ];
 let s1TribeConfig = {};
 
@@ -40,9 +40,11 @@ function renderS1TribeInfo(game) {
         : 'is-unknown';
 
     return `
-      <span class="tribe-item ${state} tribe-${tribe.className}">
-        <span class="tribe-icon" aria-hidden="true"><span class="tribe-glyph">${escapeHtml(tribe.glyph)}</span></span>
-        <span class="tribe-name">${escapeHtml(tribe.name)}</span>
+      <span class="tribe-item ${state} tribe-${tribe.className}" data-tribe="${escapeHtml(tribe.className)}">
+        <span class="tribe-icon" aria-hidden="true">
+          <span class="tribe-abbr">${escapeHtml(tribe.abbr)}</span>
+        </span>
+        <span class="tribe-name">${escapeHtml(tribe.label)}</span>
       </span>`;
   }).join('');
 
