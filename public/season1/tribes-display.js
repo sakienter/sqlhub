@@ -25,7 +25,15 @@ function renderS1TribeInfo(game) {
   const info = getS1TribeInfo(game);
   const available = info.available.length ? info.available.join(', ') : '-';
   const unavailable = info.unavailable.length ? info.unavailable.join(', ') : '-';
-  return `BAN）登場種族：${escapeHtml(available)}<br><span class="ban-subline">非登場種族：${escapeHtml(unavailable)}</span>`;
+
+  return [
+    '<span class="ban-prefix">BAN）</span>',
+    '<span class="ban-label">登場種族：</span>',
+    `<span class="ban-value">${escapeHtml(available)}</span>`,
+    '<span class="ban-prefix" aria-hidden="true"></span>',
+    '<span class="ban-label">非登場種族：</span>',
+    `<span class="ban-value">${escapeHtml(unavailable)}</span>`
+  ].join('');
 }
 
 function getS1TribeInfo(game) {
