@@ -1,4 +1,5 @@
-const PAST_LOBBIES_URL = './past-lobbies.json';
+const PAST_LOBBIES_API_URL = '/api/scrims/past-lobbies';
+const PAST_LOBBIES_FALLBACK_URL = './past-lobbies.json';
 
 function parseLobbyDate(value) {
   if (typeof value !== 'string') return null;
@@ -24,7 +25,11 @@ function isAllowedSpreadsheetUrl(value) {
 
   try {
     const url = new URL(value);
-    return url.protocol === 'https:' || url.protocol === 'http:';
+    return (
+      url.protocol === 'https:' &&
+      url.hostname === 'docs.google.com' &&
+      url.pathname.startsWith('/spreadsheets/')
+    );
   } catch {
     return false;
   }
@@ -61,15 +66,30 @@ function renderEmptyState(container, message) {
   container.appendChild(empty);
 }
 
+async function fetchLobbyData() {
+  try {
+    const response = await fetch(PAST_LOBBIES_API_URL, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`API HTTP ${response.status}`);
+    return await response.json();
+  } catch (apiError) {
+    console.warn('Past Lobby APIを利用できないため、静的データを読み込みます。', apiError);
+
+    const fallbackResponse = await fetch(`${PAST_LOBBIES_FALLBACK_URL}?v=20260613`, {
+      cache: 'no-store'
+    });
+    if (!fallbackResponse.ok) {
+      throw new Error(`Fallback HTTP ${fallbackResponse.status}`);
+    }
+    return await fallbackResponse.json();
+  }
+}
+
 async function renderPastLobbies() {
   const container = document.querySelector('[data-past-lobbies]');
   if (!container) return;
 
   try {
-    const response = await fetch(`${PAST_LOBBIES_URL}?v=20260613`, { cache: 'no-store' });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
-    const data = await response.json();
+    const data = await fetchLobbyData();
     const lobbies = Array.isArray(data.lobbies) ? data.lobbies : [];
 
     const validLobbies = lobbies
