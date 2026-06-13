@@ -1,7 +1,17 @@
-/* Scrim card CTA: plain underlined text, never an enclosed button. */
+/* Scrim card CTA: plain underlined text in the card's upper-right corner. */
+html body #scrims .scrim-card > div {
+  padding-right: 230px !important;
+}
+
 html body #scrims .scrim-card .card-cta {
+  position: absolute !important;
+  top: 22px !important;
+  right: 26px !important;
+  left: auto !important;
+  bottom: auto !important;
+  z-index: 2 !important;
   display: inline-block !important;
-  flex: 0 0 auto !important;
+  flex: none !important;
   min-width: 0 !important;
   min-height: 0 !important;
   margin: 0 !important;
@@ -41,7 +51,14 @@ html body #scrims .scrim-card:focus-visible .card-cta {
 }
 
 @media (max-width: 720px) {
+  html body #scrims .scrim-card > div {
+    padding-top: 46px !important;
+    padding-right: 0 !important;
+  }
+
   html body #scrims .scrim-card .card-cta {
+    top: 18px !important;
+    right: 18px !important;
     padding-bottom: 6px !important;
     font-size: 18px !important;
   }
