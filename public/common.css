@@ -60,3 +60,17 @@ body:has(.choujousen-hero) .overview-text p,
 body:has(.choujousen-hero) .overview-text strong {
   color: #111 !important;
 }
+
+/* Timewalk Dream Match overview heading cleanup. */
+body:has(a[href="https://tonamel.com/competition/cC1Zi"]) .score-card:has(.archive-rule-list) > .section-title {
+  font-size: 0 !important;
+}
+
+body:has(a[href="https://tonamel.com/competition/cC1Zi"]) .score-card:has(.archive-rule-list) > .section-title::after {
+  content: "大会概要とルール";
+  font-size: 16px;
+}
+
+body:has(a[href="https://tonamel.com/competition/cC1Zi"]) .overview-subsection > .mini-section-title {
+  display: none !important;
+}
