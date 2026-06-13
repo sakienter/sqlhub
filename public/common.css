@@ -212,12 +212,21 @@ body #scrims .scrim-card:hover .card-cta {
   transform: translateX(2px) !important;
 }
 
-/* Remove the dark outline from image banners. */
+/* Remove the dark frame from image banners, including the card background edge and tight shadow. */
 body #past-tournaments .image-wipe-card,
+body #scrims .scrim-card {
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: 0 10px 26px rgba(3,14,24,.10) !important;
+}
+
 body #past-tournaments .image-wipe-card:hover,
-body #scrims .scrim-card,
 body #scrims .scrim-card:hover {
-  border-color: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: 0 14px 30px rgba(3,14,24,.16) !important;
 }
 
 @media (max-width:720px) {
