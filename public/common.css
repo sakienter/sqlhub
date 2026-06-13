@@ -55,7 +55,7 @@ body #past-tournaments .cn-worlds-card.gradient-banner-card {
 body #past-tournaments .cn-worlds-card.gradient-banner-card::before {
   background-image:
     linear-gradient(90deg, rgba(7,14,28,.64), rgba(7,14,28,.28) 52%, rgba(7,14,28,.08)),
-    url('/tournaments/cn-vs-worlds/gt1.webp?v=20260613-cnworlds-gt1') !important;
+    url('/tournaments/cn-vs-worlds/gt13.webp?v=20260613-cnworlds-gt13') !important;
   background-size: cover, cover !important;
   background-position: center, center center !important;
   background-repeat: no-repeat !important;
