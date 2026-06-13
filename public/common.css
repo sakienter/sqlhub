@@ -42,7 +42,9 @@ body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukU
   display: none !important;
 }
 
-/* Contact copy should use solid black rather than muted gray. */
+/* About cards should use solid black rather than muted gray. */
+#about .profile-card h2,
+#about .profile-card p,
 #about .contact-card h2,
 #about .contact-card p {
   color: #111 !important;
