@@ -16,7 +16,7 @@
     "ban start end";
   align-items: start;
   column-gap: 22px;
-  row-gap: 6px;
+  row-gap: 8px;
   width: 100%;
   max-width: none;
   justify-content: stretch;
@@ -45,24 +45,11 @@
 
 #game-ban {
   grid-area: ban;
-  display: grid !important;
-  grid-template-columns: max-content max-content minmax(0, 1fr);
-  align-items: start;
-  column-gap: 0;
+  display: block !important;
+  justify-self: start;
+  width: min(100%, 520px);
   min-width: 0;
   max-width: 100%;
-  text-align: left;
-  line-height: 1.7;
-}
-
-#game-ban .ban-prefix,
-#game-ban .ban-label {
-  white-space: nowrap;
-}
-
-#game-ban .ban-value {
-  min-width: 0;
-  padding-left: 0.25em;
 }
 
 #game-start-time {
@@ -81,12 +68,157 @@
   text-align: right;
 }
 
+#game-ban .tribe-panel {
+  display: block;
+  width: 100%;
+  padding: 10px 12px 12px;
+  overflow: hidden;
+  color: #f7f1e8;
+  background: linear-gradient(180deg, #2d3339 0%, #23282e 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  box-shadow: 0 7px 16px rgba(3, 14, 24, 0.16);
+}
+
+#game-ban .tribe-panel-title {
+  display: block;
+  margin: -10px -12px 10px;
+  padding: 7px 10px;
+  color: #fff7eb;
+  background: rgba(10, 14, 18, 0.34);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+#game-ban .tribe-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(48px, 1fr));
+  gap: 10px 8px;
+  width: 100%;
+}
+
+#game-ban .tribe-item {
+  --tribe-a: #8796a3;
+  --tribe-b: #35414b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  min-width: 0;
+  color: #f7f1e8;
+  text-align: center;
+}
+
+#game-ban .tribe-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 3px solid rgba(255, 255, 255, 0.42);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.48), transparent 22%),
+    radial-gradient(circle at 50% 55%, var(--tribe-a), var(--tribe-b) 72%);
+  box-shadow:
+    inset 0 0 0 2px rgba(12, 16, 20, 0.42),
+    0 2px 7px rgba(0, 0, 0, 0.42);
+  overflow: hidden;
+}
+
+#game-ban .tribe-glyph {
+  display: block;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 950;
+  line-height: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
+}
+
+#game-ban .tribe-name {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  color: #f5efe7;
+  font-size: 9px;
+  font-weight: 850;
+  line-height: 1.15;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#game-ban .tribe-item.is-available .tribe-icon {
+  border-color: #46d889;
+  box-shadow:
+    inset 0 0 0 2px rgba(12, 16, 20, 0.42),
+    0 0 0 1px rgba(121, 255, 180, 0.52),
+    0 0 11px rgba(70, 216, 137, 0.35);
+}
+
+#game-ban .tribe-item.is-unavailable {
+  opacity: 0.8;
+}
+
+#game-ban .tribe-item.is-unavailable .tribe-icon {
+  filter: grayscale(0.65) brightness(0.78);
+  border-color: #d8413f;
+}
+
+#game-ban .tribe-item.is-unavailable .tribe-icon::before,
+#game-ban .tribe-item.is-unavailable .tribe-icon::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: 42px;
+  height: 4px;
+  border-radius: 999px;
+  background: #e13f3b;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.72);
+  transform-origin: center;
+}
+
+#game-ban .tribe-item.is-unavailable .tribe-icon::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+#game-ban .tribe-item.is-unavailable .tribe-icon::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+#game-ban .tribe-item.is-unknown {
+  opacity: 0.46;
+}
+
+#game-ban .tribe-dragon { --tribe-a: #b05ce7; --tribe-b: #4b236d; }
+#game-ban .tribe-elemental { --tribe-a: #35c7ff; --tribe-b: #155b8d; }
+#game-ban .tribe-murloc { --tribe-a: #50d9e7; --tribe-b: #147b8a; }
+#game-ban .tribe-naga { --tribe-a: #4fd8ba; --tribe-b: #17685f; }
+#game-ban .tribe-quilboar { --tribe-a: #e8a14f; --tribe-b: #7a3e21; }
+#game-ban .tribe-beast { --tribe-a: #d7a65a; --tribe-b: #684325; }
+#game-ban .tribe-demon { --tribe-a: #8ad241; --tribe-b: #315d1f; }
+#game-ban .tribe-mech { --tribe-a: #70b7d6; --tribe-b: #365868; }
+#game-ban .tribe-pirate { --tribe-a: #df6756; --tribe-b: #71332d; }
+#game-ban .tribe-undead { --tribe-a: #a9c9d6; --tribe-b: #465e6a; }
+
 @media (max-width: 900px) {
   .game-meta {
     grid-template-columns: minmax(0, 1fr) max-content;
     grid-template-areas:
       "anomaly start"
       "ban end";
+  }
+
+  #game-ban {
+    width: min(100%, 500px);
   }
 }
 
@@ -111,6 +243,29 @@
   }
 
   #game-ban {
-    grid-template-columns: max-content max-content minmax(0, 1fr);
+    width: 100%;
+  }
+
+  #game-ban .tribe-grid {
+    grid-template-columns: repeat(5, minmax(42px, 1fr));
+    gap: 8px 5px;
+  }
+
+  #game-ban .tribe-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  #game-ban .tribe-item.is-unavailable .tribe-icon::before,
+  #game-ban .tribe-item.is-unavailable .tribe-icon::after {
+    width: 36px;
+  }
+
+  #game-ban .tribe-glyph {
+    font-size: 17px;
+  }
+
+  #game-ban .tribe-name {
+    font-size: 8px;
   }
 }
