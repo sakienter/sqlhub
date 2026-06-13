@@ -4,91 +4,53 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>練習会：スクリム | Stuntdrake's Avenge!</title>
-  <meta name="description" content="大会に向けた実戦形式の練習会「スクリム」の開催情報、募集要項、対戦結果を掲載するページです。" />
+  <meta name="description" content="大会に向けた実戦形式の練習会「スクリム」の開催情報、募集要項、過去のロビーを掲載するページです。" />
   <meta property="og:title" content="練習会：スクリム | Stuntdrake's Avenge!" />
-  <meta property="og:description" content="開催情報、募集要項、対戦結果をまとめています。" />
+  <meta property="og:description" content="開催情報、募集要項、過去のロビーをまとめています。" />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="../common.css" />
   <style>
     .scrim-hero{
-      position:relative;
-      isolation:isolate;
-      overflow:hidden;
-      min-height:330px;
-      padding:2rem 2rem 2.35rem;
+      min-height:270px;
+      padding:2rem;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
       text-align:left;
-      background:
-        radial-gradient(circle at 78% 20%,rgba(255,218,145,.28),transparent 31%),
-        radial-gradient(circle at 18% 82%,rgba(25,182,217,.24),transparent 34%),
-        linear-gradient(120deg,#071827 0%,#0b4053 48%,#7f2634 100%);
-      border:1px solid rgba(255,255,255,.24);
+      background:linear-gradient(120deg,#071827 0%,#123c57 100%);
+      border:1px solid rgba(255,255,255,.20);
       border-radius:18px;
-      box-shadow:0 22px 40px rgba(3,14,24,.34);
-    }
-    .scrim-hero::before{
-      content:"";
-      position:absolute;
-      inset:18px;
-      z-index:0;
-      border:1px solid rgba(255,255,255,.16);
-      border-radius:14px;
-      pointer-events:none;
-    }
-    .scrim-hero::after{
-      content:"SCRIM";
-      position:absolute;
-      right:24px;
-      bottom:10px;
-      z-index:0;
-      color:rgba(255,255,255,.08);
-      font-size:clamp(78px,15vw,190px);
-      font-weight:950;
-      line-height:.8;
-      letter-spacing:-.08em;
-      pointer-events:none;
+      box-shadow:0 18px 34px rgba(3,14,24,.28);
     }
     .scrim-hero .back-link{
-      position:relative;
-      z-index:2;
       align-self:flex-start;
       color:#fff;
       background:rgba(4,18,23,.42);
-      border-color:rgba(255,255,255,.24);
-      backdrop-filter:blur(8px);
+      border-color:rgba(255,255,255,.22);
     }
-    .scrim-title-block{position:relative;z-index:2;max-width:790px;margin-top:2.5rem}
-    .scrim-hero .eyebrow{margin:0 0 .75rem;color:#ffd98a;font-size:13px;font-weight:950;letter-spacing:.22em;text-shadow:0 2px 12px rgba(3,14,24,.45)}
-    .scrim-hero h1{margin:0;color:#fff;font-size:clamp(44px,7vw,82px);font-weight:950;line-height:1.02;letter-spacing:-.06em;text-shadow:0 10px 24px rgba(3,14,24,.48)}
-    .scrim-hero h1 span{color:#ffd98a}
-    .scrim-hero .lead{margin:1.15rem 0 0;max-width:690px;color:rgba(255,255,255,.9);font-size:16px;font-weight:800;line-height:1.8;text-shadow:0 2px 12px rgba(3,14,24,.45)}
-    .scrim-meta{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:9px;margin:1.25rem 0 0;padding:0;list-style:none}
-    .scrim-meta li{display:inline-flex;align-items:center;min-height:32px;padding:0 12px;color:#fff;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:12px;font-weight:900;backdrop-filter:blur(8px)}
+    .scrim-title-block{max-width:790px;margin-top:2.5rem}
+    .scrim-hero h1{margin:0;color:#fff;font-size:clamp(44px,7vw,76px);font-weight:950;line-height:1.02;letter-spacing:-.06em;text-shadow:0 8px 20px rgba(3,14,24,.42)}
+    .scrim-hero .lead{margin:1rem 0 0;max-width:690px;color:rgba(255,255,255,.88);font-size:16px;font-weight:800;line-height:1.8;text-shadow:0 2px 10px rgba(3,14,24,.38)}
 
-    .overview-copy{margin:0;color:var(--text-secondary);font-size:15px;font-weight:750;line-height:1.95}
-    .overview-copy + .overview-copy{margin-top:12px}
-    .process-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-    .process-card{position:relative;padding:20px 18px 18px;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-radius:var(--radius-md);box-shadow:var(--shadow-soft)}
-    .process-number{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;margin-bottom:13px;color:#fff;background:linear-gradient(135deg,var(--green),var(--crimson));border-radius:999px;font-size:13px;font-weight:950}
-    .process-card h3{margin:0 0 8px;color:var(--text-primary);font-size:18px;font-weight:950}
-    .process-card p{margin:0;color:var(--text-secondary);font-size:14px;font-weight:650;line-height:1.75}
+    .participation-copy{margin:0;color:var(--text-secondary);font-size:15px;font-weight:720;line-height:1.95}
+    .participation-copy + .participation-copy{margin-top:13px}
+    .participation-note{margin-top:18px;padding:16px 18px;color:var(--text-secondary);background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-radius:var(--radius-md);box-shadow:var(--shadow-soft);font-size:14px;font-weight:700;line-height:1.85}
     .action-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
 
-    .status-panel{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:22px 24px;background:linear-gradient(135deg,#fffaf2 0%,#eef8fa 100%);border:1px solid rgba(24,33,40,.10);border-radius:var(--radius-md);box-shadow:var(--shadow-soft)}
+    .status-panel{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:22px 24px;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-radius:var(--radius-md);box-shadow:var(--shadow-soft)}
     .status-copy h3{margin:0;color:var(--text-primary);font-size:22px;font-weight:950}
     .status-copy p{margin:8px 0 0;color:var(--text-secondary);font-size:14px;font-weight:650;line-height:1.75}
-    .status-badge{flex:0 0 auto;display:inline-flex;align-items:center;min-height:34px;padding:0 14px;color:#7f2634;background:rgba(201,75,75,.10);border:1px solid rgba(201,75,75,.24);border-radius:999px;font-size:12px;font-weight:950;letter-spacing:.06em}
+    .status-badge{flex:0 0 auto;display:inline-flex;align-items:center;min-height:34px;padding:0 14px;color:#596875;background:rgba(24,33,40,.05);border:1px solid rgba(24,33,40,.12);border-radius:999px;font-size:12px;font-weight:950;letter-spacing:.06em}
 
-    .archive-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    .archive-card{min-height:150px;padding:20px;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-radius:var(--radius-md);box-shadow:var(--shadow-soft)}
-    .archive-card h3{margin:0;color:var(--text-primary);font-size:19px;font-weight:950}
-    .archive-card p{margin:10px 0 0;color:var(--text-secondary);font-size:14px;font-weight:650;line-height:1.75}
-    .empty-label{display:inline-flex;align-items:center;min-height:28px;margin-top:16px;padding:0 10px;color:var(--text-muted);background:rgba(24,33,40,.05);border:1px solid rgba(24,33,40,.10);border-radius:999px;font-size:11px;font-weight:900}
+    .lobby-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .lobby-card{display:flex;flex-direction:column;min-height:170px;padding:20px;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-radius:var(--radius-md);box-shadow:var(--shadow-soft)}
+    .lobby-card-label{margin:0 0 10px;color:var(--text-muted);font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+    .lobby-card h3{margin:0;color:var(--text-primary);font-size:20px;font-weight:950}
+    .lobby-card p{margin:10px 0 0;color:var(--text-secondary);font-size:14px;font-weight:650;line-height:1.75}
+    .lobby-status{display:inline-flex;align-items:center;width:fit-content;min-height:28px;margin-top:auto;padding:0 10px;color:var(--text-muted);background:rgba(24,33,40,.05);border:1px solid rgba(24,33,40,.10);border-radius:999px;font-size:11px;font-weight:900}
 
-    @media (max-width:900px){.process-grid{grid-template-columns:1fr}.archive-grid{grid-template-columns:1fr}}
-    @media (max-width:640px){.scrim-hero{min-height:390px;padding:1.45rem;border-radius:14px}.scrim-hero::before{inset:12px;border-radius:11px}.scrim-title-block{margin-top:2rem}.scrim-hero h1{font-size:clamp(40px,13vw,58px)}.scrim-hero .lead{font-size:14px;line-height:1.75}.status-panel{align-items:flex-start;flex-direction:column;padding:20px}.section-body{padding:16px}}
+    @media (max-width:900px){.lobby-grid{grid-template-columns:1fr}}
+    @media (max-width:640px){.scrim-hero{min-height:320px;padding:1.45rem;border-radius:14px}.scrim-title-block{margin-top:2rem}.scrim-hero h1{font-size:clamp(40px,13vw,58px)}.scrim-hero .lead{font-size:14px;line-height:1.75}.status-panel{align-items:flex-start;flex-direction:column;padding:20px}.section-body{padding:16px}}
   </style>
 </head>
 <body>
@@ -96,45 +58,17 @@
     <header class="hero scrim-hero">
       <a class="back-link" href="../">← Avenge Hubへ戻る</a>
       <div class="scrim-title-block">
-        <p class="eyebrow">Practice Session</p>
-        <h1>練習会：<span>Scrim</span></h1>
-        <p class="lead">大会に向けた実戦形式の練習会です。開催情報や募集要項、対戦結果をこのページにまとめます。</p>
-        <ul class="scrim-meta">
-          <li>実戦形式</li>
-          <li>参加募集あり</li>
-          <li>結果・アーカイブ掲載</li>
-        </ul>
+        <h1>練習会：スクリム</h1>
+        <p class="lead">大会に向けた実戦形式の練習会です。開催情報や募集要項、過去のロビーをこのページにまとめます。</p>
       </div>
     </header>
 
     <section class="score-card">
-      <div class="section-title">概要</div>
-      <div class="section-body">
-        <p class="overview-copy">スクリムは、大会本番を想定した環境で試合経験を積むための練習会です。参加者同士で実戦形式の対戦を行い、試合進行やポイント管理を含めて本番に近い形で実施します。</p>
-        <p class="overview-copy">開催日時、参加条件、試合数、ポイント方式などは開催回ごとに募集要項で案内します。開催後は、対戦結果や関連リンクをこのページへ追加します。</p>
-      </div>
-    </section>
-
-    <section class="score-card">
       <div class="section-title orange">参加方法</div>
       <div class="section-body">
-        <div class="process-grid">
-          <article class="process-card">
-            <span class="process-number">1</span>
-            <h3>募集告知を確認</h3>
-            <p>開催日時と募集条件は、StuntdrakeのXで告知します。まず最新の募集投稿をご確認ください。</p>
-          </article>
-          <article class="process-card">
-            <span class="process-number">2</span>
-            <h3>案内に沿って応募</h3>
-            <p>募集投稿に記載された方法で参加希望を送ってください。応募方法は開催回ごとに案内します。</p>
-          </article>
-          <article class="process-card">
-            <span class="process-number">3</span>
-            <h3>参加連絡を確認</h3>
-            <p>参加者の確定後、ロビーや進行に関する情報を運営から共有します。</p>
-          </article>
-        </div>
+        <p class="participation-copy">参加希望の方は、StuntdrakeのXで公開する募集案内をご確認ください。</p>
+        <p class="participation-copy">また、こちらから声掛けをすることがあります。よろしくお願い致します。</p>
+        <div class="participation-note">現在、専用のディスコード等はございませんが、今後新規作成するかもしれません。<br>旧バトグラ練習村はトラブル回避の為、使いません。ご了承ください。</div>
         <div class="action-row">
           <a class="button" href="https://x.com/stuntdrakebg" target="_blank" rel="noopener">募集情報をXで確認する</a>
         </div>
@@ -155,18 +89,14 @@
     </section>
 
     <section class="score-card">
-      <div class="section-title orange">Results &amp; Archive</div>
+      <div class="section-title orange">Past Lobby</div>
       <div class="section-body">
-        <div class="archive-grid">
-          <article class="archive-card">
-            <h3>対戦結果</h3>
-            <p>開催後、参加者、最終順位、ポイントなどの結果を掲載します。</p>
-            <span class="empty-label">開催後に掲載</span>
-          </article>
-          <article class="archive-card">
-            <h3>配信・関連リンク</h3>
-            <p>配信アーカイブやスコアボードなど、各開催回の関連リンクを掲載します。</p>
-            <span class="empty-label">開催後に掲載</span>
+        <div class="lobby-grid">
+          <article class="lobby-card">
+            <p class="lobby-card-label">Past Lobby</p>
+            <h3>ロビーカード準備中</h3>
+            <p>開催日、参加者、結果、関連リンクなどを掲載するカードです。</p>
+            <span class="lobby-status">詳細は後日追加</span>
           </article>
         </div>
       </div>
