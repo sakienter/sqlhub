@@ -148,12 +148,7 @@
 }
 
 .composition-note {
-  margin: 0 0 15px;
-  color: var(--text-secondary);
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.7;
-  text-align: center;
+  display: none;
 }
 
 .composition-player-tabs {
@@ -269,7 +264,12 @@
 
 #composition-gallery .composition-day-tabs .composition-day-tab {
   appearance: none;
+  display: inline-flex;
   flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
   min-height: 52px;
   padding: 0 18px;
   color: var(--text-secondary);
@@ -279,6 +279,7 @@
   border-radius: 0;
   box-shadow: none;
   font-family: var(--font);
+  white-space: nowrap;
   cursor: pointer;
   transition: color 0.14s ease, border-color 0.14s ease, background 0.14s ease;
 }
@@ -297,12 +298,14 @@
 }
 
 #composition-gallery .composition-day-tabs .composition-day-tab .tab-main {
+  display: block;
   font-size: 14px;
   font-weight: 850;
   line-height: 1.1;
 }
 
 #composition-gallery .composition-day-tabs .composition-day-tab .tab-sub {
+  display: block;
   font-size: 11px;
   font-weight: 600;
   line-height: 1.1;
