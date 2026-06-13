@@ -30,8 +30,10 @@
     jp: './s1day1/jp_page-0001.webp'
   };
 
+  const imageCache = new Map();
   let selectedPlayer = '';
   let renderTimer = 0;
+  let displayRequestId = 0;
 
   function getSelectedDayNumber() {
     const activeTab = document.querySelector('#day-tabs .day-tab.active .tab-main');
@@ -76,6 +78,61 @@
     openLink.removeAttribute('href');
     placeholder.textContent = message;
     placeholder.hidden = false;
+    root.removeAttribute('aria-busy');
+  }
+
+  function loadImage(src) {
+    const cached = imageCache.get(src);
+    if (cached) return cached.promise;
+
+    const entry = {
+      status: 'loading',
+      image: new Image(),
+      promise: null
+    };
+
+    entry.image.decoding = 'async';
+    entry.promise = new Promise((resolve, reject) => {
+      entry.image.onload = () => {
+        const finish = () => {
+          entry.status = 'loaded';
+          resolve(entry);
+        };
+
+        if (typeof entry.image.decode === 'function') {
+          entry.image.decode().then(finish).catch(finish);
+        } else {
+          finish();
+        }
+      };
+
+      entry.image.onerror = () => {
+        entry.status = 'error';
+        reject(new Error(`Failed to load composition image: ${src}`));
+      };
+
+      entry.image.src = src;
+    });
+
+    entry.promise.catch(() => {});
+    imageCache.set(src, entry);
+    return entry.promise;
+  }
+
+  function preloadPlayers(players) {
+    players.forEach(name => {
+      loadImage(imagePathFor(name)).catch(() => {});
+    });
+  }
+
+  function displayImage(name, src) {
+    image.src = src;
+    image.alt = `${document.getElementById('day-title')?.textContent || ''} ${name} 構成メモ`;
+    image.hidden = false;
+    placeholder.hidden = true;
+    openLink.href = src;
+    openLink.hidden = false;
+    root.removeAttribute('aria-busy');
   }
 
   function showPlayer(name) {
@@ -90,27 +147,44 @@
     });
 
     const src = imagePathFor(name);
-    setPlaceholder('画像を確認しています…');
+    const cached = imageCache.get(src);
+    const requestId = ++displayRequestId;
 
-    const loader = new Image();
-    loader.onload = () => {
-      image.src = src;
-      image.alt = `${document.getElementById('day-title')?.textContent || ''} ${name} 構成メモ`;
-      image.hidden = false;
+    if (cached?.status === 'loaded') {
+      displayImage(name, src);
+      return;
+    }
+
+    root.setAttribute('aria-busy', 'true');
+
+    // 2枚目以降は現在の画像を残したまま裏側で読み込み、完了後に差し替える。
+    // これにより、選手を切り替えるたびにプレースホルダーが点滅しない。
+    if (image.hidden || !image.getAttribute('src')) {
+      placeholder.textContent = '画像を準備中です。';
+      placeholder.hidden = false;
+    } else {
       placeholder.hidden = true;
-      openLink.href = src;
-      openLink.hidden = false;
-    };
-    loader.onerror = () => {
-      setPlaceholder(`${name} の構成画像はまだ登録されていません。`);
-    };
-    loader.src = src;
+    }
+
+    loadImage(src)
+      .then(() => {
+        if (requestId !== displayRequestId || selectedPlayer !== name) return;
+        displayImage(name, src);
+      })
+      .catch(() => {
+        if (requestId !== displayRequestId || selectedPlayer !== name) return;
+        setPlaceholder(`${name} の構成画像はまだ登録されていません。`);
+      });
   }
 
   function renderGallery() {
+    const players = getPlayers();
+
+    // 結果データが表示された時点で、そのDAYの画像を先読みする。
+    preloadPlayers(players);
+
     if (!root.open) return;
 
-    const players = getPlayers();
     tabs.innerHTML = '';
 
     if (!players.length) {
@@ -162,4 +236,6 @@
     subtree: true,
     characterData: true
   }));
+
+  scheduleRender(false);
 })();
