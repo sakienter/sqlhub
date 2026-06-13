@@ -316,3 +316,13 @@ html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell >
     width: 170px !important;
   }
 }
+
+/* Ura Choujousen: remove the player roster and note the invitation-only format. */
+html body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) .overview-subsection:has(.players-details) {
+  display: none !important;
+}
+
+html body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) .overview-subsection:first-child .archive-rule-list::after {
+  content: "参加形式：主催者が招待した選手による招待制の大会として開催されました。";
+  display: list-item;
+}
