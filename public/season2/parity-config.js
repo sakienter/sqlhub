@@ -1,7 +1,5 @@
-const API_URL = '/api/season2/results';
-const TRIBE_API_URL = '/api/season2/tribes';
-const RESULTS_CACHE_KEY = 'sqlhub:season2:results:v4';
-const CACHE_MAX_AGE_MS = 3 * 60 * 1000;
+const API_URL = './results.json';
+const TRIBE_API_URL = './tribes.json';
 const S2_DATES = ['6/27', '7/4', '7/18', '7/25'];
 const S2_TRIBE_ICON_BASE = '../tribewebp';
 
@@ -62,7 +60,6 @@ let selectedGameIndex = 0;
 const $ = id => document.getElementById(id);
 const elements = {
   eventTitle: $('event-title'),
-  dataStatus: $('data-status'),
   summaryTable: $('summary-table'),
   dayTabs: $('day-tabs'),
   dayTitle: $('day-title'),
@@ -178,30 +175,8 @@ function hasResultData(data) {
   );
 }
 
-async function fetchJson(url, options = {}) {
-  const response = await fetch(url, options);
-  if (!response.ok) throw new Error(`API error: ${response.status}`);
+async function fetchJson(url) {
+  const response = await fetch(url, { cache: 'no-store' });
+  if (!response.ok) throw new Error(`Static data error: ${response.status}`);
   return response.json();
-}
-
-function readLocalCache(key) {
-  try {
-    const raw = localStorage.getItem(key);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw);
-    if (!parsed || !parsed.data || !parsed.savedAt) return null;
-    if (Date.now() - parsed.savedAt > CACHE_MAX_AGE_MS) return null;
-    return parsed.data;
-  } catch (error) {
-    console.warn('local cache read failed', error);
-    return null;
-  }
-}
-
-function writeLocalCache(key, data) {
-  try {
-    localStorage.setItem(key, JSON.stringify({ savedAt: Date.now(), data }));
-  } catch (error) {
-    console.warn('local cache write failed', error);
-  }
 }
