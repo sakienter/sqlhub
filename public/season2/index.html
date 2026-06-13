@@ -10,6 +10,7 @@
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="../common.css" />
   <link rel="stylesheet" href="./style.css?v=s2-s1-spec-20260613" />
+  <link rel="stylesheet" href="../composition-gallery.css?v=20260613" />
 </head>
 <body>
   <div id="loading-overlay" aria-live="polite" aria-label="読み込み中">
@@ -63,7 +64,7 @@
         <div class="table-wrap"><table id="day-points-table" aria-label="DAY別Result表"><thead></thead><tbody></tbody></table></div>
       </section>
 
-      <details class="day-section collapsible-section" open>
+      <details class="day-section collapsible-section">
         <summary class="mini-section-title collapsible-title"><span class="collapsible-heading">Placement</span><span class="collapsible-state" aria-hidden="true"></span></summary>
         <div class="table-wrap"><table id="day-placements-table" aria-label="DAY別Placement表"><thead></thead><tbody></tbody></table></div>
       </details>
@@ -82,10 +83,27 @@
         </div>
         <div class="table-wrap"><table id="game-detail-table" aria-label="ゲーム別詳細表"><thead></thead><tbody></tbody></table></div>
       </section>
+
+      <details id="composition-gallery" class="day-section collapsible-section composition-section" data-base-path="./compositions">
+        <summary class="mini-section-title collapsible-title">
+          <span class="collapsible-heading">構成を確認する</span>
+          <span class="collapsible-state" aria-hidden="true"></span>
+        </summary>
+        <div class="composition-body">
+          <p class="composition-note">選手名を選ぶと、そのDAYの構成メモを表示します。</p>
+          <div id="composition-player-tabs" class="composition-player-tabs" aria-label="構成を表示する選手"></div>
+          <div id="composition-viewer" class="composition-viewer">
+            <div id="composition-placeholder" class="composition-placeholder">画像を準備中です。</div>
+            <img id="composition-image" class="composition-image" alt="" loading="lazy" decoding="async" hidden />
+          </div>
+          <a id="composition-open-link" class="composition-open-link" href="#" target="_blank" rel="noopener" hidden>画像を別タブで開く</a>
+        </div>
+      </details>
     </section>
 
     <footer class="footer-note"><p>S級リーグS2 Result Page / Avenge Hub</p></footer>
   </main>
   <script src="./script.js?v=s2-s1-spec-20260613"></script>
+  <script src="../composition-gallery.js?v=20260613"></script>
 </body>
 </html>
