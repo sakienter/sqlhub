@@ -212,6 +212,14 @@ body #scrims .scrim-card:hover .card-cta {
   transform: translateX(2px) !important;
 }
 
+/* Remove the dark outline from image banners. */
+body #past-tournaments .image-wipe-card,
+body #past-tournaments .image-wipe-card:hover,
+body #scrims .scrim-card,
+body #scrims .scrim-card:hover {
+  border-color: transparent !important;
+}
+
 @media (max-width:720px) {
   body:has(a[href="https://www.iyingdi.com/tz/post/5609636"]) .tournament-hero,
   body:has(.summary-stack) .tournament-hero {
