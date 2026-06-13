@@ -6,7 +6,7 @@ The script is intended to run in GitHub Actions after each push. It updates:
 - the nearest page for changed page-local assets/data
 - pages that reference changed shared CSS/JS/assets
 - any page that still lacks the standardized update-date footer
-- any HTML page that still lacks the shared favicon link
+- every HTML page to use the shared site favicon
 """
 
 from __future__ import annotations
@@ -25,9 +25,13 @@ FOOTER_RE = re.compile(
     r"(?P<indent>^[ \t]*)<footer\b(?P<attrs>[^>]*\bclass=(?P<quote>[\"'])[^\"']*\bfooter-note\b[^\"']*(?P=quote)[^>]*)>.*?</footer>",
     re.IGNORECASE | re.MULTILINE | re.DOTALL,
 )
+FAVICON_RE = re.compile(
+    r"^[ \t]*<link\b(?=[^>]*\brel=(?:[\"'])icon(?:[\"']))[^>]*>\s*",
+    re.IGNORECASE | re.MULTILINE,
+)
 
 STYLE_LINK = '<link rel="stylesheet" href="/footer-updated.css?v=20260614" />'
-FAVICON_LINK = '<link rel="icon" href="/favicon.svg" type="image/svg+xml" />'
+FAVICON_LINK = '<link rel="icon" href="/sutantic.png" type="image/png" />'
 
 
 def read_text(path: Path) -> str:
@@ -43,7 +47,7 @@ def has_footer(content: str) -> bool:
 
 
 def has_favicon(content: str) -> bool:
-    return "/favicon.svg" in content
+    return "/sutantic.png" in content
 
 
 def japanese_date(date_value: datetime) -> tuple[str, str]:
@@ -81,8 +85,10 @@ def add_stylesheet(content: str) -> str:
     return add_head_entry(content, "/footer-updated.css", STYLE_LINK)
 
 
-def add_favicon(content: str) -> str:
-    return add_head_entry(content, "/favicon.svg", FAVICON_LINK)
+def set_favicon(content: str) -> str:
+    # Remove previously configured favicon links, then insert the current one once.
+    without_old_favicons = FAVICON_RE.sub("", content)
+    return add_head_entry(without_old_favicons, "/sutantic.png", FAVICON_LINK)
 
 
 def update_page(path: Path, date_value: datetime) -> bool:
@@ -97,7 +103,7 @@ def update_page(path: Path, date_value: datetime) -> bool:
         )
         updated = add_stylesheet(updated)
 
-    updated = add_favicon(updated)
+    updated = set_favicon(updated)
 
     if updated == original:
         return False
