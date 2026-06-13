@@ -40,11 +40,12 @@
     .status-badge{flex:0 0 auto;display:inline-flex;align-items:center;min-height:34px;padding:0 14px;color:#596875;background:rgba(24,33,40,.05);border:1px solid rgba(24,33,40,.12);border-radius:999px;font-size:12px;font-weight:950;letter-spacing:.06em}
 
     .lobby-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-    .lobby-card{display:flex;flex-direction:column;min-height:170px;padding:20px;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-radius:var(--radius-md);box-shadow:var(--shadow-soft)}
-    .lobby-card-label{margin:0 0 10px;color:var(--text-muted);font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
-    .lobby-card h3{margin:0;color:var(--text-primary);font-size:20px;font-weight:950}
-    .lobby-card p{margin:10px 0 0;color:var(--text-secondary);font-size:14px;font-weight:650;line-height:1.75}
-    .lobby-status{display:inline-flex;align-items:center;width:fit-content;min-height:28px;margin-top:auto;padding:0 10px;color:var(--text-muted);background:rgba(24,33,40,.05);border:1px solid rgba(24,33,40,.10);border-radius:999px;font-size:11px;font-weight:900}
+    .lobby-card{display:flex;flex-direction:column;align-items:flex-start;min-height:150px;padding:22px;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-radius:var(--radius-md);box-shadow:var(--shadow-soft);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+    .lobby-card:hover{transform:translateY(-2px);border-color:rgba(16,38,56,.22);box-shadow:0 12px 26px rgba(3,14,24,.13)}
+    .lobby-card h3{margin:0;color:var(--text-primary);font-size:24px;font-weight:950;line-height:1.2}
+    .lobby-result-link{display:inline-flex;align-items:center;margin-top:24px;padding-bottom:3px;color:#7f2634;border-bottom:1px solid rgba(127,38,52,.35);font-size:14px;font-weight:900;text-decoration:none;transition:border-color .18s ease,color .18s ease}
+    .lobby-card:hover .lobby-result-link{color:#a23545;border-color:#a23545}
+    .lobby-result-note{margin:8px 0 0;color:var(--text-muted);font-size:12px;font-weight:650;line-height:1.6}
 
     @media (max-width:900px){.lobby-grid{grid-template-columns:1fr}}
     @media (max-width:640px){.scrim-hero{min-height:280px;padding:1.45rem;border-radius:14px}.scrim-title-block{margin-top:2rem}.scrim-hero h1{font-size:clamp(40px,13vw,58px)}.status-panel{align-items:flex-start;flex-direction:column;padding:20px}.section-body{padding:16px}}
@@ -88,10 +89,9 @@
       <div class="section-body">
         <div class="lobby-grid">
           <article class="lobby-card">
-            <p class="lobby-card-label">Past Lobby</p>
-            <h3>ロビーカード準備中</h3>
-            <p>開催日、参加者、結果、関連リンクなどを掲載するカードです。</p>
-            <span class="lobby-status">詳細は後日追加</span>
+            <h3>YYYY/MM/DD</h3>
+            <span class="lobby-result-link">結果を確認 →</span>
+            <p class="lobby-result-note">（スプレッドシートが開きます）</p>
           </article>
         </div>
       </div>
