@@ -34,3 +34,9 @@ body:has(a[href="https://www.iyingdi.com/tz/post/5609636"]) .tournament-hero-ima
   font-size: 12px;
   line-height: 1.4;
 }
+
+/* Remove redundant tournament category labels from these archive headers. */
+body:has(a[href="https://tonamel.com/competition/cC1Zi"]) .archive-hero .eyebrow-wrap,
+body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) .archive-hero > .eyebrow {
+  display: none !important;
+}
