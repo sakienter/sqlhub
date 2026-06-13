@@ -41,3 +41,14 @@ body:has(a[href="https://tonamel.com/competition/cC1Zi"]) .archive-hero .eyebrow
 body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) .archive-hero > .eyebrow {
   display: none !important;
 }
+
+/* Contact copy should use solid black rather than muted gray. */
+#about .contact-card h2,
+#about .contact-card p {
+  color: #111 !important;
+}
+
+#about .contact-card .contact-ja-title {
+  margin: 6px 0 14px;
+  font-weight: 900;
+}
