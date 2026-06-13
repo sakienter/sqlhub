@@ -1,0 +1,154 @@
+from pathlib import Path
+from collections import defaultdict
+import hashlib
+import json
+import re
+
+root = Path('.')
+ignored_parts = {'.git', '.github'}
+all_files = sorted(
+    p for p in root.rglob('*')
+    if p.is_file() and not any(part in ignored_parts for part in p.parts)
+)
+text_exts = {'.html', '.css', '.js', '.json', '.md', '.txt', '.toml', '.yml', '.yaml', '.svg'}
+asset_exts = {'.webp', '.png', '.jpg', '.jpeg', '.gif', '.avif', '.ico', '.woff', '.woff2', '.ttf', '.otf', '.pdf'}
+code_exts = {'.html', '.css', '.js', '.json'}
+
+texts = {}
+for path in all_files:
+    if path.suffix.lower() in text_exts:
+        try:
+            texts[path] = path.read_text(encoding='utf-8')
+        except UnicodeDecodeError:
+            pass
+
+print('=== FILE INVENTORY ===')
+total_size = 0
+by_ext = defaultdict(lambda: [0, 0])
+for path in all_files:
+    size = path.stat().st_size
+    total_size += size
+    by_ext[path.suffix.lower() or '<none>'][0] += 1
+    by_ext[path.suffix.lower() or '<none>'][1] += size
+    print(f'{size:>10}  {path.as_posix()}')
+print(f'FILES={len(all_files)} TOTAL_BYTES={total_size}')
+
+print('\n=== EXTENSION SUMMARY ===')
+for ext, (count, size) in sorted(by_ext.items()):
+    print(f'{ext:>8} count={count:<4} bytes={size}')
+
+print('\n=== LARGE FILES >= 500 KiB ===')
+for path in sorted(all_files, key=lambda p: p.stat().st_size, reverse=True):
+    if path.stat().st_size >= 500 * 1024:
+        print(f'{path.stat().st_size:>10}  {path.as_posix()}')
+
+print('\n=== DUPLICATE FILE CONTENT ===')
+hashes = defaultdict(list)
+for path in all_files:
+    hashes[hashlib.sha256(path.read_bytes()).hexdigest()].append(path)
+duplicate_found = False
+for digest, paths in hashes.items():
+    if len(paths) > 1:
+        duplicate_found = True
+        print(digest)
+        for path in paths:
+            print(f'  {path.as_posix()}')
+if not duplicate_found:
+    print('none')
+
+corpus = '\n'.join(texts.values())
+print('\n=== UNREFERENCED ASSET CANDIDATES ===')
+candidates = []
+for path in all_files:
+    if path.suffix.lower() not in asset_exts:
+        continue
+    posix = path.as_posix()
+    public_relative = posix.removeprefix('public/')
+    variants = {posix, '/' + posix, public_relative, '/' + public_relative, path.name}
+    if not any(variant in corpus for variant in variants):
+        candidates.append(path)
+        print(f'{path.stat().st_size:>10}  {posix}')
+if not candidates:
+    print('none')
+
+def clean_ref(value):
+    return value.split('#', 1)[0].split('?', 1)[0].strip()
+
+def resolve_ref(source, raw):
+    raw = clean_ref(raw)
+    if not raw or raw.startswith(('http://', 'https://', '//', 'mailto:', 'tel:', 'data:', 'javascript:')):
+        return None
+    if raw.startswith('/'):
+        return Path('public') / raw.lstrip('/')
+    return source.parent / raw
+
+print('\n=== BROKEN LOCAL HTML REFERENCES ===')
+broken = []
+attr_re = re.compile(r'''(?:src|href)\s*=\s*["']([^"']+)["']''', re.I)
+for source, text in texts.items():
+    if source.suffix.lower() != '.html':
+        continue
+    for raw in attr_re.findall(text):
+        resolved = resolve_ref(source, raw)
+        if resolved is None:
+            continue
+        if raw.endswith('/'):
+            resolved = resolved / 'index.html'
+        if not resolved.exists():
+            broken.append((source, raw, resolved))
+            print(f'{source.as_posix()} :: {raw} -> {resolved.as_posix()}')
+if not broken:
+    print('none')
+
+print('\n=== BROKEN LOCAL CSS URL REFERENCES ===')
+broken_css = []
+url_re = re.compile(r'''url\(\s*["']?([^"')]+)["']?\s*\)''', re.I)
+for source, text in texts.items():
+    if source.suffix.lower() not in {'.css', '.html'}:
+        continue
+    for raw in url_re.findall(text):
+        resolved = resolve_ref(source, raw)
+        if resolved is None:
+            continue
+        if not resolved.exists():
+            broken_css.append((source, raw, resolved))
+            print(f'{source.as_posix()} :: {raw} -> {resolved.as_posix()}')
+if not broken_css:
+    print('none')
+
+print('\n=== UNREFERENCED JS/CSS CANDIDATES ===')
+for path in all_files:
+    if path.suffix.lower() not in {'.js', '.css'}:
+        continue
+    if path.as_posix().startswith('functions/'):
+        continue
+    references = []
+    for source, text in texts.items():
+        if source == path:
+            continue
+        variants = {
+            path.as_posix(),
+            '/' + path.as_posix(),
+            path.as_posix().removeprefix('public/'),
+            '/' + path.as_posix().removeprefix('public/'),
+            path.name,
+        }
+        if any(v in text for v in variants):
+            references.append(source)
+    if not references:
+        print(path.as_posix())
+
+print('\n=== JSON VALIDATION ===')
+for path, text in texts.items():
+    if path.suffix.lower() != '.json':
+        continue
+    try:
+        json.loads(text)
+        print(f'OK {path.as_posix()}')
+    except Exception as exc:
+        print(f'ERROR {path.as_posix()}: {exc}')
+
+print('\n=== TEXT FILE LINE COUNTS ===')
+for path, text in sorted(texts.items()):
+    if path.suffix.lower() in code_exts:
+        print(f'{len(text.splitlines()):>6}  {path.as_posix()}')
