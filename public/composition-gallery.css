@@ -53,6 +53,73 @@
   border-radius: 4px;
 }
 
+/* Placement is presented as a quiet list row rather than a button. */
+.placement-section {
+  padding-bottom: 0;
+}
+
+.placement-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 48px);
+  min-height: 56px;
+  margin: 0 24px;
+  padding: 16px 4px;
+  color: #1a1a1a;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 0;
+  box-shadow: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  list-style: none;
+  text-align: left;
+  user-select: none;
+  transition: background 0.15s ease;
+}
+
+.placement-row::-webkit-details-marker {
+  display: none;
+}
+
+.placement-row:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.placement-row:focus-visible {
+  outline: 3px solid rgba(201, 75, 75, 0.2);
+  outline-offset: 3px;
+}
+
+.placement-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  color: #6b6b6b;
+  transition: transform 0.2s ease;
+}
+
+.placement-chevron svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.placement-section[open] .placement-chevron {
+  transform: rotate(180deg);
+}
+
+.placement-section > .table-wrap {
+  margin-top: 14px;
+}
+
 .composition-section {
   margin-top: 20px;
   padding-bottom: 0;
@@ -175,6 +242,12 @@
     min-width: 94px;
     min-height: 40px;
     padding: 0 14px;
+  }
+
+  .placement-row {
+    width: calc(100% - 24px);
+    margin: 0 12px;
+    padding: 15px 2px;
   }
 
   .composition-section > .collapsible-title {
