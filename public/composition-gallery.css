@@ -1,109 +1,75 @@
-.collapsible-title {
-  gap: 18px;
-}
-
-.collapsible-state {
-  display: inline-flex;
+.collapsible-title,
+.placement-row {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 9px;
-  min-width: 108px;
-  min-height: 42px;
-  padding: 0 18px;
-  color: #fff;
-  background: linear-gradient(180deg, var(--crimson), var(--crimson-dark));
-  border: 1px solid rgba(117, 30, 37, 0.72);
-  border-radius: 4px;
-  box-shadow: 0 7px 16px rgba(117, 30, 37, 0.2);
-  font-size: 14px;
-  font-weight: 900;
-  letter-spacing: 0.06em;
-  line-height: 1;
-  transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+  justify-content: space-between;
+  width: calc(100% - 28px);
+  min-height: 60px;
+  margin: 18px auto 0;
+  padding: 14px 18px;
+  color: var(--text-primary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  list-style: none;
+  text-align: left;
+  user-select: none;
+  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.collapsible-state::before {
-  content: "開く";
+.collapsible-title::-webkit-details-marker,
+.placement-row::-webkit-details-marker {
+  display: none;
 }
 
-.collapsible-state::after {
-  content: "+";
-  font-size: 18px;
-  font-weight: 800;
-  line-height: 1;
+.collapsible-title:focus-visible,
+.placement-row:focus-visible {
+  outline: 3px solid rgba(25, 182, 217, 0.22);
+  outline-offset: 3px;
 }
 
-.collapsible-section[open] .collapsible-state::before {
-  content: "閉じる";
-}
-
-.collapsible-section[open] .collapsible-state::after {
-  content: "−";
-}
-
-.collapsible-title:hover .collapsible-state {
-  filter: brightness(0.96);
-  transform: translateY(-1px);
-  box-shadow: 0 10px 20px rgba(117, 30, 37, 0.26);
-}
-
-.collapsible-title:focus-visible {
-  outline: 3px solid rgba(201, 75, 75, 0.28);
-  outline-offset: 5px;
-  border-radius: 4px;
-}
-
-/* Placement is presented as a quiet list row rather than a button. */
+/* Placement: the same warm card/table language used elsewhere on the page. */
 .placement-section {
   padding-bottom: 0;
 }
 
 .placement-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: calc(100% - 48px);
-  min-height: 56px;
-  margin: 0 24px;
-  padding: 16px 4px;
-  color: #1a1a1a;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 0;
-  box-shadow: none;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.4;
-  list-style: none;
-  text-align: left;
-  user-select: none;
-  transition: background 0.15s ease;
-}
-
-.placement-row::-webkit-details-marker {
-  display: none;
+  background: linear-gradient(90deg, rgba(255, 246, 235, 0.94), rgba(232, 248, 251, 0.58));
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--green);
+  box-shadow: 0 3px 10px rgba(3, 14, 24, 0.07);
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
 }
 
 .placement-row:hover {
-  background: rgba(0, 0, 0, 0.03);
+  background: linear-gradient(90deg, rgba(255, 246, 235, 1), rgba(232, 248, 251, 0.86));
+  border-color: rgba(13, 127, 153, 0.28);
 }
 
-.placement-row:focus-visible {
-  outline: 3px solid rgba(201, 75, 75, 0.2);
-  outline-offset: 3px;
+.placement-section[open] .placement-row {
+  border-color: rgba(13, 127, 153, 0.34);
+  box-shadow: 0 4px 12px rgba(3, 14, 24, 0.09);
 }
 
-.placement-chevron {
+.placement-chevron,
+.collapsible-state {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  flex: 0 0 24px;
-  color: #6b6b6b;
-  transition: transform 0.2s ease;
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  min-height: 34px;
+  flex: 0 0 34px;
+  border-radius: var(--radius-sm);
+  transition: transform 0.2s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.placement-chevron {
+  color: var(--green-dark);
+  background: var(--green-dim);
+  border: 1px solid rgba(13, 127, 153, 0.22);
 }
 
 .placement-chevron svg {
@@ -114,12 +80,15 @@
 
 .placement-section[open] .placement-chevron {
   transform: rotate(180deg);
+  background: rgba(13, 127, 153, 0.16);
+  border-color: rgba(13, 127, 153, 0.34);
 }
 
 .placement-section > .table-wrap {
   margin-top: 14px;
 }
 
+/* Composition: same disclosure-row structure, with a stronger accent. */
 .composition-section {
   margin-top: 20px;
   padding-bottom: 0;
@@ -127,12 +96,60 @@
 }
 
 .composition-section > .collapsible-title {
-  min-height: 88px;
-  padding: 18px 24px;
+  background: linear-gradient(90deg, rgba(232, 248, 251, 0.98), rgba(255, 246, 235, 0.98) 58%, rgba(201, 75, 75, 0.1));
+  border: 1px solid rgba(201, 75, 75, 0.24);
+  border-left: 5px solid var(--crimson);
+  box-shadow: var(--shadow-soft);
+  font-size: 18px;
+  font-weight: 950;
+  letter-spacing: -0.01em;
+}
+
+.composition-section > .collapsible-title:hover {
+  background: linear-gradient(90deg, rgba(232, 248, 251, 1), rgba(255, 246, 235, 1) 54%, rgba(201, 75, 75, 0.16));
+  border-color: rgba(201, 75, 75, 0.4);
+  box-shadow: 0 7px 18px rgba(3, 14, 24, 0.14);
+}
+
+.composition-section[open] > .collapsible-title {
+  border-color: rgba(201, 75, 75, 0.44);
+  box-shadow: 0 7px 18px rgba(3, 14, 24, 0.14);
+}
+
+.collapsible-state {
+  position: relative;
+  color: var(--crimson-dark);
+  background: var(--crimson-dim);
+  border: 1px solid rgba(201, 75, 75, 0.28);
+  box-shadow: none;
+  font-size: 0;
+}
+
+.collapsible-state::before {
+  content: none;
+}
+
+.collapsible-state::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.composition-section[open] .collapsible-state {
+  background: rgba(201, 75, 75, 0.2);
+  border-color: rgba(201, 75, 75, 0.42);
+}
+
+.composition-section[open] .collapsible-state::after {
+  transform: translateY(2px) rotate(225deg);
 }
 
 .composition-body {
-  padding: 0 24px 26px;
+  padding: 18px 24px 26px;
 }
 
 .composition-note {
@@ -158,7 +175,7 @@
   color: var(--text-secondary);
   background: #fffaf2;
   border: 1px solid rgba(24, 33, 40, 0.16);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-family: var(--font);
   font-size: 14px;
   font-weight: 900;
@@ -173,8 +190,8 @@
 
 .composition-player-tab.active {
   color: #fff;
-  background: linear-gradient(180deg, var(--crimson), var(--crimson-dark));
-  border-color: rgba(117, 30, 37, 0.72);
+  background: linear-gradient(90deg, var(--green-dark), var(--green), var(--crimson-dark));
+  border-color: rgba(13, 127, 153, 0.48);
 }
 
 .composition-viewer {
@@ -185,7 +202,7 @@
   overflow: hidden;
   background: rgba(255, 250, 242, 0.66);
   border: 1px solid rgba(24, 33, 40, 0.14);
-  border-radius: 6px;
+  border-radius: var(--radius-md);
 }
 
 .composition-image {
@@ -216,7 +233,7 @@
   color: var(--crimson-dark);
   background: #fffaf2;
   border: 1px solid rgba(201, 75, 75, 0.34);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-size: 13px;
   font-weight: 900;
   text-decoration: none;
@@ -234,29 +251,26 @@
 }
 
 @media (max-width: 760px) {
-  .collapsible-title {
-    gap: 12px;
-  }
-
-  .collapsible-state {
-    min-width: 94px;
-    min-height: 40px;
-    padding: 0 14px;
-  }
-
+  .collapsible-title,
   .placement-row {
     width: calc(100% - 24px);
-    margin: 0 12px;
-    padding: 15px 2px;
+    min-height: 56px;
+    margin: 14px 12px 0;
+    padding: 13px 14px;
+    font-size: 16px;
   }
 
-  .composition-section > .collapsible-title {
-    min-height: 76px;
-    padding: 14px 12px;
+  .placement-chevron,
+  .collapsible-state {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    flex-basis: 32px;
   }
 
   .composition-body {
-    padding: 0 12px 18px;
+    padding: 16px 12px 18px;
   }
 
   .composition-player-tabs {
