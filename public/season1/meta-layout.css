@@ -10,11 +10,13 @@
 
 .game-meta {
   display: grid !important;
-  grid-template-columns: max-content max-content minmax(0, 1fr) max-content;
-  grid-template-areas: "start end ban anomaly";
+  grid-template-columns: minmax(0, 1fr) max-content max-content;
+  grid-template-areas:
+    "anomaly start end"
+    "ban start end";
   align-items: start;
-  column-gap: 24px;
-  row-gap: 8px;
+  column-gap: 22px;
+  row-gap: 6px;
   width: 100%;
   max-width: none;
   justify-content: stretch;
@@ -34,20 +36,18 @@
   line-height: 1.7;
 }
 
-#game-start-time {
-  grid-area: start;
+#game-anomaly {
+  grid-area: anomaly;
+  justify-self: start;
   white-space: nowrap;
-}
-
-#game-end-time {
-  grid-area: end;
-  white-space: nowrap;
+  text-align: left;
 }
 
 #game-ban {
   grid-area: ban;
   display: block !important;
   min-width: 0;
+  max-width: 100%;
   text-align: left;
   line-height: 1.7;
 }
@@ -57,22 +57,28 @@
   padding-left: 4.1em;
 }
 
-#game-anomaly {
-  grid-area: anomaly;
+#game-start-time {
+  grid-area: start;
+  align-self: center;
+  justify-self: end;
   white-space: nowrap;
   text-align: right;
 }
 
-@media (max-width: 980px) {
-  .game-meta {
-    grid-template-columns: max-content max-content 1fr;
-    grid-template-areas:
-      "start end anomaly"
-      "ban ban ban";
-  }
+#game-end-time {
+  grid-area: end;
+  align-self: center;
+  justify-self: end;
+  white-space: nowrap;
+  text-align: right;
+}
 
-  #game-anomaly {
-    text-align: right;
+@media (max-width: 900px) {
+  .game-meta {
+    grid-template-columns: minmax(0, 1fr) max-content;
+    grid-template-areas:
+      "anomaly start"
+      "ban end";
   }
 }
 
@@ -89,7 +95,10 @@
       "ban ban";
   }
 
-  #game-anomaly {
+  #game-start-time,
+  #game-end-time {
+    align-self: start;
+    justify-self: start;
     text-align: left;
   }
 
