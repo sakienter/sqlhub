@@ -54,3 +54,9 @@ body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukU
   margin: 6px 0 14px;
   font-weight: 900;
 }
+
+/* Choujousen overview and rules copy should use solid black. */
+body:has(.choujousen-hero) .overview-text p,
+body:has(.choujousen-hero) .overview-text strong {
+  color: #111 !important;
+}
