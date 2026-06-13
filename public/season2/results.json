@@ -1,0 +1,61 @@
+{
+  "title": "S級リーグS2",
+  "updatedAt": "",
+  "summary": {
+    "rows": []
+  },
+  "days": [
+    {
+      "label": "DAY1",
+      "date": "6/27",
+      "points": { "rows": [] },
+      "placements": { "rows": [] },
+      "gameDetails": [
+        { "label": "GAME1", "startTime": "", "endTime": "", "anomaly": "", "rows": [] },
+        { "label": "GAME2", "startTime": "", "endTime": "", "anomaly": "", "rows": [] },
+        { "label": "GAME3", "startTime": "", "endTime": "", "anomaly": "", "rows": [] },
+        { "label": "GAME4", "startTime": "", "endTime": "", "anomaly": "", "rows": [] },
+        { "label": "GAME5", "startTime": "", "endTime": "", "anomaly": "", "rows": [] }
+      ]
+    },
+    {
+      "label": "DAY2",
+      "date": "7/4",
+      "points": { "rows": [] },
+      "placements": { "rows": [] },
+      "gameDetails": [
+        { "label": "GAME1", "startTime": "", "endTime": "", "anomaly": "", "rows": [] },
+        { "label": "GAME2", "startTime": "", "endTime": "", "anomaly": "", "rows": [] },
+        { "label": "GAME3", "startTime": "", "endTime": "", "anomaly": "", "rows": [] },
+        { "label": "GAME4", "startTime": "", "endTime": "", "anomaly": "", "rows": [] },
+        { "label": "GAME5", "startTime": "", "endTime": "", "anomaly": "", "rows": [] }
+      ]
+    },
+    {
+      "label": "DAY3",
+      "date": "7/18",
+      "points": { "rows": [] },
+      "placements": { "rows": [] },
+      "gameDetails": [
+        { "label": "GAME1", "startTime": "", "endTime": "", "anomaly": "", "rows": [] },
+        { "label": "GAME2", "startTime": "", "endTime": "", "anomaly": "", "rows": [] },
+        { "label": "GAME3", "startTime": "", "endTime": "", "anomaly": "", "rows": [] },
+        { "label": "GAME4", "startTime": "", "endTime": "", "anomaly": "", "rows": [] },
+        { "label": "GAME5", "startTime": "", "endTime": "", "anomaly": "", "rows": [] }
+      ]
+    },
+    {
+      "label": "DAY4",
+      "date": "7/25",
+      "points": { "rows": [] },
+      "placements": { "rows": [] },
+      "gameDetails": [
+        { "label": "GAME1", "startTime": "", "endTime": "", "anomaly": "", "rows": [] },
+        { "label": "GAME2", "startTime": "", "endTime": "", "anomaly": "", "rows": [] },
+        { "label": "GAME3", "startTime": "", "endTime": "", "anomaly": "", "rows": [] },
+        { "label": "GAME4", "startTime": "", "endTime": "", "anomaly": "", "rows": [] },
+        { "label": "GAME5", "startTime": "", "endTime": "", "anomaly": "", "rows": [] }
+      ]
+    }
+  ]
+}
