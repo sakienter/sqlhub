@@ -1,0 +1,196 @@
+.collapsible-title {
+  gap: 18px;
+}
+
+.collapsible-state {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-width: 108px;
+  min-height: 42px;
+  padding: 0 18px;
+  color: #fff;
+  background: linear-gradient(180deg, var(--crimson), var(--crimson-dark));
+  border: 1px solid rgba(117, 30, 37, 0.72);
+  border-radius: 4px;
+  box-shadow: 0 7px 16px rgba(117, 30, 37, 0.2);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+}
+
+.collapsible-state::before {
+  content: "開く";
+}
+
+.collapsible-state::after {
+  content: "+";
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.collapsible-section[open] .collapsible-state::before {
+  content: "閉じる";
+}
+
+.collapsible-section[open] .collapsible-state::after {
+  content: "−";
+}
+
+.collapsible-title:hover .collapsible-state {
+  filter: brightness(0.96);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(117, 30, 37, 0.26);
+}
+
+.collapsible-title:focus-visible {
+  outline: 3px solid rgba(201, 75, 75, 0.28);
+  outline-offset: 5px;
+  border-radius: 4px;
+}
+
+.composition-section {
+  margin-top: 20px;
+  padding-bottom: 0;
+  border-top: 1px solid rgba(24, 33, 40, 0.1);
+}
+
+.composition-section > .collapsible-title {
+  min-height: 88px;
+  padding: 18px 24px;
+}
+
+.composition-body {
+  padding: 0 24px 26px;
+}
+
+.composition-note {
+  margin: 0 0 15px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.composition-player-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.composition-player-tab {
+  appearance: none;
+  min-height: 42px;
+  padding: 8px 12px;
+  color: var(--text-secondary);
+  background: #fffaf2;
+  border: 1px solid rgba(24, 33, 40, 0.16);
+  border-radius: 4px;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.composition-player-tab:hover {
+  border-color: rgba(201, 75, 75, 0.46);
+  transform: translateY(-1px);
+}
+
+.composition-player-tab.active {
+  color: #fff;
+  background: linear-gradient(180deg, var(--crimson), var(--crimson-dark));
+  border-color: rgba(117, 30, 37, 0.72);
+}
+
+.composition-viewer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  overflow: hidden;
+  background: rgba(255, 250, 242, 0.66);
+  border: 1px solid rgba(24, 33, 40, 0.14);
+  border-radius: 6px;
+}
+
+.composition-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+}
+
+.composition-placeholder {
+  padding: 48px 24px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.composition-open-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 40px;
+  margin: 14px 0 0 auto;
+  padding: 0 16px;
+  color: var(--crimson-dark);
+  background: #fffaf2;
+  border: 1px solid rgba(201, 75, 75, 0.34);
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.composition-open-link:hover {
+  background: #fff3e5;
+  border-color: rgba(201, 75, 75, 0.56);
+}
+
+.composition-open-link[hidden],
+.composition-image[hidden],
+.composition-placeholder[hidden] {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .collapsible-title {
+    gap: 12px;
+  }
+
+  .collapsible-state {
+    min-width: 94px;
+    min-height: 40px;
+    padding: 0 14px;
+  }
+
+  .composition-section > .collapsible-title {
+    min-height: 76px;
+    padding: 14px 12px;
+  }
+
+  .composition-body {
+    padding: 0 12px 18px;
+  }
+
+  .composition-player-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .composition-viewer {
+    min-height: 200px;
+  }
+}
