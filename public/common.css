@@ -9,3 +9,14 @@ body #past-tournaments .cn-jp-card.gradient-banner-card::before {
   background-position: center, center center !important;
   background-repeat: no-repeat !important;
 }
+
+/* CN vs JP 1:4 page header */
+body:has(a[href="https://www.iyingdi.com/tz/post/5609636"]) .tournament-hero {
+  background:
+    linear-gradient(90deg, rgba(5,12,25,.68) 0%, rgba(5,12,25,.28) 52%, rgba(5,12,25,.05) 100%),
+    url('/tournaments/cn-vs-jp/blab14.webp?v=20260613-cnvsjp-blab14') center center / cover no-repeat !important;
+}
+
+body:has(a[href="https://www.iyingdi.com/tz/post/5609636"]) .tournament-hero-image {
+  display: none !important;
+}
