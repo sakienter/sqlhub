@@ -1,0 +1,154 @@
+/* Combined Profile / Contact card on the home page. */
+#about .section-body {
+  padding: 24px 28px 28px;
+}
+
+#about .about-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(330px, .85fr);
+  overflow: hidden;
+  color: #111;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,250,242,.96)),
+    #fffaf2;
+  border: 1px solid rgba(24,33,40,.14);
+  border-radius: 10px;
+  box-shadow: 0 10px 26px rgba(3,14,24,.11);
+}
+
+#about .about-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: linear-gradient(180deg, var(--green), var(--crimson));
+}
+
+#about .about-profile-panel,
+#about .about-contact-panel {
+  min-width: 0;
+  padding: 28px 32px;
+}
+
+#about .about-contact-panel {
+  background: rgba(232,248,251,.34);
+  border-left: 1px solid rgba(24,33,40,.12);
+}
+
+#about .about-kicker {
+  margin: 0 0 8px;
+  color: #07586e;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: .16em;
+  line-height: 1.2;
+}
+
+#about .about-card h2 {
+  margin: 0;
+  color: #111;
+  font-size: clamp(27px, 3vw, 36px);
+  font-weight: 950;
+  letter-spacing: -.035em;
+  line-height: 1.1;
+}
+
+#about .about-ja-title {
+  margin: 7px 0 0;
+  color: #111;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+#about .about-copy,
+#about .about-contact-copy {
+  margin: 18px 0 0;
+  color: #111;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.9;
+}
+
+#about .about-contact-copy {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+#about .contact-list {
+  margin: 18px 0 0;
+}
+
+#about .contact-row {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(24,33,40,.11);
+}
+
+#about .contact-row:first-child {
+  border-top: 1px solid rgba(24,33,40,.11);
+}
+
+#about .contact-row dt,
+#about .contact-row dd {
+  margin: 0;
+  color: #111;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+#about .contact-row dt {
+  font-weight: 950;
+}
+
+#about .contact-row dd {
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+#about .contact-x-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #07586e;
+  border-bottom: 1px solid rgba(7,88,110,.42);
+  font-weight: 950;
+  text-decoration: none;
+}
+
+#about .contact-x-link:hover {
+  color: #7f2634;
+  border-color: rgba(127,38,52,.62);
+}
+
+#about .contact-note {
+  margin: 14px 0 0;
+  color: #111;
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.6;
+}
+
+@media (max-width: 820px) {
+  #about .section-body {
+    padding: 18px;
+  }
+
+  #about .about-card {
+    grid-template-columns: 1fr;
+  }
+
+  #about .about-profile-panel,
+  #about .about-contact-panel {
+    padding: 24px 22px;
+  }
+
+  #about .about-contact-panel {
+    border-top: 1px solid rgba(24,33,40,.12);
+    border-left: 0;
+  }
+}
