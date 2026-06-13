@@ -27,7 +27,9 @@ function keepCompositionPlaceholderCurrent() {
 
   const update = () => {
     const hasPlayers = tableBody.querySelectorAll('tr').length > 0;
-    if (!hasPlayers) placeholder.textContent = '未実施';
+    if (!hasPlayers && placeholder.textContent !== '未実施') {
+      placeholder.textContent = '未実施';
+    }
   };
 
   update();
