@@ -84,8 +84,12 @@
 
 .composition-section {
   margin-top: 18px;
-  padding-bottom: 0;
+  padding-bottom: 18px;
   border-top: 1px solid rgba(24, 33, 40, 0.1);
+}
+
+.composition-section[open] {
+  padding-bottom: 0;
 }
 
 .composition-section > .collapsible-title {
@@ -258,6 +262,14 @@
     min-width: 26px;
     min-height: 26px;
     flex-basis: 26px;
+  }
+
+  .composition-section {
+    padding-bottom: 14px;
+  }
+
+  .composition-section[open] {
+    padding-bottom: 0;
   }
 
   .composition-body {
