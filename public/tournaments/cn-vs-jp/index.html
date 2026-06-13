@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CN vs JP | Avenge Hub</title>
   <meta name="description" content="CN vs JP 2025 July の大会情報、ルール、日程、決勝メンバー、結果スプレッドシートをまとめるページです。" />
-  <link rel="stylesheet" href="../../common.css?v=20260613-cnvsjp-header" />
+  <link rel="stylesheet" href="../../common.css?v=20260613-cnvsjp-header4" />
   <style>
-    .tournament-hero{min-height:clamp(280px,31vw,390px);text-align:left;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(90deg,rgba(5,12,25,.76) 0%,rgba(5,12,25,.44) 48%,rgba(5,12,25,.12) 100%),url('./swd.webp') center center/cover no-repeat;border:1px solid rgba(255,255,255,.24);border-radius:18px;box-shadow:0 22px 42px rgba(3,14,24,.38);position:relative;overflow:hidden}
-    .tournament-hero::before{content:none}
-    .tournament-hero .back-link{align-self:flex-start;color:#fff;background:rgba(4,18,23,.48);border-color:rgba(255,255,255,.26);position:relative;z-index:1;backdrop-filter:blur(6px)}
-    .tournament-title-block{margin:auto 0 0;position:relative;z-index:1}
+    .tournament-hero{min-height:clamp(280px,31vw,390px);text-align:left;display:flex;flex-direction:column;justify-content:space-between;background:#071421;border:1px solid rgba(255,255,255,.24);border-radius:18px;box-shadow:0 22px 42px rgba(3,14,24,.38);position:relative;overflow:hidden;isolation:isolate}
+    .tournament-hero-image{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center center;pointer-events:none;user-select:none}
+    .tournament-hero::before{content:none!important}
+    .tournament-hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(5,12,25,.68) 0%,rgba(5,12,25,.28) 52%,rgba(5,12,25,.05) 100%);pointer-events:none}
+    .tournament-hero .back-link{align-self:flex-start;color:#fff;background:rgba(4,18,23,.48);border-color:rgba(255,255,255,.26);position:relative;z-index:2;backdrop-filter:blur(6px)}
+    .tournament-title-block{margin:auto 0 0;position:relative;z-index:2}
     .tournament-hero h1{margin:0;color:#fff;font-size:clamp(42px,6vw,76px);font-weight:950;letter-spacing:-.06em;text-shadow:0 6px 24px rgba(3,14,24,.82)}
     .tournament-hero .hero-subtitle{margin:10px 0 0;color:rgba(255,255,255,.92);font-size:clamp(18px,2vw,28px);font-weight:900;letter-spacing:.04em;text-shadow:0 5px 18px rgba(3,14,24,.78)}
     .rule-text,.schedule-text,.section-note,.link-card p{color:#182128}
@@ -26,12 +28,13 @@
     .results-table{min-width:980px;border-spacing:0 8px}.results-table th,.results-table td{white-space:nowrap;text-align:center}.results-table th:first-child,.results-table td:first-child{text-align:left;min-width:220px}.results-table td.rank-cell,.results-table td.total-cell{font-weight:950;color:#182128}.results-table .qualifier-row td{background:#ffdc69;border-top-color:rgba(218,164,36,.28);border-bottom-color:rgba(218,164,36,.28)}.results-table .qualifier-row td:first-child{border-left-color:rgba(218,164,36,.28)}.results-table .qualifier-row td:last-child{border-right-color:rgba(218,164,36,.28)}.results-table .champion-row td{background:rgba(231,154,95,.18);border-top-color:rgba(231,154,95,.32);border-bottom-color:rgba(231,154,95,.32)}.results-table .champion-row td:first-child{border-left-color:rgba(231,154,95,.32)}.results-table .champion-row td:last-child{border-right-color:rgba(231,154,95,.32)}
     .link-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}.link-card{display:flex;flex-direction:column;gap:10px;padding:16px 18px;background:#fffaf2;border:1px solid rgba(24,33,40,.12);border-radius:10px;box-shadow:var(--shadow-soft)}.link-card h3{margin:0;color:#182128;font-size:16px;font-weight:950}.button-row{display:flex;flex-wrap:wrap;gap:10px;margin:0 14px 12px}.link-card .button-row{margin:0;margin-top:auto}.button.external{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 14px;color:#fff;background:linear-gradient(90deg,var(--green-dark),var(--green));border:1px solid rgba(24,33,40,.1);border-radius:999px;font-size:13px;font-weight:900;text-decoration:none;box-shadow:var(--shadow-soft)}
     @media (max-width:980px){.player-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media (max-width:720px){.tournament-hero{min-height:250px;background-position:center center}.tournament-hero h1{font-size:clamp(40px,13vw,58px)}.section-body{padding:16px}.player-grid{grid-template-columns:1fr}.player-card{align-items:flex-start;flex-direction:column}.results-table{min-width:860px}}
+    @media (max-width:720px){.tournament-hero{min-height:250px}.tournament-hero-image{object-position:center center}.tournament-hero h1{font-size:clamp(40px,13vw,58px)}.section-body{padding:16px}.player-grid{grid-template-columns:1fr}.player-card{align-items:flex-start;flex-direction:column}.results-table{min-width:860px}}
   </style>
 </head>
 <body>
   <main class="page-shell">
     <header class="hero tournament-hero">
+      <img class="tournament-hero-image" src="./swd.webp?v=20260613-cnvsjp-header4" alt="" aria-hidden="true" loading="eager" decoding="async" />
       <a class="back-link" href="../../">← Avenge Hubへ戻る</a>
       <div class="tournament-title-block"><h1>CN vs JP</h1><p class="hero-subtitle">2025 July</p></div>
     </header>
