@@ -1,4 +1,7 @@
-#seasons .section-title {
+#seasons .section-title,
+#past-tournaments .section-title,
+#scrims .section-title,
+#about .section-title {
   padding: 16px 18px;
   font-size: clamp(18px, 1.9vw, 24px);
   font-weight: 950;
