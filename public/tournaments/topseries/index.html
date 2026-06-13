@@ -10,19 +10,16 @@
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="../../common.css" />
   <style>
-    .topseries-hero{position:relative;isolation:isolate;min-height:360px;overflow:hidden;margin:0 auto 26px;background:radial-gradient(circle at 78% 22%,rgba(220,255,145,.72),transparent 220px),linear-gradient(115deg,#fbfff1 0 38%,#daf7a6 38% 62%,#5cbf34 62% 100%);border:1px solid rgba(8,23,19,.12);border-radius:12px;box-shadow:0 18px 38px rgba(18,93,75,.15)}
+    .topseries-hero{position:relative;isolation:isolate;min-height:270px;overflow:hidden;margin:0 auto 26px;background:radial-gradient(circle at 78% 22%,rgba(220,255,145,.72),transparent 220px),linear-gradient(115deg,#fbfff1 0 38%,#daf7a6 38% 62%,#5cbf34 62% 100%);border:1px solid rgba(8,23,19,.12);border-radius:12px;box-shadow:0 18px 38px rgba(18,93,75,.15)}
     .topseries-hero::before,.topseries-hero::after{content:"";position:absolute;inset:-20%;pointer-events:none}
     .topseries-hero::before{background:linear-gradient(108deg,transparent 0 36%,rgba(255,255,255,.7) 37% 38%,transparent 39%),linear-gradient(108deg,transparent 0 52%,rgba(255,255,255,.42) 53% 54%,transparent 55%),linear-gradient(108deg,transparent 0 68%,rgba(255,255,255,.56) 69% 70%,transparent 71%);transform:translateX(-8%)}
     .topseries-hero::after{background:linear-gradient(108deg,transparent 0 56%,rgba(142,232,63,.82) 57% 58%,transparent 59%),linear-gradient(108deg,transparent 0 72%,rgba(255,255,255,.7) 73% 74%,transparent 75%);opacity:.7;transform:translateX(10%) translateY(9%)}
-    .topseries-hero-inner{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:space-between;gap:46px;min-height:360px;padding:clamp(28px,5vw,58px)}
-    .topseries-hero-top{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .topseries-hero-inner{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:270px;padding:clamp(22px,4vw,38px)}
+    .topseries-hero-top{display:flex;align-items:center;justify-content:flex-start}
     .topseries-back{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 15px;color:#173121;background:rgba(255,255,255,.76);border:1px solid rgba(8,23,19,.12);border-radius:999px;font-size:14px;font-weight:900;line-height:1;text-decoration:none;white-space:nowrap;transition:background .18s ease,transform .18s ease,border-color .18s ease}
     .topseries-back:hover{background:rgba(255,255,255,.94);border-color:rgba(8,23,19,.22);transform:translateY(-1px)}
-    .topseries-tag{padding:8px 12px;color:#16310b;background:rgba(220,255,145,.9);border:1px solid rgba(79,159,37,.18);border-radius:999px;font-size:12px;font-weight:950;line-height:1;white-space:nowrap}
-    .topseries-eyebrow{margin:0;color:#357c17;font-size:13px;font-weight:950;letter-spacing:.1em;text-transform:uppercase}
-    .topseries-title{margin:8px 0 0;color:#102315;font-size:clamp(44px,8vw,98px);font-style:italic;font-weight:950;line-height:1.02;letter-spacing:-.045em;transform:skewX(-6deg);transform-origin:left center;text-shadow:0 1px 0 rgba(255,255,255,.5)}
+    .topseries-title{margin:0;color:#102315;font-size:clamp(44px,8vw,98px);font-style:italic;font-weight:950;line-height:1.02;letter-spacing:-.045em;transform:skewX(-6deg);transform-origin:left center;text-shadow:0 1px 0 rgba(255,255,255,.5)}
     .topseries-title strong{display:block;color:#3f981f;font-weight:950;line-height:.95;letter-spacing:-.025em}
-    .topseries-sub{max-width:660px;margin:14px 0 0;color:#405f35;font-size:14px;font-weight:800;line-height:1.7}
 
     .overview-text{display:grid;gap:12px;margin:0}
     .overview-text p{margin:0;color:var(--text-secondary);font-size:14px;font-weight:750;line-height:1.85;letter-spacing:.01em}
@@ -70,13 +67,11 @@
     .recap-link:hover{background:#f7f0ec!important;border-color:rgba(127,38,52,.55)!important}
 
     @media (max-width:760px){
-      .topseries-hero{min-height:320px}
-      .topseries-hero-inner{min-height:320px;gap:34px;padding:26px 22px 32px}
-      .topseries-hero-top{align-items:flex-start;flex-direction:column}
+      .topseries-hero{min-height:240px}
+      .topseries-hero-inner{min-height:240px;gap:20px;padding:20px 20px 24px}
       .topseries-back{min-height:34px;padding:0 13px;font-size:13px}
       .topseries-title{font-size:clamp(40px,14vw,64px);line-height:1.04}
       .topseries-title strong{margin-top:4px}
-      .topseries-sub{font-size:13px;line-height:1.65}
       .series-accordion summary{align-items:flex-start;flex-direction:column;gap:8px;padding:14px 16px;font-size:15px}
       .series-accordion summary::after{position:absolute;right:14px;top:14px;width:28px;height:28px}
       .series-summary-label{padding-right:42px}
@@ -93,12 +88,9 @@
       <div class="topseries-hero-inner">
         <div class="topseries-hero-top">
           <a href="../../" class="topseries-back">← メインページに戻る</a>
-          <span class="topseries-tag">頂上戦記録</span>
         </div>
         <div class="topseries-hero-copy">
-          <p class="topseries-eyebrow">Tournament Series Archive</p>
           <h1 class="topseries-title">バトグラ頂上戦<strong>#1〜#9</strong></h1>
-          <p class="topseries-sub">2025 Sep–2026 Jan｜全9大会の優勝者・スコアボード・記録をまとめています。</p>
         </div>
       </div>
     </header>
