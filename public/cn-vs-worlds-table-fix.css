@@ -303,7 +303,7 @@ html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell >
 }
 
 html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) main.page-shell > header.hero.archive-hero .title-line {
-  width: 220px !important;
+  width: 400px !important;
 }
 
 @media (max-width: 760px) {
