@@ -97,91 +97,93 @@ body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukU
   margin-top: 0;
 }
 
+/* Restore the Players heading and the original closed accordion. */
+body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) .overview-subsection:last-child > .mini-section-title {
+  display: block !important;
+}
+
 body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) .players-details {
-  width: 100% !important;
-  margin: 0 !important;
-  overflow: visible !important;
-  background: transparent !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
+  width: calc(100% - 28px) !important;
+  margin: 0 auto !important;
+  overflow: hidden !important;
+  background: #fffaf2 !important;
+  border: 1px solid rgba(24,33,40,.12) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-soft) !important;
 }
 
 body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) .players-details::before {
-  content: "出場選手：";
-  display: block;
-  margin-bottom: 4px;
-  color: #111;
-  font-size: 15px;
-  font-weight: 950;
-}
-
-body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) .players-details > summary {
+  content: none !important;
   display: none !important;
 }
 
-body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) .players-details > .players-details-body {
+body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) .players-details > summary {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 52px;
+  padding: 0 18px;
+}
+
+body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) .players-details:not([open]) > .players-details-body {
+  display: none !important;
+}
+
+body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) .players-details[open] > .players-details-body {
   display: block !important;
-  padding: 0 !important;
-  border: 0 !important;
+  padding: 0 0 16px !important;
+  border-top: 1px solid rgba(24,33,40,.1) !important;
 }
 
 body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) .players-details .table-wrap {
-  width: 100% !important;
-  margin: 0 !important;
-  overflow: visible !important;
+  width: calc(100% - 28px) !important;
+  margin: 0 auto !important;
+  overflow-x: auto !important;
 }
 
 body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) .players-details table {
-  display: block !important;
+  display: table !important;
   width: 100% !important;
-  min-width: 0 !important;
+  min-width: 760px !important;
   margin: 0 !important;
-  border: 0 !important;
-  border-collapse: collapse !important;
-  border-spacing: 0 !important;
+  border-collapse: separate !important;
+  border-spacing: 0 8px !important;
   background: transparent !important;
 }
 
 body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) .players-details thead {
-  display: none !important;
+  display: table-header-group !important;
 }
 
 body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) #players-body {
-  display: grid !important;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 28px;
+  display: table-row-group !important;
 }
 
 body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) #players-body tr {
-  display: grid !important;
-  grid-template-columns: minmax(92px, .7fr) minmax(0, 1.5fr) auto;
-  align-items: center;
-  gap: 10px;
-  padding: 9px 0;
-  border-bottom: 1px solid rgba(24,33,40,.12);
-  box-shadow: none !important;
+  display: table-row !important;
+  box-shadow: var(--shadow-soft) !important;
 }
 
 body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) #players-body td {
-  display: block !important;
-  padding: 0 !important;
-  color: #111 !important;
-  background: transparent !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
+  display: table-cell !important;
+  padding: 12px !important;
+  color: var(--text-primary) !important;
+  background: #fffaf2 !important;
+  border-top: 1px solid rgba(24,33,40,.08) !important;
+  border-bottom: 1px solid rgba(24,33,40,.16) !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) #players-body td:first-child {
   text-align: left !important;
+}
+
+body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) #players-body td.info-cell {
   white-space: normal !important;
 }
 
 body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) .players-details .archive-note {
-  margin: 10px 0 0 !important;
-  color: #111 !important;
-}
-
-@media (max-width: 760px) {
-  body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) #players-body {
-    grid-template-columns: 1fr;
-  }
+  margin: 10px 14px 0 !important;
+  color: var(--text-muted) !important;
 }
