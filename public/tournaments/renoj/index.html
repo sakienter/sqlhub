@@ -57,7 +57,7 @@
     .renoj-title-block{
       position:relative;
       z-index:1;
-      max-width:760px;
+      max-width:900px;
       margin-top:2.4rem;
     }
     .renoj-hero h1{
@@ -68,6 +68,52 @@
       letter-spacing:-.06em;
       line-height:1.08;
       text-shadow:0 10px 22px rgba(3,14,24,.45);
+    }
+    .organizer-meta{
+      display:flex;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:10px 14px;
+      margin-top:1rem;
+    }
+    .organizer-meta p{
+      margin:0;
+      color:rgba(255,247,226,.92);
+      font-size:14px;
+      font-weight:800;
+      line-height:1.6;
+      text-shadow:0 4px 14px rgba(3,14,24,.46);
+    }
+    .organizer-meta p a{
+      color:#fff7e2;
+      font-weight:950;
+      text-decoration:none;
+    }
+    .organizer-meta p a:hover{
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+    .organizer-x-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:34px;
+      padding:0 14px;
+      color:#fff1c8;
+      background:rgba(4,18,23,.42);
+      border:1px solid rgba(255,235,182,.30);
+      border-radius:999px;
+      box-shadow:0 8px 18px rgba(3,14,24,.18);
+      font-size:13px;
+      font-weight:900;
+      text-decoration:none;
+      backdrop-filter:blur(8px);
+      transition:background .18s ease,border-color .18s ease,transform .18s ease;
+    }
+    .organizer-x-link:hover{
+      background:rgba(255,235,182,.16);
+      border-color:rgba(255,235,182,.46);
+      transform:translateY(-1px);
     }
     .plain-copy{
       margin:0 0 1.2rem;
@@ -130,6 +176,8 @@
     @media (max-width:640px){
       .hero.renoj-hero{min-height:300px;border-radius:14px}
       .renoj-hero h1{font-size:clamp(36px,12vw,52px)}
+      .organizer-meta{align-items:flex-start;gap:8px 10px}
+      .organizer-meta p{font-size:13px}
     }
   </style>
 </head>
@@ -139,6 +187,10 @@
       <a class="back-link" href="../../">← Avenge Hubへ戻る</a>
       <div class="renoj-title-block">
         <h1>レノ・ジャクソン杯</h1>
+        <div class="organizer-meta">
+          <p>主催：<a href="https://x.com/nurinuri_hs" target="_blank" rel="noopener">@nurinuri_hs</a>（ぬりっち氏）</p>
+          <a class="organizer-x-link" href="https://x.com/nurinuri_hs" target="_blank" rel="noopener">Xを開く</a>
+        </div>
       </div>
     </header>
 
