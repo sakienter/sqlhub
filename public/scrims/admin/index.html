@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Past Lobby 管理 | Stuntdrake's Avenge!</title>
+  <link rel="stylesheet" href="../../common.css" />
+  <style>
+    .admin-shell{width:min(900px,calc(100% - 32px));margin:0 auto;padding:28px 0 56px}
+    .admin-nav{margin-bottom:18px}
+    .admin-panel{overflow:hidden;background:#fff;border:1px solid rgba(24,33,40,.12);border-radius:18px;box-shadow:0 14px 34px rgba(3,14,24,.10)}
+    .admin-heading{padding:26px 28px;color:#fff;background:#102638}
+    .admin-heading h1{margin:0;font-size:clamp(28px,5vw,42px);font-weight:950;letter-spacing:-.03em}
+    .admin-heading p{margin:10px 0 0;color:rgba(255,255,255,.82);font-size:14px;font-weight:650;line-height:1.7}
+    .admin-body{padding:28px}
+    .admin-form{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .form-field{display:flex;flex-direction:column;gap:8px}
+    .form-field.full{grid-column:1/-1}
+    .form-field label{color:#171b1f;font-size:13px;font-weight:900}
+    .form-field input{width:100%;min-height:46px;padding:0 13px;color:#171b1f;background:#fffaf2;border:1px solid rgba(24,33,40,.18);border-radius:10px;font:inherit;outline:none;transition:border-color .18s ease,box-shadow .18s ease}
+    .form-field input:focus{border-color:#0d7f99;box-shadow:0 0 0 3px rgba(13,127,153,.12)}
+    .form-help{margin:0;color:#66727c;font-size:12px;font-weight:650;line-height:1.6}
+    .admin-actions{grid-column:1/-1;display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:2px}
+    .admin-submit{min-height:44px;padding:0 20px;color:#fff;background:#7f2634;border:0;border-radius:10px;font:inherit;font-size:14px;font-weight:900;cursor:pointer;transition:transform .18s ease,opacity .18s ease}
+    .admin-submit:hover{transform:translateY(-1px)}
+    .admin-submit:disabled{cursor:wait;opacity:.58;transform:none}
+    .admin-status{min-height:22px;margin:0;color:#53616d;font-size:13px;font-weight:750;line-height:1.6}
+    .admin-status.is-success{color:#18633b}
+    .admin-status.is-error{color:#a12638}
+    .registered-section{margin-top:30px;padding-top:26px;border-top:1px solid rgba(24,33,40,.12)}
+    .registered-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+    .registered-header h2{margin:0;color:#171b1f;font-size:22px;font-weight:950}
+    .refresh-button{padding:0;color:#0d667a;background:none;border:0;border-bottom:1px solid rgba(13,102,122,.35);font:inherit;font-size:12px;font-weight:850;cursor:pointer}
+    .admin-list{display:grid;gap:10px}
+    .admin-list-empty{margin:0;padding:18px;color:#53616d;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-radius:10px;font-size:13px;font-weight:700}
+    .admin-lobby-row{display:grid;grid-template-columns:minmax(120px,.35fr) minmax(0,1fr) auto;align-items:center;gap:14px;padding:15px 16px;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-radius:10px}
+    .admin-lobby-date{color:#171b1f;font-size:15px;font-weight:950}
+    .admin-lobby-link{overflow:hidden;color:#0d667a;font-size:12px;font-weight:750;text-overflow:ellipsis;white-space:nowrap}
+    .delete-button{min-height:34px;padding:0 12px;color:#a12638;background:#fff;border:1px solid rgba(161,38,56,.25);border-radius:8px;font:inherit;font-size:12px;font-weight:900;cursor:pointer}
+    .delete-button:disabled{cursor:wait;opacity:.55}
+    @media (max-width:680px){.admin-shell{width:min(100% - 20px,900px);padding-top:16px}.admin-heading,.admin-body{padding:22px 18px}.admin-form{grid-template-columns:1fr}.form-field.full,.admin-actions{grid-column:auto}.admin-lobby-row{grid-template-columns:1fr}.admin-lobby-link{white-space:normal;overflow-wrap:anywhere}.delete-button{justify-self:start}}
+  </style>
+</head>
+<body>
+  <main class="admin-shell">
+    <nav class="admin-nav"><a class="back-link" href="../">← スクリムページへ戻る</a></nav>
+
+    <section class="admin-panel">
+      <header class="admin-heading">
+        <h1>Past Lobby 管理</h1>
+        <p>日付とGoogleスプレッドシートURLを登録すると、スクリムページへカードが自動追加されます。</p>
+      </header>
+
+      <div class="admin-body">
+        <form class="admin-form" data-admin-form>
+          <div class="form-field full">
+            <label for="admin-token">管理用パスワード</label>
+            <input id="admin-token" name="adminToken" type="password" autocomplete="current-password" required />
+            <p class="form-help">Cloudflare Pagesに設定した管理用パスワードを入力してください。このタブを閉じるまで保持されます。</p>
+          </div>
+
+          <div class="form-field">
+            <label for="lobby-date">開催日</label>
+            <input id="lobby-date" name="date" type="date" required />
+          </div>
+
+          <div class="form-field">
+            <label for="spreadsheet-url">スプレッドシートURL</label>
+            <input id="spreadsheet-url" name="spreadsheetUrl" type="url" inputmode="url" placeholder="https://docs.google.com/spreadsheets/..." required />
+          </div>
+
+          <div class="admin-actions">
+            <button class="admin-submit" type="submit">Past Lobbyに追加する</button>
+            <p class="admin-status" data-admin-status aria-live="polite"></p>
+          </div>
+        </form>
+
+        <section class="registered-section">
+          <div class="registered-header">
+            <h2>登録済みロビー</h2>
+            <button class="refresh-button" type="button" data-refresh>再読み込み</button>
+          </div>
+          <div class="admin-list" data-admin-list>
+            <p class="admin-list-empty">読み込んでいます。</p>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="./admin.js" defer></script>
+</body>
+</html>
