@@ -1,0 +1,46 @@
+# Canonical public URLs
+# Old URLs redirect permanently to the new addresses.
+
+/season1 /sq/season1/ 301
+/season1/ /sq/season1/ 301
+/season1/* /sq/season1/:splat 301
+/season2 /sq/season2/ 301
+/season2/ /sq/season2/ 301
+/season2/* /sq/season2/:splat 301
+
+/tournaments/timewalk-dream-match /tournaments/twdm/ 301
+/tournaments/timewalk-dream-match/ /tournaments/twdm/ 301
+/tournaments/timewalk-dream-match/* /tournaments/twdm/:splat 301
+/tournaments/ura-choujousen /tournaments/uratop/ 301
+/tournaments/ura-choujousen/ /tournaments/uratop/ 301
+/tournaments/ura-choujousen/* /tournaments/uratop/:splat 301
+/tournaments/choujousen /tournaments/topseries/ 301
+/tournaments/choujousen/ /tournaments/topseries/ 301
+/tournaments/choujousen/* /tournaments/topseries/:splat 301
+/tournaments/renoj /tournaments/reno/ 301
+/tournaments/renoj/ /tournaments/reno/ 301
+/tournaments/renoj/* /tournaments/reno/:splat 301
+
+# Normalize the new directory-style URLs.
+/sq/season1 /sq/season1/ 301
+/sq/season2 /sq/season2/ 301
+/tournaments/twdm /tournaments/twdm/ 301
+/tournaments/uratop /tournaments/uratop/ 301
+/tournaments/topseries /tournaments/topseries/ 301
+/tournaments/reno /tournaments/reno/ 301
+
+# Serve the existing static files behind the new public URLs.
+/sq/season1/* /season1/:splat 200
+/sq/season2/* /season2/:splat 200
+/tournaments/twdm/* /tournaments/timewalk-dream-match/:splat 200
+/tournaments/uratop/* /tournaments/ura-choujousen/:splat 200
+/tournaments/topseries/* /tournaments/choujousen/:splat 200
+/tournaments/reno/* /tournaments/renoj/:splat 200
+
+# Shared assets referenced relatively from the deeper /sq/ hierarchy.
+/sq/common.css /common.css 200
+/sq/composition-gallery.css /composition-gallery.css 200
+/sq/composition-gallery.js /composition-gallery.js 200
+/sq/admin-tribes.css /admin-tribes.css 200
+/sq/tribewebp/* /tribewebp/:splat 200
+/sq/ / 302
