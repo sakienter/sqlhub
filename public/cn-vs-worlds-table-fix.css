@@ -124,3 +124,46 @@ html body .players-details .player-link {
     grid-row: 1;
   }
 }
+
+/* Ura Choujousen: larger title and Top Series-style left return button. */
+html body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) main.page-shell > header.hero.archive-hero > a.back-link {
+  top: 24px !important;
+  right: auto !important;
+  left: 24px !important;
+  transform: none !important;
+  min-height: 38px !important;
+  padding: 0 15px !important;
+  color: #ddd !important;
+  background: rgba(255,255,255,.06) !important;
+  border: 1px solid rgba(255,255,255,.18) !important;
+  font-weight: 900 !important;
+}
+
+html body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) main.page-shell > header.hero.archive-hero > a.back-link::after {
+  color: #ddd !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+}
+
+html body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) main.page-shell > header.hero.archive-hero > h1 {
+  margin: 8px 0 0 !important;
+  font-size: clamp(52px,7vw,76px) !important;
+  line-height: 1.12 !important;
+  letter-spacing: .035em !important;
+}
+
+@media (max-width: 760px) {
+  html body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) main.page-shell > header.hero.archive-hero > a.back-link {
+    top: 18px !important;
+    left: 14px !important;
+    min-height: 34px !important;
+    padding: 0 13px !important;
+  }
+
+  html body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml"]) main.page-shell > header.hero.archive-hero > h1 {
+    margin-top: 12px !important;
+    font-size: clamp(34px,10vw,48px) !important;
+    letter-spacing: .02em !important;
+    white-space: nowrap !important;
+  }
+}
