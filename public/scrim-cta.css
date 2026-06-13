@@ -1,17 +1,21 @@
-/* Scrim card CTA: text link with underline, not a rounded button. */
-#scrims .scrim-card .card-cta {
+/* Scrim card CTA: plain underlined text, never an enclosed button. */
+html body #scrims .scrim-card .card-cta {
   display: inline-block !important;
   flex: 0 0 auto !important;
+  min-width: 0 !important;
   min-height: 0 !important;
   margin: 0 !important;
-  padding: 0 0 8px !important;
-  color: #7f2634 !important;
-  background: transparent !important;
+  padding: 0 0 7px !important;
+  color: #fff !important;
+  background: none !important;
+  background-color: transparent !important;
   border: 0 !important;
-  border-bottom: 3px solid #7f2634 !important;
+  border-bottom: 3px solid currentColor !important;
   border-radius: 0 !important;
+  outline: 0 !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   font-size: clamp(20px, 2.15vw, 28px) !important;
   font-weight: 950 !important;
   line-height: 1.15 !important;
@@ -20,18 +24,24 @@
   transition: color .18s ease, border-color .18s ease, transform .18s ease !important;
 }
 
-#scrims .scrim-card:hover .card-cta {
-  color: #9a3745 !important;
-  background: transparent !important;
-  border-bottom-color: #9a3745 !important;
+html body #scrims .scrim-card:hover .card-cta,
+html body #scrims .scrim-card:focus-visible .card-cta {
+  color: #fff !important;
+  background: none !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-bottom: 3px solid currentColor !important;
   border-radius: 0 !important;
+  outline: 0 !important;
   box-shadow: none !important;
   text-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   transform: translateX(3px) !important;
 }
 
 @media (max-width: 720px) {
-  #scrims .scrim-card .card-cta {
+  html body #scrims .scrim-card .card-cta {
     padding-bottom: 6px !important;
     font-size: 18px !important;
   }
