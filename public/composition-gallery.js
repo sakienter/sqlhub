@@ -19,6 +19,17 @@
     jp: 'jp'
   };
 
+  const dayOneImagePaths = {
+    Alutemu: './s1day1/Alutemu.webp',
+    MATSURI: './s1day1/MATSURI_page-0001.webp',
+    SeseiSei: './s1day1/SeseiSei_page-0001.webp',
+    Thundurus: './s1day1/Thundurus_page-0001.webp',
+    Yoshiyuki: './yoshiyuki_page-0001.webp',
+    'あれっくす': './s1day1/Alex_page-0001.webp',
+    'ぎゃん': './s1day1/gyan_page-0001.webp',
+    jp: './s1day1/jp_page-0001.webp'
+  };
+
   let selectedPlayer = '';
   let renderTimer = 0;
 
@@ -54,6 +65,7 @@
 
   function imagePathFor(name) {
     const day = getSelectedDayNumber();
+    if (day === 1 && dayOneImagePaths[name]) return dayOneImagePaths[name];
     return `${basePath}/day${day}/${fileBaseName(name)}.jpg`;
   }
 
