@@ -2,18 +2,19 @@
   const root = document.getElementById('composition-gallery');
   if (!root) return;
 
-  const tabs = document.getElementById('composition-player-tabs');
+  const playerTabs = document.getElementById('composition-player-tabs');
   const image = document.getElementById('composition-image');
   const placeholder = document.getElementById('composition-placeholder');
   const openLink = document.getElementById('composition-open-link');
   const mainDayTabs = document.getElementById('day-tabs');
+  const dayTitle = document.getElementById('day-title');
+  const dayPointsBody = document.querySelector('#day-points-table tbody');
   const basePath = root.dataset.basePath || './compositions';
   const isSeasonOne = /\/season1(?:\/|$)/i.test(window.location.pathname);
 
-  ensureDaySwitcherStyles();
-  const compositionDayTabs = ensureDaySwitcher();
+  if (!playerTabs || !image || !placeholder || !openLink) return;
 
-  const knownFileNames = {
+  const playerSlugs = {
     Alutemu: 'alutemu',
     MATSURI: 'matsuri',
     SeseiSei: 'seseisei',
@@ -24,136 +25,13 @@
     jp: 'jp'
   };
 
-  const seasonOneImagePaths = {
-    1: {
-      Alutemu: './s1day1/Alutemu.webp',
-      MATSURI: './s1day1/MATSURI_page-0001.webp',
-      SeseiSei: './s1day1/SeseiSei_page-0001.webp',
-      Thundurus: './s1day1/Thundurus_page-0001.webp',
-      Yoshiyuki: './s1day1/yoshiyuki_page-0001.webp',
-      'あれっくす': './s1day1/Alex_page-0001.webp',
-      'ぎゃん': './s1day1/gyan_page-0001.webp',
-      jp: './s1day1/jp_page-0001.webp'
-    },
-    2: {
-      Alutemu: './s1day2/sq2al_page-0001.webp',
-      MATSURI: './s1day2/sq2ma_page-0001.webp',
-      SeseiSei: './s1day2/sse_page-0001.webp',
-      Thundurus: './s1day2/sq2thun_page-0001.webp',
-      Yoshiyuki: './s1day2/sq2yo_page-0001.webp',
-      'あれっくす': './s1day2/sq2are_page-0001.webp',
-      'ぎゃん': './s1day2/sq2gya_page-0001.webp',
-      jp: './s1day2/sq2jp_page-0001.webp'
-    },
-    3: {
-      Alutemu: './s1day3/01al.webp',
-      MATSURI: './s1day3/06ma.webp',
-      SeseiSei: './s1day3/03se.webp',
-      Thundurus: './s1day3/thun.webp',
-      Yoshiyuki: './s1day3/04yo.webp',
-      'あれっくす': './s1day3/02alex.webp',
-      'ぎゃん': './s1day3/05gya.webp',
-      jp: './s1day3/08jp.webp'
-    },
-    4: {
-      Alutemu: './s1day4/alit.webp',
-      MATSURI: './s1day4/ma.webp',
-      SeseiSei: './s1day4/SESE.webp',
-      Thundurus: './s1day4/thun.webp',
-      Yoshiyuki: './s1day4/yoshiyuki.webp',
-      'あれっくす': './s1day4/alex.webp',
-      'ぎゃん': './s1day4/gyahs.webp',
-      jp: './s1day4/jp.webp'
-    }
-  };
-
   const imageCache = new Map();
   let selectedPlayer = '';
-  let renderTimer = 0;
-  let displayRequestId = 0;
   let displayedDayNumber = 0;
+  let displayRequestId = 0;
+  let renderTimer = 0;
 
-  function ensureDaySwitcherStyles() {
-    if (document.getElementById('composition-day-switcher-styles')) return;
-
-    const style = document.createElement('style');
-    style.id = 'composition-day-switcher-styles';
-    style.textContent = `
-      .composition-day-switcher {
-        margin: 0 0 16px;
-        padding: 12px 14px 14px;
-        background: rgba(255, 250, 242, 0.66);
-        border: 1px solid rgba(24, 33, 40, 0.12);
-        border-radius: var(--radius-md);
-      }
-
-      .composition-day-label {
-        margin: 0 0 9px;
-        color: var(--text-secondary);
-        font-size: 12px;
-        font-weight: 900;
-        letter-spacing: 0.02em;
-        text-align: center;
-      }
-
-      .composition-day-tabs {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 8px;
-      }
-
-      .composition-day-tab {
-        appearance: none;
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 3px;
-        min-height: 48px;
-        padding: 7px 10px;
-        color: var(--text-secondary);
-        background: #fffaf2;
-        border: 1px solid rgba(24, 33, 40, 0.16);
-        border-radius: var(--radius-sm);
-        font-family: var(--font);
-        cursor: pointer;
-        transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-      }
-
-      .composition-day-tab:hover {
-        color: var(--crimson-dark);
-        background: rgba(201, 75, 75, 0.06);
-        border-color: rgba(201, 75, 75, 0.34);
-      }
-
-      .composition-day-tab.active {
-        color: var(--crimson-dark);
-        background: rgba(201, 75, 75, 0.1);
-        border-color: rgba(201, 75, 75, 0.42);
-        box-shadow: inset 0 -3px 0 var(--crimson);
-      }
-
-      .composition-day-tab .tab-main {
-        font-size: 14px;
-        font-weight: 900;
-        line-height: 1.1;
-      }
-
-      .composition-day-tab .tab-sub {
-        font-size: 11px;
-        font-weight: 700;
-        line-height: 1.1;
-        opacity: 0.82;
-      }
-
-      @media (max-width: 760px) {
-        .composition-day-tabs {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-      }
-    `;
-    document.head.appendChild(style);
-  }
+  const compositionDayTabs = ensureDaySwitcher();
 
   function ensureDaySwitcher() {
     const existing = document.getElementById('composition-day-tabs');
@@ -172,87 +50,77 @@
     label.className = 'composition-day-label';
     label.textContent = 'DAY / 開催日';
 
-    const dayTabs = document.createElement('div');
-    dayTabs.id = 'composition-day-tabs';
-    dayTabs.className = 'composition-day-tabs';
-    dayTabs.setAttribute('aria-label', 'ページ全体のDAY切り替え');
+    const tabs = document.createElement('div');
+    tabs.id = 'composition-day-tabs';
+    tabs.className = 'composition-day-tabs';
+    tabs.setAttribute('aria-label', 'ページ全体のDAY切り替え');
 
-    switcher.append(label, dayTabs);
+    switcher.append(label, tabs);
+    if (note) note.insertAdjacentElement('afterend', switcher);
+    else body.prepend(switcher);
 
-    if (note) {
-      note.insertAdjacentElement('afterend', switcher);
-    } else {
-      body.prepend(switcher);
-    }
-
-    return dayTabs;
+    return tabs;
   }
 
   function getMainDayButtons() {
     return Array.from(document.querySelectorAll('#day-tabs .day-tab'));
   }
 
-  function createDayTabButton(sourceButton, index) {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'composition-day-tab';
-    button.dataset.dayIndex = String(index);
-
-    const main = document.createElement('span');
-    main.className = 'tab-main';
-    main.textContent = sourceButton.querySelector('.tab-main')?.textContent?.trim() || `DAY${index + 1}`;
-
-    const sub = document.createElement('span');
-    sub.className = 'tab-sub';
-    sub.textContent = sourceButton.querySelector('.tab-sub')?.textContent?.trim() || '';
-
-    button.append(main, sub);
-    button.addEventListener('click', () => {
-      const target = getMainDayButtons()[index];
-      if (!target) return;
-      target.click();
-      window.requestAnimationFrame(syncCompositionDayTabs);
-    });
-
-    return button;
+  function getSelectedDayNumber() {
+    const activeLabel = document.querySelector('#day-tabs .day-tab.active .tab-main')?.textContent;
+    const source = activeLabel || dayTitle?.textContent || 'DAY1';
+    const match = source.match(/DAY\s*(\d+)/i);
+    return match ? Number(match[1]) : 1;
   }
 
-  function renderCompositionDayTabs() {
+  function renderDaySwitcher() {
     if (!compositionDayTabs) return;
 
     const sourceButtons = getMainDayButtons();
     const switcher = compositionDayTabs.closest('.composition-day-switcher');
     if (switcher) switcher.hidden = sourceButtons.length === 0;
 
-    compositionDayTabs.innerHTML = '';
+    compositionDayTabs.replaceChildren();
+
     sourceButtons.forEach((sourceButton, index) => {
-      compositionDayTabs.appendChild(createDayTabButton(sourceButton, index));
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'composition-day-tab';
+      button.dataset.dayIndex = String(index);
+
+      const main = document.createElement('span');
+      main.className = 'tab-main';
+      main.textContent = sourceButton.querySelector('.tab-main')?.textContent?.trim() || `DAY${index + 1}`;
+
+      const sub = document.createElement('span');
+      sub.className = 'tab-sub';
+      sub.textContent = sourceButton.querySelector('.tab-sub')?.textContent?.trim() || '';
+
+      button.append(main, sub);
+      button.addEventListener('click', () => {
+        getMainDayButtons()[index]?.click();
+        window.requestAnimationFrame(syncDaySwitcher);
+      });
+
+      compositionDayTabs.appendChild(button);
     });
-    syncCompositionDayTabs();
+
+    syncDaySwitcher();
   }
 
-  function syncCompositionDayTabs() {
+  function syncDaySwitcher() {
     if (!compositionDayTabs) return;
 
     const activeIndex = getMainDayButtons().findIndex(button => button.classList.contains('active'));
     compositionDayTabs.querySelectorAll('.composition-day-tab').forEach((button, index) => {
       const active = index === activeIndex;
       button.classList.toggle('active', active);
-      button.setAttribute('aria-pressed', active ? 'true' : 'false');
+      button.setAttribute('aria-pressed', String(active));
     });
   }
 
-  function getSelectedDayNumber() {
-    const activeTab = document.querySelector('#day-tabs .day-tab.active .tab-main');
-    const dayTitle = document.getElementById('day-title');
-    const source = activeTab?.textContent || dayTitle?.textContent || 'DAY1';
-    const match = source.match(/DAY\s*(\d+)/i);
-    return match ? Number(match[1]) : 1;
-  }
-
   function getPlayers() {
-    const rows = document.querySelectorAll('#day-points-table tbody tr');
-    return Array.from(rows)
+    return Array.from(document.querySelectorAll('#day-points-table tbody tr'))
       .map(row => {
         const cell = row.querySelector('.name-cell') || row.cells?.[0];
         return cell?.textContent?.trim() || '';
@@ -261,7 +129,7 @@
   }
 
   function fileBaseName(name) {
-    if (knownFileNames[name]) return knownFileNames[name];
+    if (playerSlugs[name]) return playerSlugs[name];
 
     const asciiSlug = name
       .normalize('NFKC')
@@ -274,9 +142,9 @@
 
   function imagePathFor(name) {
     const day = getSelectedDayNumber();
-    const seasonOnePath = seasonOneImagePaths[day]?.[name];
-    if (isSeasonOne && seasonOnePath) return seasonOnePath;
-    return `${basePath}/day${day}/${fileBaseName(name)}.jpg`;
+    const slug = fileBaseName(name);
+    if (isSeasonOne) return `./s1day${day}/${slug}.webp`;
+    return `${basePath}/day${day}/${slug}.jpg`;
   }
 
   function setPlaceholder(message) {
@@ -329,20 +197,24 @@
   }
 
   function preloadPlayers(players) {
-    players.forEach(name => {
-      loadImage(imagePathFor(name)).catch(() => {});
-    });
+    players.forEach(name => loadImage(imagePathFor(name)).catch(() => {}));
   }
 
   function displayImage(name, src) {
     image.src = src;
-    image.alt = `${document.getElementById('day-title')?.textContent || ''} ${name} 構成メモ`;
+    image.alt = `${dayTitle?.textContent || ''} ${name} 構成メモ`;
     image.hidden = false;
     placeholder.hidden = true;
     openLink.href = src;
     openLink.hidden = false;
     displayedDayNumber = getSelectedDayNumber();
     root.removeAttribute('aria-busy');
+  }
+
+  function updateActivePlayerTab() {
+    playerTabs.querySelectorAll('.composition-player-tab').forEach(button => {
+      button.classList.toggle('active', button.dataset.player === selectedPlayer);
+    });
   }
 
   function showPlayer(name) {
@@ -352,15 +224,13 @@
     }
 
     selectedPlayer = name;
-    tabs.querySelectorAll('.composition-player-tab').forEach(button => {
-      button.classList.toggle('active', button.dataset.player === name);
-    });
+    updateActivePlayerTab();
 
     const src = imagePathFor(name);
     const cached = imageCache.get(src);
     const requestId = ++displayRequestId;
     const selectedDayNumber = getSelectedDayNumber();
-    const isChangingDay = displayedDayNumber > 0 && displayedDayNumber !== selectedDayNumber;
+    const changingDay = displayedDayNumber > 0 && displayedDayNumber !== selectedDayNumber;
 
     if (cached?.status === 'loaded') {
       displayImage(name, src);
@@ -369,9 +239,7 @@
 
     root.setAttribute('aria-busy', 'true');
 
-    // 同じDAY内の選手切り替えでは現在の画像を残したまま裏側で読み込む。
-    // DAYを変えた場合は、別日の画像が残らないようにプレースホルダーへ切り替える。
-    if (isChangingDay || image.hidden || !image.getAttribute('src')) {
+    if (changingDay || image.hidden || !image.getAttribute('src')) {
       image.hidden = true;
       placeholder.textContent = '画像を準備中です。';
       placeholder.hidden = false;
@@ -391,76 +259,67 @@
       });
   }
 
-  function renderGallery() {
-    renderCompositionDayTabs();
+  function renderPlayerTabs(players) {
+    playerTabs.replaceChildren();
 
-    const players = getPlayers();
-
-    // 結果データが表示された時点で、そのDAYの画像を先読みする。
-    preloadPlayers(players);
-
-    if (!root.open) return;
-
-    tabs.innerHTML = '';
-
-    if (!players.length) {
-      selectedPlayer = '';
-      setPlaceholder('結果データの読み込み後に選手一覧が表示されます。');
-      return;
-    }
-
-    players.forEach((name, index) => {
+    players.forEach(name => {
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'composition-player-tab';
       button.dataset.player = name;
       button.textContent = name;
       button.addEventListener('click', () => showPlayer(name));
-      tabs.appendChild(button);
-
-      if (index === 0 && !players.includes(selectedPlayer)) selectedPlayer = name;
+      playerTabs.appendChild(button);
     });
+  }
+
+  function renderGallery() {
+    renderDaySwitcher();
+
+    const players = getPlayers();
+    preloadPlayers(players);
+
+    if (!root.open) return;
+
+    if (!players.length) {
+      selectedPlayer = '';
+      playerTabs.replaceChildren();
+      setPlaceholder('結果データの読み込み後に選手一覧が表示されます。');
+      return;
+    }
 
     if (!players.includes(selectedPlayer)) selectedPlayer = players[0];
+    renderPlayerTabs(players);
     showPlayer(selectedPlayer);
   }
 
-  function scheduleRender(resetPlayer = false) {
+  function scheduleRender() {
     window.clearTimeout(renderTimer);
-    renderTimer = window.setTimeout(() => {
-      if (resetPlayer) selectedPlayer = '';
-      renderGallery();
-    }, 40);
+    renderTimer = window.setTimeout(renderGallery, 40);
   }
 
   root.addEventListener('toggle', () => {
-    if (root.open) scheduleRender(false);
+    if (root.open) scheduleRender();
   });
 
   document.addEventListener('click', event => {
-    if (event.target.closest('#day-tabs .day-tab')) scheduleRender(true);
+    if (event.target.closest('#day-tabs .day-tab')) scheduleRender();
   });
 
-  const observerTargets = [
-    document.getElementById('day-title'),
-    document.querySelector('#day-points-table tbody')
-  ].filter(Boolean);
-
-  const observer = new MutationObserver(() => scheduleRender(true));
-  observerTargets.forEach(target => observer.observe(target, {
-    childList: true,
-    subtree: true,
-    characterData: true
-  }));
+  const contentObserver = new MutationObserver(scheduleRender);
+  [dayTitle, dayPointsBody].filter(Boolean).forEach(target => {
+    contentObserver.observe(target, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    });
+  });
 
   if (mainDayTabs) {
     const dayTabsObserver = new MutationObserver(mutations => {
       const structureChanged = mutations.some(mutation => mutation.type === 'childList');
-      if (structureChanged) {
-        renderCompositionDayTabs();
-      } else {
-        syncCompositionDayTabs();
-      }
+      if (structureChanged) renderDaySwitcher();
+      else syncDaySwitcher();
     });
 
     dayTabsObserver.observe(mainDayTabs, {
@@ -471,5 +330,5 @@
     });
   }
 
-  scheduleRender(false);
+  scheduleRender();
 })();
