@@ -1,0 +1,30 @@
+{
+  "DAY1": {
+    "GAME1": { "available": [], "unavailable": [] },
+    "GAME2": { "available": [], "unavailable": [] },
+    "GAME3": { "available": [], "unavailable": [] },
+    "GAME4": { "available": [], "unavailable": [] },
+    "GAME5": { "available": [], "unavailable": [] }
+  },
+  "DAY2": {
+    "GAME1": { "available": [], "unavailable": [] },
+    "GAME2": { "available": [], "unavailable": [] },
+    "GAME3": { "available": [], "unavailable": [] },
+    "GAME4": { "available": [], "unavailable": [] },
+    "GAME5": { "available": [], "unavailable": [] }
+  },
+  "DAY3": {
+    "GAME1": { "available": [], "unavailable": [] },
+    "GAME2": { "available": [], "unavailable": [] },
+    "GAME3": { "available": [], "unavailable": [] },
+    "GAME4": { "available": [], "unavailable": [] },
+    "GAME5": { "available": [], "unavailable": [] }
+  },
+  "DAY4": {
+    "GAME1": { "available": [], "unavailable": [] },
+    "GAME2": { "available": [], "unavailable": [] },
+    "GAME3": { "available": [], "unavailable": [] },
+    "GAME4": { "available": [], "unavailable": [] },
+    "GAME5": { "available": [], "unavailable": [] }
+  }
+}
