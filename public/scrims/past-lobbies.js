@@ -1,6 +1,31 @@
 const PAST_LOBBIES_API_URL = '/api/scrims/past-lobbies';
 const PAST_LOBBIES_FALLBACK_URL = './past-lobbies.json';
 
+function loadScrimShareControls() {
+  if (document.querySelector('script[src*="/tournament-share.js"]')) return;
+
+  const style = document.createElement('style');
+  style.textContent = `
+    .scrim-hero .tournament-share-strip--top {
+      top: 2rem !important;
+      right: calc(2rem + 48px) !important;
+    }
+
+    @media (max-width: 640px) {
+      .scrim-hero .tournament-share-strip--top {
+        top: 1.35rem !important;
+        right: calc(1.35rem + 42px) !important;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+
+  const script = document.createElement('script');
+  script.src = '/tournament-share.js?v=20260614-scrim';
+  script.defer = true;
+  document.body.appendChild(script);
+}
+
 function parseLobbyDate(value) {
   if (typeof value !== 'string') return null;
   const match = value.trim().match(/^(\d{4})-(\d{2})-(\d{2})$/);
@@ -111,4 +136,5 @@ async function renderPastLobbies() {
   }
 }
 
+loadScrimShareControls();
 renderPastLobbies();
