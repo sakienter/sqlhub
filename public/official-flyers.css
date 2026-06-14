@@ -1,0 +1,54 @@
+.official-flyer-block {
+  margin: 0 0 26px;
+  padding: 0 0 24px;
+  border-bottom: 1px solid rgba(24, 33, 40, .12);
+}
+
+.official-flyer-title {
+  margin: 0 0 14px;
+  color: var(--text-primary, #182128);
+  font-size: 15px;
+  font-weight: 950;
+  line-height: 1.5;
+}
+
+.official-flyer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 138px));
+  justify-content: start;
+  gap: 12px;
+}
+
+.official-flyer-item {
+  display: block;
+  overflow: hidden;
+  background: #f4f1eb;
+  border: 1px solid rgba(24, 33, 40, .14);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(3, 14, 24, .08);
+  text-decoration: none;
+}
+
+.official-flyer-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 196px;
+  object-fit: contain;
+}
+
+.official-flyer-item:hover {
+  border-color: rgba(24, 33, 40, .28);
+  box-shadow: 0 7px 16px rgba(3, 14, 24, .12);
+}
+
+@media (max-width: 720px) {
+  .official-flyer-grid {
+    grid-template-columns: repeat(2, minmax(0, 132px));
+    gap: 10px;
+  }
+
+  .official-flyer-item img {
+    max-height: 188px;
+  }
+}
