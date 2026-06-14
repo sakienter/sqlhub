@@ -1,0 +1,73 @@
+name: Merge twdm Archive sections
+
+on:
+  push:
+    paths:
+      - '.github/workflows/merge-twdm-archive.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  merge-archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Merge Archive cards
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('public/tournaments/twdm/index.html')
+          text = path.read_text(encoding='utf-8')
+
+          marker = '<section class="score-card"><div class="section-title">Archive</div>'
+          positions = []
+          start = 0
+          while True:
+              pos = text.find(marker, start)
+              if pos == -1:
+                  break
+              positions.append(pos)
+              start = pos + len(marker)
+
+          if len(positions) < 2:
+              raise SystemExit(f'Expected two Archive sections, found {len(positions)}.')
+
+          first_start, second_start = positions[0], positions[1]
+          footer_start = text.find('<footer class="footer-note"', second_start)
+          if footer_start == -1:
+              raise SystemExit('Footer marker was not found.')
+
+          first_section = text[first_start:second_start]
+          close_marker = '</div></section>'
+          close_pos = first_section.rfind(close_marker)
+          if close_pos == -1:
+              raise SystemExit('Could not find the closing tag of the first Archive section.')
+
+          flyer_inner = '''<section class="twdm-flyer-block" aria-labelledby="official-flyers-title"><h2 class="twdm-flyer-heading" id="official-flyers-title">公式フライヤー</h2><div class="twdm-flyer-grid"><a class="twdm-flyer-link" href="twdmf/twdmf1.webp" target="_blank" rel="noopener"><img class="twdm-flyer-image" src="twdmf/twdmf1.webp" alt="時渡りドリームマッチ 公式フライヤー 1" loading="lazy"></a><a class="twdm-flyer-link" href="twdmf/twdmf2.webp" target="_blank" rel="noopener"><img class="twdm-flyer-image" src="twdmf/twdmf2.webp" alt="時渡りドリームマッチ 公式フライヤー 2" loading="lazy"></a><a class="twdm-flyer-link" href="twdmf/twdmf3.webp" target="_blank" rel="noopener"><img class="twdm-flyer-image" src="twdmf/twdmf3.webp" alt="時渡りドリームマッチ 公式フライヤー 3" loading="lazy"></a><a class="twdm-flyer-link" href="twdmf/twdmf4.webp" target="_blank" rel="noopener"><img class="twdm-flyer-image" src="twdmf/twdmf4.webp" alt="時渡りドリームマッチ 公式フライヤー 4" loading="lazy"></a></div></section>'''
+
+          first_section = first_section[:close_pos] + flyer_inner + first_section[close_pos:]
+          text = text[:first_start] + first_section + text[footer_start:]
+
+          text = text.replace(
+              '.twdm-flyer-block{text-align:center}',
+              '.twdm-flyer-block{margin-top:28px;padding-top:24px;border-top:1px solid rgba(24,33,40,.1);text-align:center}',
+              1,
+          )
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Commit merged Archive and remove workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm --ignore-unmatch .github/workflows/merge-twdm-archive.yml
+          git add public/tournaments/twdm/index.html
+          git commit -m "Merge twdm Archive sections"
+          git push origin HEAD:main
