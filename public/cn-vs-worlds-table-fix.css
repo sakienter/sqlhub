@@ -326,3 +326,32 @@ html body:has(a[href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWze
   content: "参加形式：主催者が招待した選手による招待制の大会として開催されました。";
   display: list-item;
 }
+
+/* Timewalk Dream Match: connect the two Archive cards into one visual panel. */
+html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) .score-card:has(+ .score-card .twdm-flyer-block) {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 0 !important;
+  border-bottom: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) .score-card:has(.twdm-flyer-block) {
+  position: relative;
+  z-index: 1;
+  margin-top: -1px !important;
+  border-top: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+}
+
+html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) .score-card:has(.twdm-flyer-block) > .section-title {
+  display: none !important;
+}
+
+html body:has(a[href="https://tonamel.com/competition/cC1Zi"]) .score-card:has(.twdm-flyer-block) > .section-body {
+  padding-top: 26px !important;
+  border-top: 1px solid rgba(24,33,40,.10) !important;
+}
