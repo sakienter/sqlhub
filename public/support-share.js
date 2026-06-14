@@ -6,7 +6,7 @@
   const canonical = document.querySelector('link[rel="canonical"]')?.href;
   const pageUrl = canonical || window.location.href;
   const pageTitle = document.title;
-  const supportUrl = section.dataset.supportUrl?.trim();
+  const supportUrl = section.dataset.supportUrl?.trim() || 'https://www.buymeacoffee.com/sakienter';
 
   container.innerHTML = `
     <div class="support-share-buttons" aria-label="サイトの応援と共有">
@@ -24,11 +24,10 @@
   };
 
   container.querySelector('[data-support-button]')?.addEventListener('click', () => {
-    if (supportUrl) {
-      window.open(supportUrl, '_blank', 'noopener,noreferrer');
-      return;
+    const popup = window.open(supportUrl, '_blank', 'noopener,noreferrer');
+    if (!popup) {
+      setStatus('応援ページを開けませんでした。ポップアップの許可設定をご確認ください。');
     }
-    setStatus('コーヒーで応援のリンクは現在準備中です。');
   });
 
   container.querySelector('[data-x-share]')?.addEventListener('click', () => {
