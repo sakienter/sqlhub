@@ -1,54 +1,41 @@
-.official-flyer-block {
-  margin: 0 0 26px;
-  padding: 0 0 24px;
-  border-bottom: 1px solid rgba(24, 33, 40, .12);
-}
-
-.official-flyer-title {
-  margin: 0 0 14px;
+body:has(a[href="https://tonamel.com/competition/cC1Zi"]) .score-card:has(> .section-title.green) > .section-body::before,
+body:has(a[href*="2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy"]) .score-card:has(> .section-title.green) > .section-body::before {
+  content: "公式フライヤー";
+  display: block;
+  box-sizing: border-box;
+  height: 238px;
+  margin: 0 0 24px;
+  padding: 0 0 20px;
   color: var(--text-primary, #182128);
+  border-bottom: 1px solid rgba(24, 33, 40, .12);
   font-size: 15px;
   font-weight: 950;
   line-height: 1.5;
+  background-repeat: no-repeat;
+  background-size: 132px auto;
+  background-position: 0 38px, 146px 38px, 292px 38px, 438px 38px;
 }
 
-.official-flyer-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 138px));
-  justify-content: start;
-  gap: 12px;
+body:has(a[href="https://tonamel.com/competition/cC1Zi"]) .score-card:has(> .section-title.green) > .section-body::before {
+  background-image:
+    url('/tournaments/twdm/twdmf/twdmf1.webp'),
+    url('/tournaments/twdm/twdmf/twdmf2.webp'),
+    url('/tournaments/twdm/twdmf/twdmf3.webp'),
+    url('/tournaments/twdm/twdmf/twdmf4.webp');
 }
 
-.official-flyer-item {
-  display: block;
-  overflow: hidden;
-  background: #f4f1eb;
-  border: 1px solid rgba(24, 33, 40, .14);
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(3, 14, 24, .08);
-  text-decoration: none;
-}
-
-.official-flyer-item img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 196px;
-  object-fit: contain;
-}
-
-.official-flyer-item:hover {
-  border-color: rgba(24, 33, 40, .28);
-  box-shadow: 0 7px 16px rgba(3, 14, 24, .12);
+body:has(a[href*="2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy"]) .score-card:has(> .section-title.green) > .section-body::before {
+  background-image:
+    url('/tournaments/uratop/uratopf/uratopf1.webp'),
+    url('/tournaments/uratop/uratopf/uratopf2.webp'),
+    url('/tournaments/uratop/uratopf/uratopf3.webp');
 }
 
 @media (max-width: 720px) {
-  .official-flyer-grid {
-    grid-template-columns: repeat(2, minmax(0, 132px));
-    gap: 10px;
-  }
-
-  .official-flyer-item img {
-    max-height: 188px;
+  body:has(a[href="https://tonamel.com/competition/cC1Zi"]) .score-card:has(> .section-title.green) > .section-body::before,
+  body:has(a[href*="2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy"]) .score-card:has(> .section-title.green) > .section-body::before {
+    height: 426px;
+    background-size: 128px auto;
+    background-position: 0 38px, 140px 38px, 0 226px, 140px 226px;
   }
 }
