@@ -27,12 +27,6 @@
         <span class="support-button-label">リンクをコピーする</span>
         <span class="support-button-tail" aria-hidden="true">✓</span>
       </button>
-
-      <button type="button" class="support-button button-bookmark" data-bookmark-button>
-        <span class="support-button-icon" aria-hidden="true">▱</span>
-        <span class="support-button-label">ブックマークに追加する</span>
-        <span class="support-button-tail" aria-hidden="true">+</span>
-      </button>
     </div>
     <p class="support-share-status" data-share-status aria-live="polite"></p>
   `;
@@ -125,11 +119,5 @@
     } catch {
       setStatus('リンクをコピーできませんでした。アドレスバーからコピーしてください。');
     }
-  });
-
-  container.querySelector('[data-bookmark-button]')?.addEventListener('click', () => {
-    const platform = navigator.userAgentData?.platform || navigator.platform || '';
-    const shortcut = /mac|iphone|ipad|ipod/i.test(platform) ? 'Command（⌘）+ D' : 'Ctrl + D';
-    window.alert(`このページをブックマークに追加するには、キーボードで ${shortcut} を押してください。`);
   });
 })();
