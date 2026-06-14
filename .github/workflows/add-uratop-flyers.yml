@@ -1,0 +1,51 @@
+name: Add uratop official flyers
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-uratop-flyers.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-page:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Add official flyers to Archive
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('public/tournaments/uratop/index.html')
+          text = path.read_text(encoding='utf-8')
+
+          css_marker = '.flyer-grid{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}'
+          css = '''.archive-content{display:grid;gap:26px}.flyer-block{text-align:center}.flyer-heading{margin:0 0 16px;color:var(--text-primary);font-size:15px;font-weight:950}.flyer-grid{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}.flyer-link{display:block;width:min(28vw,160px);min-width:110px;overflow:hidden;border:1px solid rgba(24,33,40,.12);border-radius:8px;background:#f5f1e9;box-shadow:var(--shadow-soft);transition:transform .18s ease,box-shadow .18s ease}.flyer-link:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(24,33,40,.14)}.flyer-image{display:block;width:100%;height:auto;object-fit:contain}.archive-spreadsheet{padding-top:22px;border-top:1px solid rgba(24,33,40,.1)}@media(max-width:560px){.flyer-grid{gap:10px}.flyer-link{width:min(42vw,150px)}}'''
+          if css_marker not in text:
+              text = text.replace('\n  </style>', css + '\n  </style>', 1)
+
+          old = '''    <section class="score-card"><div class="section-title">Spreadsheet</div><div class="section-body spreadsheet-link-panel"><p class="spreadsheet-link-text">大会スプレッドシートはこちらから確認できます。</p><a class="spreadsheet-link-button" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml" target="_blank" rel="noopener">スプレッドシートを開く ↗</a></div></section>'''
+          new = '''    <section class="score-card"><div class="section-title">Archive</div><div class="section-body archive-content"><section class="flyer-block" aria-labelledby="official-flyers-title"><h2 class="flyer-heading" id="official-flyers-title">公式フライヤー</h2><div class="flyer-grid"><a class="flyer-link" href="uratopf/uratopf1.webp" target="_blank" rel="noopener"><img class="flyer-image" src="uratopf/uratopf1.webp" alt="バトグラ【裏】頂上戦 公式フライヤー 1" loading="lazy"></a><a class="flyer-link" href="uratopf/uratopf2.webp" target="_blank" rel="noopener"><img class="flyer-image" src="uratopf/uratopf2.webp" alt="バトグラ【裏】頂上戦 公式フライヤー 2" loading="lazy"></a><a class="flyer-link" href="uratopf/uratopf3.webp" target="_blank" rel="noopener"><img class="flyer-image" src="uratopf/uratopf3.webp" alt="バトグラ【裏】頂上戦 公式フライヤー 3" loading="lazy"></a></div></section><div class="spreadsheet-link-panel archive-spreadsheet"><p class="spreadsheet-link-text">大会スプレッドシートはこちらから確認できます。</p><a class="spreadsheet-link-button" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml" target="_blank" rel="noopener">スプレッドシートを開く ↗</a></div></div></section>'''
+
+          if old in text:
+              text = text.replace(old, new, 1)
+          elif 'id="official-flyers-title"' not in text:
+              raise SystemExit('Spreadsheet section was not found; no changes written.')
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Commit page update and remove one-time workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm --ignore-unmatch .github/workflows/add-uratop-flyers.yml
+          git add public/tournaments/uratop/index.html
+          git commit -m "Add official flyers to uratop Archive"
+          git push origin HEAD:main
