@@ -69,6 +69,26 @@
   line-height: 1.75;
 }
 
+#about .about-column-link {
+  margin: 15px 0 0;
+}
+
+#about .about-column-link a {
+  display: inline-flex;
+  align-items: center;
+  color: #07586e;
+  border-bottom: 1px solid rgba(7, 88, 110, .42);
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+#about .about-column-link a:hover {
+  color: #7f2634;
+  border-color: rgba(127, 38, 52, .62);
+}
+
 #about .contact-text {
   margin-top: 16px;
 }
@@ -125,5 +145,9 @@
   #about .about-contact-copy {
     font-size: 13px;
     line-height: 1.75;
+  }
+
+  #about .about-column-link a {
+    font-size: 12px;
   }
 }
