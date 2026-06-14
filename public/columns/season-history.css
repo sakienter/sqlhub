@@ -38,7 +38,7 @@
 
 .season-table-wrapper {
   width: 100%;
-  overflow-x: auto;
+  overflow: hidden;
   border: 1px solid var(--season-line);
   border-radius: 14px;
   background: var(--season-paper);
@@ -47,18 +47,21 @@
 
 .season-table {
   width: 100%;
-  min-width: 880px;
   border-collapse: collapse;
   table-layout: fixed;
 }
 
 .season-table th,
 .season-table td {
-  padding: 16px 18px;
+  padding: 16px 14px;
   border-bottom: 1px solid var(--season-line);
   text-align: left;
   vertical-align: top;
   line-height: 1.75;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-break: strict;
 }
 
 .season-table th {
@@ -74,18 +77,22 @@
 
 .season-table th:nth-child(1),
 .season-table td:nth-child(1) {
-  width: 105px;
+  width: 12%;
 }
 
 .season-table th:nth-child(2),
 .season-table td:nth-child(2) {
-  width: 125px;
-  white-space: nowrap;
+  width: 15%;
 }
 
 .season-table th:nth-child(3),
 .season-table td:nth-child(3) {
-  width: 230px;
+  width: 27%;
+}
+
+.season-table th:nth-child(4),
+.season-table td:nth-child(4) {
+  width: 46%;
 }
 
 .season-table tbody tr:nth-child(even) {
@@ -102,10 +109,10 @@
 
 .season-number {
   display: inline-flex;
-  min-width: 46px;
+  min-width: 42px;
   align-items: center;
   justify-content: center;
-  padding: 4px 9px;
+  padding: 4px 7px;
   border-radius: 6px;
   background: #e9e3da;
   font-size: 13px;
@@ -137,8 +144,43 @@
 @media (max-width: 700px) {
   .season-table th,
   .season-table td {
-    padding: 13px 14px;
-    font-size: 13px;
+    padding: 11px 7px;
+    font-size: 11.5px;
+    line-height: 1.6;
+  }
+
+  .season-table th:nth-child(1),
+  .season-table td:nth-child(1) {
+    width: 13%;
+  }
+
+  .season-table th:nth-child(2),
+  .season-table td:nth-child(2) {
+    width: 16%;
+  }
+
+  .season-table th:nth-child(3),
+  .season-table td:nth-child(3) {
+    width: 27%;
+  }
+
+  .season-table th:nth-child(4),
+  .season-table td:nth-child(4) {
+    width: 44%;
+  }
+
+  .season-number {
+    min-width: 34px;
+    padding: 3px 4px;
+    font-size: 11px;
+  }
+
+  .current-badge {
+    display: block;
+    width: fit-content;
+    margin-top: 5px;
+    padding: 2px 4px;
+    font-size: 7px;
   }
 
   .season-table-wrapper {
