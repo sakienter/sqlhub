@@ -151,6 +151,249 @@ a {
   margin: 4px 0 0;
 }
 
+.armor-history {
+  --armor-panel: #ffffff;
+  --armor-text: #1e2430;
+  --armor-muted: #647084;
+  --armor-line: #d9e0ea;
+  --armor-regular: #2563eb;
+  --armor-soft-blue: #eaf1ff;
+  --armor-shadow: 0 16px 44px rgba(30, 36, 48, 0.08);
+
+  width: 100%;
+  color: var(--armor-text);
+}
+
+.armor-history-header {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.armor-history-header h2 {
+  margin: 0;
+}
+
+.armor-history .armor-lead {
+  max-width: 680px;
+  margin: 0;
+  color: var(--armor-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.armor-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 28px 0;
+}
+
+.armor-metric {
+  padding: 18px;
+  background: var(--armor-panel);
+  border: 1px solid var(--armor-line);
+  border-radius: 8px;
+  box-shadow: var(--armor-shadow);
+}
+
+.armor-metric span {
+  display: block;
+  color: var(--armor-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.armor-metric strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.armor-section {
+  margin-top: 28px;
+}
+
+.armor-history .armor-section-title {
+  margin: 0 0 12px;
+  color: var(--armor-text);
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.armor-chart-panel,
+.armor-table-wrap {
+  background: var(--armor-panel);
+  border: 1px solid var(--armor-line);
+  border-radius: 8px;
+  box-shadow: var(--armor-shadow);
+  overflow: hidden;
+}
+
+.armor-chart-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px 8px;
+}
+
+.armor-chart-head .armor-section-title {
+  margin: 0;
+}
+
+.armor-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  color: var(--armor-muted);
+  font-size: 13px;
+}
+
+.armor-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+}
+
+.armor-swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--armor-regular);
+}
+
+.armor-chart-scroll {
+  overflow-x: auto;
+  padding: 8px 18px 18px;
+  overscroll-behavior-inline: contain;
+}
+
+.armor-chart-svg {
+  display: block;
+  width: 100%;
+  min-width: 920px;
+  height: auto;
+}
+
+.armor-axis,
+.armor-grid-line {
+  stroke: var(--armor-line);
+  stroke-width: 1;
+}
+
+.armor-tick-label,
+.armor-date-label {
+  fill: var(--armor-muted);
+  font-size: 12px;
+}
+
+.armor-date-label {
+  text-anchor: end;
+}
+
+.armor-line-regular {
+  fill: none;
+  stroke: var(--armor-regular);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.armor-dot-regular {
+  fill: var(--armor-regular);
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+.armor-value-label {
+  fill: var(--armor-text);
+  font-size: 12px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.armor-table-wrap {
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.armor-table {
+  width: 100%;
+  min-width: 820px;
+  border-collapse: collapse;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.armor-table th,
+.armor-table td {
+  padding: 13px 14px;
+  border-bottom: 1px solid var(--armor-line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.armor-table th {
+  background: #eef2f7;
+  color: #334155;
+  font-size: 12px;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.armor-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.armor-table tbody tr:hover {
+  background: #fafcff;
+}
+
+.armor-table .armor-num {
+  width: 96px;
+  text-align: center;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.armor-table .armor-regular-cell {
+  background: var(--armor-soft-blue);
+  color: #1746a2;
+}
+
+.armor-table a {
+  color: #1d4ed8;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.armor-table a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.armor-history .armor-note {
+  margin: 14px 0 0;
+  color: var(--armor-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+@media (max-width: 760px) {
+  .armor-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .armor-chart-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 640px) {
   .memo-page {
     width: min(100% - 32px, 760px);
