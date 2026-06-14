@@ -1,15 +1,16 @@
 name: Merge twdm Archive sections
 
 on:
-  push:
-    paths:
-      - '.github/workflows/merge-twdm-archive.yml'
+  issues:
+    types: [opened]
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   merge-archive:
+    if: github.event.issue.title == '[automation] merge twdm archive'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -66,4 +67,7 @@ jobs:
           git commit -m "Merge twdm Archive sections"
           git push origin HEAD:main
 
-# trigger: 2
+      - name: Close trigger issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue close "${{ github.event.issue.number }}" --comment "Archive sections merged."
