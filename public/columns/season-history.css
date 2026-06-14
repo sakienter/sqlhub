@@ -78,32 +78,27 @@
 
 .season-table th:nth-child(1),
 .season-table td:nth-child(1) {
-  width: 8%;
+  width: 9%;
 }
 
 .season-table th:nth-child(2),
 .season-table td:nth-child(2) {
-  width: 11%;
+  width: 13%;
 }
 
 .season-table th:nth-child(3),
 .season-table td:nth-child(3) {
-  width: 8%;
+  width: 22%;
 }
 
 .season-table th:nth-child(4),
 .season-table td:nth-child(4) {
-  width: 19%;
+  width: 23%;
 }
 
 .season-table th:nth-child(5),
 .season-table td:nth-child(5) {
-  width: 20%;
-}
-
-.season-table th:nth-child(6),
-.season-table td:nth-child(6) {
-  width: 34%;
+  width: 33%;
 }
 
 .season-table tbody tr:nth-child(even) {
@@ -129,11 +124,6 @@
   font-size: 12px;
   font-weight: 800;
   letter-spacing: .04em;
-}
-
-.patch-version {
-  font-weight: 850;
-  font-variant-numeric: tabular-nums;
 }
 
 .patch-note-title {
@@ -213,18 +203,14 @@
   }
 
   .season-table td:nth-child(3)::before {
-    content: "パッチ";
-  }
-
-  .season-table td:nth-child(4)::before {
     content: "テーマ / 名前";
   }
 
-  .season-table td:nth-child(5)::before {
+  .season-table td:nth-child(4)::before {
     content: "パッチノート";
   }
 
-  .season-table td:nth-child(6)::before {
+  .season-table td:nth-child(5)::before {
     content: "主な要素";
   }
 
