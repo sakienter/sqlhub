@@ -9,10 +9,10 @@
   <meta property="og:description" content="Hearthstone Battlegroundsに関するメモを残すページです。" />
   <meta property="og:type" content="article" />
   <link rel="canonical" href="https://stuntdrakesavenge.pages.dev/columns/" />
-  <link rel="stylesheet" href="/columns/column.css?v=20260614-pool-table" />
+  <link rel="stylesheet" href="/columns/column.css?v=20260615-armor-history" />
   <link rel="stylesheet" href="/columns/pool-table.css?v=20260614" />
   <link rel="stylesheet" href="/columns/season-history.css?v=20260615-no-patch-column" />
-<link rel="icon" href="/sutantic.png" type="image/png" />
+  <link rel="icon" href="/sutantic.png" type="image/png" />
 </head>
 <body>
   <main class="memo-page">
@@ -23,6 +23,200 @@
     <header class="memo-header">
       <h1>スタドレのメモ書き</h1>
     </header>
+
+    <article class="memo-entry">
+      <p class="memo-date"><time datetime="2026-06-15">2026年6月15日</time></p>
+
+      <section class="armor-history" aria-labelledby="armor-history-title">
+        <header class="armor-history-header">
+          <h2 id="armor-history-title">アーマー推移まとめ</h2>
+          <p class="armor-lead">2023年12月の追加から2025年12月までの通常アーマーの変化を、パッチごとに整理しました。</p>
+        </header>
+
+        <div class="armor-summary-grid" aria-label="概要">
+          <div class="armor-metric">
+            <span>最新値</span>
+            <strong>5</strong>
+          </div>
+          <div class="armor-metric">
+            <span>最高値</span>
+            <strong>10</strong>
+          </div>
+          <div class="armor-metric">
+            <span>最低値</span>
+            <strong>5</strong>
+          </div>
+        </div>
+
+        <section class="armor-section" aria-labelledby="armor-chart-title">
+          <div class="armor-chart-panel">
+            <div class="armor-chart-head">
+              <h3 class="armor-section-title" id="armor-chart-title">推移グラフ</h3>
+              <div class="armor-legend" aria-label="凡例">
+                <span class="armor-legend-item"><span class="armor-swatch"></span>通常</span>
+              </div>
+            </div>
+            <div class="armor-chart-scroll">
+              <svg class="armor-chart-svg" viewBox="0 0 1040 420" role="img" aria-labelledby="armor-svg-title armor-svg-desc">
+                <title id="armor-svg-title">アーマー推移の折れ線グラフ</title>
+                <desc id="armor-svg-desc">通常アーマーは10で追加され、最新では5になっています。</desc>
+
+                <line class="armor-axis" x1="70" y1="40" x2="70" y2="330"></line>
+                <line class="armor-axis" x1="70" y1="330" x2="990" y2="330"></line>
+
+                <line class="armor-grid-line" x1="70" y1="330" x2="990" y2="330"></line>
+                <line class="armor-grid-line" x1="70" y1="272" x2="990" y2="272"></line>
+                <line class="armor-grid-line" x1="70" y1="214" x2="990" y2="214"></line>
+                <line class="armor-grid-line" x1="70" y1="156" x2="990" y2="156"></line>
+                <line class="armor-grid-line" x1="70" y1="98" x2="990" y2="98"></line>
+                <line class="armor-grid-line" x1="70" y1="40" x2="990" y2="40"></line>
+
+                <text class="armor-tick-label" x="44" y="334">0</text>
+                <text class="armor-tick-label" x="44" y="276">2</text>
+                <text class="armor-tick-label" x="44" y="218">4</text>
+                <text class="armor-tick-label" x="44" y="160">6</text>
+                <text class="armor-tick-label" x="44" y="102">8</text>
+                <text class="armor-tick-label" x="38" y="44">10</text>
+
+                <polyline class="armor-line-regular" points="70,40 153.6,156 237.3,156 320.9,185 404.5,98 488.2,156 571.8,185 655.5,69 739.1,185 822.7,40 906.4,98 990,185"></polyline>
+                <g>
+                  <circle class="armor-dot-regular" cx="70" cy="40" r="5"></circle>
+                  <text class="armor-value-label" x="70" y="28">10</text>
+                  <circle class="armor-dot-regular" cx="153.6" cy="156" r="5"></circle>
+                  <text class="armor-value-label" x="153.6" y="144">6</text>
+                  <circle class="armor-dot-regular" cx="237.3" cy="156" r="5"></circle>
+                  <text class="armor-value-label" x="237.3" y="144">6</text>
+                  <circle class="armor-dot-regular" cx="320.9" cy="185" r="5"></circle>
+                  <text class="armor-value-label" x="320.9" y="173">5</text>
+                  <circle class="armor-dot-regular" cx="404.5" cy="98" r="5"></circle>
+                  <text class="armor-value-label" x="404.5" y="86">8</text>
+                  <circle class="armor-dot-regular" cx="488.2" cy="156" r="5"></circle>
+                  <text class="armor-value-label" x="488.2" y="144">6</text>
+                  <circle class="armor-dot-regular" cx="571.8" cy="185" r="5"></circle>
+                  <text class="armor-value-label" x="571.8" y="173">5</text>
+                  <circle class="armor-dot-regular" cx="655.5" cy="69" r="5"></circle>
+                  <text class="armor-value-label" x="655.5" y="57">9</text>
+                  <circle class="armor-dot-regular" cx="739.1" cy="185" r="5"></circle>
+                  <text class="armor-value-label" x="739.1" y="173">5</text>
+                  <circle class="armor-dot-regular" cx="822.7" cy="40" r="5"></circle>
+                  <text class="armor-value-label" x="822.7" y="28">10</text>
+                  <circle class="armor-dot-regular" cx="906.4" cy="98" r="5"></circle>
+                  <text class="armor-value-label" x="906.4" y="86">8</text>
+                  <circle class="armor-dot-regular" cx="990" cy="185" r="5"></circle>
+                  <text class="armor-value-label" x="990" y="173">5</text>
+                </g>
+
+                <g>
+                  <text class="armor-date-label" transform="translate(70 356) rotate(-45)">2023-12-05</text>
+                  <text class="armor-date-label" transform="translate(153.6 356) rotate(-45)">2023-12-19</text>
+                  <text class="armor-date-label" transform="translate(237.3 356) rotate(-45)">2024-05-14</text>
+                  <text class="armor-date-label" transform="translate(320.9 356) rotate(-45)">2024-05-23</text>
+                  <text class="armor-date-label" transform="translate(404.5 356) rotate(-45)">2024-08-08</text>
+                  <text class="armor-date-label" transform="translate(488.2 356) rotate(-45)">2024-08-20</text>
+                  <text class="armor-date-label" transform="translate(571.8 356) rotate(-45)">2024-12-17</text>
+                  <text class="armor-date-label" transform="translate(655.5 356) rotate(-45)">2025-08-19</text>
+                  <text class="armor-date-label" transform="translate(739.1 356) rotate(-45)">2025-09-29</text>
+                  <text class="armor-date-label" transform="translate(822.7 356) rotate(-45)">2025-10-09</text>
+                  <text class="armor-date-label" transform="translate(906.4 356) rotate(-45)">2025-10-28</text>
+                  <text class="armor-date-label" transform="translate(990 356) rotate(-45)">2025-12-02</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </section>
+
+        <section class="armor-section" aria-labelledby="armor-table-title">
+          <h3 class="armor-section-title" id="armor-table-title">パッチ別一覧</h3>
+          <div class="armor-table-wrap">
+            <table class="armor-table">
+              <thead>
+                <tr>
+                  <th scope="col">日付</th>
+                  <th scope="col">パッチ</th>
+                  <th scope="col">通常</th>
+                  <th scope="col">変更内容</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2023-12-05</td>
+                  <td><a href="https://hearthstone.wiki.gg/wiki/Patch_28.2.0.190416" target="_blank" rel="noopener noreferrer">28.2.0.190416</a></td>
+                  <td class="armor-num armor-regular-cell">10</td>
+                  <td>追加。次回パッチの記述から、追加時点の通常アーマーは10。</td>
+                </tr>
+                <tr>
+                  <td>2023-12-19</td>
+                  <td><a href="https://hearthstone.wiki.gg/wiki/Patch_28.2.3.191554" target="_blank" rel="noopener noreferrer">28.2.3.191554</a></td>
+                  <td class="armor-num armor-regular-cell">6</td>
+                  <td>通常 10 → 6。</td>
+                </tr>
+                <tr>
+                  <td>2024-05-14</td>
+                  <td><a href="https://hearthstone.wiki.gg/wiki/Patch_29.4.0.198933" target="_blank" rel="noopener noreferrer">29.4.0.198933</a></td>
+                  <td class="armor-num armor-regular-cell">6</td>
+                  <td>通常アーマーの変更なし。</td>
+                </tr>
+                <tr>
+                  <td>2024-05-23</td>
+                  <td><a href="https://hearthstone.wiki.gg/wiki/Patch_29.4.2.200097" target="_blank" rel="noopener noreferrer">29.4.2.200097</a></td>
+                  <td class="armor-num armor-regular-cell">5</td>
+                  <td>通常 6 → 5。</td>
+                </tr>
+                <tr>
+                  <td>2024-08-08</td>
+                  <td><a href="https://hearthstone.wiki.gg/wiki/Patch_30.0.3.205031" target="_blank" rel="noopener noreferrer">30.0.3.205031</a></td>
+                  <td class="armor-num armor-regular-cell">8</td>
+                  <td>通常 5 → 8。</td>
+                </tr>
+                <tr>
+                  <td>2024-08-20</td>
+                  <td><a href="https://hearthstone.wiki.gg/wiki/Patch_30.2.0.205267" target="_blank" rel="noopener noreferrer">30.2.0.205267</a></td>
+                  <td class="armor-num armor-regular-cell">6</td>
+                  <td>通常 8 → 6。</td>
+                </tr>
+                <tr>
+                  <td>2024-12-17</td>
+                  <td><a href="https://hearthstone.wiki.gg/wiki/Patch_31.2.2.213852" target="_blank" rel="noopener noreferrer">31.2.2.213852</a></td>
+                  <td class="armor-num armor-regular-cell">5</td>
+                  <td>通常 6 → 5。</td>
+                </tr>
+                <tr>
+                  <td>2025-08-19</td>
+                  <td><a href="https://hearthstone.wiki.gg/wiki/Patch_33.2.2.226642" target="_blank" rel="noopener noreferrer">33.2.2.226642</a></td>
+                  <td class="armor-num armor-regular-cell">9</td>
+                  <td>通常 5 → 9。</td>
+                </tr>
+                <tr>
+                  <td>2025-09-29</td>
+                  <td><a href="https://hearthstone.wiki.gg/wiki/Patch_33.6.0.228587" target="_blank" rel="noopener noreferrer">33.6.0.228587</a></td>
+                  <td class="armor-num armor-regular-cell">5</td>
+                  <td>通常 9 → 5。</td>
+                </tr>
+                <tr>
+                  <td>2025-10-09</td>
+                  <td><a href="https://hearthstone.wiki.gg/wiki/Patch_33.6.2.229543" target="_blank" rel="noopener noreferrer">33.6.2.229543</a></td>
+                  <td class="armor-num armor-regular-cell">10</td>
+                  <td>通常 5 → 10。</td>
+                </tr>
+                <tr>
+                  <td>2025-10-28</td>
+                  <td><a href="https://hearthstone.wiki.gg/wiki/Patch_34.0.0.229984" target="_blank" rel="noopener noreferrer">34.0.0.229984</a></td>
+                  <td class="armor-num armor-regular-cell">8</td>
+                  <td>通常 10 → 8。</td>
+                </tr>
+                <tr>
+                  <td>2025-12-02</td>
+                  <td><a href="https://hearthstone.wiki.gg/wiki/Patch_34.2.0.231720" target="_blank" rel="noopener noreferrer">34.2.0.231720</a></td>
+                  <td class="armor-num armor-regular-cell">5</td>
+                  <td>通常 8 → 5。現時点の最新値。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="armor-note">通常アーマーのみを対象にしています。</p>
+        </section>
+      </section>
+    </article>
 
     <article class="memo-entry">
       <p class="memo-date"><time datetime="2026-06-15">2026年6月15日</time></p>
