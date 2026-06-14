@@ -9,16 +9,36 @@
   const supportUrl = 'https://www.buymeacoffee.com/sakienter';
 
   container.innerHTML = `
-    <div class="support-share-buttons" aria-label="サイトの応援と共有">
-      <button type="button" class="support-share-button" data-support-button>コーヒーで応援</button>
-      <button type="button" class="support-share-button" data-x-share>Xで共有する</button>
-      <button type="button" class="support-share-button" data-copy-link>リンクをコピーする</button>
-      <button type="button" class="support-share-button" data-bookmark-button>ブックマークに追加する</button>
+    <div class="support-actions" aria-label="サイトの応援と共有">
+      <button type="button" class="support-button button-coffee" data-support-button>
+        <span class="support-button-icon" aria-hidden="true">☕</span>
+        <span class="support-button-label">コーヒーで応援</span>
+        <span class="support-button-tail" aria-hidden="true">+</span>
+      </button>
+
+      <button type="button" class="support-button button-x" data-x-share>
+        <span class="support-button-icon" aria-hidden="true">𝕏</span>
+        <span class="support-button-label">Xで共有する</span>
+        <span class="support-button-tail" aria-hidden="true">↗</span>
+      </button>
+
+      <button type="button" class="support-button button-copy" data-copy-link>
+        <span class="support-button-icon" aria-hidden="true">⧉</span>
+        <span class="support-button-label">リンクをコピーする</span>
+        <span class="support-button-tail" aria-hidden="true">✓</span>
+      </button>
+
+      <button type="button" class="support-button button-bookmark" data-bookmark-button>
+        <span class="support-button-icon" aria-hidden="true">▱</span>
+        <span class="support-button-label">ブックマークに追加する</span>
+        <span class="support-button-tail" aria-hidden="true">+</span>
+      </button>
     </div>
     <p class="support-share-status" data-share-status aria-live="polite"></p>
   `;
 
   const status = container.querySelector('[data-share-status]');
+  const copyButton = container.querySelector('[data-copy-link]');
   const setStatus = (message) => {
     status.textContent = message;
   };
@@ -95,11 +115,13 @@
     }
   });
 
-  container.querySelector('[data-copy-link]')?.addEventListener('click', async () => {
+  copyButton?.addEventListener('click', async () => {
     try {
       if (!navigator.clipboard?.writeText) throw new Error('Clipboard API unavailable');
       await navigator.clipboard.writeText(pageUrl);
+      copyButton.classList.add('is-success');
       setStatus('リンクをコピーしました。');
+      window.setTimeout(() => copyButton.classList.remove('is-success'), 1800);
     } catch {
       setStatus('リンクをコピーできませんでした。アドレスバーからコピーしてください。');
     }
