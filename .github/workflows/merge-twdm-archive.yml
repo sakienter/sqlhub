@@ -53,13 +53,7 @@ jobs:
 
           first_section = first_section[:close_pos] + flyer_inner + first_section[close_pos:]
           text = text[:first_start] + first_section + text[footer_start:]
-
-          text = text.replace(
-              '.twdm-flyer-block{text-align:center}',
-              '.twdm-flyer-block{margin-top:28px;padding-top:24px;border-top:1px solid rgba(24,33,40,.1);text-align:center}',
-              1,
-          )
-
+          text = text.replace('.twdm-flyer-block{text-align:center}', '.twdm-flyer-block{margin-top:28px;padding-top:24px;border-top:1px solid rgba(24,33,40,.1);text-align:center}', 1)
           path.write_text(text, encoding='utf-8')
           PY
 
@@ -71,3 +65,5 @@ jobs:
           git add public/tournaments/twdm/index.html
           git commit -m "Merge twdm Archive sections"
           git push origin HEAD:main
+
+# trigger: 2
