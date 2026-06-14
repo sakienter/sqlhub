@@ -7,38 +7,43 @@
     .tournament-share-strip {
       display: flex;
       width: fit-content;
-      max-width: 100%;
+      max-width: calc(100% - 20px);
       align-items: center;
       justify-content: center;
-      gap: 5px;
-      margin-right: auto;
-      margin-left: auto;
+      gap: 3px;
       color: rgba(255,255,255,.72);
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 800;
       line-height: 1;
       white-space: nowrap;
     }
 
     .tournament-share-strip--top {
-      margin-top: -15px;
-      margin-bottom: 7px;
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      z-index: 20;
+      margin: 0;
+      padding: 2px 4px;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 5px;
+      background: rgba(4,14,24,.16);
+      backdrop-filter: blur(4px);
     }
 
     .tournament-share-strip--bottom {
-      margin-top: 9px;
-      margin-bottom: 4px;
+      margin: 9px auto 4px;
     }
 
     .tournament-share-button {
       appearance: none;
       display: inline-flex;
-      min-height: 24px;
+      min-height: 20px;
       align-items: center;
       justify-content: center;
-      padding: 2px 5px;
+      padding: 1px 4px;
       border: 0;
-      border-radius: 4px;
+      border-radius: 3px;
       background: transparent;
       color: inherit;
       font: inherit;
@@ -49,7 +54,7 @@
 
     .tournament-share-button:hover {
       color: #fff;
-      background: rgba(255,255,255,.08);
+      background: rgba(255,255,255,.09);
     }
 
     .tournament-share-button:focus-visible {
@@ -58,19 +63,26 @@
     }
 
     .tournament-share-divider {
-      color: rgba(255,255,255,.30);
+      color: rgba(255,255,255,.28);
       font-weight: 500;
       user-select: none;
     }
 
     @media (max-width: 520px) {
       .tournament-share-strip {
-        font-size: 9px;
+        font-size: 8px;
       }
 
       .tournament-share-strip--top {
-        margin-top: -13px;
-        margin-bottom: 6px;
+        top: 7px;
+        right: 7px;
+        max-width: calc(100% - 14px);
+        padding: 1px 3px;
+      }
+
+      .tournament-share-button {
+        min-height: 18px;
+        padding: 1px 3px;
       }
     }
   `;
@@ -100,7 +112,7 @@
   const createStrip = (position) => {
     const strip = document.createElement('nav');
     strip.className = `tournament-share-strip tournament-share-strip--${position}`;
-    strip.setAttribute('aria-label', position === 'top' ? 'ページ上部の共有操作' : 'ページ下部の共有操作');
+    strip.setAttribute('aria-label', position === 'top' ? 'ヘッダー内の共有操作' : 'ページ下部の共有操作');
     strip.innerHTML = `
       <button type="button" class="tournament-share-button" data-tournament-share-x>Xで共有する</button>
       <span class="tournament-share-divider" aria-hidden="true">｜</span>
@@ -120,7 +132,7 @@
         await copyText(pageUrl);
         copyButton.textContent = 'コピーしました';
       } catch {
-        copyButton.textContent = 'コピーできませんでした';
+        copyButton.textContent = 'コピー失敗';
       }
 
       window.setTimeout(() => {
@@ -135,7 +147,9 @@
   const footer = main.querySelector(':scope > footer.footer-note') || main.querySelector('footer');
 
   if (header) {
-    header.insertAdjacentElement('afterend', createStrip('top'));
+    const headerPosition = window.getComputedStyle(header).position;
+    if (headerPosition === 'static') header.style.position = 'relative';
+    header.append(createStrip('top'));
   } else {
     main.prepend(createStrip('top'));
   }
