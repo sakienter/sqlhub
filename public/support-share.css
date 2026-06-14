@@ -16,12 +16,15 @@ body:has(.hub-hero) .footer-note {
 }
 
 #support-share .section-body {
-  padding: 26px 28px 28px;
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 22px 28px 14px !important;
 }
 
 .support-share-list {
   width: min(1080px, 100%);
   margin: 0 auto;
+  padding: 0;
 }
 
 .support-actions {
@@ -124,13 +127,17 @@ body:has(.hub-hero) .footer-note {
 }
 
 .support-share-status {
-  min-height: 20px;
-  margin: 12px 0 0;
+  min-height: 0;
+  margin: 8px 0 0;
   color: #65737e;
   font-size: 12px;
   font-weight: 750;
   line-height: 1.5;
   text-align: center;
+}
+
+.support-share-status:empty {
+  display: none;
 }
 
 body #bmc-wbtn {
@@ -161,7 +168,7 @@ body #bmc-wbtn {
 
 @media (max-width: 520px) {
   #support-share .section-body {
-    padding: 20px 18px 22px;
+    padding: 18px 18px 12px !important;
   }
 
   .support-button {
