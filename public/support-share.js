@@ -6,7 +6,7 @@
   const canonical = document.querySelector('link[rel="canonical"]')?.href;
   const pageUrl = canonical || window.location.href;
   const pageTitle = document.title;
-  const supportUrl = section.dataset.supportUrl?.trim() || 'https://www.buymeacoffee.com/sakienter';
+  const supportUrl = 'https://www.buymeacoffee.com/sakienter';
 
   container.innerHTML = `
     <div class="support-share-buttons" aria-label="サイトの応援と共有">
@@ -23,10 +23,59 @@
     status.textContent = message;
   };
 
-  container.querySelector('[data-support-button]')?.addEventListener('click', () => {
+  const waitForCoffeeWidget = (timeout = 6000) => new Promise((resolve) => {
+    const startedAt = Date.now();
+    const timer = window.setInterval(() => {
+      const button = document.getElementById('bmc-wbtn');
+      if (button) {
+        window.clearInterval(timer);
+        button.setAttribute('aria-hidden', 'true');
+        resolve(button);
+        return;
+      }
+
+      if (Date.now() - startedAt >= timeout) {
+        window.clearInterval(timer);
+        resolve(null);
+      }
+    }, 100);
+  });
+
+  const loadCoffeeWidget = () => {
+    const existingScript = document.querySelector('script[data-name="BMC-Widget"]');
+    if (existingScript) return waitForCoffeeWidget();
+
+    const script = document.createElement('script');
+    script.setAttribute('data-name', 'BMC-Widget');
+    script.setAttribute('data-cfasync', 'false');
+    script.src = 'https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js';
+    script.setAttribute('data-id', 'sakienter');
+    script.setAttribute('data-description', 'Support me on Buy me a coffee!');
+    script.setAttribute('data-message', '');
+    script.setAttribute('data-color', '#26B0A1');
+    script.setAttribute('data-position', 'Right');
+    script.setAttribute('data-x_margin', '18');
+    script.setAttribute('data-y_margin', '18');
+    document.head.appendChild(script);
+
+    return waitForCoffeeWidget();
+  };
+
+  const coffeeWidgetReady = loadCoffeeWidget();
+
+  container.querySelector('[data-support-button]')?.addEventListener('click', async () => {
+    setStatus('応援画面を準備しています…');
+    const widgetButton = await coffeeWidgetReady;
+
+    if (widgetButton) {
+      widgetButton.click();
+      setStatus('');
+      return;
+    }
+
     const popup = window.open(supportUrl, '_blank', 'noopener,noreferrer');
     if (!popup) {
-      setStatus('応援ページを開けませんでした。ポップアップの許可設定をご確認ください。');
+      setStatus('応援画面を開けませんでした。ポップアップの許可設定をご確認ください。');
     }
   });
 
