@@ -1,0 +1,105 @@
+.memo-entry + .memo-entry {
+  margin-top: 72px;
+}
+
+.memo-entry .memo-lead {
+  margin-top: 12px;
+  color: #667078;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.memo-subsection + .memo-subsection {
+  margin-top: 58px;
+}
+
+.memo-table-wrap {
+  margin-top: 24px;
+  overflow-x: auto;
+  border: 1px solid #d9d0c2;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.memo-table {
+  width: 100%;
+  min-width: 420px;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.memo-table th,
+.memo-table td {
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid #d9d0c2;
+}
+
+.memo-table thead th {
+  color: #163f42;
+  background: #dcebec;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.memo-table tbody th,
+.memo-table td:last-child {
+  font-weight: 700;
+}
+
+.memo-table tbody tr:last-child th,
+.memo-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.memo-table td:last-child {
+  font-variant-numeric: tabular-nums;
+}
+
+.memo-callout {
+  margin-top: 20px !important;
+  padding: 14px 16px;
+  color: #1d4b4e !important;
+  background: #dcebec;
+  border-left: 4px solid #2f6f73;
+  border-radius: 6px;
+  line-height: 1.8 !important;
+}
+
+.memo-callout-caution {
+  color: #5f3b0f !important;
+  background: #fbefd9;
+  border-left-color: #8a5a18;
+}
+
+.memo-callout strong {
+  display: block;
+  font-size: 14px;
+}
+
+.memo-callout ul {
+  margin-top: 12px;
+}
+
+.memo-callout li {
+  color: inherit;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.memo-unknown {
+  color: #8a5a18;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .memo-entry + .memo-entry {
+    margin-top: 56px;
+  }
+
+  .memo-table th,
+  .memo-table td {
+    padding: 10px 12px;
+  }
+}
