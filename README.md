@@ -2,9 +2,18 @@
 
 Avenge Hub は、Stuntdrake が運営・協力する Hearthstone Battlegrounds 関連大会の情報整理サイトです。
 
-S級リーグの試合結果・ポイント状況、過去大会のアーカイブ、別母体大会、スクリムの情報を掲載しています。公開環境は Cloudflare Pages、公開ディレクトリは `public` です。
+S級リーグの試合結果・ポイント状況、過去大会のアーカイブ、別母体大会、スクリム、Battlegroundsに関するメモを掲載しています。公開環境は Cloudflare Pages、公開ディレクトリは `public` です。
 
-最終更新: 2026年6月14日
+最終更新: 2026年6月15日
+
+## 2026年6月15日の主な更新
+
+- `/columns/` に「スタドレのメモ書き」を追加し、トップページのAboutから移動できるように変更
+- Battlegrounds Season 1〜13の開始時期、テーマ、公式パッチノート、主な変更点をまとめたシーズン履歴表を追加
+- シーズン履歴表の列幅、リンク表示、横スクロール、シーズンラベルの装飾を調整
+- 各シーズンの説明を短く整理し、表全体の可読性を改善
+- 大会・スクリムページをXで共有する際のタイトルを `ページ名 | Stuntdrake` に統一
+- Special Thanksの協力者リンクと表示順を整理
 
 ## 2026年6月14日の主な更新
 
@@ -18,6 +27,10 @@ S級リーグの試合結果・ポイント状況、過去大会のアーカイ�
 - スクリムの過去ロビーカード全体をスプレッドシートへのリンクにし、管理画面への導線を控えめな `+` 表示へ変更
 - 全ページのフッターにページ単位の最終更新日と注意書きを表示し、GitHub Actionsで自動更新する仕組みを追加
 - `sutantic.png` を全ページ共通のサイトアイコンとして設定
+- トップページにコーヒー支援、X共有、リンクコピーをまとめたSupport & Shareを追加
+- 大会ページとスクリムページのヘッダー内・ページ下部に小型の共有操作を追加
+- 「スタドレのメモ書き」にミニオン・酒場呪文のプール枚数メモを追加
+- トップページにSpecial Thanksを追加
 
 ## 公開URL
 
@@ -35,6 +48,7 @@ S級リーグの試合結果・ポイント状況、過去大会のアーカイ�
 | `/tournaments/cn-vs-worlds/` | CN vs Worlds |
 | `/tournaments/cn-vs-jp/` | CN vs JP |
 | `/scrims/` | 練習会・スクリム |
+| `/columns/` | スタドレのメモ書き |
 
 旧URLは `public/_redirects` で新URLへ301転送します。
 
@@ -56,6 +70,11 @@ sqlhub/
 │   ├── common-base.css
 │   ├── common-overrides.css
 │   ├── home.css
+│   ├── home-heading.css
+│   ├── about-card.css
+│   ├── support-share.css
+│   ├── support-share.js
+│   ├── tournament-share.js
 │   ├── season-banner.js
 │   ├── footer-updated.css
 │   ├── sutantic.png
@@ -63,6 +82,11 @@ sqlhub/
 │   ├── composition-gallery.css
 │   ├── composition-gallery.js
 │   ├── tribewebp/
+│   ├── columns/
+│   │   ├── index.html
+│   │   ├── column.css
+│   │   ├── pool-table.css
+│   │   └── season-history.css
 │   ├── sq/
 │   │   ├── season1/
 │   │   │   ├── index.html
@@ -225,6 +249,9 @@ Season 2 はリポジトリ内の静的JSONで管理します。
 - Past Tournaments
 - スクリム
 - About / Contact
+- スタドレのメモ書きへのリンク
+- Special Thanks
+- Support & Share
 - バナー画像と表示位置
 
 内部リンクには現行の公開URLを使用してください。
@@ -241,14 +268,56 @@ Season 2 はリポジトリ内の静的JSONで管理します。
 
 開催期間を変更する場合は、`openingDay` と `finalDay` を同時に更新してください。
 
+## スタドレのメモ書き
+
+メモページは `public/columns/index.html`、公開URLは `/columns/` です。
+
+現在掲載している主な内容:
+
+- Battlegrounds Season 1〜13のシーズン履歴
+- 各シーズンに対応する公式パッチノートへのリンク
+- ミニオン・酒場呪文のプール枚数
+- RDU Beastの呼称の由来
+
+スタイルの役割:
+
+- `public/columns/column.css`: ページ全体と通常の記事
+- `public/columns/pool-table.css`: プール枚数表
+- `public/columns/season-history.css`: シーズン履歴表
+
+シーズン履歴を追加・修正する場合は、開始時期、テーマ名、パッチノートURL、主要要素を同じ行で更新してください。
+
+## 共有・支援機能
+
+### トップページ
+
+`public/support-share.js` がSupport & Shareの操作を生成します。
+
+- Buy Me a Coffeeの支援画面を開く
+- Xの投稿画面を開く
+- canonical URLをクリップボードへコピーする
+
+表示スタイルは `public/support-share.css` で管理します。
+
+### 大会・スクリムページ
+
+`public/tournament-share.js` が次の小型操作をページ上部と下部へ追加します。
+
+- `Xで共有する`
+- `リンクをコピーする`
+
+共有URLには各ページのcanonical URLを使用します。Xの共有タイトルは `ページ名 | Stuntdrake` です。
+
+スクリムページは `public/scrims/past-lobbies.js` から共通共有スクリプトを読み込み、ヘッダー内の位置だけ調整しています。
+
 ## ページ最終更新日の自動反映
 
 全ページの共通フッターは次の形式です。
 
 ```html
-<footer class="footer-note" data-page-updated="2026-06-14">
+<footer class="footer-note" data-page-updated="2026-06-15">
   <p>Stuntdrake's Avenge! / Tournament info by Stuntdrake</p>
-  <p class="footer-updated">最終更新：<time datetime="2026-06-14">2026年6月14日</time></p>
+  <p class="footer-updated">最終更新：<time datetime="2026-06-15">2026年6月15日</time></p>
   <p class="footer-update-note">※更新日はページの一部修正を含みます。</p>
 </footer>
 ```
@@ -309,3 +378,7 @@ S1の旧API互換処理や管理画面用のFunctionsが `functions/api/` に残
 8. Season 2の表示状態が日本時間の日付に応じて正しく切り替わること
 9. 変更したページの最終更新日がGitHub Actionsで更新されること
 10. フッターの注意書きが全ページで統一されていること
+11. `/columns/` の表がデスクトップとモバイルの両方で崩れないこと
+12. シーズン履歴のパッチノートリンクが正しいURLを参照していること
+13. X共有とリンクコピーがトップページ、大会ページ、スクリムページで動作すること
+14. canonical URL、共有タイトル、faviconが各ページで正しく設定されていること
