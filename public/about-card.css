@@ -145,6 +145,18 @@
   line-height: 1.75;
 }
 
+#special-thanks .thanks-link {
+  color: #07586e;
+  border-bottom: 1px solid rgba(7, 88, 110, .42);
+  font-weight: 850;
+  text-decoration: none;
+}
+
+#special-thanks .thanks-link:hover {
+  color: #7f2634;
+  border-color: rgba(127, 38, 52, .62);
+}
+
 #special-thanks .thanks-list {
   display: flex;
   flex-wrap: wrap;
