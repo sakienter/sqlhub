@@ -1,0 +1,236 @@
+.column-page {
+  --column-ink: #17232c;
+  --column-muted: #5d6973;
+  --column-line: rgba(24, 33, 40, .14);
+}
+
+.column-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  padding: 44px clamp(24px, 5vw, 58px);
+  display: flex;
+  align-items: flex-end;
+  text-align: left;
+  background:
+    linear-gradient(125deg, rgba(255,250,242,.98) 0%, rgba(232,248,251,.95) 56%, rgba(255,225,210,.9) 100%);
+}
+
+.column-hero::after {
+  content: "";
+  position: absolute;
+  right: -72px;
+  top: -92px;
+  width: 360px;
+  height: 360px;
+  border: 1px solid rgba(7, 88, 110, .16);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 42px rgba(25, 182, 217, .06),
+    0 0 0 92px rgba(201, 75, 75, .05);
+}
+
+.column-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+}
+
+.column-hero .back-link {
+  margin-bottom: 24px;
+}
+
+.column-hero .eyebrow {
+  margin-bottom: 10px;
+}
+
+.column-hero h1 {
+  max-width: 760px;
+  font-size: clamp(38px, 6vw, 68px);
+  letter-spacing: -.045em;
+}
+
+.column-hero .lead {
+  max-width: 700px;
+  margin: 18px 0 0;
+  color: #43515e;
+}
+
+.column-intro {
+  padding: clamp(28px, 5vw, 48px);
+}
+
+.column-intro-label,
+.article-number {
+  margin: 0 0 8px;
+  color: var(--green-dark);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.column-intro h2,
+.column-article h2 {
+  margin: 0;
+  color: var(--column-ink);
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 950;
+  letter-spacing: -.035em;
+  line-height: 1.25;
+}
+
+.column-intro p {
+  max-width: 880px;
+  margin: 18px 0 0;
+  color: var(--column-muted);
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.9;
+}
+
+.column-article {
+  padding: clamp(30px, 5vw, 54px);
+}
+
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin: 16px 0 0;
+  padding-bottom: 24px;
+  color: var(--column-muted);
+  border-bottom: 1px solid var(--column-line);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.article-lead {
+  margin: 28px 0 0;
+  padding: 20px 22px;
+  color: var(--column-ink);
+  background: rgba(232, 248, 251, .7);
+  border-left: 4px solid var(--green);
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.9;
+}
+
+.article-section {
+  max-width: 900px;
+  margin-top: 38px;
+}
+
+.article-section h3 {
+  margin: 0;
+  padding-bottom: 10px;
+  color: var(--column-ink);
+  border-bottom: 1px solid var(--column-line);
+  font-size: clamp(20px, 3vw, 25px);
+  font-weight: 930;
+  letter-spacing: -.02em;
+}
+
+.article-section p {
+  margin: 17px 0 0;
+  color: #303d46;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 2;
+}
+
+.article-section ul {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.article-section li {
+  position: relative;
+  margin-top: 10px;
+  padding-left: 22px;
+  color: #303d46;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.85;
+}
+
+.article-section li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: .82em;
+  width: 8px;
+  height: 2px;
+  background: var(--crimson);
+}
+
+.article-note {
+  max-width: 900px;
+  margin-top: 38px;
+  padding: 22px 24px;
+  background: #fff6eb;
+  border: 1px solid rgba(154, 70, 60, .18);
+  border-left: 4px solid var(--crimson);
+}
+
+.article-note strong {
+  display: block;
+  color: var(--crimson-dark);
+  font-size: 14px;
+  font-weight: 950;
+}
+
+.article-note p {
+  margin: 8px 0 0;
+  color: #4b4040;
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.8;
+}
+
+.column-end-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 34px;
+  color: var(--green-dark);
+  border-bottom: 1px solid rgba(7, 88, 110, .4);
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.5;
+}
+
+.column-end-link:hover {
+  color: var(--crimson-dark);
+  border-color: rgba(127, 38, 52, .58);
+}
+
+@media (max-width: 640px) {
+  .column-hero {
+    min-height: 250px;
+    padding: 30px 22px;
+  }
+
+  .column-hero::after {
+    right: -180px;
+    opacity: .65;
+  }
+
+  .column-intro,
+  .column-article {
+    padding: 26px 20px;
+  }
+
+  .article-lead {
+    padding: 18px;
+  }
+
+  .article-section {
+    margin-top: 32px;
+  }
+
+  .article-section p {
+    font-size: 14px;
+    line-height: 1.9;
+  }
+}
