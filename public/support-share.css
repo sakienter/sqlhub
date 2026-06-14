@@ -1,0 +1,116 @@
+#support-share .section-body {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.support-share-list {
+  width: min(920px, 100%);
+  margin: 0 auto;
+}
+
+.support-share-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid rgba(24, 33, 40, 0.12);
+}
+
+.support-share-row:last-of-type {
+  border-bottom: 0;
+}
+
+.support-share-label {
+  flex: 0 0 150px;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 850;
+  line-height: 1.45;
+}
+
+.support-share-actions {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.support-share-button {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border: 1px solid #7f77dd;
+  border-radius: 8px;
+  background: transparent;
+  color: #655dc0;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.support-share-button:hover {
+  border-color: #6d64cc;
+  background: rgba(127, 119, 221, 0.09);
+  color: #554daf;
+  transform: translateY(-1px);
+}
+
+.support-share-button:focus-visible {
+  outline: 3px solid rgba(127, 119, 221, 0.25);
+  outline-offset: 3px;
+}
+
+.support-share-icon {
+  display: inline-grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.support-share-status {
+  min-height: 21px;
+  margin: 0;
+  padding: 0 0 12px 174px;
+  color: #65737e;
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+#support-share [hidden] {
+  display: none !important;
+}
+
+@media (max-width: 680px) {
+  .support-share-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .support-share-label {
+    flex-basis: auto;
+  }
+
+  .support-share-actions {
+    width: 100%;
+  }
+
+  .support-share-button {
+    flex: 1 1 145px;
+  }
+
+  .support-share-status {
+    padding-left: 0;
+  }
+}
