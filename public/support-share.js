@@ -59,7 +59,7 @@
 
   container.querySelector('[data-bookmark-button]')?.addEventListener('click', () => {
     const platform = navigator.userAgentData?.platform || navigator.platform || '';
-    const shortcut = /mac|iphone|ipad|ipod/i.test(platform) ? '⌘ + D' : 'Ctrl + D';
-    setStatus(`ブックマークへの追加は ${shortcut} をご利用ください。`);
+    const shortcut = /mac|iphone|ipad|ipod/i.test(platform) ? 'Command（⌘）+ D' : 'Ctrl + D';
+    window.alert(`このページをブックマークに追加するには、キーボードで ${shortcut} を押してください。`);
   });
 })();
