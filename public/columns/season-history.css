@@ -114,16 +114,15 @@
 }
 
 .season-number {
-  display: inline-flex;
-  min-width: 38px;
-  align-items: center;
-  justify-content: center;
-  padding: 4px 6px;
-  border-radius: 6px;
-  background: #e9e3da;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: .04em;
+  display: inline;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--season-text);
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: .03em;
 }
 
 .patch-note-title {
@@ -147,8 +146,8 @@
 }
 
 .current-season .season-number {
-  background: var(--season-accent);
-  color: #fff;
+  background: transparent;
+  color: var(--season-accent);
 }
 
 @media (max-width: 700px) {
@@ -215,10 +214,11 @@
   }
 
   .season-number {
-    min-width: 36px;
-    width: fit-content;
-    padding: 3px 5px;
-    font-size: 11px;
+    display: inline;
+    width: auto;
+    min-width: 0;
+    padding: 0;
+    font-size: 12px;
   }
 
   .patch-note-title {
