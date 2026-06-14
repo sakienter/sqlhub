@@ -1,0 +1,51 @@
+name: Add twdm official flyers
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-twdm-flyers.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-page:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Add official flyers to Archive
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('public/tournaments/twdm/index.html')
+          text = path.read_text(encoding='utf-8')
+
+          css_marker = '.twdm-flyer-grid{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}'
+          css = '''.twdm-flyer-block{text-align:center}.twdm-flyer-heading{margin:0 0 16px;color:var(--text-primary);font-size:15px;font-weight:950}.twdm-flyer-grid{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}.twdm-flyer-link{display:block;width:min(22vw,160px);min-width:110px;overflow:hidden;border:1px solid rgba(24,33,40,.12);border-radius:8px;background:#f5f1e9;box-shadow:var(--shadow-soft);transition:transform .18s ease,box-shadow .18s ease}.twdm-flyer-link:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(24,33,40,.14)}.twdm-flyer-image{display:block;width:100%;height:auto;object-fit:contain}@media(max-width:720px){.twdm-flyer-link{width:min(42vw,150px)}.twdm-flyer-grid{gap:10px}}'''
+          if css_marker not in text:
+              text = text.replace('</style>', css + '</style>', 1)
+
+          section = '''<section class="score-card"><div class="section-title">Archive</div><div class="section-body"><section class="twdm-flyer-block" aria-labelledby="official-flyers-title"><h2 class="twdm-flyer-heading" id="official-flyers-title">公式フライヤー</h2><div class="twdm-flyer-grid"><a class="twdm-flyer-link" href="twdmf/twdmf1.webp" target="_blank" rel="noopener"><img class="twdm-flyer-image" src="twdmf/twdmf1.webp" alt="時渡りドリームマッチ 公式フライヤー 1" loading="lazy"></a><a class="twdm-flyer-link" href="twdmf/twdmf2.webp" target="_blank" rel="noopener"><img class="twdm-flyer-image" src="twdmf/twdmf2.webp" alt="時渡りドリームマッチ 公式フライヤー 2" loading="lazy"></a><a class="twdm-flyer-link" href="twdmf/twdmf3.webp" target="_blank" rel="noopener"><img class="twdm-flyer-image" src="twdmf/twdmf3.webp" alt="時渡りドリームマッチ 公式フライヤー 3" loading="lazy"></a><a class="twdm-flyer-link" href="twdmf/twdmf4.webp" target="_blank" rel="noopener"><img class="twdm-flyer-image" src="twdmf/twdmf4.webp" alt="時渡りドリームマッチ 公式フライヤー 4" loading="lazy"></a></div></section></div></section>'''
+
+          if 'id="official-flyers-title"' not in text:
+              marker = '<footer class="footer-note"'
+              if marker not in text:
+                  raise SystemExit('Footer marker was not found; no changes written.')
+              text = text.replace(marker, section + marker, 1)
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Commit page update and remove one-time workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm --ignore-unmatch .github/workflows/add-twdm-flyers.yml
+          git add public/tournaments/twdm/index.html
+          git commit -m "Add official flyers to twdm Archive"
+          git push origin HEAD:main
