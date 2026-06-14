@@ -137,10 +137,19 @@
 }
 
 .patch-note-title {
-  color: #4d443d;
+  color: #6f2630;
   font-size: 11.5px;
   font-weight: 750;
   line-height: 1.55;
+  text-decoration: underline;
+  text-decoration-color: rgba(111, 38, 48, .42);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.patch-note-title:hover {
+  color: var(--season-accent);
+  text-decoration-color: currentColor;
 }
 
 .current-season {
