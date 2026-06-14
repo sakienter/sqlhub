@@ -89,7 +89,9 @@
   document.head.appendChild(style);
 
   const pageUrl = document.querySelector('link[rel="canonical"]')?.href || window.location.href.split('#')[0];
-  const pageTitle = document.title;
+  const rawPageTitle = document.title.trim();
+  const pageName = rawPageTitle.replace(/\s*\|\s*[^|]+\s*$/, '').trim() || rawPageTitle;
+  const pageTitle = `${pageName} | Stuntdrake`;
 
   const copyText = async (text) => {
     if (navigator.clipboard?.writeText) {
