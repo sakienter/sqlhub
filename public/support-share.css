@@ -1,3 +1,20 @@
+body:has(.hub-hero) .page-shell {
+  display: flex !important;
+  flex-direction: column;
+}
+
+#support-share {
+  order: 1;
+}
+
+#special-thanks {
+  order: 2;
+}
+
+body:has(.hub-hero) .footer-note {
+  order: 3;
+}
+
 #support-share .section-body {
   padding-top: 10px;
   padding-bottom: 10px;
