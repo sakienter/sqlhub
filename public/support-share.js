@@ -49,7 +49,8 @@
     const shortcut = /mac|iphone|ipad|ipod/i.test(platform) ? '⌘ + D' : 'Ctrl + D';
 
     try {
-      await navigator.clipboard?.writeText(pageUrl);
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard API unavailable');
+      await navigator.clipboard.writeText(pageUrl);
       setStatus(`URLをコピーしました。ブックマークへの追加は ${shortcut} をご利用ください。`);
     } catch {
       setStatus(`ブックマークへの追加は ${shortcut} をご利用ください。`);
