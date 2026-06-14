@@ -29,7 +29,7 @@ body:has(.hub-hero) .footer-note {
 
 .support-actions {
   display: grid;
-  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
   gap: 20px;
 }
 
@@ -118,12 +118,6 @@ body:has(.hub-hero) .footer-note {
   border-color: #2c9a78;
   color: #23795f;
   background: rgba(44, 154, 120, 0.11);
-}
-
-.button-bookmark:hover {
-  border-color: #7760f0;
-  color: #5740c9;
-  background: rgba(119, 112, 220, 0.12);
 }
 
 .support-share-status {
