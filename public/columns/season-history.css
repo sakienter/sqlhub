@@ -53,11 +53,12 @@
 
 .season-table th,
 .season-table td {
-  padding: 16px 14px;
+  padding: 14px 10px;
   border-bottom: 1px solid var(--season-line);
   text-align: left;
   vertical-align: top;
-  line-height: 1.75;
+  font-size: 12.5px;
+  line-height: 1.65;
   white-space: normal;
   overflow-wrap: anywhere;
   word-break: normal;
@@ -70,29 +71,39 @@
   z-index: 1;
   background: #302b27;
   color: #fff;
-  font-size: 13px;
+  font-size: 11.5px;
   font-weight: 700;
-  letter-spacing: .04em;
+  letter-spacing: .03em;
 }
 
 .season-table th:nth-child(1),
 .season-table td:nth-child(1) {
-  width: 12%;
+  width: 8%;
 }
 
 .season-table th:nth-child(2),
 .season-table td:nth-child(2) {
-  width: 15%;
+  width: 11%;
 }
 
 .season-table th:nth-child(3),
 .season-table td:nth-child(3) {
-  width: 27%;
+  width: 8%;
 }
 
 .season-table th:nth-child(4),
 .season-table td:nth-child(4) {
-  width: 46%;
+  width: 19%;
+}
+
+.season-table th:nth-child(5),
+.season-table td:nth-child(5) {
+  width: 20%;
+}
+
+.season-table th:nth-child(6),
+.season-table td:nth-child(6) {
+  width: 34%;
 }
 
 .season-table tbody tr:nth-child(even) {
@@ -109,15 +120,27 @@
 
 .season-number {
   display: inline-flex;
-  min-width: 42px;
+  min-width: 38px;
   align-items: center;
   justify-content: center;
-  padding: 4px 7px;
+  padding: 4px 6px;
   border-radius: 6px;
   background: #e9e3da;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: .04em;
+}
+
+.patch-version {
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+}
+
+.patch-note-title {
+  color: #4d443d;
+  font-size: 11.5px;
+  font-weight: 750;
+  line-height: 1.55;
 }
 
 .current-season {
@@ -129,61 +152,81 @@
   color: #fff;
 }
 
-.current-badge {
-  display: inline-block;
-  margin-top: 7px;
-  padding: 3px 7px;
-  border: 1px solid var(--season-accent);
-  border-radius: 999px;
-  color: var(--season-accent);
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: .08em;
-}
-
 @media (max-width: 700px) {
-  .season-table th,
+  .season-table-wrapper {
+    border-radius: 10px;
+  }
+
+  .season-table,
+  .season-table tbody,
+  .season-table tr,
   .season-table td {
-    padding: 11px 7px;
-    font-size: 11.5px;
-    line-height: 1.6;
+    display: block;
+    width: 100%;
   }
 
-  .season-table th:nth-child(1),
-  .season-table td:nth-child(1) {
-    width: 13%;
+  .season-table thead {
+    display: none;
   }
 
-  .season-table th:nth-child(2),
-  .season-table td:nth-child(2) {
-    width: 16%;
+  .season-table tbody tr {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--season-line);
   }
 
-  .season-table th:nth-child(3),
-  .season-table td:nth-child(3) {
-    width: 27%;
+  .season-table tbody tr:last-child {
+    border-bottom: 0;
   }
 
-  .season-table th:nth-child(4),
-  .season-table td:nth-child(4) {
-    width: 44%;
+  .season-table td {
+    display: grid;
+    grid-template-columns: 94px minmax(0, 1fr);
+    gap: 10px;
+    padding: 5px 0;
+    border: 0;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .season-table td::before {
+    color: var(--season-muted);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .05em;
+  }
+
+  .season-table td:nth-child(1)::before {
+    content: "シーズン";
+  }
+
+  .season-table td:nth-child(2)::before {
+    content: "開始";
+  }
+
+  .season-table td:nth-child(3)::before {
+    content: "パッチ";
+  }
+
+  .season-table td:nth-child(4)::before {
+    content: "テーマ / 名前";
+  }
+
+  .season-table td:nth-child(5)::before {
+    content: "パッチノート";
+  }
+
+  .season-table td:nth-child(6)::before {
+    content: "主な要素";
   }
 
   .season-number {
-    min-width: 34px;
-    padding: 3px 4px;
+    min-width: 36px;
+    width: fit-content;
+    padding: 3px 5px;
     font-size: 11px;
   }
 
-  .current-badge {
-    display: block;
-    width: fit-content;
-    margin-top: 5px;
-    padding: 2px 4px;
-    font-size: 7px;
-  }
-
-  .season-table-wrapper {
-    border-radius: 10px;
+  .patch-note-title {
+    font-size: 12px;
   }
 }
