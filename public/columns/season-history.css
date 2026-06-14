@@ -1,0 +1,147 @@
+.bg-season-history {
+  --season-paper: #fffdf8;
+  --season-text: #24211d;
+  --season-muted: #6b645a;
+  --season-line: #ded6c9;
+  --season-accent: #8c2f39;
+  --season-accent-soft: #f4e1e3;
+
+  width: 100%;
+  color: var(--season-text);
+}
+
+.season-history-heading {
+  margin-bottom: 20px;
+}
+
+.season-history-label {
+  margin: 0 0 6px !important;
+  color: var(--season-accent) !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  letter-spacing: .16em;
+  line-height: 1.4 !important;
+}
+
+.season-history-heading h2 {
+  margin: 0;
+  font-size: clamp(24px, 4vw, 34px);
+  line-height: 1.35;
+}
+
+.season-history-heading > p:last-child {
+  margin: 10px 0 0;
+  color: var(--season-muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.season-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--season-line);
+  border-radius: 14px;
+  background: var(--season-paper);
+  box-shadow: 0 10px 30px rgba(36, 33, 29, .06);
+}
+
+.season-table {
+  width: 100%;
+  min-width: 880px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.season-table th,
+.season-table td {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--season-line);
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.75;
+}
+
+.season-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #302b27;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.season-table th:nth-child(1),
+.season-table td:nth-child(1) {
+  width: 105px;
+}
+
+.season-table th:nth-child(2),
+.season-table td:nth-child(2) {
+  width: 125px;
+  white-space: nowrap;
+}
+
+.season-table th:nth-child(3),
+.season-table td:nth-child(3) {
+  width: 230px;
+}
+
+.season-table tbody tr:nth-child(even) {
+  background: #faf7f1;
+}
+
+.season-table tbody tr:hover {
+  background: #f5eee5;
+}
+
+.season-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.season-number {
+  display: inline-flex;
+  min-width: 46px;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: #e9e3da;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+
+.current-season {
+  background: var(--season-accent-soft) !important;
+}
+
+.current-season .season-number {
+  background: var(--season-accent);
+  color: #fff;
+}
+
+.current-badge {
+  display: inline-block;
+  margin-top: 7px;
+  padding: 3px 7px;
+  border: 1px solid var(--season-accent);
+  border-radius: 999px;
+  color: var(--season-accent);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+@media (max-width: 700px) {
+  .season-table th,
+  .season-table td {
+    padding: 13px 14px;
+    font-size: 13px;
+  }
+
+  .season-table-wrapper {
+    border-radius: 10px;
+  }
+}
