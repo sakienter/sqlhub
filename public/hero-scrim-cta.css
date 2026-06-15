@@ -1,45 +1,62 @@
 .hero-scrim-cta {
+  position: relative;
+  z-index: 6;
   display: flex;
-  justify-content: center;
-  margin: -10px 0 26px;
+  justify-content: flex-start;
+  width: fit-content;
+  margin: -58px 0 26px 32px;
+  padding: 12px 24px 18px 22px;
+  background: linear-gradient(180deg, #0b3a4d 0%, #0a3143 100%);
+  box-shadow: 0 10px 24px rgba(3, 14, 24, .16);
 }
 
 .hero-scrim-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 16px;
   min-height: 56px;
-  padding: 0 30px;
+  padding: 0 28px;
   color: #fff;
-  background: linear-gradient(135deg, #18384b 0%, #0f6f78 100%);
-  border: 1px solid rgba(255, 255, 255, .28);
+  background: linear-gradient(135deg, #0e5b6f 0%, #117e8a 100%);
+  border: 1px solid rgba(255, 255, 255, .22);
   border-radius: 999px;
-  box-shadow: 0 10px 24px rgba(3, 14, 24, .18);
-  font-size: clamp(16px, 1.55vw, 20px);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .08),
+    0 6px 16px rgba(3, 14, 24, .18);
+  font-size: clamp(16px, 1.45vw, 19px);
   font-weight: 900;
   line-height: 1.2;
   letter-spacing: .02em;
   text-decoration: none;
-  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+  white-space: nowrap;
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    filter .18s ease,
+    background .18s ease;
 }
 
 .hero-scrim-button:hover,
 .hero-scrim-button:focus-visible {
   color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(3, 14, 24, .24);
-  filter: brightness(1.05);
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #12657b 0%, #14909d 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .1),
+    0 10px 22px rgba(3, 14, 24, .22);
+  filter: brightness(1.03);
 }
 
 .hero-scrim-button:focus-visible {
-  outline: 3px solid rgba(15, 111, 120, .28);
+  outline: 3px solid rgba(17, 126, 138, .28);
   outline-offset: 4px;
 }
 
 .hero-scrim-arrow {
   display: inline-block;
   font-size: 1.1em;
+  line-height: 1;
   transition: transform .18s ease;
 }
 
@@ -48,16 +65,32 @@
   transform: translateX(4px);
 }
 
+@media (max-width: 900px) {
+  .hero-scrim-cta {
+    margin: -48px 0 22px 24px;
+    padding: 10px 18px 14px 18px;
+  }
+
+  .hero-scrim-button {
+    min-height: 52px;
+    padding: 0 22px;
+    font-size: 15px;
+  }
+}
+
 @media (max-width: 720px) {
   .hero-scrim-cta {
-    margin: -8px 0 22px;
+    width: calc(100% - 32px);
+    margin: -10px 16px 22px;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
   }
 
   .hero-scrim-button {
     width: 100%;
     min-height: 52px;
-    padding: 0 20px;
-    border-radius: 14px;
-    font-size: 16px;
+    border-radius: 16px;
+    white-space: normal;
   }
 }
