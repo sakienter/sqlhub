@@ -1,6 +1,20 @@
 const PAST_LOBBIES_API_URL = '/api/scrims/past-lobbies';
 const PAST_LOBBIES_FALLBACK_URL = './past-lobbies.json';
 
+function loadParticipationSpacing() {
+  const style = document.createElement('style');
+  style.textContent = `
+    .participation-copy {
+      line-height: 1.65 !important;
+    }
+
+    .participation-copy + .participation-copy {
+      margin-top: 12px !important;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
 function loadRegistrationApp() {
   if (!document.querySelector('.scrim-entry-shell')) return;
 
@@ -150,6 +164,7 @@ async function renderPastLobbies() {
   }
 }
 
+loadParticipationSpacing();
 loadRegistrationApp();
 loadScrimShareControls();
 renderPastLobbies();
