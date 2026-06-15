@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>スクリム参加申請 | Stuntdrake's Avenge!</title>
+  <meta name="description" content="練習会：スクリムの参加申請ページです。参加日程を選択し、BattleTagとXアカウントを入力してください。" />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="/sutantic.png" type="image/png" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      color-scheme:dark;
+      --bg:#0f1117;
+      --panel:#181c27;
+      --field:#1e2232;
+      --text:#e8eaf0;
+      --muted:rgba(232,234,240,.52);
+      --faint:rgba(232,234,240,.34);
+      --accent:#5dcaa5;
+      --accent-strong:#1d9e75;
+      --danger:#f09595;
+    }
+    body{
+      min-height:100vh;
+      padding:2rem 1rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 50% 0%,rgba(29,158,117,.10),transparent 34rem),
+        var(--bg);
+      font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+    }
+    button,input{font:inherit}
+    .page{width:100%;max-width:560px}
+    .back-link{
+      display:inline-flex;
+      margin:0 0 12px 4px;
+      color:rgba(232,234,240,.55);
+      font-size:13px;
+      font-weight:600;
+      text-decoration:none;
+      transition:color .15s ease;
+    }
+    .back-link:hover{color:#fff}
+    .card{
+      width:100%;
+      padding:2rem;
+      background:var(--panel);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      box-shadow:0 24px 70px rgba(0,0,0,.26);
+    }
+    .header{margin-bottom:1.75rem}
+    .badge{
+      display:inline-block;
+      margin-bottom:12px;
+      padding:3px 10px;
+      color:var(--accent);
+      background:rgba(93,202,165,.12);
+      border:1px solid rgba(93,202,165,.3);
+      border-radius:999px;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.08em;
+    }
+    h1{margin-bottom:6px;color:#f0f2f8;font-size:22px;font-weight:700}
+    .sub{color:var(--muted);font-size:14px;line-height:1.7}
+    .section-label{
+      margin-bottom:10px;
+      color:rgba(232,234,240,.4);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .date-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.5rem}
+    .date-card{
+      width:100%;
+      padding:13px 14px;
+      color:inherit;
+      text-align:left;
+      background:var(--field);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:10px;
+      cursor:pointer;
+      transition:border-color .15s ease,background .15s ease,transform .1s ease;
+    }
+    .date-card:hover{border-color:rgba(93,202,165,.42)}
+    .date-card:active{transform:scale(.99)}
+    .date-card:focus-visible{outline:3px solid rgba(93,202,165,.2);outline-offset:2px}
+    .date-card.selected{background:rgba(93,202,165,.08);border:2px solid var(--accent);padding:12px 13px}
+    .date-card .number{margin-bottom:5px;color:rgba(232,234,240,.35);font-size:10px;font-weight:800;letter-spacing:.1em}
+    .date-card .day{margin-bottom:3px;color:var(--text);font-size:14px;font-weight:700}
+    .date-card .time{margin-bottom:7px;color:var(--muted);font-size:12px;line-height:1.5}
+    .date-card .status{color:var(--faint);font-size:11px}
+    .date-card.selected .day,.date-card.selected .status{color:var(--accent)}
+    .divider{margin:1.5rem 0;border:0;border-top:1px solid rgba(255,255,255,.07)}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{color:rgba(232,234,240,.62);font-size:13px;font-weight:600}
+    .required{margin-left:4px;color:var(--accent);font-size:10px}
+    .field input{
+      width:100%;
+      padding:10px 12px;
+      color:var(--text);
+      background:var(--field);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:8px;
+      outline:none;
+      transition:border-color .15s ease,box-shadow .15s ease;
+    }
+    .field input::placeholder{color:rgba(232,234,240,.25)}
+    .field input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(93,202,165,.15)}
+    .hint{color:rgba(232,234,240,.32);font-size:11px;line-height:1.5}
+    .notice{
+      margin:0 0 1rem;
+      padding:11px 12px;
+      color:rgba(232,234,240,.52);
+      background:rgba(255,255,255,.025);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:8px;
+      font-size:12px;
+      line-height:1.7;
+    }
+    .submit-btn{
+      width:100%;
+      padding:13px;
+      color:#fff;
+      background:var(--accent-strong);
+      border:0;
+      border-radius:10px;
+      font-size:15px;
+      font-weight:700;
+      cursor:pointer;
+      transition:background .15s ease,opacity .15s ease,transform .1s ease;
+    }
+    .submit-btn:hover:not(:disabled){background:#0f6e56}
+    .submit-btn:active:not(:disabled){transform:scale(.99)}
+    .submit-btn:disabled{opacity:.35;cursor:not-allowed}
+    .message{
+      display:none;
+      margin-top:10px;
+      padding:10px;
+      text-align:center;
+      border-radius:8px;
+      font-size:13px;
+      line-height:1.6;
+    }
+    .error-msg{color:var(--danger);background:rgba(226,75,74,.1);border:1px solid rgba(226,75,74,.3)}
+    .success{display:none;padding:2.5rem 1rem;text-align:center}
+    .success-icon{
+      width:52px;
+      height:52px;
+      margin:0 auto 1rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--accent);
+      background:rgba(93,202,165,.12);
+      border:1px solid rgba(93,202,165,.3);
+      border-radius:50%;
+      font-size:25px;
+      font-weight:800;
+    }
+    .success h2{margin-bottom:8px;color:#f0f2f8;font-size:18px;font-weight:700}
+    .success p{color:var(--muted);font-size:13px;line-height:1.7}
+    .success .important{margin-top:8px;color:#f0c978;font-weight:700}
+    .detail{
+      margin-top:1.25rem;
+      padding:12px 16px;
+      color:rgba(232,234,240,.65);
+      background:var(--field);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:8px;
+      font-size:13px;
+      line-height:1.9;
+      text-align:left;
+    }
+    .success-back{display:inline-flex;margin-top:20px;color:var(--accent);font-size:13px;font-weight:700;text-decoration:none}
+    @media(max-width:480px){body{align-items:flex-start;padding-top:1rem}.date-grid,.field-row{grid-template-columns:1fr}.card{padding:1.5rem}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="back-link" href="../">← スクリムページへ戻る</a>
+    <section class="card" aria-labelledby="page-title">
+      <form id="applicationForm" novalidate>
+        <div id="formView">
+          <header class="header">
+            <div class="badge">SCRIM ENTRY</div>
+            <h1 id="page-title">スクリム参加申請</h1>
+            <p class="sub">参加したい日程を選び、BattleTagとXアカウントを入力してください。</p>
+          </header>
+
+          <div class="section-label" id="date-label">日程を選ぶ</div>
+          <div class="date-grid" id="dates" role="group" aria-labelledby="date-label">
+            <button class="date-card" type="button" data-event-id="2026-06-18" data-date="6月18日（木）" aria-pressed="false">
+              <p class="number">SCRIM #1</p>
+              <p class="day">6月18日（木）</p>
+              <p class="time">20:30集合 ／ 21:00開始</p>
+              <p class="status">受付中</p>
+            </button>
+            <button class="date-card" type="button" data-event-id="2026-06-19" data-date="6月19日（金）" aria-pressed="false">
+              <p class="number">SCRIM #2</p>
+              <p class="day">6月19日（金）</p>
+              <p class="time">20:30集合 ／ 21:00開始</p>
+              <p class="status">受付中</p>
+            </button>
+          </div>
+
+          <hr class="divider" />
+
+          <div class="section-label">参加情報を入力</div>
+          <div class="field-row">
+            <div class="field">
+              <label for="btag">BattleTag<span class="required">必須</span></label>
+              <input type="text" id="btag" name="btag" placeholder="Name#1234" maxlength="40" autocomplete="off" />
+              <span class="hint">「#」と数字部分を含めて入力してください。</span>
+            </div>
+            <div class="field">
+              <label for="twitter">Xアカウント<span class="required">必須</span></label>
+              <input type="text" id="twitter" name="twitter" placeholder="@username" maxlength="30" autocomplete="off" autocapitalize="none" />
+              <span class="hint">@から始まるユーザー名を入力してください。</span>
+            </div>
+          </div>
+
+          <p class="notice">申請後、主催者による確認を行います。このフォームの送信だけでは参加確定になりません。</p>
+          <button class="submit-btn" id="submitBtn" type="submit" disabled>日程を選んでください</button>
+          <div class="message error-msg" id="errorMsg" role="alert"></div>
+        </div>
+      </form>
+
+      <div class="success" id="success" aria-live="polite">
+        <div class="success-icon" aria-hidden="true">✓</div>
+        <h2>参加申請を送信しました</h2>
+        <p>入力内容を主催者へ送信しました。<br />確認後、必要に応じてXでご連絡します。</p>
+        <p class="important">現時点では参加確定ではありません。</p>
+        <div class="detail" id="successDetail"></div>
+        <a class="success-back" href="../">スクリムページへ戻る →</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const GAS_URL = 'https://script.google.com/macros/s/AKfycbwAOzVDHW00L_jhQIRev1_MP5trFFMizYuCToeu8LsOWuX6hd530jjrLEFQ94Mi78L1QQ/exec';
+
+    const form = document.getElementById('applicationForm');
+    const cards = [...document.querySelectorAll('.date-card')];
+    const submitButton = document.getElementById('submitBtn');
+    const battleTagInput = document.getElementById('btag');
+    const twitterInput = document.getElementById('twitter');
+    const errorMessage = document.getElementById('errorMsg');
+    const formView = document.getElementById('formView');
+    const successView = document.getElementById('success');
+    const successDetail = document.getElementById('successDetail');
+
+    let selectedEvent = null;
+    let isSubmitting = false;
+
+    function selectEvent(card) {
+      cards.forEach((item) => {
+        const isSelected = item === card;
+        item.classList.toggle('selected', isSelected);
+        item.setAttribute('aria-pressed', String(isSelected));
+      });
+
+      selectedEvent = {
+        id: card.dataset.eventId,
+        date: card.dataset.date,
+        label: `${card.dataset.date} 20:30集合／21:00開始`
+      };
+
+      validateForm();
+    }
+
+    function normalizeTwitter(value) {
+      const trimmed = value.trim();
+      if (!trimmed) return '';
+      return trimmed.startsWith('@') ? trimmed : `@${trimmed}`;
+    }
+
+    function getValidationError() {
+      const battleTag = battleTagInput.value.trim();
+      const twitter = normalizeTwitter(twitterInput.value);
+
+      if (!selectedEvent) return '参加する日程を選んでください。';
+      if (!battleTag || !battleTag.includes('#')) return 'BattleTagは「Name#1234」の形式で入力してください。';
+      if (battleTag.startsWith('#') || battleTag.endsWith('#')) return 'BattleTagの名前と数字部分を確認してください。';
+      if (!/^@[A-Za-z0-9_]{1,20}$/.test(twitter)) return 'Xアカウントを「@username」の形式で入力してください。';
+      return '';
+    }
+
+    function validateForm() {
+      const battleTag = battleTagInput.value.trim();
+      const twitter = twitterInput.value.trim();
+      const ready = Boolean(selectedEvent && battleTag && twitter && !isSubmitting);
+
+      submitButton.disabled = !ready;
+      if (isSubmitting) {
+        submitButton.textContent = '送信中...';
+      } else if (!selectedEvent) {
+        submitButton.textContent = '日程を選んでください';
+      } else if (!battleTag || !twitter) {
+        submitButton.textContent = '情報を入力してください';
+      } else {
+        submitButton.textContent = '参加申請する →';
+      }
+    }
+
+    function showError(message) {
+      errorMessage.textContent = message;
+      errorMessage.style.display = 'block';
+    }
+
+    function appendDetailLine(label, value) {
+      const line = document.createElement('div');
+      const strong = document.createElement('strong');
+      strong.textContent = `${label}：`;
+      line.append(strong, document.createTextNode(value));
+      successDetail.appendChild(line);
+    }
+
+    cards.forEach((card) => card.addEventListener('click', () => selectEvent(card)));
+    [battleTagInput, twitterInput].forEach((input) => input.addEventListener('input', () => {
+      errorMessage.style.display = 'none';
+      validateForm();
+    }));
+
+    const presetEventId = new URLSearchParams(location.search).get('event');
+    const presetCard = cards.find((card) => card.dataset.eventId === presetEventId);
+    if (presetCard) selectEvent(presetCard);
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (isSubmitting) return;
+
+      const validationError = getValidationError();
+      if (validationError) {
+        showError(validationError);
+        return;
+      }
+
+      const battleTag = battleTagInput.value.trim();
+      const twitter = normalizeTwitter(twitterInput.value);
+      twitterInput.value = twitter;
+      isSubmitting = true;
+      errorMessage.style.display = 'none';
+      validateForm();
+
+      try {
+        await fetch(GAS_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            eventId: selectedEvent.id,
+            date: selectedEvent.label,
+            btag: battleTag,
+            twitter,
+            submittedAt: new Date().toISOString()
+          })
+        });
+
+        successDetail.replaceChildren();
+        appendDetailLine('日程', selectedEvent.label);
+        appendDetailLine('BattleTag', battleTag);
+        appendDetailLine('X', twitter);
+        formView.style.display = 'none';
+        successView.style.display = 'block';
+      } catch (error) {
+        isSubmitting = false;
+        validateForm();
+        showError('送信に失敗しました。通信環境を確認して、もう一度お試しください。');
+      }
+    });
+
+    validateForm();
+  </script>
+</body>
+</html>
