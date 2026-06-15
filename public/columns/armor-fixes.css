@@ -1,0 +1,30 @@
+.armor-chart-scroll {
+  overflow: hidden;
+  padding: 8px 18px 18px;
+}
+
+.armor-chart-svg {
+  width: 100%;
+  min-width: 0;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  .armor-chart-head {
+    padding: 16px 14px 6px;
+  }
+
+  .armor-chart-scroll {
+    padding: 6px 8px 12px;
+  }
+
+  .armor-chart-svg {
+    width: 100%;
+  }
+
+  .armor-tick-label,
+  .armor-date-label,
+  .armor-value-label {
+    font-size: 11px;
+  }
+}
