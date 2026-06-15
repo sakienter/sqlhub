@@ -151,8 +151,25 @@
 }
 
 @media (max-width: 700px) {
+  .season-history-heading {
+    margin-bottom: 16px;
+  }
+
+  .season-history-heading h2 {
+    font-size: clamp(23px, 7vw, 30px);
+  }
+
   .season-table-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
     border-radius: 10px;
+  }
+
+  .season-table {
+    width: 100%;
+    min-width: 0;
+    table-layout: auto;
   }
 
   .season-table,
@@ -160,7 +177,9 @@
   .season-table tr,
   .season-table td {
     display: block;
-    width: 100%;
+    width: 100% !important;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .season-table thead {
@@ -168,7 +187,7 @@
   }
 
   .season-table tbody tr {
-    padding: 12px 14px;
+    padding: 0;
     border-bottom: 1px solid var(--season-line);
   }
 
@@ -176,21 +195,44 @@
     border-bottom: 0;
   }
 
-  .season-table td {
+  .season-table td,
+  .season-table td:nth-child(n) {
     display: grid;
-    grid-template-columns: 94px minmax(0, 1fr);
+    grid-template-columns: minmax(72px, 88px) minmax(0, 1fr);
+    align-items: start;
     gap: 10px;
-    padding: 5px 0;
+    width: 100% !important;
+    max-width: 100%;
+    min-width: 0;
+    padding: 7px 14px;
     border: 0;
     font-size: 13px;
-    line-height: 1.65;
+    line-height: 1.6;
+    overflow: visible;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .season-table td:first-child {
+    padding-top: 14px;
+  }
+
+  .season-table td:last-child {
+    padding-bottom: 14px;
   }
 
   .season-table td::before {
+    min-width: 0;
     color: var(--season-muted);
     font-size: 10px;
     font-weight: 800;
     letter-spacing: .05em;
+    line-height: 1.6;
+  }
+
+  .season-table td > * {
+    min-width: 0;
+    max-width: 100%;
   }
 
   .season-table td:nth-child(1)::before {
@@ -222,6 +264,25 @@
   }
 
   .patch-note-title {
+    display: inline;
+    max-width: 100%;
     font-size: 12px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 420px) {
+  .season-table td,
+  .season-table td:nth-child(n) {
+    grid-template-columns: 74px minmax(0, 1fr);
+    gap: 8px;
+    padding-right: 12px;
+    padding-left: 12px;
+    font-size: 12.5px;
+  }
+
+  .season-table td::before {
+    font-size: 9.5px;
   }
 }
