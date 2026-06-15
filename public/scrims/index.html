@@ -86,9 +86,13 @@
 
     .scrim-schedule{display:grid;gap:14px}
     .schedule-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    .schedule-card{padding:22px 24px;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-radius:var(--radius-md);box-shadow:var(--shadow-soft)}
+    .schedule-card{display:block;padding:22px 24px;color:inherit;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-radius:var(--radius-md);box-shadow:var(--shadow-soft);text-decoration:none;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+    .schedule-card:hover{transform:translateY(-2px);border-color:rgba(29,158,117,.42);box-shadow:0 12px 28px rgba(3,14,24,.13)}
+    .schedule-card:focus-visible{outline:3px solid rgba(29,158,117,.28);outline-offset:3px}
     .schedule-number{margin:0 0 8px;color:#7f2634;font-size:12px;font-weight:950;letter-spacing:.12em}
     .schedule-card h3{margin:0;color:var(--text-primary);font-size:clamp(25px,4vw,34px);font-weight:950;line-height:1.2;letter-spacing:-.03em}
+    .schedule-entry-link{display:inline-flex;margin-top:16px;padding-bottom:2px;color:#16795c;border-bottom:1px solid rgba(22,121,92,.34);font-size:13px;font-weight:900}
+    .schedule-card:hover .schedule-entry-link{color:#0f6e56;border-color:#0f6e56}
     .schedule-details{padding:20px 24px;background:#f5f7f8;border:1px solid rgba(24,33,40,.09);border-radius:var(--radius-md)}
     .schedule-details p{margin:0;color:#171b1f;font-size:15px;font-weight:650;line-height:1.8}
     .schedule-details p + p{margin-top:4px}
@@ -139,19 +143,21 @@
       <div class="section-body">
         <div class="scrim-schedule">
           <div class="schedule-grid">
-            <article class="schedule-card">
+            <a class="schedule-card" href="./entry/?event=2026-06-18" aria-label="6月18日のスクリムへ参加申請する">
               <p class="schedule-number">SCRIM #1</p>
               <h3><time datetime="2026-06-18">6月18日（木）</time></h3>
-            </article>
-            <article class="schedule-card">
+              <span class="schedule-entry-link">参加申請する →</span>
+            </a>
+            <a class="schedule-card" href="./entry/?event=2026-06-19" aria-label="6月19日のスクリムへ参加申請する">
               <p class="schedule-number">SCRIM #2</p>
               <h3><time datetime="2026-06-19">6月19日（金）</time></h3>
-            </article>
+              <span class="schedule-entry-link">参加申請する →</span>
+            </a>
           </div>
           <div class="schedule-details">
             <p><strong>集合</strong> 20:30 <span class="schedule-separator">／</span> <strong>開始</strong> 21:00</p>
             <p><strong>形式</strong> 各回3GAME・合計ポイント制</p>
-            <p class="schedule-link-note">募集ツイートは後日掲載します。</p>
+            <p class="schedule-link-note">各日程のカードから参加申請できます。募集ツイートは後日掲載します。</p>
           </div>
         </div>
       </div>
