@@ -2,7 +2,16 @@
   "title": "S級リーグS2",
   "updatedAt": "",
   "summary": {
-    "rows": []
+    "rows": [
+      { "name": "Alutemu" },
+      { "name": "Barrette" },
+      { "name": "haguren" },
+      { "name": "MATSURI" },
+      { "name": "Thundurus" },
+      { "name": "ぎゃん" },
+      { "name": "6/20 Qual. Champ" },
+      { "name": "6/20 Qual. RU" }
+    ]
   },
   "days": [
     {
