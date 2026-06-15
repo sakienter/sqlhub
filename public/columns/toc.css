@@ -1,0 +1,86 @@
+.memo-header {
+  margin-bottom: 28px;
+}
+
+.memo-toc {
+  margin: 0 0 64px;
+  padding: 20px 22px;
+  background: #fff;
+  border: 1px solid #dedcd6;
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(32, 38, 43, 0.06);
+}
+
+.memo-toc-title {
+  margin: 0 0 12px;
+  color: #171b1f;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+.memo-toc ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.memo-toc li {
+  margin: 0;
+  border-top: 1px solid #eceae5;
+}
+
+.memo-toc a {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  color: #30373d;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.memo-toc-number {
+  color: #8a9196;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.memo-toc-arrow {
+  color: #a0a5a9;
+  font-size: 13px;
+  transition: transform .15s ease, color .15s ease;
+}
+
+.memo-toc a:hover {
+  color: #111;
+}
+
+.memo-toc a:hover .memo-toc-arrow {
+  color: #111;
+  transform: translateX(3px);
+}
+
+#armor-history-title,
+#season-history-title,
+#pool-title,
+#rdu-beast-title {
+  scroll-margin-top: 24px;
+}
+
+@media (max-width: 640px) {
+  .memo-toc {
+    margin-bottom: 48px;
+    padding: 18px;
+  }
+
+  .memo-toc ol {
+    grid-template-columns: 1fr;
+  }
+}
