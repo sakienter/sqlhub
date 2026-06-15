@@ -84,21 +84,154 @@
     .participation-copy{margin:0;color:#171b1f;font-size:15px;font-weight:650;line-height:1.95}
     .participation-copy + .participation-copy{margin-top:18px}
 
-    .scrim-schedule{display:grid;gap:14px}
-    .schedule-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    .schedule-card{display:block;padding:22px 24px;color:inherit;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-radius:var(--radius-md);box-shadow:var(--shadow-soft);text-decoration:none;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
-    .schedule-card:hover{transform:translateY(-2px);border-color:rgba(29,158,117,.42);box-shadow:0 12px 28px rgba(3,14,24,.13)}
-    .schedule-card:focus-visible{outline:3px solid rgba(29,158,117,.28);outline-offset:3px}
-    .schedule-number{margin:0 0 8px;color:#7f2634;font-size:12px;font-weight:950;letter-spacing:.12em}
-    .schedule-card h3{margin:0;color:var(--text-primary);font-size:clamp(25px,4vw,34px);font-weight:950;line-height:1.2;letter-spacing:-.03em}
-    .schedule-entry-link{display:inline-flex;margin-top:16px;padding-bottom:2px;color:#16795c;border-bottom:1px solid rgba(22,121,92,.34);font-size:13px;font-weight:900}
-    .schedule-card:hover .schedule-entry-link{color:#0f6e56;border-color:#0f6e56}
-    .schedule-details{padding:20px 24px;background:#f5f7f8;border:1px solid rgba(24,33,40,.09);border-radius:var(--radius-md)}
-    .schedule-details p{margin:0;color:#171b1f;font-size:15px;font-weight:650;line-height:1.8}
-    .schedule-details p + p{margin-top:4px}
-    .schedule-details strong{font-weight:950}
-    .schedule-separator{margin:0 8px;color:rgba(23,27,31,.42)}
-    .schedule-link-note{margin-top:12px !important;padding-top:12px;border-top:1px solid rgba(24,33,40,.10);color:#626a70 !important;font-size:13px !important}
+    .scrim-entry-shell{
+      overflow:hidden;
+      background:#181c27;
+      border:1px solid rgba(15,32,45,.16);
+      border-radius:16px;
+      box-shadow:0 16px 36px rgba(3,14,24,.14);
+    }
+    .scrim-entry-form{padding:26px}
+    .entry-intro{margin-bottom:22px}
+    .entry-badge{
+      display:inline-flex;
+      margin-bottom:10px;
+      padding:3px 10px;
+      color:#5dcaa5;
+      background:rgba(93,202,165,.12);
+      border:1px solid rgba(93,202,165,.3);
+      border-radius:999px;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.08em;
+    }
+    .entry-intro h3{margin:0 0 5px;color:#f0f2f8;font-size:21px;font-weight:800;line-height:1.35}
+    .entry-intro p{margin:0;color:rgba(232,234,240,.54);font-size:13px;font-weight:600;line-height:1.7}
+    .entry-label{margin:0 0 9px;color:rgba(232,234,240,.42);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .schedule-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+    .schedule-card{
+      width:100%;
+      padding:14px 15px;
+      color:inherit;
+      text-align:left;
+      background:#1e2232;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:10px;
+      cursor:pointer;
+      transition:border-color .15s ease,background .15s ease,transform .1s ease;
+    }
+    .schedule-card:hover{border-color:rgba(93,202,165,.42)}
+    .schedule-card:active{transform:scale(.99)}
+    .schedule-card:focus-visible{outline:3px solid rgba(93,202,165,.2);outline-offset:2px}
+    .schedule-card.selected{padding:13px 14px;background:rgba(93,202,165,.08);border:2px solid #5dcaa5}
+    .schedule-number{margin:0 0 6px;color:rgba(232,234,240,.34);font-size:10px;font-weight:900;letter-spacing:.1em}
+    .schedule-card h4{margin:0 0 4px;color:#e8eaf0;font-size:16px;font-weight:800;line-height:1.3}
+    .schedule-time{margin:0 0 7px;color:rgba(232,234,240,.54);font-size:12px;font-weight:600;line-height:1.5}
+    .schedule-status{margin:0;color:rgba(232,234,240,.34);font-size:11px;font-weight:700}
+    .schedule-card.selected h4,.schedule-card.selected .schedule-status{color:#5dcaa5}
+    .entry-divider{margin:22px 0;border:0;border-top:1px solid rgba(255,255,255,.07)}
+    .entry-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .entry-field{display:flex;flex-direction:column;gap:6px}
+    .entry-field label{color:rgba(232,234,240,.64);font-size:13px;font-weight:700}
+    .entry-required{margin-left:4px;color:#5dcaa5;font-size:10px}
+    .entry-field input{
+      width:100%;
+      padding:10px 12px;
+      color:#e8eaf0;
+      background:#1e2232;
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:8px;
+      outline:none;
+      font:inherit;
+      font-size:14px;
+      transition:border-color .15s ease,box-shadow .15s ease;
+    }
+    .entry-field input::placeholder{color:rgba(232,234,240,.25)}
+    .entry-field input:focus{border-color:#5dcaa5;box-shadow:0 0 0 3px rgba(93,202,165,.15)}
+    .entry-hint{color:rgba(232,234,240,.32);font-size:11px;line-height:1.5}
+    .entry-notice{
+      margin:16px 0;
+      padding:11px 12px;
+      color:rgba(232,234,240,.54);
+      background:rgba(255,255,255,.025);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:8px;
+      font-size:12px;
+      font-weight:600;
+      line-height:1.7;
+    }
+    .entry-submit{
+      width:100%;
+      padding:13px;
+      color:#fff;
+      background:#1d9e75;
+      border:0;
+      border-radius:10px;
+      font:inherit;
+      font-size:15px;
+      font-weight:800;
+      cursor:pointer;
+      transition:background .15s ease,opacity .15s ease,transform .1s ease;
+    }
+    .entry-submit:hover:not(:disabled){background:#0f6e56}
+    .entry-submit:active:not(:disabled){transform:scale(.99)}
+    .entry-submit:disabled{opacity:.35;cursor:not-allowed}
+    .entry-error{
+      display:none;
+      margin-top:10px;
+      padding:10px;
+      color:#f09595;
+      background:rgba(226,75,74,.1);
+      border:1px solid rgba(226,75,74,.3);
+      border-radius:8px;
+      font-size:13px;
+      font-weight:650;
+      line-height:1.6;
+      text-align:center;
+    }
+    .entry-success{display:none;padding:42px 26px;text-align:center}
+    .entry-success-icon{
+      width:52px;
+      height:52px;
+      margin:0 auto 14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#5dcaa5;
+      background:rgba(93,202,165,.12);
+      border:1px solid rgba(93,202,165,.3);
+      border-radius:50%;
+      font-size:25px;
+      font-weight:900;
+    }
+    .entry-success h3{margin:0 0 8px;color:#f0f2f8;font-size:19px;font-weight:800}
+    .entry-success p{margin:0;color:rgba(232,234,240,.54);font-size:13px;font-weight:600;line-height:1.7}
+    .entry-success .entry-important{margin-top:7px;color:#f0c978;font-weight:800}
+    .entry-success-detail{
+      margin-top:18px;
+      padding:12px 16px;
+      color:rgba(232,234,240,.68);
+      background:#1e2232;
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:8px;
+      font-size:13px;
+      font-weight:600;
+      line-height:1.9;
+      text-align:left;
+    }
+    .entry-reset{
+      display:inline-flex;
+      margin-top:18px;
+      padding:0 0 2px;
+      color:#5dcaa5;
+      background:transparent;
+      border:0;
+      border-bottom:1px solid rgba(93,202,165,.38);
+      font:inherit;
+      font-size:13px;
+      font-weight:800;
+      cursor:pointer;
+    }
 
     .lobby-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
     .lobby-card{display:flex;flex-direction:column;align-items:flex-start;min-height:150px;padding:22px;color:inherit;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-radius:var(--radius-md);box-shadow:var(--shadow-soft);text-decoration:none;cursor:pointer;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
@@ -111,10 +244,20 @@
     .lobby-empty{grid-column:1/-1;margin:0;padding:18px 4px;color:#171b1f;font-size:14px;font-weight:650;line-height:1.7}
 
     @media (max-width:900px){.lobby-grid{grid-template-columns:1fr}}
-    @media (max-width:640px){.scrim-hero{min-height:300px;padding:1.35rem;background-position:center}.scrim-admin-link{top:1.35rem;right:1.35rem;width:32px;height:32px;font-size:19px}.scrim-title-block{margin-top:2rem}.scrim-hero h1{font-size:clamp(40px,13vw,58px)}.scrim-hero-note{font-size:13px}.schedule-grid{grid-template-columns:1fr}.schedule-card,.schedule-details{padding:18px 20px}.section-body{padding:16px}}
+    @media (max-width:640px){
+      .scrim-hero{min-height:300px;padding:1.35rem;background-position:center}
+      .scrim-admin-link{top:1.35rem;right:1.35rem;width:32px;height:32px;font-size:19px}
+      .scrim-title-block{margin-top:2rem}
+      .scrim-hero h1{font-size:clamp(40px,13vw,58px)}
+      .scrim-hero-note{font-size:13px}
+      .schedule-grid,.entry-fields{grid-template-columns:1fr}
+      .scrim-entry-form{padding:20px}
+      .entry-success{padding:36px 20px}
+      .section-body{padding:16px}
+    }
   </style>
-<link rel="stylesheet" href="/footer-updated.css?v=20260614" />
-<link rel="icon" href="/sutantic.png" type="image/png" />
+  <link rel="stylesheet" href="/footer-updated.css?v=20260614" />
+  <link rel="icon" href="/sutantic.png" type="image/png" />
 </head>
 <body>
   <main class="page-shell">
@@ -141,23 +284,60 @@
     <section class="score-card">
       <div class="section-title">直近の開催予定</div>
       <div class="section-body">
-        <div class="scrim-schedule">
-          <div class="schedule-grid">
-            <a class="schedule-card" href="./entry/?event=2026-06-18" aria-label="6月18日のスクリムへ参加申請する">
-              <p class="schedule-number">SCRIM #1</p>
-              <h3><time datetime="2026-06-18">6月18日（木）</time></h3>
-              <span class="schedule-entry-link">参加申請する →</span>
-            </a>
-            <a class="schedule-card" href="./entry/?event=2026-06-19" aria-label="6月19日のスクリムへ参加申請する">
-              <p class="schedule-number">SCRIM #2</p>
-              <h3><time datetime="2026-06-19">6月19日（金）</time></h3>
-              <span class="schedule-entry-link">参加申請する →</span>
-            </a>
-          </div>
-          <div class="schedule-details">
-            <p><strong>集合</strong> 20:30 <span class="schedule-separator">／</span> <strong>開始</strong> 21:00</p>
-            <p><strong>形式</strong> 各回3GAME・合計ポイント制</p>
-            <p class="schedule-link-note">各日程のカードから参加申請できます。募集ツイートは後日掲載します。</p>
+        <div class="scrim-entry-shell">
+          <form id="scrimEntryForm" novalidate>
+            <div class="scrim-entry-form" id="scrimEntryFormView">
+              <div class="entry-intro">
+                <span class="entry-badge">SCRIM ENTRY</span>
+                <h3>スクリム参加申請</h3>
+                <p>参加したい日程を選び、BattleTagとXアカウントを入力してください。</p>
+              </div>
+
+              <p class="entry-label" id="scrim-date-label">日程を選ぶ</p>
+              <div class="schedule-grid" role="group" aria-labelledby="scrim-date-label">
+                <button class="schedule-card" type="button" data-event-id="2026-06-18" data-date="6月18日（木）" aria-pressed="false">
+                  <p class="schedule-number">SCRIM #1</p>
+                  <h4><time datetime="2026-06-18">6月18日（木）</time></h4>
+                  <p class="schedule-time">20:30集合 ／ 21:00開始</p>
+                  <p class="schedule-status">受付中</p>
+                </button>
+                <button class="schedule-card" type="button" data-event-id="2026-06-19" data-date="6月19日（金）" aria-pressed="false">
+                  <p class="schedule-number">SCRIM #2</p>
+                  <h4><time datetime="2026-06-19">6月19日（金）</time></h4>
+                  <p class="schedule-time">20:30集合 ／ 21:00開始</p>
+                  <p class="schedule-status">受付中</p>
+                </button>
+              </div>
+
+              <hr class="entry-divider" />
+
+              <p class="entry-label">参加情報を入力</p>
+              <div class="entry-fields">
+                <div class="entry-field">
+                  <label for="scrim-btag">BattleTag<span class="entry-required">必須</span></label>
+                  <input type="text" id="scrim-btag" name="btag" placeholder="Name#1234" maxlength="40" autocomplete="off" />
+                  <span class="entry-hint">「#」と数字部分を含めて入力してください。</span>
+                </div>
+                <div class="entry-field">
+                  <label for="scrim-twitter">Xアカウント<span class="entry-required">必須</span></label>
+                  <input type="text" id="scrim-twitter" name="twitter" placeholder="@username" maxlength="30" autocomplete="off" autocapitalize="none" />
+                  <span class="entry-hint">@から始まるユーザー名を入力してください。</span>
+                </div>
+              </div>
+
+              <p class="entry-notice">各回3GAME・合計ポイント制です。申請後に主催者が確認するため、このフォームの送信だけでは参加確定になりません。</p>
+              <button class="entry-submit" id="scrimEntrySubmit" type="submit" disabled>日程を選んでください</button>
+              <div class="entry-error" id="scrimEntryError" role="alert"></div>
+            </div>
+          </form>
+
+          <div class="entry-success" id="scrimEntrySuccess" aria-live="polite">
+            <div class="entry-success-icon" aria-hidden="true">✓</div>
+            <h3>参加申請を送信しました</h3>
+            <p>入力内容を主催者へ送信しました。<br>確認後、必要に応じてXでご連絡します。</p>
+            <p class="entry-important">現時点では参加確定ではありません。</p>
+            <div class="entry-success-detail" id="scrimEntrySuccessDetail"></div>
+            <button class="entry-reset" id="scrimEntryReset" type="button">別の日程を申請する</button>
           </div>
         </div>
       </div>
@@ -178,6 +358,157 @@
       <p class="footer-update-note">※更新日はページの一部修正を含みます。</p>
     </footer>
   </main>
+
+  <script>
+    (() => {
+      const GAS_URL = 'https://script.google.com/macros/s/AKfycbwAOzVDHW00L_jhQIRev1_MP5trFFMizYuCToeu8LsOWuX6hd530jjrLEFQ94Mi78L1QQ/exec';
+      const form = document.getElementById('scrimEntryForm');
+      const formView = document.getElementById('scrimEntryFormView');
+      const cards = [...document.querySelectorAll('.schedule-card')];
+      const battleTagInput = document.getElementById('scrim-btag');
+      const twitterInput = document.getElementById('scrim-twitter');
+      const submitButton = document.getElementById('scrimEntrySubmit');
+      const errorMessage = document.getElementById('scrimEntryError');
+      const successView = document.getElementById('scrimEntrySuccess');
+      const successDetail = document.getElementById('scrimEntrySuccessDetail');
+      const resetButton = document.getElementById('scrimEntryReset');
+
+      let selectedEvent = null;
+      let isSubmitting = false;
+
+      function selectEvent(card) {
+        cards.forEach((item) => {
+          const isSelected = item === card;
+          item.classList.toggle('selected', isSelected);
+          item.setAttribute('aria-pressed', String(isSelected));
+        });
+
+        selectedEvent = {
+          id: card.dataset.eventId,
+          date: card.dataset.date,
+          label: `${card.dataset.date} 20:30集合／21:00開始`
+        };
+
+        errorMessage.style.display = 'none';
+        validateForm();
+      }
+
+      function normalizeTwitter(value) {
+        const trimmed = value.trim();
+        if (!trimmed) return '';
+        return trimmed.startsWith('@') ? trimmed : `@${trimmed}`;
+      }
+
+      function getValidationError() {
+        const battleTag = battleTagInput.value.trim();
+        const twitter = normalizeTwitter(twitterInput.value);
+
+        if (!selectedEvent) return '参加する日程を選んでください。';
+        if (!battleTag || !battleTag.includes('#')) return 'BattleTagは「Name#1234」の形式で入力してください。';
+        if (battleTag.startsWith('#') || battleTag.endsWith('#')) return 'BattleTagの名前と数字部分を確認してください。';
+        if (!/^@[A-Za-z0-9_]{1,20}$/.test(twitter)) return 'Xアカウントを「@username」の形式で入力してください。';
+        return '';
+      }
+
+      function validateForm() {
+        const battleTag = battleTagInput.value.trim();
+        const twitter = twitterInput.value.trim();
+        const ready = Boolean(selectedEvent && battleTag && twitter && !isSubmitting);
+
+        submitButton.disabled = !ready;
+        if (isSubmitting) {
+          submitButton.textContent = '送信中...';
+        } else if (!selectedEvent) {
+          submitButton.textContent = '日程を選んでください';
+        } else if (!battleTag || !twitter) {
+          submitButton.textContent = '情報を入力してください';
+        } else {
+          submitButton.textContent = '参加申請する →';
+        }
+      }
+
+      function showError(message) {
+        errorMessage.textContent = message;
+        errorMessage.style.display = 'block';
+      }
+
+      function appendDetailLine(label, value) {
+        const line = document.createElement('div');
+        const strong = document.createElement('strong');
+        strong.textContent = `${label}：`;
+        line.append(strong, document.createTextNode(value));
+        successDetail.appendChild(line);
+      }
+
+      function resetForm() {
+        selectedEvent = null;
+        isSubmitting = false;
+        cards.forEach((card) => {
+          card.classList.remove('selected');
+          card.setAttribute('aria-pressed', 'false');
+        });
+        form.reset();
+        errorMessage.style.display = 'none';
+        successView.style.display = 'none';
+        formView.style.display = 'block';
+        successDetail.replaceChildren();
+        validateForm();
+      }
+
+      cards.forEach((card) => card.addEventListener('click', () => selectEvent(card)));
+      [battleTagInput, twitterInput].forEach((input) => input.addEventListener('input', () => {
+        errorMessage.style.display = 'none';
+        validateForm();
+      }));
+      resetButton.addEventListener('click', resetForm);
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (isSubmitting) return;
+
+        const validationError = getValidationError();
+        if (validationError) {
+          showError(validationError);
+          return;
+        }
+
+        const battleTag = battleTagInput.value.trim();
+        const twitter = normalizeTwitter(twitterInput.value);
+        twitterInput.value = twitter;
+        isSubmitting = true;
+        errorMessage.style.display = 'none';
+        validateForm();
+
+        try {
+          await fetch(GAS_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              eventId: selectedEvent.id,
+              date: selectedEvent.label,
+              btag: battleTag,
+              twitter,
+              submittedAt: new Date().toISOString()
+            })
+          });
+
+          successDetail.replaceChildren();
+          appendDetailLine('日程', selectedEvent.label);
+          appendDetailLine('BattleTag', battleTag);
+          appendDetailLine('X', twitter);
+          formView.style.display = 'none';
+          successView.style.display = 'block';
+        } catch (error) {
+          isSubmitting = false;
+          validateForm();
+          showError('送信に失敗しました。通信環境を確認して、もう一度お試しください。');
+        }
+      });
+
+      validateForm();
+    })();
+  </script>
   <script src="./past-lobbies.js" defer></script>
 </body>
 </html>
