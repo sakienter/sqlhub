@@ -170,10 +170,11 @@ function setEmptyState(table, empty) {
 }
 
 function rankLabel(value, fallback) {
-  const rank = Number(String(value ?? '').match(/\d+/)?.[0]) || fallback;
-  const label = String(value || ordinal(rank));
-  if (rank <= 3) return `<span class="final-rank-chip rank-${rank}"><span class="final-rank-label">${esc(label)}</span></span>`;
-  return `<span class="final-rank-simple">${esc(label)}</span>`;
+  const rawValue = String(value ?? '').trim();
+  if (!rawValue) return '<span class="final-rank-simple"></span>';
+  const rank = Number(rawValue.match(/\d+/)?.[0]) || fallback;
+  if (rank <= 3) return `<span class="final-rank-chip rank-${rank}"><span class="final-rank-label">${esc(rawValue)}</span></span>`;
+  return `<span class="final-rank-simple">${esc(rawValue)}</span>`;
 }
 
 function ordinal(rank) {
