@@ -4,32 +4,36 @@
   display: flex;
   justify-content: flex-start;
   width: fit-content;
-  margin: -50px 0 30px 44px;
+  height: 0;
+  margin: 0 0 26px 44px;
   padding: 0;
+  top: -80px;
   background: transparent;
   box-shadow: none;
+  pointer-events: none;
 }
 
 .hero-scrim-button {
+  pointer-events: auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  min-height: 50px;
-  padding: 0 24px;
+  gap: 10px;
+  min-height: 42px;
+  padding: 0 18px;
   color: #fff;
-  background: linear-gradient(135deg, rgba(11, 73, 92, .96) 0%, rgba(14, 127, 137, .96) 100%);
-  border: 1px solid rgba(255, 255, 255, .28);
+  background: linear-gradient(135deg, rgba(11, 73, 92, .94) 0%, rgba(14, 127, 137, .94) 100%);
+  border: 1px solid rgba(255, 255, 255, .24);
   border-radius: 999px;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .12),
-    0 8px 20px rgba(3, 14, 24, .24);
+    inset 0 1px 0 rgba(255, 255, 255, .1),
+    0 6px 16px rgba(3, 14, 24, .22);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  font-size: clamp(15px, 1.2vw, 18px);
+  font-size: clamp(14px, 1vw, 16px);
   font-weight: 900;
   line-height: 1.2;
-  letter-spacing: .02em;
+  letter-spacing: .015em;
   text-decoration: none;
   white-space: nowrap;
   transition:
@@ -46,7 +50,7 @@
   background: linear-gradient(135deg, rgba(13, 84, 105, .98) 0%, rgba(16, 145, 155, .98) 100%);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, .14),
-    0 12px 26px rgba(3, 14, 24, .28);
+    0 10px 22px rgba(3, 14, 24, .26);
   filter: brightness(1.03);
 }
 
@@ -57,39 +61,44 @@
 
 .hero-scrim-arrow {
   display: inline-block;
-  font-size: 1.05em;
+  font-size: 1em;
   line-height: 1;
   transition: transform .18s ease;
 }
 
 .hero-scrim-button:hover .hero-scrim-arrow,
 .hero-scrim-button:focus-visible .hero-scrim-arrow {
-  transform: translateX(4px);
+  transform: translateX(3px);
 }
 
 @media (max-width: 900px) {
   .hero-scrim-cta {
-    margin: -40px 0 26px 28px;
+    margin-left: 28px;
+    top: -70px;
   }
 
   .hero-scrim-button {
-    min-height: 48px;
-    padding: 0 21px;
-    font-size: 15px;
+    min-height: 40px;
+    padding: 0 16px;
+    font-size: 14px;
   }
 }
 
 @media (max-width: 720px) {
   .hero-scrim-cta {
     width: calc(100% - 32px);
+    height: auto;
     margin: -8px 16px 22px;
+    top: auto;
+    pointer-events: auto;
   }
 
   .hero-scrim-button {
     width: 100%;
-    min-height: 50px;
+    min-height: 48px;
     padding: 0 18px;
     border-radius: 14px;
+    font-size: 15px;
     white-space: normal;
   }
 }
