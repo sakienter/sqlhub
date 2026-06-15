@@ -1,3 +1,11 @@
+body:has(.hub-hero) .hub-hero {
+  margin-bottom: 10px !important;
+}
+
+#current-season {
+  margin-top: 8px;
+}
+
 .hero-scrim-cta {
   position: relative;
   z-index: 6;
@@ -5,7 +13,7 @@
   justify-content: flex-start;
   width: fit-content;
   height: 0;
-  margin: 0 0 26px 44px;
+  margin: 0 0 2px 44px;
   padding: 0;
   top: -80px;
   background: transparent;
@@ -85,10 +93,18 @@
 }
 
 @media (max-width: 720px) {
+  body:has(.hub-hero) .hub-hero {
+    margin-bottom: 8px !important;
+  }
+
+  #current-season {
+    margin-top: 8px;
+  }
+
   .hero-scrim-cta {
     width: calc(100% - 32px);
     height: auto;
-    margin: -8px 16px 22px;
+    margin: -4px 16px 10px;
     top: auto;
     pointer-events: auto;
   }
