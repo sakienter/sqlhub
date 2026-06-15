@@ -1,0 +1,63 @@
+.hero-scrim-cta {
+  display: flex;
+  justify-content: center;
+  margin: -10px 0 26px;
+}
+
+.hero-scrim-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 56px;
+  padding: 0 30px;
+  color: #fff;
+  background: linear-gradient(135deg, #18384b 0%, #0f6f78 100%);
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-radius: 999px;
+  box-shadow: 0 10px 24px rgba(3, 14, 24, .18);
+  font-size: clamp(16px, 1.55vw, 20px);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: .02em;
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+.hero-scrim-button:hover,
+.hero-scrim-button:focus-visible {
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(3, 14, 24, .24);
+  filter: brightness(1.05);
+}
+
+.hero-scrim-button:focus-visible {
+  outline: 3px solid rgba(15, 111, 120, .28);
+  outline-offset: 4px;
+}
+
+.hero-scrim-arrow {
+  display: inline-block;
+  font-size: 1.1em;
+  transition: transform .18s ease;
+}
+
+.hero-scrim-button:hover .hero-scrim-arrow,
+.hero-scrim-button:focus-visible .hero-scrim-arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 720px) {
+  .hero-scrim-cta {
+    margin: -8px 0 22px;
+  }
+
+  .hero-scrim-button {
+    width: 100%;
+    min-height: 52px;
+    padding: 0 20px;
+    border-radius: 14px;
+    font-size: 16px;
+  }
+}
