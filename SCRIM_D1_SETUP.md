@@ -21,15 +21,28 @@ migrations/0001_scrim_registrations.sql
 migrations/0002_scrim_events.sql
 ```
 
-`0002_scrim_events.sql` を未実行でも、開催日程APIへの初回アクセス時に日程テーブルは自動作成されます。
+既存の日程テーブルへ開催終了機能を追加するSQLは以下です。
 
-## 3. PagesへD1 Bindingを追加
+```text
+migrations/0003_scrim_event_results.sql
+```
 
-Cloudflare Pagesの対象プロジェクトで、D1 Bindingを追加します。
+`0002`・`0003`を未実行でも、開催日程APIへの初回アクセス時に必要なテーブルと列は自動作成されます。
+
+## 3. PagesへBindingを追加
+
+Cloudflare Pagesの対象プロジェクトで、次のBindingを設定します。
 
 ```text
 Variable name: SCRIM_DB
 D1 database: sqlhub-scrims
+```
+
+Past Lobbyとの連動には、既存のKV Bindingも必要です。
+
+```text
+Variable name: TRIBE_CONFIG
+KV namespace: sqlhub-tribe-config
 ```
 
 PreviewとProductionの両方へ設定してください。設定後、Pagesを再デプロイします。
@@ -44,14 +57,25 @@ SCRIM_ADMIN_TOKEN
 
 ## 開催日程の管理
 
-`/scrims/admin/` の「開催日程管理」から、次の内容を登録します。
+`/scrims/admin/` の「開催日程管理」から、次の内容を登録・変更します。
 
 - 開催日
 - 開始時刻
 - 集合時刻
-- 受付状態
+- 開催状態
+- 結果スプレッドシートURL
 
-受付中の日程は、公開ページ `/scrims/` の参加日程プルダウンへ自動反映されます。受付停止へ変更した日程は、公開プルダウンから非表示になります。
+### 開催状態
+
+| 状態 | 公開フォーム | Past Lobby |
+|---|---|---|
+| 受付中 | 表示 | 追加しない |
+| 受付停止 | 非表示 | 追加しない |
+| 開催終了 | 非表示 | 結果URLを自動追加 |
+
+「開催終了」を選ぶ場合は、Googleスプレッドシートの結果URLが必須です。保存するとPast Lobbyへ自動追加されます。
+
+開催終了から受付中・受付停止へ戻した場合は、その日程から自動作成されたPast Lobbyだけが取り下げられます。手動で登録したPast Lobbyは削除されません。
 
 ## API
 
