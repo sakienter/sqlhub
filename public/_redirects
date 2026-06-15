@@ -30,6 +30,10 @@
 /tournaments/renoj/ /tournaments/reno/ 301
 /tournaments/renoj/index.html /tournaments/reno/ 301
 
+/scrims/entry /scrims/ 301
+/scrims/entry/ /scrims/ 301
+/scrims/entry/index.html /scrims/ 301
+
 # Normalize canonical directory-style URLs.
 /sq / 301
 /sq/ / 301
