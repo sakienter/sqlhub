@@ -1,0 +1,5 @@
+ALTER TABLE scrim_events
+  ADD COLUMN is_completed INTEGER NOT NULL DEFAULT 0;
+
+ALTER TABLE scrim_events
+  ADD COLUMN result_url TEXT NOT NULL DEFAULT '';
