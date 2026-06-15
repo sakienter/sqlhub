@@ -1,5 +1,84 @@
 const PAST_LOBBIES_API_URL = '/api/scrims/past-lobbies';
 const PAST_LOBBIES_FALLBACK_URL = './past-lobbies.json';
+const SCRIM_REGISTRATION_API_URL = '/api/scrims/registrations';
+const LEGACY_GAS_URL = 'https://script.google.com/macros/s/AKfycbwAOzVDHW00L_jhQIRev1_MP5trFFMizYuCToeu8LsOWuX6hd530jjrLEFQ94Mi78L1QQ/exec';
+
+function installD1RegistrationBridge() {
+  if (!document.querySelector('#scrimEntryForm')) return;
+
+  const nativeFetch = window.fetch.bind(window);
+
+  window.fetch = async (resource, init = {}) => {
+    const requestUrl = typeof resource === 'string' ? resource : resource?.url;
+    if (requestUrl !== LEGACY_GAS_URL) {
+      return nativeFetch(resource, init);
+    }
+
+    let legacyPayload = {};
+    try {
+      legacyPayload = JSON.parse(String(init.body || '{}'));
+    } catch {
+      legacyPayload = {};
+    }
+
+    let response;
+    try {
+      response = await nativeFetch(SCRIM_REGISTRATION_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          eventId: legacyPayload.eventId,
+          battleTag: legacyPayload.btag,
+          xAccount: legacyPayload.twitter,
+          website: ''
+        }),
+        cache: 'no-store'
+      });
+    } catch (error) {
+      console.error('D1への参加申請送信に失敗しました。', error);
+      throw error;
+    }
+
+    let data = {};
+    try {
+      data = await response.json();
+    } catch {
+      data = {};
+    }
+
+    if (!response.ok) {
+      const message = data.error || `送信に失敗しました。（HTTP ${response.status}）`;
+      window.setTimeout(() => {
+        const errorElement = document.querySelector('#scrimEntryError');
+        if (!errorElement) return;
+        errorElement.textContent = message;
+        errorElement.style.display = 'block';
+      }, 0);
+      throw new Error(message);
+    }
+
+    if (data.applicationCode) {
+      window.setTimeout(() => {
+        const detail = document.querySelector('#scrimEntrySuccessDetail');
+        if (!detail || detail.querySelector('[data-application-code]')) return;
+
+        const line = document.createElement('div');
+        line.dataset.applicationCode = 'true';
+
+        const strong = document.createElement('strong');
+        strong.textContent = '申請番号：';
+
+        line.append(strong, document.createTextNode(data.applicationCode));
+        detail.appendChild(line);
+      }, 0);
+    }
+
+    return new Response(JSON.stringify(data), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json; charset=utf-8' }
+    });
+  };
+}
 
 function loadScrimShareControls() {
   if (document.querySelector('script[src*="/tournament-share.js"]')) return;
@@ -136,5 +215,6 @@ async function renderPastLobbies() {
   }
 }
 
+installD1RegistrationBridge();
 loadScrimShareControls();
 renderPastLobbies();
