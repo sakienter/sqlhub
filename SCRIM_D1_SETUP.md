@@ -14,11 +14,14 @@ sqlhub-scrims
 
 ## 2. テーブルを作成
 
-D1のコンソールで、次のファイルのSQLを実行します。
+D1のコンソールで、次のSQLを実行します。
 
 ```text
 migrations/0001_scrim_registrations.sql
+migrations/0002_scrim_events.sql
 ```
+
+`0002_scrim_events.sql` を未実行でも、開催日程APIへの初回アクセス時に日程テーブルは自動作成されます。
 
 ## 3. PagesへD1 Bindingを追加
 
@@ -29,9 +32,7 @@ Variable name: SCRIM_DB
 D1 database: sqlhub-scrims
 ```
 
-PreviewとProductionの両方へ設定してください。
-
-設定後、Pagesを再デプロイします。
+PreviewとProductionの両方へ設定してください。設定後、Pagesを再デプロイします。
 
 ## 4. 管理用パスワード
 
@@ -41,7 +42,24 @@ PreviewとProductionの両方へ設定してください。
 SCRIM_ADMIN_TOKEN
 ```
 
+## 開催日程の管理
+
+`/scrims/admin/` の「開催日程管理」から、次の内容を登録します。
+
+- 開催日
+- 開始時刻
+- 集合時刻
+- 受付状態
+
+受付中の日程は、公開ページ `/scrims/` の参加日程プルダウンへ自動反映されます。受付停止へ変更した日程は、公開プルダウンから非表示になります。
+
 ## API
+
+### 公開日程
+
+```text
+GET /api/scrims/events
+```
 
 ### 公開申請
 
@@ -62,6 +80,11 @@ POST /api/scrims/registrations
 ### 管理者用
 
 ```text
+GET    /api/scrims/events?all=1
+POST   /api/scrims/events
+PATCH  /api/scrims/events
+DELETE /api/scrims/events
+
 GET    /api/scrims/registrations
 PATCH  /api/scrims/registrations
 DELETE /api/scrims/registrations
@@ -82,10 +105,3 @@ Authorization: Bearer <SCRIM_ADMIN_TOKEN>
 | `waitlisted` | 補欠 |
 | `cancelled` | 辞退 |
 | `rejected` | 却下 |
-
-## 日程変更
-
-受付対象の日程は、次の2か所を同時に変更します。
-
-- `public/scrims/index.html`
-- `functions/api/scrims/registrations.js` の `EVENTS`
