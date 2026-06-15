@@ -1,0 +1,241 @@
+const EVENTS_API = '/api/scrims/events';
+const REGISTRATIONS_API = '/api/scrims/registrations';
+const LOBBIES_API = '/api/scrims/past-lobbies';
+const TOKEN_KEY = 'scrim-admin-token';
+
+const STATUS_LABELS = {
+  pending:'申請中', accepted:'参加確定', waitlisted:'補欠', cancelled:'辞退', rejected:'却下'
+};
+
+const tokenInput = document.querySelector('#admin-token');
+const authButton = document.querySelector('[data-auth-load]');
+const authStatus = document.querySelector('[data-auth-status]');
+
+const eventForm = document.querySelector('[data-event-form]');
+const eventDateInput = document.querySelector('#event-date');
+const eventStartInput = document.querySelector('#event-start-time');
+const eventGatherInput = document.querySelector('#event-gather-time');
+const eventStatus = document.querySelector('[data-event-status]');
+const eventList = document.querySelector('[data-event-list]');
+const eventRefresh = document.querySelector('[data-event-refresh]');
+
+const registrationEventFilter = document.querySelector('#registration-event-filter');
+const registrationStatusFilter = document.querySelector('#registration-status-filter');
+const registrationStatus = document.querySelector('[data-registration-status]');
+const registrationCounts = document.querySelector('[data-registration-counts]');
+const registrationList = document.querySelector('[data-registration-list]');
+const registrationRefresh = document.querySelector('[data-registration-refresh]');
+
+const lobbyForm = document.querySelector('[data-lobby-form]');
+const lobbyDateInput = document.querySelector('#lobby-date');
+const lobbyUrlInput = document.querySelector('#spreadsheet-url');
+const lobbyStatus = document.querySelector('[data-lobby-status]');
+const lobbyList = document.querySelector('[data-lobby-list]');
+const lobbyRefresh = document.querySelector('[data-lobby-refresh]');
+
+function token() { return tokenInput?.value.trim() || ''; }
+function saveToken() { token() ? sessionStorage.setItem(TOKEN_KEY, token()) : sessionStorage.removeItem(TOKEN_KEY); }
+function setMessage(element, message, type='') {
+  if (!element) return;
+  element.textContent = message;
+  element.className = `admin-status${type ? ` is-${type}` : ''}`;
+}
+function empty(container, message) {
+  if (!container) return;
+  container.innerHTML = '';
+  const p = document.createElement('p');
+  p.className = 'admin-list-empty';
+  p.textContent = message;
+  container.appendChild(p);
+}
+function formatDateTime(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value || '';
+  return new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}).format(date);
+}
+async function api(url, method='GET', body, auth=false) {
+  const headers = {'Content-Type':'application/json'};
+  if (auth) {
+    if (!token()) throw new Error('管理用パスワードを入力してください。');
+    headers.Authorization = `Bearer ${token()}`;
+  }
+  const response = await fetch(url,{method,headers,body:body ? JSON.stringify(body) : undefined,cache:'no-store'});
+  let data = {};
+  try { data = await response.json(); } catch { data = {}; }
+  if (!response.ok) throw new Error(data.error || `処理に失敗しました。（HTTP ${response.status}）`);
+  return data;
+}
+
+function populateEventFilter(events) {
+  const current = registrationEventFilter.value;
+  registrationEventFilter.innerHTML = '<option value="">すべて</option>';
+  events.forEach((event) => {
+    const option = document.createElement('option');
+    option.value = event.eventId;
+    option.textContent = event.displayLabel + (event.status === 'closed' ? '（受付停止）' : '');
+    registrationEventFilter.appendChild(option);
+  });
+  if ([...registrationEventFilter.options].some((option) => option.value === current)) {
+    registrationEventFilter.value = current;
+  }
+}
+
+function createEventRow(event) {
+  const row = document.createElement('article');
+  row.className = `event-row${event.status === 'closed' ? ' is-closed' : ''}`;
+
+  const summary = document.createElement('div');
+  const title = document.createElement('h3');
+  title.className = 'event-title';
+  title.textContent = event.displayLabel;
+  const meta = document.createElement('p');
+  meta.className = 'event-meta';
+  meta.textContent = event.status === 'open' ? '公開フォームで受付中' : '公開フォームでは非表示';
+  summary.append(title,meta);
+
+  const controls = document.createElement('div');
+  controls.className = 'event-controls';
+  const startLabel = document.createElement('label'); startLabel.textContent = '開始';
+  const startInput = document.createElement('input'); startInput.type='time'; startInput.value=event.startTime;
+  const gatherLabel = document.createElement('label'); gatherLabel.textContent = '集合';
+  const gatherInput = document.createElement('input'); gatherInput.type='time'; gatherInput.value=event.gatherTime || '';
+  const statusLabel = document.createElement('label'); statusLabel.textContent = '受付';
+  const statusSelect = document.createElement('select');
+  [['open','受付中'],['closed','受付停止']].forEach(([value,label]) => {
+    const option = document.createElement('option'); option.value=value; option.textContent=label; option.selected=value===event.status; statusSelect.appendChild(option);
+  });
+
+  const actions = document.createElement('div');
+  actions.className = 'event-actions';
+  const save = document.createElement('button'); save.type='button'; save.className='save-button'; save.textContent='保存';
+  const remove = document.createElement('button'); remove.type='button'; remove.className='delete-button'; remove.textContent='削除';
+
+  save.addEventListener('click', async () => {
+    save.disabled = remove.disabled = true;
+    setMessage(eventStatus,'日程を更新しています。');
+    try {
+      await api(EVENTS_API,'PATCH',{id:event.id,startTime:startInput.value,gatherTime:gatherInput.value,status:statusSelect.value},true);
+      saveToken();
+      setMessage(eventStatus,'日程を更新しました。','success');
+      await loadEvents();
+      await loadRegistrations();
+    } catch (error) {
+      setMessage(eventStatus,error.message,'error');
+      save.disabled = remove.disabled = false;
+    }
+  });
+
+  remove.addEventListener('click', async () => {
+    if (!confirm(`${event.displayLabel} を削除しますか？`)) return;
+    save.disabled = remove.disabled = true;
+    setMessage(eventStatus,'日程を削除しています。');
+    try {
+      await api(EVENTS_API,'DELETE',{id:event.id},true);
+      saveToken();
+      setMessage(eventStatus,'日程を削除しました。','success');
+      await loadEvents();
+      await loadRegistrations();
+    } catch (error) {
+      setMessage(eventStatus,error.message,'error');
+      save.disabled = remove.disabled = false;
+    }
+  });
+
+  actions.append(save,remove);
+  controls.append(startLabel,startInput,gatherLabel,gatherInput,statusLabel,statusSelect,actions);
+  row.append(summary,controls);
+  return row;
+}
+
+async function loadEvents() {
+  if (!token()) {
+    empty(eventList,'管理用パスワードを入力してください。');
+    return [];
+  }
+  empty(eventList,'開催日程を読み込んでいます。');
+  try {
+    const data = await api(`${EVENTS_API}?all=1`,'GET',undefined,true);
+    const events = Array.isArray(data.events) ? data.events : [];
+    saveToken();
+    populateEventFilter(events);
+    if (!events.length) empty(eventList,'登録済みの日程はありません。');
+    else { eventList.innerHTML=''; events.forEach((event) => eventList.appendChild(createEventRow(event))); }
+    return events;
+  } catch (error) {
+    empty(eventList,'開催日程を読み込めませんでした。');
+    setMessage(eventStatus,error.message,'error');
+    throw error;
+  }
+}
+
+eventForm?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  if (!token()) { setMessage(eventStatus,'管理用パスワードを入力してください。','error'); return; }
+  const submit = eventForm.querySelector('button[type="submit"]');
+  submit.disabled = true;
+  setMessage(eventStatus,'新しい日程を作成しています。');
+  try {
+    await api(EVENTS_API,'POST',{eventDate:eventDateInput.value,startTime:eventStartInput.value,gatherTime:eventGatherInput.value},true);
+    saveToken();
+    eventDateInput.value='';
+    setMessage(eventStatus,'新しい日程を作成しました。公開フォームへ自動反映されます。','success');
+    await loadEvents();
+  } catch (error) {
+    setMessage(eventStatus,error.message,'error');
+  } finally { submit.disabled=false; }
+});
+
+function renderCounts(counts={}) {
+  registrationCounts.innerHTML='';
+  [['total','合計'],['pending','申請中'],['accepted','参加確定'],['waitlisted','補欠'],['cancelled','辞退'],['rejected','却下']].forEach(([key,label]) => {
+    const chip=document.createElement('span'); chip.className=`count-chip count-${key}`; chip.textContent=`${label} ${Number(counts[key]||0)}`; registrationCounts.appendChild(chip);
+  });
+}
+
+function createRegistrationRow(registration) {
+  const row=document.createElement('article'); row.className=`registration-row status-${registration.status||'pending'}`;
+  const summary=document.createElement('div');
+  const event=document.createElement('p'); event.className='registration-event'; event.textContent=registration.eventLabel||registration.eventId||'';
+  const identity=document.createElement('div'); identity.className='registration-identity';
+  const battle=document.createElement('strong'); battle.textContent=registration.battleTag||'';
+  const x=document.createElement('a'); const username=String(registration.xAccount||'').replace(/^@/,''); x.href=`https://x.com/${encodeURIComponent(username)}`; x.target='_blank'; x.rel='noopener noreferrer'; x.textContent=registration.xAccount||'';
+  identity.append(battle,x);
+  const meta=document.createElement('p'); meta.className='registration-meta'; meta.textContent=`${registration.applicationCode||''} ／ 申請 ${formatDateTime(registration.createdAt)}`;
+  summary.append(event,identity,meta);
+
+  const controls=document.createElement('div'); controls.className='registration-controls';
+  const statusLabel=document.createElement('label'); statusLabel.textContent='状態';
+  const statusSelect=document.createElement('select'); Object.entries(STATUS_LABELS).forEach(([value,label])=>{const option=document.createElement('option');option.value=value;option.textContent=label;option.selected=value===registration.status;statusSelect.appendChild(option);});
+  const noteLabel=document.createElement('label'); noteLabel.textContent='管理メモ';
+  const note=document.createElement('input'); note.type='text'; note.maxLength=500; note.placeholder='連絡状況など'; note.value=registration.adminNote||'';
+  const actions=document.createElement('div'); actions.className='registration-actions';
+  const save=document.createElement('button'); save.type='button'; save.className='save-button'; save.textContent='保存';
+  const remove=document.createElement('button'); remove.type='button'; remove.className='delete-button'; remove.textContent='削除';
+  save.addEventListener('click',async()=>{save.disabled=remove.disabled=true;setMessage(registrationStatus,'申請状態を更新しています。');try{await api(REGISTRATIONS_API,'PATCH',{id:registration.id,status:statusSelect.value,adminNote:note.value},true);saveToken();setMessage(registrationStatus,'申請状態を更新しました。','success');await loadRegistrations();}catch(error){setMessage(registrationStatus,error.message,'error');save.disabled=remove.disabled=false;}});
+  remove.addEventListener('click',async()=>{if(!confirm(`${registration.battleTag} の申請を完全に削除しますか？`))return;save.disabled=remove.disabled=true;try{await api(REGISTRATIONS_API,'DELETE',{id:registration.id},true);setMessage(registrationStatus,'申請を削除しました。','success');await loadRegistrations();}catch(error){setMessage(registrationStatus,error.message,'error');save.disabled=remove.disabled=false;}});
+  actions.append(save,remove); controls.append(statusLabel,statusSelect,noteLabel,note,actions); row.append(summary,controls); return row;
+}
+
+async function loadRegistrations() {
+  if (!token()) { empty(registrationList,'管理用パスワードを入力してください。'); renderCounts(); return; }
+  empty(registrationList,'参加申請を読み込んでいます。');
+  const params=new URLSearchParams(); if(registrationEventFilter.value)params.set('eventId',registrationEventFilter.value); if(registrationStatusFilter.value)params.set('status',registrationStatusFilter.value);
+  try {
+    const data=await api(`${REGISTRATIONS_API}${params.toString()?`?${params}`:''}`,'GET',undefined,true);
+    const items=Array.isArray(data.registrations)?data.registrations:[]; renderCounts(data.counts);
+    if(!items.length)empty(registrationList,'条件に一致する参加申請はありません。'); else{registrationList.innerHTML='';items.forEach((item)=>registrationList.appendChild(createRegistrationRow(item)));}
+  } catch(error){empty(registrationList,'参加申請を読み込めませんでした。');renderCounts();setMessage(registrationStatus,error.message,'error');}
+}
+
+function isSheetUrl(value){try{const url=new URL(value);return url.protocol==='https:'&&url.hostname==='docs.google.com'&&url.pathname.startsWith('/spreadsheets/');}catch{return false;}}
+function createLobbyRow(lobby){const row=document.createElement('article');row.className='admin-lobby-row';const date=document.createElement('span');date.className='admin-lobby-date';date.textContent=lobby.date;const link=document.createElement('a');link.className='admin-lobby-link';link.href=lobby.spreadsheetUrl;link.target='_blank';link.rel='noopener noreferrer';link.textContent=lobby.spreadsheetUrl;const remove=document.createElement('button');remove.className='delete-button';remove.type='button';remove.textContent='削除';remove.addEventListener('click',async()=>{if(!confirm(`${lobby.date} のPast Lobbyを削除しますか？`))return;remove.disabled=true;try{const data=await api(LOBBIES_API,'DELETE',{id:lobby.id},true);renderLobbies(data.lobbies);setMessage(lobbyStatus,'Past Lobbyを削除しました。','success');}catch(error){setMessage(lobbyStatus,error.message,'error');remove.disabled=false;}});row.append(date,link,remove);return row;}
+function renderLobbies(items){if(!Array.isArray(items)||!items.length){empty(lobbyList,'登録済みのPast Lobbyはありません。');return;}lobbyList.innerHTML='';items.forEach((item)=>lobbyList.appendChild(createLobbyRow(item)));}
+async function loadLobbies(){empty(lobbyList,'読み込んでいます。');try{const data=await api(LOBBIES_API);renderLobbies(data.lobbies);}catch(error){empty(lobbyList,'登録済みロビーを読み込めませんでした。');setMessage(lobbyStatus,error.message,'error');}}
+lobbyForm?.addEventListener('submit',async(event)=>{event.preventDefault();if(!token()){setMessage(lobbyStatus,'管理用パスワードを入力してください。','error');return;}if(!isSheetUrl(lobbyUrlInput.value.trim())){setMessage(lobbyStatus,'GoogleスプレッドシートのURLを入力してください。','error');return;}const submit=lobbyForm.querySelector('button[type="submit"]');submit.disabled=true;try{const data=await api(LOBBIES_API,'POST',{date:lobbyDateInput.value,spreadsheetUrl:lobbyUrlInput.value.trim()},true);renderLobbies(data.lobbies);lobbyUrlInput.value='';setMessage(lobbyStatus,'Past Lobbyへ追加しました。','success');}catch(error){setMessage(lobbyStatus,error.message,'error');}finally{submit.disabled=false;}});
+
+async function loadAdminData(){setMessage(authStatus,'管理データを読み込んでいます。');try{await loadEvents();await loadRegistrations();saveToken();setMessage(authStatus,'管理者認証に成功しました。','success');}catch(error){setMessage(authStatus,error.message,'error');}}
+
+tokenInput.value=sessionStorage.getItem(TOKEN_KEY)||'';
+const today=new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);lobbyDateInput.value=today;
+authButton?.addEventListener('click',loadAdminData);eventRefresh?.addEventListener('click',loadEvents);registrationRefresh?.addEventListener('click',loadRegistrations);registrationEventFilter?.addEventListener('change',loadRegistrations);registrationStatusFilter?.addEventListener('change',loadRegistrations);lobbyRefresh?.addEventListener('click',loadLobbies);tokenInput?.addEventListener('change',saveToken);
+loadLobbies();if(token())loadAdminData();
