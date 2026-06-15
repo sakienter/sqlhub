@@ -53,10 +53,13 @@ function buildCompactSummary(rawSummary, days) {
 
   const rows = Array.from(players.values()).map(player => {
     const dayValues = [player.day1, player.day2, player.day3, player.day4];
-    const calculatedTotal = dayValues.reduce((sum, value) => sum + (typeof value === 'number' ? value : 0), 0);
+    const scoredDays = dayValues.filter(value => typeof value === 'number');
+    const calculatedTotal = scoredDays.reduce((sum, value) => sum + value, 0);
     return {
       ...player,
-      total: player.total === null ? calculatedTotal : player.total
+      total: player.total === null
+        ? (scoredDays.length > 0 ? calculatedTotal : null)
+        : player.total
     };
   });
 
@@ -66,11 +69,17 @@ function buildCompactSummary(rawSummary, days) {
     if (rankA && rankB) return rankA - rankB;
     if (rankA) return -1;
     if (rankB) return 1;
-    return Number(b.total || 0) - Number(a.total || 0);
+
+    const hasTotalA = typeof a.total === 'number';
+    const hasTotalB = typeof b.total === 'number';
+    if (hasTotalA && hasTotalB) return b.total - a.total;
+    if (hasTotalA) return -1;
+    if (hasTotalB) return 1;
+    return 0;
   });
 
   rows.forEach((row, index) => {
-    if (!row.rank) row.rank = ordinal(index + 1);
+    if (!row.rank && typeof row.total === 'number') row.rank = ordinal(index + 1);
   });
 
   return { headers: SUMMARY_HEADERS, rows };
