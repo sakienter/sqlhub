@@ -133,7 +133,7 @@
     coinCount.textContent = state.coins;
     rollCount.textContent = state.rolls;
     rollButton.disabled = busy || !state.token || state.cleared || state.coins < 1;
-    historyEl.textContent = state.history.length ? state.history.slice(-12).join('・') : 'まだ振っていません';
+    historyEl.textContent = state.history.length ? state.history.join('・') : 'まだ振っていません';
   }
 
   function finishGame() {
