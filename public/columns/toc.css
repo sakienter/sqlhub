@@ -5,9 +5,14 @@
 }
 
 .memo-toc {
-  margin: 0 0 52px;
-  padding: 0;
-  overflow: hidden;
+  /* 記事の並び順は、この4つの数値を変更するだけで調整できます。 */
+  --order-armor: 1;
+  --order-season: 2;
+  --order-pool: 3;
+  --order-rdu: 4;
+
+  margin: 0 0 48px;
+  padding: 16px 20px 8px;
   background: #fff;
   border: 1px solid #dedcd6;
   border-radius: 10px;
@@ -16,60 +21,20 @@
 
 .memo-toc-title {
   margin: 0;
-  padding: 16px 18px;
+  padding: 0 0 12px;
   color: #171b1f;
   font-size: 13px;
   font-weight: 800;
   letter-spacing: .08em;
 }
 
-.memo-toc-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 17px 19px;
-  border: 0;
-  background: transparent;
-  color: #171b1f;
-  font: inherit;
-  cursor: pointer;
-  text-align: left;
-}
-
-.memo-toc-toggle:hover {
-  background: #faf9f6;
-}
-
-.memo-toc-toggle:focus-visible {
-  outline: 2px solid #53616b;
-  outline-offset: -3px;
-}
-
-.memo-toc-toggle-label {
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: .06em;
-}
-
-.memo-toc-toggle-state {
-  color: #8a9196;
-  font-size: 19px;
-  font-weight: 500;
-  line-height: 1;
-}
-
 .memo-toc ol {
   display: flex;
   flex-direction: column;
   margin: 0;
-  padding: 0 19px 8px;
+  padding: 0;
   list-style: none;
   border-top: 1px solid #eceae5;
-}
-
-.memo-toc ol[hidden] {
-  display: none;
 }
 
 .memo-toc li {
@@ -81,11 +46,27 @@
   border-bottom: 0;
 }
 
+.memo-toc li:has(a[href="#armor-history-title"]) {
+  order: var(--order-armor);
+}
+
+.memo-toc li:has(a[href="#season-history-title"]) {
+  order: var(--order-season);
+}
+
+.memo-toc li:has(a[href="#pool-title"]) {
+  order: var(--order-pool);
+}
+
+.memo-toc li:has(a[href="#rdu-beast-title"]) {
+  order: var(--order-rdu);
+}
+
 .memo-toc a {
   display: grid;
-  grid-template-columns: 30px minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   padding: 14px 0;
   color: #30373d;
   font-size: 14px;
@@ -94,15 +75,12 @@
   text-decoration: none;
 }
 
-.memo-toc a:hover,
-.memo-toc a.is-selected {
+.memo-toc a:hover {
   color: #111;
 }
 
 .memo-toc-number {
-  color: #8a9196;
-  font-size: 11px;
-  font-variant-numeric: tabular-nums;
+  display: none;
 }
 
 .memo-toc-arrow {
@@ -111,46 +89,40 @@
   transition: transform .15s ease, color .15s ease;
 }
 
-.memo-toc a:hover .memo-toc-arrow,
-.memo-toc a.is-selected .memo-toc-arrow {
+.memo-toc a:hover .memo-toc-arrow {
   color: #111;
   transform: translateX(3px);
 }
 
-.memo-browser-ready .memo-date {
-  display: none !important;
-}
-
-.memo-entry[hidden] {
-  display: none !important;
-}
-
-.memo-entry.is-selected {
-  scroll-margin-top: 24px;
-}
-
-.memo-article-back {
-  display: inline-flex;
-  align-items: center;
-  margin: 0 0 22px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: #68737b;
-  font: inherit;
-  font-size: 12px;
-  font-weight: 750;
-  letter-spacing: .03em;
-  cursor: pointer;
-}
-
-.memo-article-back:hover {
+body:has(#armor-history-title:target) .memo-toc a[href="#armor-history-title"],
+body:has(#season-history-title:target) .memo-toc a[href="#season-history-title"],
+body:has(#pool-title:target) .memo-toc a[href="#pool-title"],
+body:has(#rdu-beast-title:target) .memo-toc a[href="#rdu-beast-title"] {
   color: #111;
 }
 
-.memo-article-back:focus-visible {
-  outline: 2px solid #53616b;
-  outline-offset: 4px;
+body:has(#armor-history-title:target) .memo-toc a[href="#armor-history-title"] .memo-toc-arrow,
+body:has(#season-history-title:target) .memo-toc a[href="#season-history-title"] .memo-toc-arrow,
+body:has(#pool-title:target) .memo-toc a[href="#pool-title"] .memo-toc-arrow,
+body:has(#rdu-beast-title:target) .memo-toc a[href="#rdu-beast-title"] .memo-toc-arrow {
+  color: #111;
+  transform: translateX(3px);
+}
+
+.memo-date {
+  display: none !important;
+}
+
+.memo-page > .memo-entry {
+  display: none;
+}
+
+.memo-page > .memo-entry:has(:target) {
+  display: block;
+}
+
+.memo-page > .memo-entry:has(:target) {
+  scroll-margin-top: 24px;
 }
 
 #armor-history-title,
@@ -162,20 +134,12 @@
 
 @media (max-width: 640px) {
   .memo-toc {
-    margin-bottom: 42px;
-  }
-
-  .memo-toc-toggle {
-    padding: 15px 16px;
-  }
-
-  .memo-toc ol {
-    padding: 0 16px 6px;
+    margin-bottom: 40px;
+    padding: 14px 16px 6px;
   }
 
   .memo-toc a {
-    grid-template-columns: 26px minmax(0, 1fr) auto;
-    gap: 8px;
+    gap: 10px;
     padding: 13px 0;
     font-size: 13px;
   }
