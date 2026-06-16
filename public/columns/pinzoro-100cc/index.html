@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ピン・ゾロ 100 CC | Stuntdrake's Avenge!</title>
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="/columns/pinzoro-100cc/game.css?v=20260616" />
+  <link rel="icon" href="/sutantic.png" type="image/png" />
+</head>
+<body>
+  <main class="game-shell">
+    <header class="game-header">
+      <a href="/columns/" class="back-link">← メモ書きに戻る</a>
+      <p class="eyebrow">SECRET GAME</p>
+      <h1>ピン・ゾロ 100 CC</h1>
+      <p>3コインから始めて、100コイン到達を目指します。</p>
+    </header>
+
+    <section class="game-card" aria-labelledby="game-title">
+      <h2 id="game-title" class="sr-only">ゲーム画面</h2>
+      <div class="status-grid">
+        <div><span>COIN</span><strong id="coinCount">3</strong></div>
+        <div><span>ROLL</span><strong id="rollCount">0</strong></div>
+        <div><span>TARGET</span><strong>100</strong></div>
+      </div>
+
+      <div id="dice" class="dice" aria-live="polite" aria-label="サイコロの出目">–</div>
+      <p id="message" class="message">1コインを使ってサイコロを振る。</p>
+      <button id="rollButton" class="roll-button" type="button">サイコロを振る <small>1 COIN</small></button>
+      <div class="history-wrap">
+        <span>履歴</span>
+        <p id="history">まだ振っていません</p>
+      </div>
+
+      <details class="rules">
+        <summary>ルールを見る</summary>
+        <ul>
+          <li>サイコロを振るたびに1コイン消費し、出た目と同じ枚数を獲得します。</li>
+          <li>同じ目が2回連続すると、その目と同じ枚数を追加獲得します。</li>
+          <li>「1」が3回連続すると、ピン・ゾロボーナスとしてさらに50コイン獲得します。</li>
+          <li>100コイン以上に到達した時点のロール数が記録になります。</li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="ranking-card" aria-labelledby="ranking-title">
+      <div class="ranking-head">
+        <div>
+          <p class="eyebrow">LOCAL RECORDS</p>
+          <h2 id="ranking-title">ランキング</h2>
+        </div>
+        <button id="resetGame" class="text-button" type="button">ゲームをやり直す</button>
+      </div>
+      <p class="ranking-note">このランキングは現在の端末内に保存されます。</p>
+      <ol id="rankingList" class="ranking-list"></ol>
+    </section>
+  </main>
+
+  <dialog id="clearDialog" class="clear-dialog">
+    <form method="dialog" id="recordForm">
+      <p class="eyebrow">100 COINS REACHED</p>
+      <h2>クリア！</h2>
+      <p><strong id="clearRolls">0</strong> ROLLS / <span id="clearCoins">100</span> COINS</p>
+      <label>ランキング名
+        <input id="playerName" maxlength="12" autocomplete="nickname" placeholder="PLAYER" />
+      </label>
+      <div class="dialog-actions">
+        <button value="cancel" class="text-button">登録しない</button>
+        <button id="saveRecord" value="default" class="roll-button">記録を登録</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/columns/pinzoro-100cc/game.js?v=20260616"></script>
+</body>
+</html>
