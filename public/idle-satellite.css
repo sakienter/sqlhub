@@ -1,0 +1,69 @@
+.idle-satellite-layer {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 150px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1200;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .6s ease, visibility .6s ease;
+}
+
+.idle-satellite-layer.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.idle-satellite {
+  position: absolute;
+  top: 22px;
+  left: -110px;
+  width: 82px;
+  height: 42px;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, .32));
+  animation: satellite-orbit 18s linear infinite;
+}
+
+.idle-satellite svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes satellite-orbit {
+  0% {
+    transform: translate3d(0, 34px, 0) rotate(-8deg) scale(.9);
+  }
+  24% {
+    transform: translate3d(calc(25vw + 55px), 5px, 0) rotate(1deg) scale(1);
+  }
+  50% {
+    transform: translate3d(calc(50vw + 55px), -8px, 0) rotate(7deg) scale(1.04);
+  }
+  76% {
+    transform: translate3d(calc(75vw + 55px), 5px, 0) rotate(1deg) scale(1);
+  }
+  100% {
+    transform: translate3d(calc(100vw + 110px), 34px, 0) rotate(-8deg) scale(.9);
+  }
+}
+
+@media (max-width: 760px) {
+  .idle-satellite-layer {
+    height: 110px;
+  }
+
+  .idle-satellite {
+    top: 14px;
+    width: 64px;
+    height: 34px;
+    animation-duration: 14s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .idle-satellite-layer {
+    display: none;
+  }
+}
