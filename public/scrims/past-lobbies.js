@@ -12,12 +12,11 @@ function loadParticipationSpacing() {
       margin-top: 12px !important;
     }
 
-    .participation-title-row {
-      display: flex !important;
+    .participation-x-row {
+      display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
+      justify-content: flex-start;
+      margin: 0 0 12px;
     }
 
     .participation-x-link {
@@ -28,31 +27,31 @@ function loadParticipationSpacing() {
       padding: 0 14px;
       color: #fff;
       background: #111827;
-      border: 1px solid rgba(255, 255, 255, .36);
+      border: 1px solid rgba(17, 24, 39, .18);
       border-radius: 6px;
       font-size: 12px;
       font-weight: 850;
       line-height: 1;
       text-decoration: none;
       white-space: nowrap;
-      box-shadow: 0 5px 12px rgba(3, 14, 24, .22);
+      box-shadow: 0 5px 12px rgba(3, 14, 24, .16);
       transition: background .18s ease, border-color .18s ease, transform .18s ease;
     }
 
     .participation-x-link:hover {
       background: #020617;
-      border-color: rgba(255, 255, 255, .62);
+      border-color: #020617;
       transform: translateY(-1px);
     }
 
     .participation-x-link:focus-visible {
-      outline: 3px solid rgba(255, 255, 255, .56);
+      outline: 3px solid rgba(17, 24, 39, .24);
       outline-offset: 2px;
     }
 
     @media (max-width: 640px) {
-      .participation-title-row {
-        gap: 9px;
+      .participation-x-row {
+        margin-bottom: 10px;
       }
 
       .participation-x-link {
@@ -66,9 +65,11 @@ function loadParticipationSpacing() {
 
   const participationTitle = [...document.querySelectorAll('.section-title')]
     .find((element) => element.textContent.trim() === '参加について');
+  const participationBody = participationTitle?.nextElementSibling;
 
-  if (participationTitle && !participationTitle.querySelector('.participation-x-link')) {
-    participationTitle.classList.add('participation-title-row');
+  if (participationBody && !participationBody.querySelector('.participation-x-link')) {
+    const row = document.createElement('div');
+    row.className = 'participation-x-row';
 
     const link = document.createElement('a');
     link.className = 'participation-x-link';
@@ -78,7 +79,8 @@ function loadParticipationSpacing() {
     link.textContent = 'StuntdrakeのXを確認する ↗';
     link.setAttribute('aria-label', 'StuntdrakeのXを新しいタブで確認する');
 
-    participationTitle.appendChild(link);
+    row.appendChild(link);
+    participationBody.prepend(row);
   }
 }
 
