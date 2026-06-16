@@ -1,9 +1,11 @@
 (() => {
   const API_URL = '/api/pinzoro';
-  const diceFaces = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+  const facePips = {1:[5],2:[1,9],3:[1,5,9],4:[1,3,7,9],5:[1,3,5,7,9],6:[1,3,4,6,7,9]};
+  const faceAngles = {1:{x:0,y:0},2:{x:0,y:-90},3:{x:0,y:-180},4:{x:0,y:90},5:{x:-90,y:0},6:{x:90,y:0}};
   const coinCount = document.querySelector('#coinCount');
   const rollCount = document.querySelector('#rollCount');
   const dice = document.querySelector('#dice');
+  const diceStage = document.querySelector('#diceStage');
   const message = document.querySelector('#message');
   const rollButton = document.querySelector('#rollButton');
   const historyEl = document.querySelector('#history');
@@ -18,6 +20,44 @@
 
   let state = { token: '', coins: 3, rolls: 0, history: [], cleared: false };
   let busy = false;
+  let rotationX = -24;
+  let rotationY = -32;
+
+  function buildFaces() {
+    dice.querySelectorAll('.dice-face').forEach((face, index) => {
+      const value = index + 1;
+      face.setAttribute('aria-label', `${value}の面`);
+      for (let i = 1; i <= 9; i += 1) {
+        const pip = document.createElement('span');
+        pip.className = `pip${facePips[value].includes(i) ? ' show' : ''}`;
+        face.appendChild(pip);
+      }
+    });
+  }
+
+  function setCube(x, y) {
+    rotationX = x;
+    rotationY = y;
+    dice.style.transform = `rotateX(${x}deg) rotateY(${y}deg)`;
+  }
+
+  async function animateRollTo(value) {
+    const angle = faceAngles[value];
+    diceStage.classList.add('is-rolling');
+    const animation = dice.animate([
+      { transform: `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`, offset: 0 },
+      { transform: `rotateX(${rotationX - 42}deg) rotateY(${rotationY + 56}deg)`, offset: .16 },
+      { transform: `rotateX(${angle.x + 720}deg) rotateY(${angle.y + 810}deg)`, offset: .58 },
+      { transform: `rotateX(${angle.x + 126}deg) rotateY(${angle.y - 96}deg)`, offset: .82 },
+      { transform: `rotateX(${angle.x - 14}deg) rotateY(${angle.y + 10}deg)`, offset: .92 },
+      { transform: `rotateX(${angle.x}deg) rotateY(${angle.y}deg)`, offset: 1 }
+    ], { duration: 1150, easing: 'cubic-bezier(.18,.72,.2,1)', fill: 'forwards' });
+    await animation.finished.catch(() => undefined);
+    dice.getAnimations().forEach((item) => item.cancel());
+    setCube(angle.x, angle.y);
+    diceStage.classList.remove('is-rolling');
+    dice.setAttribute('aria-label', `サイコロの出目は${value}`);
+  }
 
   async function api(method = 'GET', body) {
     const response = await fetch(API_URL, {
@@ -42,6 +82,8 @@
     setError('ゲームを準備しています…');
     try {
       state = await api('POST', { action: 'start' });
+      setCube(-24, -32);
+      dice.setAttribute('aria-label', 'まだサイコロを振っていません');
       message.className = 'message';
       message.textContent = '1コインを使ってサイコロを振る。';
       render();
@@ -91,16 +133,7 @@
     coinCount.textContent = state.coins;
     rollCount.textContent = state.rolls;
     rollButton.disabled = busy || !state.token || state.cleared || state.coins < 1;
-    if (!state.history.length) {
-      dice.textContent = '–';
-      dice.setAttribute('aria-label', 'まだサイコロを振っていません');
-      historyEl.textContent = 'まだ振っていません';
-    } else {
-      const latest = state.history[state.history.length - 1];
-      dice.textContent = diceFaces[latest - 1];
-      dice.setAttribute('aria-label', `サイコロの出目は${latest}`);
-      historyEl.textContent = state.history.slice(-12).join('・');
-    }
+    historyEl.textContent = state.history.length ? state.history.slice(-12).join('・') : 'まだ振っていません';
   }
 
   function finishGame() {
@@ -115,13 +148,10 @@
     if (busy || state.cleared || state.coins < 1) return;
     busy = true;
     render();
-    dice.classList.remove('rolling');
-    void dice.offsetWidth;
-    dice.classList.add('rolling');
 
     try {
       const data = await api('POST', { action: 'roll', token: state.token });
-      await new Promise((resolve) => window.setTimeout(resolve, 420));
+      await animateRollTo(data.result);
       state = { ...state, ...data };
 
       let text = `${data.result}が出た。+${data.gained} COIN`;
@@ -139,6 +169,7 @@
       if (state.cleared) finishGame();
     } catch (error) {
       console.error(error);
+      diceStage.classList.remove('is-rolling');
       setError(error.message === 'NO_COINS'
         ? 'コインがなくなりました。ゲームをやり直してください。'
         : '通信に失敗しました。もう一度お試しください。');
@@ -172,6 +203,8 @@
     }
   });
 
+  buildFaces();
+  setCube(-24, -32);
   loadRanking();
   resetGame();
 })();
