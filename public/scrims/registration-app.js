@@ -30,7 +30,7 @@
           <div>
             <p class="scrim-application-kicker">SCRIM ENTRY</p>
             <h3 class="scrim-application-title">スクリム参加申請</h3>
-            <p class="scrim-application-description">参加日程を選び、BattleTagとXアカウントを入力してください。</p>
+            <p class="scrim-application-description">参加日程を選び、BattleTagとXアカウントを入力してください。<br>申請後は、本人確認を行うため、XのDMを受信できる状態にしておいてください。または、Battle.netのチャットをご確認ください。</p>
           </div>
           <span class="scrim-application-status">受付中</span>
         </div>
@@ -162,7 +162,7 @@
           <div class="scrim-success">
             <div class="scrim-success-mark">✓</div>
             <h3>参加申請を送信しました</h3>
-            <p>申請内容を主催者へ送信しました。現時点では参加確定ではありません。</p>
+            <p>申請内容を主催者へ送信しました。本人確認のため、XのDMまたはBattle.netのチャットをご確認ください。現時点では参加確定ではありません。</p>
             <div class="scrim-success-detail">
               <div><strong>日程：</strong>${escapeHtml(selected?.displayLabel || data.eventLabel || '')}</div>
               <div><strong>BattleTag：</strong>${escapeHtml(battleTag)}</div>
