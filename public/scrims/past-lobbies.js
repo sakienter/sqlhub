@@ -11,8 +11,75 @@ function loadParticipationSpacing() {
     .participation-copy + .participation-copy {
       margin-top: 12px !important;
     }
+
+    .participation-title-row {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .participation-x-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      padding: 0 14px;
+      color: #fff;
+      background: #111827;
+      border: 1px solid rgba(255, 255, 255, .36);
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 850;
+      line-height: 1;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 5px 12px rgba(3, 14, 24, .22);
+      transition: background .18s ease, border-color .18s ease, transform .18s ease;
+    }
+
+    .participation-x-link:hover {
+      background: #020617;
+      border-color: rgba(255, 255, 255, .62);
+      transform: translateY(-1px);
+    }
+
+    .participation-x-link:focus-visible {
+      outline: 3px solid rgba(255, 255, 255, .56);
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 640px) {
+      .participation-title-row {
+        gap: 9px;
+      }
+
+      .participation-x-link {
+        min-height: 34px;
+        padding: 0 12px;
+        font-size: 11px;
+      }
+    }
   `;
   document.head.appendChild(style);
+
+  const participationTitle = [...document.querySelectorAll('.section-title')]
+    .find((element) => element.textContent.trim() === '参加について');
+
+  if (participationTitle && !participationTitle.querySelector('.participation-x-link')) {
+    participationTitle.classList.add('participation-title-row');
+
+    const link = document.createElement('a');
+    link.className = 'participation-x-link';
+    link.href = 'https://x.com/stuntdrakebg';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = 'StuntdrakeのXを確認する ↗';
+    link.setAttribute('aria-label', 'StuntdrakeのXを新しいタブで確認する');
+
+    participationTitle.appendChild(link);
+  }
 }
 
 function loadRegistrationApp() {
