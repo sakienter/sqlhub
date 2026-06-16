@@ -76,7 +76,7 @@ async function rollGame(db, token) {
 
   const coins = row.coins - 1 + gained;
   const rolls = row.rolls + 1;
-  const history = [...JSON.parse(row.history || '[]'), result].slice(-100);
+  const history = [...JSON.parse(row.history || '[]'), result];
   const cleared = coins >= 100 ? 1 : 0;
   const now = Date.now();
 
