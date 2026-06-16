@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ピン・ゾロ 100 CC | Stuntdrake's Avenge!</title>
   <meta name="robots" content="noindex" />
-  <link rel="stylesheet" href="/columns/pinzoro-100cc/game.css?v=20260616" />
-<link rel="icon" href="/sutantic.png" type="image/png" />
+  <link rel="stylesheet" href="/columns/pinzoro-100cc/game.css?v=20260616-3d" />
+  <link rel="icon" href="/sutantic.png" type="image/png" />
 </head>
 <body>
   <main class="game-shell">
@@ -25,7 +25,19 @@
         <div><span>TARGET</span><strong>100</strong></div>
       </div>
 
-      <div id="dice" class="dice" aria-live="polite" aria-label="サイコロの出目">–</div>
+      <div class="dice-stage" id="diceStage" aria-label="3Dサイコロ">
+        <div class="dice-halo" aria-hidden="true"></div>
+        <div class="dice-cube" id="dice" aria-live="polite">
+          <div class="dice-face face-1"></div>
+          <div class="dice-face face-2"></div>
+          <div class="dice-face face-3"></div>
+          <div class="dice-face face-4"></div>
+          <div class="dice-face face-5"></div>
+          <div class="dice-face face-6"></div>
+        </div>
+        <div class="dice-shadow" aria-hidden="true"></div>
+      </div>
+
       <p id="message" class="message">1コインを使ってサイコロを振る。</p>
       <button id="rollButton" class="roll-button" type="button">サイコロを振る <small>1 COIN</small></button>
       <div class="history-wrap">
@@ -72,6 +84,6 @@
     </form>
   </dialog>
 
-  <script src="/columns/pinzoro-100cc/game.js?v=20260616-d1"></script>
+  <script src="/columns/pinzoro-100cc/game.js?v=20260616-3d"></script>
 </body>
 </html>
