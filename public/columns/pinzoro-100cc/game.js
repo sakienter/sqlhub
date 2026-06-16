@@ -1,5 +1,5 @@
 (() => {
-  const STORAGE_KEY = 'pinzoro100cc.records.v1';
+  const API_URL = '/api/pinzoro';
   const diceFaces = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
   const coinCount = document.querySelector('#coinCount');
   const rollCount = document.querySelector('#rollCount');
@@ -16,34 +16,45 @@
   const clearRolls = document.querySelector('#clearRolls');
   const clearCoins = document.querySelector('#clearCoins');
 
-  let state;
+  let state = { token: '', coins: 3, rolls: 0, history: [], cleared: false };
+  let busy = false;
 
-  function initialState() {
-    return { coins: 3, rolls: 0, last: null, streak: 0, oneStreak: 0, history: [], cleared: false };
+  async function api(method = 'GET', body) {
+    const response = await fetch(API_URL, {
+      method,
+      headers: body ? { 'content-type': 'application/json' } : undefined,
+      body: body ? JSON.stringify(body) : undefined,
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(data.error || 'API_ERROR');
+    return data;
   }
 
-  function resetGame() {
-    state = initialState();
-    render();
+  function setError(text) {
     message.className = 'message';
-    message.textContent = '1コインを使ってサイコロを振る。';
+    message.textContent = text;
   }
 
-  function getRecords() {
+  async function resetGame() {
+    if (busy) return;
+    busy = true;
+    rollButton.disabled = true;
+    setError('ゲームを準備しています…');
     try {
-      const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-      return Array.isArray(parsed) ? parsed : [];
-    } catch {
-      return [];
+      state = await api('POST', { action: 'start' });
+      message.className = 'message';
+      message.textContent = '1コインを使ってサイコロを振る。';
+      render();
+    } catch (error) {
+      console.error(error);
+      setError('ゲームを開始できませんでした。D1設定を確認してください。');
+    } finally {
+      busy = false;
+      render();
     }
   }
 
-  function saveRecords(records) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(records.slice(0, 20)));
-  }
-
-  function renderRanking() {
-    const records = getRecords().sort((a, b) => a.rolls - b.rolls || a.createdAt - b.createdAt).slice(0, 10);
+  function renderRanking(records = []) {
     rankingList.replaceChildren();
     if (!records.length) {
       const empty = document.createElement('li');
@@ -66,10 +77,20 @@
     });
   }
 
+  async function loadRanking() {
+    try {
+      const data = await api();
+      renderRanking(data.ranking || []);
+    } catch (error) {
+      console.error(error);
+      renderRanking([]);
+    }
+  }
+
   function render() {
     coinCount.textContent = state.coins;
     rollCount.textContent = state.rolls;
-    rollButton.disabled = state.cleared || state.coins < 1;
+    rollButton.disabled = busy || !state.token || state.cleared || state.coins < 1;
     if (!state.history.length) {
       dice.textContent = '–';
       dice.setAttribute('aria-label', 'まだサイコロを振っていません');
@@ -83,8 +104,6 @@
   }
 
   function finishGame() {
-    state.cleared = true;
-    render();
     clearRolls.textContent = state.rolls;
     clearCoins.textContent = state.coins;
     window.setTimeout(() => {
@@ -92,67 +111,67 @@
     }, 500);
   }
 
-  function rollDice() {
-    if (state.cleared || state.coins < 1) return;
-    rollButton.disabled = true;
+  async function rollDice() {
+    if (busy || state.cleared || state.coins < 1) return;
+    busy = true;
+    render();
     dice.classList.remove('rolling');
     void dice.offsetWidth;
     dice.classList.add('rolling');
 
-    window.setTimeout(() => {
-      const result = Math.floor(Math.random() * 6) + 1;
-      state.coins -= 1;
-      state.rolls += 1;
-      state.streak = state.last === result ? state.streak + 1 : 1;
-      state.oneStreak = result === 1 ? state.oneStreak + 1 : 0;
-      state.last = result;
-      state.history.push(result);
+    try {
+      const data = await api('POST', { action: 'roll', token: state.token });
+      await new Promise((resolve) => window.setTimeout(resolve, 420));
+      state = { ...state, ...data };
 
-      let gained = result;
-      let text = `${result}が出た。+${result} COIN`;
+      let text = `${data.result}が出た。+${data.gained} COIN`;
       let className = 'message';
-
-      if (state.streak >= 2) {
-        gained += result;
-        text = `ゾロ目！ ${result}・${result}  BONUS +${result} / 合計 +${gained} COINS`;
+      if (data.bonus) {
+        text = `ゾロ目！ BONUS +${data.bonus} / 合計 +${data.gained} COINS`;
         className += ' bonus';
       }
-
-      if (state.oneStreak >= 3) {
-        gained += 50;
-        text = `ピン・ゾロ！ 1・1・1  SPECIAL BONUS +50 / 合計 +${gained} COINS`;
+      if (data.pinzoroBonus) {
+        text = `ピン・ゾロ！ 1・1・1  SPECIAL BONUS +50 / 合計 +${data.gained} COINS`;
         className += ' pinzoro';
-        state.oneStreak = 0;
       }
-
-      state.coins += gained;
       message.className = className;
       message.textContent = text;
+      if (state.cleared) finishGame();
+    } catch (error) {
+      console.error(error);
+      setError(error.message === 'NO_COINS'
+        ? 'コインがなくなりました。ゲームをやり直してください。'
+        : '通信に失敗しました。もう一度お試しください。');
+    } finally {
+      busy = false;
       render();
-
-      if (state.coins >= 100) finishGame();
-      else if (state.coins < 1) {
-        message.className = 'message';
-        message.textContent = 'コインがなくなりました。ゲームをやり直してください。';
-      }
-    }, 420);
+    }
   }
 
   rollButton.addEventListener('click', rollDice);
   resetButton.addEventListener('click', resetGame);
 
-  form.addEventListener('submit', (event) => {
+  form.addEventListener('submit', async (event) => {
     if (event.submitter !== saveRecordButton) return;
     event.preventDefault();
-    const name = playerName.value.trim().slice(0, 12) || 'PLAYER';
-    const records = getRecords();
-    records.push({ name, rolls: state.rolls, coins: state.coins, createdAt: Date.now() });
-    saveRecords(records.sort((a, b) => a.rolls - b.rolls || a.createdAt - b.createdAt));
-    renderRanking();
-    dialog.close();
-    playerName.value = '';
+    saveRecordButton.disabled = true;
+    try {
+      const data = await api('POST', {
+        action: 'submit',
+        token: state.token,
+        name: playerName.value,
+      });
+      renderRanking(data.ranking || []);
+      dialog.close();
+      playerName.value = '';
+    } catch (error) {
+      console.error(error);
+      setError('ランキング登録に失敗しました。');
+    } finally {
+      saveRecordButton.disabled = false;
+    }
   });
 
-  renderRanking();
+  loadRanking();
   resetGame();
 })();
