@@ -16,7 +16,7 @@
 
     if (count >= 3) {
       count = 0;
-      window.location.href = destination;
+      window.open(destination, '_blank', 'noopener,noreferrer');
       return;
     }
 
