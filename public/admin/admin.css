@@ -1,0 +1,21 @@
+body{min-height:100vh;background:linear-gradient(180deg,#eef3f5 0%,#f8f7f2 100%)}
+.admin-hub-shell{width:min(1080px,calc(100% - 40px));margin:0 auto;padding:30px 0 64px}
+.admin-hub-nav{margin-bottom:18px}
+.admin-hub-hero{padding:38px 42px;color:#fff;background:linear-gradient(135deg,#102638 0%,#173b53 58%,#7f2634 140%);border:1px solid rgba(255,255,255,.18);border-radius:20px;box-shadow:0 18px 42px rgba(3,14,24,.18)}
+.admin-hub-eyebrow{margin:0 0 10px;color:rgba(255,255,255,.68);font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+.admin-hub-hero h1{margin:0;font-size:clamp(38px,6vw,58px);font-weight:950;letter-spacing:-.04em;line-height:1}
+.admin-hub-hero p:last-child{max-width:680px;margin:18px 0 0;color:rgba(255,255,255,.84);font-size:14px;font-weight:700;line-height:1.8}
+.admin-hub-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px}
+.admin-hub-card{position:relative;display:flex;min-height:250px;padding:26px;flex-direction:column;color:#17212a;text-decoration:none;background:#fffaf2;border:1px solid rgba(24,33,40,.12);border-radius:16px;box-shadow:0 10px 26px rgba(3,14,24,.08);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.admin-hub-card::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:#0d7f99;border-radius:16px 0 0 16px}
+.admin-hub-card-scrim::before{background:#7f2634}
+.admin-hub-card:hover{color:#17212a;border-color:rgba(13,127,153,.32);box-shadow:0 16px 34px rgba(3,14,24,.14);transform:translateY(-3px)}
+.admin-hub-card-scrim:hover{border-color:rgba(127,38,52,.32)}
+.admin-hub-card-label{color:#6c7882;font-size:11px;font-weight:950;letter-spacing:.12em;text-transform:uppercase}
+.admin-hub-card h2{margin:12px 0 0;color:#102638;font-size:clamp(27px,3vw,36px);font-weight:950;letter-spacing:-.03em;line-height:1.1}
+.admin-hub-card p{margin:16px 0 26px;color:#65737e;font-size:13px;font-weight:700;line-height:1.7}
+.admin-hub-card-link{display:inline-flex;align-items:center;gap:8px;margin-top:auto;color:#0d667a;font-size:13px;font-weight:950}
+.admin-hub-card-scrim .admin-hub-card-link{color:#7f2634}
+.admin-hub-note{margin:20px 4px 0;color:#697680;font-size:12px;font-weight:700;line-height:1.7}
+@media (max-width:820px){.admin-hub-grid{grid-template-columns:1fr}.admin-hub-card{min-height:210px}}
+@media (max-width:600px){.admin-hub-shell{width:min(100% - 24px,1080px);padding-top:18px}.admin-hub-hero{padding:30px 24px;border-radius:16px}.admin-hub-card{padding:23px 22px}.admin-hub-note{margin-left:0;margin-right:0}}
