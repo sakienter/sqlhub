@@ -9,6 +9,34 @@
   margin: 0;
 }
 
+.footer-secret-trigger {
+  appearance: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  cursor: default;
+}
+
+.footer-secret-trigger:focus-visible {
+  outline: 1px dotted currentColor;
+  outline-offset: 4px;
+}
+
+.footer-secret-trigger.is-unlocked {
+  animation: footer-secret-unlock .28s ease-out;
+}
+
+@keyframes footer-secret-unlock {
+  50% {
+    opacity: .35;
+    transform: translateY(-1px);
+  }
+}
+
 .footer-note .footer-updated {
   margin-top: 7px;
   color: var(--text-muted, #687482);
