@@ -11,8 +11,12 @@
   --order-pool: 3;
   --order-rdu: 4;
 
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   margin: 0 0 48px;
   padding: 16px 20px 8px;
+  overflow: hidden;
   background: #fff;
   border: 1px solid #dedcd6;
   border-radius: 10px;
@@ -31,6 +35,8 @@
 .memo-toc ol {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  min-width: 0;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -38,6 +44,8 @@
 }
 
 .memo-toc li {
+  width: 100%;
+  min-width: 0;
   margin: 0;
   border-bottom: 1px solid #eceae5;
 }
@@ -66,6 +74,9 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   gap: 12px;
   padding: 14px 0;
   color: #30373d;
@@ -73,6 +84,9 @@
   font-weight: 700;
   line-height: 1.55;
   text-decoration: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .memo-toc a:hover {
@@ -84,6 +98,7 @@
 }
 
 .memo-toc-arrow {
+  justify-self: end;
   color: #a0a5a9;
   font-size: 13px;
   transition: transform .15s ease, color .15s ease;
@@ -119,9 +134,6 @@ body:has(#rdu-beast-title:target) .memo-toc a[href="#rdu-beast-title"] .memo-toc
 
 .memo-page > .memo-entry:has(:target) {
   display: block;
-}
-
-.memo-page > .memo-entry:has(:target) {
   scroll-margin-top: 24px;
 }
 
@@ -132,15 +144,87 @@ body:has(#rdu-beast-title:target) .memo-toc a[href="#rdu-beast-title"] .memo-toc
   scroll-margin-top: 24px;
 }
 
-@media (max-width: 640px) {
-  .memo-toc {
-    margin-bottom: 40px;
-    padding: 14px 16px 6px;
+@media (max-width: 760px) {
+  html body .memo-toc {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 0 32px !important;
+    padding: 12px 14px 4px !important;
+    overflow: hidden !important;
+    border-radius: 10px !important;
   }
 
-  .memo-toc a {
-    gap: 10px;
-    padding: 13px 0;
-    font-size: 13px;
+  html body .memo-toc-title {
+    margin: 0 !important;
+    padding: 0 0 10px !important;
+    font-size: 12px !important;
+  }
+
+  html body .memo-toc ol {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html body .memo-toc li {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  html body .memo-toc a {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 16px !important;
+    align-items: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 44px !important;
+    box-sizing: border-box !important;
+    gap: 8px !important;
+    padding: 11px 0 !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+  }
+
+  html body .memo-toc-number {
+    display: none !important;
+  }
+
+  html body .memo-toc-arrow {
+    display: block !important;
+    justify-self: end !important;
+    width: 16px !important;
+    text-align: right !important;
+  }
+
+  html body .memo-page > .memo-entry {
+    display: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  html body .memo-page > .memo-entry:has(:target) {
+    display: block !important;
+  }
+}
+
+@media (max-width: 390px) {
+  html body .memo-toc {
+    padding-right: 12px !important;
+    padding-left: 12px !important;
+  }
+
+  html body .memo-toc a {
+    font-size: 12.5px !important;
   }
 }
