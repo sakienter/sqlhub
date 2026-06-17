@@ -28,7 +28,7 @@ async function getRanking(db) {
     SELECT player_name AS name, rolls, coins, created_at AS createdAt
     FROM pinzoro_scores
     ORDER BY rolls ASC, created_at ASC
-    LIMIT 10
+    LIMIT 100
   `).all();
   return result.results || [];
 }
