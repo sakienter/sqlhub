@@ -74,7 +74,7 @@
   overflow-wrap: anywhere;
 }
 
-/* 記事一覧では、酸性降雨をピン・ゾロの直下に配置します。 */
+/* 記事一覧の表示順 */
 .memo-toc li:has(a[href="#acid-rain-history-title"]) {
   order: 2;
 }
@@ -91,16 +91,23 @@
   order: 5;
 }
 
-body:has(#acid-rain-history-title:target) .memo-toc a[href="#acid-rain-history-title"] {
+.memo-toc li:has(a[href="#lord-barov-history-title"]) {
+  order: 6;
+}
+
+body:has(#acid-rain-history-title:target) .memo-toc a[href="#acid-rain-history-title"],
+body:has(#lord-barov-history-title:target) .memo-toc a[href="#lord-barov-history-title"] {
   color: #111;
 }
 
-body:has(#acid-rain-history-title:target) .memo-toc a[href="#acid-rain-history-title"] .memo-toc-arrow {
+body:has(#acid-rain-history-title:target) .memo-toc a[href="#acid-rain-history-title"] .memo-toc-arrow,
+body:has(#lord-barov-history-title:target) .memo-toc a[href="#lord-barov-history-title"] .memo-toc-arrow {
   color: #111;
   transform: translateX(3px);
 }
 
-#acid-rain-history-title {
+#acid-rain-history-title,
+#lord-barov-history-title {
   scroll-margin-top: 24px;
 }
 
