@@ -74,6 +74,36 @@
   overflow-wrap: anywhere;
 }
 
+/* 記事一覧では、酸性降雨をピン・ゾロの直下に配置します。 */
+.memo-toc li:has(a[href="#acid-rain-history-title"]) {
+  order: 2;
+}
+
+.memo-toc li:has(a[href="#season-history-title"]) {
+  order: 3;
+}
+
+.memo-toc li:has(a[href="#pool-title"]) {
+  order: 4;
+}
+
+.memo-toc li:has(a[href="#rdu-beast-title"]) {
+  order: 5;
+}
+
+body:has(#acid-rain-history-title:target) .memo-toc a[href="#acid-rain-history-title"] {
+  color: #111;
+}
+
+body:has(#acid-rain-history-title:target) .memo-toc a[href="#acid-rain-history-title"] .memo-toc-arrow {
+  color: #111;
+  transform: translateX(3px);
+}
+
+#acid-rain-history-title {
+  scroll-margin-top: 24px;
+}
+
 @media (max-width: 600px) {
   .acid-rain-history .memo-entry-header {
     margin-bottom: 20px;
