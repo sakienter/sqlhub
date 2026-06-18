@@ -91,22 +91,29 @@
   order: 5;
 }
 
-.memo-toc li:has(a[href="#lord-barov-history-title"]) {
+.memo-toc li:has(a[href="#capn-hoggarr-history-title"]) {
   order: 6;
 }
 
+.memo-toc li:has(a[href="#lord-barov-history-title"]) {
+  order: 7;
+}
+
 body:has(#acid-rain-history-title:target) .memo-toc a[href="#acid-rain-history-title"],
+body:has(#capn-hoggarr-history-title:target) .memo-toc a[href="#capn-hoggarr-history-title"],
 body:has(#lord-barov-history-title:target) .memo-toc a[href="#lord-barov-history-title"] {
   color: #111;
 }
 
 body:has(#acid-rain-history-title:target) .memo-toc a[href="#acid-rain-history-title"] .memo-toc-arrow,
+body:has(#capn-hoggarr-history-title:target) .memo-toc a[href="#capn-hoggarr-history-title"] .memo-toc-arrow,
 body:has(#lord-barov-history-title:target) .memo-toc a[href="#lord-barov-history-title"] .memo-toc-arrow {
   color: #111;
   transform: translateX(3px);
 }
 
 #acid-rain-history-title,
+#capn-hoggarr-history-title,
 #lord-barov-history-title {
   scroll-margin-top: 24px;
 }
