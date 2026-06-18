@@ -1,0 +1,107 @@
+.acid-rain-history {
+  color: #222;
+}
+
+.acid-rain-history .memo-entry-header {
+  margin-bottom: 24px;
+}
+
+.acid-rain-history .acid-rain-kicker {
+  margin: 8px 0 0;
+  color: #666;
+  font-size: 13px;
+}
+
+.acid-rain-history h3 {
+  margin: 34px 0 16px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #ddd;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.acid-rain-history p,
+.acid-rain-history li {
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.acid-rain-history ul {
+  margin: 0;
+  padding-left: 1.4em;
+}
+
+.acid-rain-history li + li {
+  margin-top: 8px;
+}
+
+.acid-rain-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  border-top: 1px solid #ddd;
+}
+
+.acid-rain-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 14px;
+}
+
+.acid-rain-table th,
+.acid-rain-table td {
+  padding: 10px 9px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.acid-rain-table th {
+  background: #f5f5f5;
+  font-weight: 750;
+}
+
+.acid-rain-table th:first-child,
+.acid-rain-table td:first-child {
+  width: 28%;
+}
+
+.acid-rain-sources a {
+  color: #315d3b;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+  .acid-rain-history .memo-entry-header {
+    margin-bottom: 20px;
+  }
+
+  .acid-rain-history h3 {
+    margin-top: 28px;
+    font-size: 17px !important;
+  }
+
+  .acid-rain-history p,
+  .acid-rain-history li {
+    font-size: 13px !important;
+    line-height: 1.85 !important;
+  }
+
+  .acid-rain-table {
+    font-size: 12px;
+  }
+
+  .acid-rain-table th,
+  .acid-rain-table td {
+    padding: 8px 7px;
+    line-height: 1.65;
+  }
+
+  .acid-rain-table th:first-child,
+  .acid-rain-table td:first-child {
+    width: 32%;
+  }
+}
