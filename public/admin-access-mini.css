@@ -1,7 +1,56 @@
-#special-thanks .section-body{position:relative}
-#special-thanks .admin-access-mini{position:absolute;right:34px;top:50%;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;padding:0;color:#75818a;background:rgba(16,38,56,.055);border:1px solid rgba(16,38,56,.13);border-radius:8px;text-decoration:none;transform:translateY(-50%);transition:color .18s ease,background .18s ease,border-color .18s ease,box-shadow .18s ease}
-#special-thanks .admin-access-mini svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-#special-thanks .admin-access-mini:hover{color:#43535f;background:rgba(16,38,56,.10);border-color:rgba(16,38,56,.24);box-shadow:0 3px 10px rgba(3,14,24,.08)}
-#special-thanks .admin-access-mini:focus-visible{outline:2px solid rgba(13,127,153,.45);outline-offset:3px}
-@media (max-width:980px){#special-thanks .thanks-content{padding-right:56px}}
-@media (max-width:720px){#special-thanks .section-body{padding-bottom:44px}#special-thanks .thanks-content{padding-right:0}#special-thanks .admin-access-mini{right:20px;top:auto;bottom:14px;transform:none}}
+.footer-note {
+  position: relative;
+}
+
+.footer-note .admin-access-mini {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  color: rgba(255, 255, 255, .42);
+  background: rgba(255, 255, 255, .04);
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 7px;
+  text-decoration: none;
+  transform: translateY(-50%);
+  transition: color .18s ease, background .18s ease, border-color .18s ease;
+}
+
+.footer-note .admin-access-mini svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.footer-note .admin-access-mini:hover {
+  color: rgba(255, 255, 255, .82);
+  background: rgba(255, 255, 255, .09);
+  border-color: rgba(255, 255, 255, .22);
+}
+
+.footer-note .admin-access-mini:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, .45);
+  outline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .footer-note {
+    padding-bottom: 38px;
+  }
+
+  .footer-note .admin-access-mini {
+    right: 0;
+    top: auto;
+    bottom: 0;
+    transform: none;
+  }
+}
