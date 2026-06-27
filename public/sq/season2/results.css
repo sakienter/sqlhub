@@ -40,3 +40,110 @@
   font-size: 11px;
   font-weight: 850;
 }
+
+/* Game detail table: keep comparison readable while avoiding awkward Japanese breaks. */
+#game-detail-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+#game-detail-table th,
+#game-detail-table td {
+  box-sizing: border-box;
+  padding: 12px 10px;
+  vertical-align: middle;
+  line-height: 1.45;
+}
+
+#game-detail-table thead th {
+  min-height: 42px;
+  font-size: 12px;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+#game-detail-table tbody tr {
+  height: 72px;
+}
+
+#game-detail-table th[data-column-key="name"],
+#game-detail-table td[data-column-key="name"] {
+  width: 112px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+#game-detail-table th[data-column-key="placement"],
+#game-detail-table td[data-column-key="placement"] {
+  width: 64px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+#game-detail-table th[data-column-key="hero"],
+#game-detail-table td[data-column-key="hero"] {
+  width: 132px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+#game-detail-table th[data-column-key="comp"],
+#game-detail-table td[data-column-key="comp"] {
+  width: 168px;
+}
+
+#game-detail-table th[data-column-key^="lesser"],
+#game-detail-table td[data-column-key^="lesser"],
+#game-detail-table th[data-column-key^="greater"],
+#game-detail-table td[data-column-key^="greater"] {
+  width: 205px;
+}
+
+#game-detail-table th[data-column-key="info"],
+#game-detail-table td[data-column-key="info"] {
+  width: 230px;
+}
+
+#game-detail-table td.comp-cell,
+#game-detail-table td.trinket-cell,
+#game-detail-table td.info-cell {
+  text-align: left;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  line-break: strict;
+}
+
+#game-detail-table .game-detail-cell-text {
+  display: -webkit-box;
+  max-width: 100%;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+#game-detail-table td.hero-cell .game-detail-cell-text {
+  display: block;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+#game-detail-table td.name-cell {
+  font-weight: 900;
+}
+
+#game-detail-table td.rank-cell {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 900px) {
+  #game-detail-table th,
+  #game-detail-table td {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+
+  #game-detail-table tbody tr {
+    height: 68px;
+  }
+}
