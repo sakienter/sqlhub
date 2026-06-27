@@ -1,30 +1,150 @@
 {
   "DAY1": {
-    "GAME1": { "available": [], "unavailable": [] },
-    "GAME2": { "available": [], "unavailable": [] },
-    "GAME3": { "available": [], "unavailable": [] },
-    "GAME4": { "available": [], "unavailable": [] },
-    "GAME5": { "available": [], "unavailable": [] }
+    "GAME1": {
+      "available": [
+        "エレメンタル",
+        "マーロック",
+        "メカ",
+        "悪魔",
+        "海賊"
+      ],
+      "unavailable": [
+        "アンデッド",
+        "ドラゴン",
+        "キルボア",
+        "ナーガ",
+        "獣"
+      ]
+    },
+    "GAME2": {
+      "available": [
+        "アンデッド",
+        "エレメンタル",
+        "キルボア",
+        "獣"
+      ],
+      "unavailable": [
+        "ドラゴン",
+        "ナーガ",
+        "マーロック",
+        "メカ",
+        "悪魔",
+        "海賊"
+      ]
+    },
+    "GAME3": {
+      "available": [
+        "ドラゴン",
+        "ナーガ",
+        "マーロック",
+        "メカ",
+        "獣"
+      ],
+      "unavailable": [
+        "アンデッド",
+        "エレメンタル",
+        "キルボア",
+        "悪魔",
+        "海賊"
+      ]
+    },
+    "GAME4": {
+      "available": [
+        "アンデッド",
+        "エレメンタル",
+        "ドラゴン",
+        "マーロック",
+        "獣"
+      ],
+      "unavailable": [
+        "キルボア",
+        "ナーガ",
+        "メカ",
+        "悪魔",
+        "海賊"
+      ]
+    },
+    "GAME5": {
+      "available": [
+        "アンデッド",
+        "ドラゴン",
+        "キルボア",
+        "悪魔",
+        "海賊"
+      ],
+      "unavailable": [
+        "エレメンタル",
+        "ナーガ",
+        "マーロック",
+        "メカ",
+        "獣"
+      ]
+    }
   },
   "DAY2": {
-    "GAME1": { "available": [], "unavailable": [] },
-    "GAME2": { "available": [], "unavailable": [] },
-    "GAME3": { "available": [], "unavailable": [] },
-    "GAME4": { "available": [], "unavailable": [] },
-    "GAME5": { "available": [], "unavailable": [] }
+    "GAME1": {
+      "available": [],
+      "unavailable": []
+    },
+    "GAME2": {
+      "available": [],
+      "unavailable": []
+    },
+    "GAME3": {
+      "available": [],
+      "unavailable": []
+    },
+    "GAME4": {
+      "available": [],
+      "unavailable": []
+    },
+    "GAME5": {
+      "available": [],
+      "unavailable": []
+    }
   },
   "DAY3": {
-    "GAME1": { "available": [], "unavailable": [] },
-    "GAME2": { "available": [], "unavailable": [] },
-    "GAME3": { "available": [], "unavailable": [] },
-    "GAME4": { "available": [], "unavailable": [] },
-    "GAME5": { "available": [], "unavailable": [] }
+    "GAME1": {
+      "available": [],
+      "unavailable": []
+    },
+    "GAME2": {
+      "available": [],
+      "unavailable": []
+    },
+    "GAME3": {
+      "available": [],
+      "unavailable": []
+    },
+    "GAME4": {
+      "available": [],
+      "unavailable": []
+    },
+    "GAME5": {
+      "available": [],
+      "unavailable": []
+    }
   },
   "DAY4": {
-    "GAME1": { "available": [], "unavailable": [] },
-    "GAME2": { "available": [], "unavailable": [] },
-    "GAME3": { "available": [], "unavailable": [] },
-    "GAME4": { "available": [], "unavailable": [] },
-    "GAME5": { "available": [], "unavailable": [] }
+    "GAME1": {
+      "available": [],
+      "unavailable": []
+    },
+    "GAME2": {
+      "available": [],
+      "unavailable": []
+    },
+    "GAME3": {
+      "available": [],
+      "unavailable": []
+    },
+    "GAME4": {
+      "available": [],
+      "unavailable": []
+    },
+    "GAME5": {
+      "available": [],
+      "unavailable": []
+    }
   }
 }
