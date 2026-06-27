@@ -69,10 +69,28 @@ function renderGameTabs(day) {
 function renderSelectedGame(index) {
   const day = loadedData?.days?.[selectedDayIndex];
   const game = day?.gameDetails?.[index];
+  const rows = game?.rows || [];
+  const headers = compactGameDetailHeaders(game?.headers || GAME_DETAIL_HEADERS, rows);
+
   selectedGameIndex = index;
   setActive(elements.gameTabs, '.game-tab', index);
   renderGameMeta(game);
-  renderTable(elements.gameDetailTable, game?.headers || GAME_DETAIL_HEADERS, game?.rows || [], { rankKey: 'placement' });
+  renderTable(elements.gameDetailTable, headers, rows, {
+    rankKey: 'placement',
+    compactGameDetail: true
+  });
+}
+
+function compactGameDetailHeaders(headers, rows) {
+  const optionalKeys = new Set(['lesser2', 'greater2', 'info']);
+  return normalizeHeaders(headers, GAME_DETAIL_HEADERS).filter(header => {
+    if (!optionalKeys.has(header.key)) return true;
+    return rows.some(row => hasDisplayValue(row?.[header.key]));
+  });
+}
+
+function hasDisplayValue(value) {
+  return value !== null && value !== undefined && String(value).trim() !== '';
 }
 
 function setActive(parent, selector, index) {
@@ -112,7 +130,7 @@ function renderTribes(game) {
   return `<span class="tribe-panel"><span class="tribe-panel-title">Minion Types${empty ? '<span class="tribe-status">未実施</span>' : ''}</span><span class="tribe-grid">${items}</span></span>`;
 }
 
-function renderTable(table, headers, rows, options) {
+function renderTable(table, headers, rows, options = {}) {
   if (!table) return;
   const thead = table.querySelector('thead');
   const tbody = table.querySelector('tbody');
@@ -122,11 +140,20 @@ function renderTable(table, headers, rows, options) {
   thead.innerHTML = '';
   tbody.innerHTML = '';
 
+  if (options.compactGameDetail) {
+    table.dataset.visibleColumns = String(list.length);
+    table.style.minWidth = `${gameDetailTableWidth(list)}px`;
+  } else {
+    delete table.dataset.visibleColumns;
+    table.style.removeProperty('min-width');
+  }
+
   const headerRow = document.createElement('tr');
   list.forEach(header => {
     const th = document.createElement('th');
     th.textContent = header.label;
-    if (header.key === 'name') th.classList.add('align-left');
+    th.dataset.columnKey = header.key;
+    th.className = headerClass(header);
     headerRow.appendChild(th);
   });
   thead.appendChild(headerRow);
@@ -139,11 +166,19 @@ function renderTable(table, headers, rows, options) {
     list.forEach(header => {
       const td = document.createElement('td');
       const value = row?.[header.key];
+      td.dataset.columnKey = header.key;
       td.className = cellClass(header, value);
 
       if (options.finalRank && isRankHeader(header)) {
         td.classList.add('final-rank-cell');
         td.innerHTML = rankLabel(value, rowIndex + 1);
+      } else if (options.compactGameDetail && isGameDetailTextColumn(header.key)) {
+        const text = formatValue(value);
+        td.title = text;
+        const span = document.createElement('span');
+        span.className = 'game-detail-cell-text';
+        span.textContent = text;
+        td.appendChild(span);
       } else {
         td.textContent = formatValue(value);
       }
@@ -154,6 +189,33 @@ function renderTable(table, headers, rows, options) {
     });
     tbody.appendChild(tr);
   });
+}
+
+function gameDetailTableWidth(headers) {
+  const widths = {
+    name: 112,
+    placement: 64,
+    hero: 132,
+    comp: 168,
+    lesser1: 205,
+    lesser2: 205,
+    greater1: 205,
+    greater2: 205,
+    info: 230
+  };
+  return Math.max(980, headers.reduce((total, header) => total + (widths[header.key] || 150), 0));
+}
+
+function headerClass(header) {
+  const classes = [];
+  if (header.key === 'name') classes.push('align-left');
+  if (isRankHeader(header)) classes.push('rank-header');
+  if (isGameDetailTextColumn(header.key)) classes.push('game-detail-text-header');
+  return classes.join(' ');
+}
+
+function isGameDetailTextColumn(key) {
+  return ['hero', 'comp', 'lesser1', 'lesser2', 'greater1', 'greater2', 'info'].includes(String(key || ''));
 }
 
 function setEmptyState(table, empty) {
@@ -189,7 +251,7 @@ function isRankHeader(header) {
   const key = String(header?.key || '').toLowerCase();
   const label = String(header?.label || '').toLowerCase();
   return ['rank', 'placement', 'ptrank', 'finalrank'].includes(key)
-    || ['順位', '最終順位', 'placement'].includes(label);
+    || ['順位', '最終順位', '暫定順位', 'placement'].includes(label);
 }
 
 function cellClass(header, value) {
@@ -198,10 +260,13 @@ function cellClass(header, value) {
   if (key === 'name') return 'name-cell';
   const classes = [];
   if (key === 'hero') classes.push('hero-cell');
+  if (key === 'comp') classes.push('comp-cell');
+  if (['lesser1', 'lesser2', 'greater1', 'greater2'].includes(key)) classes.push('trinket-cell');
+  if (key === 'info') classes.push('info-cell');
   if (isRankHeader(header)) classes.push('rank-cell');
   const numericKey = /^(game|day)\d+$/i.test(key)
     || ['rank', 'placement', 'point', 'dailyTotal', 'total', 'firstCount', 'average'].includes(key)
-    || ['順位', '最終順位', '平均', 'Total', 'Point'].includes(label);
+    || ['順位', '最終順位', '暫定順位', '平均', 'Total', 'Point'].includes(label);
   classes.push(typeof value === 'number' || numericKey ? 'number-cell' : 'text-cell');
   if (['dailyTotal', 'total', 'point'].includes(key)) classes.push('total-cell');
   return classes.join(' ');
