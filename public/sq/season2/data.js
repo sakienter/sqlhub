@@ -4,7 +4,7 @@ const S2_DATES = ['6/27', '7/4', '7/18', '7/25'];
 const S2_TRIBE_ICON_BASE = '../tribewebp';
 
 const SUMMARY_HEADERS = [
-  { label: '最終順位', key: 'rank' },
+  { label: '暫定順位', key: 'rank' },
   { label: 'Name', key: 'name' },
   { label: 'Day1', key: 'day1' },
   { label: 'Day2', key: 'day2' },
@@ -156,7 +156,7 @@ function normalizeHeaders(headers, fallbackHeaders) {
 function inferHeaderKey(label, index) {
   const normalized = String(label || '').trim().toLowerCase();
   if (normalized === 'name') return 'name';
-  if (['順位', '最終順位', 'placement'].includes(normalized)) return 'rank';
+  if (['順位', '最終順位', '暫定順位', 'placement'].includes(normalized)) return 'rank';
   if (normalized === 'total') return 'total';
   const dayMatch = normalized.match(/^day\s*(\d+)$/i);
   if (dayMatch) return `day${dayMatch[1]}`;
