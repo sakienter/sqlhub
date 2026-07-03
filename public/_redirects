@@ -63,4 +63,5 @@
 /sq/season1/compositions/* /season1/compositions/:splat 200
 
 # Season 2 composition images remain in the legacy storage folder.
+/sq/season2/compositions/day1/barrette.jpg /sqls2day1comps/sqls2day1bar.webp 200
 /sq/season2/compositions/* /season2/compositions/:splat 200
