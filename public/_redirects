@@ -63,5 +63,12 @@
 /sq/season1/compositions/* /season1/compositions/:splat 200
 
 # Season 2 composition images remain in the legacy storage folder.
-/sq/season2/compositions/day1/barrette.jpg /sqls2day1comps/sqls2day1bar.webp 200
+/sq/season2/compositions/day1/alutemu.jpg /season2/sqls2day1comps/sqls2day1alu.webp 200
+/sq/season2/compositions/day1/barrette.jpg /season2/sqls2day1comps/sqls2day1bar.webp 200
+/sq/season2/compositions/day1/gyan.jpg /season2/sqls2day1comps/sqls2day1gyan.webp 200
+/sq/season2/compositions/day1/haguren.jpg /season2/sqls2day1comps/sqls2day1hagu.webp 200
+/sq/season2/compositions/day1/masa007.jpg /season2/sqls2day1comps/sqls2day1masa.webp 200
+/sq/season2/compositions/day1/matsuri.jpg /season2/sqls2day1comps/sqls2day1mat.webp 200
+/sq/season2/compositions/day1/reverent.jpg /season2/sqls2day1comps/sqls2day1reve.webp 200
+/sq/season2/compositions/day1/thundurus.jpg /season2/sqls2day1comps/sqls2day1thun.webp 200
 /sq/season2/compositions/* /season2/compositions/:splat 200
