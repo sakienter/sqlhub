@@ -47,6 +47,26 @@ function applyDayTwoTribeConfig() {
   };
 }
 
+function applyDayTwoGameFourHeroNames(data) {
+  const rows = data?.days?.[1]?.gameDetails?.[3]?.rows;
+  if (!Array.isArray(rows)) return;
+
+  const heroes = {
+    Alutemu: 'スニード/ピンゾロ',
+    Barrette: 'フィンレー/ムロゾンド',
+    haguren: 'ザイレラ/クラッグ',
+    MATSURI: 'テロン/テス',
+    Thundurus: 'ゼレク/スニード',
+    'ぎゃん': 'タヴィッシュ/ガリー',
+    masa007: 'リッチキング/ワグトグル',
+    Reverent: 'ユードラ/ガリー'
+  };
+
+  rows.forEach(row => {
+    if (heroes[row?.name]) row.hero = heroes[row.name];
+  });
+}
+
 async function initSeasonTwo() {
   loadedData = createFallbackData();
   renderPage(loadedData);
@@ -74,6 +94,7 @@ async function initSeasonTwo() {
 
   if (resultData && typeof resultData === 'object') {
     const patchedData = applySeasonPatch(resultData, day2Data, 1);
+    applyDayTwoGameFourHeroNames(patchedData);
     loadedData = normalizeSeasonData(patchedData);
   }
 
