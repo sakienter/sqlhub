@@ -33,6 +33,20 @@ function applySeasonPatch(baseData, patchData, dayIndex) {
   return merged;
 }
 
+function applyDayTwoTribeConfig() {
+  const byIndex = (...indexes) => indexes.map(index => S2_TRIBES[index]?.name).filter(Boolean);
+  tribeConfig = {
+    ...(tribeConfig || {}),
+    DAY2: {
+      GAME1: { available: byIndex(3, 4, 5, 8, 9), unavailable: byIndex(0, 1, 2, 6, 7) },
+      GAME2: { available: byIndex(2, 6, 7, 8, 9), unavailable: byIndex(0, 1, 3, 4, 5) },
+      GAME3: { available: byIndex(2, 3, 6, 7, 8), unavailable: byIndex(0, 1, 4, 5, 9) },
+      GAME4: { available: byIndex(0, 2, 3, 5, 6), unavailable: byIndex(1, 4, 7, 8, 9) },
+      GAME5: { available: byIndex(2, 3, 4, 5, 9), unavailable: byIndex(0, 1, 6, 7, 8) }
+    }
+  };
+}
+
 async function initSeasonTwo() {
   loadedData = createFallbackData();
   renderPage(loadedData);
@@ -56,6 +70,7 @@ async function initSeasonTwo() {
   if (staticTribes && typeof staticTribes === 'object') {
     tribeConfig = staticTribes;
   }
+  applyDayTwoTribeConfig();
 
   if (resultData && typeof resultData === 'object') {
     const patchedData = applySeasonPatch(resultData, day2Data, 1);
