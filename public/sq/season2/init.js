@@ -42,7 +42,7 @@ function applyDayTwoTribeConfig() {
       GAME2: { available: byIndex(2, 6, 7, 8, 9), unavailable: byIndex(0, 1, 3, 4, 5) },
       GAME3: { available: byIndex(2, 3, 6, 7, 8), unavailable: byIndex(0, 1, 4, 5, 9) },
       GAME4: { available: byIndex(0, 2, 3, 5, 6), unavailable: byIndex(1, 4, 7, 8, 9) },
-      GAME5: { available: byIndex(2, 3, 4, 5, 9), unavailable: byIndex(0, 1, 6, 7, 8) }
+      GAME5: { available: byIndex(2, 4, 5, 6, 9), unavailable: byIndex(0, 1, 3, 7, 8) }
     }
   };
 }
