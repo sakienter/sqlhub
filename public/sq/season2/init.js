@@ -67,6 +67,55 @@ function applyDayTwoGameFourHeroNames(data) {
   });
 }
 
+function applyDayTwoTerminology(data) {
+  const day = data?.days?.[1];
+  if (!Array.isArray(day?.gameDetails)) return;
+
+  const corrections = {
+    Alutemu: {
+      comp: ['コドー構成', 'ドラスト海賊', 'ナラァ＋タガワック', 'スカイゴーレム＆背中合わせ', 'ナーガ'],
+      lesser1: ['末魔の魂壺（バズり虫）', '使い古された燭台（レイ）', '土産物店', '飾り時計', 'くたびれた地図']
+    },
+    Barrette: {
+      comp: ['背中合わせ', 'ラスガAPM', 'ラスガAPM', '融合体ケンゴー', 'メカ'],
+      lesser1: ['メディヴの書', 'クロマティック・ティア', '書記型タイプライター', '旅行クーポン', '探検家の双眼鏡']
+    },
+    haguren: {
+      comp: ['バッカニーア', 'ドラスト海賊', 'メカ', '発明家', '発明家'],
+      lesser1: ['ブーティ・ベイ・ビール', '満杯コイン財布', '海底のイカリ', '書記型タイプライター', '子安貝の首飾り']
+    },
+    MATSURI: {
+      comp: ['ファミリーマーロック', 'ラスガAPM', '恵APM', '溢れアンデッド', '女王ライラク'],
+      lesser1: ['ゴブリンの財布', '謎めいた立方体', '陣太鼓', '書記型タイプライター', '書記型タイプライター']
+    },
+    Thundurus: {
+      comp: ['混成＋毒', 'バッカニーア', 'ラスガAPM', 'キルボア→チャームチェンジ', 'カレク'],
+      lesser1: ['飾り時計', 'バーテンド・トロンのオイル缶', '満杯コイン財布', '謎めいたオーブ', '魔法使いのシルクハット']
+    },
+    'ぎゃん': {
+      comp: ['バッカニーア', 'スカイゴーレム', '恵エヴォーカー', '混成＋ドラゴン', '発明家'],
+      lesser1: ['金のペンダント', '書記型タイプライター', '反射のペンダント', '使い古された燭台', 'スクレーパーのステッカー']
+    },
+    masa007: {
+      comp: ['背中合わせ', 'スカイブレーザー', '自動人形', 'キルボア', '融合体ケンゴー'],
+      lesser1: ['使い古された燭台', 'ロックのオルゴール', '土産物店', 'ゴブリンの財布', '満杯コイン財布']
+    },
+    Reverent: {
+      comp: ['マーロック', 'ヒョウシマーモス', '背中合わせ', '溢れアンデッド', 'ライラククランカー'],
+      lesser1: ['探検家の双眼鏡', '光る篭手', 'レンドルのステッカー', 'レンズケース', 'ライラクの肖像画']
+    }
+  };
+
+  day.gameDetails.forEach((game, gameIndex) => {
+    (game.rows || []).forEach(row => {
+      const player = corrections[row?.name];
+      if (!player) return;
+      row.comp = player.comp[gameIndex];
+      row.lesser1 = player.lesser1[gameIndex];
+    });
+  });
+}
+
 async function initSeasonTwo() {
   loadedData = createFallbackData();
   renderPage(loadedData);
@@ -95,6 +144,7 @@ async function initSeasonTwo() {
   if (resultData && typeof resultData === 'object') {
     const patchedData = applySeasonPatch(resultData, day2Data, 1);
     applyDayTwoGameFourHeroNames(patchedData);
+    applyDayTwoTerminology(patchedData);
     loadedData = normalizeSeasonData(patchedData);
   }
 
