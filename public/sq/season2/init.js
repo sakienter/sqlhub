@@ -18,14 +18,33 @@ function keepCompositionPlaceholderCurrent() {
   });
 }
 
+function applySeasonPatch(baseData, patchData, dayIndex) {
+  if (!baseData || !patchData || typeof patchData !== 'object') return baseData;
+
+  const merged = {
+    ...baseData,
+    days: Array.isArray(baseData.days) ? [...baseData.days] : []
+  };
+
+  if (patchData.updatedAt) merged.updatedAt = patchData.updatedAt;
+  if (patchData.summary && typeof patchData.summary === 'object') merged.summary = patchData.summary;
+  if (patchData.day && typeof patchData.day === 'object') merged.days[dayIndex] = patchData.day;
+
+  return merged;
+}
+
 async function initSeasonTwo() {
   loadedData = createFallbackData();
   renderPage(loadedData);
   keepCompositionPlaceholderCurrent();
 
-  const [resultData, staticTribes] = await Promise.all([
+  const [resultData, day2Data, staticTribes] = await Promise.all([
     fetchJson(API_URL).catch(error => {
       console.warn('Season 2 static results are not available.', error);
+      return null;
+    }),
+    fetchJson('./results-day2.json').catch(error => {
+      console.warn('Season 2 DAY2 results are not available.', error);
       return null;
     }),
     fetchJson(TRIBE_API_URL).catch(error => {
@@ -39,7 +58,8 @@ async function initSeasonTwo() {
   }
 
   if (resultData && typeof resultData === 'object') {
-    loadedData = normalizeSeasonData(resultData);
+    const patchedData = applySeasonPatch(resultData, day2Data, 1);
+    loadedData = normalizeSeasonData(patchedData);
   }
 
   renderPage(loadedData, true);
