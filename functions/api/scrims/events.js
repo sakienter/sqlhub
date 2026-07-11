@@ -21,7 +21,7 @@ export async function onRequestGet(context) {
       if (authError) return authError;
     }
 
-    const where = includeAll ? '' : "WHERE status = 'open' AND is_completed = 0";
+    const where = includeAll ? 'WHERE is_completed = 0' : "WHERE status = 'open' AND is_completed = 0";
     const result = await db.prepare(`
       SELECT id, event_date AS eventDate, start_time AS startTime,
         gather_time AS gatherTime, status, is_completed AS isCompleted,
