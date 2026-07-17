@@ -89,3 +89,16 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 
 @media (max-width:720px){body:has(.hub-hero) .page-shell{width:min(100% - 24px,1180px)!important;padding-top:18px!important}body:has(.hub-hero) .hub-hero{height:auto!important;min-height:340px!important}body:has(.hub-hero) .hub-hero-image{inset:0!important;width:100%!important;height:100%!important;object-position:center center!important;transform:none!important}body:has(.hub-hero) .hub-hero-panel{width:calc(100% - 32px)!important;max-width:none!important;margin-left:16px!important;margin-right:16px!important;padding:24px 22px 26px!important;transform:none!important}body:has(.hub-hero) .hub-hero h1{font-size:clamp(34px,10vw,46px)!important;letter-spacing:-.02em!important;white-space:normal!important}body:has(.hub-hero) .hub-hero .hub-ja-title{font-size:13px!important}body:has(.hub-hero) .hub-hero .lead{font-size:14px!important}#current-season .section-title{font-size:20px;padding:11px 12px}#current-season .section-body{padding:18px}#current-season .season-card.card-link{min-height:132px;padding:24px;flex-direction:column;align-items:flex-start}#current-season .season-card.card-link h2{font-size:clamp(38px,11vw,52px)}#current-season .current-subtitle{font-size:16px}#current-season .card-cta{font-size:14px}}
 @media (max-width:720px){#scrims .section-body{padding:18px}#scrims .scrim-card{align-items:flex-start;flex-direction:column;padding:20px}.admin-access{align-items:flex-start;flex-direction:column;gap:14px;padding:17px 18px}.admin-access-button{width:100%;justify-content:space-between}}
+
+
+#blog .section-body{padding:16px 24px 20px}
+#blog .blog-card{width:min(100%,520px);min-height:0;margin:0 auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:18px;color:#102638;background:#f8fafb;border:1px solid rgba(16,38,56,.14);border-radius:10px;box-shadow:none;overflow:hidden;transition:color .22s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease,transform .22s ease}
+#blog .blog-card::before,#blog .blog-card::after{content:none}
+#blog .blog-card h2{margin:0;color:inherit;font-size:18px;font-weight:900;line-height:1.3;letter-spacing:.01em;text-shadow:none;transition:color .22s ease}
+#blog .blog-card .card-cta{flex:0 0 auto;margin:0;padding:0;color:#0d7f99;background:transparent;box-shadow:none;font-size:12px;font-weight:900;white-space:nowrap;transition:color .22s ease,transform .22s ease}
+#blog .blog-card:hover{color:#fff;background:#102638;background-size:auto;border-color:#19b6d9;box-shadow:0 9px 20px rgba(3,14,24,.18);transform:translateY(-2px)}
+#blog .blog-card:hover h2{color:#fff;text-shadow:none;transform:none}
+#blog .blog-card:hover .card-cta{color:#8ee9f5;background:transparent;box-shadow:none;text-shadow:none;transform:translateX(3px)}
+#blog .blog-card:focus-visible{outline:3px solid rgba(25,182,217,.36);outline-offset:3px}
+
+@media (max-width:720px){#blog .section-body{padding:14px 16px 18px}#blog .blog-card{padding:13px 15px;gap:12px}#blog .blog-card h2{font-size:16px}#blog .blog-card .card-cta{font-size:11px}}
