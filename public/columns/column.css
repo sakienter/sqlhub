@@ -422,3 +422,9 @@ a {
     font-size: 14px;
   }
 }
+
+
+.raw-memo-entry{margin-top:72px}
+.raw-memo-entry .memo-entry-header{margin-bottom:24px}
+.raw-memo-text{margin:0;padding:24px 26px;color:#30373d;background:#fff;border:1px solid #d9d7d1;border-radius:8px;font-family:inherit;font-size:14px;font-weight:450;line-height:1.9;white-space:pre-wrap;overflow-wrap:anywhere;box-shadow:0 10px 28px rgba(30,36,48,.05)}
+@media (max-width:640px){.raw-memo-entry{margin-top:56px}.raw-memo-text{padding:18px 16px;font-size:13px;line-height:1.85}}
