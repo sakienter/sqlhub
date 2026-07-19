@@ -1,0 +1,701 @@
+{
+  "updatedAt": "2026-07-19",
+  "summary": {
+    "rows": [
+      {
+        "rank": "1st",
+        "name": "Barrette",
+        "total": 62
+      },
+      {
+        "rank": "2nd",
+        "name": "haguren",
+        "total": 61
+      },
+      {
+        "rank": "3rd",
+        "name": "Thundurus",
+        "total": 56
+      },
+      {
+        "rank": "4th",
+        "name": "MATSURI",
+        "total": 55
+      },
+      {
+        "rank": "5th",
+        "name": "Reverent",
+        "total": 52
+      },
+      {
+        "rank": "6th",
+        "name": "ぎゃん",
+        "total": 48
+      },
+      {
+        "rank": "7th",
+        "name": "Alutemu",
+        "total": 47
+      },
+      {
+        "rank": "8th",
+        "name": "masa007",
+        "total": 39
+      }
+    ]
+  },
+  "day": {
+    "label": "DAY3",
+    "date": "7/18",
+    "points": {
+      "rows": [
+        {
+          "name": "Alutemu",
+          "dailyTotal": 17,
+          "rank": "6th",
+          "game1": 6,
+          "game2": 5,
+          "game3": 2,
+          "game4": 3,
+          "game5": 1
+        },
+        {
+          "name": "Barrette",
+          "dailyTotal": 14,
+          "rank": "8th",
+          "game1": 3,
+          "game2": 2,
+          "game3": 1,
+          "game4": 2,
+          "game5": 6
+        },
+        {
+          "name": "haguren",
+          "dailyTotal": 19,
+          "rank": "2nd",
+          "game1": 4,
+          "game2": 0,
+          "game3": 3,
+          "game4": 7,
+          "game5": 5
+        },
+        {
+          "name": "MATSURI",
+          "dailyTotal": 19,
+          "rank": "2nd",
+          "game1": 0,
+          "game2": 1,
+          "game3": 7,
+          "game4": 4,
+          "game5": 7
+        },
+        {
+          "name": "Thundurus",
+          "dailyTotal": 20,
+          "rank": "1st",
+          "game1": 5,
+          "game2": 6,
+          "game3": 0,
+          "game4": 6,
+          "game5": 3
+        },
+        {
+          "name": "ぎゃん",
+          "dailyTotal": 18,
+          "rank": "4th",
+          "game1": 2,
+          "game2": 4,
+          "game3": 5,
+          "game4": 5,
+          "game5": 2
+        },
+        {
+          "name": "masa007",
+          "dailyTotal": 15,
+          "rank": "7th",
+          "game1": 1,
+          "game2": 7,
+          "game3": 6,
+          "game4": 1,
+          "game5": 0
+        },
+        {
+          "name": "Reverent",
+          "dailyTotal": 18,
+          "rank": "4th",
+          "game1": 7,
+          "game2": 3,
+          "game3": 4,
+          "game4": 0,
+          "game5": 4
+        }
+      ]
+    },
+    "placements": {
+      "rows": [
+        {
+          "name": "Alutemu",
+          "firstCount": 0,
+          "average": 4.6,
+          "game1": 2,
+          "game2": 3,
+          "game3": 6,
+          "game4": 5,
+          "game5": 7
+        },
+        {
+          "name": "Barrette",
+          "firstCount": 0,
+          "average": 5.2,
+          "game1": 5,
+          "game2": 6,
+          "game3": 7,
+          "game4": 6,
+          "game5": 2
+        },
+        {
+          "name": "haguren",
+          "firstCount": 1,
+          "average": 4.2,
+          "game1": 4,
+          "game2": 8,
+          "game3": 5,
+          "game4": 1,
+          "game5": 3
+        },
+        {
+          "name": "MATSURI",
+          "firstCount": 2,
+          "average": 4.2,
+          "game1": 8,
+          "game2": 7,
+          "game3": 1,
+          "game4": 4,
+          "game5": 1
+        },
+        {
+          "name": "Thundurus",
+          "firstCount": 0,
+          "average": 3.8,
+          "game1": 3,
+          "game2": 2,
+          "game3": 8,
+          "game4": 2,
+          "game5": 5
+        },
+        {
+          "name": "ぎゃん",
+          "firstCount": 0,
+          "average": 4.4,
+          "game1": 6,
+          "game2": 4,
+          "game3": 3,
+          "game4": 3,
+          "game5": 6
+        },
+        {
+          "name": "masa007",
+          "firstCount": 1,
+          "average": 4.3,
+          "game1": 7,
+          "game2": 1,
+          "game3": 2,
+          "game4": 7,
+          "game5": 8
+        },
+        {
+          "name": "Reverent",
+          "firstCount": 1,
+          "average": 4.4,
+          "game1": 1,
+          "game2": 5,
+          "game3": 4,
+          "game4": 8,
+          "game5": 4
+        }
+      ]
+    },
+    "gameDetails": [
+      {
+        "label": "GAME1",
+        "startTime": "13:04",
+        "endTime": "13:34",
+        "anomaly": "異常な時間線",
+        "rows": [
+          {
+            "name": "Alutemu",
+            "placement": 2,
+            "hero": "ホームズ",
+            "comp": "魔力吸収",
+            "lesser1": "黄金の破片",
+            "lesser2": "",
+            "greater1": "ボブのチップ入れビン",
+            "greater2": "",
+            "info": "破片（タービュランス）"
+          },
+          {
+            "name": "Barrette",
+            "placement": 5,
+            "hero": "ガフ",
+            "comp": "",
+            "lesser1": "インコの肖像画",
+            "lesser2": "",
+            "greater1": "穢れし秘本",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "haguren",
+            "placement": 4,
+            "hero": "ピラマッド",
+            "comp": "指輪係",
+            "lesser1": "カラフルコンパス",
+            "lesser2": "",
+            "greater1": "ボブのチップ入れビン",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "MATSURI",
+            "placement": 8,
+            "hero": "フェイリン",
+            "comp": "",
+            "lesser1": "インコの肖像画",
+            "lesser2": "",
+            "greater1": "なし",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Thundurus",
+            "placement": 3,
+            "hero": "カートラス",
+            "comp": "ラスガードAPM",
+            "lesser1": "光る籠手",
+            "lesser2": "",
+            "greater1": "チルメアモザイク",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "ぎゃん",
+            "placement": 6,
+            "hero": "ミロクー",
+            "comp": "魔力吸収",
+            "lesser1": "カラフルコンパス",
+            "lesser2": "",
+            "greater1": "ラーヴァ・ランプ",
+            "greater2": "",
+            "info": "キラリング&訓練兵"
+          },
+          {
+            "name": "masa007",
+            "placement": 7,
+            "hero": "デナスリアス",
+            "comp": "",
+            "lesser1": "旧神のしるし",
+            "lesser2": "",
+            "greater1": "救世主の肖像画",
+            "greater2": "",
+            "info": "秘蔵書(20死亡)"
+          },
+          {
+            "name": "Reverent",
+            "placement": 1,
+            "hero": "マスターウェン",
+            "comp": "背中合わせ",
+            "lesser1": "酒場のオヤジのジョッキ",
+            "lesser2": "",
+            "greater1": "書記型タイプライター",
+            "greater2": "",
+            "info": ""
+          }
+        ]
+      },
+      {
+        "label": "GAME2",
+        "startTime": "13:39",
+        "endTime": "14:09",
+        "anomaly": "下級袋",
+        "rows": [
+          {
+            "name": "Alutemu",
+            "placement": 3,
+            "hero": "メカーノ",
+            "comp": "スペルバフ混成",
+            "lesser1": "獄吏のステッカー",
+            "lesser2": "万華鏡(最後のひとり)",
+            "greater1": "保全パッチ",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Barrette",
+            "placement": 6,
+            "hero": "ヴーン",
+            "comp": "指輪係",
+            "lesser1": "反射のペンダント",
+            "lesser2": "アゼロス儀",
+            "greater1": "ボブのチップ入れビン",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "haguren",
+            "placement": 8,
+            "hero": "セナリウス",
+            "comp": "瓦礫悪魔",
+            "lesser1": "使い古された燭台(メンタル)",
+            "lesser2": "移動式工場(エンジン)",
+            "greater1": "ペイグルの釣り竿",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "MATSURI",
+            "placement": 7,
+            "hero": "スニード",
+            "comp": "ラスガードAPM",
+            "lesser1": "反射のペンダント",
+            "lesser2": "レンドルのステッカー",
+            "greater1": "酒場のオヤジの炉端",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Thundurus",
+            "placement": 2,
+            "hero": "デナスリアス",
+            "comp": "食肉アンデッド",
+            "lesser1": "棺桶",
+            "lesser2": "獄吏のステッカー",
+            "greater1": "マジックフィン",
+            "greater2": "",
+            "info": "時間改竄(30召喚)"
+          },
+          {
+            "name": "ぎゃん",
+            "placement": 4,
+            "hero": "ヴァッシュ",
+            "comp": "ラスガードAPM",
+            "lesser1": "呪われたクリスタル",
+            "lesser2": "移動式工場(打楽器)",
+            "greater1": "カラフルコンパス",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "masa007",
+            "placement": 1,
+            "hero": "ホームズ",
+            "comp": "食肉アンデッド",
+            "lesser1": "レンドルのステッカー",
+            "lesser2": "満杯コイン財布",
+            "greater1": "無貌の肖像画",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Reverent",
+            "placement": 5,
+            "hero": "クラッグ",
+            "comp": "ハンドバフマーロック",
+            "lesser1": "レプリカの大聖堂",
+            "lesser2": "レプリカの大聖堂",
+            "greater1": "ナァグル語の常用会話集",
+            "greater2": "",
+            "info": ""
+          }
+        ]
+      },
+      {
+        "label": "GAME3",
+        "startTime": "14:12",
+        "endTime": "14:41",
+        "anomaly": "ダブルヘッダー",
+        "rows": [
+          {
+            "name": "Alutemu",
+            "placement": 6,
+            "hero": "ガリー",
+            "comp": "チャーム",
+            "lesser1": "ドラゴンウィング・グライダー",
+            "lesser2": "",
+            "greater1": "戦団の笛",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Barrette",
+            "placement": 7,
+            "hero": "デナスリアス",
+            "comp": "",
+            "lesser1": "メディヴの書",
+            "lesser2": "",
+            "greater1": "使い古された燭台(凶)",
+            "greater2": "",
+            "info": "不定的な証拠(12破壊)"
+          },
+          {
+            "name": "haguren",
+            "placement": 5,
+            "hero": "フックタスク",
+            "comp": "荒らし屋バッカニーア",
+            "lesser1": "書記型タイプライター",
+            "lesser2": "",
+            "greater1": "チルメアモザイク",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "MATSURI",
+            "placement": 1,
+            "hero": "サーフィンレー",
+            "comp": "背中合わせ",
+            "lesser1": "レンドルのステッカー",
+            "lesser2": "",
+            "greater1": "戦団の笛",
+            "greater2": "",
+            "info": "アカザム"
+          },
+          {
+            "name": "Thundurus",
+            "placement": 8,
+            "hero": "サイラス",
+            "comp": "",
+            "lesser1": "レンズケース",
+            "lesser2": "",
+            "greater1": "羅針盤",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "ぎゃん",
+            "placement": 3,
+            "hero": "オザール",
+            "comp": "発明家",
+            "lesser1": "謎めいた立方体",
+            "lesser2": "",
+            "greater1": "メカ・ジャラクサスのステッカー",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "masa007",
+            "placement": 2,
+            "hero": "アラキア",
+            "comp": "恵エヴォーカー",
+            "lesser1": "横領屋の肖像画",
+            "lesser2": "",
+            "greater1": "穢れし秘本",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Reverent",
+            "placement": 4,
+            "hero": "クロックスワース",
+            "comp": "荒らし屋詩竜",
+            "lesser1": "飾り時計",
+            "lesser2": "",
+            "greater1": "私掠船員の肖像画",
+            "greater2": "",
+            "info": ""
+          }
+        ]
+      },
+      {
+        "label": "GAME4",
+        "startTime": "14:45",
+        "endTime": "15:22",
+        "anomaly": "上級袋",
+        "rows": [
+          {
+            "name": "Alutemu",
+            "placement": 5,
+            "hero": "サーフィンレー",
+            "comp": "近未来遊泳",
+            "lesser1": "双眼鏡",
+            "lesser2": "",
+            "greater1": "万華鏡(近未来遊泳)",
+            "greater2": "",
+            "info": "アカザム"
+          },
+          {
+            "name": "Barrette",
+            "placement": 6,
+            "hero": "マスターウェン",
+            "comp": "食肉アンデッド",
+            "lesser1": "魔法使いのシルクハット",
+            "lesser2": "",
+            "greater1": "邪心の書",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "haguren",
+            "placement": 1,
+            "hero": "ピュートリサイド",
+            "comp": "食肉アンデッド",
+            "lesser1": "魚の肖像画",
+            "lesser2": "",
+            "greater1": "穢れし秘本",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "MATSURI",
+            "placement": 4,
+            "hero": "トーリム",
+            "comp": "近未来遊泳",
+            "lesser1": "未知のオーブ(蝕ヨグそそるお菓子)",
+            "lesser2": "",
+            "greater1": "教育球の補給品",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Thundurus",
+            "placement": 2,
+            "hero": "テロン",
+            "comp": "発明家",
+            "lesser1": "末魔の魂壺()",
+            "lesser2": "",
+            "greater1": "未知のオーブ（羅針盤）",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "ぎゃん",
+            "placement": 3,
+            "hero": "ガラクロンド",
+            "comp": "骸骨掃者",
+            "lesser1": "獄吏のステッカー",
+            "lesser2": "",
+            "greater1": "穢れし秘本",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "masa007",
+            "placement": 7,
+            "hero": "ザイレラ",
+            "comp": "",
+            "lesser1": "酒場のオヤジのジョッキ",
+            "lesser2": "",
+            "greater1": "なし",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Reverent",
+            "placement": 8,
+            "hero": "獄吏王",
+            "comp": "",
+            "lesser1": "レンドルのステッカー",
+            "lesser2": "",
+            "greater1": "なし",
+            "greater2": "",
+            "info": ""
+          }
+        ]
+      },
+      {
+        "label": "GAME5",
+        "startTime": "15:25",
+        "endTime": "15:58",
+        "anomaly": "大宇宙デュアリティ",
+        "rows": [
+          {
+            "name": "Alutemu",
+            "placement": 7,
+            "hero": "シンドラゴサ/シャダウォック",
+            "comp": "預言者指輪：背中合わせ",
+            "lesser1": "ゴブリンの財布",
+            "lesser2": "",
+            "greater1": "ボブのチップ入れビン",
+            "greater2": "メカ・ジャラクサスのステッカー",
+            "info": ""
+          },
+          {
+            "name": "Barrette",
+            "placement": 2,
+            "hero": "クロミー/ドレクサー",
+            "comp": "スカイゴーレム",
+            "lesser1": "スクレーパーのステッカー",
+            "lesser2": "",
+            "greater1": "スカイ・ゴーレムの肖像画",
+            "greater2": "酒場のオヤジの炉端",
+            "info": ""
+          },
+          {
+            "name": "haguren",
+            "placement": 3,
+            "hero": "マイエヴ/マリゴス",
+            "comp": "ノミエレメンタル",
+            "lesser1": "謎めいたオーブ",
+            "lesser2": "水車",
+            "greater1": "なし",
+            "greater2": "死臭林檎",
+            "info": ""
+          },
+          {
+            "name": "MATSURI",
+            "placement": 1,
+            "hero": "ムロゾンド/パッチワーク",
+            "comp": "破壊者",
+            "lesser1": "古代のスクロール",
+            "lesser2": "",
+            "greater1": "ナジャターの絵葉書",
+            "greater2": "邪心の書",
+            "info": "Tw/ 断末魔発見&セイレーン"
+          },
+          {
+            "name": "Thundurus",
+            "placement": 5,
+            "hero": "チケッタス/ホームズ",
+            "comp": "スカイゴーレム",
+            "lesser1": "チケッタスのステッカー",
+            "lesser2": "",
+            "greater1": "穢れし秘本",
+            "greater2": "スカイ・ゴーレムの肖像画",
+            "info": ""
+          },
+          {
+            "name": "ぎゃん",
+            "placement": 6,
+            "hero": "テス/リッチキング",
+            "comp": "指輪係",
+            "lesser1": "フェレメンタルの肖像画",
+            "lesser2": "",
+            "greater1": "戦団の笛",
+            "greater2": "無貌の肖像画",
+            "info": ""
+          },
+          {
+            "name": "masa007",
+            "placement": 8,
+            "hero": "マスターウェン/インゲ",
+            "comp": "",
+            "lesser1": "書記型タイプライター",
+            "lesser2": "",
+            "greater1": "万華鏡(ラー)",
+            "greater2": "マジックフィンのステッカー",
+            "info": ""
+          },
+          {
+            "name": "Reverent",
+            "placement": 4,
+            "hero": "ヴァンダル/ヴォルジン",
+            "comp": "ポイズンマーロック",
+            "lesser1": "アズシャラの小像",
+            "lesser2": "",
+            "greater1": "酒場のオヤジの炉端(ジャガノ&騎兵)",
+            "greater2": "酒場のオヤジの炉端",
+            "info": ""
+          }
+        ]
+      }
+    ]
+  }
+}
