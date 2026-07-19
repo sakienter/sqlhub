@@ -36,8 +36,13 @@
     .organizer-copy p{margin:7px 0 0;color:#53616d;font-size:13px;font-weight:800}
     .organizer-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px}
     .organizer-links .button{margin:0;white-space:nowrap}
+    .official-info-grid{display:grid;grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr);gap:22px;align-items:start}
+    .official-info-side{display:grid;gap:16px}
+    .official-info-side .organizer-card{align-items:flex-start;flex-direction:column}
+    .official-info-side .organizer-links{justify-content:flex-start}
+    .official-info-side .preparing-panel{padding:20px}
     .preparing-panel{padding:24px;color:#43515e;background:rgba(16,38,56,.05);border:1px dashed rgba(16,38,56,.24);border-radius:12px;font-size:15px;font-weight:800;line-height:1.8;text-align:center}
-    @media(max-width:900px){.hero.tournament-page-hero{min-height:280px;padding:1.55rem}.tournament-title-block{margin-top:2rem}.rule-blocks{grid-template-columns:1fr}.organizer-card{align-items:flex-start;flex-direction:column}.organizer-links{justify-content:flex-start}}
+    @media(max-width:900px){.hero.tournament-page-hero{min-height:280px;padding:1.55rem}.tournament-title-block{margin-top:2rem}.rule-blocks,.official-info-grid{grid-template-columns:1fr}.organizer-card{align-items:flex-start;flex-direction:column}.organizer-links{justify-content:flex-start}.flyer-image{max-height:720px}}
     @media(max-width:640px){.hero.tournament-page-hero{min-height:300px;border-radius:14px}.tournament-page-hero h1{font-size:clamp(36px,12vw,52px)}}
   </style>
   <link rel="stylesheet" href="/footer-updated.css?v=20260614">
@@ -57,7 +62,7 @@
       <div class="section-title">概要とルール</div>
       <div class="section-body">
         <ul class="rule-text-list" style="margin-bottom:22px;">
-          <li><strong>開催：</strong>2026年7月19日</li>
+          <li><strong>開催：</strong>2026年7月19日 11時頃予選開始、16時頃決勝卓開始</li>
           <li><strong>定員：</strong>64人</li>
         </ul>
         <div class="rule-blocks">
@@ -83,40 +88,32 @@
     </section>
 
     <section class="score-card">
-      <div class="section-title purple">公式フライヤー</div>
+      <div class="section-title purple">公式情報・リンク</div>
       <div class="section-body">
-        <figure class="flyer-figure">
-          <a class="flyer-link" href="./nerubana.webp" target="_blank" rel="noopener" aria-label="ねるばとる公式フライヤーを原寸で開く">
-            <img class="flyer-image" src="./nerubana.webp?v=20260719" alt="ねるばとる 公式フライヤー" loading="lazy" decoding="async">
-          </a>
-          <figcaption class="flyer-caption">画像をクリックすると原寸で開きます。</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="score-card">
-      <div class="section-title">主催・公式リンク</div>
-      <div class="section-body">
-        <div class="organizer-card">
-          <div class="organizer-copy">
-            <h3>紙束ねるこ / Neruko Kamitaba</h3>
-            <p>ねるばとる 主催</p>
+        <div class="official-info-grid">
+          <figure class="flyer-figure">
+            <a class="flyer-link" href="./nerubana.webp" target="_blank" rel="noopener" aria-label="ねるばとる公式フライヤーを原寸で開く">
+              <img class="flyer-image" src="./nerubana.webp?v=20260719" alt="ねるばとる 公式フライヤー" loading="lazy" decoding="async">
+            </a>
+            <figcaption class="flyer-caption">画像をクリックすると原寸で開きます。</figcaption>
+          </figure>
+          <div class="official-info-side">
+            <div class="organizer-card">
+              <div class="organizer-copy">
+                <h3>紙束ねるこ / Neruko Kamitaba</h3>
+                <p>ねるばとる 主催</p>
+              </div>
+              <div class="organizer-links">
+                <a class="button" href="https://x.com/neruko_kamitaba" target="_blank" rel="noopener">主催者のXを開く →</a>
+                <a class="button" href="https://www.youtube.com/@neruko_kamitaba" target="_blank" rel="noopener">YouTubeチャンネル →</a>
+                <a class="button" href="https://www.youtube.com/live/2LMa2kGxZZM?si=aMRsZZ4AUPYCx_zp" target="_blank" rel="noopener">大会配信を開く →</a>
+              </div>
+            </div>
+            <div class="preparing-panel">
+              <p style="margin:0 0 14px;">大会詳細・参加登録はTonamelをご確認ください。</p>
+              <a class="button" href="https://tonamel.com/competition/E8w8Z" target="_blank" rel="noopener">Tonamelで大会ページを開く →</a>
+            </div>
           </div>
-          <div class="organizer-links">
-            <a class="button" href="https://x.com/neruko_kamitaba" target="_blank" rel="noopener">主催者のXを開く →</a>
-            <a class="button" href="https://www.youtube.com/@neruko_kamitaba" target="_blank" rel="noopener">YouTubeチャンネル →</a>
-            <a class="button" href="https://www.youtube.com/live/2LMa2kGxZZM?si=aMRsZZ4AUPYCx_zp" target="_blank" rel="noopener">大会配信を開く →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="score-card">
-      <div class="section-title orange">Tournament Links</div>
-      <div class="section-body">
-        <div class="preparing-panel">
-          <p style="margin:0 0 14px;">大会詳細・参加登録はTonamelをご確認ください。</p>
-          <a class="button" href="https://tonamel.com/competition/E8w8Z" target="_blank" rel="noopener">Tonamelで大会ページを開く →</a>
         </div>
       </div>
     </section>
