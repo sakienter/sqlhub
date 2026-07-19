@@ -127,7 +127,8 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 }
 
 #past-tournaments .yoidore-card {
-  --wipe-image: radial-gradient(circle at 74% 32%, rgba(244,190,82,.42), transparent 22%), linear-gradient(135deg, #2d170d 0%, #78441f 52%, #c58a38 100%);
+  --wipe-image: linear-gradient(90deg, rgba(40,18,8,.76) 0%, rgba(40,18,8,.46) 42%, rgba(40,18,8,.12) 72%, rgba(40,18,8,.04) 100%), url('/tournaments/yoidore/yoidore.webp?v=20260719');
+  --wipe-image-position: center 42%;
 }
 
 #past-tournaments .secret-tournament-card {
