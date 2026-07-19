@@ -123,9 +123,14 @@
 }
 
 #game-detail-table td.hero-cell .game-detail-cell-text {
-  display: block;
-  overflow: visible;
-  white-space: nowrap;
+  display: -webkit-box;
+  overflow: hidden;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
 }
 
 #game-detail-table td.name-cell {
