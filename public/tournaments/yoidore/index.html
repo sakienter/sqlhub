@@ -10,17 +10,20 @@
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="../../common.css">
   <style>
-    .hero.tournament-page-hero{position:relative;isolation:isolate;overflow:hidden;margin:0 auto 28px;min-height:260px;padding:2.1rem 2rem 2.35rem;display:flex;flex-direction:column;justify-content:space-between;text-align:left;background:#8a4a15 url('/tournaments/yoidore/head.webp?v=20260719-header-v1') center/cover no-repeat;border:1px solid rgba(255,255,255,.34);border-radius:18px;box-shadow:0 24px 48px rgba(45,20,6,.38)}
-    .hero.tournament-page-hero::before,.hero.tournament-page-hero::after{content:none;display:none}
-    .tournament-page-hero .back-link{position:relative;z-index:2;align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 17px;color:#fff;background:rgba(20,9,3,.48);border:1px solid rgba(255,255,255,.48);border-radius:999px;box-shadow:0 9px 22px rgba(20,9,3,.26);font-size:13px;font-weight:900;text-decoration:none;backdrop-filter:blur(8px);transition:background .18s ease,border-color .18s ease,transform .18s ease}
+    .hero.tournament-page-hero{position:relative;isolation:isolate;overflow:hidden;margin:0 auto 28px;min-height:260px;padding:2.1rem 2rem 2.35rem;display:flex;flex-direction:column;justify-content:space-between;text-align:left;background:#3a1b09;border:1px solid rgba(255,255,255,.34);border-radius:18px;box-shadow:0 24px 48px rgba(45,20,6,.38)}
+    .hero.tournament-page-hero::before{content:"";position:absolute;inset:-8px;z-index:-2;background:url('/tournaments/yoidore/head.webp?v=20260719-header-v2') center/cover no-repeat;filter:blur(3px);transform:scale(1.035)}
+    .hero.tournament-page-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(20,8,2,.18),rgba(20,8,2,.08) 48%,rgba(20,8,2,.2)),linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.2))}
+    .tournament-page-hero .back-link{position:relative;z-index:3;align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 17px;color:#fff;background:rgba(20,9,3,.48);border:1px solid rgba(255,255,255,.48);border-radius:999px;box-shadow:0 9px 22px rgba(20,9,3,.26);font-size:13px;font-weight:900;text-decoration:none;backdrop-filter:blur(8px);transition:background .18s ease,border-color .18s ease,transform .18s ease}
     .tournament-page-hero .back-link:hover{background:rgba(20,9,3,.68);border-color:#fff;transform:translateY(-1px)}
-    .tournament-title-block{position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;clip-path:inset(50%)!important;white-space:nowrap!important;transform:none!important}
+    .tournament-title-block{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;padding:58px 30px 22px;pointer-events:none;text-align:center}
+    .tournament-title-block h1{margin:0;color:#fff;font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;font-size:clamp(58px,9vw,128px);font-weight:950;font-style:oblique 12deg;line-height:.92;letter-spacing:-.1em;transform:skewX(-7deg);text-shadow:0 5px 0 rgba(25,7,1,.22),0 12px 26px rgba(20,6,1,.56);-webkit-text-stroke:1px rgba(255,255,255,.22)}
+    .tournament-title-block .event-date{display:none}
     .rule-text-list{margin:0;padding-left:1.35rem;color:#111;font-size:15px;font-weight:750;line-height:1.95}
     .rule-text-list strong{color:#111;font-weight:950}
     .organizer-x-link{display:inline-flex;align-items:center;margin:16px 0 0;padding:8px 0 5px;color:#8a4a15;border-bottom:2px solid rgba(138,74,21,.34);font-size:17px;font-weight:950;text-decoration:none;transition:color .18s ease,border-color .18s ease,text-shadow .18s ease,transform .18s ease}
     .organizer-x-link:hover{color:#b96520;border-color:#b96520;text-shadow:0 6px 14px rgba(138,74,21,.22);transform:translateY(-1px)}
-    @media(max-width:900px){.hero.tournament-page-hero{min-height:280px;padding:1.55rem;background-position:center 42%}}
-    @media(max-width:640px){.hero.tournament-page-hero{min-height:300px;border-radius:14px}.tournament-page-hero h1{font-size:clamp(36px,12vw,52px)}}
+    @media(max-width:900px){.hero.tournament-page-hero{min-height:280px;padding:1.55rem}.hero.tournament-page-hero::before{background-position:center 42%}.tournament-title-block{padding:56px 20px 20px}.tournament-title-block h1{font-size:clamp(52px,12vw,92px)}}
+    @media(max-width:640px){.hero.tournament-page-hero{min-height:300px;border-radius:14px}.tournament-title-block{padding:62px 16px 22px}.tournament-title-block h1{font-size:clamp(46px,15vw,68px);letter-spacing:-.12em}}
   </style>
   <link rel="stylesheet" href="/footer-updated.css?v=20260614">
 <link rel="icon" href="/sutantic.png" type="image/png" />
@@ -30,7 +33,7 @@
     <header class="hero tournament-page-hero">
       <a class="back-link" href="../../">← Avenge Hubへ戻る</a>
       <div class="tournament-title-block">
-        <h1>酔いどれ杯</h1>
+        <h1>よいどれ杯</h1>
         <p class="event-date">不定期開催</p>
       </div>
     </header>
