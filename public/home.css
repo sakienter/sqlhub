@@ -127,18 +127,19 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 
 #past-tournaments .neru-battle-card::before {
   background-image:
-    linear-gradient(90deg, rgba(3,18,32,.72) 0%, rgba(3,24,42,.44) 48%, rgba(3,24,42,.10) 100%),
-    radial-gradient(circle, rgba(0,150,255,.58) 0 2px, transparent 2.5px),
+    linear-gradient(90deg, rgba(3,18,32,.68) 0%, rgba(3,24,42,.38) 48%, rgba(3,24,42,.08) 100%),
+    radial-gradient(circle at 84% 50%, rgba(0,150,255,.30), transparent 38%),
+    radial-gradient(circle, rgba(0,150,255,.64) 0 2px, transparent 2.5px),
     linear-gradient(135deg, #061725 0%, #0a4168 58%, #0d76ad 100%);
-  background-size: cover, 22px 22px, cover;
-  background-position: center, 0 0, center;
+  background-size: cover, cover, 22px 22px, cover;
+  background-position: center, center, 0 0, center;
   filter: none;
 }
 
 #past-tournaments .neru-battle-card::after {
   background:
-    repeating-linear-gradient(180deg, transparent 0 8px, rgba(91,198,255,.04) 8px 9px),
-    linear-gradient(115deg, transparent 0 54%, rgba(0,150,255,.14) 55%, transparent 58%);
+    repeating-linear-gradient(180deg, transparent 0 8px, rgba(91,198,255,.045) 8px 9px),
+    linear-gradient(112deg, transparent 0 55%, rgba(0,150,255,.34) 55.5%, rgba(0,150,255,.08) 65%, transparent 65.5%);
   opacity: .78;
 }
 
@@ -149,6 +150,35 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 
 #past-tournaments .neru-battle-card:hover::after {
   opacity: 1;
+}
+
+#past-tournaments .neru-battle-card h2::after {
+  content: "";
+  display: block;
+  width: 58px;
+  height: 3px;
+  margin-top: 8px;
+  background: rgb(0,150,255);
+  box-shadow: 0 0 12px rgba(0,150,255,.42);
+  transition: width .28s var(--wipe-easing), box-shadow .28s var(--wipe-easing);
+}
+
+#past-tournaments .neru-battle-card:hover h2::after {
+  width: 88px;
+  box-shadow: 0 0 18px rgba(0,150,255,.68);
+}
+
+#past-tournaments .neru-battle-card .card-cta {
+  color: #fff;
+  background: rgba(0,150,255,.22);
+  border: 1px solid rgba(91,198,255,.42);
+  box-shadow: 0 8px 18px rgba(0,76,128,.22);
+}
+
+#past-tournaments .neru-battle-card:hover .card-cta {
+  background: rgb(0,150,255);
+  border-color: rgb(0,150,255);
+  box-shadow: 0 10px 22px rgba(0,105,180,.34);
 }
 
 #past-tournaments .east-west-card {
