@@ -109,7 +109,8 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
   isolation: isolate;
   overflow: hidden;
   cursor: default;
-  min-height: 168px;
+  min-height: 118px;
+  padding: 14px 18px;
 }
 
 #past-tournaments .preview-tournament-card .preview-label {
@@ -145,7 +146,7 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 }
 
 #past-tournaments .secret-tournament-card h2 {
-  font-size: clamp(25px, 2.7vw, 36px);
+  font-size: clamp(20px, 2vw, 26px);
   letter-spacing: .12em;
 }
 
