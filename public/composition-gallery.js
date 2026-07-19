@@ -144,7 +144,7 @@
     const day = getSelectedDayNumber();
     const slug = fileBaseName(name);
     if (isSeasonOne) return `./s1day${day}/${slug}.webp`;
-    if (day === 3) return `${basePath}/day${day}/${slug}.webp?v=20260719-day3-comps-v2`;
+    if (day === 3) return `/season2/sqls2day3comps/${slug}.webp?v=20260719-day3-comps-v3`;
     return `${basePath}/day${day}/${slug}.jpg`;
   }
 
