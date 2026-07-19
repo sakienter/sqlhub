@@ -129,17 +129,14 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
   background-image:
     linear-gradient(90deg, rgba(3,18,32,.68) 0%, rgba(3,24,42,.38) 48%, rgba(3,24,42,.08) 100%),
     radial-gradient(circle at 84% 50%, rgba(0,150,255,.30), transparent 38%),
-    radial-gradient(circle, rgba(0,150,255,.64) 0 2px, transparent 2.5px),
     linear-gradient(135deg, #061725 0%, #0a4168 58%, #0d76ad 100%);
-  background-size: cover, cover, 22px 22px, cover;
-  background-position: center, center, 0 0, center;
+  background-size: cover, cover, cover;
+  background-position: center, center, center;
   filter: none;
 }
 
 #past-tournaments .neru-battle-card::after {
-  background:
-    repeating-linear-gradient(180deg, transparent 0 8px, rgba(91,198,255,.045) 8px 9px),
-    linear-gradient(112deg, transparent 0 55%, rgba(0,150,255,.34) 55.5%, rgba(0,150,255,.08) 65%, transparent 65.5%);
+  background: linear-gradient(112deg, transparent 0 55%, rgba(0,150,255,.34) 55.5%, rgba(0,150,255,.08) 65%, transparent 65.5%);
   opacity: .78;
 }
 
