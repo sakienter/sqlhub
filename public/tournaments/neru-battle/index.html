@@ -17,12 +17,11 @@
     .tournament-page-hero .back-link{position:relative;z-index:2;align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 17px;color:#fff;background:rgba(2,4,6,.72);border:1px solid rgba(255,255,255,.28);border-radius:999px;box-shadow:0 10px 24px rgba(0,0,0,.28);font-size:13px;font-weight:900;text-decoration:none;backdrop-filter:blur(8px);transition:border-color .18s ease,background .18s ease,transform .18s ease}
     .tournament-page-hero .back-link:hover{background:rgba(0,150,255,.12);border-color:rgba(0,150,255,.72);transform:translateY(-1px)}
     .tournament-title-block{position:absolute;z-index:2;top:50%;left:50%;width:min(78%,760px);margin:0;text-align:center;transform:translate(-50%,-48%)}
-    .tournament-page-hero h1{position:relative;display:inline-block;margin:0;padding:0 22px 18px;color:#fff;font-size:clamp(58px,8vw,100px);font-weight:950;letter-spacing:-.075em;line-height:.96;text-align:center;text-shadow:0 12px 30px rgba(0,0,0,.82),0 0 20px rgba(0,150,255,.14);animation:neru-title-glow 4.2s ease-in-out infinite}
+    .tournament-page-hero h1{position:relative;display:inline-block;margin:0;padding:0 22px 18px;color:#fff;font-size:clamp(58px,8vw,100px);font-weight:950;letter-spacing:-.075em;line-height:.96;text-align:center;text-shadow:0 12px 30px rgba(0,0,0,.82),0 0 20px rgba(0,150,255,.14)}
     .tournament-page-hero h1::after{content:"";position:absolute;right:0;bottom:0;left:0;height:6px;background:#0096ff;box-shadow:0 0 18px rgba(0,150,255,.5)}
     .event-date{position:absolute;z-index:3;left:2rem;bottom:1.7rem;display:inline-block;margin:0;padding:0 3px 8px;color:#fff;background:transparent;border:0;border-bottom:4px solid #0096ff;border-radius:0;box-shadow:0 8px 0 -6px rgba(0,150,255,.34);font-size:clamp(17px,1.7vw,22px);font-weight:950;letter-spacing:.12em;text-shadow:0 6px 18px rgba(0,0,0,.9)}
-    @keyframes neru-title-glow{0%,100%{text-shadow:0 12px 30px rgba(0,0,0,.82),0 0 14px rgba(0,150,255,.10);transform:translateY(0)}50%{text-shadow:0 14px 34px rgba(0,0,0,.88),0 0 26px rgba(0,150,255,.28);transform:translateY(-2px)}}
     .neru-energy-lines{position:absolute;z-index:0;inset:0;overflow:hidden;pointer-events:none}
-    .neru-dot-mask{position:absolute;width:11px;height:11px;border-radius:50%;background:#020406;box-shadow:0 0 3px 2px #020406;opacity:0;transform:translate(-50%,-50%)}
+    .neru-dot-mask{position:absolute;width:14px;height:14px;border-radius:50%;background:#020406;box-shadow:0 0 5px 3px #020406;opacity:0;transform:translate(-50%,-50%)}
     .neru-streak{position:absolute;opacity:0;will-change:transform,opacity}
     .neru-streak.is-horizontal{left:-46%;width:46%;height:2px;background:linear-gradient(90deg,transparent,rgba(0,150,255,.24) 16%,#8bdcff 50%,rgba(0,150,255,.34) 84%,transparent);box-shadow:0 0 8px #0096ff,0 0 20px rgba(0,150,255,.7)}
     .neru-streak.is-vertical{top:-58%;width:2px;height:58%;background:linear-gradient(180deg,transparent,rgba(0,150,255,.22) 16%,#8bdcff 50%,rgba(0,150,255,.34) 84%,transparent);box-shadow:0 0 8px #0096ff,0 0 20px rgba(0,150,255,.7)}
@@ -151,33 +150,37 @@
         if (!active || !document.body.contains(hero)) return;
         const width = hero.clientWidth;
         const height = hero.clientHeight;
-        const count = Math.floor(rand(5, 15));
-        const duration = rand(1150, 1850);
+        const count = Math.floor(rand(10, 22));
+        const used = new Set();
 
         for (let i = 0; i < count; i += 1) {
-          const dot = document.createElement('i');
-          dot.className = 'neru-dot-mask';
           const leftSide = Math.random() < .5;
           const x = leftSide ? rand(12, width * .37) : rand(width * .63, width - 12);
           const y = rand(12, height - 12);
-          dot.style.left = snapDot(x) + 'px';
-          dot.style.top = snapDot(y) + 'px';
+          const snappedX = snapDot(x);
+          const snappedY = snapDot(y);
+          const key = snappedX + ':' + snappedY;
+          if (used.has(key)) {
+            i -= 1;
+            continue;
+          }
+          used.add(key);
+
+          const dot = document.createElement('i');
+          dot.className = 'neru-dot-mask';
+          dot.style.left = snappedX + 'px';
+          dot.style.top = snappedY + 'px';
           layer.appendChild(dot);
 
-          const delay = rand(0, 140);
           const animation = dot.animate([
             { opacity: 0 },
-            { opacity: 1, offset: .18 },
-            { opacity: 1, offset: .38 },
-            { opacity: 0, offset: .54 },
-            { opacity: 0, offset: .66 },
-            { opacity: 1, offset: .78 },
-            { opacity: 1, offset: .9 },
+            { opacity: 1, offset: .06 },
+            { opacity: 1, offset: .82 },
             { opacity: 0 }
-          ], { duration, delay, easing: 'steps(1,end)' });
+          ], { duration: 1650, easing: 'steps(1,end)' });
           animation.finished.finally(() => dot.remove());
         }
-        window.setTimeout(blinkDots, rand(1100, 2100));
+        window.setTimeout(blinkDots, 2000);
       };
 
       const sendLine = () => {
