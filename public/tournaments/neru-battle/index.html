@@ -35,8 +35,10 @@
     .organizer-copy{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding-bottom:14px;border-bottom:1px solid rgba(0,105,180,.12)}
     .organizer-copy h3{margin:0;color:#06345d;font-size:19px;font-weight:950}
     .organizer-copy p{margin:0;color:#65737e;font-size:12px;font-weight:800;white-space:nowrap}
-    .organizer-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:14px}
-    .organizer-links .button{display:flex;align-items:center;justify-content:center;min-height:42px;margin:0;padding:9px 12px;border-radius:8px;box-shadow:none;font-size:12px;line-height:1.35;text-align:center;white-space:normal}
+    .organizer-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}
+    .organizer-links .button{display:flex;align-items:center;justify-content:space-between;min-height:38px;margin:0;padding:8px 11px;color:#07528d!important;background:#fff!important;border:1px solid rgba(0,105,180,.18)!important;border-radius:6px;box-shadow:none!important;font-size:12px;font-weight:850;line-height:1.3;text-align:left;white-space:normal;transition:background .15s ease,border-color .15s ease,transform .15s ease}
+    .organizer-links .button::after{content:"↗";margin-left:10px;color:#008fe8;font-size:13px;font-weight:900}
+    .organizer-links .button:hover{color:#06345d!important;background:#f2f9fe!important;border-color:rgba(0,150,255,.48)!important;box-shadow:none!important;transform:translateY(-1px)}
     .official-info-grid{display:grid;grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr);gap:22px;align-items:start}
     .official-info-side{display:block}
     .preparing-panel{padding:24px;color:#43515e;background:rgba(16,38,56,.05);border:1px dashed rgba(16,38,56,.24);border-radius:12px;font-size:15px;font-weight:800;line-height:1.8;text-align:center}
@@ -102,10 +104,10 @@
                 <p>ねるばとる 主催</p>
               </div>
               <div class="organizer-links">
-                <a class="button" href="https://x.com/neruko_kamitaba" target="_blank" rel="noopener">主催者 X →</a>
-                <a class="button" href="https://www.youtube.com/@neruko_kamitaba" target="_blank" rel="noopener">YouTube →</a>
-                <a class="button" href="https://www.youtube.com/live/2LMa2kGxZZM?si=aMRsZZ4AUPYCx_zp" target="_blank" rel="noopener">大会配信 →</a>
-                <a class="button" href="https://tonamel.com/competition/E8w8Z" target="_blank" rel="noopener">大会詳細・参加登録 →</a>
+                <a class="button" href="https://x.com/neruko_kamitaba" target="_blank" rel="noopener">主催者 X</a>
+                <a class="button" href="https://www.youtube.com/@neruko_kamitaba" target="_blank" rel="noopener">YouTube</a>
+                <a class="button" href="https://www.youtube.com/live/2LMa2kGxZZM?si=aMRsZZ4AUPYCx_zp" target="_blank" rel="noopener">大会配信</a>
+                <a class="button" href="https://tonamel.com/competition/E8w8Z" target="_blank" rel="noopener">大会詳細・参加登録</a>
               </div>
             </div>
           </div>
