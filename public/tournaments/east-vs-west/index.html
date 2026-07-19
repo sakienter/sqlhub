@@ -18,19 +18,15 @@
     .event-date{margin:1rem 0 0;color:rgba(255,255,255,.92);font-size:16px;font-weight:900;letter-spacing:.05em;text-shadow:0 4px 14px rgba(3,14,24,.46)}
     .rule-text-list{margin:0;padding-left:1.35rem;color:#111;font-size:15px;font-weight:750;line-height:1.95}
     .rule-text-list strong{color:#111;font-weight:950}
-    .event-summary{display:grid;gap:18px}
-    .event-summary-block{padding:20px 22px;background:#fff;border:1px solid rgba(16,38,56,.12);border-left:5px solid #a61629;border-radius:12px;box-shadow:0 8px 20px rgba(3,14,24,.06)}
-    .event-summary-block.west{border-left-color:#0b5b96}
-    .event-summary-block h3{margin:0 0 10px;color:#102638;font-size:21px;font-weight:950}
-    .event-summary-block p{margin:0;color:#182128;font-size:15px;font-weight:750;line-height:1.85}
-    .event-dates{display:flex;flex-wrap:wrap;gap:12px;margin:0}
-    .event-date-chip{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;color:#fff;background:#a61629;border-radius:999px;font-size:14px;font-weight:950}
-    .event-date-chip.west{background:#0b5b96}
-    .official-links{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;padding-top:18px;border-top:1px solid rgba(16,38,56,.14)}
-    .official-link{display:inline-flex;align-items:center;padding:9px 0 5px;color:#7f2634;border-bottom:2px solid rgba(127,38,52,.34);font-size:16px;font-weight:950;text-decoration:none;transition:color .18s ease,border-color .18s ease,transform .18s ease}
-    .official-link.west{color:#07528d;border-bottom-color:rgba(7,82,141,.34)}
-    .official-link:hover{color:#b2202d;border-color:currentColor;transform:translateY(-1px)}
-    .official-link.west:hover{color:#0876bd}
+    .event-summary{display:block}
+    .event-summary-block{margin:0;padding:0 0 18px;background:transparent;border:0;border-bottom:1px solid rgba(16,38,56,.14);border-radius:0;box-shadow:none}
+    .event-summary-block + .event-summary-block{padding-top:18px}
+    .event-summary-block h3{margin:0 0 7px;color:#102638;font-size:19px;font-weight:950}
+    .event-summary-block p{margin:0;color:#182128;font-size:15px;font-weight:700;line-height:1.85}
+    .official-links{display:grid;gap:9px;margin-top:20px;padding-top:18px;border-top:1px solid rgba(16,38,56,.14)}
+    .official-links-title{margin:0 0 3px;color:#102638;font-size:18px;font-weight:950}
+    .official-link{width:max-content;max-width:100%;padding:2px 0;color:#07528d;font-size:15px;font-weight:900;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;transition:color .18s ease}
+    .official-link:hover{color:#0096e8}
     @media(max-width:900px){.hero.tournament-page-hero{min-height:280px;padding:1.55rem}.tournament-title-block{margin-top:2rem}}
     @media(max-width:640px){.hero.tournament-page-hero{min-height:300px;border-radius:14px}.tournament-page-hero h1{font-size:clamp(36px,12vw,52px)}}
   </style>
@@ -53,12 +49,9 @@
         <div class="event-summary">
           <section class="event-summary-block">
             <h3>開催日</h3>
-            <div class="event-dates">
-              <span class="event-date-chip">予選：7/20</span>
-              <span class="event-date-chip west">本戦：7/26</span>
-            </div>
+            <p>予選：7/20<br>本戦：7/26</p>
           </section>
-          <section class="event-summary-block west">
+          <section class="event-summary-block">
             <h3>大会形式</h3>
             <p>EAST、WESTでそれぞれ予選を行い、代表選手を3名ずつ選出します。各陣営の代表3名と、それぞれのゲスト選手1名を合わせた「3＋1＋3＋1」の合計8名で本戦を行います。</p>
           </section>
@@ -66,14 +59,16 @@
             <h3>予選ルール</h3>
             <p>定員は各陣営16人です。2卓に分かれて2試合を行い、各卓の獲得pt上位4名が予選決勝へ進みます。予選決勝は1試合を行い、その順位をもって代表選手を決定します。</p>
           </section>
-          <section class="event-summary-block west">
+          <section class="event-summary-block">
             <h3>本戦ルール</h3>
             <p>上記のシステムで選出された8名で3試合を行います。累計で獲得したptが高い陣営の勝利となります。また、それぞれの陣営でpt最上位となった選手にも賞金があります。</p>
           </section>
         </div>
         <div class="official-links">
-          <a class="official-link" href="https://tonamel.com/competition/1yMmK" target="_blank" rel="noopener noreferrer">予選エントリーはこちら（Tonamel）</a>
-          <a class="official-link west" href="https://x.com/__1ydia__" target="_blank" rel="noopener noreferrer">主催者X：@__1ydia__</a>
+          <h3 class="official-links-title">予選エントリー</h3>
+          <a class="official-link" href="https://tonamel.com/competition/1yMmK" target="_blank" rel="noopener noreferrer">EAST vs WEST予選（EAST部門）</a>
+          <a class="official-link" href="https://tonamel.com/competition/efAbW" target="_blank" rel="noopener noreferrer">EAST vs WEST予選（WEST部門）</a>
+          <a class="official-link" href="https://x.com/__1ydia__" target="_blank" rel="noopener noreferrer">主催者X：@__1ydia__</a>
         </div>
       </div>
     </section>
