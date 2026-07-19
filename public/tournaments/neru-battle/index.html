@@ -26,8 +26,13 @@
     .rule-block dd{margin:3px 0 0;color:#182128;font-size:14px;font-weight:700;line-height:1.75}
     .points-line{font-variant-numeric:tabular-nums}
     .media-placeholder{padding:28px;color:#53616d;background:linear-gradient(135deg,#f5fbff,#edf6fb);border:1px dashed rgba(0,105,180,.32);border-radius:12px;font-size:14px;font-weight:800;line-height:1.8;text-align:center}
+    .organizer-card{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px;background:linear-gradient(135deg,#f5fbff,#e8f5fc);border:1px solid rgba(0,105,180,.18);border-radius:14px}
+    .organizer-copy h3{margin:0;color:#06345d;font-size:22px;font-weight:950}
+    .organizer-copy p{margin:7px 0 0;color:#53616d;font-size:13px;font-weight:800}
+    .organizer-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px}
+    .organizer-links .button{margin:0;white-space:nowrap}
     .preparing-panel{padding:24px;color:#43515e;background:rgba(16,38,56,.05);border:1px dashed rgba(16,38,56,.24);border-radius:12px;font-size:15px;font-weight:800;line-height:1.8;text-align:center}
-    @media(max-width:900px){.hero.tournament-page-hero{min-height:280px;padding:1.55rem}.tournament-title-block{margin-top:2rem}.rule-blocks{grid-template-columns:1fr}}
+    @media(max-width:900px){.hero.tournament-page-hero{min-height:280px;padding:1.55rem}.tournament-title-block{margin-top:2rem}.rule-blocks{grid-template-columns:1fr}.organizer-card{align-items:flex-start;flex-direction:column}.organizer-links{justify-content:flex-start}}
     @media(max-width:640px){.hero.tournament-page-hero{min-height:300px;border-radius:14px}.tournament-page-hero h1{font-size:clamp(36px,12vw,52px)}}
   </style>
   <link rel="stylesheet" href="/footer-updated.css?v=20260614">
@@ -82,7 +87,17 @@
     <section class="score-card">
       <div class="section-title">主催・公式リンク</div>
       <div class="section-body">
-        <div class="media-placeholder">主催者情報・X・YouTubeを掲載予定</div>
+        <div class="organizer-card">
+          <div class="organizer-copy">
+            <h3>紙束ねるこ / Neruko Kamitaba</h3>
+            <p>ねるばとる 主催</p>
+          </div>
+          <div class="organizer-links">
+            <a class="button" href="https://x.com/neruko_kamitaba" target="_blank" rel="noopener">主催者のXを開く →</a>
+            <a class="button" href="https://www.youtube.com/@neruko_kamitaba" target="_blank" rel="noopener">YouTubeチャンネル →</a>
+            <a class="button" href="https://www.youtube.com/live/2LMa2kGxZZM?si=aMRsZZ4AUPYCx_zp" target="_blank" rel="noopener">大会配信を開く →</a>
+          </div>
+        </div>
       </div>
     </section>
 
