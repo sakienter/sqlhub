@@ -22,7 +22,7 @@
     .event-date{position:absolute;z-index:3;left:2rem;bottom:1.7rem;display:inline-block;margin:0;padding:0 3px 8px;color:#fff;background:transparent;border:0;border-bottom:4px solid #0096ff;border-radius:0;box-shadow:0 8px 0 -6px rgba(0,150,255,.34);font-size:clamp(17px,1.7vw,22px);font-weight:950;letter-spacing:.12em;text-shadow:0 6px 18px rgba(0,0,0,.9)}
     @keyframes neru-title-glow{0%,100%{text-shadow:0 12px 30px rgba(0,0,0,.82),0 0 14px rgba(0,150,255,.10);transform:translateY(0)}50%{text-shadow:0 14px 34px rgba(0,0,0,.88),0 0 26px rgba(0,150,255,.28);transform:translateY(-2px)}}
     .neru-energy-lines{position:absolute;z-index:0;inset:0;overflow:hidden;pointer-events:none}
-    .neru-twinkle{position:absolute;width:7px;height:7px;border-radius:50%;background:#75d0ff;box-shadow:0 0 8px #0096ff,0 0 18px rgba(0,150,255,.9);opacity:0;transform:translate(-50%,-50%) scale(.45)}
+    .neru-dot-mask{position:absolute;width:11px;height:11px;border-radius:50%;background:#020406;box-shadow:0 0 3px 2px #020406;opacity:0;transform:translate(-50%,-50%)}
     .neru-streak{position:absolute;opacity:0;will-change:transform,opacity}
     .neru-streak.is-horizontal{left:-46%;width:46%;height:2px;background:linear-gradient(90deg,transparent,rgba(0,150,255,.24) 16%,#8bdcff 50%,rgba(0,150,255,.34) 84%,transparent);box-shadow:0 0 8px #0096ff,0 0 20px rgba(0,150,255,.7)}
     .neru-streak.is-vertical{top:-58%;width:2px;height:58%;background:linear-gradient(180deg,transparent,rgba(0,150,255,.22) 16%,#8bdcff 50%,rgba(0,150,255,.34) 84%,transparent);box-shadow:0 0 8px #0096ff,0 0 20px rgba(0,150,255,.7)}
@@ -151,11 +151,12 @@
         if (!active || !document.body.contains(hero)) return;
         const width = hero.clientWidth;
         const height = hero.clientHeight;
-        const count = Math.floor(rand(2, 8));
+        const count = Math.floor(rand(5, 15));
+        const duration = rand(1150, 1850);
 
         for (let i = 0; i < count; i += 1) {
           const dot = document.createElement('i');
-          dot.className = 'neru-twinkle';
+          dot.className = 'neru-dot-mask';
           const leftSide = Math.random() < .5;
           const x = leftSide ? rand(12, width * .37) : rand(width * .63, width - 12);
           const y = rand(12, height - 12);
@@ -163,17 +164,20 @@
           dot.style.top = snapDot(y) + 'px';
           layer.appendChild(dot);
 
-          const duration = rand(520, 1250);
-          const flashes = Math.random() < .28 ? 2 : 1;
+          const delay = rand(0, 140);
           const animation = dot.animate([
-            { opacity: 0, transform: 'translate(-50%,-50%) scale(.4)' },
-            { opacity: rand(.65, 1), transform: 'translate(-50%,-50%) scale(1.35)', offset: .42 },
-            { opacity: rand(.18, .42), transform: 'translate(-50%,-50%) scale(.8)', offset: .68 },
-            { opacity: 0, transform: 'translate(-50%,-50%) scale(.45)' }
-          ], { duration, iterations: flashes, easing: 'ease-in-out' });
+            { opacity: 0 },
+            { opacity: 1, offset: .18 },
+            { opacity: 1, offset: .38 },
+            { opacity: 0, offset: .54 },
+            { opacity: 0, offset: .66 },
+            { opacity: 1, offset: .78 },
+            { opacity: 1, offset: .9 },
+            { opacity: 0 }
+          ], { duration, delay, easing: 'steps(1,end)' });
           animation.finished.finally(() => dot.remove());
         }
-        window.setTimeout(blinkDots, rand(320, 980));
+        window.setTimeout(blinkDots, rand(1100, 2100));
       };
 
       const sendLine = () => {
