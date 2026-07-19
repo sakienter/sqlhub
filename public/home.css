@@ -102,3 +102,78 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 #blog .blog-card:focus-visible{outline:3px solid rgba(25,182,217,.36);outline-offset:3px}
 
 @media (max-width:720px){#blog .section-body{padding:14px 16px 18px}#blog .blog-card{padding:13px 15px;gap:12px}#blog .blog-card h2{font-size:16px}#blog .blog-card .card-cta{font-size:11px}}
+
+/* Upcoming tournament banner previews */
+#past-tournaments .preview-tournament-card {
+  cursor: default;
+  min-height: 168px;
+}
+
+#past-tournaments .preview-tournament-card .preview-label {
+  font-size: 11px;
+  letter-spacing: .09em;
+}
+
+#past-tournaments .neru-battle-card {
+  --wipe-image: radial-gradient(circle at 78% 24%, rgba(255,255,255,.34), transparent 24%), linear-gradient(135deg, #37235f 0%, #b04a7e 48%, #f0a05a 100%);
+}
+
+#past-tournaments .east-west-card {
+  --wipe-image: linear-gradient(105deg, #b2202d 0%, #6e1725 47%, #f2eee4 48%, #dbe7ef 52%, #174b72 53%, #092b49 100%);
+}
+
+#past-tournaments .yoidore-card {
+  --wipe-image: radial-gradient(circle at 74% 32%, rgba(244,190,82,.42), transparent 22%), linear-gradient(135deg, #2d170d 0%, #78441f 52%, #c58a38 100%);
+}
+
+#past-tournaments .secret-tournament-card {
+  --wipe-image: linear-gradient(135deg, #020304 0%, #111418 48%, #000 100%);
+  border-color: rgba(255,255,255,.12);
+  box-shadow: 0 10px 28px rgba(0,0,0,.34);
+}
+
+#past-tournaments .secret-tournament-card::before {
+  filter: none;
+}
+
+#past-tournaments .secret-tournament-card::after {
+  background: repeating-linear-gradient(135deg, transparent 0 12px, rgba(255,255,255,.025) 12px 13px);
+  opacity: 1;
+}
+
+#past-tournaments .secret-tournament-card h2 {
+  font-size: clamp(25px, 2.7vw, 36px);
+  letter-spacing: .12em;
+}
+
+#past-tournaments .secret-kicker {
+  margin: 0 0 8px;
+  color: rgba(255,255,255,.48);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .18em;
+}
+
+#past-tournaments .secret-lock {
+  position: relative;
+  z-index: 1;
+  align-self: flex-end;
+  color: rgba(255,255,255,.22);
+  font-size: 8px;
+  letter-spacing: .16em;
+}
+
+#past-tournaments .international-tournaments {
+  border-top-color: rgba(13,127,153,.28);
+  background: linear-gradient(180deg, rgba(13,127,153,.045), transparent);
+}
+
+#past-tournaments .tournament-subgroup-note {
+  margin: -10px 0 16px;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .12em;
+  text-align: center;
+  text-transform: uppercase;
+}
