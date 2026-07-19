@@ -10,7 +10,7 @@
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="../../common.css">
   <style>
-    .hero.tournament-page-hero{position:relative;isolation:isolate;overflow:hidden;margin:0 auto 28px;min-height:260px;padding:2.1rem 2rem 2.35rem;display:flex;flex-direction:column;justify-content:space-between;text-align:left;background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.22),transparent 28%),linear-gradient(135deg,rgb(0,105,210) 0%,rgb(0,150,255) 48%,rgb(133,220,255) 78%,#fff 135%);border:1px solid rgba(255,255,255,.28);border-radius:18px;box-shadow:0 22px 40px rgba(3,14,24,.34)}
+    .hero.tournament-page-hero{position:relative;isolation:isolate;overflow:hidden;margin:0 auto 28px;min-height:260px;padding:2.1rem 2rem 2.35rem;display:flex;flex-direction:column;justify-content:space-between;text-align:left;background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.22),transparent 28%),linear-gradient(135deg,#061c38 0%,#064f8c 38%,rgb(0,150,255) 72%,#8bd5f2 125%);border:1px solid rgba(255,255,255,.28);border-radius:18px;box-shadow:0 22px 40px rgba(3,14,24,.34)}
     .hero.tournament-page-hero::before,.hero.tournament-page-hero::after{content:none;display:none}
     .tournament-page-hero .back-link{align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 16px;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.24);border-radius:999px;box-shadow:0 8px 18px rgba(3,14,24,.18);font-size:13px;font-weight:900;text-decoration:none;backdrop-filter:blur(8px)}
     .tournament-title-block{position:relative;z-index:1;max-width:900px;margin-top:2.4rem}
@@ -18,8 +18,16 @@
     .event-date{margin:1rem 0 0;color:rgba(255,255,255,.92);font-size:16px;font-weight:900;letter-spacing:.05em;text-shadow:0 4px 14px rgba(3,14,24,.46)}
     .rule-text-list{margin:0;padding-left:1.35rem;color:#111;font-size:15px;font-weight:750;line-height:1.95}
     .rule-text-list strong{color:#111;font-weight:950}
+    .rule-blocks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .rule-block{padding:22px;background:#f8fcff;border:1px solid rgba(0,120,210,.18);border-top:4px solid rgb(0,150,255);border-radius:12px;box-shadow:0 8px 20px rgba(3,42,76,.07)}
+    .rule-block h3{margin:0 0 14px;color:#06345d;font-size:21px;font-weight:950}
+    .rule-block dl{display:grid;gap:12px;margin:0}
+    .rule-block dt{margin:0;color:#07528d;font-size:13px;font-weight:950}
+    .rule-block dd{margin:3px 0 0;color:#182128;font-size:14px;font-weight:700;line-height:1.75}
+    .points-line{font-variant-numeric:tabular-nums}
+    .media-placeholder{padding:28px;color:#53616d;background:linear-gradient(135deg,#f5fbff,#edf6fb);border:1px dashed rgba(0,105,180,.32);border-radius:12px;font-size:14px;font-weight:800;line-height:1.8;text-align:center}
     .preparing-panel{padding:24px;color:#43515e;background:rgba(16,38,56,.05);border:1px dashed rgba(16,38,56,.24);border-radius:12px;font-size:15px;font-weight:800;line-height:1.8;text-align:center}
-    @media(max-width:900px){.hero.tournament-page-hero{min-height:280px;padding:1.55rem}.tournament-title-block{margin-top:2rem}}
+    @media(max-width:900px){.hero.tournament-page-hero{min-height:280px;padding:1.55rem}.tournament-title-block{margin-top:2rem}.rule-blocks{grid-template-columns:1fr}}
     @media(max-width:640px){.hero.tournament-page-hero{min-height:300px;border-radius:14px}.tournament-page-hero h1{font-size:clamp(36px,12vw,52px)}}
   </style>
   <link rel="stylesheet" href="/footer-updated.css?v=20260614">
@@ -38,12 +46,43 @@
     <section class="score-card">
       <div class="section-title">概要とルール</div>
       <div class="section-body">
-        <ul class="rule-text-list">
+        <ul class="rule-text-list" style="margin-bottom:22px;">
           <li><strong>開催：</strong>2026年7月19日</li>
           <li><strong>定員：</strong>64人</li>
-          <li><strong>予選：</strong>1回戦から3回戦まで実施します。</li>
-          <li><strong>決勝卓：</strong>チェックルールで実施します。</li>
         </ul>
+        <div class="rule-blocks">
+          <section class="rule-block">
+            <h3>予選ルール</h3>
+            <dl>
+              <div><dt>対戦形式</dt><dd>1回戦から準決勝まで（最大3回戦）</dd></div>
+              <div><dt>通過条件</dt><dd>各ステージで2試合を行い、獲得ポイントの合計上位4名が次のステージに進みます。</dd></div>
+              <div><dt>順位ポイント</dt><dd class="points-line">1位: 8pt / 2位: 6pt / 3位: 5pt / 4位: 4pt / 5位: 3pt / 6位: 2pt / 7位: 1pt / 8位: 0pt</dd></div>
+              <div><dt>同点時の扱い</dt><dd>同着によるポイントの折半はありません。合計ポイントが同点の場合は、カウントバック方式を採用して順位を決定します。</dd></div>
+            </dl>
+          </section>
+          <section class="rule-block">
+            <h3>決勝ルール（決勝卓：8人）</h3>
+            <dl>
+              <div><dt>勝敗条件</dt><dd>16ptチェックルールを採用します。16ptに到達した状態で1位を取ると優勝です。</dd></div>
+              <div><dt>順位ポイント</dt><dd class="points-line">1位: 8pt / 2位: 6pt / 3位: 5pt / 4位: 4pt / 5位: 3pt / 6位: 2pt / 7位: 1pt / 8位: 0pt</dd></div>
+              <div><dt>注意点</dt><dd>同時落ちが発生した場合、ポイントは折半となります。</dd></div>
+            </dl>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="score-card">
+      <div class="section-title purple">公式フライヤー</div>
+      <div class="section-body">
+        <div class="media-placeholder">公式フライヤー掲載予定</div>
+      </div>
+    </section>
+
+    <section class="score-card">
+      <div class="section-title">主催・公式リンク</div>
+      <div class="section-body">
+        <div class="media-placeholder">主催者情報・X・YouTubeを掲載予定</div>
       </div>
     </section>
 
