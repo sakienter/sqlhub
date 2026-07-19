@@ -152,21 +152,6 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
   opacity: 1;
 }
 
-#past-tournaments .neru-battle-card h2::after {
-  content: "";
-  display: block;
-  width: 58px;
-  height: 3px;
-  margin-top: 8px;
-  background: rgb(0,150,255);
-  box-shadow: 0 0 12px rgba(0,150,255,.42);
-  transition: width .28s var(--wipe-easing), box-shadow .28s var(--wipe-easing);
-}
-
-#past-tournaments .neru-battle-card:hover h2::after {
-  width: 88px;
-  box-shadow: 0 0 18px rgba(0,150,255,.68);
-}
 
 #past-tournaments .neru-battle-card .card-cta {
   color: #fff;
