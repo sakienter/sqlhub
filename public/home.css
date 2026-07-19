@@ -119,7 +119,7 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 }
 
 #past-tournaments .neru-battle-card {
-  --wipe-image: radial-gradient(circle at 82% 18%, rgba(255,255,255,.92), transparent 25%), radial-gradient(circle at 68% 78%, rgba(175,235,255,.72), transparent 32%), linear-gradient(135deg, rgb(0,105,210) 0%, rgb(0,150,255) 48%, rgb(126,218,255) 78%, #fff 135%);
+  --wipe-image: radial-gradient(circle at 82% 18%, rgba(255,255,255,.42), transparent 24%), radial-gradient(circle at 70% 82%, rgba(126,210,242,.36), transparent 32%), linear-gradient(135deg, #061c38 0%, #064f8c 38%, rgb(0,150,255) 72%, #8bd5f2 125%);
 }
 
 #past-tournaments .east-west-card {
