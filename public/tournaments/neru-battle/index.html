@@ -26,6 +26,11 @@
     .rule-block dd{margin:3px 0 0;color:#182128;font-size:14px;font-weight:700;line-height:1.75}
     .points-line{font-variant-numeric:tabular-nums}
     .media-placeholder{padding:28px;color:#53616d;background:linear-gradient(135deg,#f5fbff,#edf6fb);border:1px dashed rgba(0,105,180,.32);border-radius:12px;font-size:14px;font-weight:800;line-height:1.8;text-align:center}
+    .flyer-figure{margin:0;text-align:center}
+    .flyer-link{display:inline-block;max-width:100%;border-radius:14px;box-shadow:0 16px 34px rgba(3,42,76,.18);transition:transform .18s ease,box-shadow .18s ease}
+    .flyer-link:hover{transform:translateY(-2px);box-shadow:0 20px 42px rgba(3,42,76,.24)}
+    .flyer-image{display:block;width:auto;max-width:100%;max-height:860px;margin:0 auto;border:1px solid rgba(0,105,180,.16);border-radius:14px}
+    .flyer-caption{margin:12px 0 0;color:#65737e;font-size:12px;font-weight:800}
     .organizer-card{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px;background:linear-gradient(135deg,#f5fbff,#e8f5fc);border:1px solid rgba(0,105,180,.18);border-radius:14px}
     .organizer-copy h3{margin:0;color:#06345d;font-size:22px;font-weight:950}
     .organizer-copy p{margin:7px 0 0;color:#53616d;font-size:13px;font-weight:800}
@@ -80,7 +85,12 @@
     <section class="score-card">
       <div class="section-title purple">公式フライヤー</div>
       <div class="section-body">
-        <div class="media-placeholder">公式フライヤー掲載予定</div>
+        <figure class="flyer-figure">
+          <a class="flyer-link" href="./nerubana.webp" target="_blank" rel="noopener" aria-label="ねるばとる公式フライヤーを原寸で開く">
+            <img class="flyer-image" src="./nerubana.webp?v=20260719" alt="ねるばとる 公式フライヤー" loading="lazy" decoding="async">
+          </a>
+          <figcaption class="flyer-caption">画像をクリックすると原寸で開きます。</figcaption>
+        </figure>
       </div>
     </section>
 
