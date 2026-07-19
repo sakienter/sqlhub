@@ -11,9 +11,8 @@
   <link rel="stylesheet" href="../../common.css">
   <style>
     .hero.tournament-page-hero{position:relative;isolation:isolate;overflow:hidden;margin:0 auto 28px;min-height:330px;padding:2rem 2rem 2.5rem;display:flex;flex-direction:column;justify-content:space-between;text-align:center;background:radial-gradient(circle at 50% 112%,rgba(0,150,255,.13),transparent 42%),#020406;border:1px solid rgba(0,150,255,.38);border-radius:18px;box-shadow:0 24px 48px rgba(2,10,18,.46)}
-    .hero.tournament-page-hero::before,.hero.tournament-page-hero::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;width:39%;background-image:radial-gradient(circle,rgba(0,150,255,.62) 0 3px,transparent 3.6px);background-size:24px 24px;opacity:.82;pointer-events:none}
-    .hero.tournament-page-hero::before{left:0;-webkit-mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.82) 48%,transparent 100%);mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.82) 48%,transparent 100%)}
-    .hero.tournament-page-hero::after{right:0;-webkit-mask-image:linear-gradient(270deg,#000 0%,rgba(0,0,0,.82) 48%,transparent 100%);mask-image:linear-gradient(270deg,#000 0%,rgba(0,0,0,.82) 48%,transparent 100%)}
+    .hero.tournament-page-hero::before{content:"";position:absolute;z-index:-1;inset:0;background-image:radial-gradient(circle,rgba(0,150,255,.62) 0 3px,transparent 3.6px);background-size:24px 24px;background-position:0 0;opacity:.82;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,#000 0%,#000 18%,rgba(0,0,0,.72) 29%,transparent 42%,transparent 58%,rgba(0,0,0,.72) 71%,#000 82%,#000 100%);mask-image:linear-gradient(90deg,#000 0%,#000 18%,rgba(0,0,0,.72) 29%,transparent 42%,transparent 58%,rgba(0,0,0,.72) 71%,#000 82%,#000 100%)}
+    .hero.tournament-page-hero::after{content:none}
     .tournament-page-hero .back-link{position:relative;z-index:2;align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 17px;color:#fff;background:rgba(2,4,6,.72);border:1px solid rgba(255,255,255,.28);border-radius:999px;box-shadow:0 10px 24px rgba(0,0,0,.28);font-size:13px;font-weight:900;text-decoration:none;backdrop-filter:blur(8px);transition:border-color .18s ease,background .18s ease,transform .18s ease}
     .tournament-page-hero .back-link:hover{background:rgba(0,150,255,.12);border-color:rgba(0,150,255,.72);transform:translateY(-1px)}
     .tournament-title-block{position:absolute;z-index:2;top:50%;left:50%;width:min(78%,760px);margin:0;text-align:center;transform:translate(-50%,-48%)}
@@ -21,7 +20,7 @@
     .tournament-page-hero h1::after{content:"";position:absolute;right:0;bottom:0;left:0;height:6px;background:#0096ff;box-shadow:0 0 18px rgba(0,150,255,.5)}
     .event-date{position:absolute;z-index:3;left:2rem;bottom:1.7rem;display:inline-block;margin:0;padding:0 3px 8px;color:#fff;background:transparent;border:0;border-bottom:4px solid #0096ff;border-radius:0;box-shadow:0 8px 0 -6px rgba(0,150,255,.34);font-size:clamp(17px,1.7vw,22px);font-weight:950;letter-spacing:.12em;text-shadow:0 6px 18px rgba(0,0,0,.9)}
     .neru-energy-lines{position:absolute;z-index:0;inset:0;overflow:hidden;pointer-events:none}
-    .neru-dot-mask{position:absolute;width:14px;height:14px;border-radius:50%;background:#020406;box-shadow:0 0 5px 3px #020406;opacity:0;transform:translate(-50%,-50%)}
+    .neru-dot-mask{position:absolute;z-index:2;width:18px;height:18px;border-radius:50%;background:#020406;box-shadow:0 0 7px 4px #020406;opacity:0;transform:translate(-50%,-50%)}
     .neru-streak{position:absolute;opacity:0;will-change:transform,opacity}
     .neru-streak.is-horizontal{left:-46%;width:46%;height:2px;background:linear-gradient(90deg,transparent,rgba(0,150,255,.24) 16%,#8bdcff 50%,rgba(0,150,255,.34) 84%,transparent);box-shadow:0 0 8px #0096ff,0 0 20px rgba(0,150,255,.7)}
     .neru-streak.is-vertical{top:-58%;width:2px;height:58%;background:linear-gradient(180deg,transparent,rgba(0,150,255,.22) 16%,#8bdcff 50%,rgba(0,150,255,.34) 84%,transparent);box-shadow:0 0 8px #0096ff,0 0 20px rgba(0,150,255,.7)}
