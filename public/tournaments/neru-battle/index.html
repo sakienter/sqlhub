@@ -31,16 +31,14 @@
     .flyer-link:hover{transform:translateY(-2px);box-shadow:0 20px 42px rgba(3,42,76,.24)}
     .flyer-image{display:block;width:auto;max-width:100%;max-height:860px;margin:0 auto;border:1px solid rgba(0,105,180,.16);border-radius:14px}
     .flyer-caption{margin:12px 0 0;color:#65737e;font-size:12px;font-weight:800}
-    .organizer-card{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px;background:linear-gradient(135deg,#f5fbff,#e8f5fc);border:1px solid rgba(0,105,180,.18);border-radius:14px}
-    .organizer-copy h3{margin:0;color:#06345d;font-size:22px;font-weight:950}
-    .organizer-copy p{margin:7px 0 0;color:#53616d;font-size:13px;font-weight:800}
-    .organizer-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px}
-    .organizer-links .button{margin:0;white-space:nowrap}
+    .organizer-card{padding:20px;background:#f8fcff;border:1px solid rgba(0,105,180,.16);border-radius:12px}
+    .organizer-copy{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding-bottom:14px;border-bottom:1px solid rgba(0,105,180,.12)}
+    .organizer-copy h3{margin:0;color:#06345d;font-size:19px;font-weight:950}
+    .organizer-copy p{margin:0;color:#65737e;font-size:12px;font-weight:800;white-space:nowrap}
+    .organizer-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:14px}
+    .organizer-links .button{display:flex;align-items:center;justify-content:center;min-height:42px;margin:0;padding:9px 12px;border-radius:8px;box-shadow:none;font-size:12px;line-height:1.35;text-align:center;white-space:normal}
     .official-info-grid{display:grid;grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr);gap:22px;align-items:start}
-    .official-info-side{display:grid;gap:16px}
-    .official-info-side .organizer-card{align-items:flex-start;flex-direction:column}
-    .official-info-side .organizer-links{justify-content:flex-start}
-    .official-info-side .preparing-panel{padding:20px}
+    .official-info-side{display:block}
     .preparing-panel{padding:24px;color:#43515e;background:rgba(16,38,56,.05);border:1px dashed rgba(16,38,56,.24);border-radius:12px;font-size:15px;font-weight:800;line-height:1.8;text-align:center}
     @media(max-width:900px){.hero.tournament-page-hero{min-height:280px;padding:1.55rem}.tournament-title-block{margin-top:2rem}.rule-blocks,.official-info-grid{grid-template-columns:1fr}.organizer-card{align-items:flex-start;flex-direction:column}.organizer-links{justify-content:flex-start}.flyer-image{max-height:720px}}
     @media(max-width:640px){.hero.tournament-page-hero{min-height:300px;border-radius:14px}.tournament-page-hero h1{font-size:clamp(36px,12vw,52px)}}
@@ -104,14 +102,11 @@
                 <p>ねるばとる 主催</p>
               </div>
               <div class="organizer-links">
-                <a class="button" href="https://x.com/neruko_kamitaba" target="_blank" rel="noopener">主催者のXを開く →</a>
-                <a class="button" href="https://www.youtube.com/@neruko_kamitaba" target="_blank" rel="noopener">YouTubeチャンネル →</a>
-                <a class="button" href="https://www.youtube.com/live/2LMa2kGxZZM?si=aMRsZZ4AUPYCx_zp" target="_blank" rel="noopener">大会配信を開く →</a>
+                <a class="button" href="https://x.com/neruko_kamitaba" target="_blank" rel="noopener">主催者 X →</a>
+                <a class="button" href="https://www.youtube.com/@neruko_kamitaba" target="_blank" rel="noopener">YouTube →</a>
+                <a class="button" href="https://www.youtube.com/live/2LMa2kGxZZM?si=aMRsZZ4AUPYCx_zp" target="_blank" rel="noopener">大会配信 →</a>
+                <a class="button" href="https://tonamel.com/competition/E8w8Z" target="_blank" rel="noopener">大会詳細・参加登録 →</a>
               </div>
-            </div>
-            <div class="preparing-panel">
-              <p style="margin:0 0 14px;">大会詳細・参加登録はTonamelをご確認ください。</p>
-              <a class="button" href="https://tonamel.com/competition/E8w8Z" target="_blank" rel="noopener">Tonamelで大会ページを開く →</a>
             </div>
           </div>
         </div>
