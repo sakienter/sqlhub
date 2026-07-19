@@ -16,10 +16,13 @@
     .hero.tournament-page-hero::after{right:0;-webkit-mask-image:linear-gradient(270deg,#000 0%,rgba(0,0,0,.82) 48%,transparent 100%);mask-image:linear-gradient(270deg,#000 0%,rgba(0,0,0,.82) 48%,transparent 100%)}
     .tournament-page-hero .back-link{position:relative;z-index:2;align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 17px;color:#fff;background:rgba(2,4,6,.72);border:1px solid rgba(255,255,255,.28);border-radius:999px;box-shadow:0 10px 24px rgba(0,0,0,.28);font-size:13px;font-weight:900;text-decoration:none;backdrop-filter:blur(8px);transition:border-color .18s ease,background .18s ease,transform .18s ease}
     .tournament-page-hero .back-link:hover{background:rgba(0,150,255,.12);border-color:rgba(0,150,255,.72);transform:translateY(-1px)}
-    .tournament-title-block{position:relative;z-index:2;width:min(100%,720px);margin:1.9rem auto 0;text-align:center}
-    .tournament-page-hero h1{position:relative;display:inline-block;margin:0;padding:0 20px 17px;color:#fff;font-size:clamp(58px,8vw,100px);font-weight:950;letter-spacing:-.075em;line-height:.96;text-align:center;text-shadow:0 12px 30px rgba(0,0,0,.82)}
-    .tournament-page-hero h1::after{content:"";position:absolute;right:0;bottom:0;left:0;height:6px;background:#0096ff;box-shadow:0 0 20px rgba(0,150,255,.58)}
-    .event-date{display:inline-flex;margin:18px 0 0;padding:8px 17px;color:#020b12;background:#0096ff;border:1px solid #54bdff;border-radius:4px;box-shadow:0 10px 24px rgba(0,150,255,.2);font-size:15px;font-weight:950;letter-spacing:.12em;text-shadow:none}
+    .tournament-title-block{position:absolute;z-index:2;top:50%;left:50%;width:min(78%,760px);margin:0;text-align:center;transform:translate(-50%,-48%)}
+    .tournament-page-hero h1{position:relative;display:inline-block;margin:0;padding:0 22px 18px;color:#fff;font-size:clamp(58px,8vw,100px);font-weight:950;letter-spacing:-.075em;line-height:.96;text-align:center;text-shadow:0 12px 30px rgba(0,0,0,.82),0 0 20px rgba(0,150,255,.14);animation:neru-title-glow 4.2s ease-in-out infinite}
+    .tournament-page-hero h1::after{content:"";position:absolute;right:0;bottom:0;left:0;height:6px;background:linear-gradient(90deg,#006ab5,#0096ff,#8ad8ff,#0096ff,#006ab5);background-size:220% 100%;box-shadow:0 0 20px rgba(0,150,255,.58);animation:neru-line-flow 3.4s linear infinite}
+    .event-date{position:absolute;z-index:3;left:2rem;bottom:1.7rem;display:inline-block;margin:0;padding:0 3px 8px;color:#fff;background:transparent;border:0;border-bottom:4px solid #0096ff;border-radius:0;box-shadow:0 8px 0 -6px rgba(0,150,255,.34);font-size:clamp(17px,1.7vw,22px);font-weight:950;letter-spacing:.12em;text-shadow:0 6px 18px rgba(0,0,0,.9)}
+    @keyframes neru-title-glow{0%,100%{text-shadow:0 12px 30px rgba(0,0,0,.82),0 0 14px rgba(0,150,255,.10);transform:translateY(0)}50%{text-shadow:0 14px 34px rgba(0,0,0,.88),0 0 26px rgba(0,150,255,.28);transform:translateY(-2px)}}
+    @keyframes neru-line-flow{from{background-position:0 0}to{background-position:220% 0}}
+    @media(prefers-reduced-motion:reduce){.tournament-page-hero h1,.tournament-page-hero h1::after{animation:none}}
     .rule-text-list{margin:0;padding-left:1.35rem;color:#111;font-size:15px;font-weight:750;line-height:1.95}
     .rule-text-list strong{color:#111;font-weight:950}
     .overview-registration{display:inline-flex;align-items:center;gap:10px;margin:2px 0 22px;padding:10px 0;color:#07528d;border-bottom:3px solid rgba(0,150,255,.35);font-size:clamp(20px,2.1vw,26px);font-weight:950;letter-spacing:-.02em;text-decoration:none;transition:color .15s ease,border-color .15s ease,text-shadow .15s ease}
@@ -49,7 +52,7 @@
     .official-info-grid{display:grid;grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr);gap:22px;align-items:start}
     .official-info-side{display:block}
     .preparing-panel{padding:24px;color:#43515e;background:rgba(16,38,56,.05);border:1px dashed rgba(16,38,56,.24);border-radius:12px;font-size:15px;font-weight:800;line-height:1.8;text-align:center}
-    @media(max-width:900px){.hero.tournament-page-hero{min-height:280px;padding:1.55rem}.tournament-title-block{margin-top:2rem}.rule-blocks,.official-info-grid{grid-template-columns:1fr}.flyer-image{max-height:720px}}
+    @media(max-width:900px){.hero.tournament-page-hero{min-height:280px;padding:1.55rem}.tournament-title-block{margin:0}.rule-blocks,.official-info-grid{grid-template-columns:1fr}.flyer-image{max-height:720px}}
     @media(max-width:640px){.hero.tournament-page-hero{min-height:300px;border-radius:14px}.tournament-page-hero h1{font-size:clamp(36px,12vw,52px)}}
   </style>
   <link rel="stylesheet" href="/footer-updated.css?v=20260614">
