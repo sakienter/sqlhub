@@ -105,6 +105,9 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 
 /* Upcoming tournament banner previews */
 #past-tournaments .preview-tournament-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   cursor: default;
   min-height: 168px;
 }
