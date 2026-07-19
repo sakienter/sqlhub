@@ -119,7 +119,7 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 }
 
 #past-tournaments .neru-battle-card {
-  --wipe-image: linear-gradient(135deg, #02070d 0%, #061827 58%, #0a3553 100%);
+  --wipe-image: linear-gradient(135deg, #061725 0%, #0a4168 58%, #0d76ad 100%);
   --wipe-image-position: center;
   border-color: rgba(0,150,255,.28);
   box-shadow: 0 12px 28px rgba(2,10,18,.28);
@@ -127,9 +127,9 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 
 #past-tournaments .neru-battle-card::before {
   background-image:
-    linear-gradient(90deg, rgba(2,7,13,.94) 0%, rgba(2,7,13,.64) 48%, rgba(2,7,13,.22) 100%),
+    linear-gradient(90deg, rgba(3,18,32,.72) 0%, rgba(3,24,42,.44) 48%, rgba(3,24,42,.10) 100%),
     radial-gradient(circle, rgba(0,150,255,.58) 0 2px, transparent 2.5px),
-    linear-gradient(135deg, #02070d 0%, #061827 58%, #0a3553 100%);
+    linear-gradient(135deg, #061725 0%, #0a4168 58%, #0d76ad 100%);
   background-size: cover, 22px 22px, cover;
   background-position: center, 0 0, center;
   filter: none;
