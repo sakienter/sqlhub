@@ -40,10 +40,8 @@
     .organizer-copy h3{margin:0;color:#06345d;font-size:clamp(30px,3.7vw,54px);font-weight:950;letter-spacing:-.045em;line-height:1.12;white-space:nowrap}
     .organizer-copy p{margin:8px 0 0;color:#65737e;font-size:17px;font-weight:850}
     .organizer-links{display:flex;flex-wrap:wrap;gap:0;margin-top:8px}
-    .organizer-links .official-link{position:relative;display:inline-flex;align-items:center;gap:8px;padding:12px 22px 12px 0;margin-right:22px;color:#07528d;font-size:clamp(19px,2vw,24px);font-weight:900;text-decoration:none;background:linear-gradient(#008fe8,#008fe8) left bottom/0 2px no-repeat;transition:color .15s ease,background-size .2s ease}
-    .organizer-links .official-link::after{content:"↗";color:#008fe8;font-size:12px;transition:transform .15s ease}
-    .organizer-links .official-link:hover{color:#008fe8;background-size:calc(100% - 22px) 2px}
-    .organizer-links .official-link:hover::after{transform:translate(2px,-2px)}
+    .organizer-links .official-link{position:relative;display:inline-flex;align-items:center;padding:12px 22px 12px 0;margin-right:22px;color:#07528d;font-size:clamp(19px,2vw,24px);font-weight:900;text-decoration:none;text-shadow:0 5px 12px rgba(3,52,93,.34),0 1px 0 rgba(255,255,255,.9);background:linear-gradient(#008fe8,#008fe8) left bottom/0 2px no-repeat;transition:color .15s ease,background-size .2s ease,text-shadow .2s ease,transform .2s ease}
+    .organizer-links .official-link:hover{color:#008fe8;background-size:100% 2px;text-shadow:0 8px 18px rgba(0,105,180,.48),0 1px 0 rgba(255,255,255,.9);transform:translateY(-2px)}
     .official-info-grid{display:grid;grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr);gap:22px;align-items:start}
     .official-info-side{display:block}
     .preparing-panel{padding:24px;color:#43515e;background:rgba(16,38,56,.05);border:1px dashed rgba(16,38,56,.24);border-radius:12px;font-size:15px;font-weight:800;line-height:1.8;text-align:center}
