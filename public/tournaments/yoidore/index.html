@@ -10,16 +10,19 @@
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="../../common.css">
   <style>
-    .hero.tournament-page-hero{position:relative;isolation:isolate;overflow:hidden;margin:0 auto 28px;min-height:260px;padding:2.1rem 2rem 2.35rem;display:flex;flex-direction:column;justify-content:space-between;text-align:left;background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.22),transparent 28%),linear-gradient(135deg,#2d170d 0%,#78441f 52%,#c58a38 100%);border:1px solid rgba(255,255,255,.28);border-radius:18px;box-shadow:0 22px 40px rgba(3,14,24,.34)}
-    .hero.tournament-page-hero::before,.hero.tournament-page-hero::after{content:none;display:none}
-    .tournament-page-hero .back-link{align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 16px;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.24);border-radius:999px;box-shadow:0 8px 18px rgba(3,14,24,.18);font-size:13px;font-weight:900;text-decoration:none;backdrop-filter:blur(8px)}
-    .tournament-title-block{position:relative;z-index:1;max-width:900px;margin-top:2.4rem}
-    .tournament-page-hero h1{margin:0;color:#fff;font-size:clamp(42px,6.4vw,72px);font-weight:950;letter-spacing:-.06em;line-height:1.08;text-align:left;text-shadow:0 10px 22px rgba(3,14,24,.46)}
-    .event-date{margin:1rem 0 0;color:rgba(255,255,255,.92);font-size:16px;font-weight:900;letter-spacing:.05em;text-shadow:0 4px 14px rgba(3,14,24,.46)}
+    .hero.tournament-page-hero{position:relative;isolation:isolate;overflow:hidden;margin:0 auto 28px;min-height:360px;padding:2rem 2.2rem 2.4rem;display:flex;flex-direction:column;justify-content:space-between;text-align:left;background:#8a4a15 url('/tournaments/yoidore/yoidore.webp?v=20260719') center 42%/cover no-repeat;border:1px solid rgba(255,255,255,.34);border-radius:18px;box-shadow:0 24px 48px rgba(45,20,6,.38)}
+    .hero.tournament-page-hero::before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,rgba(18,8,3,.34) 0%,rgba(18,8,3,.12) 46%,transparent 72%),linear-gradient(0deg,rgba(18,8,3,.18),transparent 44%);pointer-events:none}
+    .hero.tournament-page-hero::after{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(circle at 28% 54%,rgba(255,194,73,.18),transparent 24%);mix-blend-mode:screen;opacity:.62;pointer-events:none}
+    .tournament-page-hero .back-link{position:relative;z-index:2;align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 17px;color:#fff;background:rgba(20,9,3,.48);border:1px solid rgba(255,255,255,.48);border-radius:999px;box-shadow:0 9px 22px rgba(20,9,3,.26);font-size:13px;font-weight:900;text-decoration:none;backdrop-filter:blur(8px);transition:background .18s ease,border-color .18s ease,transform .18s ease}
+    .tournament-page-hero .back-link:hover{background:rgba(20,9,3,.68);border-color:#fff;transform:translateY(-1px)}
+    .tournament-title-block{position:relative;z-index:1;width:min(72%,980px);margin-top:auto;padding-top:3.6rem;transform:rotate(-2deg);transform-origin:left bottom}
+    .tournament-page-hero h1{margin:0;color:#fff;font-size:clamp(72px,10.4vw,150px);font-style:italic;font-weight:950;letter-spacing:-.09em;line-height:.86;text-align:left;-webkit-text-stroke:2px rgba(12,6,2,.92);paint-order:stroke fill;text-shadow:7px 9px 0 rgba(12,6,2,.92),0 18px 34px rgba(12,6,2,.62);transition:transform .28s ease,text-shadow .28s ease}
+    .tournament-page-hero:hover h1{transform:translate(3px,-3px);text-shadow:9px 12px 0 rgba(12,6,2,.92),0 22px 40px rgba(12,6,2,.72)}
+    .event-date{margin:1.4rem 0 0 .5rem;color:#fff;font-size:18px;font-weight:950;letter-spacing:.08em;text-shadow:0 5px 16px rgba(12,6,2,.82)}
     .rule-text-list{margin:0;padding-left:1.35rem;color:#111;font-size:15px;font-weight:750;line-height:1.95}
     .rule-text-list strong{color:#111;font-weight:950}
     .preparing-panel{padding:24px;color:#43515e;background:rgba(16,38,56,.05);border:1px dashed rgba(16,38,56,.24);border-radius:12px;font-size:15px;font-weight:800;line-height:1.8;text-align:center}
-    @media(max-width:900px){.hero.tournament-page-hero{min-height:280px;padding:1.55rem}.tournament-title-block{margin-top:2rem}}
+    @media(max-width:900px){.hero.tournament-page-hero{min-height:320px;padding:1.55rem;background-position:center 42%}.tournament-title-block{width:78%;margin-top:auto;padding-top:3rem}}
     @media(max-width:640px){.hero.tournament-page-hero{min-height:300px;border-radius:14px}.tournament-page-hero h1{font-size:clamp(36px,12vw,52px)}}
   </style>
   <link rel="stylesheet" href="/footer-updated.css?v=20260614">
