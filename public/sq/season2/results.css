@@ -152,3 +152,35 @@
     height: 68px;
   }
 }
+
+/* Summary score readability */
+#summary-table thead th {
+  font-size: 14px;
+}
+
+#summary-table tbody td.number-cell {
+  font-size: 18px;
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+}
+
+#summary-table tbody td.total-cell,
+#summary-table tbody td:last-child {
+  font-size: 20px;
+  font-weight: 950;
+}
+
+@media (max-width: 640px) {
+  #summary-table thead th {
+    font-size: 13px;
+  }
+
+  #summary-table tbody td.number-cell {
+    font-size: 16px;
+  }
+
+  #summary-table tbody td.total-cell,
+  #summary-table tbody td:last-child {
+    font-size: 18px;
+  }
+}
