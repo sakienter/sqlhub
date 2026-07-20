@@ -164,7 +164,25 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 }
 
 #past-tournaments .east-west-card {
-  --wipe-image: linear-gradient(105deg, #b2202d 0%, #6e1725 47%, #f2eee4 48%, #dbe7ef 52%, #174b72 53%, #092b49 100%);
+  --wipe-image: linear-gradient(90deg, #123a63 0%, #0f2440 45%, #5c1622 55%, #8a1f2d 100%);
+}
+
+#past-tournaments .east-west-card::after {
+  content: "VS";
+  inset: auto 18px -30px auto;
+  width: auto;
+  height: auto;
+  color: rgba(255,255,255,.08);
+  background: none;
+  font-size: 132px;
+  font-weight: 950;
+  line-height: 1;
+  letter-spacing: -.08em;
+  opacity: 1;
+}
+
+#past-tournaments .east-west-card:hover::after {
+  opacity: .15;
 }
 
 #past-tournaments .yoidore-card {
