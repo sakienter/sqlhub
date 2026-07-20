@@ -140,28 +140,14 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
   opacity: .78;
 }
 
-#past-tournaments .neru-battle-card:hover {
-  border-color: rgba(0,150,255,.62);
-  box-shadow: 0 16px 34px rgba(2,10,18,.38), 0 0 0 1px rgba(0,150,255,.14);
-}
+
 
 #past-tournaments .neru-battle-card:hover::after {
   opacity: 1;
 }
 
 
-#past-tournaments .neru-battle-card .card-cta {
-  color: #fff;
-  background: rgba(0,150,255,.22);
-  border: 1px solid rgba(91,198,255,.42);
-  box-shadow: 0 8px 18px rgba(0,76,128,.22);
-}
 
-#past-tournaments .neru-battle-card:hover .card-cta {
-  background: rgb(0,150,255);
-  border-color: rgb(0,150,255);
-  box-shadow: 0 10px 22px rgba(0,105,180,.34);
-}
 
 #past-tournaments .east-west-card {
   --wipe-image: linear-gradient(90deg, #123a63 0%, #0f2440 45%, #5c1622 55%, #8a1f2d 100%);
