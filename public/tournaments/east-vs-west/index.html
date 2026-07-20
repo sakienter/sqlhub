@@ -10,8 +10,9 @@
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="../../common.css">
   <style>
-    .hero.tournament-page-hero{position:relative;isolation:isolate;overflow:hidden;margin:0 auto 28px;min-height:260px;padding:2.1rem 2rem 2.35rem;display:flex;flex-direction:column;justify-content:space-between;text-align:left;background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.22),transparent 28%),linear-gradient(135deg,#a61629 0%,#f1eee6 52%,#0b3d67 100%);border:1px solid rgba(255,255,255,.28);border-radius:18px;box-shadow:0 22px 40px rgba(3,14,24,.34)}
-    .hero.tournament-page-hero::before,.hero.tournament-page-hero::after{content:none;display:none}
+    .hero.tournament-page-hero{position:relative;isolation:isolate;overflow:hidden;margin:0 auto 28px;min-height:260px;padding:2.1rem 2rem 2.35rem;display:flex;flex-direction:column;justify-content:space-between;text-align:left;background:radial-gradient(circle at 18% 20%,rgba(42,118,181,.22),transparent 32%),radial-gradient(circle at 84% 72%,rgba(177,44,61,.22),transparent 34%),linear-gradient(90deg,#123a63 0%,#0f2440 45%,#351923 55%,#8a1f2d 100%);border:1px solid rgba(255,255,255,.28);border-radius:18px;box-shadow:0 22px 40px rgba(3,14,24,.34)}
+    .hero.tournament-page-hero::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(115deg,rgba(255,255,255,.04),transparent 34%,rgba(255,255,255,.03) 66%,transparent);pointer-events:none}
+    .hero.tournament-page-hero::after{content:"VS";position:absolute;right:3.5%;bottom:-42px;z-index:0;color:rgba(255,255,255,.065);font-size:clamp(170px,22vw,300px);font-weight:950;line-height:1;letter-spacing:-.09em;pointer-events:none}
     .tournament-page-hero .back-link{align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 16px;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.24);border-radius:999px;box-shadow:0 8px 18px rgba(3,14,24,.18);font-size:13px;font-weight:900;text-decoration:none;backdrop-filter:blur(8px)}
     .tournament-title-block{position:relative;z-index:1;max-width:900px;margin-top:2.4rem}
     .tournament-page-hero h1{margin:0;color:#fff;font-size:clamp(42px,6.4vw,72px);font-weight:950;letter-spacing:-.06em;line-height:1.08;text-align:left;text-shadow:0 10px 22px rgba(3,14,24,.46)}
