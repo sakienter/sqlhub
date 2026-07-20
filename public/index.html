@@ -19,6 +19,12 @@
   <link rel="stylesheet" href="/support-share.css?v=20260614-actions-v3" />
   <link rel="stylesheet" href="/admin-access-mini.css?v=20260618-footer-gear" />
   <link rel="stylesheet" href="/footer-updated.css?v=20260616-easter-egg" />
+  <style>
+    #blog .section-body{padding:22px 24px;text-align:center}
+    #blog .blog-text-link{display:inline-flex;align-items:center;gap:.4em;color:#0d7f99;font-size:clamp(18px,2vw,24px);font-weight:900;line-height:1.4;text-decoration:none;border-bottom:2px solid rgba(13,127,153,.34);transition:color .18s ease,border-color .18s ease,transform .18s ease}
+    #blog .blog-text-link:hover{color:#075d70;border-color:#075d70;transform:translateX(3px)}
+    #blog .blog-text-link:focus-visible{outline:3px solid rgba(25,182,217,.34);outline-offset:5px;border-radius:2px}
+  </style>
   <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="sakienter" data-description="Support me on Buy me a coffee!" data-message="" data-color="#26B0A1" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 <link rel="icon" href="/sutantic.png" type="image/png" />
 </head>
@@ -122,10 +128,7 @@
     <section id="blog" class="score-card">
       <div class="section-title">Blog</div>
       <div class="section-body">
-        <a class="season-card card-link blog-card" href="/columns/">
-          <div><h2>スタドレのメモ書き</h2></div>
-          <span class="card-cta">ブログを見る →</span>
-        </a>
+        <a class="blog-text-link" href="/columns/">スタドレのメモ書き <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
