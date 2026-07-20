@@ -168,7 +168,7 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 }
 
 #past-tournaments .east-west-card:hover::after {
-  opacity: .15;
+  opacity: 1;
 }
 
 #past-tournaments .yoidore-card {
