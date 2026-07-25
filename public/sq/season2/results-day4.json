@@ -226,7 +226,7 @@
             "name": "Alutemu",
             "placement": 6,
             "hero": "バロフ",
-            "comp": "",
+            "comp": "指輪",
             "lesser1": "反射のペンダント",
             "lesser2": "",
             "greater1": "チルメアモザイク",
@@ -286,13 +286,13 @@
             "lesser2": "",
             "greater1": "ボブのチップ入れビン",
             "greater2": "",
-            "info": "Tw"
+            "info": "Tw/時渡の防腐術師"
           },
           {
             "name": "masa007",
             "placement": 5,
             "hero": "セナリウス",
-            "comp": "",
+            "comp": "混成",
             "lesser1": "飾り時計",
             "lesser2": "",
             "greater1": "ペイグルの釣り竿",
@@ -303,7 +303,7 @@
             "name": "Reverent",
             "placement": 7,
             "hero": "ガフ",
-            "comp": "",
+            "comp": "女王タレク",
             "lesser1": "書記型タイプライター",
             "lesser2": "",
             "greater1": "無貌の肖像画",
@@ -327,13 +327,13 @@
             "lesser2": "",
             "greater1": "無貌の肖像画",
             "greater2": "戦団の笛",
-            "info": "ラー"
+            "info": "HP=ラー"
           },
           {
             "name": "Barrette",
             "placement": 6,
             "hero": "テス",
-            "comp": "",
+            "comp": "女王メイル",
             "lesser1": "チケッタスのステッカー",
             "lesser2": "",
             "greater1": "不気味なステッカー",
@@ -349,7 +349,7 @@
             "lesser2": "",
             "greater1": "燃え立つ肖像画",
             "greater2": "",
-            "info": "ピンゾロ"
+            "info": "HP=ピンゾロ"
           },
           {
             "name": "MATSURI",
@@ -360,7 +360,7 @@
             "lesser2": "",
             "greater1": "巨怪の肖像画",
             "greater2": "",
-            "info": "Tw"
+            "info": "Tw/時渡のエリーズ"
           },
           {
             "name": "Thundurus",
@@ -393,7 +393,7 @@
             "lesser2": "",
             "greater1": "チルメアモザイク",
             "greater2": "",
-            "info": "Tw"
+            "info": "Tw/時渡のフックテイル"
           },
           {
             "name": "Reverent",
@@ -418,7 +418,7 @@
             "name": "Alutemu",
             "placement": 8,
             "hero": "ノブンド",
-            "comp": "",
+            "comp": "偶数エレメンタル",
             "lesser1": "クロマティック・ティア",
             "lesser2": "巨猪のステッカー",
             "greater1": "道を照らすロウソク",
@@ -440,12 +440,12 @@
             "name": "haguren",
             "placement": 7,
             "hero": "テス",
-            "comp": "",
-            "lesser1": "万華鏡",
+            "comp": "コドー",
+            "lesser1": "万華鏡(コドー)",
             "lesser2": "",
             "greater1": "マジックフィンのステッカー",
             "greater2": "",
-            "info": "コドー"
+            "info": ""
           },
           {
             "name": "MATSURI",
@@ -466,18 +466,18 @@
             "lesser1": "ドラゴンウィング・グライダー",
             "lesser2": "",
             "greater1": "クロマティック・ティア",
-            "greater2": "未知のオーブ（万能カリカリ）",
-            "info": "ザージラ"
+            "greater2": "",
+            "info": "HP=ザージラ"
           },
           {
             "name": "ぎゃん",
             "placement": 5,
             "hero": "スニード",
             "comp": "スカイブレーザー",
-            "lesser1": "末魔の魂壺()",
+            "lesser1": "末魔の魂壺(ライラク)",
             "lesser2": "",
             "greater1": "未知のオーブ（伝令のステッカー）",
-            "greater2": "",
+            "greater2": "未知のオーブ（万能カリカリ）",
             "info": ""
           },
           {
@@ -500,7 +500,7 @@
             "lesser2": "",
             "greater1": "ビートボクサーの肖像画",
             "greater2": "",
-            "info": "Tw"
+            "info": "Tw/時渡の酒場の進化+時渡の訓練生"
           }
         ]
       },
@@ -514,7 +514,7 @@
             "name": "Alutemu",
             "placement": 7,
             "hero": "スニード",
-            "comp": "",
+            "comp": "シャーマンキルボア",
             "lesser1": "謎めいたオーブ",
             "lesser2": "",
             "greater1": "なし",
@@ -525,18 +525,18 @@
             "name": "Barrette",
             "placement": 2,
             "hero": "ETC",
-            "comp": "",
+            "comp": "恵APM",
             "lesser1": "チケッタスのステッカー",
             "lesser2": "",
             "greater1": "森の心臓",
             "greater2": "",
-            "info": "Tw"
+            "info": ""
           },
           {
             "name": "haguren",
             "placement": 3,
             "hero": "チケッタス",
-            "comp": "",
+            "comp": "ラスガード＋毒",
             "lesser1": "アゼロス儀",
             "lesser2": "",
             "greater1": "無貌の肖像画",
@@ -547,7 +547,7 @@
             "name": "MATSURI",
             "placement": 1,
             "hero": "ネズミの王",
-            "comp": "",
+            "comp": "恵APM",
             "lesser1": "ゴブリンの財布",
             "lesser2": "",
             "greater1": "防護の指輪",
@@ -569,7 +569,7 @@
             "name": "ぎゃん",
             "placement": 8,
             "hero": "シルヴァナス",
-            "comp": "",
+            "comp": "バッカニーア",
             "lesser1": "古代の叉骨",
             "lesser2": "",
             "greater1": "メディヴの書",
@@ -580,7 +580,7 @@
             "name": "masa007",
             "placement": 5,
             "hero": "ミロクー",
-            "comp": "",
+            "comp": "恵APM",
             "lesser1": "アゼロス儀",
             "lesser2": "",
             "greater1": "不気味なステッカー",
@@ -591,7 +591,7 @@
             "name": "Reverent",
             "placement": 4,
             "hero": "ノズドルム",
-            "comp": "",
+            "comp": "バッハキルボア",
             "lesser1": "ブーティ・ベイ・ビール",
             "lesser2": "",
             "greater1": "書記型タイプライター",
@@ -610,7 +610,7 @@
             "name": "Alutemu",
             "placement": 8,
             "hero": "ヴァンダル/キュレーター",
-            "comp": "",
+            "comp": "恵ナラァ",
             "lesser1": "カラフルコンパス",
             "lesser2": "",
             "greater1": "書記型タイプライター",
@@ -621,21 +621,21 @@
             "name": "Barrette",
             "placement": 1,
             "hero": "ミロクー/クロミー",
-            "comp": "",
+            "comp": "恵エヴォーカー",
             "lesser1": "泡の冠",
             "lesser2": "",
-            "greater1": "オヤジ",
+            "greater1": "酒場のオヤジの炉端",
             "greater2": "",
-            "info": ""
+            "info": "Tw/時渡のパシュマー"
           },
           {
             "name": "haguren",
             "placement": 4,
             "hero": "ンゾス/クッキー",
-            "comp": "",
+            "comp": "チャームラススケ",
             "lesser1": "海底のイカリ",
             "lesser2": "",
-            "greater1": "オヤジ",
+            "greater1": "酒場のオヤジの炉端",
             "greater2": "",
             "info": ""
           },
@@ -643,10 +643,10 @@
             "name": "MATSURI",
             "placement": 7,
             "hero": "セナリウス/ホガー",
-            "comp": "",
+            "comp": "指輪",
             "lesser1": "くたびれた宝の地図",
             "lesser2": "",
-            "greater1": "アイスブロック",
+            "greater1": "保全パッチ",
             "greater2": "",
             "info": ""
           },
@@ -654,10 +654,10 @@
             "name": "Thundurus",
             "placement": 6,
             "hero": "ピュートリ/エリーズ",
-            "comp": "",
+            "comp": "大富豪",
             "lesser1": "獄吏のステッカー",
             "lesser2": "",
-            "greater1": "鎌",
+            "greater1": "食肉処理鎌",
             "greater2": "",
             "info": ""
           },
@@ -665,10 +665,10 @@
             "name": "ぎゃん",
             "placement": 3,
             "hero": "テロン/マスターウェン",
-            "comp": "",
+            "comp": "恵APM",
             "lesser1": "レプリカの大聖堂",
             "lesser2": "",
-            "greater1": "オヤジ",
+            "greater1": "酒場のオヤジの炉端",
             "greater2": "",
             "info": ""
           },
@@ -676,10 +676,10 @@
             "name": "masa007",
             "placement": 5,
             "hero": "獄吏王/テス",
-            "comp": "",
+            "comp": "恵エヴォーカー",
             "lesser1": "くたびれた宝の地図",
             "lesser2": "",
-            "greater1": "バール",
+            "greater1": "愛用バール",
             "greater2": "",
             "info": ""
           },
@@ -687,10 +687,10 @@
             "name": "Reverent",
             "placement": 2,
             "hero": "ユードラ/ヴーン",
-            "comp": "",
+            "comp": "食肉アンデッド",
             "lesser1": "カラフルコンパス",
             "lesser2": "",
-            "greater1": "鎌",
+            "greater1": "食肉処理鎌",
             "greater2": "",
             "info": ""
           }
