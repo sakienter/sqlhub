@@ -131,8 +131,8 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 }
 #past-tournaments .east-west-card h2{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 #past-tournaments .east-west-card .tournament-card-subtitle{display:block;width:max-content;margin-top:0;padding:0;color:#fff;background:transparent;border:0;border-radius:0;box-shadow:none;font-size:15px;font-weight:950;letter-spacing:.08em;-webkit-text-stroke:1px #050505;paint-order:stroke fill;text-shadow:0 2px 3px #000,0 3px 12px rgba(0,0,0,.95);backdrop-filter:none}
-#past-tournaments .east-west-card .card-cta{color:#fff;background:rgba(55,61,67,.94);border:1px solid rgba(255,255,255,.76);box-shadow:0 6px 16px rgba(3,14,24,.42);text-shadow:0 1px 5px rgba(0,0,0,.7);backdrop-filter:blur(5px)}
-#past-tournaments .east-west-card:hover .card-cta{background:#596169;box-shadow:0 9px 20px rgba(3,14,24,.48)}
+#past-tournaments .east-west-card .card-cta{color:#fff;background:rgba(55,61,67,.62);border:1px solid rgba(255,255,255,.58);box-shadow:0 6px 16px rgba(3,14,24,.36);text-shadow:0 1px 5px rgba(0,0,0,.78);backdrop-filter:blur(5px)}
+#past-tournaments .east-west-card:hover .card-cta{background:rgba(89,97,105,.78);box-shadow:0 9px 20px rgba(3,14,24,.44)}
 
 #past-tournaments .yoidore-card {
   --wipe-image: linear-gradient(90deg, rgba(40,18,8,.76) 0%, rgba(40,18,8,.46) 42%, rgba(40,18,8,.12) 72%, rgba(40,18,8,.04) 100%), url('/tournaments/yoidore/yoidore.webp?v=20260719');
