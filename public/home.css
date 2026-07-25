@@ -167,6 +167,19 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
   letter-spacing: .18em;
 }
 
+#past-tournaments .secret-tournament-card[aria-disabled="true"]{cursor:default}
+#past-tournaments .secret-tournament-card.is-unlocked{
+  --wipe-image:linear-gradient(90deg,rgba(5,10,28,.88) 0%,rgba(16,13,43,.64) 48%,rgba(35,8,53,.42) 100%),url('/tournaments/alutemu-challenge/challenge.webp?v=20260725-card-v1');
+  border-color:rgba(171,112,235,.48);
+  box-shadow:0 12px 28px rgba(20,7,45,.34);
+}
+#past-tournaments .secret-tournament-card.is-unlocked::before{filter:saturate(.9) contrast(1.06);background-position:center,center 42%}
+#past-tournaments .secret-tournament-card.is-unlocked::after{background:linear-gradient(115deg,rgba(149,77,218,.2),transparent 48%,rgba(236,198,86,.12));opacity:.5}
+#past-tournaments .secret-tournament-card.is-unlocked .secret-kicker{color:#d9b9ff}
+#past-tournaments .secret-tournament-card.is-unlocked h2{max-width:92%;font-size:clamp(19px,2vw,25px);letter-spacing:-.02em;line-height:1.18}
+#past-tournaments .secret-tournament-card.is-unlocked .tournament-card-subtitle{margin-top:8px}
+#past-tournaments .secret-tournament-card.is-unlocked .card-cta{background:rgba(91,43,139,.86);border:1px solid rgba(255,255,255,.32)}
+
 
 #past-tournaments .international-tournaments {
   border-top-color: rgba(13,127,153,.28);
