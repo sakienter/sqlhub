@@ -10,7 +10,7 @@
   <meta property="og:type" content="website" />
   <link rel="canonical" href="https://stuntdrakesavenge.pages.dev/" />
   <link rel="stylesheet" href="/common.css" />
-  <link rel="stylesheet" href="/home.css?v=20260725-east-west-date-v4" />
+  <link rel="stylesheet" href="/home.css?v=20260725-scheduled-challenge-v5" />
   <link rel="stylesheet" href="/site-introduction.css?v=20260625-lab-image" />
   <link rel="stylesheet" href="/hero-scrim-link.css?v=20260616-retry2" />
   <link rel="stylesheet" href="/scrim-cta.css?v=20260614-upper-right" />
@@ -75,7 +75,7 @@
             <a class="season-card card-link image-wipe-card" href="/tournaments/reno/" style="--wipe-image:url('/tournaments/reno.webp');--wipe-image-position:center center"><div><h2>レノ・ジャクソン杯</h2><p class="tournament-card-subtitle">since 2026 Jan</p></div><span class="card-cta">ページを見る →</span></a>
             <a class="season-card card-link image-wipe-card gradient-banner-card neru-battle-card" href="/tournaments/neru-battle/"><div><h2>ねるばとる</h2><p class="tournament-card-subtitle">2026 Jul 19</p></div><span class="card-cta">ページを見る →</span></a>
             <a class="season-card card-link image-wipe-card gradient-banner-card east-west-card" href="/tournaments/east-vs-west/"><div><h2>EAST vs WEST</h2><p class="tournament-card-subtitle">2026 Jul</p></div><span class="card-cta">ページを見る →</span></a>
-            <article class="season-card image-wipe-card gradient-banner-card preview-tournament-card secret-tournament-card" aria-label="Next Event Coming Soon"><div><p class="secret-kicker">Next Event</p><h2>COMING SOON</h2></div></article>
+            <a class="season-card image-wipe-card gradient-banner-card preview-tournament-card secret-tournament-card" data-scheduled-tournament data-unlock-at="2026-07-26T15:00:00+09:00" aria-label="Next Event Coming Soon" aria-disabled="true"><div><p class="secret-kicker">Next Event</p><h2>COMING SOON</h2></div></a>
             <a class="season-card card-link image-wipe-card gradient-banner-card yoidore-card" href="/tournaments/yoidore/"><div><h2>酔いどれ杯</h2><p class="tournament-card-subtitle">不定期開催</p></div><span class="card-cta">ページを見る →</span></a>
           </div>
         </div>
@@ -148,6 +148,28 @@
       <p class="footer-update-note">※更新日はページの一部修正を含みます。</p>
     </footer>
   </main>
+  <script>
+    (() => {
+      const card = document.querySelector('[data-scheduled-tournament]');
+      if (!card) return;
+      const unlockAt = new Date(card.dataset.unlockAt).getTime();
+
+      const unlock = () => {
+        if (Date.now() < unlockAt) return false;
+        card.href = '/tournaments/alutemu-challenge/';
+        card.removeAttribute('aria-disabled');
+        card.classList.remove('preview-tournament-card');
+        card.classList.add('card-link', 'is-unlocked');
+        card.setAttribute('aria-label', '王者Alutemuへの挑戦状 2026年8月16日');
+        card.innerHTML = '<div><p class="secret-kicker">Next Event</p><h2>王者Alutemuへの挑戦状</h2><p class="tournament-card-subtitle">2026 Aug 16</p></div><span class="card-cta">ページを見る →</span>';
+        return true;
+      };
+
+      if (!unlock()) {
+        window.setTimeout(unlock, Math.max(0, unlockAt - Date.now()) + 100);
+      }
+    })();
+  </script>
   <script src="/season-banner.js?v=20260614"></script>
   <script src="/support-share.js?v=20260614-actions-v3"></script>
 </body>
