@@ -16,6 +16,33 @@
   <link rel="stylesheet" href="/composition-gallery.css?v=20260613-2" />
 <link rel="stylesheet" href="/footer-updated.css?v=20260614" />
 <link rel="icon" href="/sutantic.png" type="image/png" />
+  <style>
+    .season2-gold-button{
+      position:relative;
+      overflow:hidden;
+      color:#3e2800!important;
+      border:1px solid #a97913!important;
+      background:linear-gradient(135deg,#fff1a8 0%,#d7a92d 28%,#fff0a0 52%,#b87c0d 78%,#f5d66b 100%)!important;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.78),inset 0 -2px 0 rgba(91,55,0,.20),0 8px 18px rgba(117,76,0,.22)!important;
+      text-shadow:0 1px 0 rgba(255,255,255,.58);
+    }
+    .season2-gold-button::after{
+      content:"";position:absolute;inset:-70% auto -70% -35%;width:28%;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.72),transparent);
+      transform:rotate(18deg);transition:left .38s ease;pointer-events:none;
+    }
+    .season2-gold-button:hover::after{left:115%}
+    .season2-gold-button:hover{filter:saturate(1.08) brightness(1.03);transform:translateY(-1px)}
+    .season2-grid-button{
+      color:#153b54!important;
+      border:1px solid #6b9db5!important;
+      background-color:#eef8fa!important;
+      background-image:linear-gradient(rgba(60,132,164,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(60,132,164,.18) 1px,transparent 1px),linear-gradient(rgba(60,132,164,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(60,132,164,.08) 1px,transparent 1px)!important;
+      background-size:20px 20px,20px 20px,5px 5px,5px 5px!important;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 8px 18px rgba(21,59,84,.15)!important;
+    }
+    .season2-grid-button:hover{color:#09283c!important;border-color:#347c9d!important;filter:brightness(1.02);transform:translateY(-1px)}
+  </style>
 </head>
 <body>
   <main class="page-shell">
@@ -42,10 +69,11 @@
         <p><strong>ポイント：</strong>1位 7pt / 2位 6pt / 3位 5pt / 4位 4pt / 5位 3pt / 6位 2pt / 7位 1pt / 8位 0pt</p>
         <p>同時落ちの折半はありません。ゲーム内、左の順位を参照します。</p>
         <p><strong>参加資格：</strong>主催者が招待した6名と、「S級認定戦」（6/20）の上位2名、計8名。</p>
+        <p><strong>降格規定：</strong>20試合を終え、獲得ポイント順位が7位、8位の選手は、次回のS級リーグの招待選手ではなくなります。</p>
         <p><strong>予選：</strong>「S級認定戦」（6/20）の1位・2位が、S級リーグ本戦への出場権を獲得します。</p>
         <p><a class="button" href="https://tonamel.com/competition/Rqa0p" target="_blank" rel="noopener">Tonamelを開く →</a></p>
-        <p><a class="button secondary" href="./barrette-interview/" target="_blank" rel="noopener noreferrer">Barrette選手 優勝インタビュー 文字起こし ↗</a></p>
-        <p><a class="button secondary" href="./league-stats/" target="_blank" rel="noopener noreferrer">リーグ集計 ↗</a></p>
+        <p><a class="button secondary season2-gold-button" href="./barrette-interview/" target="_blank" rel="noopener noreferrer">Barrette選手 優勝インタビュー 文字起こし ↗</a></p>
+        <p><a class="button secondary season2-grid-button" href="./league-stats/" target="_blank" rel="noopener noreferrer">リーグ集計 ↗</a></p>
       </div>
     </section>
 
