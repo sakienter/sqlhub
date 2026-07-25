@@ -169,16 +169,17 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 
 #past-tournaments .secret-tournament-card[aria-disabled="true"]{cursor:default}
 #past-tournaments .secret-tournament-card.is-unlocked{
-  --wipe-image:linear-gradient(90deg,rgba(5,10,28,.88) 0%,rgba(16,13,43,.64) 48%,rgba(35,8,53,.42) 100%),url('/tournaments/alutemu-challenge/challenge.webp?v=20260725-card-v1');
+  --wipe-image:linear-gradient(90deg,rgba(5,8,24,.18),transparent 58%,rgba(16,5,29,.08)),url('/tournaments/alutemu-challenge/challengetop.webp?v=20260725-top-v1');
+  --wipe-image-position:center center;
   border-color:rgba(171,112,235,.48);
   box-shadow:0 12px 28px rgba(20,7,45,.34);
 }
-#past-tournaments .secret-tournament-card.is-unlocked::before{filter:saturate(.9) contrast(1.06);background-position:center,center 42%}
-#past-tournaments .secret-tournament-card.is-unlocked::after{background:linear-gradient(115deg,rgba(149,77,218,.2),transparent 48%,rgba(236,198,86,.12));opacity:.5}
-#past-tournaments .secret-tournament-card.is-unlocked .secret-kicker{color:#d9b9ff}
-#past-tournaments .secret-tournament-card.is-unlocked h2{max-width:92%;font-size:clamp(19px,2vw,25px);letter-spacing:-.02em;line-height:1.18}
-#past-tournaments .secret-tournament-card.is-unlocked .tournament-card-subtitle{margin-top:8px}
-#past-tournaments .secret-tournament-card.is-unlocked .card-cta{background:rgba(91,43,139,.86);border:1px solid rgba(255,255,255,.32)}
+#past-tournaments .secret-tournament-card.is-unlocked::before{filter:saturate(1.02) contrast(1.04);background-position:center,var(--wipe-image-position)}
+#past-tournaments .secret-tournament-card.is-unlocked::after{background:linear-gradient(115deg,rgba(149,77,218,.08),transparent 50%,rgba(236,198,86,.06));opacity:.2}
+#past-tournaments .secret-tournament-card.is-unlocked .secret-kicker{display:none}
+#past-tournaments .secret-tournament-card.is-unlocked h2{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+#past-tournaments .secret-tournament-card.is-unlocked .tournament-card-subtitle{width:max-content;margin-top:0;color:#fff;font-size:14px;letter-spacing:.08em;text-shadow:0 2px 4px #130522,0 3px 12px rgba(0,0,0,.9)}
+#past-tournaments .secret-tournament-card.is-unlocked .card-cta{background:rgba(73,24,117,.9);border:1px solid rgba(255,255,255,.5);box-shadow:0 6px 16px rgba(8,2,18,.46)}
 
 
 #past-tournaments .international-tournaments {
