@@ -28,6 +28,14 @@
     .final-sheet-link{display:inline-flex;align-items:center;justify-content:center;margin-top:16px;padding:11px 18px;color:#fff;background:#0b5b96;border:1px solid rgba(255,255,255,.22);border-radius:8px;box-shadow:0 9px 20px rgba(3,35,62,.3);font-size:15px;font-weight:950;text-decoration:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
     .final-sheet-link:hover{background:#0876bd;box-shadow:0 12px 25px rgba(3,35,62,.38);transform:translateY(-2px)}
     .final-sheet-link:active{box-shadow:0 5px 12px rgba(3,35,62,.26);transform:translateY(0)}
+    .final-rule-details{margin-top:12px;padding-left:18px;border-left:3px solid #0b5b96}
+    .final-rule-details p{margin:5px 0;font-size:14px;font-weight:750;line-height:1.75}
+    .scrim-results{margin-top:22px;padding-top:18px;border-top:1px solid rgba(16,38,56,.14)}
+    .scrim-results h3{margin:0 0 5px;color:#102638;font-size:17px;font-weight:950}
+    .scrim-results-note{margin:0 0 11px;color:#5a6872;font-size:13px;font-weight:700}
+    .scrim-links{display:flex;flex-wrap:wrap;gap:9px}
+    .scrim-link{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 14px;border:1px solid rgba(11,91,150,.22);border-radius:7px;background:#eef6fb;color:#315268;font-size:13px;font-weight:900;text-decoration:none;box-shadow:0 5px 12px rgba(3,35,62,.1)}
+    .scrim-link.is-pending{cursor:default;opacity:.72}
     .official-links{margin-top:22px;padding-top:20px;border-top:1px solid rgba(16,38,56,.14)}
     .official-links-title{margin:0 0 14px;color:#102638;font-size:18px;font-weight:950}
     .qualifier-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
@@ -81,7 +89,14 @@
           <h4>▶︎ 予選</h4>
           <p>定員は各陣営16人です。2卓に分かれて2試合を行い、各卓の獲得pt上位4名が予選決勝へ進みます。予選決勝は1試合を行い、その順位をもって代表選手を決定します。</p>
           <h4>▶︎ 本戦</h4>
-          <p>上記のシステムで選出された8名で3試合を行います。累計で獲得したptが高い陣営の勝利となります。また、それぞれの陣営でpt最上位となった選手にも賞金があります。</p>
+          <p><strong>上記のシステムで選出された8名で3試合を行います。累計で獲得したptが高い陣営の勝利となります。また、それぞれの陣営でpt最上位となった選手にも賞金があります。</strong></p>
+          <div class="final-rule-details" aria-label="本戦詳細ルール">
+            <p><strong>詳細</strong></p>
+            <p>・ポイント：1位 8pt / 2位 6pt / 3位 5pt / 4位 4pt / 5位 3pt / 6位 2pt / 7位 1pt / 8位 0pt</p>
+            <p>（同時落ちのポイント折半はありません。ゲーム内左側の順位を参照します。）</p>
+            <p>・チーム内では、すべての情報共有が可能です（チーミング可）。</p>
+            <p>・味方チーム以外のゲーム内観戦は禁止です。</p>
+          </div>
           <a class="final-sheet-link" href="https://docs.google.com/spreadsheets/d/1IY_RvjgtzLMy2Ew-2jeQMCSp3aZwZMCdv6Wdc8wEa_g/edit?usp=sharing" target="_blank" rel="noopener noreferrer">本戦用スプレッドシートはこちら！</a>
         </div>
         <div class="participant-block">
@@ -120,6 +135,14 @@
             </a>
           </div>
           <a class="official-link" href="https://x.com/__1ydia__" target="_blank" rel="noopener noreferrer">主催者X：@__1ydia__</a>
+        </div>
+        <div class="scrim-results" aria-labelledby="scrim-results-title">
+          <h3 id="scrim-results-title">スクリム結果</h3>
+          <p class="scrim-results-note">本戦前に実施したスクリムの結果です。</p>
+          <div class="scrim-links">
+            <span class="scrim-link is-pending">第1回 スプレッドシート（リンク準備中）</span>
+            <span class="scrim-link is-pending">第2回 スプレッドシート（リンク準備中）</span>
+          </div>
         </div>
       </div>
     </section>
