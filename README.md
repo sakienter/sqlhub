@@ -6,19 +6,17 @@ S級リーグの試合結果・ポイント状況、大会アーカイブ、コ�
 
 公開サイト: [https://stuntdrakesavenge.pages.dev/](https://stuntdrakesavenge.pages.dev/)
 
-最終更新: 2026年7月20日
+最終更新: 2026年7月26日
 
-## 2026年7月19日〜20日の主な更新
+## 2026年7月25日〜26日の主な更新
 
-- S級リーグ Season 2 DAY3 の結果、順位、装飾品、構成、BAN、試合時間、補足情報を公開
-- Season 2 DAY3 の構成画像を選手別ギャラリーへ追加
-- Season 2 の暫定総合順位をDAY3終了時点へ更新し、数値の視認性を改善
-- トップページの大会一覧を `Tournament Series` として再構成
-- 国際大会を独立したグループとして整理
-- `ねるばとる`、`EAST vs WEST`、`酔いどれ杯`、`王者Alutemuへの挑戦状` の大会ページを追加
-- 大会バナーと各大会ページのヘッダー、ルール、主催者・配信・Tonamel導線を整備
-- トップページの未公開大会表示を `Next Event / COMING SOON` に変更
-- 未使用の旧バナー、重複画像、旧管理画面JavaScript、重複CSSなどを削除
+- S級リーグ Season 2 DAY4 の全5試合を公開し、最終順位を確定
+- DAY4の結果、ヒーロー、構成、装飾品、異常、BAN、試合時間、補足情報を反映
+- DAY4の選手別構成画像をギャラリーへ追加
+- EAST vs WEST の参加メンバー、公式フライヤー、ルール、スクリム結果、各種リンクを整備
+- トップページ、EAST vs WEST、スクリムページにX向けリンクカード（OGP / Twitter Card）を設定
+- トップページのリンクカード画像を `public/st.webp`、スクリムを `public/scrims/sukurimu.webp` に更新
+- 役目を終えた一回限りのGitHub Actionsと、差し替え済みの旧OG画像を削除
 
 ## 公開URL
 
@@ -126,6 +124,7 @@ Season 2 はリポジトリ内の静的JSONとJavaScriptで管理します。
 - 基本結果: `public/sq/season2/results.json`
 - DAY2追加データ: `public/sq/season2/results-day2.json`
 - DAY3追加データ: `public/sq/season2/results-day3.json`
+- DAY4追加データ: `public/sq/season2/results-day4.json`
 - 種族データ: `public/sq/season2/tribes.json`
 - データ定義・正規化: `public/sq/season2/data.js`
 - 総合順位処理: `public/sq/season2/summary.js`
@@ -144,19 +143,9 @@ Season 2 はリポジトリ内の静的JSONとJavaScriptで管理します。
 | DAY1 | `public/season2/sqls2day1comps/` |
 | DAY2 | `public/season2/sqls2day2comps/` |
 | DAY3 | `public/season2/sqls2day3comps/` |
+| DAY4 | `public/season2/sqls2day4comps/` |
 
-DAY1・DAY2の旧 `.jpg` パスは `public/_redirects` でWebP画像へ内部転送します。DAY3は選手名のスラッグを使ったWebPファイルを直接参照します。
-
-DAY3で使用するファイル名:
-
-- `alutemu.webp`
-- `barrette.webp`
-- `gyan.webp`
-- `haguren.webp`
-- `masa007.webp`
-- `matsuri.webp`
-- `reverent.webp`
-- `thundurus.webp`
+DAY1・DAY2の旧 `.jpg` パスは `public/_redirects` でWebP画像へ内部転送します。DAY3・DAY4は選手名に対応するWebPファイルを直接参照します。
 
 ### 結果データの基本構造
 
@@ -318,6 +307,16 @@ DAY3で使用するファイル名:
 
 共有URLには各ページのcanonical URLを使用します。
 
+### Xリンクカード画像
+
+| ページ | 画像 |
+|---|---|
+| トップページ | `public/st.webp` |
+| スクリム | `public/scrims/sukurimu.webp` |
+| EAST vs WEST | `public/tournaments/east-vs-west/bgewbana.webp` |
+
+リンクカードを変更する場合は、各HTMLの `og:image`、`og:image:secure_url`、`twitter:image`、画像サイズ、キャッシュ識別子を同時に更新してください。
+
 ## ページ最終更新日の自動反映
 
 HTMLページのフッターは次の形式です。
@@ -344,6 +343,10 @@ URLルールは `public/_redirects` で管理します。
 - 共有CSS・JavaScriptは `public/` 直下へ集約
 
 ページや資産を移動する場合は、トップページ、戻るリンク、CSS・JavaScript・画像参照、管理画面、READMEを同時に更新してください。
+
+## GitHub Actions
+
+継続運用するワークフローは `.github/workflows/update-page-dates.yml` です。ページへ一度だけscriptタグを追加する旧ワークフローは削除済みです。共有スクリプトの追加・更新は対象HTMLを直接編集してください。
 
 ## Cloudflare Pages
 
