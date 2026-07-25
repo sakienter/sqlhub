@@ -35,6 +35,8 @@
     .scrim-results-note{margin:0 0 11px;color:#5a6872;font-size:13px;font-weight:700}
     .scrim-links{display:flex;flex-wrap:wrap;gap:9px}
     .scrim-link{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 14px;border:1px solid rgba(11,91,150,.22);border-radius:7px;background:#eef6fb;color:#315268;font-size:13px;font-weight:900;text-decoration:none;box-shadow:0 5px 12px rgba(3,35,62,.1)}
+    .scrim-link{transition:color .18s ease,background .18s ease,box-shadow .18s ease,transform .18s ease}
+    .scrim-link:hover{background:#0b5b96;color:#fff;box-shadow:0 8px 18px rgba(3,35,62,.24);transform:translateY(-1px)}
     .scrim-link.is-pending{cursor:default;opacity:.72}
     .official-links{margin-top:22px;padding-top:20px;border-top:1px solid rgba(16,38,56,.14)}
     .official-links-title{margin:0 0 14px;color:#102638;font-size:18px;font-weight:950}
@@ -140,8 +142,8 @@
           <h3 id="scrim-results-title">スクリム結果</h3>
           <p class="scrim-results-note">本戦前に実施したスクリムの結果です。</p>
           <div class="scrim-links">
-            <span class="scrim-link is-pending">第1回 スプレッドシート（リンク準備中）</span>
-            <span class="scrim-link is-pending">第2回 スプレッドシート（リンク準備中）</span>
+            <a class="scrim-link" href="https://docs.google.com/spreadsheets/d/1izm-b007Kas3l0-S1duoCwiRdZ--FjGZ1BFB5x2ApAw/edit?gid=956094123#gid=956094123" target="_blank" rel="noopener noreferrer">スクリム1 結果を見る</a>
+            <a class="scrim-link" href="https://docs.google.com/spreadsheets/d/1ZMmsAfCxplkCz4HjL6KL7qyyE7uo0GIQ1cn5IQm8U14/edit?gid=956094123#gid=956094123" target="_blank" rel="noopener noreferrer">スクリム2 結果を見る</a>
           </div>
         </div>
       </div>
