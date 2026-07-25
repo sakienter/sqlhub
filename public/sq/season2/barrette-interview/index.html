@@ -12,35 +12,28 @@
   <link rel="canonical" href="https://stuntdrakesavenge.pages.dev/sq/season2/barrette-interview/" />
   <link rel="stylesheet" href="/common.css" />
 <style>
-    :root{--ink:#17212b;--muted:#697580;--paper:#f4f1ea;--card:#fffdf8;--line:rgba(23,33,43,.12);--blue:#087f9b;--blue-soft:#e8f5f7;--crimson:#84283a}
-    body{margin:0;color:var(--ink);background:var(--paper)}
-    body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(8,127,155,.035) 1px,transparent 1px),linear-gradient(rgba(8,127,155,.025) 1px,transparent 1px);background-size:48px 48px}
-    .interview-shell{width:min(100% - 36px,980px);margin:0 auto;padding:32px 0 72px}
-    .interview-hero{position:relative;padding:28px clamp(24px,5vw,54px) 42px;overflow:hidden;border:1px solid var(--line);border-top:7px solid var(--blue);border-radius:4px 4px 18px 18px;background:var(--card);box-shadow:0 20px 55px rgba(18,31,43,.10)}
-    .interview-hero::after{content:"S2";position:absolute;right:24px;bottom:-34px;color:rgba(8,127,155,.06);font-size:clamp(120px,22vw,220px);font-weight:1000;line-height:1;letter-spacing:-.08em;pointer-events:none}
-    .interview-hero .back-link{position:relative;z-index:1;display:inline-flex;margin-bottom:48px;padding:0 0 5px;color:var(--muted);background:transparent;border:0;border-bottom:1px solid rgba(23,33,43,.22);border-radius:0;box-shadow:none;font-size:13px;font-weight:850;text-decoration:none}
-    .interview-hero .back-link:hover{color:var(--blue);border-color:var(--blue);transform:none}
-    .interview-kicker{position:relative;z-index:1;margin:0 0 12px;color:var(--blue);font-size:12px;font-weight:950;letter-spacing:.18em;text-transform:uppercase}
-    .interview-hero h1{position:relative;z-index:1;max-width:720px;margin:0;color:var(--ink);font-size:clamp(34px,6vw,62px);font-weight:1000;line-height:1.14;letter-spacing:-.035em;text-align:left;text-shadow:none}
+    :root{--ink:#18212a;--muted:#68727c;--blue:#087f9b}
+    body{margin:0;color:var(--ink);background:#fff}
+    .interview-shell{width:min(100% - 40px,820px);margin:0 auto;padding:44px 0 80px}
+    .interview-hero{padding:0 0 42px;background:transparent}
+    .interview-hero .back-link{display:inline-block;margin-bottom:54px;padding:0;color:var(--muted);background:transparent;border:0;border-radius:0;box-shadow:none;font-size:13px;font-weight:800;text-decoration:none}
+    .interview-hero .back-link:hover{color:var(--blue);transform:none}
+    .interview-kicker{margin:0 0 12px;color:var(--blue);font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+    .interview-hero h1{margin:0;color:var(--ink);font-size:clamp(34px,6vw,56px);font-weight:950;line-height:1.2;letter-spacing:-.03em;text-align:left;text-shadow:none}
     .interview-hero h1 br{display:none}
-    .interview-subtitle{position:relative;z-index:1;margin:20px 0 0;color:var(--muted);font-size:14px;font-weight:850}
-    .transcript-card{margin-top:26px;padding:clamp(28px,6vw,62px);border:1px solid var(--line);border-radius:18px;background:var(--card);box-shadow:0 18px 50px rgba(18,31,43,.08)}
-    .transcript-note{margin:0 0 34px;padding:0 0 22px;border-bottom:1px solid var(--line);color:var(--muted);font-size:13px;font-weight:750;line-height:1.8}
-    .dialogue{position:relative;display:grid;grid-template-columns:130px 1fr;gap:22px;margin:0;padding:19px 0;border-bottom:1px solid var(--line);color:var(--ink);font-size:15px;line-height:2}
-    .dialogue:last-child{border-bottom:0}
-    .dialogue strong{align-self:start;margin-top:3px;color:var(--muted);font-size:12px;font-weight:950;line-height:1.4;letter-spacing:.02em}
-    .dialogue span{min-width:0}
-    .dialogue-barrette{margin:10px -18px;padding:22px 18px;border:1px solid rgba(8,127,155,.14);border-radius:12px;background:var(--blue-soft)}
+    .interview-subtitle{margin:16px 0 0;color:var(--muted);font-size:14px;font-weight:750}
+    .transcript-card{margin:0;padding:0;background:transparent}
+    .transcript-note{margin:0 0 42px;color:var(--muted);font-size:13px;line-height:1.8}
+    .dialogue{display:block;margin:0 0 30px;padding:0;color:var(--ink);font-size:15px;line-height:2}
+    .dialogue strong{display:block;margin:0 0 5px;color:var(--muted);font-size:12px;font-weight:900}
+    .dialogue span{display:block}
     .dialogue-barrette strong{color:var(--blue)}
-    .dialogue-barrette span{font-weight:720}
-    .dialogue-yanase strong{color:#6e506e}
-    .dialogue-negater strong{color:var(--crimson)}
-    @media(max-width:680px){
-      .interview-shell{width:min(100% - 20px,980px);padding:12px 0 42px}
-      .interview-hero{padding:22px 20px 32px}.interview-hero .back-link{margin-bottom:38px}.interview-hero h1 br{display:block}.interview-hero::after{right:12px}
-      .transcript-card{margin-top:14px;padding:24px 18px}
-      .dialogue{display:block;padding:18px 0;font-size:14px;line-height:1.9}
-      .dialogue strong{display:block;margin:0 0 8px}.dialogue-barrette{margin:8px -8px;padding:18px 12px}
+    .dialogue-barrette span{font-weight:650}
+    @media(max-width:640px){
+      .interview-shell{width:min(100% - 28px,820px);padding:28px 0 56px}
+      .interview-hero{padding-bottom:34px}.interview-hero .back-link{margin-bottom:40px}
+      .interview-hero h1 br{display:block}.transcript-note{margin-bottom:34px}
+      .dialogue{margin-bottom:26px;font-size:14px;line-height:1.9}
     }
   </style>
 <link rel="icon" href="/sutantic.png" type="image/png" />
