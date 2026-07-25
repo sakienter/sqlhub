@@ -1,0 +1,701 @@
+{
+  "updatedAt": "2026-07-25",
+  "summary": {
+    "rows": [
+      {
+        "rank": "1st",
+        "name": "Barrette",
+        "total": 71
+      },
+      {
+        "rank": "1st",
+        "name": "MATSURI",
+        "total": 71
+      },
+      {
+        "rank": "3rd",
+        "name": "haguren",
+        "total": 68
+      },
+      {
+        "rank": "4th",
+        "name": "Thundurus",
+        "total": 67
+      },
+      {
+        "rank": "5th",
+        "name": "ぎゃん",
+        "total": 64
+      },
+      {
+        "rank": "6th",
+        "name": "Reverent",
+        "total": 63
+      },
+      {
+        "rank": "7th",
+        "name": "Alutemu",
+        "total": 56
+      },
+      {
+        "rank": "8th",
+        "name": "masa007",
+        "total": 44
+      }
+    ]
+  },
+  "day": {
+    "label": "DAY4",
+    "date": "7/25",
+    "points": {
+      "rows": [
+        {
+          "name": "Alutemu",
+          "dailyTotal": 9,
+          "rank": "5th",
+          "game1": 2,
+          "game2": 7,
+          "game3": 0,
+          "game4": null,
+          "game5": null
+        },
+        {
+          "name": "Barrette",
+          "dailyTotal": 9,
+          "rank": "5th",
+          "game1": 0,
+          "game2": 2,
+          "game3": 7,
+          "game4": null,
+          "game5": null
+        },
+        {
+          "name": "haguren",
+          "dailyTotal": 7,
+          "rank": "7th",
+          "game1": 5,
+          "game2": 1,
+          "game3": 1,
+          "game4": null,
+          "game5": null
+        },
+        {
+          "name": "MATSURI",
+          "dailyTotal": 16,
+          "rank": "1st",
+          "game1": 6,
+          "game2": 5,
+          "game3": 5,
+          "game4": null,
+          "game5": null
+        },
+        {
+          "name": "Thundurus",
+          "dailyTotal": 11,
+          "rank": "3rd",
+          "game1": 4,
+          "game2": 3,
+          "game3": 4,
+          "game4": null,
+          "game5": null
+        },
+        {
+          "name": "ぎゃん",
+          "dailyTotal": 16,
+          "rank": "1st",
+          "game1": 7,
+          "game2": 6,
+          "game3": 3,
+          "game4": null,
+          "game5": null
+        },
+        {
+          "name": "masa007",
+          "dailyTotal": 5,
+          "rank": "8th",
+          "game1": 3,
+          "game2": 0,
+          "game3": 2,
+          "game4": null,
+          "game5": null
+        },
+        {
+          "name": "Reverent",
+          "dailyTotal": 11,
+          "rank": "3rd",
+          "game1": 1,
+          "game2": 4,
+          "game3": 6,
+          "game4": null,
+          "game5": null
+        }
+      ]
+    },
+    "placements": {
+      "rows": [
+        {
+          "name": "Alutemu",
+          "firstCount": 1,
+          "average": 5,
+          "game1": 6,
+          "game2": 1,
+          "game3": 8,
+          "game4": null,
+          "game5": null
+        },
+        {
+          "name": "Barrette",
+          "firstCount": 1,
+          "average": 5,
+          "game1": 8,
+          "game2": 6,
+          "game3": 1,
+          "game4": null,
+          "game5": null
+        },
+        {
+          "name": "haguren",
+          "firstCount": 0,
+          "average": 5.7,
+          "game1": 3,
+          "game2": 7,
+          "game3": 7,
+          "game4": null,
+          "game5": null
+        },
+        {
+          "name": "MATSURI",
+          "firstCount": 0,
+          "average": 2.7,
+          "game1": 2,
+          "game2": 3,
+          "game3": 3,
+          "game4": null,
+          "game5": null
+        },
+        {
+          "name": "Thundurus",
+          "firstCount": 0,
+          "average": 4.3,
+          "game1": 4,
+          "game2": 5,
+          "game3": 4,
+          "game4": null,
+          "game5": null
+        },
+        {
+          "name": "ぎゃん",
+          "firstCount": 1,
+          "average": 2.7,
+          "game1": 1,
+          "game2": 2,
+          "game3": 5,
+          "game4": null,
+          "game5": null
+        },
+        {
+          "name": "masa007",
+          "firstCount": 0,
+          "average": 6.3,
+          "game1": 5,
+          "game2": 8,
+          "game3": 6,
+          "game4": null,
+          "game5": null
+        },
+        {
+          "name": "Reverent",
+          "firstCount": 0,
+          "average": 4.3,
+          "game1": 7,
+          "game2": 4,
+          "game3": 2,
+          "game4": null,
+          "game5": null
+        }
+      ]
+    },
+    "gameDetails": [
+      {
+        "label": "GAME1",
+        "startTime": "13:02",
+        "endTime": "13:28",
+        "anomaly": "偽りの偶像",
+        "rows": [
+          {
+            "name": "Alutemu",
+            "placement": 6,
+            "hero": "バロフ",
+            "comp": "",
+            "lesser1": "反射のペンダント",
+            "lesser2": "",
+            "greater1": "チルメアモザイク",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Barrette",
+            "placement": 8,
+            "hero": "ザイレラ",
+            "comp": "獣＋骸骨掃射",
+            "lesser1": "幸運の虎猫",
+            "lesser2": "",
+            "greater1": "なし",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "haguren",
+            "placement": 3,
+            "hero": "リッチキング",
+            "comp": "ライラク近衛兵",
+            "lesser1": "バーテンド・トロンのオイル缶",
+            "lesser2": "",
+            "greater1": "ボブのチップ入れビン",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "MATSURI",
+            "placement": 2,
+            "hero": "ブラン",
+            "comp": "ノミエレメンタル",
+            "lesser1": "クロマティック・ティア",
+            "lesser2": "",
+            "greater1": "残火",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Thundurus",
+            "placement": 4,
+            "hero": "ノズドルム",
+            "comp": "指輪エヴォーカー",
+            "lesser1": "酒場のオヤジのジョッキ",
+            "lesser2": "",
+            "greater1": "ブラン肖像画",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "ぎゃん",
+            "placement": 1,
+            "hero": "ミロクー",
+            "comp": "無限防腐",
+            "lesser1": "フェレメンタルの肖像画",
+            "lesser2": "",
+            "greater1": "ボブのチップ入れビン",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "masa007",
+            "placement": 5,
+            "hero": "セナリウス",
+            "comp": "",
+            "lesser1": "飾り時計",
+            "lesser2": "",
+            "greater1": "ペイグルの釣り竿",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Reverent",
+            "placement": 7,
+            "hero": "ガフ",
+            "comp": "",
+            "lesser1": "書記型タイプライター",
+            "lesser2": "",
+            "greater1": "無貌の肖像画",
+            "greater2": "",
+            "info": ""
+          }
+        ]
+      },
+      {
+        "label": "GAME2",
+        "startTime": "13:30",
+        "endTime": "14:01",
+        "anomaly": "ダブルヘッダー",
+        "rows": [
+          {
+            "name": "Alutemu",
+            "placement": 1,
+            "hero": "トーリム",
+            "comp": "ナーガ→背中合わせ",
+            "lesser1": "旅行クーポン",
+            "lesser2": "",
+            "greater1": "無貌の肖像画",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Barrette",
+            "placement": 6,
+            "hero": "テス",
+            "comp": "",
+            "lesser1": "チケッタスのステッカー",
+            "lesser2": "",
+            "greater1": "不気味なステッカー",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "haguren",
+            "placement": 7,
+            "hero": "サーフィンレー",
+            "comp": "燃え立つ執行者",
+            "lesser1": "ライラクの肖像画",
+            "lesser2": "",
+            "greater1": "燃え立つ肖像画",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "MATSURI",
+            "placement": 3,
+            "hero": "ミロクー",
+            "comp": "ノミエレメンタル",
+            "lesser1": "旧神のしるし",
+            "lesser2": "",
+            "greater1": "巨怪の肖像画",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Thundurus",
+            "placement": 5,
+            "hero": "リッチキング",
+            "comp": "シマーモス",
+            "lesser1": "ライラクの肖像画",
+            "lesser2": "",
+            "greater1": "リーヴェンデアの肖像画",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "ぎゃん",
+            "placement": 2,
+            "hero": "メカーノ",
+            "comp": "ライラク近衛兵",
+            "lesser1": "光る籠手",
+            "lesser2": "",
+            "greater1": "詩竜の肖像画",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "masa007",
+            "placement": 8,
+            "hero": "ムロゾンド",
+            "comp": "ナラァ",
+            "lesser1": "ライラクの肖像画",
+            "lesser2": "",
+            "greater1": "チルメアモザイク",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Reverent",
+            "placement": 4,
+            "hero": "クロックスワース",
+            "comp": "エヴォーカー",
+            "lesser1": "陣太鼓",
+            "lesser2": "",
+            "greater1": "クロマティック・ティア",
+            "greater2": "",
+            "info": ""
+          }
+        ]
+      },
+      {
+        "label": "GAME3",
+        "startTime": "14:03",
+        "endTime": "14:38",
+        "anomaly": "上級運勢",
+        "rows": [
+          {
+            "name": "Alutemu",
+            "placement": 8,
+            "hero": "ノブンド",
+            "comp": "",
+            "lesser1": "クロマティック・ティア",
+            "lesser2": "",
+            "greater1": "道を照らすロウソク",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Barrette",
+            "placement": 1,
+            "hero": "シルヴァナス",
+            "comp": "金カレク＋指輪",
+            "lesser1": "旧神のしるし",
+            "lesser2": "",
+            "greater1": "クロマティック・ティア",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "haguren",
+            "placement": 7,
+            "hero": "テス",
+            "comp": "",
+            "lesser1": "万華鏡",
+            "lesser2": "",
+            "greater1": "マジックフィンのステッカー",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "MATSURI",
+            "placement": 3,
+            "hero": "ブラン",
+            "comp": "ライラクタイムマネジメント",
+            "lesser1": "ゴールデナイザーの補給品",
+            "lesser2": "",
+            "greater1": "マジックフィンのステッカー",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Thundurus",
+            "placement": 4,
+            "hero": "チケッタス",
+            "comp": "魔力吸収エレメンタル",
+            "lesser1": "ドラゴンウィング・グライダー",
+            "lesser2": "",
+            "greater1": "クロマティック・ティア",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "ぎゃん",
+            "placement": 5,
+            "hero": "スニード",
+            "comp": "スカイブレーザー",
+            "lesser1": "末魔の魂壺()",
+            "lesser2": "",
+            "greater1": "未知のオーブ（伝令のステッカー）",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "masa007",
+            "placement": 6,
+            "hero": "テロン",
+            "comp": "自動人形",
+            "lesser1": "書記型タイプライター",
+            "lesser2": "",
+            "greater1": "アコーディ・オ・トロンの肖像画",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Reverent",
+            "placement": 2,
+            "hero": "ミロクー",
+            "comp": "ビートボクサー",
+            "lesser1": "フェレメンタルの肖像画",
+            "lesser2": "",
+            "greater1": "ビートボクサーの肖像画",
+            "greater2": "",
+            "info": ""
+          }
+        ]
+      },
+      {
+        "label": "GAME4",
+        "startTime": "",
+        "endTime": "",
+        "anomaly": "",
+        "rows": [
+          {
+            "name": "Alutemu",
+            "placement": null,
+            "hero": "",
+            "comp": "",
+            "lesser1": "",
+            "lesser2": "",
+            "greater1": "",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Barrette",
+            "placement": null,
+            "hero": "",
+            "comp": "",
+            "lesser1": "",
+            "lesser2": "",
+            "greater1": "",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "haguren",
+            "placement": null,
+            "hero": "",
+            "comp": "",
+            "lesser1": "",
+            "lesser2": "",
+            "greater1": "",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "MATSURI",
+            "placement": null,
+            "hero": "",
+            "comp": "",
+            "lesser1": "",
+            "lesser2": "",
+            "greater1": "",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Thundurus",
+            "placement": null,
+            "hero": "",
+            "comp": "",
+            "lesser1": "",
+            "lesser2": "",
+            "greater1": "",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "ぎゃん",
+            "placement": null,
+            "hero": "",
+            "comp": "",
+            "lesser1": "",
+            "lesser2": "",
+            "greater1": "",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "masa007",
+            "placement": null,
+            "hero": "",
+            "comp": "",
+            "lesser1": "",
+            "lesser2": "",
+            "greater1": "",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Reverent",
+            "placement": null,
+            "hero": "",
+            "comp": "",
+            "lesser1": "",
+            "lesser2": "",
+            "greater1": "",
+            "greater2": "",
+            "info": ""
+          }
+        ]
+      },
+      {
+        "label": "GAME5",
+        "startTime": "",
+        "endTime": "",
+        "anomaly": "",
+        "rows": [
+          {
+            "name": "Alutemu",
+            "placement": null,
+            "hero": "",
+            "comp": "",
+            "lesser1": "",
+            "lesser2": "",
+            "greater1": "",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Barrette",
+            "placement": null,
+            "hero": "",
+            "comp": "",
+            "lesser1": "",
+            "lesser2": "",
+            "greater1": "",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "haguren",
+            "placement": null,
+            "hero": "",
+            "comp": "",
+            "lesser1": "",
+            "lesser2": "",
+            "greater1": "",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "MATSURI",
+            "placement": null,
+            "hero": "",
+            "comp": "",
+            "lesser1": "",
+            "lesser2": "",
+            "greater1": "",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Thundurus",
+            "placement": null,
+            "hero": "",
+            "comp": "",
+            "lesser1": "",
+            "lesser2": "",
+            "greater1": "",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "ぎゃん",
+            "placement": null,
+            "hero": "",
+            "comp": "",
+            "lesser1": "",
+            "lesser2": "",
+            "greater1": "",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "masa007",
+            "placement": null,
+            "hero": "",
+            "comp": "",
+            "lesser1": "",
+            "lesser2": "",
+            "greater1": "",
+            "greater2": "",
+            "info": ""
+          },
+          {
+            "name": "Reverent",
+            "placement": null,
+            "hero": "",
+            "comp": "",
+            "lesser1": "",
+            "lesser2": "",
+            "greater1": "",
+            "greater2": "",
+            "info": ""
+          }
+        ]
+      }
+    ]
+  }
+}
