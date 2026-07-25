@@ -158,15 +158,24 @@
   font-size: 14px;
 }
 
-#summary-table tbody td.number-cell {
+#summary-table tbody td,
+#summary-table .final-rank-label,
+#summary-table .final-rank-simple {
   font-size: 18px;
+}
+
+#summary-table tbody td.number-cell {
   font-weight: 850;
   font-variant-numeric: tabular-nums;
 }
 
+#summary-table tbody td.name-cell {
+  font-weight: 850;
+}
+
 #summary-table tbody td.total-cell,
 #summary-table tbody td:last-child {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 950;
 }
 
@@ -175,12 +184,11 @@
     font-size: 13px;
   }
 
-  #summary-table tbody td.number-cell {
-    font-size: 16px;
-  }
-
+  #summary-table tbody td,
+  #summary-table .final-rank-label,
+  #summary-table .final-rank-simple,
   #summary-table tbody td.total-cell,
   #summary-table tbody td:last-child {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
