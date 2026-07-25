@@ -286,7 +286,7 @@
             "lesser2": "",
             "greater1": "ボブのチップ入れビン",
             "greater2": "",
-            "info": ""
+            "info": "Tw"
           },
           {
             "name": "masa007",
@@ -326,8 +326,8 @@
             "lesser1": "旅行クーポン",
             "lesser2": "",
             "greater1": "無貌の肖像画",
-            "greater2": "",
-            "info": ""
+            "greater2": "戦団の笛",
+            "info": "ラー"
           },
           {
             "name": "Barrette",
@@ -349,7 +349,7 @@
             "lesser2": "",
             "greater1": "燃え立つ肖像画",
             "greater2": "",
-            "info": ""
+            "info": "ピンゾロ"
           },
           {
             "name": "MATSURI",
@@ -360,7 +360,7 @@
             "lesser2": "",
             "greater1": "巨怪の肖像画",
             "greater2": "",
-            "info": ""
+            "info": "Tw"
           },
           {
             "name": "Thundurus",
@@ -393,7 +393,7 @@
             "lesser2": "",
             "greater1": "チルメアモザイク",
             "greater2": "",
-            "info": ""
+            "info": "Tw"
           },
           {
             "name": "Reverent",
@@ -420,7 +420,7 @@
             "hero": "ノブンド",
             "comp": "",
             "lesser1": "クロマティック・ティア",
-            "lesser2": "",
+            "lesser2": "巨猪のステッカー",
             "greater1": "道を照らすロウソク",
             "greater2": "",
             "info": ""
@@ -445,7 +445,7 @@
             "lesser2": "",
             "greater1": "マジックフィンのステッカー",
             "greater2": "",
-            "info": ""
+            "info": "コドー"
           },
           {
             "name": "MATSURI",
@@ -466,8 +466,8 @@
             "lesser1": "ドラゴンウィング・グライダー",
             "lesser2": "",
             "greater1": "クロマティック・ティア",
-            "greater2": "",
-            "info": ""
+            "greater2": "未知のオーブ（万能カリカリ）",
+            "info": "ザージラ"
           },
           {
             "name": "ぎゃん",
@@ -500,24 +500,24 @@
             "lesser2": "",
             "greater1": "ビートボクサーの肖像画",
             "greater2": "",
-            "info": ""
+            "info": "Tw"
           }
         ]
       },
       {
         "label": "GAME4",
-        "startTime": "",
-        "endTime": "",
-        "anomaly": "",
+        "startTime": "14:41",
+        "endTime": "15:11",
+        "anomaly": "異常な探検",
         "rows": [
           {
             "name": "Alutemu",
             "placement": 7,
             "hero": "スニード",
             "comp": "",
-            "lesser1": "",
+            "lesser1": "謎めいたオーブ",
             "lesser2": "",
-            "greater1": "",
+            "greater1": "なし",
             "greater2": "",
             "info": ""
           },
@@ -526,20 +526,20 @@
             "placement": 2,
             "hero": "ETC",
             "comp": "",
-            "lesser1": "",
+            "lesser1": "チケッタスのステッカー",
             "lesser2": "",
-            "greater1": "",
+            "greater1": "森の心臓",
             "greater2": "",
-            "info": ""
+            "info": "Tw"
           },
           {
             "name": "haguren",
             "placement": 3,
             "hero": "チケッタス",
             "comp": "",
-            "lesser1": "",
+            "lesser1": "アゼロス儀",
             "lesser2": "",
-            "greater1": "",
+            "greater1": "無貌の肖像画",
             "greater2": "",
             "info": ""
           },
@@ -548,9 +548,9 @@
             "placement": 1,
             "hero": "ネズミの王",
             "comp": "",
-            "lesser1": "",
+            "lesser1": "ゴブリンの財布",
             "lesser2": "",
-            "greater1": "",
+            "greater1": "防護の指輪",
             "greater2": "",
             "info": ""
           },
@@ -558,10 +558,10 @@
             "name": "Thundurus",
             "placement": 6,
             "hero": "トーリム",
-            "comp": "",
-            "lesser1": "",
+            "comp": "ラスガAPM",
+            "lesser1": "光る籠手",
             "lesser2": "",
-            "greater1": "",
+            "greater1": "サルゲラスの眼球",
             "greater2": "",
             "info": ""
           },
@@ -570,9 +570,9 @@
             "placement": 8,
             "hero": "シルヴァナス",
             "comp": "",
-            "lesser1": "",
+            "lesser1": "古代の叉骨",
             "lesser2": "",
-            "greater1": "",
+            "greater1": "メディヴの書",
             "greater2": "",
             "info": ""
           },
@@ -581,9 +581,9 @@
             "placement": 5,
             "hero": "ミロクー",
             "comp": "",
-            "lesser1": "",
+            "lesser1": "アゼロス儀",
             "lesser2": "",
-            "greater1": "",
+            "greater1": "不気味なステッカー",
             "greater2": "",
             "info": ""
           },
@@ -592,9 +592,9 @@
             "placement": 4,
             "hero": "ノズドルム",
             "comp": "",
-            "lesser1": "",
+            "lesser1": "ブーティ・ベイ・ビール",
             "lesser2": "",
-            "greater1": "",
+            "greater1": "書記型タイプライター",
             "greater2": "",
             "info": ""
           }
@@ -602,18 +602,18 @@
       },
       {
         "label": "GAME5",
-        "startTime": "",
-        "endTime": "",
-        "anomaly": "",
+        "startTime": "15:12",
+        "endTime": "15:46",
+        "anomaly": "大宇宙デュアリティ",
         "rows": [
           {
             "name": "Alutemu",
             "placement": 8,
             "hero": "ヴァンダル/キュレーター",
             "comp": "",
-            "lesser1": "",
+            "lesser1": "カラフルコンパス",
             "lesser2": "",
-            "greater1": "",
+            "greater1": "書記型タイプライター",
             "greater2": "",
             "info": ""
           },
@@ -622,9 +622,9 @@
             "placement": 1,
             "hero": "ミロクー/クロミー",
             "comp": "",
-            "lesser1": "",
+            "lesser1": "泡の冠",
             "lesser2": "",
-            "greater1": "",
+            "greater1": "オヤジ",
             "greater2": "",
             "info": ""
           },
@@ -633,9 +633,9 @@
             "placement": 4,
             "hero": "ンゾス/クッキー",
             "comp": "",
-            "lesser1": "",
+            "lesser1": "海底のイカリ",
             "lesser2": "",
-            "greater1": "",
+            "greater1": "オヤジ",
             "greater2": "",
             "info": ""
           },
@@ -644,9 +644,9 @@
             "placement": 7,
             "hero": "セナリウス/ホガー",
             "comp": "",
-            "lesser1": "",
+            "lesser1": "くたびれた宝の地図",
             "lesser2": "",
-            "greater1": "",
+            "greater1": "アイスブロック",
             "greater2": "",
             "info": ""
           },
@@ -655,9 +655,9 @@
             "placement": 6,
             "hero": "ピュートリ/エリーズ",
             "comp": "",
-            "lesser1": "",
+            "lesser1": "獄吏のステッカー",
             "lesser2": "",
-            "greater1": "",
+            "greater1": "鎌",
             "greater2": "",
             "info": ""
           },
@@ -666,9 +666,9 @@
             "placement": 3,
             "hero": "テロン/マスターウェン",
             "comp": "",
-            "lesser1": "",
+            "lesser1": "レプリカの大聖堂",
             "lesser2": "",
-            "greater1": "",
+            "greater1": "オヤジ",
             "greater2": "",
             "info": ""
           },
@@ -677,9 +677,9 @@
             "placement": 5,
             "hero": "獄吏王/テス",
             "comp": "",
-            "lesser1": "",
+            "lesser1": "くたびれた宝の地図",
             "lesser2": "",
-            "greater1": "",
+            "greater1": "バール",
             "greater2": "",
             "info": ""
           },
@@ -688,9 +688,9 @@
             "placement": 2,
             "hero": "ユードラ/ヴーン",
             "comp": "",
-            "lesser1": "",
+            "lesser1": "カラフルコンパス",
             "lesser2": "",
-            "greater1": "",
+            "greater1": "鎌",
             "greater2": "",
             "info": ""
           }
