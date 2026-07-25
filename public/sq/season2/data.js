@@ -4,7 +4,7 @@ const S2_DATES = ['6/27', '7/4', '7/18', '7/25'];
 const S2_TRIBE_ICON_BASE = '../tribewebp';
 
 const SUMMARY_HEADERS = [
-  { label: '暫定順位', key: 'rank' },
+  { label: '最終順位', key: 'rank' },
   { label: 'Name', key: 'name' },
   { label: 'Day1', key: 'day1' },
   { label: 'Day2', key: 'day2' },
