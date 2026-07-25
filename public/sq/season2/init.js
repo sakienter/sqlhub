@@ -157,7 +157,7 @@ async function initSeasonTwo() {
   renderPage(loadedData);
   keepCompositionPlaceholderCurrent();
 
-  const [resultData, day2Data, day3Data, staticTribes] = await Promise.all([
+  const [resultData, day2Data, day3Data, day4Data, staticTribes] = await Promise.all([
     fetchJson(API_URL).catch(error => {
       console.warn('Season 2 static results are not available.', error);
       return null;
@@ -168,6 +168,10 @@ async function initSeasonTwo() {
     }),
     fetchJson('./results-day3.json').catch(error => {
       console.warn('Season 2 DAY3 results are not available.', error);
+      return null;
+    }),
+    fetchJson('./results-day4.json').catch(error => {
+      console.warn('Season 2 DAY4 results are not available.', error);
       return null;
     }),
     fetchJson(TRIBE_API_URL).catch(error => {
@@ -183,7 +187,8 @@ async function initSeasonTwo() {
 
   if (resultData && typeof resultData === 'object') {
     const dayTwoPatchedData = applySeasonPatch(resultData, day2Data, 1);
-    const patchedData = applySeasonPatch(dayTwoPatchedData, day3Data, 2);
+    const dayThreePatchedData = applySeasonPatch(dayTwoPatchedData, day3Data, 2);
+    const patchedData = applySeasonPatch(dayThreePatchedData, day4Data, 3);
     applyDayTwoGameFourHeroNames(patchedData);
     applyDayTwoTerminology(patchedData);
     loadedData = normalizeSeasonData(patchedData);
