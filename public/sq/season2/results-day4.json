@@ -5,42 +5,42 @@
       {
         "rank": "1st",
         "name": "Barrette",
-        "total": 71
+        "total": 98
       },
       {
-        "rank": "1st",
-        "name": "MATSURI",
-        "total": 71
-      },
-      {
-        "rank": "3rd",
+        "rank": "2nd",
         "name": "haguren",
-        "total": 68
+        "total": 85
+      },
+      {
+        "rank": "2nd",
+        "name": "Reverent",
+        "total": 85
       },
       {
         "rank": "4th",
-        "name": "Thundurus",
-        "total": 67
+        "name": "MATSURI",
+        "total": 81
       },
       {
         "rank": "5th",
         "name": "ぎゃん",
-        "total": 64
+        "total": 79
       },
       {
         "rank": "6th",
-        "name": "Reverent",
-        "total": 63
+        "name": "Thundurus",
+        "total": 75
       },
       {
         "rank": "7th",
         "name": "Alutemu",
-        "total": 56
+        "total": 57
       },
       {
         "rank": "8th",
         "name": "masa007",
-        "total": 44
+        "total": 56
       }
     ]
   },
@@ -51,83 +51,83 @@
       "rows": [
         {
           "name": "Alutemu",
-          "dailyTotal": 9,
-          "rank": "5th",
+          "dailyTotal": 10,
+          "rank": "8th",
           "game1": 2,
           "game2": 7,
           "game3": 0,
-          "game4": null,
-          "game5": null
+          "game4": 1,
+          "game5": 0
         },
         {
           "name": "Barrette",
-          "dailyTotal": 9,
-          "rank": "5th",
+          "dailyTotal": 36,
+          "rank": "1st",
           "game1": 0,
           "game2": 2,
           "game3": 7,
-          "game4": null,
-          "game5": null
+          "game4": 6,
+          "game5": 21
         },
         {
           "name": "haguren",
-          "dailyTotal": 7,
-          "rank": "7th",
+          "dailyTotal": 24,
+          "rank": "5th",
           "game1": 5,
           "game2": 1,
           "game3": 1,
-          "game4": null,
-          "game5": null
+          "game4": 5,
+          "game5": 12
         },
         {
           "name": "MATSURI",
-          "dailyTotal": 16,
-          "rank": "1st",
+          "dailyTotal": 26,
+          "rank": "4th",
           "game1": 6,
           "game2": 5,
           "game3": 5,
-          "game4": null,
-          "game5": null
+          "game4": 7,
+          "game5": 3
         },
         {
           "name": "Thundurus",
-          "dailyTotal": 11,
-          "rank": "3rd",
+          "dailyTotal": 19,
+          "rank": "6th",
           "game1": 4,
           "game2": 3,
           "game3": 4,
-          "game4": null,
-          "game5": null
+          "game4": 2,
+          "game5": 6
         },
         {
           "name": "ぎゃん",
-          "dailyTotal": 16,
-          "rank": "1st",
+          "dailyTotal": 31,
+          "rank": "3rd",
           "game1": 7,
           "game2": 6,
           "game3": 3,
-          "game4": null,
-          "game5": null
+          "game4": 0,
+          "game5": 15
         },
         {
           "name": "masa007",
-          "dailyTotal": 5,
-          "rank": "8th",
+          "dailyTotal": 17,
+          "rank": "7th",
           "game1": 3,
           "game2": 0,
           "game3": 2,
-          "game4": null,
-          "game5": null
+          "game4": 3,
+          "game5": 9
         },
         {
           "name": "Reverent",
-          "dailyTotal": 11,
-          "rank": "3rd",
+          "dailyTotal": 33,
+          "rank": "2nd",
           "game1": 1,
           "game2": 4,
           "game3": 6,
-          "game4": null,
-          "game5": null
+          "game4": 4,
+          "game5": 18
         }
       ]
     },
@@ -136,82 +136,82 @@
         {
           "name": "Alutemu",
           "firstCount": 1,
-          "average": 5,
+          "average": 6,
           "game1": 6,
           "game2": 1,
           "game3": 8,
-          "game4": null,
-          "game5": null
+          "game4": 7,
+          "game5": 8
         },
         {
           "name": "Barrette",
-          "firstCount": 1,
-          "average": 5,
+          "firstCount": 2,
+          "average": 3.6,
           "game1": 8,
           "game2": 6,
           "game3": 1,
-          "game4": null,
-          "game5": null
+          "game4": 2,
+          "game5": 1
         },
         {
           "name": "haguren",
           "firstCount": 0,
-          "average": 5.7,
+          "average": 4.8,
           "game1": 3,
           "game2": 7,
           "game3": 7,
-          "game4": null,
-          "game5": null
+          "game4": 3,
+          "game5": 4
         },
         {
           "name": "MATSURI",
-          "firstCount": 0,
-          "average": 2.7,
+          "firstCount": 1,
+          "average": 3.2,
           "game1": 2,
           "game2": 3,
           "game3": 3,
-          "game4": null,
-          "game5": null
+          "game4": 1,
+          "game5": 7
         },
         {
           "name": "Thundurus",
           "firstCount": 0,
-          "average": 4.3,
+          "average": 5,
           "game1": 4,
           "game2": 5,
           "game3": 4,
-          "game4": null,
-          "game5": null
+          "game4": 6,
+          "game5": 6
         },
         {
           "name": "ぎゃん",
           "firstCount": 1,
-          "average": 2.7,
+          "average": 3.8,
           "game1": 1,
           "game2": 2,
           "game3": 5,
-          "game4": null,
-          "game5": null
+          "game4": 8,
+          "game5": 3
         },
         {
           "name": "masa007",
           "firstCount": 0,
-          "average": 6.3,
+          "average": 5.8,
           "game1": 5,
           "game2": 8,
           "game3": 6,
-          "game4": null,
-          "game5": null
+          "game4": 5,
+          "game5": 5
         },
         {
           "name": "Reverent",
           "firstCount": 0,
-          "average": 4.3,
+          "average": 3.8,
           "game1": 7,
           "game2": 4,
           "game3": 2,
-          "game4": null,
-          "game5": null
+          "game4": 4,
+          "game5": 2
         }
       ]
     },
@@ -512,8 +512,8 @@
         "rows": [
           {
             "name": "Alutemu",
-            "placement": null,
-            "hero": "",
+            "placement": 7,
+            "hero": "スニード",
             "comp": "",
             "lesser1": "",
             "lesser2": "",
@@ -523,8 +523,8 @@
           },
           {
             "name": "Barrette",
-            "placement": null,
-            "hero": "",
+            "placement": 2,
+            "hero": "ETC",
             "comp": "",
             "lesser1": "",
             "lesser2": "",
@@ -534,8 +534,8 @@
           },
           {
             "name": "haguren",
-            "placement": null,
-            "hero": "",
+            "placement": 3,
+            "hero": "チケッタス",
             "comp": "",
             "lesser1": "",
             "lesser2": "",
@@ -545,8 +545,8 @@
           },
           {
             "name": "MATSURI",
-            "placement": null,
-            "hero": "",
+            "placement": 1,
+            "hero": "ネズミの王",
             "comp": "",
             "lesser1": "",
             "lesser2": "",
@@ -556,8 +556,8 @@
           },
           {
             "name": "Thundurus",
-            "placement": null,
-            "hero": "",
+            "placement": 6,
+            "hero": "トーリム",
             "comp": "",
             "lesser1": "",
             "lesser2": "",
@@ -567,8 +567,8 @@
           },
           {
             "name": "ぎゃん",
-            "placement": null,
-            "hero": "",
+            "placement": 8,
+            "hero": "シルヴァナス",
             "comp": "",
             "lesser1": "",
             "lesser2": "",
@@ -578,8 +578,8 @@
           },
           {
             "name": "masa007",
-            "placement": null,
-            "hero": "",
+            "placement": 5,
+            "hero": "ミロクー",
             "comp": "",
             "lesser1": "",
             "lesser2": "",
@@ -589,8 +589,8 @@
           },
           {
             "name": "Reverent",
-            "placement": null,
-            "hero": "",
+            "placement": 4,
+            "hero": "ノズドルム",
             "comp": "",
             "lesser1": "",
             "lesser2": "",
@@ -608,8 +608,8 @@
         "rows": [
           {
             "name": "Alutemu",
-            "placement": null,
-            "hero": "",
+            "placement": 8,
+            "hero": "ヴァンダル/キュレーター",
             "comp": "",
             "lesser1": "",
             "lesser2": "",
@@ -619,8 +619,8 @@
           },
           {
             "name": "Barrette",
-            "placement": null,
-            "hero": "",
+            "placement": 1,
+            "hero": "ミロクー/クロミー",
             "comp": "",
             "lesser1": "",
             "lesser2": "",
@@ -630,8 +630,8 @@
           },
           {
             "name": "haguren",
-            "placement": null,
-            "hero": "",
+            "placement": 4,
+            "hero": "ンゾス/クッキー",
             "comp": "",
             "lesser1": "",
             "lesser2": "",
@@ -641,8 +641,8 @@
           },
           {
             "name": "MATSURI",
-            "placement": null,
-            "hero": "",
+            "placement": 7,
+            "hero": "セナリウス/ホガー",
             "comp": "",
             "lesser1": "",
             "lesser2": "",
@@ -652,8 +652,8 @@
           },
           {
             "name": "Thundurus",
-            "placement": null,
-            "hero": "",
+            "placement": 6,
+            "hero": "ピュートリ/エリーズ",
             "comp": "",
             "lesser1": "",
             "lesser2": "",
@@ -663,8 +663,8 @@
           },
           {
             "name": "ぎゃん",
-            "placement": null,
-            "hero": "",
+            "placement": 3,
+            "hero": "テロン/マスターウェン",
             "comp": "",
             "lesser1": "",
             "lesser2": "",
@@ -674,8 +674,8 @@
           },
           {
             "name": "masa007",
-            "placement": null,
-            "hero": "",
+            "placement": 5,
+            "hero": "獄吏王/テス",
             "comp": "",
             "lesser1": "",
             "lesser2": "",
@@ -685,8 +685,8 @@
           },
           {
             "name": "Reverent",
-            "placement": null,
-            "hero": "",
+            "placement": 2,
+            "hero": "ユードラ/ヴーン",
             "comp": "",
             "lesser1": "",
             "lesser2": "",
