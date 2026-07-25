@@ -130,7 +130,9 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
   --wipe-image-position: center 50%;
 }
 #past-tournaments .east-west-card h2{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-#past-tournaments .east-west-card .tournament-card-subtitle{margin-top:0}
+#past-tournaments .east-west-card .tournament-card-subtitle{display:inline-flex;width:max-content;margin-top:0;padding:5px 10px;color:#fff;background:rgba(5,28,51,.9);border:1px solid rgba(255,255,255,.72);border-radius:999px;box-shadow:0 5px 14px rgba(3,14,24,.38);text-shadow:0 1px 5px rgba(0,0,0,.72);backdrop-filter:blur(5px)}
+#past-tournaments .east-west-card .card-cta{color:#fff;background:rgba(128,24,40,.94);border:1px solid rgba(255,255,255,.76);box-shadow:0 6px 16px rgba(3,14,24,.42);text-shadow:0 1px 5px rgba(0,0,0,.7);backdrop-filter:blur(5px)}
+#past-tournaments .east-west-card:hover .card-cta{background:#a52b3c;box-shadow:0 9px 20px rgba(3,14,24,.48)}
 
 #past-tournaments .yoidore-card {
   --wipe-image: linear-gradient(90deg, rgba(40,18,8,.76) 0%, rgba(40,18,8,.46) 42%, rgba(40,18,8,.12) 72%, rgba(40,18,8,.04) 100%), url('/tournaments/yoidore/yoidore.webp?v=20260719');
