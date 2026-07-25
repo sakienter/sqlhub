@@ -1,5 +1,5 @@
 const API_URL = './results.json';
-const TRIBE_API_URL = './tribes.json?v=20260725-day4-game3';
+const TRIBE_API_URL = './tribes.json?v=20260725-day4-complete-v1';
 const S2_DATES = ['6/27', '7/4', '7/18', '7/25'];
 const S2_TRIBE_ICON_BASE = '../tribewebp';
 
