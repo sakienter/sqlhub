@@ -170,7 +170,7 @@ async function initSeasonTwo() {
       console.warn('Season 2 DAY3 results are not available.', error);
       return null;
     }),
-    fetchJson('./results-day4.json').catch(error => {
+    fetchJson('./results-day4.json?v=20260725-final').catch(error => {
       console.warn('Season 2 DAY4 results are not available.', error);
       return null;
     }),
