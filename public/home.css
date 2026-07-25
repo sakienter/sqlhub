@@ -126,26 +126,11 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 
 
 #past-tournaments .east-west-card {
-  --wipe-image: linear-gradient(90deg, #123a63 0%, #0f2440 45%, #5c1622 55%, #8a1f2d 100%);
+  --wipe-image: linear-gradient(90deg,rgba(3,14,24,.40),rgba(3,14,24,.08) 44%,rgba(3,14,24,.08) 56%,rgba(3,14,24,.34)),url('/tournaments/east-vs-west/bgewbana.webp?v=20260725');
+  --wipe-image-position: center 50%;
 }
-
-#past-tournaments .east-west-card::after {
-  content: "VS";
-  inset: auto 18px -30px auto;
-  width: auto;
-  height: auto;
-  color: rgba(255,255,255,.08);
-  background: none;
-  font-size: 132px;
-  font-weight: 950;
-  line-height: 1;
-  letter-spacing: -.08em;
-  opacity: 1;
-}
-
-#past-tournaments .east-west-card:hover::after {
-  opacity: 1;
-}
+#past-tournaments .east-west-card h2{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+#past-tournaments .east-west-card .tournament-card-subtitle{margin-top:0}
 
 #past-tournaments .yoidore-card {
   --wipe-image: linear-gradient(90deg, rgba(40,18,8,.76) 0%, rgba(40,18,8,.46) 42%, rgba(40,18,8,.12) 72%, rgba(40,18,8,.04) 100%), url('/tournaments/yoidore/yoidore.webp?v=20260719');
