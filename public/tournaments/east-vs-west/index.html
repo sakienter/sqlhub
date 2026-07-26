@@ -70,6 +70,29 @@
     .member-list{margin:0;padding:8px 16px 12px;list-style:none}
     .member-list li{display:block;padding:11px 2px;border-bottom:1px solid rgba(16,38,56,.1);color:#182128;font-size:16px;font-weight:950;line-height:1.45;overflow-wrap:anywhere}
     .member-list li:last-child{border-bottom:0}
+    .final-results{margin-top:24px;padding-top:22px;border-top:1px solid rgba(16,38,56,.14)}
+    .final-results-title{margin:0 0 14px;color:#102638;font-size:22px;font-weight:950}
+    .winner-callout{margin:0 0 18px;padding:18px 22px;color:#fff;background:linear-gradient(100deg,#681526,#a52b3c 68%,#c54835);border-radius:12px;box-shadow:0 12px 26px rgba(105,26,40,.24);font-size:clamp(24px,3.3vw,40px);font-weight:950;letter-spacing:.04em;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.25)}
+    .team-score-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:18px}
+    .team-score-card{overflow:hidden;border:1px solid rgba(16,38,56,.14);border-radius:11px;background:#fff;box-shadow:0 7px 18px rgba(3,14,24,.07)}
+    .team-score-card h4{display:flex;align-items:center;justify-content:space-between;margin:0;padding:12px 16px;color:#fff;font-size:18px;font-weight:950}
+    .team-score-card.east h4{background:linear-gradient(90deg,#123a63,#17659b)}
+    .team-score-card.west h4{background:linear-gradient(90deg,#691a28,#a52b3c)}
+    .team-score-total{font-size:24px}
+    .game-score-list{display:grid;grid-template-columns:repeat(3,1fr);margin:0;padding:12px 10px;list-style:none;text-align:center}
+    .game-score-list li{border-right:1px solid rgba(16,38,56,.1);color:#50606c;font-size:12px;font-weight:850}
+    .game-score-list li:last-child{border-right:0}
+    .game-score-list strong{display:block;margin-top:2px;color:#182128;font-size:20px;font-weight:950}
+    .result-table-wrap{overflow-x:auto;border:1px solid rgba(16,38,56,.13);border-radius:11px;background:#fff}
+    .result-table{width:100%;min-width:700px;border-collapse:collapse}
+    .result-table th,.result-table td{padding:12px 14px;border-bottom:1px solid rgba(16,38,56,.1);color:#182128;font-size:14px;text-align:center}
+    .result-table th{color:#fff;font-weight:950}
+    .result-table th:first-child,.result-table td:first-child{text-align:left}
+    .result-table .east-heading th{background:#17659b}
+    .result-table .west-heading th{background:#a52b3c}
+    .result-table tbody tr:last-child td{border-bottom:0}
+    .result-table .player-total{font-size:17px;font-weight:950}
+    .result-table .team-divider td{height:10px;padding:0;background:#eef1f2;border:0}
     .flyer-panel{display:flex;flex-direction:column;min-width:0}
     .flyer-panel h3{margin:0 0 10px;color:#102638;font-size:20px;font-weight:950}
     .flyer-frame{position:relative;width:min(100%,920px);min-height:280px;margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(18,58,99,.08),rgba(138,31,45,.08));border:1px dashed rgba(16,38,56,.24);border-radius:12px}
@@ -77,7 +100,7 @@
     .flyer-placeholder{display:none;margin:0;padding:28px;color:#71808a;font-size:14px;font-weight:850;line-height:1.7;text-align:center}
     .flyer-frame.is-empty .flyer-placeholder{display:block}
     .flyer-frame.is-empty .flyer-image{display:none}
-    @media(max-width:640px){.team-grid,.qualifier-links{grid-template-columns:1fr}}
+    @media(max-width:640px){.team-grid,.qualifier-links,.team-score-summary{grid-template-columns:1fr}.winner-callout{padding:15px 12px}}
     @media(max-width:900px){.hero.tournament-page-hero{min-height:280px;padding:1.55rem}.tournament-title-block{margin-top:2rem}}
     @media(max-width:640px){.hero.tournament-page-hero{min-height:300px;border-radius:14px}.tournament-page-hero h1{font-size:clamp(36px,12vw,52px)}}
   </style>
@@ -137,6 +160,51 @@
             </section>
           </div>
         </div>
+        <section class="final-results" aria-labelledby="final-results-title">
+          <h3 class="final-results-title" id="final-results-title">本戦結果</h3>
+          <p class="winner-callout">WINNER: WEST TEAM !!!</p>
+          <div class="team-score-summary" aria-label="チーム総合結果">
+            <section class="team-score-card east">
+              <h4><span>EAST TEAM</span><span class="team-score-total">39pt</span></h4>
+              <ul class="game-score-list">
+                <li>GAME 1<strong>16</strong></li>
+                <li>GAME 2<strong>6</strong></li>
+                <li>GAME 3<strong>17</strong></li>
+              </ul>
+            </section>
+            <section class="team-score-card west">
+              <h4><span>WEST TEAM</span><span class="team-score-total">48pt</span></h4>
+              <ul class="game-score-list">
+                <li>GAME 1<strong>13</strong></li>
+                <li>GAME 2<strong>23</strong></li>
+                <li>GAME 3<strong>12</strong></li>
+              </ul>
+            </section>
+          </div>
+          <div class="result-table-wrap">
+            <table class="result-table">
+              <thead class="east-heading">
+                <tr><th>EAST</th><th>チーム内順位</th><th>個人pt</th><th>GAME 1</th><th>GAME 2</th><th>GAME 3</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>MATSURI</td><td>1st</td><td class="player-total">16</td><td>8</td><td>0</td><td>8</td></tr>
+                <tr><td>ranpuz</td><td>3rd</td><td class="player-total">8</td><td>2</td><td>3</td><td>3</td></tr>
+                <tr><td>アバドン</td><td>4th</td><td class="player-total">3</td><td>1</td><td>1</td><td>1</td></tr>
+                <tr><td>Benief</td><td>2nd</td><td class="player-total">12</td><td>5</td><td>2</td><td>5</td></tr>
+                <tr class="team-divider"><td colspan="6"></td></tr>
+              </tbody>
+              <thead class="west-heading">
+                <tr><th>WEST</th><th>チーム内順位</th><th>個人pt</th><th>GAME 1</th><th>GAME 2</th><th>GAME 3</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Alutemu</td><td>1st</td><td class="player-total">20</td><td>6</td><td>8</td><td>6</td></tr>
+                <tr><td>皮肉なバイソン</td><td>2nd</td><td class="player-total">12</td><td>3</td><td>5</td><td>4</td></tr>
+                <tr><td>KAI</td><td>4th</td><td class="player-total">4</td><td>0</td><td>4</td><td>0</td></tr>
+                <tr><td>あまつか</td><td>2nd</td><td class="player-total">12</td><td>4</td><td>6</td><td>2</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
         <div class="official-links">
           <h3 class="official-links-title">予選エントリー</h3>
           <div class="qualifier-links">
