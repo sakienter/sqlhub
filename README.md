@@ -6,9 +6,9 @@ S級リーグの試合結果・ポイント状況、大会アーカイブ、コ�
 
 公開サイト: [https://stuntdrakesavenge.pages.dev/](https://stuntdrakesavenge.pages.dev/)
 
-最終更新: 2026年7月27日
+最終更新: 2026年7月28日
 
-## 2026年7月27日の整理
+## 2026年7月28日の整理
 
 - Season 2の構成画像を `public/season2/compositions/day1/` 〜 `day4/` に集約
 - 構成画像名を8選手共通のスラッグへ統一
@@ -18,6 +18,10 @@ S級リーグの試合結果・ポイント状況、大会アーカイブ、コ�
 - Season 1の構成画像も `compositions/day1` 〜 `day4` へ統一
 - トップ、リーグ、スクリム、大会の主要画像を用途名へ統一
 - 大会ページ内の埋め込みCSSを大会別の `style.css` へ分離
+- トップ、スクリム、Season 2関連ページに残っていた埋め込みCSSもページ別CSSへ分離
+- CN対抗戦・過去大会の画像名を `banner`、`header`、`flyer` など用途が分かる名称へ統一
+- 旧画像URLは `public/_redirects` に残し、既存リンクとの互換性を維持
+- 静的CSS・JavaScript・画像のキャッシュ識別子を `20260728` に統一
 
 ## 公開URL
 
@@ -77,6 +81,7 @@ sqlhub/
     ├── _redirects
     ├── common.css
     ├── home.css
+    ├── home-overrides.css
     ├── composition-gallery.css
     ├── composition-gallery.js
     ├── tournament-share.js
@@ -256,7 +261,14 @@ thundurus.webp
 
 ## トップページ
 
-トップページは `public/index.html`、専用スタイルは `public/home.css` です。
+トップページは `public/index.html`、専用スタイルは `public/home.css` と `public/home-overrides.css` です。
+
+## ファイル命名とキャッシュ
+
+- 画像名は英小文字の kebab-case とし、役割が分かる `banner.webp`、`header.webp`、`card-banner.webp`、`flyer-1.webp` のような名前を使用します。
+- 複数フライヤーは同じ大会ディレクトリに `flyer-1.webp`、`flyer-2.webp` のように連番で配置します。
+- 静的ファイルを更新した場合は、参照URLの `?v=YYYYMMDD` を更新します。
+- 公開済みのパスを変更した場合は、必ず `public/_redirects` に旧パスからの301転送を追加します。
 
 主な管理対象:
 

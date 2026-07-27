@@ -1,0 +1,4 @@
+#blog .section-body{padding:22px 24px;text-align:center}
+    #blog .blog-text-link{display:inline-flex;align-items:center;gap:.4em;color:#0d7f99;font-size:clamp(18px,2vw,24px);font-weight:900;line-height:1.4;text-decoration:none;border-bottom:2px solid rgba(13,127,153,.34);transition:color .18s ease,border-color .18s ease,transform .18s ease}
+    #blog .blog-text-link:hover{color:#075d70;border-color:#075d70;transform:translateX(3px)}
+    #blog .blog-text-link:focus-visible{outline:3px solid rgba(25,182,217,.34);outline-offset:5px;border-radius:2px}

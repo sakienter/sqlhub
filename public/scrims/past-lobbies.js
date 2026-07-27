@@ -90,13 +90,13 @@ function loadRegistrationApp() {
   if (!document.querySelector('link[href*="registration-app.css"]')) {
     const style = document.createElement('link');
     style.rel = 'stylesheet';
-    style.href = '/scrims/registration-app.css?v=20260615-dynamic-events';
+    style.href = '/scrims/registration-app.css?v=20260728';
     document.head.appendChild(style);
   }
 
   if (!document.querySelector('script[src*="registration-app.js"]')) {
     const script = document.createElement('script');
-    script.src = '/scrims/registration-app.js?v=20260615-dynamic-events';
+    script.src = '/scrims/registration-app.js?v=20260728';
     script.defer = true;
     document.body.appendChild(script);
   }
@@ -122,7 +122,7 @@ function loadScrimShareControls() {
   document.head.appendChild(style);
 
   const script = document.createElement('script');
-  script.src = '/tournament-share.js?v=20260614-scrim';
+  script.src = '/tournament-share.js?v=20260728';
   script.defer = true;
   document.body.appendChild(script);
 }
@@ -201,7 +201,7 @@ async function fetchLobbyData() {
   } catch (apiError) {
     console.warn('Past Lobby APIを利用できないため、静的データを読み込みます。', apiError);
 
-    const fallbackResponse = await fetch(`${PAST_LOBBIES_FALLBACK_URL}?v=20260613`, {
+    const fallbackResponse = await fetch(`${PAST_LOBBIES_FALLBACK_URL}?v=20260728`, {
       cache: 'no-store'
     });
     if (!fallbackResponse.ok) throw new Error(`Fallback HTTP ${fallbackResponse.status}`);

@@ -18,17 +18,17 @@ body:has(a[href*="2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy"]) .score-card:has(> 
 
 body:has(a[href="https://tonamel.com/competition/cC1Zi"]) .score-card:has(> .section-title.green) > .section-body::before {
   background-image:
-    url('/tournaments/twdm/twdmf/twdmf1.webp'),
-    url('/tournaments/twdm/twdmf/twdmf2.webp'),
-    url('/tournaments/twdm/twdmf/twdmf3.webp'),
-    url('/tournaments/twdm/twdmf/twdmf4.webp');
+    url('/tournaments/twdm/flyer-1.webp'),
+    url('/tournaments/twdm/flyer-2.webp'),
+    url('/tournaments/twdm/flyer-3.webp'),
+    url('/tournaments/twdm/flyer-4.webp');
 }
 
 body:has(a[href*="2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy"]) .score-card:has(> .section-title.green) > .section-body::before {
   background-image:
-    url('/tournaments/uratop/uratopf/uratopf1.webp'),
-    url('/tournaments/uratop/uratopf/uratopf2.webp'),
-    url('/tournaments/uratop/uratopf/uratopf3.webp');
+    url('/tournaments/uratop/flyer-1.webp'),
+    url('/tournaments/uratop/flyer-2.webp'),
+    url('/tournaments/uratop/flyer-3.webp');
 }
 
 @media (max-width: 720px) {

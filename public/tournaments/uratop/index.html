@@ -7,8 +7,8 @@
   <meta name="description" content="バトグラ【裏】頂上戦の大会情報ページです。" />
   <link rel="stylesheet" href="../../common.css" />
   
-  <link rel="stylesheet" href="./style.css?v=20260727" />
-<link rel="stylesheet" href="/footer-updated.css?v=20260614" />
+  <link rel="stylesheet" href="./style.css?v=20260728" />
+<link rel="stylesheet" href="/footer-updated.css?v=20260728" />
 <link rel="icon" href="/sutantic.png" type="image/png" />
 </head>
 <body>
@@ -21,7 +21,7 @@
 
     <section class="score-card day-card"><div class="section-title orange">DAY別結果</div><div class="day-tabs" id="day-tabs" aria-label="DAY切り替え"></div><div id="day-detail-root"></div></section>
 
-    <section class="score-card"><div class="section-title">Archive</div><div class="section-body archive-content"><section class="flyer-block" aria-labelledby="official-flyers-title"><h2 class="flyer-heading" id="official-flyers-title">公式フライヤー</h2><div class="flyer-grid"><a class="flyer-link" href="uratopf/uratopf1.webp" target="_blank" rel="noopener"><img class="flyer-image" src="uratopf/uratopf1.webp" alt="バトグラ【裏】頂上戦 公式フライヤー 1" loading="lazy"></a><a class="flyer-link" href="uratopf/uratopf2.webp" target="_blank" rel="noopener"><img class="flyer-image" src="uratopf/uratopf2.webp" alt="バトグラ【裏】頂上戦 公式フライヤー 2" loading="lazy"></a><a class="flyer-link" href="uratopf/uratopf3.webp" target="_blank" rel="noopener"><img class="flyer-image" src="uratopf/uratopf3.webp" alt="バトグラ【裏】頂上戦 公式フライヤー 3" loading="lazy"></a></div></section><div class="spreadsheet-link-panel archive-spreadsheet"><p class="spreadsheet-link-text">大会スプレッドシートはこちらから確認できます。</p><a class="spreadsheet-link-button" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml" target="_blank" rel="noopener">スプレッドシートを開く ↗</a></div></div></section>
+    <section class="score-card"><div class="section-title">Archive</div><div class="section-body archive-content"><section class="flyer-block" aria-labelledby="official-flyers-title"><h2 class="flyer-heading" id="official-flyers-title">公式フライヤー</h2><div class="flyer-grid"><a class="flyer-link" href="flyer-1.webp" target="_blank" rel="noopener"><img class="flyer-image" src="flyer-1.webp" alt="バトグラ【裏】頂上戦 公式フライヤー 1" loading="lazy"></a><a class="flyer-link" href="flyer-2.webp" target="_blank" rel="noopener"><img class="flyer-image" src="flyer-2.webp" alt="バトグラ【裏】頂上戦 公式フライヤー 2" loading="lazy"></a><a class="flyer-link" href="flyer-3.webp" target="_blank" rel="noopener"><img class="flyer-image" src="flyer-3.webp" alt="バトグラ【裏】頂上戦 公式フライヤー 3" loading="lazy"></a></div></section><div class="spreadsheet-link-panel archive-spreadsheet"><p class="spreadsheet-link-text">大会スプレッドシートはこちらから確認できます。</p><a class="spreadsheet-link-button" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQaazuDWzeaqukUZLdh5o-bB-k52toXUy_P6KDx7XxNPl_RX4o0xUSeZdhiyOObu_z1ij9cjvpdumBf/pubhtml" target="_blank" rel="noopener">スプレッドシートを開く ↗</a></div></div></section>
 
     <footer class="footer-note" data-page-updated="2026-07-27">
       <p>Stuntdrake's Avenge! / Tournament info by Stuntdrake</p>
@@ -47,6 +47,6 @@ function renderDay(k){const d=DATA[k],root=document.getElementById('day-detail-r
 function init(){document.getElementById('players-body').innerHTML=PLAYERS.map(p=>`<tr><td class="name-cell">${p[0]}</td><td class="info-cell">${p[1]}</td><td><a class="player-link" href="${p[2]}" target="_blank" rel="noopener">Xを見る ↗</a></td></tr>`).join('');document.getElementById('final-body').innerHTML=FINAL.map(r=>`<tr${r[2]==='1st'?' class="winner-row"':''}><td class="name-cell">${r[0]}</td><td class="total-cell">${r[1]}</td><td class="${r[2]==='1st'?'rank-gold':r[2]==='2nd'?'rank-silver':r[2]==='3rd'?'rank-bronze':''}">${r[2]}</td><td class="day-score">${r[3]}</td><td class="day-score">${r[4]}</td><td class="day-score">${r[5]}</td></tr>`).join('');const tabs=document.getElementById('day-tabs');Object.entries(DATA).forEach(([k,d],i)=>{const b=document.createElement('button');b.className=`day-tab${i===0?' active':''}`;b.type='button';b.dataset.dayTab=k;b.setAttribute('aria-pressed',String(i===0));b.innerHTML=`<span class="tab-main">${d.tab}</span><span class="tab-sub">${d.sub}</span>`;b.onclick=()=>{document.querySelectorAll('[data-day-tab]').forEach(t=>{const a=t.dataset.dayTab===k;t.classList.toggle('active',a);t.setAttribute('aria-pressed',String(a))});renderDay(k)};tabs.appendChild(b)});renderDay('day1')}init();
 </script>
 
-  <script src="/tournament-share.js?v=20260614-header-v2" defer></script>
-  <script src="./ura-secret.js?v=20260616"></script></body>
+  <script src="/tournament-share.js?v=20260728" defer></script>
+  <script src="./ura-secret.js?v=20260728"></script></body>
 </html>

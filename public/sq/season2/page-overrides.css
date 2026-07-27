@@ -1,0 +1,18 @@
+.season2-gold-button{
+      color:#5a4520!important;
+      border:1px solid #bba36d!important;
+      background:linear-gradient(135deg,#eee5ce 0%,#d8c69e 48%,#eadfc5 100%)!important;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.58),0 5px 13px rgba(77,59,25,.13)!important;
+      text-shadow:none;
+    }
+    .season2-gold-button::after{content:none}
+    .season2-gold-button:hover{color:#443217!important;border-color:#9e834d!important;background:linear-gradient(135deg,#f2ead7 0%,#dcca9f 48%,#eee4cc 100%)!important;filter:none;transform:translateY(-1px)}
+    .season2-grid-button{
+      color:#153b54!important;
+      border:1px solid #6b9db5!important;
+      background-color:#eef8fa!important;
+      background-image:linear-gradient(rgba(60,132,164,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(60,132,164,.18) 1px,transparent 1px),linear-gradient(rgba(60,132,164,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(60,132,164,.08) 1px,transparent 1px)!important;
+      background-size:20px 20px,20px 20px,5px 5px,5px 5px!important;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 8px 18px rgba(21,59,84,.15)!important;
+    }
+    .season2-grid-button:hover{color:#09283c!important;border-color:#347c9d!important;filter:brightness(1.02);transform:translateY(-1px)}

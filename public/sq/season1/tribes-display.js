@@ -1,4 +1,4 @@
-const S1_TRIBE_API_URL = './tribes.json?v=s1-static-20260613';
+const S1_TRIBE_API_URL = './tribes.json?v=20260728';
 const S1_TRIBE_ICON_BASE = '../tribewebp';
 const S1_TRIBE_ICON_VERSION = '20260613-200154';
 const S1_TRIBES = [

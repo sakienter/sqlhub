@@ -6,56 +6,7 @@
   <meta name="robots" content="noindex,nofollow" />
   <title>スクリム管理 | Stuntdrake's Avenge!</title>
   <link rel="stylesheet" href="../../common.css" />
-  <style>
-    .admin-shell{width:min(1100px,calc(100% - 32px));margin:0 auto;padding:28px 0 56px}
-    .admin-nav{margin-bottom:18px}
-    .admin-panel{overflow:hidden;background:#fff;border:1px solid rgba(24,33,40,.12);border-radius:18px;box-shadow:0 14px 34px rgba(3,14,24,.10)}
-    .admin-heading{padding:26px 28px;color:#fff;background:#102638}
-    .admin-heading h1{margin:0;font-size:clamp(28px,5vw,42px);font-weight:950;letter-spacing:-.03em}
-    .admin-heading p{margin:10px 0 0;color:rgba(255,255,255,.82);font-size:14px;font-weight:650;line-height:1.7}
-    .admin-body{padding:28px}
-    .admin-section + .admin-section{margin-top:34px;padding-top:30px;border-top:1px solid rgba(24,33,40,.12)}
-    .section-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px}
-    .section-heading h2{margin:0;color:#171b1f;font-size:24px;font-weight:950}
-    .section-heading p{margin:6px 0 0;color:#66727c;font-size:13px;font-weight:650;line-height:1.6}
-    .auth-box{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:12px;padding:18px;margin-bottom:30px;background:#f5f7f8;border:1px solid rgba(24,33,40,.10);border-radius:12px}
-    .form-field{display:flex;flex-direction:column;gap:8px}
-    .form-field.full{grid-column:1/-1}
-    .form-field label,.inline-label{color:#171b1f;font-size:13px;font-weight:900}
-    .form-field input,.form-field select,.event-controls input,.event-controls select,.registration-controls input,.registration-controls select{width:100%;min-height:42px;padding:0 12px;color:#171b1f;background:#fffaf2;border:1px solid rgba(24,33,40,.18);border-radius:9px;font:inherit;outline:none;transition:border-color .18s ease,box-shadow .18s ease}
-    .form-field input:focus,.form-field select:focus,.event-controls input:focus,.event-controls select:focus,.registration-controls input:focus,.registration-controls select:focus{border-color:#0d7f99;box-shadow:0 0 0 3px rgba(13,127,153,.12)}
-    .form-help{margin:0;color:#66727c;font-size:12px;font-weight:650;line-height:1.6}
-    .admin-form{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .event-create-form{display:grid;grid-template-columns:1fr 160px 160px auto;gap:12px;align-items:end;margin-bottom:18px}
-    .admin-actions{grid-column:1/-1;display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:2px}
-    .admin-submit,.auth-button,.save-button{min-height:42px;padding:0 18px;color:#fff;background:#7f2634;border:0;border-radius:9px;font:inherit;font-size:13px;font-weight:900;cursor:pointer;transition:transform .18s ease,opacity .18s ease}
-    .auth-button,.save-button{background:#0d667a}
-    .admin-submit:hover,.auth-button:hover,.save-button:hover{transform:translateY(-1px)}
-    .admin-submit:disabled,.auth-button:disabled,.save-button:disabled{cursor:wait;opacity:.58;transform:none}
-    .admin-status{min-height:22px;margin:0;color:#53616d;font-size:13px;font-weight:750;line-height:1.6}
-    .admin-status.is-success{color:#18633b}.admin-status.is-error{color:#a12638}
-    .filters{display:grid;grid-template-columns:minmax(180px,.7fr) minmax(180px,.7fr) auto;gap:12px;align-items:end;margin-bottom:14px}
-    .refresh-button{padding:0;color:#0d667a;background:none;border:0;border-bottom:1px solid rgba(13,102,122,.35);font:inherit;font-size:12px;font-weight:850;cursor:pointer}
-    .count-list{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
-    .count-chip{padding:5px 9px;color:#53616d;background:#f5f7f8;border:1px solid rgba(24,33,40,.09);border-radius:999px;font-size:11px;font-weight:850}
-    .count-pending{color:#8a6200;background:#fff8df}.count-accepted{color:#18633b;background:#eaf8ef}.count-waitlisted{color:#0d667a;background:#eaf6fa}.count-cancelled,.count-rejected{color:#8b4a55;background:#faeef0}
-    .admin-list{display:grid;gap:10px}
-    .admin-list-empty{margin:0;padding:18px;color:#53616d;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-radius:10px;font-size:13px;font-weight:700}
-    .event-row{display:grid;grid-template-columns:minmax(220px,1fr) minmax(360px,1.2fr);gap:18px;padding:16px 18px;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-left:5px solid #31925c;border-radius:10px}
-    .event-row.is-closed{border-left-color:#9b5360;opacity:.82}
-    .event-title{margin:0;color:#171b1f;font-size:18px;font-weight:950}.event-meta{margin:7px 0 0;color:#66727c;font-size:12px;font-weight:700}
-    .event-controls{display:grid;grid-template-columns:70px 1fr 70px 1fr 70px 1fr;gap:8px;align-items:center}
-    .event-actions{grid-column:1/-1;display:flex;justify-content:flex-end;gap:8px;margin-top:2px}
-    .registration-row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:18px;padding:17px 18px;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-left:5px solid #d4b052;border-radius:10px}
-    .registration-row.status-accepted{border-left-color:#31925c}.registration-row.status-waitlisted{border-left-color:#2584a0}.registration-row.status-cancelled,.registration-row.status-rejected{border-left-color:#9b5360}
-    .registration-event{margin:0 0 8px;color:#7f2634;font-size:13px;font-weight:900}.registration-identity{display:flex;align-items:center;flex-wrap:wrap;gap:10px}.registration-identity strong{color:#171b1f;font-size:18px;font-weight:950}.registration-identity a{color:#0d667a;font-size:13px;font-weight:800;text-decoration:none;border-bottom:1px solid rgba(13,102,122,.28)}
-    .registration-meta{margin:9px 0 0;color:#66727c;font-size:11px;font-weight:700;line-height:1.6}
-    .registration-controls{display:grid;grid-template-columns:70px minmax(120px,.7fr);gap:8px 10px;align-items:center}.registration-controls label{color:#53616d;font-size:12px;font-weight:850}.registration-actions{grid-column:1/-1;display:flex;justify-content:flex-end;gap:8px;margin-top:2px}
-    .delete-button{min-height:34px;padding:0 12px;color:#a12638;background:#fff;border:1px solid rgba(161,38,56,.25);border-radius:8px;font:inherit;font-size:12px;font-weight:900;cursor:pointer}.delete-button:disabled{cursor:wait;opacity:.55}
-    .admin-lobby-row{display:grid;grid-template-columns:minmax(120px,.35fr) minmax(0,1fr) auto;align-items:center;gap:14px;padding:15px 16px;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-radius:10px}.admin-lobby-date{color:#171b1f;font-size:15px;font-weight:950}.admin-lobby-link{overflow:hidden;color:#0d667a;font-size:12px;font-weight:750;text-overflow:ellipsis;white-space:nowrap}
-    @media (max-width:900px){.event-create-form{grid-template-columns:1fr 1fr}.event-create-form .admin-submit{grid-column:1/-1}.event-row,.registration-row{grid-template-columns:1fr}.filters{grid-template-columns:1fr 1fr}.filters .refresh-button{grid-column:1/-1;justify-self:start}}
-    @media (max-width:680px){.admin-shell{width:min(100% - 20px,1100px);padding-top:16px}.admin-heading,.admin-body{padding:22px 18px}.auth-box,.admin-form,.event-create-form,.filters{grid-template-columns:1fr}.form-field.full,.admin-actions,.event-create-form .admin-submit{grid-column:auto}.section-heading{align-items:flex-start;flex-direction:column}.event-controls,.registration-controls{grid-template-columns:1fr}.event-controls label,.registration-controls label,.event-actions,.registration-actions{grid-column:1}.event-actions,.registration-actions{justify-content:flex-start}.admin-lobby-row{grid-template-columns:1fr}.admin-lobby-link{white-space:normal;overflow-wrap:anywhere}.delete-button{justify-self:start}}
-  </style>
+  <link rel="stylesheet" href="./page-style.css?v=20260728" />
 <link rel="icon" href="/sutantic.png" type="image/png" />
 </head>
 <body>
@@ -104,6 +55,6 @@
       </div>
     </section>
   </main>
-  <script src="./admin-v2.js?v=20260615-dynamic-events" defer></script>
+  <script src="./admin-v2.js?v=20260728" defer></script>
 </body>
 </html>

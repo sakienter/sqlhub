@@ -5,7 +5,7 @@
 body #past-tournaments .cn-jp-card.gradient-banner-card::before {
   background-image:
     linear-gradient(90deg, rgba(7,14,28,.68), rgba(7,14,28,.34) 52%, rgba(7,14,28,.10)),
-    url('/tournaments/cn-vs-jp/blab13.webp?v=20260613-cnvsjp-blab13') !important;
+    url('/tournaments/cn-vs-jp/card-banner.webp?v=20260728') !important;
   background-size: cover, cover !important;
   background-position: center, center center !important;
   background-repeat: no-repeat !important;
@@ -18,7 +18,7 @@ body:has(a[href="https://www.iyingdi.com/tz/post/5609636"]) .tournament-hero {
 
 body:has(a[href="https://www.iyingdi.com/tz/post/5609636"]) .tournament-hero-image {
   display: block !important;
-  content: url('/tournaments/cn-vs-jp/blab14.webp?v=20260613-cnvsjp-blab14-direct') !important;
+  content: url('/tournaments/cn-vs-jp/header-wide.webp?v=20260728') !important;
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
