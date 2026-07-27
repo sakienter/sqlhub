@@ -81,7 +81,8 @@
 # Renamed image assets retained for old external links and cached cards.
 /white.webp /site-hero.webp 301
 /lab.webp /bg-lab.webp 301
-/st-og.jpg /social-card.jpg 301
+/st-og.jpg /og-image.jpg 301
+/social-card.jpg /og-image.jpg 301
 /columns/PINZORO.webp /columns/pinzoro.webp 301
 /scrims/b2b02.webp /scrims/banner.webp 301
 /scrims/sukurimu.webp /scrims/social-card.webp 301

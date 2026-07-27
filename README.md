@@ -363,7 +363,7 @@ thundurus.webp
 
 | ページ | 画像 |
 |---|---|
-| トップページ | `public/social-card.jpg` |
+| トップページ | `public/og-image.jpg` |
 | スクリム | `public/scrims/social-card.webp` |
 | EAST vs WEST | `public/tournaments/east-vs-west/banner.webp` |
 | 王者Alutemuへの挑戦状 | `public/tournaments/alutemu-challenge/social-card.jpg` |
