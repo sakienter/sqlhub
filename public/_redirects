@@ -62,21 +62,12 @@
 /sq/season1/s1day4/* /season1/s1day4/:splat 200
 /sq/season1/compositions/* /season1/compositions/:splat 200
 
-# Season 2 composition images remain in the legacy storage folder.
-/sq/season2/compositions/day1/alutemu.jpg /season2/sqls2day1comps/sqls2day1alu.webp 200
-/sq/season2/compositions/day1/barrette.jpg /season2/sqls2day1comps/sqls2day1bar.webp 200
-/sq/season2/compositions/day1/gyan.jpg /season2/sqls2day1comps/sqls2day1gyan.webp 200
-/sq/season2/compositions/day1/haguren.jpg /season2/sqls2day1comps/sqls2day1hagu.webp 200
-/sq/season2/compositions/day1/masa007.jpg /season2/sqls2day1comps/sqls2day1masa.webp 200
-/sq/season2/compositions/day1/matsuri.jpg /season2/sqls2day1comps/sqls2day1mat.webp 200
-/sq/season2/compositions/day1/reverent.jpg /season2/sqls2day1comps/sqls2day1reve.webp 200
-/sq/season2/compositions/day1/thundurus.jpg /season2/sqls2day1comps/sqls2day1thun.webp 200
-/sq/season2/compositions/day2/alutemu.jpg /season2/sqls2day2comps/sqls2day2alu.webp 200
-/sq/season2/compositions/day2/barrette.jpg /season2/sqls2day2comps/sqls2day2bar.webp 200
-/sq/season2/compositions/day2/gyan.jpg /season2/sqls2day2comps/sqls2day2gyan.webp 200
-/sq/season2/compositions/day2/haguren.jpg /season2/sqls2day2comps/sqls2day2hagu.webp 200
-/sq/season2/compositions/day2/masa007.jpg /season2/sqls2day2comps/sqls2day2masa.webp 200
-/sq/season2/compositions/day2/matsuri.jpg /season2/sqls2day2comps/sqls2day2mat.webp 200
-/sq/season2/compositions/day2/reverent.jpg /season2/sqls2day2comps/sqls2day2reve.webp 200
-/sq/season2/compositions/day2/thundurus.jpg /season2/sqls2day2comps/sqls2day2thun.webp 200
+# Season 2 composition images use one canonical folder and player-name slugs.
+/sq/season2/compositions/day1/*.jpg /season2/compositions/day1/:splat.webp 200
+/sq/season2/compositions/day2/*.jpg /season2/compositions/day2/:splat.webp 200
 /sq/season2/compositions/* /season2/compositions/:splat 200
+
+# Renamed Season 2 statistics assets.
+/season2/data/Hero.webp /season2/data/hero-stats.webp 301
+/season2/data/Lesser2.webp /season2/data/lesser-trinket-stats.webp 301
+/season2/data/Greater.webp /season2/data/greater-trinket-stats.webp 301

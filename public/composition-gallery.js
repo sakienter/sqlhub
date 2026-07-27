@@ -25,17 +25,6 @@
     jp: 'jp'
   };
 
-  const seasonTwoDayFourSlugs = {
-    Alutemu: 'alutemu',
-    Barrette: 'barrette',
-    haguren: 'haguren',
-    MATSURI: 'matsuri',
-    Thundurus: 'thundurus',
-    'ぎゃん': 'gyan',
-    masa007: 'masa',
-    Reverent: 'reve'
-  };
-
   const imageCache = new Map();
   let selectedPlayer = '';
   let displayedDayNumber = 0;
@@ -155,12 +144,7 @@
     const day = getSelectedDayNumber();
     const slug = fileBaseName(name);
     if (isSeasonOne) return `./s1day${day}/${slug}.webp`;
-    if (day === 4) {
-      const dayFourSlug = seasonTwoDayFourSlugs[name] || slug;
-      return `/season2/sqls2day4comps/${dayFourSlug}.webp?v=20260725-day4-comps-v1`;
-    }
-    if (day === 3) return `/season2/sqls2day3comps/${slug}.webp?v=20260719-day3-comps-v3`;
-    return `${basePath}/day${day}/${slug}.jpg`;
+    return `/season2/compositions/day${day}/${slug}.webp?v=20260727-season2-comps-v1`;
   }
 
   function setPlaceholder(message) {

@@ -6,17 +6,15 @@ S級リーグの試合結果・ポイント状況、大会アーカイブ、コ�
 
 公開サイト: [https://stuntdrakesavenge.pages.dev/](https://stuntdrakesavenge.pages.dev/)
 
-最終更新: 2026年7月26日
+最終更新: 2026年7月27日
 
-## 2026年7月25日〜26日の主な更新
+## 2026年7月27日の整理
 
-- S級リーグ Season 2 DAY4 の全5試合を公開し、最終順位を確定
-- DAY4の結果、ヒーロー、構成、装飾品、異常、BAN、試合時間、補足情報を反映
-- DAY4の選手別構成画像をギャラリーへ追加
-- EAST vs WEST の参加メンバー、公式フライヤー、ルール、スクリム結果、各種リンクを整備
-- トップページ、EAST vs WEST、スクリムページにX向けリンクカード（OGP / Twitter Card）を設定
-- トップページのリンクカード画像を `public/st.webp`、スクリムを `public/scrims/sukurimu.webp` に更新
-- 役目を終えた一回限りのGitHub Actionsと、差し替え済みの旧OG画像を削除
+- Season 2の構成画像を `public/season2/compositions/day1/` 〜 `day4/` に集約
+- 構成画像名を8選手共通のスラッグへ統一
+- リーグ集計画像を用途が分かる英小文字ファイル名へ変更
+- 差し替え済みの旧集計画像、破損した旧DAY3画像、未使用プレビュー、未参照画像を削除
+- 画像参照、互換リダイレクト、READMEを現在の構成に合わせて更新
 
 ## 公開URL
 
@@ -91,10 +89,12 @@ sqlhub/
     │   ├── archive/
     │   └── s1day1/ ... s1day4/
     ├── season2/
-    │   ├── sqls2day1comps/
-    │   ├── sqls2day2comps/
-    │   ├── sqls2day3comps/
-    │   └── compositions/
+    │   ├── compositions/
+    │   │   ├── day1/
+    │   │   ├── day2/
+    │   │   ├── day3/
+    │   │   └── day4/
+    │   └── data/
     ├── tournaments/
     ├── scrims/
     │   └── admin/
@@ -140,12 +140,37 @@ Season 2 はリポジトリ内の静的JSONとJavaScriptで管理します。
 
 | DAY | 保存先 |
 |---|---|
-| DAY1 | `public/season2/sqls2day1comps/` |
-| DAY2 | `public/season2/sqls2day2comps/` |
-| DAY3 | `public/season2/sqls2day3comps/` |
-| DAY4 | `public/season2/sqls2day4comps/` |
+| DAY1 | `public/season2/compositions/day1/` |
+| DAY2 | `public/season2/compositions/day2/` |
+| DAY3 | `public/season2/compositions/day3/` |
+| DAY4 | `public/season2/compositions/day4/` |
 
-DAY1・DAY2の旧 `.jpg` パスは `public/_redirects` でWebP画像へ内部転送します。DAY3・DAY4は選手名に対応するWebPファイルを直接参照します。
+すべてWebP形式で、各DAYに次の8ファイルを置きます。
+
+```text
+alutemu.webp
+barrette.webp
+gyan.webp
+haguren.webp
+masa007.webp
+matsuri.webp
+reverent.webp
+thundurus.webp
+```
+
+共有ギャラリーはこの命名規則から画像URLを生成します。DAY1・DAY2の旧 `.jpg` パスは `public/_redirects` で現行WebPへ内部転送します。
+
+### リーグ集計画像
+
+`public/season2/data/` に次の3ファイルを置きます。
+
+| ファイル | 内容 |
+|---|---|
+| `hero-stats.webp` | ヒーロー集計 |
+| `lesser-trinket-stats.webp` | 下級装飾品集計 |
+| `greater-trinket-stats.webp` | 上級装飾品集計 |
+
+表示ページは `public/sq/season2/league-stats/index.html` です。旧ファイル名への外部アクセスは `public/_redirects` で現行ファイルへ転送します。
 
 ### 結果データの基本構造
 
@@ -311,9 +336,10 @@ DAY1・DAY2の旧 `.jpg` パスは `public/_redirects` でWebP画像へ内部転
 
 | ページ | 画像 |
 |---|---|
-| トップページ | `public/st.webp` |
+| トップページ | `public/st-og.jpg` |
 | スクリム | `public/scrims/sukurimu.webp` |
 | EAST vs WEST | `public/tournaments/east-vs-west/bgewbana.webp` |
+| 王者Alutemuへの挑戦状 | `public/tournaments/alutemu-challenge/alutemu-og.jpg` |
 
 リンクカードを変更する場合は、各HTMLの `og:image`、`og:image:secure_url`、`twitter:image`、画像サイズ、キャッシュ識別子を同時に更新してください。
 
