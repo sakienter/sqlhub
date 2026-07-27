@@ -9,54 +9,8 @@
   <meta property="og:description" content="ねるばとるの大会概要、ルール、開催リンク">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="../../common.css">
-  <style>
-    .hero.tournament-page-hero{position:relative;isolation:isolate;overflow:hidden;margin:0 auto 28px;min-height:260px;padding:2.1rem 2rem 2.35rem;display:flex;flex-direction:column;justify-content:space-between;text-align:center;background:radial-gradient(circle at 50% 112%,rgba(0,150,255,.13),transparent 42%),#020406;border:1px solid rgba(0,150,255,.38);border-radius:18px;box-shadow:0 24px 48px rgba(2,10,18,.46)}
-    .hero.tournament-page-hero::before{content:"";position:absolute;z-index:-1;inset:0;background-image:radial-gradient(circle,rgba(0,150,255,.62) 0 3px,transparent 3.6px);background-size:24px 24px;background-position:0 0;opacity:.82;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,#000 0%,#000 18%,rgba(0,0,0,.72) 29%,transparent 42%,transparent 58%,rgba(0,0,0,.72) 71%,#000 82%,#000 100%);mask-image:linear-gradient(90deg,#000 0%,#000 18%,rgba(0,0,0,.72) 29%,transparent 42%,transparent 58%,rgba(0,0,0,.72) 71%,#000 82%,#000 100%)}
-    .hero.tournament-page-hero::after{content:none}
-    .tournament-page-hero .back-link{position:relative;z-index:2;align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 17px;color:#fff;background:rgba(2,4,6,.72);border:1px solid rgba(255,255,255,.28);border-radius:999px;box-shadow:0 10px 24px rgba(0,0,0,.28);font-size:13px;font-weight:900;text-decoration:none;backdrop-filter:blur(8px);transition:border-color .18s ease,background .18s ease,transform .18s ease}
-    .tournament-page-hero .back-link:hover{background:rgba(0,150,255,.12);border-color:rgba(0,150,255,.72);transform:translateY(-1px)}
-    .tournament-title-block{position:absolute;z-index:2;top:50%;left:50%;width:min(78%,760px);margin:0;text-align:center;transform:translate(-50%,-48%)}
-    .tournament-page-hero h1{position:relative;display:inline-block;margin:0;padding:0 22px 18px;color:#fff;font-size:clamp(58px,8vw,100px);font-weight:950;letter-spacing:-.075em;line-height:.96;text-align:center;text-shadow:0 12px 30px rgba(0,0,0,.82),0 0 20px rgba(0,150,255,.14)}
-    .tournament-page-hero h1::after{content:"";position:absolute;right:0;bottom:0;left:0;height:6px;background:#0096ff;box-shadow:0 0 18px rgba(0,150,255,.5)}
-    .event-date{position:absolute;z-index:3;left:2rem;bottom:1.7rem;display:inline-block;margin:0;padding:0 3px 8px;color:#fff;background:transparent;border:0;border-bottom:4px solid #0096ff;border-radius:0;box-shadow:0 8px 0 -6px rgba(0,150,255,.34);font-size:clamp(17px,1.7vw,22px);font-weight:950;letter-spacing:.12em;text-shadow:0 6px 18px rgba(0,0,0,.9)}
-    .neru-energy-lines{position:absolute;z-index:0;inset:0;overflow:hidden;pointer-events:none}
-    .neru-dot-mask{position:absolute;z-index:2;width:18px;height:18px;border-radius:50%;background:#020406;box-shadow:0 0 7px 4px #020406;opacity:0;transform:translate(-50%,-50%)}
-    .neru-streak{position:absolute;opacity:0;will-change:transform,opacity}
-    .neru-streak.is-horizontal{left:-46%;width:46%;height:2px;background:linear-gradient(90deg,transparent,rgba(0,150,255,.24) 16%,#8bdcff 50%,rgba(0,150,255,.34) 84%,transparent);box-shadow:0 0 8px #0096ff,0 0 20px rgba(0,150,255,.7)}
-    .neru-streak.is-vertical{top:-58%;width:2px;height:58%;background:linear-gradient(180deg,transparent,rgba(0,150,255,.22) 16%,#8bdcff 50%,rgba(0,150,255,.34) 84%,transparent);box-shadow:0 0 8px #0096ff,0 0 20px rgba(0,150,255,.7)}
-    @media(prefers-reduced-motion:reduce){.tournament-page-hero h1{animation:none}.neru-energy-lines{display:none}}
-    .rule-text-list{margin:0;padding-left:1.35rem;color:#111;font-size:15px;font-weight:750;line-height:1.95}
-    .rule-text-list strong{color:#111;font-weight:950}
-    .overview-registration{display:inline-flex;align-items:center;gap:10px;margin:2px 0 22px;padding:10px 0;color:#07528d;border-bottom:3px solid rgba(0,150,255,.35);font-size:clamp(20px,2.1vw,26px);font-weight:950;letter-spacing:-.02em;text-decoration:none;transition:color .15s ease,border-color .15s ease,text-shadow .15s ease}
-    .overview-registration::after{content:"↗";color:#008fe8;font-size:16px;transition:transform .15s ease}
-    .overview-registration:hover{color:#008fe8;border-color:#008fe8;text-shadow:0 6px 14px rgba(0,105,180,.28)}
-    .overview-registration:hover::after{transform:translate(2px,-2px)}
-    .rule-blocks{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
-    .rule-block{padding:22px;background:#f8fcff;border:1px solid rgba(0,120,210,.18);border-top:4px solid rgb(0,150,255);border-radius:12px;box-shadow:0 8px 20px rgba(3,42,76,.07)}
-    .rule-block h3{margin:0 0 14px;color:#06345d;font-size:21px;font-weight:950}
-    .rule-block dl{display:grid;gap:12px;margin:0}
-    .rule-block dt{margin:0;color:#07528d;font-size:13px;font-weight:950}
-    .rule-block dd{margin:3px 0 0;color:#182128;font-size:14px;font-weight:700;line-height:1.75}
-    .points-line{font-variant-numeric:tabular-nums}
-    .media-placeholder{padding:28px;color:#53616d;background:linear-gradient(135deg,#f5fbff,#edf6fb);border:1px dashed rgba(0,105,180,.32);border-radius:12px;font-size:14px;font-weight:800;line-height:1.8;text-align:center}
-    .flyer-figure{margin:0;text-align:center}
-    .flyer-link{display:inline-block;max-width:100%;border-radius:14px;box-shadow:0 16px 34px rgba(3,42,76,.18);transition:transform .18s ease,box-shadow .18s ease}
-    .flyer-link:hover{transform:translateY(-2px);box-shadow:0 20px 42px rgba(3,42,76,.24)}
-    .flyer-image{display:block;width:auto;max-width:100%;max-height:860px;margin:0 auto;border:1px solid rgba(0,105,180,.16);border-radius:14px}
-    .organizer-panel{padding:8px 0}
-    .organizer-copy{padding-bottom:18px;border-bottom:1px solid rgba(0,105,180,.2)}
-    .organizer-copy::before{content:"ORGANIZER";display:block;margin-bottom:8px;color:#008fe8;font-size:10px;font-weight:950;letter-spacing:.18em}
-    .organizer-copy h3{margin:0;color:#06345d;font-size:clamp(30px,3.7vw,54px);font-weight:950;letter-spacing:-.045em;line-height:1.12;white-space:nowrap}
-    .organizer-copy p{margin:8px 0 0;color:#65737e;font-size:17px;font-weight:850}
-    .organizer-links{display:flex;flex-wrap:wrap;gap:0;margin-top:8px}
-    .organizer-links .official-link{position:relative;display:inline-flex;align-items:center;padding:12px 22px 12px 0;margin-right:22px;color:#07528d;font-size:clamp(19px,2vw,24px);font-weight:900;text-decoration:none;text-shadow:0 5px 12px rgba(3,52,93,.34),0 1px 0 rgba(255,255,255,.9);background:linear-gradient(#008fe8,#008fe8) left bottom/0 2px no-repeat;transition:color .15s ease,background-size .2s ease,text-shadow .2s ease,transform .2s ease}
-    .organizer-links .official-link:hover{color:#008fe8;background-size:100% 2px;text-shadow:0 8px 18px rgba(0,105,180,.48),0 1px 0 rgba(255,255,255,.9);transform:translateY(-2px)}
-    .official-info-grid{display:grid;grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr);gap:22px;align-items:start}
-    .official-info-side{display:block}
-    .preparing-panel{padding:24px;color:#43515e;background:rgba(16,38,56,.05);border:1px dashed rgba(16,38,56,.24);border-radius:12px;font-size:15px;font-weight:800;line-height:1.8;text-align:center}
-    @media(max-width:900px){.hero.tournament-page-hero{min-height:280px;padding:1.55rem}.tournament-title-block{margin:0}.rule-blocks,.official-info-grid{grid-template-columns:1fr}.flyer-image{max-height:720px}}
-    @media(max-width:640px){.hero.tournament-page-hero{min-height:300px;border-radius:14px}.tournament-page-hero h1{font-size:clamp(36px,12vw,52px)}}
-  </style>
+  
+  <link rel="stylesheet" href="./style.css?v=20260727" />
   <link rel="stylesheet" href="/footer-updated.css?v=20260614">
 <link rel="icon" href="/sutantic.png" type="image/png" />
 </head>
@@ -107,7 +61,7 @@
         <div class="official-info-grid">
           <figure class="flyer-figure">
             <a class="flyer-link" href="https://tonamel.com/competition/E8w8Z" target="_blank" rel="noopener" aria-label="Tonamelのねるばとる大会ページを開く">
-              <img class="flyer-image" src="./nerubana.webp?v=20260719" alt="ねるばとる 公式フライヤー" loading="lazy" decoding="async">
+              <img class="flyer-image" src="./flyer.webp?v=20260719" alt="ねるばとる 公式フライヤー" loading="lazy" decoding="async">
             </a>
           </figure>
           <div class="official-info-side">

@@ -15,6 +15,9 @@ S級リーグの試合結果・ポイント状況、大会アーカイブ、コ�
 - リーグ集計画像を用途が分かる英小文字ファイル名へ変更
 - 差し替え済みの旧集計画像、破損した旧DAY3画像、未使用プレビュー、未参照画像を削除
 - 画像参照、互換リダイレクト、READMEを現在の構成に合わせて更新
+- Season 1の構成画像も `compositions/day1` 〜 `day4` へ統一
+- トップ、リーグ、スクリム、大会の主要画像を用途名へ統一
+- 大会ページ内の埋め込みCSSを大会別の `style.css` へ分離
 
 ## 公開URL
 
@@ -87,7 +90,11 @@ sqlhub/
     │   └── season2/
     ├── season1/
     │   ├── archive/
-    │   └── s1day1/ ... s1day4/
+    │   └── compositions/
+    │       ├── day1/
+    │       ├── day2/
+    │       ├── day3/
+    │       └── day4/
     ├── season2/
     │   ├── compositions/
     │   │   ├── day1/
@@ -114,7 +121,9 @@ Season 1 は終了済みのアーカイブページです。
 - 基本結果: `public/sq/season1/results.json`
 - 種族設定: `public/sq/season1/tribes.json`
 - DAY別アーカイブ: `public/season1/archive/`
-- 構成画像: `public/season1/s1day1/` 〜 `public/season1/s1day4/`
+- 構成画像: `public/season1/compositions/day1/` 〜 `day4/`
+
+Season 1・Season 2ともに、構成画像は `compositions/day<番号>/<選手スラッグ>.webp` の形式で管理します。旧Season 1画像URLは `public/_redirects` で現行パスへ転送します。
 
 ## S級リーグ Season 2
 
@@ -278,18 +287,36 @@ thundurus.webp
 
 ## 大会ページ
 
-大会ページは `public/tournaments/<slug>/index.html` に配置します。
+大会ページは `public/tournaments/<slug>/index.html` に配置します。大会固有のスタイルは同じフォルダの `style.css` に配置します。
 
 共通事項:
 
 - 共通スタイル: `public/common.css`
 - 共有操作: `public/tournament-share.js`
 - 共通フッター: `public/footer-updated.css`
+- 大会固有スタイル: `public/tournaments/<slug>/style.css`
 - サイトアイコン: `public/sutantic.png`
 - 戻るリンクはトップページまたは大会一覧へ向ける
 - 外部リンクには必要に応じて `target="_blank"` と `rel="noopener noreferrer"` を付ける
 
-大会固有のヘッダー、アニメーション、ルール表示は各 `index.html` 内のスタイルとJavaScriptで管理しています。
+大会固有のヘッダー、アニメーション、ルール表示は各大会フォルダの `style.css` と、必要に応じて `index.html` 内のJavaScriptで管理します。
+
+### 大会画像の命名
+
+新規画像は用途が分かる英小文字名を使用します。
+
+| ファイル名 | 用途 |
+|---|---|
+| `banner.webp` | トップページの大会カード、ページヘッダー |
+| `flyer.webp` | 公式フライヤー |
+| `flyer-1.webp`、`flyer-2.webp` | 複数枚の公式フライヤー |
+| `social-card.jpg` / `social-card.webp` | OGP・Xリンクカード |
+| `header.webp` | ページ専用ヘッダー背景 |
+| `qualifier-east.webp` | EAST予選画像 |
+| `qualifier-west.webp` | WEST予選画像 |
+| `recruitment-example.webp` | 募集告知例 |
+
+画像を改名・移動した場合は、HTML、CSS、OGP設定、トップページ、`public/_redirects` を同時に更新します。
 
 ## スクリム
 
@@ -336,10 +363,10 @@ thundurus.webp
 
 | ページ | 画像 |
 |---|---|
-| トップページ | `public/st-og.jpg` |
-| スクリム | `public/scrims/sukurimu.webp` |
-| EAST vs WEST | `public/tournaments/east-vs-west/bgewbana.webp` |
-| 王者Alutemuへの挑戦状 | `public/tournaments/alutemu-challenge/alutemu-og.jpg` |
+| トップページ | `public/social-card.jpg` |
+| スクリム | `public/scrims/social-card.webp` |
+| EAST vs WEST | `public/tournaments/east-vs-west/banner.webp` |
+| 王者Alutemuへの挑戦状 | `public/tournaments/alutemu-challenge/social-card.jpg` |
 
 リンクカードを変更する場合は、各HTMLの `og:image`、`og:image:secure_url`、`twitter:image`、画像サイズ、キャッシュ識別子を同時に更新してください。
 

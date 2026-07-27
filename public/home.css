@@ -126,7 +126,7 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 
 
 #past-tournaments .east-west-card {
-  --wipe-image: url('/tournaments/east-vs-west/bgewbana.webp?v=20260725-artwork-v2');
+  --wipe-image: url('/tournaments/east-vs-west/banner.webp?v=20260725-artwork-v2');
   --wipe-image-position: center 50%;
 }
 #past-tournaments .east-west-card h2{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
@@ -135,7 +135,7 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 #past-tournaments .east-west-card:hover .card-cta{background:rgba(89,97,105,.78);box-shadow:0 9px 20px rgba(3,14,24,.44)}
 
 #past-tournaments .yoidore-card {
-  --wipe-image: linear-gradient(90deg, rgba(40,18,8,.76) 0%, rgba(40,18,8,.46) 42%, rgba(40,18,8,.12) 72%, rgba(40,18,8,.04) 100%), url('/tournaments/yoidore/yoidore.webp?v=20260719');
+  --wipe-image: linear-gradient(90deg, rgba(40,18,8,.76) 0%, rgba(40,18,8,.46) 42%, rgba(40,18,8,.12) 72%, rgba(40,18,8,.04) 100%), url('/tournaments/yoidore/banner.webp?v=20260719');
   --wipe-image-position: center 42%;
 }
 
@@ -169,7 +169,7 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 
 #past-tournaments .secret-tournament-card[aria-disabled="true"]{cursor:default}
 #past-tournaments .secret-tournament-card.is-unlocked{
-  --wipe-image:linear-gradient(90deg,rgba(5,8,24,.18),transparent 58%,rgba(16,5,29,.08)),url('/tournaments/alutemu-challenge/challengetop.webp?v=20260725-top-v1');
+  --wipe-image:linear-gradient(90deg,rgba(5,8,24,.18),transparent 58%,rgba(16,5,29,.08)),url('/tournaments/alutemu-challenge/banner.webp?v=20260725-top-v1');
   --wipe-image-position:center center;
   border-color:rgba(171,112,235,.48);
   box-shadow:0 12px 28px rgba(20,7,45,.34);

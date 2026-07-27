@@ -138,7 +138,7 @@ body #scrims .scrim-card::before {
   z-index: 0 !important;
   background-image:
     linear-gradient(90deg,rgba(4,18,31,.88) 0%,rgba(4,18,31,.68) 44%,rgba(4,18,31,.24) 74%,rgba(4,18,31,.08) 100%),
-    url('/scrims/b2b02.webp?v=20260613-b2b02-banner') !important;
+    url('/scrims/banner.webp?v=20260613-b2b02-banner') !important;
   background-size: cover, cover !important;
   background-position: center, center center !important;
   background-repeat: no-repeat !important;

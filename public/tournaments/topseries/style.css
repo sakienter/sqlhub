@@ -1,0 +1,70 @@
+.topseries-hero{position:relative;isolation:isolate;min-height:270px;overflow:hidden;margin:0 auto 26px;background:radial-gradient(circle at 78% 22%,rgba(220,255,145,.72),transparent 220px),linear-gradient(115deg,#fbfff1 0 38%,#daf7a6 38% 62%,#5cbf34 62% 100%);border:1px solid rgba(8,23,19,.12);border-radius:12px;box-shadow:0 18px 38px rgba(18,93,75,.15)}
+    .topseries-hero::before,.topseries-hero::after{content:"";position:absolute;inset:-20%;pointer-events:none}
+    .topseries-hero::before{background:linear-gradient(108deg,transparent 0 36%,rgba(255,255,255,.7) 37% 38%,transparent 39%),linear-gradient(108deg,transparent 0 52%,rgba(255,255,255,.42) 53% 54%,transparent 55%),linear-gradient(108deg,transparent 0 68%,rgba(255,255,255,.56) 69% 70%,transparent 71%);transform:translateX(-8%)}
+    .topseries-hero::after{background:linear-gradient(108deg,transparent 0 56%,rgba(142,232,63,.82) 57% 58%,transparent 59%),linear-gradient(108deg,transparent 0 72%,rgba(255,255,255,.7) 73% 74%,transparent 75%);opacity:.7;transform:translateX(10%) translateY(9%)}
+    .topseries-hero-inner{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:270px;padding:clamp(22px,4vw,38px)}
+    .topseries-hero-top{display:flex;align-items:center;justify-content:flex-start}
+    .topseries-back{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 15px;color:#173121;background:rgba(255,255,255,.76);border:1px solid rgba(8,23,19,.12);border-radius:999px;font-size:14px;font-weight:900;line-height:1;text-decoration:none;white-space:nowrap;transition:background .18s ease,transform .18s ease,border-color .18s ease}
+    .topseries-back:hover{background:rgba(255,255,255,.94);border-color:rgba(8,23,19,.22);transform:translateY(-1px)}
+    .topseries-title{margin:0;color:#102315;font-size:clamp(44px,8vw,98px);font-style:italic;font-weight:950;line-height:1.02;letter-spacing:-.045em;transform:skewX(-6deg);transform-origin:left center;text-shadow:0 1px 0 rgba(255,255,255,.5)}
+    .topseries-title strong{display:block;color:#3f981f;font-weight:950;line-height:.95;letter-spacing:-.025em}
+
+    .overview-text{display:grid;gap:12px;margin:0}
+    .overview-text p{margin:0;color:#111;font-size:14px;font-weight:750;line-height:1.85;letter-spacing:.01em}
+    .overview-text strong{color:#111;font-weight:950}
+
+    .series-accordion-list{display:grid;gap:12px}
+    .series-accordion{overflow:hidden;background:#fffaf2;border:1px solid rgba(24,33,40,.12);border-radius:8px;box-shadow:0 4px 14px rgba(3,14,24,.10)}
+    .series-accordion summary{position:relative;display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:58px;padding:14px 18px;color:var(--text-primary);cursor:pointer;list-style:none;font-size:16px;font-weight:950;line-height:1.4;letter-spacing:-.01em;transition:background .18s ease,color .18s ease}
+    .series-accordion summary::-webkit-details-marker{display:none}
+    .series-accordion summary::after{content:"＋";flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;color:var(--crimson-dark);background:var(--crimson-dim);border:1px solid rgba(201,75,75,.22);border-radius:999px;font-size:18px;font-weight:950;line-height:1}
+    .series-accordion[open] summary{background:linear-gradient(90deg,rgba(13,127,153,.10),rgba(201,75,75,.10));border-bottom:1px solid rgba(24,33,40,.12)}
+    .series-accordion[open] summary::after{content:"−"}
+    .series-summary-label{display:block}
+    .series-winner{color:var(--crimson-dark);font-weight:950;white-space:nowrap}
+    .series-panel{padding:18px}
+
+    .scoreboard-title{margin:0 0 12px;color:var(--text-primary);font-size:17px;font-weight:950;letter-spacing:-.02em}
+    .series-panel .table-wrap{width:100%;margin:0;overflow:visible;padding-bottom:0}
+    .scoreboard-table{width:100%;min-width:0;border-collapse:collapse;border-spacing:0;table-layout:auto;background:#fff;border:2px solid #1d1d1d}
+    .scoreboard-table th,.scoreboard-table td{padding:8px 7px;text-align:center;vertical-align:middle;font-size:13px;line-height:1.35;border:1px solid #d4d4d4;border-radius:0!important;box-shadow:none!important;transition:none!important}
+    .scoreboard-table th{color:#111;background:#e7e7e7;border-bottom:2px solid #1d1d1d;font-weight:950;white-space:nowrap}
+    .scoreboard-table td{color:#111;background:#fff;font-weight:800}
+    .scoreboard-table th:first-child,.scoreboard-table td:first-child{text-align:left;border-left:0;border-radius:0!important}
+    .scoreboard-table th:last-child,.scoreboard-table td:last-child{border-right:0;border-radius:0!important}
+    .scoreboard-table tbody tr:last-child td{border-bottom:0}
+    .scoreboard-table tbody tr:hover td{background:#fff!important;color:#111!important}
+    .scoreboard-table tbody tr:hover td.score-first{background:#f4e900!important;color:#000!important}
+    .scoreboard-table tbody tr:hover td.score-second{background:#bfbfbf!important;color:#000!important}
+    .scoreboard-table tbody tr:hover td.empty-cell{background:#fff!important;color:transparent!important}
+    .scoreboard-table .num{text-align:right;font-weight:900;color:#111}
+    .scoreboard-table .rank{text-align:center;font-weight:950;color:#111}
+    .scoreboard-table .score-first{background:#f4e900!important;color:#000!important;font-weight:950!important}
+    .scoreboard-table .score-second{background:#bfbfbf!important;color:#000!important;font-weight:900!important}
+    .scoreboard-table .empty-cell{color:transparent!important;background:#fff!important}
+    .scoreboard-empty{color:#777!important;text-align:center!important;font-weight:850!important}
+    .winner-note{font-weight:950;color:#000}
+    .scoreboard-wide{table-layout:fixed}
+    .scoreboard-wide th:nth-child(1),.scoreboard-wide td:nth-child(1){width:19%}
+    .scoreboard-wide th:nth-child(2),.scoreboard-wide td:nth-child(2){width:6.5%}
+    .scoreboard-wide th:nth-child(3),.scoreboard-wide td:nth-child(3){width:6.5%}
+    .scoreboard-wide th:nth-child(n+4),.scoreboard-wide td:nth-child(n+4){width:8.5%}
+
+    .recap-area{display:flex;align-items:center;justify-content:flex-start;gap:10px;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid #d0d0d0}
+    .recap-link{min-height:36px;padding:0 14px!important;color:#7f2634!important;background:#fff!important;border:1px solid rgba(127,38,52,.35)!important;border-radius:4px!important;box-shadow:none!important;font-size:13px;font-weight:950;filter:none!important}
+    .recap-link:hover{background:#f7f0ec!important;border-color:rgba(127,38,52,.55)!important}
+
+    @media (max-width:760px){
+      .topseries-hero{min-height:240px}
+      .topseries-hero-inner{min-height:240px;gap:20px;padding:20px 20px 24px}
+      .topseries-back{min-height:34px;padding:0 13px;font-size:13px}
+      .topseries-title{font-size:clamp(40px,14vw,64px);line-height:1.04}
+      .topseries-title strong{margin-top:4px}
+      .series-accordion summary{align-items:flex-start;flex-direction:column;gap:8px;padding:14px 16px;font-size:15px}
+      .series-accordion summary::after{position:absolute;right:14px;top:14px;width:28px;height:28px}
+      .series-summary-label{padding-right:42px}
+      .series-winner{white-space:normal}
+      .series-panel{padding:16px 12px}
+      .scoreboard-table th,.scoreboard-table td{padding:6px 4px;font-size:10.5px;letter-spacing:-.02em}
+      .winner-note{display:block}
+    }

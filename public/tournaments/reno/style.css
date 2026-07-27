@@ -1,0 +1,172 @@
+.hero.renoj-hero{
+      position:relative;
+      isolation:isolate;
+      overflow:hidden;
+      margin:0 auto 28px;
+      min-height:260px;
+      padding:2.1rem 2rem 2.35rem;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      text-align:left;
+      background:
+        radial-gradient(circle at 12% 18%,rgba(255,215,128,.24) 0%,rgba(255,215,128,0) 32%),
+        linear-gradient(90deg,rgba(10,28,34,.92) 0%,rgba(13,42,48,.82) 44%,rgba(49,35,20,.58) 72%,rgba(49,35,20,.28) 100%),
+        url('/tournaments/reno/banner.webp') center center/cover no-repeat;
+      border:1px solid rgba(240,204,133,.30);
+      border-radius:18px;
+      box-shadow:0 22px 40px rgba(3,14,24,.34);
+      backdrop-filter:none;
+    }
+    .hero.renoj-hero::before,
+    .hero.renoj-hero::after{
+      content:none;
+      display:none;
+    }
+    .renoj-hero .back-link{
+      position:relative;
+      z-index:1;
+      align-self:flex-start;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:36px;
+      padding:0 16px;
+      color:#f8e6b7;
+      background:rgba(4,18,23,.42);
+      border:1px solid rgba(255,235,182,.26);
+      border-radius:999px;
+      box-shadow:0 8px 18px rgba(3,14,24,.18);
+      font-size:13px;
+      font-weight:900;
+      text-decoration:none;
+      backdrop-filter:blur(8px);
+    }
+    .renoj-title-block{
+      position:relative;
+      z-index:1;
+      max-width:900px;
+      margin-top:2.4rem;
+    }
+    .renoj-hero h1{
+      margin:0;
+      color:#fff7e2;
+      font-size:clamp(42px,6.4vw,72px);
+      font-weight:950;
+      letter-spacing:-.06em;
+      line-height:1.08;
+      text-shadow:0 10px 22px rgba(3,14,24,.45);
+    }
+    .organizer-meta{
+      display:flex;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:10px 14px;
+      margin-top:1rem;
+    }
+    .organizer-meta p{
+      margin:0;
+      color:rgba(255,247,226,.92);
+      font-size:14px;
+      font-weight:800;
+      line-height:1.6;
+      text-shadow:0 4px 14px rgba(3,14,24,.46);
+    }
+    .organizer-meta p a{
+      color:#fff7e2;
+      font-weight:950;
+      text-decoration:none;
+    }
+    .organizer-meta p a:hover{
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+    .organizer-name{
+      white-space:nowrap;
+    }
+    .organizer-x-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:34px;
+      padding:0 14px;
+      color:#fff1c8;
+      background:rgba(4,18,23,.42);
+      border:1px solid rgba(255,235,182,.30);
+      border-radius:999px;
+      box-shadow:0 8px 18px rgba(3,14,24,.18);
+      font-size:13px;
+      font-weight:900;
+      text-decoration:none;
+      backdrop-filter:blur(8px);
+      transition:background .18s ease,border-color .18s ease,transform .18s ease;
+    }
+    .organizer-x-link:hover{
+      background:rgba(255,235,182,.16);
+      border-color:rgba(255,235,182,.46);
+      transform:translateY(-1px);
+    }
+    .plain-copy{
+      margin:0 0 1.2rem;
+      color:#111;
+      font-size:15px;
+      font-weight:750;
+      line-height:1.95;
+    }
+    .rule-text-list{
+      margin:0;
+      padding-left:1.35rem;
+      color:#111;
+      font-size:15px;
+      font-weight:750;
+      line-height:1.95;
+    }
+    .rule-text-list li{
+      margin:.25rem 0;
+      padding-left:.2rem;
+    }
+    .rule-text-list strong{
+      color:#111;
+      font-weight:950;
+    }
+    .tournament-text-list{
+      display:grid;
+      gap:0;
+    }
+    .tournament-text-item{
+      padding:0 0 1.15rem;
+      margin:0 0 1.15rem;
+      border-bottom:1px solid rgba(24,33,40,.12);
+    }
+    .tournament-text-item:last-child{
+      margin-bottom:0;
+      padding-bottom:0;
+      border-bottom:none;
+    }
+    .tournament-text-item h3{
+      margin:0 0 .45rem;
+      color:#111;
+      font-size:20px;
+      font-weight:950;
+      letter-spacing:-.03em;
+    }
+    .tournament-text-item p{
+      margin:.2rem 0 .7rem;
+      color:#111;
+      font-size:15px;
+      font-weight:750;
+      line-height:1.8;
+    }
+    .tournament-text-item .button{
+      margin-top:.1rem;
+    }
+    @media (max-width:900px){
+      .hero.renoj-hero{min-height:280px;padding:1.55rem}
+      .renoj-title-block{margin-top:2rem}
+    }
+    @media (max-width:640px){
+      .hero.renoj-hero{min-height:300px;border-radius:14px}
+      .renoj-hero h1{font-size:clamp(36px,12vw,52px)}
+      .organizer-meta{align-items:flex-start;gap:8px 10px}
+      .organizer-meta p{font-size:13px}
+    }

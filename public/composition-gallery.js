@@ -143,7 +143,7 @@
   function imagePathFor(name) {
     const day = getSelectedDayNumber();
     const slug = fileBaseName(name);
-    if (isSeasonOne) return `./s1day${day}/${slug}.webp`;
+    if (isSeasonOne) return `/season1/compositions/day${day}/${slug}.webp?v=20260727-season1-comps-v1`;
     return `/season2/compositions/day${day}/${slug}.webp?v=20260727-season2-comps-v1`;
   }
 

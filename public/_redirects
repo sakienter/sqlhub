@@ -54,13 +54,19 @@
 /sq/admin-tribes.css /admin-tribes.css 200
 /sq/tribewebp/* /tribewebp/:splat 200
 
-# Large Season 1 archive and composition assets remain in their legacy storage folders.
+# Large Season 1 archives remain in their original storage folder.
 /sq/season1/archive/* /season1/archive/:splat 200
-/sq/season1/s1day1/* /season1/s1day1/:splat 200
-/sq/season1/s1day2/* /season1/s1day2/:splat 200
-/sq/season1/s1day3/* /season1/s1day3/:splat 200
-/sq/season1/s1day4/* /season1/s1day4/:splat 200
 /sq/season1/compositions/* /season1/compositions/:splat 200
+
+# Legacy Season 1 composition-image URLs.
+/sq/season1/s1day1/* /season1/compositions/day1/:splat 200
+/sq/season1/s1day2/* /season1/compositions/day2/:splat 200
+/sq/season1/s1day3/* /season1/compositions/day3/:splat 200
+/sq/season1/s1day4/* /season1/compositions/day4/:splat 200
+/season1/s1day1/* /season1/compositions/day1/:splat 301
+/season1/s1day2/* /season1/compositions/day2/:splat 301
+/season1/s1day3/* /season1/compositions/day3/:splat 301
+/season1/s1day4/* /season1/compositions/day4/:splat 301
 
 # Season 2 composition images use one canonical folder and player-name slugs.
 /sq/season2/compositions/day1/*.jpg /season2/compositions/day1/:splat.webp 200
@@ -71,3 +77,29 @@
 /season2/data/Hero.webp /season2/data/hero-stats.webp 301
 /season2/data/Lesser2.webp /season2/data/lesser-trinket-stats.webp 301
 /season2/data/Greater.webp /season2/data/greater-trinket-stats.webp 301
+
+# Renamed image assets retained for old external links and cached cards.
+/white.webp /site-hero.webp 301
+/lab.webp /bg-lab.webp 301
+/st-og.jpg /social-card.jpg 301
+/columns/PINZORO.webp /columns/pinzoro.webp 301
+/scrims/b2b02.webp /scrims/banner.webp 301
+/scrims/sukurimu.webp /scrims/social-card.webp 301
+/sq/season1/s1.webp /sq/season1/banner.webp 301
+/sq/season2/S2.webp /sq/season2/banner.webp 301
+/tournaments/dp.webp /tournaments/deepblue/banner.webp 301
+/tournaments/reno.webp /tournaments/reno/banner.webp 301
+/tournaments/independent-demo-1/ale.webp /tournaments/saikyo2026/banner.webp 301
+/tournaments/twdm/kuromi-.webp /tournaments/twdm/banner.webp 301
+/tournaments/neru-battle/nerubana.webp /tournaments/neru-battle/flyer.webp 301
+/tournaments/east-vs-west/bgewbana.webp /tournaments/east-vs-west/banner.webp 301
+/tournaments/east-vs-west/bgewpic.webp /tournaments/east-vs-west/flyer.webp 301
+/tournaments/east-vs-west/eastyosen.webp /tournaments/east-vs-west/qualifier-east.webp 301
+/tournaments/east-vs-west/westyosen.webp /tournaments/east-vs-west/qualifier-west.webp 301
+/tournaments/yoidore/ex.webp /tournaments/yoidore/recruitment-example.webp 301
+/tournaments/yoidore/head.webp /tournaments/yoidore/header.webp 301
+/tournaments/yoidore/yoidore.webp /tournaments/yoidore/banner.webp 301
+/tournaments/alutemu-challenge/challenge.webp /tournaments/alutemu-challenge/flyer-1.webp 301
+/tournaments/alutemu-challenge/alutemuchallenge2.webp /tournaments/alutemu-challenge/flyer-2.webp 301
+/tournaments/alutemu-challenge/challengetop.webp /tournaments/alutemu-challenge/banner.webp 301
+/tournaments/alutemu-challenge/alutemu-og.jpg /tournaments/alutemu-challenge/social-card.jpg 301
