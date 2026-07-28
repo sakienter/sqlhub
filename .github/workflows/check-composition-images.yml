@@ -1,0 +1,25 @@
+name: Check composition images
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 0 * * 1"
+  push:
+    paths:
+      - "public/season1/compositions/**"
+      - "public/season2/compositions/**"
+      - ".github/scripts/check_composition_images.mjs"
+      - ".github/workflows/check-composition-images.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify all expected images
+        run: node .github/scripts/check_composition_images.mjs

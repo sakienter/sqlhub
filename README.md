@@ -22,6 +22,8 @@ S級リーグの試合結果・ポイント状況、大会アーカイブ、コ�
 - CN対抗戦・過去大会の画像名を `banner`、`header`、`flyer` など用途が分かる名称へ統一
 - 旧画像URLは `public/_redirects` に残し、既存リンクとの互換性を維持
 - 静的CSS・JavaScript・画像のキャッシュ識別子を `20260728` に統一
+- トップページとS級リーグSeason 1・2のインラインスタイルをクラス化し、CSSへ分離
+- 全DAY・全選手の構成画像を毎週および画像更新時に検査するGitHub Actionsを追加
 
 ## 公開URL
 
@@ -173,6 +175,22 @@ thundurus.webp
 ```
 
 共有ギャラリーはこの命名規則から画像URLを生成します。DAY1・DAY2の旧 `.jpg` パスは `public/_redirects` で現行WebPへ内部転送します。
+
+### 構成画像の自動検査
+
+`.github/scripts/check_composition_images.mjs` は、Season 1・2の全4DAYについて、対象選手64枚のWebPが存在し、空ファイルではないことを検査します。
+
+GitHub Actionsの `Check composition images` は次のタイミングで実行されます。
+
+- 毎週月曜日
+- 構成画像または検査スクリプトを更新したとき
+- Actions画面から手動実行したとき
+
+ローカルでは次のコマンドで同じ検査を実行できます。
+
+```bash
+node .github/scripts/check_composition_images.mjs
+```
 
 ### リーグ集計画像
 

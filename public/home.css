@@ -188,4 +188,9 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
   border-top-color: rgba(13,127,153,.28);
   background: linear-gradient(180deg, rgba(13,127,153,.045), transparent);
 }
-
+.tournament-card-twdm{--wipe-image:url('/tournaments/twdm/banner.webp');--wipe-image-position:center 42%}
+.tournament-card-uratop{--wipe-image:url('/tournaments/uratop/banner.webp');--wipe-image-position:center 42%}
+.tournament-card-topseries{--wipe-image:url('/tournaments/topseries/banner.webp');--wipe-image-position:center 42%}
+.tournament-card-saikyo2026{--wipe-image:url('/tournaments/saikyo2026/banner.webp');--wipe-image-position:center center}
+.tournament-card-deepblue{--wipe-image:url('/tournaments/deepblue/banner.webp');--wipe-image-position:center center}
+.tournament-card-reno{--wipe-image:url('/tournaments/reno/banner.webp');--wipe-image-position:center center}
