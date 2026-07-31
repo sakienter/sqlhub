@@ -23,7 +23,7 @@ export async function onRequestGet(context) {
 
     const where = includeAll ? 'WHERE is_completed = 0' : "WHERE status = 'open' AND is_completed = 0";
     const result = await db.prepare(`
-      SELECT id, event_date AS eventDate, start_time AS startTime,
+      SELECT id, event_name AS eventName, event_date AS eventDate, start_time AS startTime,
         gather_time AS gatherTime, status, is_completed AS isCompleted,
         result_url AS resultUrl, created_at AS createdAt, updated_at AS updatedAt
       FROM scrim_events
@@ -46,10 +46,12 @@ export async function onRequestPost(context) {
   if (!db) return missingDatabase();
 
   const body = await readBody(context.request);
+  const eventName = normalizeEventName(body?.eventName ?? body?.name);
   const eventDate = normalizeDate(body?.eventDate ?? body?.date);
   const startTime = normalizeTime(body?.startTime);
   const gatherTime = normalizeOptionalTime(body?.gatherTime);
 
+  if (eventName === null) return json({ error: 'スクリム名は60文字以内で入力してください。' }, 400);
   if (!eventDate) return json({ error: '開催日を正しく入力してください。' }, 400);
   if (!startTime) return json({ error: '開始時刻を正しく入力してください。' }, 400);
   if (body?.gatherTime && !gatherTime) return json({ error: '集合時刻を正しく入力してください。' }, 400);
@@ -60,10 +62,10 @@ export async function onRequestPost(context) {
     await ensureEventsTable(db);
     await db.prepare(`
       INSERT INTO scrim_events (
-        id, event_date, start_time, gather_time, status,
+        id, event_name, event_date, start_time, gather_time, status,
         is_completed, result_url, created_at, updated_at
-      ) VALUES (?, ?, ?, ?, 'open', 0, '', ?, ?)
-    `).bind(eventDate, eventDate, startTime, gatherTime, now, now).run();
+      ) VALUES (?, ?, ?, ?, ?, 'open', 0, '', ?, ?)
+    `).bind(eventDate, eventName, eventDate, startTime, gatherTime, now, now).run();
 
     return json({ event: serializeEvent(await findEvent(db, eventDate)) }, 201);
   } catch (error) {
@@ -83,12 +85,14 @@ export async function onRequestPatch(context) {
 
   const body = await readBody(context.request);
   const id = typeof body?.id === 'string' ? body.id.trim() : '';
+  const eventName = normalizeEventName(body?.eventName ?? body?.name);
   const startTime = normalizeTime(body?.startTime);
   const gatherTime = normalizeOptionalTime(body?.gatherTime);
   const lifecycle = normalizeLifecycle(body?.status);
   const resultUrl = normalizeSpreadsheetUrl(body?.resultUrl);
 
   if (!id) return json({ error: '変更する日程を特定できませんでした。' }, 400);
+  if (eventName === null) return json({ error: 'スクリム名は60文字以内で入力してください。' }, 400);
   if (!startTime) return json({ error: '開始時刻を正しく入力してください。' }, 400);
   if (body?.gatherTime && !gatherTime) return json({ error: '集合時刻を正しく入力してください。' }, 400);
   if (!lifecycle) return json({ error: '開催状態が正しくありません。' }, 400);
@@ -111,14 +115,20 @@ export async function onRequestPatch(context) {
 
     await db.prepare(`
       UPDATE scrim_events
-      SET start_time = ?, gather_time = ?, status = ?, is_completed = ?,
+      SET event_name = ?, start_time = ?, gather_time = ?, status = ?, is_completed = ?,
         result_url = ?, updated_at = ?
       WHERE id = ?
-    `).bind(startTime, gatherTime, storedStatus, completed, resultUrl || '', now, id).run();
+    `).bind(eventName, startTime, gatherTime, storedStatus, completed, resultUrl || '', now, id).run();
+
+    const updatedLabel = formatDisplayLabel(eventName, previous.eventDate, startTime);
+    await db.prepare(`
+      UPDATE scrim_registrations SET event_label = ?, updated_at = ? WHERE event_id = ?
+    `).bind(updatedLabel, now, id).run();
 
     try {
       await syncPastLobby(context, {
         eventId: id,
+        eventName,
         eventDate: previous.eventDate,
         resultUrl: resultUrl || '',
         completed: completed === 1
@@ -126,15 +136,23 @@ export async function onRequestPatch(context) {
     } catch (syncError) {
       await db.prepare(`
         UPDATE scrim_events
-        SET start_time = ?, gather_time = ?, status = ?, is_completed = ?,
+        SET event_name = ?, start_time = ?, gather_time = ?, status = ?, is_completed = ?,
           result_url = ?, updated_at = ?
         WHERE id = ?
       `).bind(
+        previous.eventName || '',
         previous.startTime,
         previous.gatherTime || '',
         previous.status,
         Number(previous.isCompleted || 0),
         previous.resultUrl || '',
+        previous.updatedAt,
+        id
+      ).run();
+      await db.prepare(`
+        UPDATE scrim_registrations SET event_label = ?, updated_at = ? WHERE event_id = ?
+      `).bind(
+        formatDisplayLabel(previous.eventName || '', previous.eventDate, previous.startTime),
         previous.updatedAt,
         id
       ).run();
@@ -192,6 +210,7 @@ async function ensureEventsTable(db) {
   await db.prepare(`
     CREATE TABLE IF NOT EXISTS scrim_events (
       id TEXT PRIMARY KEY,
+      event_name TEXT NOT NULL DEFAULT '',
       event_date TEXT NOT NULL UNIQUE,
       start_time TEXT NOT NULL,
       gather_time TEXT NOT NULL DEFAULT '',
@@ -209,6 +228,9 @@ async function ensureEventsTable(db) {
   if (!columns.has('is_completed')) {
     await db.prepare('ALTER TABLE scrim_events ADD COLUMN is_completed INTEGER NOT NULL DEFAULT 0').run();
   }
+  if (!columns.has('event_name')) {
+    await db.prepare("ALTER TABLE scrim_events ADD COLUMN event_name TEXT NOT NULL DEFAULT ''").run();
+  }
   if (!columns.has('result_url')) {
     await db.prepare("ALTER TABLE scrim_events ADD COLUMN result_url TEXT NOT NULL DEFAULT ''").run();
   }
@@ -222,9 +244,9 @@ async function ensureEventsTable(db) {
   for (const event of DEFAULT_EVENTS) {
     await db.prepare(`
       INSERT OR IGNORE INTO scrim_events (
-        id, event_date, start_time, gather_time, status,
+        id, event_name, event_date, start_time, gather_time, status,
         is_completed, result_url, created_at, updated_at
-      ) VALUES (?, ?, ?, ?, 'open', 0, '', ?, ?)
+      ) VALUES (?, '', ?, ?, ?, 'open', 0, '', ?, ?)
     `).bind(event.id, event.eventDate, event.startTime, event.gatherTime, now, now).run();
   }
 }
@@ -250,6 +272,7 @@ async function syncPastLobby(context, event) {
       if (withoutAuto.length >= MAX_LOBBIES) throw new Error('Past Lobbyの登録件数上限に達しています。');
       withoutAuto.push({
         id: autoId,
+        name: event.eventName || '',
         date: event.eventDate,
         spreadsheetUrl: event.resultUrl,
         createdAt: new Date().toISOString(),
@@ -272,15 +295,16 @@ function serializeEvent(event) {
   return {
     id: event.id,
     eventId: event.id,
+    eventName: event.eventName || '',
     eventDate: event.eventDate,
     startTime: event.startTime,
     gatherTime: event.gatherTime || '',
     status: lifecycle,
     resultUrl: event.resultUrl || '',
-    displayLabel: formatLabel(event.eventDate, event.startTime),
+    displayLabel: formatDisplayLabel(event.eventName, event.eventDate, event.startTime),
     detailLabel: event.gatherTime
-      ? `${formatLabel(event.eventDate, event.startTime)}／${event.gatherTime} 集合`
-      : formatLabel(event.eventDate, event.startTime),
+      ? `${formatDisplayLabel(event.eventName, event.eventDate, event.startTime)}／${event.gatherTime} 集合`
+      : formatDisplayLabel(event.eventName, event.eventDate, event.startTime),
     createdAt: event.createdAt,
     updatedAt: event.updatedAt
   };
@@ -288,7 +312,7 @@ function serializeEvent(event) {
 
 async function findEvent(db, id) {
   return db.prepare(`
-    SELECT id, event_date AS eventDate, start_time AS startTime,
+    SELECT id, event_name AS eventName, event_date AS eventDate, start_time AS startTime,
       gather_time AS gatherTime, status, is_completed AS isCompleted,
       result_url AS resultUrl, created_at AS createdAt, updated_at AS updatedAt
     FROM scrim_events WHERE id = ?
@@ -300,6 +324,11 @@ function formatLabel(eventDate, startTime) {
   if (!date) return `${eventDate} ${startTime} 開始`;
   const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
   return `${date.getUTCMonth() + 1}月${date.getUTCDate()}日（${weekdays[date.getUTCDay()]}）${startTime} 開始`;
+}
+
+function formatDisplayLabel(eventName, eventDate, startTime) {
+  const schedule = formatLabel(eventDate, startTime);
+  return eventName ? `${eventName}｜${schedule}` : schedule;
 }
 
 function authorizeAdmin(context) {
@@ -314,6 +343,13 @@ function normalizeLifecycle(value) {
   if (typeof value !== 'string') return null;
   const lifecycle = value.trim();
   return LIFECYCLES.has(lifecycle) ? lifecycle : null;
+}
+
+function normalizeEventName(value) {
+  if (value === undefined || value === null) return '';
+  if (typeof value !== 'string') return null;
+  const name = value.trim().replace(/\s+/g, ' ');
+  return name.length <= 60 ? name : null;
 }
 
 function normalizeDate(value) {
