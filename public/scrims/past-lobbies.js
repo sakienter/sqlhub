@@ -96,7 +96,7 @@ function loadRegistrationApp() {
 
   if (!document.querySelector('script[src*="registration-app.js"]')) {
     const script = document.createElement('script');
-    script.src = '/scrims/registration-app.js?v=20260728';
+    script.src = '/scrims/registration-app.js?v=20260801-event-name';
     script.defer = true;
     document.body.appendChild(script);
   }
