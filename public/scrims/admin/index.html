@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow" />
   <title>スクリム管理 | Stuntdrake's Avenge!</title>
   <link rel="stylesheet" href="../../common.css" />
-  <link rel="stylesheet" href="./page-style.css?v=20260728" />
+  <link rel="stylesheet" href="./page-style.css?v=20260801-registration-pagination" />
 <link rel="icon" href="/sutantic.png" type="image/png" />
 </head>
 <body>
@@ -38,9 +38,11 @@
           <div class="filters">
             <div class="form-field"><label for="registration-event-filter">日程</label><select id="registration-event-filter"><option value="">すべて</option></select></div>
             <div class="form-field"><label for="registration-status-filter">状態</label><select id="registration-status-filter"><option value="">すべて</option><option value="pending">申請中</option><option value="accepted">参加確定</option><option value="waitlisted">補欠</option><option value="cancelled">辞退</option><option value="rejected">却下</option></select></div>
+            <div class="form-field"><label for="registration-page-size">表示件数</label><select id="registration-page-size"><option value="10">10件</option><option value="20">20件</option><option value="50">50件</option></select></div>
           </div>
-          <div class="count-list" data-registration-counts></div><p class="admin-status" data-registration-status aria-live="polite"></p>
+          <div class="registration-summary"><div class="count-list" data-registration-counts></div><p class="registration-page-info" data-registration-page-info></p></div><p class="admin-status" data-registration-status aria-live="polite"></p>
           <div class="admin-list" data-registration-list><p class="admin-list-empty">管理用パスワードを入力してください。</p></div>
+          <nav class="registration-pager" data-registration-pager aria-label="参加申請のページ送り" hidden><button class="pager-button" type="button" data-registration-prev>前へ</button><span class="pager-current" data-registration-page-current></span><button class="pager-button" type="button" data-registration-next>次へ</button></nav>
         </section>
 
         <section class="admin-section">
@@ -55,6 +57,6 @@
       </div>
     </section>
   </main>
-  <script src="./admin-v2.js?v=20260728" defer></script>
+  <script src="./admin-v2.js?v=20260801-registration-pagination" defer></script>
 </body>
 </html>
