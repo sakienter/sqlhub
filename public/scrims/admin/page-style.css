@@ -17,7 +17,8 @@
     .form-field input:focus,.form-field select:focus,.event-controls input:focus,.event-controls select:focus,.registration-controls input:focus,.registration-controls select:focus{border-color:#0d7f99;box-shadow:0 0 0 3px rgba(13,127,153,.12)}
     .form-help{margin:0;color:#66727c;font-size:12px;font-weight:650;line-height:1.6}
     .admin-form{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .event-create-form{display:grid;grid-template-columns:1fr 160px 160px auto;gap:12px;align-items:end;margin-bottom:18px}
+    .event-create-form{display:grid;grid-template-columns:minmax(220px,1fr) minmax(170px,.65fr) 145px 145px auto;gap:12px;align-items:end;margin-bottom:18px}
+    .event-name-create .form-help{margin-top:-3px}
     .admin-actions{grid-column:1/-1;display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:2px}
     .admin-submit,.auth-button,.save-button{min-height:42px;padding:0 18px;color:#fff;background:#7f2634;border:0;border-radius:9px;font:inherit;font-size:13px;font-weight:900;cursor:pointer;transition:transform .18s ease,opacity .18s ease}
     .auth-button,.save-button{background:#0d667a}
@@ -36,6 +37,7 @@
     .event-row.is-closed{border-left-color:#9b5360;opacity:.82}
     .event-title{margin:0;color:#171b1f;font-size:18px;font-weight:950}.event-meta{margin:7px 0 0;color:#66727c;font-size:12px;font-weight:700}
     .event-controls{display:grid;grid-template-columns:70px 1fr 70px 1fr 70px 1fr;gap:8px;align-items:center}
+    .event-name-label{grid-column:1/2}.event-name-input{grid-column:2/-1}
     .event-actions{grid-column:1/-1;display:flex;justify-content:flex-end;gap:8px;margin-top:2px}
     .registration-row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:18px;padding:17px 18px;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-left:5px solid #d4b052;border-radius:10px}
     .registration-row.status-accepted{border-left-color:#31925c}.registration-row.status-waitlisted{border-left-color:#2584a0}.registration-row.status-cancelled,.registration-row.status-rejected{border-left-color:#9b5360}
@@ -44,8 +46,8 @@
     .registration-controls{display:grid;grid-template-columns:70px minmax(120px,.7fr);gap:8px 10px;align-items:center}.registration-controls label{color:#53616d;font-size:12px;font-weight:850}.registration-actions{grid-column:1/-1;display:flex;justify-content:flex-end;gap:8px;margin-top:2px}
     .delete-button{min-height:34px;padding:0 12px;color:#a12638;background:#fff;border:1px solid rgba(161,38,56,.25);border-radius:8px;font:inherit;font-size:12px;font-weight:900;cursor:pointer}.delete-button:disabled{cursor:wait;opacity:.55}
     .admin-lobby-row{display:grid;grid-template-columns:minmax(120px,.35fr) minmax(0,1fr) auto;align-items:center;gap:14px;padding:15px 16px;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-radius:10px}.admin-lobby-date{color:#171b1f;font-size:15px;font-weight:950}.admin-lobby-link{overflow:hidden;color:#0d667a;font-size:12px;font-weight:750;text-overflow:ellipsis;white-space:nowrap}
-    @media (max-width:900px){.event-create-form{grid-template-columns:1fr 1fr}.event-create-form .admin-submit{grid-column:1/-1}.event-row,.registration-row{grid-template-columns:1fr}.filters{grid-template-columns:1fr 1fr}.filters .refresh-button{grid-column:1/-1;justify-self:start}}
-    @media (max-width:680px){.admin-shell{width:min(100% - 20px,1100px);padding-top:16px}.admin-heading,.admin-body{padding:22px 18px}.auth-box,.admin-form,.event-create-form,.filters{grid-template-columns:1fr}.form-field.full,.admin-actions,.event-create-form .admin-submit{grid-column:auto}.section-heading{align-items:flex-start;flex-direction:column}.event-controls,.registration-controls{grid-template-columns:1fr}.event-controls label,.registration-controls label,.event-actions,.registration-actions{grid-column:1}.event-actions,.registration-actions{justify-content:flex-start}.admin-lobby-row{grid-template-columns:1fr}.admin-lobby-link{white-space:normal;overflow-wrap:anywhere}.delete-button{justify-self:start}}
+    @media (max-width:900px){.event-create-form{grid-template-columns:1fr 1fr}.event-name-create{grid-column:1/-1}.event-create-form .admin-submit{grid-column:1/-1}.event-row,.registration-row{grid-template-columns:1fr}.filters{grid-template-columns:1fr 1fr}.filters .refresh-button{grid-column:1/-1;justify-self:start}}
+    @media (max-width:680px){.admin-shell{width:min(100% - 20px,1100px);padding-top:16px}.admin-heading,.admin-body{padding:22px 18px}.auth-box,.admin-form,.event-create-form,.filters{grid-template-columns:1fr}.form-field.full,.event-name-create,.admin-actions,.event-create-form .admin-submit{grid-column:auto}.section-heading{align-items:flex-start;flex-direction:column}.event-controls,.registration-controls{grid-template-columns:1fr}.event-controls label,.event-name-input,.registration-controls label,.event-actions,.registration-actions{grid-column:1}.event-actions,.registration-actions{justify-content:flex-start}.admin-lobby-row{grid-template-columns:1fr}.admin-lobby-link{white-space:normal;overflow-wrap:anywhere}.delete-button{justify-self:start}}
 
 
 /* Registration pagination */
