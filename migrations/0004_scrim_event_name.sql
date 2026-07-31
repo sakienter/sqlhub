@@ -1,0 +1,1 @@
+ALTER TABLE scrim_events ADD COLUMN event_name TEXT NOT NULL DEFAULT '';
