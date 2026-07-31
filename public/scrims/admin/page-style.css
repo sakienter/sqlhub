@@ -46,3 +46,16 @@
     .admin-lobby-row{display:grid;grid-template-columns:minmax(120px,.35fr) minmax(0,1fr) auto;align-items:center;gap:14px;padding:15px 16px;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-radius:10px}.admin-lobby-date{color:#171b1f;font-size:15px;font-weight:950}.admin-lobby-link{overflow:hidden;color:#0d667a;font-size:12px;font-weight:750;text-overflow:ellipsis;white-space:nowrap}
     @media (max-width:900px){.event-create-form{grid-template-columns:1fr 1fr}.event-create-form .admin-submit{grid-column:1/-1}.event-row,.registration-row{grid-template-columns:1fr}.filters{grid-template-columns:1fr 1fr}.filters .refresh-button{grid-column:1/-1;justify-self:start}}
     @media (max-width:680px){.admin-shell{width:min(100% - 20px,1100px);padding-top:16px}.admin-heading,.admin-body{padding:22px 18px}.auth-box,.admin-form,.event-create-form,.filters{grid-template-columns:1fr}.form-field.full,.admin-actions,.event-create-form .admin-submit{grid-column:auto}.section-heading{align-items:flex-start;flex-direction:column}.event-controls,.registration-controls{grid-template-columns:1fr}.event-controls label,.registration-controls label,.event-actions,.registration-actions{grid-column:1}.event-actions,.registration-actions{justify-content:flex-start}.admin-lobby-row{grid-template-columns:1fr}.admin-lobby-link{white-space:normal;overflow-wrap:anywhere}.delete-button{justify-self:start}}
+
+
+/* Registration pagination */
+.registration-summary{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:14px 0}
+.registration-summary .count-list{margin:0}
+.registration-page-info{flex:0 0 auto;margin:0;color:#66727c;font-size:12px;font-weight:800}
+.registration-pager{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:18px}
+.registration-pager[hidden]{display:none}
+.pager-button{min-width:86px;min-height:38px;padding:0 14px;color:#0d667a;background:#fff;border:1px solid rgba(13,102,122,.24);border-radius:9px;font:inherit;font-size:12px;font-weight:900;cursor:pointer;transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.pager-button:hover:not(:disabled){background:#eaf6fa;border-color:rgba(13,102,122,.42);transform:translateY(-1px)}
+.pager-button:disabled{color:#98a1a8;background:#f5f7f8;border-color:rgba(24,33,40,.08);cursor:not-allowed}
+.pager-current{min-width:92px;color:#171b1f;font-size:12px;font-weight:900;text-align:center}
+@media (max-width:680px){.registration-summary{align-items:flex-start;flex-direction:column}}
