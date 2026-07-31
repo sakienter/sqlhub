@@ -24,6 +24,7 @@
         <section class="admin-section">
           <div class="section-heading"><div><h2>開催日程管理</h2><p>ここで作成した受付中の日程が、公開ページのプルダウンへ自動追加されます。</p></div><button class="refresh-button" type="button" data-event-refresh>再読み込み</button></div>
           <form class="event-create-form" data-event-form>
+            <div class="form-field event-name-create"><label for="event-name">スクリム名</label><input id="event-name" type="text" maxlength="60" placeholder="例：大会前練習会・初心者スクリム" /><p class="form-help">未入力の場合は日付だけで表示されます。</p></div>
             <div class="form-field"><label for="event-date">開催日</label><input id="event-date" type="date" required /></div>
             <div class="form-field"><label for="event-start-time">開始時刻</label><input id="event-start-time" type="time" value="21:00" required /></div>
             <div class="form-field"><label for="event-gather-time">集合時刻</label><input id="event-gather-time" type="time" value="20:30" /></div>
@@ -57,6 +58,6 @@
       </div>
     </section>
   </main>
-  <script src="./admin-v2.js?v=20260801-registration-pagination" defer></script>
+  <script src="./admin-v2.js?v=20260801-event-name" defer></script>
 </body>
 </html>
