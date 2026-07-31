@@ -51,7 +51,7 @@ export async function onRequestPost(context) {
 
   try {
     await ensureEvents(db);
-    const event = await db.prepare(`SELECT id, event_date AS eventDate,
+    const event = await db.prepare(`SELECT id, event_name AS eventName, event_date AS eventDate,
       start_time AS startTime, status FROM scrim_events WHERE id = ?`).bind(eventId).first();
     if (!event || event.status !== 'open') {
       return json({ error: 'この日程は現在参加申請を受け付けていません。' }, 400);
@@ -60,7 +60,7 @@ export async function onRequestPost(context) {
     const id = crypto.randomUUID();
     const now = new Date().toISOString();
     const applicationCode = `SCRIM-${id.replace(/-/g,'').slice(0,8).toUpperCase()}`;
-    const eventLabel = displayLabel(event.eventDate, event.startTime);
+    const eventLabel = displayEventLabel(event.eventName, event.eventDate, event.startTime);
 
     await db.prepare(`INSERT INTO scrim_registrations (
       id, application_code, event_id, event_label,
@@ -125,10 +125,16 @@ export async function onRequestDelete(context) {
 async function ensureEvents(db) {
   await db.prepare(`CREATE TABLE IF NOT EXISTS scrim_events (
     id TEXT PRIMARY KEY, event_date TEXT NOT NULL UNIQUE,
+    event_name TEXT NOT NULL DEFAULT '',
     start_time TEXT NOT NULL, gather_time TEXT NOT NULL DEFAULT '',
     status TEXT NOT NULL DEFAULT 'open' CHECK (status IN ('open','closed')),
     created_at TEXT NOT NULL, updated_at TEXT NOT NULL
   )`).run();
+  const info = await db.prepare('PRAGMA table_info(scrim_events)').all();
+  const columns = new Set((info.results || []).map((column) => column.name));
+  if (!columns.has('event_name')) {
+    await db.prepare("ALTER TABLE scrim_events ADD COLUMN event_name TEXT NOT NULL DEFAULT ''").run();
+  }
   const now = new Date().toISOString();
   for (const [date,start,gather] of DEFAULT_EVENTS) {
     await db.prepare(`INSERT OR IGNORE INTO scrim_events
@@ -142,6 +148,10 @@ function displayLabel(value,time) {
   if (!date) return `${value} ${time} 開始`;
   const days = ['日','月','火','水','木','金','土'];
   return `${date.getUTCMonth()+1}月${date.getUTCDate()}日（${days[date.getUTCDay()]}）${time} 開始`;
+}
+function displayEventLabel(name,value,time) {
+  const schedule = displayLabel(value,time);
+  return name ? `${name}｜${schedule}` : schedule;
 }
 function parseDate(value) {
   const m = String(value || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
