@@ -44,10 +44,19 @@ const eventRefresh = document.querySelector('[data-event-refresh]');
 
 const registrationEventFilter = document.querySelector('#registration-event-filter');
 const registrationStatusFilter = document.querySelector('#registration-status-filter');
+const registrationPageSize = document.querySelector('#registration-page-size');
 const registrationStatus = document.querySelector('[data-registration-status]');
 const registrationCounts = document.querySelector('[data-registration-counts]');
 const registrationList = document.querySelector('[data-registration-list]');
 const registrationRefresh = document.querySelector('[data-registration-refresh]');
+const registrationPageInfo = document.querySelector('[data-registration-page-info]');
+const registrationPager = document.querySelector('[data-registration-pager]');
+const registrationPageCurrent = document.querySelector('[data-registration-page-current]');
+const registrationPrev = document.querySelector('[data-registration-prev]');
+const registrationNext = document.querySelector('[data-registration-next]');
+
+let registrationItems = [];
+let registrationCurrentPage = 1;
 
 const lobbyForm = document.querySelector('[data-lobby-form]');
 const lobbyDateInput = document.querySelector('#lobby-date');
@@ -442,6 +451,33 @@ function createRegistrationRow(registration) {
   return row;
 }
 
+function renderRegistrationPage() {
+  const pageSize = Math.max(1, Number(registrationPageSize?.value || 10));
+  const totalItems = registrationItems.length;
+  const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
+  registrationCurrentPage = Math.min(Math.max(1, registrationCurrentPage), totalPages);
+
+  if (!totalItems) {
+    empty(registrationList, '条件に一致する参加申請はありません。');
+    registrationPageInfo.textContent = '表示 0件';
+    registrationPager.hidden = true;
+    return;
+  }
+
+  const start = (registrationCurrentPage - 1) * pageSize;
+  const end = Math.min(start + pageSize, totalItems);
+  registrationList.innerHTML = '';
+  registrationItems.slice(start, end).forEach((item) => {
+    registrationList.appendChild(createRegistrationRow(item));
+  });
+
+  registrationPageInfo.textContent = `${start + 1}〜${end}件を表示 ／ 該当 ${totalItems}件`;
+  registrationPageCurrent.textContent = `${registrationCurrentPage} / ${totalPages}ページ`;
+  registrationPrev.disabled = registrationCurrentPage <= 1;
+  registrationNext.disabled = registrationCurrentPage >= totalPages;
+  registrationPager.hidden = totalPages <= 1;
+}
+
 async function loadRegistrations() {
   if (!token()) {
     empty(registrationList, '管理用パスワードを入力してください。');
@@ -460,13 +496,13 @@ async function loadRegistrations() {
     const items = Array.isArray(data.registrations) ? data.registrations : [];
     renderCounts(data.counts);
 
-    if (!items.length) empty(registrationList, '条件に一致する参加申請はありません。');
-    else {
-      registrationList.innerHTML = '';
-      items.forEach((item) => registrationList.appendChild(createRegistrationRow(item)));
-    }
+    registrationItems = items;
+    renderRegistrationPage();
   } catch (error) {
+    registrationItems = [];
     empty(registrationList, '参加申請を読み込めませんでした。');
+    registrationPageInfo.textContent = '';
+    registrationPager.hidden = true;
     renderCounts();
     setMessage(registrationStatus, error.message, 'error');
   }
@@ -584,8 +620,19 @@ lobbyDateInput.value = today;
 authButton?.addEventListener('click', loadAdminData);
 eventRefresh?.addEventListener('click', loadEvents);
 registrationRefresh?.addEventListener('click', loadRegistrations);
-registrationEventFilter?.addEventListener('change', loadRegistrations);
-registrationStatusFilter?.addEventListener('change', loadRegistrations);
+registrationEventFilter?.addEventListener('change', () => { registrationCurrentPage = 1; loadRegistrations(); });
+registrationStatusFilter?.addEventListener('change', () => { registrationCurrentPage = 1; loadRegistrations(); });
+registrationPageSize?.addEventListener('change', () => { registrationCurrentPage = 1; renderRegistrationPage(); });
+registrationPrev?.addEventListener('click', () => {
+  registrationCurrentPage -= 1;
+  renderRegistrationPage();
+  registrationList.scrollIntoView({ behavior:'smooth', block:'start' });
+});
+registrationNext?.addEventListener('click', () => {
+  registrationCurrentPage += 1;
+  renderRegistrationPage();
+  registrationList.scrollIntoView({ behavior:'smooth', block:'start' });
+});
 lobbyRefresh?.addEventListener('click', loadLobbies);
 tokenInput?.addEventListener('change', saveToken);
 
