@@ -35,6 +35,7 @@ const authButton = document.querySelector('[data-auth-load]');
 const authStatus = document.querySelector('[data-auth-status]');
 
 const eventForm = document.querySelector('[data-event-form]');
+const eventNameInput = document.querySelector('#event-name');
 const eventDateInput = document.querySelector('#event-date');
 const eventStartInput = document.querySelector('#event-start-time');
 const eventGatherInput = document.querySelector('#event-gather-time');
@@ -165,6 +166,16 @@ function createEventRow(event) {
   const controls = document.createElement('div');
   controls.className = 'event-controls';
 
+  const nameLabel = document.createElement('label');
+  nameLabel.className = 'event-name-label';
+  nameLabel.textContent = 'スクリム名';
+  const nameInput = document.createElement('input');
+  nameInput.className = 'event-name-input';
+  nameInput.type = 'text';
+  nameInput.maxLength = 60;
+  nameInput.placeholder = '例：大会前練習会';
+  nameInput.value = event.eventName || '';
+
   const startLabel = document.createElement('label');
   startLabel.textContent = '開始';
   const startInput = document.createElement('input');
@@ -232,6 +243,7 @@ function createEventRow(event) {
     try {
       const data = await api(EVENTS_API, 'PATCH', {
         id: event.id,
+        eventName: nameInput.value.trim(),
         startTime: startInput.value,
         gatherTime: gatherInput.value,
         status: statusSelect.value,
@@ -275,6 +287,7 @@ function createEventRow(event) {
 
   actions.append(save, remove);
   controls.append(
+    nameLabel, nameInput,
     startLabel, startInput,
     gatherLabel, gatherInput,
     statusLabel, statusSelect,
@@ -324,12 +337,14 @@ eventForm?.addEventListener('submit', async (event) => {
 
   try {
     await api(EVENTS_API, 'POST', {
+      eventName: eventNameInput.value.trim(),
       eventDate: eventDateInput.value,
       startTime: eventStartInput.value,
       gatherTime: eventGatherInput.value
     }, true);
     saveToken();
     eventDateInput.value = '';
+    eventNameInput.value = '';
     setMessage(eventStatus, '新しい日程を作成しました。公開フォームへ自動反映されます。', 'success');
     await loadEvents();
   } catch (error) {
