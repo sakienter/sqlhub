@@ -154,8 +154,8 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 }
 
 #past-tournaments .dopamine-cup-card > div {
-  align-self: flex-end;
-  margin-left: auto;
+  align-self: flex-start;
+  margin-left: 0;
 }
 
 #past-tournaments .dopamine-cup-card .tournament-card-subtitle {
