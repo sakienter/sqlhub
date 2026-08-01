@@ -106,30 +106,12 @@
 
 .rule-list li + li { margin-top: 7px; }
 
-.prize-note {
-  margin-top: 22px;
-  padding: 16px 18px;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  background: linear-gradient(110deg, rgba(255, 244, 205, .90), rgba(255, 252, 238, .96));
-  border: 1px solid rgba(178, 127, 28, .28);
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(78, 51, 9, .08);
-}
-
-.prize-note span {
-  flex: 0 0 auto;
-  color: #805c16;
-  font-size: 13px;
-  font-weight: 950;
-  letter-spacing: .06em;
-}
-
-.prize-note strong {
-  color: #3a2a0b;
-  font-size: 17px;
-  font-weight: 950;
+.prize-text {
+  margin: 20px 0 0;
+  color: #1f2a33;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.8;
 }
 
 .result-body p {
@@ -243,7 +225,6 @@
   .dopamine-hero .back-link { min-height: 32px; padding: 0 12px; font-size: 11px; }
   .dopamine-date { min-height: 30px; padding: 0 10px; font-size: 11px; }
   .overview-list > div { grid-template-columns: 1fr; gap: 5px; }
-  .prize-note { align-items: flex-start; flex-direction: column; gap: 5px; }
   .winner-panel { padding: 20px 18px; }
   .flyer-link { border-radius: 10px; }
 }
