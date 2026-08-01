@@ -145,38 +145,36 @@
 
 .winner-panel {
   margin: 0 0 24px;
-  padding: 23px 24px;
-  background:
-    radial-gradient(circle at 90% 15%, rgba(222, 77, 207, .20), transparent 30%),
-    linear-gradient(120deg, #071826, #123f50 58%, #542038);
-  border: 1px solid rgba(255,255,255,.22);
-  border-radius: 14px;
-  box-shadow: 0 14px 28px rgba(3, 14, 24, .20);
+  padding: 22px 24px 20px;
+  background: #f8f5ed;
+  border: 1px solid rgba(31, 42, 51, .13);
+  border-left: 5px solid #8e2638;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(3, 14, 24, .08);
 }
 
 .winner-panel .winner-label {
   margin: 0 0 5px;
-  color: rgba(255,255,255,.64);
+  color: #7a858d;
   font-size: 11px;
-  font-weight: 950;
-  letter-spacing: .18em;
+  font-weight: 850;
+  letter-spacing: .14em;
 }
 
 .winner-panel h2 {
   margin: 0;
-  color: #fff;
-  font-size: clamp(27px, 4vw, 42px);
-  font-weight: 950;
-  letter-spacing: -.025em;
-  text-shadow: 0 5px 18px rgba(0,0,0,.38);
+  color: #17232c;
+  font-size: clamp(25px, 3.4vw, 36px);
+  font-weight: 900;
+  letter-spacing: -.015em;
 }
 
 .winner-x-link {
   display: inline-block;
   margin-top: 13px;
   padding-bottom: 3px;
-  color: #c9f3ff;
-  border-bottom: 1px solid rgba(201,243,255,.42);
+  color: #087b91;
+  border-bottom: 1px solid rgba(8,123,145,.32);
   font-size: 14px;
   font-weight: 850;
   text-decoration: none;
@@ -184,8 +182,8 @@
 }
 
 .winner-x-link:hover {
-  color: #fff;
-  border-color: #fff;
+  color: #8e2638;
+  border-color: currentColor;
 }
 
 .result-link {
@@ -195,10 +193,10 @@
   min-height: 46px;
   padding: 0 20px;
   color: #fff;
-  background: linear-gradient(120deg, #0b5d76, #7f263b);
-  border: 1px solid rgba(255,255,255,.24);
-  border-radius: 10px;
-  box-shadow: 0 9px 20px rgba(3, 14, 24, .20);
+  background: #174f61;
+  border: 1px solid #174f61;
+  border-radius: 8px;
+  box-shadow: 0 5px 13px rgba(3, 14, 24, .14);
   font-size: 14px;
   font-weight: 900;
   text-decoration: none;
@@ -206,8 +204,9 @@
 }
 
 .result-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 13px 26px rgba(3, 14, 24, .28);
+  transform: translateY(-1px);
+  background: #123f4d;
+  box-shadow: 0 8px 18px rgba(3, 14, 24, .18);
 }
 
 .flyer-body {
