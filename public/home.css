@@ -134,6 +134,24 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 #past-tournaments .east-west-card .card-cta{color:#fff;background:rgba(55,61,67,.62);border:1px solid rgba(255,255,255,.58);box-shadow:0 6px 16px rgba(3,14,24,.36);text-shadow:0 1px 5px rgba(0,0,0,.78);backdrop-filter:blur(5px)}
 #past-tournaments .east-west-card:hover .card-cta{background:rgba(89,97,105,.78);box-shadow:0 9px 20px rgba(3,14,24,.44)}
 
+#past-tournaments .dopamine-cup-card {
+  --wipe-image:
+    radial-gradient(circle at 82% 28%, rgba(255,255,255,.22), transparent 24%),
+    linear-gradient(125deg, #071827 0%, #0b5671 48%, #8b2638 100%);
+  --wipe-image-position: center;
+  border-color: rgba(16, 112, 139, .30);
+  box-shadow: 0 12px 28px rgba(3, 18, 30, .24);
+}
+
+#past-tournaments .dopamine-cup-card::after {
+  background:
+    linear-gradient(110deg, transparent 0 48%, rgba(255,255,255,.10) 48.5%, transparent 59%),
+    repeating-linear-gradient(90deg, transparent 0 28px, rgba(255,255,255,.025) 28px 29px);
+  opacity: .82;
+}
+
+#past-tournaments .dopamine-cup-card:hover::after { opacity: 1; }
+
 #past-tournaments .yoidore-card {
   --wipe-image: linear-gradient(90deg, rgba(40,18,8,.76) 0%, rgba(40,18,8,.46) 42%, rgba(40,18,8,.12) 72%, rgba(40,18,8,.04) 100%), url('/tournaments/yoidore/banner.webp?v=20260728');
   --wipe-image-position: center 42%;
