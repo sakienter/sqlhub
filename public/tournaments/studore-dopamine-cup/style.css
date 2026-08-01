@@ -115,6 +115,26 @@
   line-height: 1.8;
 }
 
+.organizer-text {
+  margin: 4px 0 0;
+  color: #1f2a33;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+.organizer-text a {
+  color: #087b91;
+  text-decoration: underline;
+  text-decoration-color: rgba(8, 123, 145, 0.35);
+  text-underline-offset: 3px;
+}
+
+.organizer-text a:hover {
+  color: #8e2638;
+  text-decoration-color: currentColor;
+}
+
 .result-body p {
   margin: 0 0 18px;
   color: #27333d;
