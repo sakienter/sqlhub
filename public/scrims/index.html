@@ -22,7 +22,7 @@
   <meta name="twitter:image:alt" content="Hearthstone Battlegrounds 練習会・フレ戦 スクリム募集ページ" />
   <link rel="canonical" href="https://stuntdrakesavenge.pages.dev/scrims/" />
   <link rel="stylesheet" href="../common.css" />
-  <link rel="stylesheet" href="./style.css?v=20260728" />
+  <link rel="stylesheet" href="./style.css?v=20260801-reception-window" />
   <link rel="stylesheet" href="/footer-updated.css?v=20260728" />
 <link rel="icon" href="/sutantic.png" type="image/png" />
 </head>
@@ -131,7 +131,8 @@
       const GAS_URL = 'https://script.google.com/macros/s/AKfycbwAOzVDHW00L_jhQIRev1_MP5trFFMizYuCToeu8LsOWuX6hd530jjrLEFQ94Mi78L1QQ/exec';
       const form = document.getElementById('scrimEntryForm');
       const formView = document.getElementById('scrimEntryFormView');
-      const cards = [...document.querySelectorAll('.schedule-card')];
+      const scheduleGrid = document.querySelector('.schedule-grid');
+      let cards = [...document.querySelectorAll('.schedule-card')];
       const battleTagInput = document.getElementById('scrim-btag');
       const twitterInput = document.getElementById('scrim-twitter');
       const submitButton = document.getElementById('scrimEntrySubmit');
@@ -144,6 +145,7 @@
       let isSubmitting = false;
 
       function selectEvent(card) {
+        if (card.disabled) return;
         cards.forEach((item) => {
           const isSelected = item === card;
           item.classList.toggle('selected', isSelected);
@@ -153,7 +155,7 @@
         selectedEvent = {
           id: card.dataset.eventId,
           date: card.dataset.date,
-          label: `${card.dataset.date} 20:30集合／21:00開始`
+          label: card.dataset.label || card.dataset.date
         };
 
         errorMessage.style.display = 'none';
@@ -222,7 +224,65 @@
         validateForm();
       }
 
-      cards.forEach((card) => card.addEventListener('click', () => selectEvent(card)));
+      function bindScheduleCards() {
+        cards.forEach((card) => card.addEventListener('click', () => selectEvent(card)));
+      }
+
+      function formatReception(value) {
+        if (!value) return '';
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) return '';
+        return new Intl.DateTimeFormat('ja-JP', {
+          timeZone: 'Asia/Tokyo', month: 'numeric', day: 'numeric',
+          hour: '2-digit', minute: '2-digit'
+        }).format(date);
+      }
+
+      async function loadScheduleCards() {
+        try {
+          const response = await fetch('/api/scrims/events', { cache: 'no-store' });
+          if (!response.ok) return;
+          const data = await response.json();
+          const events = Array.isArray(data.events) ? data.events : [];
+          if (!events.length) return;
+
+          scheduleGrid.replaceChildren();
+          events.forEach((scrim, index) => {
+            const card = document.createElement('button');
+            card.className = 'schedule-card';
+            card.type = 'button';
+            card.dataset.eventId = scrim.eventId;
+            card.dataset.date = scrim.displayLabel;
+            card.dataset.label = scrim.detailLabel;
+            card.setAttribute('aria-pressed', 'false');
+            card.disabled = scrim.receptionStatus !== 'open';
+
+            const number = document.createElement('p');
+            number.className = 'schedule-number';
+            number.textContent = scrim.eventName || `SCRIM #${index + 1}`;
+            const heading = document.createElement('h4');
+            heading.textContent = scrim.displayLabel.replace(scrim.eventName ? `${scrim.eventName}｜` : '', '');
+            const time = document.createElement('p');
+            time.className = 'schedule-time';
+            time.textContent = `${scrim.gatherTime ? `${scrim.gatherTime}集合 ／ ` : ''}${scrim.startTime}開始`;
+            const status = document.createElement('p');
+            status.className = 'schedule-status';
+            if (scrim.receptionStatus === 'upcoming') status.textContent = `受付開始前（${formatReception(scrim.receptionOpenAt)}〜）`;
+            else if (scrim.receptionStatus === 'closed') status.textContent = '受付終了';
+            else if (scrim.receptionCloseAt) status.textContent = `受付中（${formatReception(scrim.receptionCloseAt)}まで）`;
+            else status.textContent = '受付中';
+            card.append(number, heading, time, status);
+            scheduleGrid.appendChild(card);
+          });
+          cards = [...scheduleGrid.querySelectorAll('.schedule-card')];
+          bindScheduleCards();
+          validateForm();
+        } catch (error) {
+          console.warn('開催日程を取得できませんでした。', error);
+        }
+      }
+
+      bindScheduleCards();
       [battleTagInput, twitterInput].forEach((input) => input.addEventListener('input', () => {
         errorMessage.style.display = 'none';
         validateForm();
@@ -273,6 +333,7 @@
         }
       });
 
+      loadScheduleCards();
       validateForm();
     })();
   </script>
