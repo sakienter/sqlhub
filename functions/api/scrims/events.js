@@ -24,7 +24,8 @@ export async function onRequestGet(context) {
     const where = includeAll ? 'WHERE is_completed = 0' : "WHERE status = 'open' AND is_completed = 0";
     const result = await db.prepare(`
       SELECT id, event_name AS eventName, event_date AS eventDate, start_time AS startTime,
-        gather_time AS gatherTime, status, is_completed AS isCompleted,
+        gather_time AS gatherTime, reception_open_at AS receptionOpenAt,
+        reception_close_at AS receptionCloseAt, status, is_completed AS isCompleted,
         result_url AS resultUrl, created_at AS createdAt, updated_at AS updatedAt
       FROM scrim_events
       ${where}
@@ -50,11 +51,16 @@ export async function onRequestPost(context) {
   const eventDate = normalizeDate(body?.eventDate ?? body?.date);
   const startTime = normalizeTime(body?.startTime);
   const gatherTime = normalizeOptionalTime(body?.gatherTime);
+  const receptionOpenAt = normalizeReceptionDateTime(body?.receptionOpenAt);
+  const receptionCloseAt = normalizeReceptionDateTime(body?.receptionCloseAt);
 
   if (eventName === null) return json({ error: 'スクリム名は60文字以内で入力してください。' }, 400);
   if (!eventDate) return json({ error: '開催日を正しく入力してください。' }, 400);
   if (!startTime) return json({ error: '開始時刻を正しく入力してください。' }, 400);
   if (body?.gatherTime && !gatherTime) return json({ error: '集合時刻を正しく入力してください。' }, 400);
+  if (body?.receptionOpenAt && !receptionOpenAt) return json({ error: '受付開始日時を正しく入力してください。' }, 400);
+  if (body?.receptionCloseAt && !receptionCloseAt) return json({ error: '受付終了日時を正しく入力してください。' }, 400);
+  if (receptionOpenAt && receptionCloseAt && receptionOpenAt >= receptionCloseAt) return json({ error: '受付終了日時は、受付開始日時より後に設定してください。' }, 400);
 
   const now = new Date().toISOString();
 
@@ -62,10 +68,10 @@ export async function onRequestPost(context) {
     await ensureEventsTable(db);
     await db.prepare(`
       INSERT INTO scrim_events (
-        id, event_name, event_date, start_time, gather_time, status,
+        id, event_name, event_date, start_time, gather_time, reception_open_at, reception_close_at, status,
         is_completed, result_url, created_at, updated_at
-      ) VALUES (?, ?, ?, ?, ?, 'open', 0, '', ?, ?)
-    `).bind(eventDate, eventName, eventDate, startTime, gatherTime, now, now).run();
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, 'open', 0, '', ?, ?)
+    `).bind(eventDate, eventName, eventDate, startTime, gatherTime, receptionOpenAt, receptionCloseAt, now, now).run();
 
     return json({ event: serializeEvent(await findEvent(db, eventDate)) }, 201);
   } catch (error) {
@@ -88,6 +94,8 @@ export async function onRequestPatch(context) {
   const eventName = normalizeEventName(body?.eventName ?? body?.name);
   const startTime = normalizeTime(body?.startTime);
   const gatherTime = normalizeOptionalTime(body?.gatherTime);
+  const receptionOpenAt = normalizeReceptionDateTime(body?.receptionOpenAt);
+  const receptionCloseAt = normalizeReceptionDateTime(body?.receptionCloseAt);
   const lifecycle = normalizeLifecycle(body?.status);
   const resultUrl = normalizeSpreadsheetUrl(body?.resultUrl);
 
@@ -95,6 +103,9 @@ export async function onRequestPatch(context) {
   if (eventName === null) return json({ error: 'スクリム名は60文字以内で入力してください。' }, 400);
   if (!startTime) return json({ error: '開始時刻を正しく入力してください。' }, 400);
   if (body?.gatherTime && !gatherTime) return json({ error: '集合時刻を正しく入力してください。' }, 400);
+  if (body?.receptionOpenAt && !receptionOpenAt) return json({ error: '受付開始日時を正しく入力してください。' }, 400);
+  if (body?.receptionCloseAt && !receptionCloseAt) return json({ error: '受付終了日時を正しく入力してください。' }, 400);
+  if (receptionOpenAt && receptionCloseAt && receptionOpenAt >= receptionCloseAt) return json({ error: '受付終了日時は、受付開始日時より後に設定してください。' }, 400);
   if (!lifecycle) return json({ error: '開催状態が正しくありません。' }, 400);
   if (body?.resultUrl && !resultUrl) return json({ error: 'GoogleスプレッドシートのURLを正しく入力してください。' }, 400);
   if (lifecycle === 'completed' && !resultUrl) {
@@ -115,10 +126,10 @@ export async function onRequestPatch(context) {
 
     await db.prepare(`
       UPDATE scrim_events
-      SET event_name = ?, start_time = ?, gather_time = ?, status = ?, is_completed = ?,
+      SET event_name = ?, start_time = ?, gather_time = ?, reception_open_at = ?, reception_close_at = ?, status = ?, is_completed = ?,
         result_url = ?, updated_at = ?
       WHERE id = ?
-    `).bind(eventName, startTime, gatherTime, storedStatus, completed, resultUrl || '', now, id).run();
+    `).bind(eventName, startTime, gatherTime, receptionOpenAt, receptionCloseAt, storedStatus, completed, resultUrl || '', now, id).run();
 
     const updatedLabel = formatDisplayLabel(eventName, previous.eventDate, startTime);
     await db.prepare(`
@@ -136,13 +147,15 @@ export async function onRequestPatch(context) {
     } catch (syncError) {
       await db.prepare(`
         UPDATE scrim_events
-        SET event_name = ?, start_time = ?, gather_time = ?, status = ?, is_completed = ?,
+        SET event_name = ?, start_time = ?, gather_time = ?, reception_open_at = ?, reception_close_at = ?, status = ?, is_completed = ?,
           result_url = ?, updated_at = ?
         WHERE id = ?
       `).bind(
         previous.eventName || '',
         previous.startTime,
         previous.gatherTime || '',
+        previous.receptionOpenAt || '',
+        previous.receptionCloseAt || '',
         previous.status,
         Number(previous.isCompleted || 0),
         previous.resultUrl || '',
@@ -214,6 +227,8 @@ async function ensureEventsTable(db) {
       event_date TEXT NOT NULL UNIQUE,
       start_time TEXT NOT NULL,
       gather_time TEXT NOT NULL DEFAULT '',
+      reception_open_at TEXT NOT NULL DEFAULT '',
+      reception_close_at TEXT NOT NULL DEFAULT '',
       status TEXT NOT NULL DEFAULT 'open' CHECK (status IN ('open', 'closed')),
       is_completed INTEGER NOT NULL DEFAULT 0,
       result_url TEXT NOT NULL DEFAULT '',
@@ -234,6 +249,8 @@ async function ensureEventsTable(db) {
   if (!columns.has('result_url')) {
     await db.prepare("ALTER TABLE scrim_events ADD COLUMN result_url TEXT NOT NULL DEFAULT ''").run();
   }
+  if (!columns.has('reception_open_at')) await db.prepare("ALTER TABLE scrim_events ADD COLUMN reception_open_at TEXT NOT NULL DEFAULT ''").run();
+  if (!columns.has('reception_close_at')) await db.prepare("ALTER TABLE scrim_events ADD COLUMN reception_close_at TEXT NOT NULL DEFAULT ''").run();
 
   await db.prepare(`
     CREATE INDEX IF NOT EXISTS idx_scrim_events_status_date
@@ -244,9 +261,9 @@ async function ensureEventsTable(db) {
   for (const event of DEFAULT_EVENTS) {
     await db.prepare(`
       INSERT OR IGNORE INTO scrim_events (
-        id, event_name, event_date, start_time, gather_time, status,
+        id, event_name, event_date, start_time, gather_time, reception_open_at, reception_close_at, status,
         is_completed, result_url, created_at, updated_at
-      ) VALUES (?, '', ?, ?, ?, 'open', 0, '', ?, ?)
+      ) VALUES (?, '', ?, ?, ?, '', '', 'open', 0, '', ?, ?)
     `).bind(event.id, event.eventDate, event.startTime, event.gatherTime, now, now).run();
   }
 }
@@ -299,6 +316,9 @@ function serializeEvent(event) {
     eventDate: event.eventDate,
     startTime: event.startTime,
     gatherTime: event.gatherTime || '',
+    receptionOpenAt: event.receptionOpenAt || '',
+    receptionCloseAt: event.receptionCloseAt || '',
+    receptionStatus: receptionStatus(event),
     status: lifecycle,
     resultUrl: event.resultUrl || '',
     displayLabel: formatDisplayLabel(event.eventName, event.eventDate, event.startTime),
@@ -313,7 +333,8 @@ function serializeEvent(event) {
 async function findEvent(db, id) {
   return db.prepare(`
     SELECT id, event_name AS eventName, event_date AS eventDate, start_time AS startTime,
-      gather_time AS gatherTime, status, is_completed AS isCompleted,
+      gather_time AS gatherTime, reception_open_at AS receptionOpenAt,
+      reception_close_at AS receptionCloseAt, status, is_completed AS isCompleted,
       result_url AS resultUrl, created_at AS createdAt, updated_at AS updatedAt
     FROM scrim_events WHERE id = ?
   `).bind(id).first();
@@ -379,6 +400,23 @@ function normalizeTime(value) {
 function normalizeOptionalTime(value) {
   if (typeof value !== 'string' || !value.trim()) return '';
   return normalizeTime(value);
+}
+
+function normalizeReceptionDateTime(value) {
+  if (typeof value !== 'string' || !value.trim()) return '';
+  const trimmed = value.trim();
+  const local = trimmed.match(/^(\d{4}-\d{2}-\d{2})T([01]\d|2[0-3]):([0-5]\d)$/);
+  const date = local ? new Date(`${local[1]}T${local[2]}:${local[3]}:00+09:00`) : new Date(trimmed);
+  return Number.isNaN(date.getTime()) ? null : date.toISOString();
+}
+
+function receptionStatus(event) {
+  const now = Date.now();
+  const opens = event.receptionOpenAt ? Date.parse(event.receptionOpenAt) : NaN;
+  const closes = event.receptionCloseAt ? Date.parse(event.receptionCloseAt) : NaN;
+  if (!Number.isNaN(opens) && now < opens) return 'upcoming';
+  if (!Number.isNaN(closes) && now >= closes) return 'closed';
+  return 'open';
 }
 
 function normalizeSpreadsheetUrl(value) {
