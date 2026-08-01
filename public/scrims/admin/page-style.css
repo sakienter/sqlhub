@@ -72,3 +72,10 @@
 .pager-button:disabled{color:#98a1a8;background:#f5f7f8;border-color:rgba(24,33,40,.08);cursor:not-allowed}
 .pager-current{min-width:92px;color:#171b1f;font-size:12px;font-weight:900;text-align:center}
 @media (max-width:680px){.event-row>div:first-child{align-items:flex-start;flex-direction:column;gap:4px}.registration-summary{align-items:flex-start;flex-direction:column}.registration-export{align-items:flex-start;justify-content:flex-start;flex-direction:column}.export-toolbar{display:flex}.export-button{flex:1;justify-content:center}}
+
+/* Reception window */
+.reception-create{grid-column:span 2}
+.event-reception-label{grid-column:1/2}
+.event-reception-input{grid-column:2/-1}
+@media (max-width:900px){.reception-create{grid-column:auto}}
+@media (max-width:680px){.event-reception-label,.event-reception-input{grid-column:1}}
