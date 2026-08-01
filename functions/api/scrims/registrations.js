@@ -52,9 +52,17 @@ export async function onRequestPost(context) {
   try {
     await ensureEvents(db);
     const event = await db.prepare(`SELECT id, event_name AS eventName, event_date AS eventDate,
-      start_time AS startTime, status FROM scrim_events WHERE id = ?`).bind(eventId).first();
+      start_time AS startTime, reception_open_at AS receptionOpenAt,
+      reception_close_at AS receptionCloseAt, status FROM scrim_events WHERE id = ?`).bind(eventId).first();
     if (!event || event.status !== 'open') {
       return json({ error: 'この日程は現在参加申請を受け付けていません。' }, 400);
+    }
+    const currentTime = Date.now();
+    if (event.receptionOpenAt && currentTime < Date.parse(event.receptionOpenAt)) {
+      return json({ error: 'この日程はまだ受付開始前です。' }, 400);
+    }
+    if (event.receptionCloseAt && currentTime >= Date.parse(event.receptionCloseAt)) {
+      return json({ error: 'この日程の受付は終了しました。' }, 400);
     }
 
     const id = crypto.randomUUID();
@@ -127,6 +135,8 @@ async function ensureEvents(db) {
     id TEXT PRIMARY KEY, event_date TEXT NOT NULL UNIQUE,
     event_name TEXT NOT NULL DEFAULT '',
     start_time TEXT NOT NULL, gather_time TEXT NOT NULL DEFAULT '',
+    reception_open_at TEXT NOT NULL DEFAULT '',
+    reception_close_at TEXT NOT NULL DEFAULT '',
     status TEXT NOT NULL DEFAULT 'open' CHECK (status IN ('open','closed')),
     created_at TEXT NOT NULL, updated_at TEXT NOT NULL
   )`).run();
@@ -135,6 +145,8 @@ async function ensureEvents(db) {
   if (!columns.has('event_name')) {
     await db.prepare("ALTER TABLE scrim_events ADD COLUMN event_name TEXT NOT NULL DEFAULT ''").run();
   }
+  if (!columns.has('reception_open_at')) await db.prepare("ALTER TABLE scrim_events ADD COLUMN reception_open_at TEXT NOT NULL DEFAULT ''").run();
+  if (!columns.has('reception_close_at')) await db.prepare("ALTER TABLE scrim_events ADD COLUMN reception_close_at TEXT NOT NULL DEFAULT ''").run();
   const now = new Date().toISOString();
   for (const [date,start,gather] of DEFAULT_EVENTS) {
     await db.prepare(`INSERT OR IGNORE INTO scrim_events
