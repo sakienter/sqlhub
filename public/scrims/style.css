@@ -117,6 +117,8 @@
     .schedule-time{margin:0 0 7px;color:rgba(232,234,240,.54);font-size:12px;font-weight:600;line-height:1.5}
     .schedule-status{margin:0;color:rgba(232,234,240,.34);font-size:11px;font-weight:700}
     .schedule-card.selected h4,.schedule-card.selected .schedule-status{color:#5dcaa5}
+    .schedule-card:disabled{cursor:not-allowed;opacity:.56;filter:saturate(.55)}
+    .schedule-card:disabled:hover{border-color:rgba(255,255,255,.08);transform:none}
     .entry-divider{margin:22px 0;border:0;border-top:1px solid rgba(255,255,255,.07)}
     .entry-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}
     .entry-field{display:flex;flex-direction:column;gap:6px}
