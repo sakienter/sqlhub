@@ -55,6 +55,8 @@ const registrationPager = document.querySelector('[data-registration-pager]');
 const registrationPageCurrent = document.querySelector('[data-registration-page-current]');
 const registrationPrev = document.querySelector('[data-registration-prev]');
 const registrationNext = document.querySelector('[data-registration-next]');
+const registrationCopy = document.querySelector('[data-registration-copy]');
+const registrationCsv = document.querySelector('[data-registration-csv]');
 
 let registrationItems = [];
 let registrationCurrentPage = 1;
@@ -476,8 +478,13 @@ function renderRegistrationPage() {
     empty(registrationList, '条件に一致する参加申請はありません。');
     registrationPageInfo.textContent = '表示 0件';
     registrationPager.hidden = true;
+    registrationCopy.disabled = true;
+    registrationCsv.disabled = true;
     return;
   }
+
+  registrationCopy.disabled = false;
+  registrationCsv.disabled = false;
 
   const start = (registrationCurrentPage - 1) * pageSize;
   const end = Math.min(start + pageSize, totalItems);
@@ -491,6 +498,66 @@ function renderRegistrationPage() {
   registrationPrev.disabled = registrationCurrentPage <= 1;
   registrationNext.disabled = registrationCurrentPage >= totalPages;
   registrationPager.hidden = totalPages <= 1;
+}
+
+function registrationExportRows() {
+  const headers = ['スクリム・日程', 'BattleTag', 'Xアカウント', '状態', '管理メモ', '申請番号', '申請日時'];
+  const rows = registrationItems.map((item) => [
+    item.eventLabel || item.eventId || '',
+    item.battleTag || '',
+    item.xAccount || '',
+    STATUS_LABELS[item.status] || item.status || '',
+    item.adminNote || '',
+    item.applicationCode || '',
+    formatDateTime(item.createdAt)
+  ]);
+  return [headers, ...rows];
+}
+
+function spreadsheetCell(value) {
+  const text = String(value ?? '').replace(/[\t\r\n]+/g, ' ').trim();
+  return /^[=+\-@]/.test(text) ? `'${text}` : text;
+}
+
+async function copyRegistrationsForExcel() {
+  if (!registrationItems.length) return;
+  const text = registrationExportRows()
+    .map((row) => row.map(spreadsheetCell).join('\t'))
+    .join('\r\n');
+
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    const copied = document.execCommand('copy');
+    textarea.remove();
+    if (!copied) throw new Error('コピーできませんでした。');
+  }
+
+  setMessage(registrationStatus, `${registrationItems.length}件をコピーしました。Excelのセルへ貼り付けてください。`, 'success');
+}
+
+function downloadRegistrationsCsv() {
+  if (!registrationItems.length) return;
+  const csv = registrationExportRows().map((row) => row.map((value) => {
+    const cell = spreadsheetCell(value).replaceAll('"', '""');
+    return `"${cell}"`;
+  }).join(',')).join('\r\n');
+  const blob = new Blob([`\uFEFF${csv}`], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `scrim-entries-${new Date().toISOString().slice(0, 10)}.csv`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+  setMessage(registrationStatus, `${registrationItems.length}件のCSVを保存しました。`, 'success');
 }
 
 async function loadRegistrations() {
@@ -518,6 +585,8 @@ async function loadRegistrations() {
     empty(registrationList, '参加申請を読み込めませんでした。');
     registrationPageInfo.textContent = '';
     registrationPager.hidden = true;
+    registrationCopy.disabled = true;
+    registrationCsv.disabled = true;
     renderCounts();
     setMessage(registrationStatus, error.message, 'error');
   }
@@ -648,6 +717,10 @@ registrationNext?.addEventListener('click', () => {
   renderRegistrationPage();
   registrationList.scrollIntoView({ behavior:'smooth', block:'start' });
 });
+registrationCopy?.addEventListener('click', () => {
+  copyRegistrationsForExcel().catch((error) => setMessage(registrationStatus, error.message, 'error'));
+});
+registrationCsv?.addEventListener('click', downloadRegistrationsCsv);
 lobbyRefresh?.addEventListener('click', loadLobbies);
 tokenInput?.addEventListener('change', saveToken);
 
