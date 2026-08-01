@@ -39,6 +39,8 @@ const eventNameInput = document.querySelector('#event-name');
 const eventDateInput = document.querySelector('#event-date');
 const eventStartInput = document.querySelector('#event-start-time');
 const eventGatherInput = document.querySelector('#event-gather-time');
+const eventReceptionOpenInput = document.querySelector('#event-reception-open');
+const eventReceptionCloseInput = document.querySelector('#event-reception-close');
 const eventStatus = document.querySelector('[data-event-status]');
 const eventList = document.querySelector('[data-event-list]');
 const eventRefresh = document.querySelector('[data-event-refresh]');
@@ -105,6 +107,17 @@ function formatDateTime(value) {
   }).format(date);
 }
 
+function toDateTimeLocal(value) {
+  if (!value) return '';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return '';
+  const parts = new Intl.DateTimeFormat('sv-SE', {
+    timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', hour12: false
+  }).formatToParts(date).reduce((map, part) => ({ ...map, [part.type]: part.value }), {});
+  return `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}`;
+}
+
 async function api(url, method = 'GET', body, auth = false) {
   const headers = { 'Content-Type': 'application/json' };
   if (auth) {
@@ -160,9 +173,15 @@ function createEventRow(event) {
 
   const meta = document.createElement('p');
   meta.className = 'event-meta';
-  if (event.status === 'open') meta.textContent = '公開フォームで受付中';
+  if (event.status === 'open' && event.receptionStatus === 'upcoming') meta.textContent = '受付開始前';
+  else if (event.status === 'open' && event.receptionStatus === 'closed') meta.textContent = '受付期間終了';
+  else if (event.status === 'open') meta.textContent = '公開フォームで受付中';
   else if (event.status === 'completed') meta.textContent = '開催終了・Past Lobbyへ連動済み';
   else meta.textContent = '受付停止・公開フォームでは非表示';
+  const receptionRange = [event.receptionOpenAt, event.receptionCloseAt]
+    .map((value) => value ? formatDateTime(value) : '未設定')
+    .join(' 〜 ');
+  meta.textContent += `｜受付 ${receptionRange}`;
   summary.append(title, meta);
 
   const controls = document.createElement('div');
@@ -189,6 +208,22 @@ function createEventRow(event) {
   const gatherInput = document.createElement('input');
   gatherInput.type = 'time';
   gatherInput.value = event.gatherTime || '';
+
+  const receptionOpenLabel = document.createElement('label');
+  receptionOpenLabel.className = 'event-reception-label';
+  receptionOpenLabel.textContent = '受付開始';
+  const receptionOpenInput = document.createElement('input');
+  receptionOpenInput.className = 'event-reception-input';
+  receptionOpenInput.type = 'datetime-local';
+  receptionOpenInput.value = toDateTimeLocal(event.receptionOpenAt);
+
+  const receptionCloseLabel = document.createElement('label');
+  receptionCloseLabel.className = 'event-reception-label';
+  receptionCloseLabel.textContent = '受付終了';
+  const receptionCloseInput = document.createElement('input');
+  receptionCloseInput.className = 'event-reception-input';
+  receptionCloseInput.type = 'datetime-local';
+  receptionCloseInput.value = toDateTimeLocal(event.receptionCloseAt);
 
   const statusLabel = document.createElement('label');
   statusLabel.textContent = '状態';
@@ -248,6 +283,8 @@ function createEventRow(event) {
         eventName: nameInput.value.trim(),
         startTime: startInput.value,
         gatherTime: gatherInput.value,
+        receptionOpenAt: receptionOpenInput.value,
+        receptionCloseAt: receptionCloseInput.value,
         status: statusSelect.value,
         resultUrl: resultInput.value.trim()
       }, true);
@@ -292,6 +329,8 @@ function createEventRow(event) {
     nameLabel, nameInput,
     startLabel, startInput,
     gatherLabel, gatherInput,
+    receptionOpenLabel, receptionOpenInput,
+    receptionCloseLabel, receptionCloseInput,
     statusLabel, statusSelect,
     resultLabel, resultInput, resultHelp,
     actions
@@ -342,11 +381,15 @@ eventForm?.addEventListener('submit', async (event) => {
       eventName: eventNameInput.value.trim(),
       eventDate: eventDateInput.value,
       startTime: eventStartInput.value,
-      gatherTime: eventGatherInput.value
+      gatherTime: eventGatherInput.value,
+      receptionOpenAt: eventReceptionOpenInput.value,
+      receptionCloseAt: eventReceptionCloseInput.value
     }, true);
     saveToken();
     eventDateInput.value = '';
     eventNameInput.value = '';
+    eventReceptionOpenInput.value = '';
+    eventReceptionCloseInput.value = '';
     setMessage(eventStatus, '新しい日程を作成しました。公開フォームへ自動反映されます。', 'success');
     await loadEvents();
   } catch (error) {
