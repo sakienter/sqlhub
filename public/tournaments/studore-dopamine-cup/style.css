@@ -82,12 +82,107 @@
 .overview-list dt { color: #56636e; font-size: 14px; font-weight: 850; }
 .overview-list dd { margin: 0; color: #111820; font-size: 16px; font-weight: 850; }
 
+.rules-block {
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(24, 33, 40, .12);
+}
+
+.rules-block h2 {
+  margin: 0 0 14px;
+  color: #111820;
+  font-size: 20px;
+  font-weight: 950;
+}
+
+.rule-list {
+  margin: 0;
+  padding-left: 1.35em;
+  color: #1f2a33;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.85;
+}
+
+.rule-list li + li { margin-top: 7px; }
+
+.prize-note {
+  margin-top: 22px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: linear-gradient(110deg, rgba(255, 244, 205, .90), rgba(255, 252, 238, .96));
+  border: 1px solid rgba(178, 127, 28, .28);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(78, 51, 9, .08);
+}
+
+.prize-note span {
+  flex: 0 0 auto;
+  color: #805c16;
+  font-size: 13px;
+  font-weight: 950;
+  letter-spacing: .06em;
+}
+
+.prize-note strong {
+  color: #3a2a0b;
+  font-size: 17px;
+  font-weight: 950;
+}
+
 .result-body p {
   margin: 0 0 18px;
   color: #27333d;
   font-size: 15px;
   font-weight: 700;
   line-height: 1.8;
+}
+
+.winner-panel {
+  margin: 0 0 24px;
+  padding: 23px 24px;
+  background:
+    radial-gradient(circle at 90% 15%, rgba(222, 77, 207, .20), transparent 30%),
+    linear-gradient(120deg, #071826, #123f50 58%, #542038);
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 14px;
+  box-shadow: 0 14px 28px rgba(3, 14, 24, .20);
+}
+
+.winner-panel .winner-label {
+  margin: 0 0 5px;
+  color: rgba(255,255,255,.64);
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: .18em;
+}
+
+.winner-panel h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(27px, 4vw, 42px);
+  font-weight: 950;
+  letter-spacing: -.025em;
+  text-shadow: 0 5px 18px rgba(0,0,0,.38);
+}
+
+.winner-x-link {
+  display: inline-block;
+  margin-top: 13px;
+  padding-bottom: 3px;
+  color: #c9f3ff;
+  border-bottom: 1px solid rgba(201,243,255,.42);
+  font-size: 14px;
+  font-weight: 850;
+  text-decoration: none;
+  transition: color .18s ease, border-color .18s ease;
+}
+
+.winner-x-link:hover {
+  color: #fff;
+  border-color: #fff;
 }
 
 .result-link {
@@ -119,7 +214,7 @@
 
 .flyer-link {
   display: block;
-  width: min(100%, 1100px);
+  width: min(100%, 960px);
   overflow: hidden;
   border: 1px solid rgba(24, 33, 40, .14);
   border-radius: 14px;
@@ -148,5 +243,7 @@
   .dopamine-hero .back-link { min-height: 32px; padding: 0 12px; font-size: 11px; }
   .dopamine-date { min-height: 30px; padding: 0 10px; font-size: 11px; }
   .overview-list > div { grid-template-columns: 1fr; gap: 5px; }
+  .prize-note { align-items: flex-start; flex-direction: column; gap: 5px; }
+  .winner-panel { padding: 20px 18px; }
   .flyer-link { border-radius: 10px; }
 }
