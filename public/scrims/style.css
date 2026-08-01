@@ -227,8 +227,9 @@
     .lobby-card{display:flex;flex-direction:column;align-items:flex-start;min-height:150px;padding:22px;color:inherit;background:#fffaf2;border:1px solid rgba(24,33,40,.10);border-radius:var(--radius-md);box-shadow:var(--shadow-soft);text-decoration:none;cursor:pointer;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
     .lobby-card:hover{transform:translateY(-2px);border-color:rgba(16,38,56,.22);box-shadow:0 12px 26px rgba(3,14,24,.13)}
     .lobby-card:focus-visible{outline:3px solid rgba(13,127,153,.42);outline-offset:3px}
-    .lobby-card h3{margin:0;color:var(--text-primary);font-size:24px;font-weight:950;line-height:1.2}
-    .lobby-result-link{display:inline-flex;align-items:center;margin-top:24px;padding-bottom:3px;color:#7f2634;border-bottom:1px solid rgba(127,38,52,.35);font-size:14px;font-weight:900;text-decoration:none;transition:border-color .18s ease,color .18s ease}
+    .lobby-card h3{margin:0;color:var(--text-primary);font-size:22px;font-weight:950;line-height:1.35;overflow-wrap:anywhere}
+    .lobby-date{margin:9px 0 0;color:#68747d;font-size:13px;font-weight:800;letter-spacing:.02em;line-height:1.4}
+    .lobby-result-link{display:inline-flex;align-items:center;margin-top:auto;padding-top:22px;padding-bottom:3px;color:#7f2634;border-bottom:1px solid rgba(127,38,52,.35);font-size:14px;font-weight:900;text-decoration:none;transition:border-color .18s ease,color .18s ease}
     .lobby-card:hover .lobby-result-link{color:#a23545;border-color:#a23545}
     .lobby-result-note{margin:8px 0 0;color:#171b1f;font-size:12px;font-weight:650;line-height:1.6}
     .lobby-empty{grid-column:1/-1;margin:0;padding:18px 4px;color:#171b1f;font-size:14px;font-weight:650;line-height:1.7}

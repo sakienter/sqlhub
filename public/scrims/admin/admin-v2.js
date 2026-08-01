@@ -64,6 +64,7 @@ let registrationItems = [];
 let registrationCurrentPage = 1;
 
 const lobbyForm = document.querySelector('[data-lobby-form]');
+const lobbyNameInput = document.querySelector('#lobby-name');
 const lobbyDateInput = document.querySelector('#lobby-date');
 const lobbyUrlInput = document.querySelector('#spreadsheet-url');
 const lobbyStatus = document.querySelector('[data-lobby-status]');
@@ -651,7 +652,7 @@ function createLobbyRow(lobby) {
   row.className = 'admin-lobby-row';
   const date = document.createElement('span');
   date.className = 'admin-lobby-date';
-  date.textContent = lobby.date;
+  date.textContent = lobby.name ? `${lobby.name} ／ ${lobby.date}` : lobby.date;
   const link = document.createElement('a');
   link.className = 'admin-lobby-link';
   link.href = lobby.spreadsheetUrl;
@@ -664,7 +665,8 @@ function createLobbyRow(lobby) {
   remove.textContent = '削除';
 
   remove.addEventListener('click', async () => {
-    if (!confirm(`${lobby.date} のPast Lobbyを削除しますか？`)) return;
+    const label = lobby.name ? `${lobby.name}（${lobby.date}）` : lobby.date;
+    if (!confirm(`${label} のPast Lobbyを削除しますか？`)) return;
     remove.disabled = true;
     try {
       const data = await api(LOBBIES_API, 'DELETE', { id: lobby.id }, true);
@@ -710,15 +712,21 @@ lobbyForm?.addEventListener('submit', async (event) => {
     setMessage(lobbyStatus, 'GoogleスプレッドシートのURLを入力してください。', 'error');
     return;
   }
+  if (!lobbyNameInput.value.trim()) {
+    setMessage(lobbyStatus, '大会名・スクリム名を入力してください。', 'error');
+    return;
+  }
 
   const submit = lobbyForm.querySelector('button[type="submit"]');
   submit.disabled = true;
   try {
     const data = await api(LOBBIES_API, 'POST', {
+      name: lobbyNameInput.value.trim(),
       date: lobbyDateInput.value,
       spreadsheetUrl: lobbyUrlInput.value.trim()
     }, true);
     renderLobbies(data.lobbies);
+    lobbyNameInput.value = '';
     lobbyUrlInput.value = '';
     setMessage(lobbyStatus, 'Past Lobbyへ追加しました。', 'success');
   } catch (error) {

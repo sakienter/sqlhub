@@ -49,8 +49,9 @@
         </section>
 
         <section class="admin-section">
-          <div class="section-heading"><div><h2>Past Lobby 管理</h2><p>日付とGoogleスプレッドシートURLを登録すると、スクリムページへカードが追加されます。</p></div><button class="refresh-button" type="button" data-lobby-refresh>再読み込み</button></div>
+          <div class="section-heading"><div><h2>Past Lobby 管理</h2><p>大会名・スクリム名、日付、結果URLを登録すると、スクリムページへカードが追加されます。</p></div><button class="refresh-button" type="button" data-lobby-refresh>再読み込み</button></div>
           <form class="admin-form" data-lobby-form>
+            <div class="form-field"><label for="lobby-name">大会名・スクリム名</label><input id="lobby-name" type="text" maxlength="60" placeholder="例：スタドレドーパミン杯" required /></div>
             <div class="form-field"><label for="lobby-date">開催日</label><input id="lobby-date" type="date" required /></div>
             <div class="form-field"><label for="spreadsheet-url">スプレッドシートURL</label><input id="spreadsheet-url" type="url" inputmode="url" placeholder="https://docs.google.com/spreadsheets/..." required /></div>
             <div class="admin-actions"><button class="admin-submit" type="submit">Past Lobbyに追加する</button><p class="admin-status" data-lobby-status aria-live="polite"></p></div>
@@ -60,6 +61,6 @@
       </div>
     </section>
   </main>
-  <script src="./admin-v2.js?v=20260801-reception-window" defer></script>
+  <script src="./admin-v2.js?v=20260801-past-lobby-name" defer></script>
 </body>
 </html>

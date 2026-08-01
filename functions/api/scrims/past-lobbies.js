@@ -23,7 +23,12 @@ export async function onRequestPost(context) {
   }
 
   const date = normalizeDate(body.date);
+  const name = normalizeLobbyName(body.name ?? body.lobbyName);
   const spreadsheetUrl = normalizeSpreadsheetUrl(body.spreadsheetUrl);
+
+  if (name === null) {
+    return jsonResponse({ error: '大会名・スクリム名は60文字以内で入力してください。' }, 400);
+  }
 
   if (!date) {
     return jsonResponse({ error: '日付を正しく入力してください。' }, 400);
@@ -49,6 +54,7 @@ export async function onRequestPost(context) {
 
   const lobby = {
     id: crypto.randomUUID(),
+    name,
     date,
     spreadsheetUrl,
     createdAt: new Date().toISOString()
@@ -132,6 +138,13 @@ function isValidStoredLobby(lobby) {
     normalizeDate(lobby.date) &&
     normalizeSpreadsheetUrl(lobby.spreadsheetUrl)
   );
+}
+
+function normalizeLobbyName(value) {
+  if (value === undefined || value === null) return '';
+  if (typeof value !== 'string') return null;
+  const trimmed = value.trim();
+  return trimmed.length <= 60 ? trimmed : null;
 }
 
 function normalizeDate(value) {
