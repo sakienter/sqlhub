@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow" />
   <title>スクリム管理 | Stuntdrake's Avenge!</title>
   <link rel="stylesheet" href="../../common.css" />
-  <link rel="stylesheet" href="./page-style.css?v=20260801-admin-polish" />
+  <link rel="stylesheet" href="./page-style.css?v=20260801-reception-window" />
 <link rel="icon" href="/sutantic.png" type="image/png" />
 </head>
 <body>
@@ -28,6 +28,8 @@
             <div class="form-field"><label for="event-date">開催日</label><input id="event-date" type="date" required /></div>
             <div class="form-field"><label for="event-start-time">開始時刻</label><input id="event-start-time" type="time" value="21:00" required /></div>
             <div class="form-field"><label for="event-gather-time">集合時刻</label><input id="event-gather-time" type="time" value="20:30" /></div>
+            <div class="form-field reception-create"><label for="event-reception-open">受付開始</label><input id="event-reception-open" type="datetime-local" /></div>
+            <div class="form-field reception-create"><label for="event-reception-close">受付終了</label><input id="event-reception-close" type="datetime-local" /></div>
             <button class="admin-submit" type="submit">新しい日程を作成</button>
           </form>
           <p class="admin-status" data-event-status aria-live="polite"></p>
@@ -58,6 +60,6 @@
       </div>
     </section>
   </main>
-  <script src="./admin-v2.js?v=20260801-registration-export" defer></script>
+  <script src="./admin-v2.js?v=20260801-reception-window" defer></script>
 </body>
 </html>
