@@ -135,7 +135,7 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 #past-tournaments .east-west-card:hover .card-cta{background:rgba(89,97,105,.78);box-shadow:0 9px 20px rgba(3,14,24,.44)}
 
 #past-tournaments .dopamine-cup-card {
-  --wipe-image: url('/tournaments/studore-dopamine-cup/stbn.webp?v=20260801');
+  --wipe-image: url('/tournaments/studore-dopamine-cup/banner.webp?v=20260802');
   --wipe-image-position: center;
   border-color: rgba(16, 112, 139, .30);
   box-shadow: 0 12px 28px rgba(3, 18, 30, .24);
