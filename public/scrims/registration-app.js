@@ -64,7 +64,6 @@
             <input id="dynamic-scrim-website" type="text" tabindex="-1" autocomplete="off" />
           </div>
 
-          <p class="scrim-form-note">各回3GAME・合計ポイント制です。申請後に主催者が確認するため、このフォームの送信だけでは参加確定になりません。</p>
           <button id="dynamic-scrim-submit" class="scrim-submit" type="submit">参加申請する</button>
           <p id="dynamic-scrim-error" class="scrim-form-error" role="alert"></p>
         </form>

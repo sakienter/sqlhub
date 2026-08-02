@@ -64,7 +64,6 @@
 .scrim-input:focus{border-color:#0d7f99;box-shadow:0 0 0 3px rgba(13,127,153,.11)}
 .scrim-honeypot{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
 
-.scrim-form-note{grid-column:1/-1;margin:2px 0 0;padding:12px 14px;color:#5d666d;background:#f5f7f8;border:1px solid rgba(24,33,40,.08);border-radius:9px;font-size:12px;font-weight:650;line-height:1.7}
 .scrim-submit{
   grid-column:1/-1;
   min-height:48px;
@@ -96,6 +95,6 @@
   .scrim-application{padding:20px}
   .scrim-application-head{flex-direction:column;gap:10px;margin-bottom:20px}
   .scrim-form-grid{grid-template-columns:1fr}
-  .scrim-field--full,.scrim-form-note,.scrim-submit,.scrim-form-error{grid-column:1}
+  .scrim-field--full,.scrim-submit,.scrim-form-error{grid-column:1}
   .scrim-event-select{min-height:62px;padding-left:14px;font-size:16px}
 }

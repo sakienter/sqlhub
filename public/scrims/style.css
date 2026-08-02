@@ -139,17 +139,6 @@
     .entry-field input::placeholder{color:rgba(232,234,240,.25)}
     .entry-field input:focus{border-color:#5dcaa5;box-shadow:0 0 0 3px rgba(93,202,165,.15)}
     .entry-hint{color:rgba(232,234,240,.32);font-size:11px;line-height:1.5}
-    .entry-notice{
-      margin:16px 0;
-      padding:11px 12px;
-      color:rgba(232,234,240,.54);
-      background:rgba(255,255,255,.025);
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:8px;
-      font-size:12px;
-      font-weight:600;
-      line-height:1.7;
-    }
     .entry-submit{
       width:100%;
       padding:13px;

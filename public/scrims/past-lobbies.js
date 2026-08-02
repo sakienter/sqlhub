@@ -96,7 +96,7 @@ function loadRegistrationApp() {
 
   if (!document.querySelector('script[src*="registration-app.js"]')) {
     const script = document.createElement('script');
-    script.src = '/scrims/registration-app.js?v=20260802-refactor';
+    script.src = '/scrims/registration-app.js?v=20260802-remove-note';
     script.defer = true;
     document.body.appendChild(script);
   }
