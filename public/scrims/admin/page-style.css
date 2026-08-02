@@ -79,3 +79,11 @@
 .event-reception-input{grid-column:2/-1}
 @media (max-width:900px){.reception-create{grid-column:auto}}
 @media (max-width:680px){.event-reception-label,.event-reception-input{grid-column:1}}
+
+/* Completed-event fields */
+.event-row.is-completed{border-left-color:#74519a}
+.event-result-label{grid-column:1/2}
+.event-result-input{grid-column:2/-1}
+.event-result-help{grid-column:2/-1;margin:-2px 0 2px;color:#66727c;font-size:11px;font-weight:650;line-height:1.55}
+.lobby-list{margin-top:18px}
+@media (max-width:680px){.event-result-label,.event-result-input,.event-result-help{grid-column:1}}

@@ -11,25 +11,6 @@ const STATUS_LABELS = {
   rejected: '却下'
 };
 
-const completionStyle = document.createElement('style');
-completionStyle.textContent = `
-  .event-row.is-completed { border-left-color:#74519a; }
-  .event-result-label { grid-column:1 / 2; }
-  .event-result-input { grid-column:2 / -1; }
-  .event-result-help {
-    grid-column:2 / -1;
-    margin:-2px 0 2px;
-    color:#66727c;
-    font-size:11px;
-    font-weight:650;
-    line-height:1.55;
-  }
-  @media (max-width:680px) {
-    .event-result-label,.event-result-input,.event-result-help { grid-column:1; }
-  }
-`;
-document.head.appendChild(completionStyle);
-
 const tokenInput = document.querySelector('#admin-token');
 const authButton = document.querySelector('[data-auth-load]');
 const authStatus = document.querySelector('[data-auth-status]');
@@ -161,6 +142,51 @@ function populateEventFilter(events) {
   }
 }
 
+function eventStateText(event) {
+  if (event.status === 'completed') return '開催終了・Past Lobbyへ連動済み';
+  if (event.status === 'closed') return '受付停止・公開フォームでは非表示';
+  if (event.receptionStatus === 'upcoming') return '受付開始前';
+  if (event.receptionStatus === 'closed') return '受付期間終了';
+  return '公開フォームで受付中';
+}
+
+function eventPayload(event, fields) {
+  return {
+    id: event.id,
+    eventName: fields.name.value.trim(),
+    startTime: fields.start.value,
+    gatherTime: fields.gather.value,
+    receptionOpenAt: fields.receptionOpen.value,
+    receptionCloseAt: fields.receptionClose.value,
+    status: fields.status.value,
+    resultUrl: fields.result.value.trim()
+  };
+}
+
+function setButtonsDisabled(buttons, disabled) {
+  buttons.forEach((button) => { button.disabled = disabled; });
+}
+
+async function refreshEventDependencies() {
+  await loadEvents();
+  await Promise.all([loadRegistrations(), loadLobbies()]);
+}
+
+async function runEventAction({ buttons, pendingMessage, action, successMessage }) {
+  setButtonsDisabled(buttons, true);
+  setMessage(eventStatus, pendingMessage);
+
+  try {
+    const result = await action();
+    saveToken();
+    setMessage(eventStatus, successMessage(result), 'success');
+    await refreshEventDependencies();
+  } catch (error) {
+    setMessage(eventStatus, error.message, 'error');
+    setButtonsDisabled(buttons, false);
+  }
+}
+
 function createEventRow(event) {
   const row = document.createElement('article');
   row.className = 'event-row';
@@ -174,15 +200,10 @@ function createEventRow(event) {
 
   const meta = document.createElement('p');
   meta.className = 'event-meta';
-  if (event.status === 'open' && event.receptionStatus === 'upcoming') meta.textContent = '受付開始前';
-  else if (event.status === 'open' && event.receptionStatus === 'closed') meta.textContent = '受付期間終了';
-  else if (event.status === 'open') meta.textContent = '公開フォームで受付中';
-  else if (event.status === 'completed') meta.textContent = '開催終了・Past Lobbyへ連動済み';
-  else meta.textContent = '受付停止・公開フォームでは非表示';
   const receptionRange = [event.receptionOpenAt, event.receptionCloseAt]
     .map((value) => value ? formatDateTime(value) : '未設定')
     .join(' 〜 ');
-  meta.textContent += `｜受付 ${receptionRange}`;
+  meta.textContent = `${eventStateText(event)}｜受付 ${receptionRange}`;
   summary.append(title, meta);
 
   const controls = document.createElement('div');
@@ -274,55 +295,34 @@ function createEventRow(event) {
   remove.className = 'delete-button';
   remove.textContent = '削除';
 
-  save.addEventListener('click', async () => {
-    save.disabled = remove.disabled = true;
-    setMessage(eventStatus, '日程を更新しています。');
+  const fields = {
+    name: nameInput,
+    start: startInput,
+    gather: gatherInput,
+    receptionOpen: receptionOpenInput,
+    receptionClose: receptionCloseInput,
+    status: statusSelect,
+    result: resultInput
+  };
+  const buttons = [save, remove];
 
-    try {
-      const data = await api(EVENTS_API, 'PATCH', {
-        id: event.id,
-        eventName: nameInput.value.trim(),
-        startTime: startInput.value,
-        gatherTime: gatherInput.value,
-        receptionOpenAt: receptionOpenInput.value,
-        receptionCloseAt: receptionCloseInput.value,
-        status: statusSelect.value,
-        resultUrl: resultInput.value.trim()
-      }, true);
+  save.addEventListener('click', () => runEventAction({
+    buttons,
+    pendingMessage: '日程を更新しています。',
+    action: () => api(EVENTS_API, 'PATCH', eventPayload(event, fields), true),
+    successMessage: (data) => data.pastLobbySynced
+      ? '開催終了に変更し、Past Lobbyへ追加しました。'
+      : '日程を更新しました。'
+  }));
 
-      saveToken();
-      setMessage(
-        eventStatus,
-        data.pastLobbySynced
-          ? '開催終了に変更し、Past Lobbyへ追加しました。'
-          : '日程を更新しました。',
-        'success'
-      );
-      await loadEvents();
-      await loadRegistrations();
-      await loadLobbies();
-    } catch (error) {
-      setMessage(eventStatus, error.message, 'error');
-      save.disabled = remove.disabled = false;
-    }
-  });
-
-  remove.addEventListener('click', async () => {
+  remove.addEventListener('click', () => {
     if (!confirm(`${event.displayLabel} を削除しますか？`)) return;
-    save.disabled = remove.disabled = true;
-    setMessage(eventStatus, '日程を削除しています。');
-
-    try {
-      await api(EVENTS_API, 'DELETE', { id: event.id }, true);
-      saveToken();
-      setMessage(eventStatus, '日程を削除しました。', 'success');
-      await loadEvents();
-      await loadRegistrations();
-      await loadLobbies();
-    } catch (error) {
-      setMessage(eventStatus, error.message, 'error');
-      save.disabled = remove.disabled = false;
-    }
+    runEventAction({
+      buttons,
+      pendingMessage: '日程を削除しています。',
+      action: () => api(EVENTS_API, 'DELETE', { id: event.id }, true),
+      successMessage: () => '日程を削除しました。'
+    });
   });
 
   actions.append(save, remove);

@@ -47,20 +47,9 @@ export async function onRequestPost(context) {
   if (!db) return missingDatabase();
 
   const body = await readBody(context.request);
-  const eventName = normalizeEventName(body?.eventName ?? body?.name);
-  const eventDate = normalizeDate(body?.eventDate ?? body?.date);
-  const startTime = normalizeTime(body?.startTime);
-  const gatherTime = normalizeOptionalTime(body?.gatherTime);
-  const receptionOpenAt = normalizeReceptionDateTime(body?.receptionOpenAt);
-  const receptionCloseAt = normalizeReceptionDateTime(body?.receptionCloseAt);
-
-  if (eventName === null) return json({ error: 'スクリム名は60文字以内で入力してください。' }, 400);
-  if (!eventDate) return json({ error: '開催日を正しく入力してください。' }, 400);
-  if (!startTime) return json({ error: '開始時刻を正しく入力してください。' }, 400);
-  if (body?.gatherTime && !gatherTime) return json({ error: '集合時刻を正しく入力してください。' }, 400);
-  if (body?.receptionOpenAt && !receptionOpenAt) return json({ error: '受付開始日時を正しく入力してください。' }, 400);
-  if (body?.receptionCloseAt && !receptionCloseAt) return json({ error: '受付終了日時を正しく入力してください。' }, 400);
-  if (receptionOpenAt && receptionCloseAt && receptionOpenAt >= receptionCloseAt) return json({ error: '受付終了日時は、受付開始日時より後に設定してください。' }, 400);
+  const parsed = parseEventFields(body, { includeDate: true });
+  if (parsed.error) return json({ error: parsed.error }, 400);
+  const { eventName, eventDate, startTime, gatherTime, receptionOpenAt, receptionCloseAt } = parsed.fields;
 
   const now = new Date().toISOString();
 
@@ -91,86 +80,19 @@ export async function onRequestPatch(context) {
 
   const body = await readBody(context.request);
   const id = typeof body?.id === 'string' ? body.id.trim() : '';
-  const eventName = normalizeEventName(body?.eventName ?? body?.name);
-  const startTime = normalizeTime(body?.startTime);
-  const gatherTime = normalizeOptionalTime(body?.gatherTime);
-  const receptionOpenAt = normalizeReceptionDateTime(body?.receptionOpenAt);
-  const receptionCloseAt = normalizeReceptionDateTime(body?.receptionCloseAt);
-  const lifecycle = normalizeLifecycle(body?.status);
-  const resultUrl = normalizeSpreadsheetUrl(body?.resultUrl);
-
   if (!id) return json({ error: '変更する日程を特定できませんでした。' }, 400);
-  if (eventName === null) return json({ error: 'スクリム名は60文字以内で入力してください。' }, 400);
-  if (!startTime) return json({ error: '開始時刻を正しく入力してください。' }, 400);
-  if (body?.gatherTime && !gatherTime) return json({ error: '集合時刻を正しく入力してください。' }, 400);
-  if (body?.receptionOpenAt && !receptionOpenAt) return json({ error: '受付開始日時を正しく入力してください。' }, 400);
-  if (body?.receptionCloseAt && !receptionCloseAt) return json({ error: '受付終了日時を正しく入力してください。' }, 400);
-  if (receptionOpenAt && receptionCloseAt && receptionOpenAt >= receptionCloseAt) return json({ error: '受付終了日時は、受付開始日時より後に設定してください。' }, 400);
-  if (!lifecycle) return json({ error: '開催状態が正しくありません。' }, 400);
-  if (body?.resultUrl && !resultUrl) return json({ error: 'GoogleスプレッドシートのURLを正しく入力してください。' }, 400);
-  if (lifecycle === 'completed' && !resultUrl) {
-    return json({ error: '開催終了にするには、結果スプレッドシートURLを入力してください。' }, 400);
-  }
-  if (lifecycle === 'completed' && !context.env.TRIBE_CONFIG) {
-    return json({ error: 'Past Lobbyの保存先KVが設定されていません。' }, 503);
-  }
+  const parsed = parseEventFields(body, { includeLifecycle: true });
+  if (parsed.error) return json({ error: parsed.error }, 400);
+  const { lifecycle, resultUrl } = parsed.fields;
+  const completionError = validateCompletion(lifecycle, resultUrl, context.env.TRIBE_CONFIG);
+  if (completionError) return json({ error: completionError.message }, completionError.status);
 
   try {
     await ensureEventsTable(db);
     const previous = await findEvent(db, id);
     if (!previous) return json({ error: '対象の日程が見つかりませんでした。' }, 404);
 
-    const storedStatus = lifecycle === 'open' ? 'open' : 'closed';
-    const completed = lifecycle === 'completed' ? 1 : 0;
-    const now = new Date().toISOString();
-
-    await db.prepare(`
-      UPDATE scrim_events
-      SET event_name = ?, start_time = ?, gather_time = ?, reception_open_at = ?, reception_close_at = ?, status = ?, is_completed = ?,
-        result_url = ?, updated_at = ?
-      WHERE id = ?
-    `).bind(eventName, startTime, gatherTime, receptionOpenAt, receptionCloseAt, storedStatus, completed, resultUrl || '', now, id).run();
-
-    const updatedLabel = formatDisplayLabel(eventName, previous.eventDate, startTime);
-    await db.prepare(`
-      UPDATE scrim_registrations SET event_label = ?, updated_at = ? WHERE event_id = ?
-    `).bind(updatedLabel, now, id).run();
-
-    try {
-      await syncPastLobby(context, {
-        eventId: id,
-        eventName,
-        eventDate: previous.eventDate,
-        resultUrl: resultUrl || '',
-        completed: completed === 1
-      });
-    } catch (syncError) {
-      await db.prepare(`
-        UPDATE scrim_events
-        SET event_name = ?, start_time = ?, gather_time = ?, reception_open_at = ?, reception_close_at = ?, status = ?, is_completed = ?,
-          result_url = ?, updated_at = ?
-        WHERE id = ?
-      `).bind(
-        previous.eventName || '',
-        previous.startTime,
-        previous.gatherTime || '',
-        previous.receptionOpenAt || '',
-        previous.receptionCloseAt || '',
-        previous.status,
-        Number(previous.isCompleted || 0),
-        previous.resultUrl || '',
-        previous.updatedAt,
-        id
-      ).run();
-      await db.prepare(`
-        UPDATE scrim_registrations SET event_label = ?, updated_at = ? WHERE event_id = ?
-      `).bind(
-        formatDisplayLabel(previous.eventName || '', previous.eventDate, previous.startTime),
-        previous.updatedAt,
-        id
-      ).run();
-      throw syncError;
-    }
+    await updateEventWithPastLobby(context, db, id, previous, parsed.fields);
 
     return json({
       event: serializeEvent(await findEvent(db, id)),
@@ -179,6 +101,85 @@ export async function onRequestPatch(context) {
   } catch (error) {
     return databaseError(error, '開催日程またはPast Lobbyを更新できませんでした。');
   }
+}
+
+function validateCompletion(lifecycle, resultUrl, lobbyStore) {
+  if (lifecycle !== 'completed') return null;
+  if (!resultUrl) {
+    return { message: '開催終了にするには、結果スプレッドシートURLを入力してください。', status: 400 };
+  }
+  if (!lobbyStore) {
+    return { message: 'Past Lobbyの保存先KVが設定されていません。', status: 503 };
+  }
+  return null;
+}
+
+async function updateEventWithPastLobby(context, db, id, previous, fields) {
+  await persistEventUpdate(db, id, previous, fields);
+  try {
+    await syncPastLobby(context, {
+      eventId: id,
+      eventName: fields.eventName,
+      eventDate: previous.eventDate,
+      resultUrl: fields.resultUrl || '',
+      completed: fields.lifecycle === 'completed'
+    });
+  } catch (error) {
+    await restoreEventUpdate(db, id, previous);
+    throw error;
+  }
+}
+
+async function persistEventUpdate(db, id, previous, fields) {
+  const {
+    eventName, startTime, gatherTime, receptionOpenAt, receptionCloseAt, lifecycle, resultUrl
+  } = fields;
+  const storedStatus = lifecycle === 'open' ? 'open' : 'closed';
+  const completed = lifecycle === 'completed' ? 1 : 0;
+  const now = new Date().toISOString();
+
+  await db.prepare(`
+    UPDATE scrim_events
+    SET event_name = ?, start_time = ?, gather_time = ?, reception_open_at = ?, reception_close_at = ?, status = ?, is_completed = ?,
+      result_url = ?, updated_at = ?
+    WHERE id = ?
+  `).bind(
+    eventName, startTime, gatherTime, receptionOpenAt, receptionCloseAt,
+    storedStatus, completed, resultUrl || '', now, id
+  ).run();
+
+  await updateRegistrationLabels(
+    db,
+    id,
+    formatDisplayLabel(eventName, previous.eventDate, startTime),
+    now
+  );
+}
+
+async function restoreEventUpdate(db, id, previous) {
+  await db.prepare(`
+    UPDATE scrim_events
+    SET event_name = ?, start_time = ?, gather_time = ?, reception_open_at = ?, reception_close_at = ?, status = ?, is_completed = ?,
+      result_url = ?, updated_at = ?
+    WHERE id = ?
+  `).bind(
+    previous.eventName || '', previous.startTime, previous.gatherTime || '',
+    previous.receptionOpenAt || '', previous.receptionCloseAt || '', previous.status,
+    Number(previous.isCompleted || 0), previous.resultUrl || '', previous.updatedAt, id
+  ).run();
+
+  await updateRegistrationLabels(
+    db,
+    id,
+    formatDisplayLabel(previous.eventName || '', previous.eventDate, previous.startTime),
+    previous.updatedAt
+  );
+}
+
+async function updateRegistrationLabels(db, eventId, label, updatedAt) {
+  await db.prepare(`
+    UPDATE scrim_registrations SET event_label = ?, updated_at = ? WHERE event_id = ?
+  `).bind(label, updatedAt, eventId).run();
 }
 
 export async function onRequestDelete(context) {
@@ -364,6 +365,44 @@ function normalizeLifecycle(value) {
   if (typeof value !== 'string') return null;
   const lifecycle = value.trim();
   return LIFECYCLES.has(lifecycle) ? lifecycle : null;
+}
+
+function parseEventFields(body, { includeDate = false, includeLifecycle = false } = {}) {
+  const fields = {
+    eventName: normalizeEventName(body?.eventName ?? body?.name),
+    startTime: normalizeTime(body?.startTime),
+    gatherTime: normalizeOptionalTime(body?.gatherTime),
+    receptionOpenAt: normalizeReceptionDateTime(body?.receptionOpenAt),
+    receptionCloseAt: normalizeReceptionDateTime(body?.receptionCloseAt)
+  };
+
+  if (includeDate) fields.eventDate = normalizeDate(body?.eventDate ?? body?.date);
+  if (includeLifecycle) {
+    fields.lifecycle = normalizeLifecycle(body?.status);
+    fields.resultUrl = normalizeSpreadsheetUrl(body?.resultUrl);
+  }
+
+  return {
+    fields,
+    error: eventFieldError(body, fields, { includeDate, includeLifecycle })
+  };
+}
+
+function eventFieldError(body, fields, { includeDate, includeLifecycle }) {
+  if (fields.eventName === null) return 'スクリム名は60文字以内で入力してください。';
+  if (includeDate && !fields.eventDate) return '開催日を正しく入力してください。';
+  if (!fields.startTime) return '開始時刻を正しく入力してください。';
+  if (body?.gatherTime && !fields.gatherTime) return '集合時刻を正しく入力してください。';
+  if (body?.receptionOpenAt && !fields.receptionOpenAt) return '受付開始日時を正しく入力してください。';
+  if (body?.receptionCloseAt && !fields.receptionCloseAt) return '受付終了日時を正しく入力してください。';
+  if (fields.receptionOpenAt && fields.receptionCloseAt && fields.receptionOpenAt >= fields.receptionCloseAt) {
+    return '受付終了日時は、受付開始日時より後に設定してください。';
+  }
+  if (includeLifecycle && !fields.lifecycle) return '開催状態が正しくありません。';
+  if (includeLifecycle && body?.resultUrl && !fields.resultUrl) {
+    return 'GoogleスプレッドシートのURLを正しく入力してください。';
+  }
+  return '';
 }
 
 function normalizeEventName(value) {

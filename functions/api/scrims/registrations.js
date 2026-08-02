@@ -38,32 +38,17 @@ export async function onRequestPost(context) {
   if (!db) return missingDb();
   const body = await readBody(context.request);
   if (!body) return json({ error: '入力内容を読み取れませんでした。' }, 400);
-  if (typeof body.website === 'string' && body.website.trim()) {
-    return json({ error: '送信内容を確認できませんでした。' }, 400);
-  }
-
-  const eventId = validDate(body.eventId);
-  const battleTag = normalizeBattleTag(body.battleTag ?? body.btag);
-  const xAccount = normalizeX(body.xAccount ?? body.twitter);
-  if (!eventId) return json({ error: '受付対象ではない日程です。' }, 400);
-  if (!battleTag) return json({ error: 'BattleTagを「Name#1234」の形式で入力してください。' }, 400);
-  if (!xAccount) return json({ error: 'Xアカウントを「@username」の形式で入力してください。' }, 400);
+  const input = parseRegistrationInput(body);
+  if (input.error) return json({ error: input.error }, 400);
+  const { eventId, battleTag, xAccount } = input.fields;
 
   try {
     await ensureEvents(db);
     const event = await db.prepare(`SELECT id, event_name AS eventName, event_date AS eventDate,
       start_time AS startTime, reception_open_at AS receptionOpenAt,
       reception_close_at AS receptionCloseAt, status FROM scrim_events WHERE id = ?`).bind(eventId).first();
-    if (!event || event.status !== 'open') {
-      return json({ error: 'この日程は現在参加申請を受け付けていません。' }, 400);
-    }
-    const currentTime = Date.now();
-    if (event.receptionOpenAt && currentTime < Date.parse(event.receptionOpenAt)) {
-      return json({ error: 'この日程はまだ受付開始前です。' }, 400);
-    }
-    if (event.receptionCloseAt && currentTime >= Date.parse(event.receptionCloseAt)) {
-      return json({ error: 'この日程の受付は終了しました。' }, 400);
-    }
+    const availabilityError = eventAvailabilityError(event);
+    if (availabilityError) return json({ error: availabilityError }, 400);
 
     const id = crypto.randomUUID();
     const now = new Date().toISOString();
@@ -81,12 +66,44 @@ export async function onRequestPost(context) {
 
     return json({ result:'success', applicationCode, eventId, eventLabel, status:'pending' }, 201);
   } catch (error) {
-    const message = String(error?.message || error || '').toLowerCase();
-    if (message.includes('constraint') || message.includes('unique')) {
+    if (isConstraintError(error)) {
       return json({ error:'この日程には、同じBattleTagまたはXアカウントですでに申請されています。', code:'duplicate_registration' }, 409);
     }
     return dbError(error, '参加申請を保存できませんでした。');
   }
+}
+
+function parseRegistrationInput(body) {
+  if (typeof body.website === 'string' && body.website.trim()) {
+    return { error: '送信内容を確認できませんでした。' };
+  }
+
+  const fields = {
+    eventId: validDate(body.eventId),
+    battleTag: normalizeBattleTag(body.battleTag ?? body.btag),
+    xAccount: normalizeX(body.xAccount ?? body.twitter)
+  };
+  if (!fields.eventId) return { error: '受付対象ではない日程です。' };
+  if (!fields.battleTag) return { error: 'BattleTagを「Name#1234」の形式で入力してください。' };
+  if (!fields.xAccount) return { error: 'Xアカウントを「@username」の形式で入力してください。' };
+  return { fields, error: '' };
+}
+
+function eventAvailabilityError(event) {
+  if (!event || event.status !== 'open') return 'この日程は現在参加申請を受け付けていません。';
+  const currentTime = Date.now();
+  if (event.receptionOpenAt && currentTime < Date.parse(event.receptionOpenAt)) {
+    return 'この日程はまだ受付開始前です。';
+  }
+  if (event.receptionCloseAt && currentTime >= Date.parse(event.receptionCloseAt)) {
+    return 'この日程の受付は終了しました。';
+  }
+  return '';
+}
+
+function isConstraintError(error) {
+  const message = String(error?.message || error || '').toLowerCase();
+  return message.includes('constraint') || message.includes('unique');
 }
 
 export async function onRequestPatch(context) {
