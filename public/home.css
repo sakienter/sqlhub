@@ -27,15 +27,17 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 #current-season .card-cta{margin-top:0;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;padding:0 0 5px;border-radius:0;background:transparent;color:#7d2635;border-bottom:2px solid rgba(125,38,53,.42);box-shadow:none;font-size:17px;font-weight:950;line-height:1.2;letter-spacing:.03em;white-space:nowrap;transition:color .34s var(--wipe-easing),border-color .34s var(--wipe-easing),text-shadow .34s var(--wipe-easing),transform .34s var(--wipe-easing)}
 #current-season .season-card.card-link:hover .card-cta{color:#7d2635;background:transparent;box-shadow:none;border-color:#7d2635;text-shadow:0 2px 14px rgba(255,255,255,.62);transform:translateX(4px)}
 
-.rush-home-banner{position:relative;isolation:isolate;overflow:hidden;min-height:132px;padding:22px 34px;display:flex;align-items:center;justify-content:space-between;gap:24px;color:#fff;background:linear-gradient(112deg,#06192b 0%,#0a2e4b 58%,#134b65 100%);border:1px solid rgba(112,220,239,.38);border-radius:14px;box-shadow:0 12px 28px rgba(3,14,24,.24);text-decoration:none;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
-.rush-home-banner::before{content:"";position:absolute;inset:-70% -12% -70% 44%;z-index:-1;background:repeating-linear-gradient(106deg,transparent 0 22px,rgba(85,216,241,.17) 23px 26px,transparent 27px 48px);transform:skewX(-13deg);opacity:.9}
-.rush-home-banner::after{content:"";position:absolute;right:-55px;bottom:-80px;z-index:-1;width:280px;height:220px;border:32px solid rgba(235,190,70,.13);border-radius:50%;transform:skewX(-18deg)}
-.rush-home-banner:hover{color:#fff;border-color:rgba(235,190,70,.64);box-shadow:0 17px 34px rgba(3,14,24,.3);transform:translateY(-2px)}
-.rush-home-copy{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
-.rush-home-kicker{color:#78dff2;font-size:12px;font-weight:950;letter-spacing:.19em}
-.rush-home-copy strong{margin-top:1px;font-family:"Helvetica Neue",Arial,var(--font);font-size:clamp(35px,4.3vw,56px);font-weight:950;line-height:1;letter-spacing:-.04em}
-.rush-home-summary{margin-top:8px;color:rgba(255,255,255,.76);font-size:14px;font-weight:800;letter-spacing:.02em}
-.rush-home-cta{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;color:#fff;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.24);border-radius:999px;font-size:13px;font-weight:900;white-space:nowrap;backdrop-filter:blur(7px)}
+.rush-home-banner{position:relative;isolation:isolate;overflow:hidden;min-height:146px;padding:24px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;color:#fff;background:linear-gradient(105deg,#020912 0%,#061b2a 48%,#0b4053 100%);border:1px solid rgba(86,220,239,.42);border-radius:14px;box-shadow:0 14px 30px rgba(2,12,21,.28),inset 4px 0 0 #f0b83f;text-decoration:none;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.rush-home-banner::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(112deg,transparent 0 43%,rgba(33,204,231,.13) 43.3% 44.3%,transparent 44.6% 52%,rgba(240,184,63,.16) 52.3% 53%,transparent 53.3%),repeating-linear-gradient(176deg,transparent 0 14px,rgba(117,229,245,.07) 15px 16px,transparent 17px 27px);transform:translateX(0);transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+.rush-home-banner::after{content:"";position:absolute;inset:0 -1px 0 42%;z-index:-1;background:conic-gradient(from 90deg,rgba(180,239,247,.13) 25%,transparent 0 50%,rgba(180,239,247,.13) 0 75%,transparent 0) 0 0/26px 26px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 66%);mask-image:linear-gradient(90deg,transparent 0,#000 66%);opacity:.72}
+.rush-home-banner:hover{color:#fff;border-color:rgba(240,184,63,.72);box-shadow:0 18px 38px rgba(2,12,21,.34),inset 4px 0 0 #ffd16d;transform:translateY(-2px)}
+.rush-home-banner:hover::before{transform:translateX(22px)}
+.rush-home-copy{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+.rush-home-kicker{color:#63d9eb;font-size:12px;font-weight:950;letter-spacing:.21em}
+.rush-home-copy strong{margin-top:2px;font-family:"Helvetica Neue",Arial,var(--font);font-size:clamp(37px,4.5vw,58px);font-weight:950;line-height:.96;letter-spacing:-.045em;background:linear-gradient(92deg,#fff 0 72%,#ffd16d 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 5px 24px rgba(0,0,0,.32)}
+.rush-home-summary{margin-top:10px;color:rgba(230,246,249,.78);font-size:14px;font-weight:800;letter-spacing:.025em}
+.rush-home-cta{position:relative;z-index:1;flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;padding:10px 15px;color:#fff;background:rgba(2,12,21,.56);border:1px solid rgba(240,184,63,.58);border-radius:999px;box-shadow:0 8px 20px rgba(0,0,0,.22);font-size:13px;font-weight:900;white-space:nowrap;backdrop-filter:blur(8px);transition:background .22s ease,border-color .22s ease}
+.rush-home-banner:hover .rush-home-cta{background:rgba(240,184,63,.16);border-color:#ffd16d}
 
 #seasons{--season-card-duration:.46s}
 #seasons .season-grid,#past-tournaments .season-grid{grid-template-columns:repeat(auto-fit,minmax(260px,340px));justify-content:center}
