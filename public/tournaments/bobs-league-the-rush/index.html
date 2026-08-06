@@ -23,7 +23,7 @@
   <meta name="twitter:image:alt" content="THE RUSH 日本勢向け情報まとめ">
   <link rel="canonical" href="https://stuntdrakesavenge.pages.dev/tournaments/bobs-league-the-rush/">
   <link rel="stylesheet" href="../../common.css">
-  <link rel="stylesheet" href="./style.css?v=20260806-rush-v8">
+  <link rel="stylesheet" href="./style.css?v=20260806-rush-v9">
   <link rel="stylesheet" href="/footer-updated.css?v=20260728">
 <link rel="icon" href="/sutantic.png" type="image/png" />
 </head>
@@ -87,18 +87,54 @@
     </section>
 
     <section class="score-card schedule-card">
-      <div class="section-title">🇯🇵 日本勢向けスケジュール</div>
+      <div class="section-title">日本時間の詳細スケジュール</div>
       <div class="section-body">
-        <div class="schedule-text" aria-label="日本勢向けスケジュール（日本時間）">
-          <p><time datetime="2026-08-05T02:00:00+09:00">8/5 2:00</time><span>Rush開始</span></p>
-          <p class="ladder-time"><time datetime="2026-08-11T04:00:00+09:00">8/11 4:00</time><span>Rush終了・ラダー順位確定</span></p>
-          <p><time datetime="2026-08-13">8/13</time><span>APAC Closed Qualifier</span></p>
-          <p><time datetime="2026-08-17">8/17・18</time><span>APAC Open Qualifier（公式PDF記載日）</span></p>
-          <p><time datetime="2026-08-22T00:00:00+09:00">8/22 0:00</time><span>Semi-final #1</span></p>
-          <p><time datetime="2026-08-23T00:00:00+09:00">8/23 0:00</time><span>Semi-final #2</span></p>
-          <p><time datetime="2026-08-24T00:00:00+09:00">8/24 0:00</time><span>Great Final</span></p>
+        <div class="schedule-group">
+          <h2>Rush・招待予選</h2>
+          <div class="schedule-text" aria-label="Rushと招待予選の日本時間">
+            <p><time datetime="2026-08-05T02:00:00+09:00">8/5（水）2:00</time><span>Rush開始</span></p>
+            <p class="ladder-time"><time datetime="2026-08-11T04:00:00+09:00">8/11（火）4:00</time><span>Rush終了・ラダー順位確定</span></p>
+            <p><time datetime="2026-08-12">8/12（水）</time><span>NA Closed Qualifier（開始時刻は公式PDFに記載なし）</span></p>
+            <p><time datetime="2026-08-13">8/13（木）</time><span>APAC Closed Qualifier（開始時刻は公式PDFに記載なし）</span></p>
+            <p><time datetime="2026-08-14">8/14（金）</time><span>EU Closed Qualifier（開始時刻は公式PDFに記載なし）</span></p>
+          </div>
         </div>
-        <p class="timezone-note">※準決勝・Great Finalは公式記載のCESTから日本時間へ換算しています。公式ルール v0.9ではOpen Qualifierの日付・曜日・CET/CEST表記に一部不一致があるため、一般予選の正確な集合時刻は公式サイト・Discordの案内をご確認ください。</p>
+
+        <div class="schedule-group apac-rounds">
+          <h2>APAC Open Qualifier</h2>
+          <p class="schedule-summary">2日間・全11試合。初日は5試合、2日目は6試合を行います。</p>
+          <div class="round-day">
+            <h3>Day 1 <time datetime="2026-08-18T07:00:00+09:00">8/18（火）</time></h3>
+            <ol class="round-times" aria-label="APAC Open Qualifier Day 1 開始予定時刻">
+              <li><span>Round 1</span><time datetime="2026-08-18T07:00:00+09:00">7:00</time></li>
+              <li><span>Round 2</span><time datetime="2026-08-18T08:00:00+09:00">8:00</time></li>
+              <li><span>Round 3</span><time datetime="2026-08-18T09:00:00+09:00">9:00</time></li>
+              <li><span>Round 4</span><time datetime="2026-08-18T10:00:00+09:00">10:00</time></li>
+              <li><span>Round 5</span><time datetime="2026-08-18T11:00:00+09:00">11:00</time></li>
+            </ol>
+          </div>
+          <div class="round-day">
+            <h3>Day 2 <time datetime="2026-08-19T07:00:00+09:00">8/19（水）</time></h3>
+            <ol class="round-times" aria-label="APAC Open Qualifier Day 2 開始予定時刻">
+              <li><span>Round 6</span><time datetime="2026-08-19T07:00:00+09:00">7:00</time></li>
+              <li><span>Round 7</span><time datetime="2026-08-19T07:45:00+09:00">7:45</time></li>
+              <li><span>Round 8</span><time datetime="2026-08-19T08:30:00+09:00">8:30</time></li>
+              <li><span>Round 9</span><time datetime="2026-08-19T09:15:00+09:00">9:15</time></li>
+              <li><span>Round 10</span><time datetime="2026-08-19T10:00:00+09:00">10:00</time></li>
+              <li><span>Round 11</span><time datetime="2026-08-19T10:45:00+09:00">10:45</time></li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="schedule-group">
+          <h2>決勝フェーズ</h2>
+          <div class="schedule-text" aria-label="決勝フェーズの日本時間">
+            <p><time datetime="2026-08-22T00:00:00+09:00">8/22（土）0:00</time><span>Semi-final #1</span></p>
+            <p><time datetime="2026-08-23T00:00:00+09:00">8/23（日）0:00</time><span>Semi-final #2</span></p>
+            <p><time datetime="2026-08-24T00:00:00+09:00">8/24（月）0:00</time><span>Great Final</span></p>
+          </div>
+        </div>
+        <p class="timezone-note">※Rush・準決勝・Great Finalは公式記載のCESTから日本時間へ換算しています。Open Qualifierの各ラウンドは、公式PDFの表に明記されたCETから日本時間（+8時間）へ換算しています。公式ルール v0.9には日付・曜日・CET/CEST表記の不一致があるため、参加前にBob's League公式サイト・Discordの最新案内を必ずご確認ください。</p>
       </div>
     </section>
 
