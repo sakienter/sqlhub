@@ -37,9 +37,10 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 .rush-home-copy strong{margin-top:2px;font-family:"Helvetica Neue",Arial,var(--font);font-size:clamp(37px,4.5vw,58px);font-weight:950;line-height:.96;letter-spacing:-.045em;color:#fff;text-shadow:0 5px 24px rgba(0,0,0,.32)}
 .rush-home-copy strong span{display:inline-block;margin-left:.28em;font-family:var(--font);font-size:.42em;font-weight:900;line-height:1.15;letter-spacing:.03em;vertical-align:.17em}
 .rush-home-summary{margin-top:11px;color:rgba(153,225,238,.82);font-size:12px;font-weight:900;letter-spacing:.13em}
-.rush-home-cta{position:relative;z-index:1;flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;padding:10px 15px;color:#fff;background:rgba(2,12,21,.45);border:1px solid rgba(255,255,255,.26);border-radius:999px;box-shadow:0 8px 20px rgba(0,0,0,.18);font-size:13px;font-weight:900;white-space:nowrap;backdrop-filter:blur(8px);transition:background .22s ease,border-color .22s ease,transform .22s ease}
-.rush-home-banner:hover .rush-home-cta{background:rgba(82,198,220,.15);border-color:rgba(132,226,243,.72);transform:translateX(4px)}
+.rush-home-cta{position:relative;z-index:1;flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;padding:0 0 4px;color:rgba(235,249,252,.9);background:transparent;border:0;border-bottom:1px solid rgba(153,225,238,.44);border-radius:0;box-shadow:none;font-size:13px;font-weight:900;white-space:nowrap;backdrop-filter:none;transition:color .22s ease,border-color .22s ease,transform .22s ease}
+.rush-home-banner:hover .rush-home-cta{color:#fff;background:transparent;border-color:rgba(153,225,238,.92);transform:translateX(5px)}
 @keyframes rush-banner-sweep{from{transform:skewX(-18deg) translateX(0)}to{transform:skewX(-18deg) translateX(900%)}}
+@media(max-width:640px){html body #current-season .rush-home-cta{padding:0 0 3px!important}}
 
 #seasons{--season-card-duration:.46s}
 #seasons .season-grid,#past-tournaments .season-grid{grid-template-columns:repeat(auto-fit,minmax(260px,340px));justify-content:center}
