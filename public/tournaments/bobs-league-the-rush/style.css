@@ -90,11 +90,20 @@
   letter-spacing: 0.05em;
 }
 
-.content-heading {
-  margin: 0 0 24px;
-  color: #102638;
-  font-size: clamp(23px, 2.8vw, 34px);
-  font-weight: 950;
+.rules-source-note {
+  margin: 0 0 8px;
+  padding: 14px 16px;
+  color: #52616b;
+  background: rgba(10, 111, 134, 0.055);
+  border-left: 3px solid rgba(10, 111, 134, 0.5);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.75;
+}
+
+.rules-source-note strong {
+  color: #18394a;
+  font-weight: 900;
 }
 
 .qualifier-list {
@@ -169,45 +178,6 @@
   font-weight: 900;
 }
 
-.open-times {
-  margin-top: 16px;
-  padding: 16px 18px;
-  background: #f1f7f8;
-  border-left: 3px solid #1599b5;
-}
-
-.qualifier-item .open-times-label {
-  color: #62717c;
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-}
-
-.open-times ul {
-  margin: 9px 0 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  list-style: none;
-}
-
-.open-times li {
-  padding: 7px 11px;
-  color: #102638;
-  background: #fff;
-  border: 1px solid rgba(16, 38, 56, 0.12);
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 900;
-}
-
-.qualifier-item .detail-note {
-  margin-top: 14px;
-  color: #66737c;
-  font-size: 13px;
-}
-
 .schedule-text {
   color: #17232c;
 }
@@ -245,6 +215,88 @@
   padding-left: 14px;
   color: #606d76;
   border-left: 2px solid rgba(10, 111, 134, 0.35);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.75;
+}
+
+.compact-sections {
+  color: #26343e;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.85;
+}
+
+.plain-list {
+  margin: 0;
+  padding-left: 1.25em;
+}
+
+.plain-list li + li {
+  margin-top: 7px;
+}
+
+.rule-group + .rule-group {
+  margin-top: 26px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(16, 38, 56, 0.12);
+}
+
+.rule-group h2 {
+  margin: 0 0 9px;
+  color: #162530;
+  font-size: clamp(19px, 2vw, 24px);
+  font-weight: 950;
+}
+
+.rule-group p {
+  margin: 0;
+}
+
+.rule-group p + p {
+  margin-top: 7px;
+}
+
+.point-line strong {
+  color: #0a6f86;
+  font-weight: 950;
+}
+
+.prize-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  background: rgba(16, 38, 56, 0.12);
+  border: 1px solid rgba(16, 38, 56, 0.12);
+  border-radius: 8px;
+}
+
+.prize-list p {
+  margin: 0;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: #fff;
+}
+
+.prize-list strong {
+  color: #687681;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.prize-list span {
+  color: #162530;
+  font-size: 25px;
+  font-weight: 950;
+}
+
+.prize-note {
+  margin: 16px 0 0;
+  color: #606d76;
   font-size: 13px;
   font-weight: 700;
   line-height: 1.75;
@@ -348,11 +400,6 @@
     gap: 3px;
   }
 
-  .open-times ul {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
   .schedule-text p {
     grid-template-columns: 1fr;
     gap: 0;
@@ -385,5 +432,13 @@
 
   .official-flyer img {
     border-radius: 6px;
+  }
+
+  .rules-source-note {
+    padding: 12px 13px;
+  }
+
+  .prize-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
