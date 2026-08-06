@@ -6,7 +6,18 @@ S級リーグの試合結果・ポイント状況、大会アーカイブ、コ�
 
 公開サイト: [https://stuntdrakesavenge.pages.dev/](https://stuntdrakesavenge.pages.dev/)
 
-最終更新: 2026年7月28日
+最終更新: 2026年8月6日
+
+## 2026年8月6日の整理
+
+- Bob's League「The Rush」の日本勢向け情報ページを追加
+- トップページの注目枠を「THE RUSH 日本勢向け情報まとめ」へ更新
+- Grand Finals進出方法、日本時間の予選日程、ラダー締切目安を掲載
+- Bob's League公式サイト・公式X・公式フライヤーを案内
+- OGP / Twitter Card用画像を設定
+- 画像名を用途が分かる `social-card.webp` と `official-flyer.webp` に統一
+- アップロード時の旧画像名は `public/_redirects` で新しい画像へ転送
+- THE RUSH専用CSSを読みやすい形式に整理
 
 ## 2026年7月28日の整理
 
@@ -49,12 +60,23 @@ S級リーグの試合結果・ポイント状況、大会アーカイブ、コ�
 | `/tournaments/reno/` | レノ・ジャクソン杯 |
 | `/tournaments/neru-battle/` | ねるばとる |
 | `/tournaments/east-vs-west/` | EAST vs WEST |
+| `/tournaments/studore-dopamine-cup/` | スタドレドーパミン杯 |
 | `/tournaments/yoidore/` | 酔いどれ杯 |
 | `/tournaments/alutemu-challenge/` | 王者Alutemuへの挑戦状 |
+| `/tournaments/bobs-league-the-rush/` | THE RUSH 日本勢向け情報まとめ |
 | `/tournaments/cn-vs-worlds/` | CN vs Worlds |
 | `/tournaments/cn-vs-jp/` | CN vs JP |
 
 旧URLは `public/_redirects` で現行URLへ転送します。
+
+### Bob's League「The Rush」
+
+- ページ: `public/tournaments/bobs-league-the-rush/index.html`
+- 専用スタイル: `public/tournaments/bobs-league-the-rush/style.css`
+- OGP / Twitter Card: `public/tournaments/bobs-league-the-rush/social-card.webp`
+- 公式フライヤー: `public/tournaments/bobs-league-the-rush/official-flyer.webp`
+- 公式サイト: [https://v2.bobsleague.com/fr/dashboard](https://v2.bobsleague.com/fr/dashboard)
+- 公式X: [@Bobs_League](https://x.com/Bobs_League)
 
 ## ディレクトリ構成
 
