@@ -37,7 +37,7 @@
       border:1px solid rgba(255,255,255,.24);
       border-radius:999px;
       box-shadow:0 8px 18px rgba(3,14,24,.18);
-      font-size:17px;
+      font-size:13px;
       font-weight:900;
       text-decoration:none;
       backdrop-filter:blur(8px);
@@ -137,7 +137,7 @@
     .current-entry-status{
       margin:0 0 6px;
       color:#8de1ff;
-      font-size:13px;
+      font-size:17px;
       font-weight:900;
       letter-spacing:.08em;
     }
