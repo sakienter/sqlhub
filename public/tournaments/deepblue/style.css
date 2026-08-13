@@ -119,6 +119,63 @@
       color:#111;
       font-weight:950;
     }
+    .current-entry{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      margin:0 0 28px;
+      padding:22px 26px;
+      color:#effbff;
+      background:linear-gradient(105deg,rgba(5,31,57,.98),rgba(8,76,116,.94));
+      border:1px solid rgba(180,229,251,.35);
+      border-radius:14px;
+      box-shadow:0 16px 30px rgba(3,14,24,.22);
+    }
+    .current-entry[hidden]{display:none}
+    .current-entry-copy{min-width:0}
+    .current-entry-status{
+      margin:0 0 6px;
+      color:#8de1ff;
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.08em;
+    }
+    .current-entry h2{
+      margin:0;
+      color:#fff;
+      font-size:clamp(23px,3vw,32px);
+      font-weight:950;
+      letter-spacing:-.035em;
+    }
+    .current-entry-copy > p:last-child{
+      margin:7px 0 0;
+      color:rgba(239,251,255,.82);
+      font-size:14px;
+      font-weight:750;
+    }
+    .current-entry-link{
+      flex:0 0 auto;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:46px;
+      padding:0 20px;
+      color:#06233a;
+      background:#effbff;
+      border-radius:999px;
+      box-shadow:0 9px 20px rgba(0,0,0,.2);
+      font-size:14px;
+      font-weight:950;
+      text-decoration:none;
+      transition:transform .18s ease,background .18s ease,box-shadow .18s ease;
+    }
+    .current-entry-link:hover,
+    .current-entry-link:focus-visible{
+      background:#bcecff;
+      box-shadow:0 12px 24px rgba(0,0,0,.27);
+      transform:translateY(-2px);
+    }
     .tournament-text-list{display:grid;gap:0}
     .tournament-text-item{padding:0 0 1.15rem;margin:0 0 1.15rem;border-bottom:1px solid rgba(24,33,40,.12)}
     .tournament-text-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
@@ -136,4 +193,11 @@
       .deepblue-hero h1{font-size:clamp(36px,12vw,52px)}
       .organizer-meta{align-items:flex-start;gap:8px 10px}
       .organizer-meta p{font-size:13px}
+      .current-entry{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:16px;
+        padding:20px;
+      }
+      .current-entry-link{width:100%}
     }
