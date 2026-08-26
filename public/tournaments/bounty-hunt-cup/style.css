@@ -1,0 +1,95 @@
+.bounty-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  height: 260px;
+  min-height: 260px;
+  margin: 0 auto 28px;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  text-align: left;
+  background:
+    radial-gradient(circle at 78% 53%, transparent 0 70px, rgba(224,184,91,.32) 71px 74px, transparent 75px),
+    radial-gradient(circle at 78% 53%, rgba(224,184,91,.12) 0 4px, transparent 5px),
+    linear-gradient(120deg, #0f0d0a 0%, #2b2114 58%, #795321 100%);
+  border: 1px solid rgba(231,202,130,.40);
+  border-radius: 18px;
+  box-shadow: 0 22px 42px rgba(20,13,5,.32);
+}
+
+.bounty-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(108deg, transparent 0 56%, rgba(255,235,180,.12) 70%, transparent 84%);
+  pointer-events: none;
+}
+
+.bounty-hero .back-link {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 16px;
+  color: #fff;
+  background: rgba(7,6,4,.38);
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: none;
+  backdrop-filter: blur(7px);
+}
+
+.hero-copy { margin: auto 0 0; }
+.hero-kicker { margin: 0 0 7px; color: #e1c47c; font-size: 11px; font-weight: 900; letter-spacing: .19em; }
+.hero-copy h1 { margin: 0; color: #fff; font-size: clamp(38px, 6vw, 68px); font-weight: 950; line-height: .98; letter-spacing: -.035em; text-shadow: 0 4px 20px rgba(0,0,0,.55); }
+.hero-lead { margin: 12px 0 0; color: rgba(255,255,255,.83); font-size: 14px; font-weight: 750; letter-spacing: .02em; }
+
+.hero-date {
+  position: absolute;
+  right: 30px;
+  bottom: 26px;
+  margin: 0;
+  color: #f7e8bd;
+  font-size: 14px;
+  font-weight: 950;
+  letter-spacing: .12em;
+  text-shadow: 0 2px 9px rgba(0,0,0,.8);
+}
+
+.overview-list { margin: 0; }
+.overview-list > div { display: grid; grid-template-columns: minmax(100px,150px) 1fr; gap: 18px; padding: 15px 0; border-bottom: 1px solid rgba(24,33,40,.12); }
+.overview-list > div:first-child { padding-top: 0; }
+.overview-list dt { color: #66717a; font-size: 14px; font-weight: 850; }
+.overview-list dd { margin: 0; color: #141b21; font-size: 16px; font-weight: 850; }
+
+.event-description { max-width: 880px; margin: 24px 0 0; color: #202a32; font-size: 16px; font-weight: 700; line-height: 1.9; }
+.organizer-line { margin: 14px 0 0; color: #202a32; font-size: 15px; font-weight: 750; }
+.organizer-line a { color: #7f2634; text-decoration: underline; text-decoration-color: rgba(127,38,52,.34); text-underline-offset: 4px; }
+.organizer-line a:hover { text-decoration-color: currentColor; }
+.pending-note { margin: 24px 0 0; padding-top: 18px; color: #68737c; border-top: 1px solid rgba(24,33,40,.12); font-size: 13px; font-weight: 750; }
+
+.section-title.gold { background: linear-gradient(100deg,#4c3418,#9c7131); }
+.bounty-intro { margin: 0 0 8px; color: #37434c; font-size: 14px; font-weight: 750; }
+.bounty-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); column-gap: 34px; }
+.bounty-list a { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 16px 2px; color: #172129; border-bottom: 1px solid rgba(24,33,40,.13); text-decoration: none; transition: color .18s ease, padding-left .18s ease, border-color .18s ease; }
+.bounty-list a:hover { padding-left: 7px; color: #8a632a; border-color: rgba(138,99,42,.52); }
+.bounty-list span { font-size: 18px; font-weight: 900; }
+.bounty-list small { color: #75808a; font-size: 12px; font-weight: 750; }
+.bounty-note { margin: 20px 0 0; color: #6a747c; font-size: 13px; font-weight: 700; }
+
+@media (max-width: 640px) {
+  .bounty-hero { height: 300px; min-height: 300px; padding: 18px; border-radius: 14px; }
+  .bounty-hero .back-link { min-height: 32px; padding: 0 12px; font-size: 11px; }
+  .hero-copy h1 { font-size: clamp(38px,13vw,56px); }
+  .hero-lead { max-width: 78%; font-size: 12px; }
+  .hero-date { right: 18px; bottom: 18px; font-size: 12px; }
+  .overview-list > div { grid-template-columns: 1fr; gap: 5px; }
+  .bounty-list { grid-template-columns: 1fr; }
+}

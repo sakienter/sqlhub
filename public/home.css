@@ -200,6 +200,38 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 
 #past-tournaments .dopamine-cup-card:hover::after { opacity: .72; }
 
+#past-tournaments .bounty-hunt-cup-card {
+  --wipe-image:
+    radial-gradient(circle at 81% 50%, transparent 0 38px, rgba(223,181,84,.48) 39px 41px, transparent 42px),
+    radial-gradient(circle at 81% 50%, rgba(223,181,84,.12) 0 3px, transparent 4px),
+    linear-gradient(118deg, #100e0b 0%, #2b2114 56%, #75501f 100%);
+  --wipe-image-position: center;
+  border-color: rgba(224,184,91,.32);
+  box-shadow: 0 12px 28px rgba(22,15,6,.28);
+}
+
+#past-tournaments .bounty-hunt-cup-card::after {
+  background: linear-gradient(108deg, transparent 0 58%, rgba(248,222,151,.18) 70%, transparent 84%);
+  opacity: .34;
+}
+
+#past-tournaments .bounty-hunt-cup-card:hover {
+  border-color: rgba(238,204,123,.62);
+  box-shadow: 0 17px 36px rgba(22,15,6,.40);
+}
+
+#past-tournaments .bounty-hunt-cup-card:hover::after { opacity: .82; }
+
+#past-tournaments .bounty-card-kicker {
+  margin: 0 0 6px;
+  color: #dec27e;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .18em;
+  line-height: 1.2;
+  text-shadow: 0 2px 8px rgba(0,0,0,.72);
+}
+
 #past-tournaments .yoidore-card {
   --wipe-image: linear-gradient(90deg, rgba(40,18,8,.76) 0%, rgba(40,18,8,.46) 42%, rgba(40,18,8,.12) 72%, rgba(40,18,8,.04) 100%), url('/tournaments/yoidore/banner.webp?v=20260728');
   --wipe-image-position: center 42%;

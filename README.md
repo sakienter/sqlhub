@@ -6,7 +6,14 @@ S級リーグの試合結果・ポイント状況、大会アーカイブ、コ�
 
 公開サイト: [https://stuntdrakesavenge.pages.dev/](https://stuntdrakesavenge.pages.dev/)
 
-最終更新: 2026年8月6日
+最終更新: 2026年8月26日
+
+## 2026年8月26日の整理
+
+- 「BOUNTY HUNT CUP」の大会ページを追加
+- 開催日時、受付開始日時、主催X、4名の賞金首を掲載
+- トップページの「その他の大会」に専用バナーを追加
+- 詳細ルール・エントリーURL・専用画像を後から追加できる構成で整備
 
 ## 2026年8月6日の整理
 
@@ -61,6 +68,7 @@ S級リーグの試合結果・ポイント状況、大会アーカイブ、コ�
 | `/tournaments/neru-battle/` | ねるばとる |
 | `/tournaments/east-vs-west/` | EAST vs WEST |
 | `/tournaments/studore-dopamine-cup/` | スタドレドーパミン杯 |
+| `/tournaments/bounty-hunt-cup/` | BOUNTY HUNT CUP |
 | `/tournaments/yoidore/` | 酔いどれ杯 |
 | `/tournaments/alutemu-challenge/` | 王者Alutemuへの挑戦状 |
 | `/tournaments/bobs-league-the-rush/` | THE RUSH 日本勢向け情報まとめ |
