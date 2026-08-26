@@ -86,7 +86,7 @@
 
 .tournament-flyer {
   display: block;
-  width: min(100%, 760px);
+  width: min(100%, 900px);
   height: auto;
   border-radius: 10px;
   box-shadow: 0 12px 28px rgba(20,13,5,.16);
