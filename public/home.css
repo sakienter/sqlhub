@@ -42,6 +42,62 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 @keyframes rush-banner-sweep{from{transform:skewX(-18deg) translateX(0)}to{transform:skewX(-18deg) translateX(900%)}}
 @media(max-width:640px){html body #current-season .rush-home-cta{padding:0 0 3px!important}}
 
+.bounty-home-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 250px;
+  padding: 24px 30px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 22px;
+  color: #fff;
+  background: #f7f7f5 url('/tournaments/bounty-hunt-cup/bh.webp?v=20260826') center 52% / cover no-repeat;
+  border: 1px solid rgba(144,21,28,.24);
+  border-radius: 14px;
+  box-shadow: 0 14px 30px rgba(20,12,13,.20);
+  text-decoration: none;
+  transition: transform .3s var(--wipe-easing), border-color .3s ease, box-shadow .3s ease, filter .3s ease;
+}
+
+.bounty-home-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, transparent 45%, rgba(5,5,6,.62) 100%);
+  pointer-events: none;
+}
+
+.bounty-home-banner::after {
+  content: "";
+  position: absolute;
+  top: -55%;
+  bottom: -55%;
+  left: -22%;
+  z-index: 0;
+  width: 12%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.40), transparent);
+  opacity: 0;
+  transform: skewX(-18deg);
+  pointer-events: none;
+}
+
+.bounty-home-banner:hover {
+  color: #fff;
+  border-color: rgba(202,39,45,.62);
+  box-shadow: 0 20px 42px rgba(20,12,13,.30);
+  filter: saturate(1.06) contrast(1.02);
+  transform: translateY(-3px);
+}
+
+.bounty-home-banner:hover::after { opacity: 1; animation: bounty-banner-sweep .78s var(--wipe-easing) both; }
+.bounty-home-title { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.bounty-home-date { position: relative; z-index: 1; display: inline-flex; align-items: baseline; gap: 10px; padding: 8px 12px; color: #fff; background: rgba(7,7,8,.66); border: 1px solid rgba(255,255,255,.36); border-radius: 7px; font-size: 16px; font-weight: 950; letter-spacing: .06em; text-shadow: 0 2px 8px rgba(0,0,0,.85); backdrop-filter: blur(5px); }
+.bounty-home-date small { color: rgba(255,255,255,.74); font-size: 10px; font-weight: 900; letter-spacing: .12em; }
+@keyframes bounty-banner-sweep { from { transform: skewX(-18deg) translateX(0); } to { transform: skewX(-18deg) translateX(1100%); } }
+
 #seasons{--season-card-duration:.46s}
 #seasons .season-grid,#past-tournaments .season-grid{grid-template-columns:repeat(auto-fit,minmax(260px,340px));justify-content:center}
 #past-tournaments .season-card.card-link{min-height:118px;padding:14px 18px}
@@ -201,18 +257,15 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 #past-tournaments .dopamine-cup-card:hover::after { opacity: .72; }
 
 #past-tournaments .bounty-hunt-cup-card {
-  --wipe-image:
-    radial-gradient(circle at 81% 50%, transparent 0 38px, rgba(223,181,84,.48) 39px 41px, transparent 42px),
-    radial-gradient(circle at 81% 50%, rgba(223,181,84,.12) 0 3px, transparent 4px),
-    linear-gradient(118deg, #100e0b 0%, #2b2114 56%, #75501f 100%);
-  --wipe-image-position: center;
-  border-color: rgba(224,184,91,.32);
+  --wipe-image: url('/tournaments/bounty-hunt-cup/bh.webp?v=20260826');
+  --wipe-image-position: center 52%;
+  border-color: rgba(161,25,32,.28);
   box-shadow: 0 12px 28px rgba(22,15,6,.28);
 }
 
 #past-tournaments .bounty-hunt-cup-card::after {
-  background: linear-gradient(108deg, transparent 0 58%, rgba(248,222,151,.18) 70%, transparent 84%);
-  opacity: .34;
+  background: linear-gradient(180deg, transparent 46%, rgba(4,4,5,.46) 100%);
+  opacity: .72;
 }
 
 #past-tournaments .bounty-hunt-cup-card:hover {
@@ -220,7 +273,12 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
   box-shadow: 0 17px 36px rgba(22,15,6,.40);
 }
 
-#past-tournaments .bounty-hunt-cup-card:hover::after { opacity: .82; }
+#past-tournaments .bounty-hunt-cup-card:hover::after { opacity: .52; }
+
+#past-tournaments .bounty-hunt-cup-card h2,
+#past-tournaments .bounty-hunt-cup-card .bounty-card-kicker { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+#past-tournaments .bounty-hunt-cup-card .tournament-card-subtitle { position: absolute; right: 12px; bottom: 10px; width: max-content; margin: 0; padding: 5px 8px; color: #fff; background: rgba(7,7,8,.66); border: 1px solid rgba(255,255,255,.38); border-radius: 6px; font-size: 12px; text-shadow: 0 2px 8px #000; backdrop-filter: blur(4px); }
 
 #past-tournaments .bounty-card-kicker {
   margin: 0 0 6px;
@@ -230,6 +288,11 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
   letter-spacing: .18em;
   line-height: 1.2;
   text-shadow: 0 2px 8px rgba(0,0,0,.72);
+}
+
+@media (max-width:720px) {
+  .bounty-home-banner { min-height: 190px; padding: 18px; background-size: cover; }
+  .bounty-home-date { font-size: 13px; }
 }
 
 #past-tournaments .yoidore-card {
