@@ -15,7 +15,7 @@
   background-color: #f7f7f5;
   background-image: url('./bh.webp?v=20260826');
   background-position: center 51%;
-  background-size: 90% auto;
+  background-size: 84% auto;
   background-repeat: no-repeat;
   border: 1px solid rgba(176,28,35,.34);
   border-radius: 18px;
@@ -103,7 +103,7 @@
 .bounty-note { margin: 20px 0 0; color: #6a747c; font-size: 13px; font-weight: 700; }
 
 @media (max-width: 640px) {
-  .bounty-hero { height: 280px; min-height: 280px; padding: 18px; background-size: auto 94%; border-radius: 14px; }
+  .bounty-hero { height: 280px; min-height: 280px; padding: 18px; background-size: auto 88%; border-radius: 14px; }
   .bounty-hero .back-link { min-height: 32px; padding: 0 12px; font-size: 11px; }
   .hero-date { right: 18px; bottom: 18px; font-size: 12px; }
   .overview-list > div { grid-template-columns: 1fr; gap: 5px; }
