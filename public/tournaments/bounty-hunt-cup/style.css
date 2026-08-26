@@ -74,6 +74,9 @@
 .organizer-line a:hover { text-decoration-color: currentColor; }
 .pending-note { margin: 24px 0 0; padding-top: 18px; color: #68737c; border-top: 1px solid rgba(24,33,40,.12); font-size: 13px; font-weight: 750; }
 
+.flyer-body { display: flex; justify-content: center; }
+.tournament-flyer { display: block; width: min(100%, 1000px); height: auto; border-radius: 12px; box-shadow: 0 12px 28px rgba(20,13,5,.16); }
+
 .section-title.gold { background: linear-gradient(100deg,#4c3418,#9c7131); }
 .bounty-intro { margin: 0 0 8px; color: #37434c; font-size: 14px; font-weight: 750; }
 .bounty-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); column-gap: 34px; }
@@ -88,5 +91,6 @@
   .bounty-hero .back-link { min-height: 32px; padding: 0 12px; font-size: 11px; }
   .hero-date { right: 18px; bottom: 18px; font-size: 12px; }
   .overview-list > div { grid-template-columns: 1fr; gap: 5px; }
+  .tournament-flyer { border-radius: 8px; }
   .bounty-list { grid-template-columns: 1fr; }
 }
