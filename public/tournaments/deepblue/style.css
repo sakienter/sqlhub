@@ -176,14 +176,27 @@
       box-shadow:0 12px 24px rgba(0,0,0,.27);
       transform:translateY(-2px);
     }
-    .tournament-text-list{display:grid;gap:0}
-    .tournament-text-item{padding:0 0 1.15rem;margin:0 0 1.15rem;border-bottom:1px solid rgba(24,33,40,.12)}
-    .tournament-text-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
-    .tournament-text-item h3{margin:0 0 .45rem;color:#111;font-size:20px;font-weight:950;letter-spacing:-.03em}
-    .tournament-text-item p{margin:.2rem 0 .7rem;color:#111;font-size:15px;font-weight:750;line-height:1.8}
-    .tournament-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:.1rem}
-    .tournament-text-item .button{margin-top:0}
-    .tournament-text-item .guest-link{font-weight:900;color:#111}
+    .tournament-table-wrap{overflow-x:auto;padding:2px 2px 5px}
+    .tournament-history-table{width:100%;min-width:700px;margin:0;border-collapse:collapse;border-spacing:0;table-layout:fixed;background:#fff}
+    .tournament-history-table th,
+    .tournament-history-table td{padding:16px 18px;text-align:left;vertical-align:middle;border:0;border-bottom:1px solid rgba(8,49,78,.12);border-radius:0;background:transparent;box-shadow:none}
+    .tournament-history-table thead th{color:#45606f;background:#edf6f9;border-top:0;font-size:12px;font-weight:850;letter-spacing:.06em;white-space:nowrap}
+    .tournament-history-table thead th:first-child{width:13%;border-left:0;border-radius:8px 0 0 8px}
+    .tournament-history-table thead th:nth-child(2){width:32%}
+    .tournament-history-table thead th:nth-child(3){width:30%}
+    .tournament-history-table thead th:last-child{width:25%;border-right:0;border-radius:0 8px 8px 0}
+    .tournament-history-table tbody tr{box-shadow:none}
+    .tournament-history-table tbody tr:last-child th,
+    .tournament-history-table tbody tr:last-child td{border-bottom:0}
+    .tournament-history-table tbody tr:hover th,
+    .tournament-history-table tbody tr:hover td{background:#f4fafc}
+    .tournament-history-table tbody th{color:#082f49;font-size:15px;font-weight:950;white-space:nowrap}
+    .tournament-history-table tbody td{color:#243640;font-size:14px;font-weight:700;line-height:1.55}
+    .tournament-history-table time{font-variant-numeric:tabular-nums;white-space:nowrap}
+    .tournament-history-table .guest-link{color:#0a5f86;font-weight:900;text-decoration:none}
+    .tournament-history-table .guest-link:hover{text-decoration:underline;text-underline-offset:3px}
+    .tournament-link{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;color:#fff;background:#08698f;border-radius:7px;font-size:13px;font-weight:900;text-decoration:none;white-space:nowrap;transition:background .18s ease,transform .18s ease}
+    .tournament-link:hover{background:#064e6c;transform:translateY(-1px)}
     @media (max-width:900px){
       .hero.deepblue-hero{min-height:280px;padding:1.55rem}
       .deepblue-title-block{margin-top:2rem}
@@ -200,4 +213,22 @@
         padding:20px;
       }
       .current-entry-link{width:100%}
+      .tournament-table-wrap{overflow:visible;padding:0}
+      .tournament-history-table,
+      .tournament-history-table tbody,
+      .tournament-history-table tr,
+      .tournament-history-table th,
+      .tournament-history-table td{display:block;width:100%;min-width:0}
+      .tournament-history-table{background:transparent}
+      .tournament-history-table thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+      .tournament-history-table tbody{display:grid;gap:14px}
+      .tournament-history-table tbody tr{padding:18px;background:#f8fbfc;border:1px solid rgba(8,49,78,.13);border-radius:10px}
+      .tournament-history-table tbody th,
+      .tournament-history-table tbody td{display:grid;grid-template-columns:78px minmax(0,1fr);gap:12px;padding:8px 0;border:0;background:transparent;font-size:14px}
+      .tournament-history-table tbody th{padding-top:0;font-size:17px}
+      .tournament-history-table tbody th::before,
+      .tournament-history-table tbody td::before{content:attr(data-label);color:#6b7b84;font-size:11px;font-weight:750;letter-spacing:.04em}
+      .tournament-history-table tbody tr:hover th,
+      .tournament-history-table tbody tr:hover td{background:transparent}
+      .tournament-link{width:max-content;padding:7px 11px}
     }
