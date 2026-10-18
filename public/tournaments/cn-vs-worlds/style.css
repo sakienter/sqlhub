@@ -1,5 +1,5 @@
-.tournament-hero{min-height:260px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(135deg,#071421 0%,#0a2f45 52%,#451d36 100%);border:1px solid rgba(255,255,255,.22);border-radius:18px;box-shadow:0 22px 40px rgba(3,14,24,.34);position:relative;overflow:hidden}
-    .tournament-hero::before{content:"";position:absolute;inset:-40% 38% auto auto;width:420px;height:420px;background:radial-gradient(circle,rgba(255,250,242,.18),transparent 68%);pointer-events:none}
+.tournament-hero{min-height:clamp(280px,31vw,390px);text-align:left;display:flex;flex-direction:column;justify-content:space-between;background:#071421 url('./banner-art.webp?v=20261019') center 40%/cover no-repeat;border:1px solid rgba(255,255,255,.22);border-radius:18px;box-shadow:0 22px 40px rgba(3,14,24,.34);position:relative;overflow:hidden;isolation:isolate}
+    .tournament-hero::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(5,12,25,.76) 0%,rgba(5,12,25,.32) 54%,rgba(5,12,25,.06) 100%),linear-gradient(180deg,rgba(5,12,25,.08),transparent 48%,rgba(5,12,25,.30));pointer-events:none}
     .tournament-hero .back-link{align-self:flex-start;color:#fff;background:rgba(4,18,23,.42);border-color:rgba(255,255,255,.24);position:relative;z-index:1}
     .tournament-title-block{margin:2.2rem 0 0;position:relative;z-index:1}
     .tournament-hero h1{margin:0;color:#fff;font-size:clamp(42px,6vw,76px);font-weight:950;letter-spacing:-.06em;text-shadow:0 10px 24px rgba(3,14,24,.48)}
