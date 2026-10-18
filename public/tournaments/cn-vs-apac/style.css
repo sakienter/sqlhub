@@ -32,9 +32,9 @@
 .result-table { width: 100%; min-width: 720px; border-collapse: collapse; border-spacing: 0; color: #24313a; font-size: 12px; text-align: center; }
 .result-table th, .result-table td { padding: 12px 9px; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; white-space: nowrap; }
 .result-table thead { background: #17253a; }
-.result-table thead th { color: rgba(255,255,255,.82); background: transparent !important; font-size: 10px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.result-table thead th { color: rgba(255,255,255,.82); background: transparent !important; font-size: 10px; font-weight: 900; letter-spacing: .08em; text-align: center !important; text-transform: uppercase; }
 .result-table tbody tr { background: #fbfaf7; }
-.result-table tbody tr:nth-child(even) { background: #f0f3f5; }
+.result-table tbody tr:nth-child(even), .result-table tbody tr:hover { background: #fbfaf7 !important; }
 .result-table tbody td, .result-table tbody th { background: transparent; }
 .result-table tbody th { color: #172129; font-size: 13px; text-align: center; }
 .result-table tbody td:first-child, .result-table tbody td:last-child { color: #17253a; font-weight: 900; }
