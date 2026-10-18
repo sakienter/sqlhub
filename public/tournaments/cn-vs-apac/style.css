@@ -36,11 +36,13 @@
 .result-table tbody tr { background: #fbfaf7; }
 .result-table tbody tr:nth-child(even), .result-table tbody tr:hover { background: #fbfaf7 !important; }
 .result-table tbody td, .result-table tbody th { background: transparent; }
+.result-table tbody tr:hover td, .result-table tbody tr:hover th { background: transparent !important; box-shadow: none !important; }
 .result-table tbody th { color: #172129; font-size: 13px; text-align: center; }
 .result-table tbody td:first-child, .result-table tbody td:last-child { color: #17253a; font-weight: 900; }
 .result-table .region-cn { color: #a33d68; font-weight: 900; }
 .result-table .region-apac { color: #2782a3; font-weight: 900; }
 .result-table .qualified-player { background: #fff1ad !important; }
+.result-table tbody tr:hover .qualified-player { background: #fff1ad !important; }
 .qualifier-results { display: grid; gap: 34px; }
 .group-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 40px; }
 .group-card { min-width: 0; }
