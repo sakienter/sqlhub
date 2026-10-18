@@ -111,3 +111,15 @@
   .tournament-flyer { border-radius: 8px; }
   .bounty-list { grid-template-columns: 1fr; }
 }
+
+.results-title { margin: 0; }
+.champion-panel { padding: 30px 20px; text-align: center; color: #fff4d8; background: linear-gradient(125deg, #201b18, #49331f); border: 1px solid #b28a46; border-radius: 12px; }
+.champion-label { margin: 0 0 8px; color: #f1cf88; font-size: 16px; font-weight: 800; letter-spacing: .2em; }
+.champion-name { margin: 0; font-size: clamp(30px, 6vw, 48px); font-weight: 900; overflow-wrap: anywhere; }
+.champion-name span { margin-left: 10px; font-size: 16px; }
+.bounty-results-heading { margin: 28px 0 18px; color: #202a32; font-size: 18px; }
+.bounty-results ul { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0; padding: 0; list-style: none; }
+.bounty-results li { overflow-wrap: anywhere; }
+.results-link { display: inline-flex; align-items: center; gap: 12px; margin-top: 26px; padding: 13px 20px; border-radius: 8px; background: #742632; color: #fff; font-weight: 800; text-decoration: none; }
+.results-link:hover { background: #55202a; }
+.results-link:focus-visible { outline: 3px solid #0d7f99; outline-offset: 4px; }
