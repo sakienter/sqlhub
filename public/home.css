@@ -350,12 +350,11 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
   border-top-color: rgba(13,127,153,.28);
   background: linear-gradient(180deg, rgba(13,127,153,.045), transparent);
 }
-.duo-banner-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.duo-home-banner{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;aspect-ratio:16/9;border:1px solid rgba(23,37,58,.14);border-radius:12px;box-shadow:0 12px 26px rgba(3,14,24,.18);text-decoration:none;transition:transform .28s ease,box-shadow .28s ease}
-.duo-home-banner:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(3,14,24,.24)}
-.duo-home-banner:focus-visible{outline:3px solid #0d7f99;outline-offset:4px}
-.duo-home-banner img{display:block;width:100%;height:100%;object-fit:cover}
-@media(max-width:720px){.duo-banner-grid{grid-template-columns:1fr;gap:12px}.duo-home-banner{border-radius:10px}}
+.duo-cup-one-card{--wipe-image:url('/tournaments/bff-cup-2/bff-cup-1-card.webp?v=20261019');--wipe-image-position:center 38%}
+.duo-cup-two-card{--wipe-image:url('/tournaments/bff-cup-2/bff-cup-2-card.webp?v=20261019');--wipe-image-position:center 27%}
+#past-tournaments .duo-tournament-card::before{background-image:linear-gradient(90deg,rgba(7,14,28,.76),rgba(7,14,28,.32) 58%,rgba(7,14,28,.06)),var(--wipe-image);filter:saturate(.94) contrast(1.03)}
+#past-tournaments .duo-tournament-card h2{font-size:clamp(24px,2.6vw,34px);letter-spacing:-.025em}
+#past-tournaments .duo-tournament-card .tournament-card-subtitle{letter-spacing:.12em}
 .cn-apac-card{--wipe-image:linear-gradient(90deg,rgba(33,37,45,.82) 0%,rgba(38,43,52,.62) 38%,rgba(26,31,40,.20) 72%,rgba(10,17,29,.08) 100%),linear-gradient(180deg,rgba(4,8,16,.08),rgba(4,8,16,.22)),url('/tournaments/cn-vs-apac/banner.png?v=20261018');--wipe-image-position:center}
 .tournament-card-twdm{--wipe-image:url('/tournaments/twdm/banner.webp');--wipe-image-position:center 42%}
 .tournament-card-uratop{--wipe-image:url('/tournaments/uratop/banner.webp');--wipe-image-position:center 42%}
