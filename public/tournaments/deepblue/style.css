@@ -195,8 +195,10 @@
     .tournament-history-table time{font-variant-numeric:tabular-nums;white-space:nowrap}
     .tournament-history-table .guest-link{color:#0a5f86;font-weight:900;text-decoration:none}
     .tournament-history-table .guest-link:hover{text-decoration:underline;text-underline-offset:3px}
-    .tournament-link{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;color:#fff;background:#08698f;border-radius:7px;font-size:13px;font-weight:900;text-decoration:none;white-space:nowrap;transition:background .18s ease,transform .18s ease}
-    .tournament-link:hover{background:#064e6c;transform:translateY(-1px)}
+    .tournament-link{display:inline-flex;align-items:center;gap:8px;padding:3px 0;color:#075c7d;background:transparent;border:0;border-bottom:1px solid rgba(7,92,125,.26);border-radius:0;font-size:13px;font-weight:900;text-decoration:none;white-space:nowrap;transition:color .18s ease,border-color .18s ease,gap .18s ease}
+    .tournament-link span{display:inline-grid;width:22px;height:22px;place-items:center;color:#075c7d;background:#e5f2f6;border-radius:50%;font-size:11px;transition:color .18s ease,background .18s ease}
+    .tournament-link:hover{gap:11px;color:#033f58;border-color:#075c7d}
+    .tournament-link:hover span{color:#fff;background:#075c7d}
     @media (max-width:900px){
       .hero.deepblue-hero{min-height:280px;padding:1.55rem}
       .deepblue-title-block{margin-top:2rem}
@@ -230,5 +232,5 @@
       .tournament-history-table tbody td::before{content:attr(data-label);color:#6b7b84;font-size:11px;font-weight:750;letter-spacing:.04em}
       .tournament-history-table tbody tr:hover th,
       .tournament-history-table tbody tr:hover td{background:transparent}
-      .tournament-link{width:max-content;padding:7px 11px}
+      .tournament-link{width:max-content;padding:3px 0}
     }
