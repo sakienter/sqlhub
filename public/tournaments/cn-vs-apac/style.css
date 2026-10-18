@@ -53,6 +53,7 @@
 .region-block li { color: #18232c; font-size: 14px; font-weight: 800; overflow-wrap: anywhere; }
 .player-x-link { margin-left: 3px; color: #7b8790; font-size: .8em; text-decoration: none; text-underline-offset: 4px; }
 .player-x-link:hover { color: #8b3341; text-decoration: underline; }
+.archive-pending { margin: 0; color: #6f7b84; font-size: 14px; font-weight: 750; text-align: center; }
 @media (max-width: 700px) {
   .cn-apac-hero { min-height: 290px; padding: 20px; background-position: center; }
   .overview-list > div, .points-note { grid-template-columns: 1fr; gap: 6px; }
