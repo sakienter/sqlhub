@@ -143,9 +143,16 @@
 .results-link { display: inline-flex; align-items: center; gap: 12px; margin-top: 26px; padding: 13px 20px; border-radius: 8px; background: #742632; color: #fff; font-weight: 800; text-decoration: none; }
 .results-link:hover { background: #55202a; }
 .results-link:focus-visible { outline: 3px solid #0d7f99; outline-offset: 4px; }
+.archive-body { padding-top: 24px; padding-bottom: 26px; }
+.archive-note { margin: 0 0 16px; color: #6a747c; font-size: 13px; font-weight: 700; }
+.archive-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.archive-view-button { display: flex; align-items: center; justify-content: space-between; gap: 18px; width: 100%; min-height: 58px; padding: 0 18px; color: #30383e; background: #f8f5ef; border: 1px solid rgba(24,33,40,.16); border-radius: 9px; font: inherit; font-size: 15px; font-weight: 850; text-align: left; }
+.archive-view-button span { flex: 0 0 auto; color: #818a91; font-size: 11px; font-weight: 750; letter-spacing: .06em; }
+.archive-view-button:disabled { cursor: default; opacity: 1; }
 @media (max-width: 640px) {
   .champion-panel { padding: 20px 16px 18px; border-radius: 12px; }
   .champion-panel::after { margin-top: 11px; }
   .bounty-results > div { grid-template-columns: 1fr; gap: 10px; }
   .bounty-results dt { white-space: normal; }
+  .archive-actions { grid-template-columns: 1fr; }
 }
