@@ -15,7 +15,6 @@
 .source-link:hover { background: #0d2e51; }
 .rules-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); column-gap: 56px; row-gap: 30px; }
 .rule-card { padding: 0; }
-.rule-step { margin: 0 0 7px; color: #9b543b; font-size: 10px; font-weight: 900; letter-spacing: .16em; }
 .rule-card h2 { margin: 0 0 10px; color: #17253a; font-size: 19px; }
 .rule-card > p:last-child { margin: 0; color: #34434d; font-size: 14px; font-weight: 650; line-height: 1.8; }
 .points-note { grid-column: 1 / -1; display: grid; grid-template-columns: 140px minmax(0,1fr); gap: 18px; padding: 4px 0 0; color: #28343c; font-size: 13px; line-height: 1.7; }
