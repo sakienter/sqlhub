@@ -350,6 +350,18 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
   border-top-color: rgba(13,127,153,.28);
   background: linear-gradient(180deg, rgba(13,127,153,.045), transparent);
 }
+.duo-banner-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.duo-home-banner{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;aspect-ratio:16/9;border:1px solid rgba(23,37,58,.14);border-radius:12px;box-shadow:0 12px 26px rgba(3,14,24,.18);text-decoration:none;transition:transform .28s ease,box-shadow .28s ease}
+.duo-home-banner:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(3,14,24,.24)}
+.duo-home-banner:focus-visible{outline:3px solid #0d7f99;outline-offset:4px}
+.duo-home-banner img{display:block;width:100%;height:100%;object-fit:cover}
+.duo-home-placeholder{gap:12px;flex-direction:column;color:#fff;background:linear-gradient(118deg,#071421 0%,#0d5266 48%,#7d2635 100%);text-align:center}
+.duo-banner-kicker{font-size:clamp(12px,1.3vw,17px);font-weight:900;letter-spacing:.2em;opacity:.8}
+.duo-home-placeholder strong{font-size:clamp(23px,3vw,40px);font-weight:950;letter-spacing:.03em}
+.duo-home-placeholder strong span{color:#f4cf82}
+.duo-bff-cup-one{background:radial-gradient(ellipse at 76% 18%,rgba(247,194,104,.25),transparent 34%),linear-gradient(118deg,#10192a 0%,#1e4260 50%,#713343 100%)}
+.duo-banner-status{color:rgba(255,255,255,.74);font-size:clamp(11px,1.1vw,14px);font-weight:800;letter-spacing:.08em}
+@media(max-width:720px){.duo-banner-grid{grid-template-columns:1fr;gap:12px}.duo-home-banner{border-radius:10px}}
 .cn-apac-card{--wipe-image:linear-gradient(90deg,rgba(33,37,45,.82) 0%,rgba(38,43,52,.62) 38%,rgba(26,31,40,.20) 72%,rgba(10,17,29,.08) 100%),linear-gradient(180deg,rgba(4,8,16,.08),rgba(4,8,16,.22)),url('/tournaments/cn-vs-apac/banner.png?v=20261018');--wipe-image-position:center}
 .tournament-card-twdm{--wipe-image:url('/tournaments/twdm/banner.webp');--wipe-image-position:center 42%}
 .tournament-card-uratop{--wipe-image:url('/tournaments/uratop/banner.webp');--wipe-image-position:center 42%}
