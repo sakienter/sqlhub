@@ -29,16 +29,18 @@
 .result-heading h2 span { margin-left: 7px; color: #7b8790; font-size: 12px; font-weight: 850; letter-spacing: .06em; }
 .result-heading p { margin: 0; color: #7b8790; font-size: 11px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
 .result-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-.result-table { width: 100%; min-width: 720px; border-collapse: separate; border-spacing: 0 4px; color: #24313a; font-size: 12px; text-align: center; }
-.result-table th, .result-table td { padding: 10px 9px; white-space: nowrap; }
-.result-table thead th { padding-top: 0; color: #74808a; font-size: 10px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
-.result-table tbody tr { background: rgba(24,61,104,.045); }
-.result-table tbody tr:nth-child(even) { background: rgba(155,84,59,.045); }
+.result-table { width: 100%; min-width: 720px; border-collapse: collapse; border-spacing: 0; color: #24313a; font-size: 12px; text-align: center; }
+.result-table th, .result-table td { padding: 12px 9px; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; white-space: nowrap; }
+.result-table thead { background: #17253a; }
+.result-table thead th { color: rgba(255,255,255,.82); background: transparent !important; font-size: 10px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.result-table tbody tr { background: #fbfaf7; }
+.result-table tbody tr:nth-child(even) { background: #f0f3f5; }
+.result-table tbody td, .result-table tbody th { background: transparent; }
 .result-table tbody th { color: #172129; font-size: 13px; text-align: center; }
 .result-table tbody td:first-child, .result-table tbody td:last-child { color: #17253a; font-weight: 900; }
 .result-table .region-cn { color: #a33d68; font-weight: 900; }
 .result-table .region-apac { color: #2782a3; font-weight: 900; }
-.result-table .qualified-player { background: #fff1ad; }
+.result-table .qualified-player { background: #fff1ad !important; }
 .qualifier-results { display: grid; gap: 34px; }
 .group-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 40px; }
 .group-card { min-width: 0; }
