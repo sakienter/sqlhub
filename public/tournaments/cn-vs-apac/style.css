@@ -23,7 +23,7 @@
 .result-section { min-width: 0; }
 .result-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
 .result-heading h2 { margin: 0; color: #17253a; font-size: 19px; }
-.results-body > .result-section:first-child .result-heading h2 { font-size: 27px; }
+.results-body > .result-section:first-child .result-heading h2 { font-size: 32px; }
 .result-heading h2 span { margin-left: 7px; color: #7b8790; font-size: 12px; font-weight: 850; letter-spacing: .06em; }
 .result-heading p { margin: 0; color: #7b8790; font-size: 11px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
 .result-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -42,7 +42,7 @@
 .result-table .qualified-player { background: #fff1ad !important; }
 .result-table tbody tr:hover .qualified-player { background: #fff1ad !important; }
 .result-table .champion-player, .result-table tbody tr:hover .champion-player { color: #765116; background: linear-gradient(90deg,#fff1b8,#ffe28a,#fff1b8) !important; font-weight: 950; letter-spacing: .04em; }
-.qualifier-results { display: grid; gap: 34px; }
+.qualifier-results { display: grid; gap: 34px; padding-top: 32px; border-top: 1px solid #c9ced2; }
 .group-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 40px; }
 .group-card { min-width: 0; }
 .group-card > h2 { margin: 0 0 6px; padding: 0; color: #17253a; font-size: 20px; }
