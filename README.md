@@ -76,6 +76,7 @@ S級リーグの試合結果・ポイント状況、大会アーカイブ、コ�
 | `/tournaments/bobs-league-the-rush/` | THE RUSH 日本勢向け情報まとめ |
 | `/tournaments/cn-vs-worlds/` | CN vs Worlds |
 | `/tournaments/cn-vs-jp/` | CN vs JP |
+| `/tournaments/cn-vs-apac/` | CN vs APAC |
 
 旧URLは `public/_redirects` で現行URLへ転送します。
 
