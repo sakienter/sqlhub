@@ -116,7 +116,7 @@
 .champion-panel {
   position: relative;
   overflow: hidden;
-  padding: 42px 20px 38px;
+  padding: 24px 20px 22px;
   text-align: center;
   color: #fff4d8;
   background: radial-gradient(ellipse at 50% 0%, rgba(217, 170, 78, .24), transparent 65%), linear-gradient(135deg, #15171c, #24201b 55%, #15171c);
@@ -127,17 +127,25 @@
 .champion-panel::after {
   content: "";
   display: block;
-  width: min(180px, 60%);
+  width: min(120px, 40%);
   height: 1px;
-  margin: 24px auto 0;
+  margin: 14px auto 0;
   background: linear-gradient(90deg, transparent, #e8c47d, transparent);
 }
-.champion-label { margin: 0 0 14px; color: #f1cf88; font-size: clamp(17px, 4vw, 21px); font-weight: 800; letter-spacing: .08em; }
-.champion-name { margin: 0; color: #fff5dc; font-size: clamp(32px, 6vw, 52px); font-weight: 900; line-height: 1.3; overflow-wrap: anywhere; text-shadow: 0 2px 18px rgba(228, 179, 86, .25); }
-.champion-name span { font-size: 16px; font-weight: 700; color: #dfcca6; }
-.bounty-results-heading { margin: 28px 0 18px; color: #202a32; font-size: 18px; }
+.champion-label { margin: 0 0 7px; color: #f1cf88; font-size: clamp(15px, 2.4vw, 18px); font-weight: 800; letter-spacing: .06em; }
+.champion-name { margin: 0; color: #fff5dc; font-size: clamp(28px, 4vw, 40px); font-weight: 900; line-height: 1.2; overflow-wrap: anywhere; text-shadow: 0 2px 18px rgba(228, 179, 86, .25); }
+.champion-name span { font-size: 14px; font-weight: 700; color: #dfcca6; }
+.bounty-results-heading { margin: 24px 0 14px; color: #202a32; font-size: 18px; }
+.bounty-results > div { grid-template-columns: 210px minmax(0, 1fr); gap: 22px; align-items: start; }
+.bounty-results dt { white-space: nowrap; }
 .bounty-results ul { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
 .bounty-results li { overflow-wrap: anywhere; }
 .results-link { display: inline-flex; align-items: center; gap: 12px; margin-top: 26px; padding: 13px 20px; border-radius: 8px; background: #742632; color: #fff; font-weight: 800; text-decoration: none; }
 .results-link:hover { background: #55202a; }
 .results-link:focus-visible { outline: 3px solid #0d7f99; outline-offset: 4px; }
+@media (max-width: 640px) {
+  .champion-panel { padding: 20px 16px 18px; border-radius: 12px; }
+  .champion-panel::after { margin-top: 11px; }
+  .bounty-results > div { grid-template-columns: 1fr; gap: 10px; }
+  .bounty-results dt { white-space: normal; }
+}
