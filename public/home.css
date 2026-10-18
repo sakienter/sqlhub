@@ -355,3 +355,15 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 .tournament-card-saikyo2026{--wipe-image:url('/tournaments/saikyo2026/banner.webp');--wipe-image-position:center center}
 .tournament-card-deepblue{--wipe-image:url('/tournaments/deepblue/banner.webp');--wipe-image-position:center center}
 .tournament-card-reno{--wipe-image:url('/tournaments/reno/banner.webp');--wipe-image-position:center center}
+
+/* Upcoming BFF CUP: preserve the full flyer at every viewport width. */
+.bff-home-banner {
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(155, 108, 49, .4);
+  border-radius: 14px;
+  box-shadow: 0 14px 30px rgba(20, 12, 13, .2);
+}
+.bff-home-banner img { display: block; width: 100%; height: auto; }
+.bff-home-banner:hover { box-shadow: 0 18px 36px rgba(20, 12, 13, .28); }
+.bff-home-banner:focus-visible { outline: 3px solid #0d7f99; outline-offset: 5px; }
