@@ -20,13 +20,13 @@
 .points-note { grid-column: 1 / -1; display: grid; grid-template-columns: 140px minmax(0,1fr); gap: 18px; padding: 4px 0 0; color: #28343c; font-size: 13px; line-height: 1.7; }
 .points-note strong { color: #8a5717; }
 .results-body { display: grid; gap: 34px; }
-.champion-result { display: grid; grid-template-columns: auto minmax(0,1fr) auto; align-items: baseline; gap: 18px; padding: 2px 0 22px; background: linear-gradient(90deg,rgba(155,84,59,.08),transparent 46%); }
-.champion-result p { margin: 0; color: #9b543b; font-size: 11px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.champion-result { display: flex; align-items: baseline; justify-content: center; gap: 18px; padding: 10px 0 20px; }
+.champion-result p { margin: 0; color: #b07b22; font-family: Georgia,"Times New Roman",serif; font-size: 17px; font-style: italic; font-weight: 700; letter-spacing: .04em; }
 .champion-result h2 { margin: 0; color: #17253a; font-size: clamp(26px,4vw,40px); }
-.champion-result span { color: #66717a; font-size: 13px; font-weight: 800; }
 .result-section { min-width: 0; }
 .result-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
 .result-heading h2 { margin: 0; color: #17253a; font-size: 19px; }
+.result-heading h2 span { margin-left: 7px; color: #7b8790; font-size: 12px; font-weight: 850; letter-spacing: .06em; }
 .result-heading p { margin: 0; color: #7b8790; font-size: 11px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
 .result-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .result-table { width: 100%; min-width: 720px; border-collapse: separate; border-spacing: 0 4px; color: #24313a; font-size: 12px; text-align: center; }
@@ -34,8 +34,11 @@
 .result-table thead th { padding-top: 0; color: #74808a; font-size: 10px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
 .result-table tbody tr { background: rgba(24,61,104,.045); }
 .result-table tbody tr:nth-child(even) { background: rgba(155,84,59,.045); }
-.result-table tbody th { color: #172129; font-size: 13px; text-align: left; }
+.result-table tbody th { color: #172129; font-size: 13px; text-align: center; }
 .result-table tbody td:first-child, .result-table tbody td:last-child { color: #17253a; font-weight: 900; }
+.result-table .region-cn { color: #a33d68; font-weight: 900; }
+.result-table .region-apac { color: #2782a3; font-weight: 900; }
+.result-table .qualified-player { background: #fff1ad; }
 .qualifier-results { display: grid; gap: 34px; }
 .group-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 40px; }
 .group-card { min-width: 0; }
@@ -53,5 +56,5 @@
   .rules-grid, .group-grid { grid-template-columns: 1fr; }
   .region-block { grid-template-columns: 1fr; gap: 10px; }
   .region-block ul { grid-template-columns: 1fr 1fr; }
-  .champion-result { grid-template-columns: 1fr; gap: 5px; }
+  .champion-result { gap: 10px; }
 }
