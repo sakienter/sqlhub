@@ -21,7 +21,7 @@
   <meta name="twitter:image:alt" content="BOUNTY HUNT CUP 大会情報">
   <link rel="canonical" href="https://stuntdrakesavenge.pages.dev/tournaments/bounty-hunt-cup/">
   <link rel="stylesheet" href="../../common.css">
-  <link rel="stylesheet" href="./style.css?v=20261018-champion">
+  <link rel="stylesheet" href="./style.css?v=20261018-results-layout">
   <link rel="stylesheet" href="/footer-updated.css?v=20260728">
 <link rel="icon" href="/sutantic.png" type="image/png" />
 </head>
@@ -41,11 +41,27 @@
           <p class="champion-name">Barrette <span>選手</span></p>
         </div>
         <h3 class="bounty-results-heading">各試合の討伐者</h3>
-        <dl class="overview-list bounty-results">
-          <div><dt>1st Round Eliminated</dt><dd><ul><li>☠️Thundurus(3rd) ⚔️怠惰なるカメ</li><li>☠️Barrette(2nd) ⚔️caNoN084</li><li>☠️Alutemu(5th) ⚔️sif</li><li>☠️MATSURI(5th) ⚔️LSsouk</li></ul></dd></div>
-          <div><dt>2nd Round Eliminated</dt><dd><ul><li>☠️Barrette(2nd) ⚔️wakka53</li><li>☠️Thundurus(7th) ⚔️SeseiSei</li></ul></dd></div>
-          <div><dt>Final Round</dt><dd>No eliminated</dd></div>
-        </dl>
+        <div class="bounty-results">
+          <table class="elimination-table">
+            <caption>1st Round</caption>
+            <thead><tr><th scope="col">討伐された選手</th><th scope="col">順位</th><th scope="col">討伐者</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Thundurus</th><td>3rd</td><td>怠惰なるカメ</td></tr>
+              <tr><th scope="row">Barrette</th><td>2nd</td><td>caNoN084</td></tr>
+              <tr><th scope="row">Alutemu</th><td>5th</td><td>sif</td></tr>
+              <tr><th scope="row">MATSURI</th><td>5th</td><td>LSsouk</td></tr>
+            </tbody>
+          </table>
+          <table class="elimination-table">
+            <caption>2nd Round</caption>
+            <thead><tr><th scope="col">討伐された選手</th><th scope="col">順位</th><th scope="col">討伐者</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Barrette</th><td>2nd</td><td>wakka53</td></tr>
+              <tr><th scope="row">Thundurus</th><td>7th</td><td>SeseiSei</td></tr>
+            </tbody>
+          </table>
+          <div class="final-round"><h4>Final Round</h4><p>No eliminated<span>討伐者なし</span></p></div>
+        </div>
         <a class="results-link" href="https://tonamel.com/competition/3PGxG" target="_blank" rel="noopener noreferrer">トナメルで大会を見る <span aria-hidden="true">↗</span><span class="visually-hidden">（新しいタブで開きます）</span></a>
       </div>
     </section>

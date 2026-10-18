@@ -135,9 +135,36 @@
 .champion-label { margin: 0 0 14px; color: #f1cf88; font-size: clamp(17px, 4vw, 21px); font-weight: 800; letter-spacing: .08em; }
 .champion-name { margin: 0; color: #fff5dc; font-size: clamp(32px, 6vw, 52px); font-weight: 900; line-height: 1.3; overflow-wrap: anywhere; text-shadow: 0 2px 18px rgba(228, 179, 86, .25); }
 .champion-name span { font-size: 16px; font-weight: 700; color: #dfcca6; }
-.bounty-results-heading { margin: 28px 0 18px; color: #202a32; font-size: 18px; }
-.bounty-results ul { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
-.bounty-results li { overflow-wrap: anywhere; }
+.bounty-results-heading { margin: 38px 0 24px; color: #202a32; font-size: 20px; font-weight: 750; }
+.bounty-results { color: #202a32; }
+.elimination-table { min-width: 0; width: 100%; table-layout: fixed; border-collapse: collapse; margin: 0 0 32px; text-align: left; font-size: 16px; line-height: 1.6; }
+.elimination-table caption { padding: 0 0 14px; text-align: left; color: #202a32; font-size: 17px; font-weight: 750; }
+.elimination-table th, .elimination-table td { text-align: left; background: transparent; border: 0; border-radius: 0; white-space: normal; padding: 14px 16px; border-bottom: 1px solid rgba(24,33,40,.1); overflow-wrap: anywhere; }
+.elimination-table th:first-child { width: 38%; padding-left: 0; }
+.elimination-table th:nth-child(2) { width: 18%; }
+.elimination-table th:last-child, .elimination-table td:last-child { padding-right: 0; }
+.elimination-table thead th { padding-top: 0; padding-bottom: 10px; color: #66717a; font-size: 12px; font-weight: 600; }
+.elimination-table tbody th { font-weight: 650; }
+.elimination-table tbody td { font-weight: 500; }
+.elimination-table tbody td:nth-child(2) { color: #66717a; font-variant-numeric: tabular-nums; }
+.final-round { display: flex; align-items: baseline; gap: 32px; padding: 0 0 22px; border-bottom: 1px solid rgba(24,33,40,.1); }
+.final-round h4 { margin: 0; font-size: 17px; font-weight: 750; }
+.final-round p { margin: 0; font-size: 15px; font-weight: 500; }
+.final-round p span { display: inline-block; margin-left: 14px; color: #66717a; font-size: 13px; }
+@media (max-width: 640px) {
+  .elimination-table { font-size: 14px; margin-bottom: 28px; }
+  .elimination-table th, .elimination-table td { text-align: left; background: transparent; border: 0; border-radius: 0; white-space: normal; padding: 12px 6px; }
+  .elimination-table th:first-child { width: 40%; }
+  .elimination-table th:nth-child(2) { width: 16%; }
+  .elimination-table thead th { font-size: 11px; }
+  .final-round { flex-direction: column; gap: 10px; }
+}
 .results-link { display: inline-flex; align-items: center; gap: 12px; margin-top: 26px; padding: 13px 20px; border-radius: 8px; background: #742632; color: #fff; font-weight: 800; text-decoration: none; }
 .results-link:hover { background: #55202a; }
 .results-link:focus-visible { outline: 3px solid #0d7f99; outline-offset: 4px; }
+
+.elimination-table tbody tr { box-shadow: none; }
+.elimination-table tbody tr:hover td { background: transparent; }
+.elimination-table thead th:first-child,
+.elimination-table thead th:last-child,
+.elimination-table tbody td:last-child { border-left: 0; border-right: 0; border-radius: 0; }
