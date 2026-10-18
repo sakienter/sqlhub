@@ -31,3 +31,13 @@
     .results-table tbody tr:hover td{background:transparent!important;box-shadow:none!important}
     .results-table .qualifier-row td:first-child,.results-table tbody tr:hover.qualifier-row td:first-child{background:#fff1ad!important}
     .results-table .champion-row td:first-child,.results-table tbody tr:hover.champion-row td:first-child{color:#765116!important;background:linear-gradient(90deg,#fff1b8,#ffe28a,#fff1b8)!important;font-weight:950}
+
+    /* Show the finalist roster by country without individual rounded cards. */
+    .roster-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,5vw,72px)}
+    .roster-group{min-width:0}
+    .roster-group h3{margin:0 0 18px;font-size:clamp(22px,2.4vw,30px);font-weight:950;letter-spacing:-.03em}
+    .roster-cn h3{color:#873344}
+    .roster-jp h3{color:#167f9b}
+    .roster-names{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 24px}
+    .roster-names span{min-width:0;color:#182128;font-size:clamp(15px,1.5vw,20px);font-weight:850;line-height:1.5;overflow-wrap:anywhere}
+    @media (max-width:720px){.roster-groups{grid-template-columns:1fr;gap:28px}.roster-names{gap:10px 16px}}
