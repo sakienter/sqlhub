@@ -13,20 +13,18 @@
 .lead-copy { max-width: 820px; margin: 24px 0 0; color: #28343c; font-size: 15px; font-weight: 700; line-height: 1.9; }
 .source-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; padding: 11px 16px; color: #fff; background: #173e69; border-radius: 8px; font-size: 13px; font-weight: 850; text-decoration: none; }
 .source-link:hover { background: #0d2e51; }
-.rules-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); column-gap: 40px; row-gap: 24px; }
-.rule-card { padding: 18px 0 0; border-top: 3px solid #9b543b; }
-.rule-card:nth-child(2) { border-top-color: #173e69; }
+.rules-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); column-gap: 56px; row-gap: 30px; }
+.rule-card { padding: 0; }
 .rule-step { margin: 0 0 7px; color: #9b543b; font-size: 10px; font-weight: 900; letter-spacing: .16em; }
 .rule-card h2 { margin: 0 0 10px; color: #17253a; font-size: 19px; }
 .rule-card > p:last-child { margin: 0; color: #34434d; font-size: 14px; font-weight: 650; line-height: 1.8; }
-.points-note { grid-column: 1 / -1; display: grid; grid-template-columns: 140px minmax(0,1fr); gap: 18px; padding: 18px 0 0; color: #28343c; border-top: 1px solid rgba(24,33,40,.16); font-size: 13px; line-height: 1.7; }
+.points-note { grid-column: 1 / -1; display: grid; grid-template-columns: 140px minmax(0,1fr); gap: 18px; padding: 4px 0 0; color: #28343c; font-size: 13px; line-height: 1.7; }
 .points-note strong { color: #8a5717; }
 .group-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 40px; }
 .group-card { min-width: 0; }
-.group-card > h2 { margin: 0; padding: 0 0 12px; color: #17253a; border-bottom: 3px solid #9b543b; font-size: 20px; }
-.group-card:nth-child(2) > h2 { border-bottom-color: #173e69; }
+.group-card > h2 { margin: 0 0 6px; padding: 0; color: #17253a; font-size: 20px; }
 .region-block { display: grid; grid-template-columns: 74px minmax(0,1fr); gap: 16px; padding: 18px 0; }
-.region-block + .region-block { border-top: 1px solid rgba(24,33,40,.1); }
+.region-block + .region-block { padding-top: 22px; }
 .region-block h3 { margin: 2px 0 0; color: #74808a; font-size: 11px; letter-spacing: .12em; }
 .region-block ul { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px 18px; margin: 0; padding: 0; list-style: none; }
 .region-block li { color: #18232c; font-size: 14px; font-weight: 800; overflow-wrap: anywhere; }
