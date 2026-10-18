@@ -6,7 +6,21 @@ S級リーグの試合結果・ポイント状況、大会アーカイブ、コ�
 
 公開サイト: [https://stuntdrakesavenge.pages.dev/](https://stuntdrakesavenge.pages.dev/)
 
-最終更新: 2026年8月26日
+最終更新: 2026年10月19日
+
+## 2026年10月19日の整理
+
+- トップページの大会一覧を「その他の大会」「国際大会」「デュオ大会」に整理
+- BFF CUP #1・#2を画像背景とHTMLテキストで構成した同一サイズのカードとして追加し、各Tonamelページへ接続
+- BFF CUP #1は `2026 July`、BFF CUP #2は `2026 Oct` として表示
+- CN vs APAC、CN vs Worlds、CN vs JPのホームカードとページヘッダーへ大会別アートを適用
+- 国際大会のタイトルと開催時期は画像へ埋め込まず、HTMLテキストとして画像上に表示
+- CN vs APACページへ大会概要、ルール、参加メンバー、予選・決勝結果を掲載
+- CN vs APACの結果表を中央揃えに統一し、APAC・CNの地域セル、予選通過者、優勝者を色分け
+- CN vs APACの大会アーカイヴへBilibiliのグループステージA・B、決勝とYouTube再生リストを追加
+- CN vs Worlds、CN vs JPの結果表をCN vs APACと同じフラットな表デザインへ統一
+- BOUNTY HUNT CUPへ優勝者、各ラウンドの討伐結果、Tonamelリンク、MATSURI・Alutemu視点の大会アーカイヴを追加
+- ディープ・ブルー杯のTournament Linksを一覧形式へ変更し、第8回・第9回を追加
 
 ## 2026年8月26日の整理
 
