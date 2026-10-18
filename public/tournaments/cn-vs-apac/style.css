@@ -36,8 +36,8 @@
 .result-table tbody tr:hover td, .result-table tbody tr:hover th { background: transparent !important; box-shadow: none !important; }
 .result-table tbody th { color: #172129; font-size: 13px; text-align: center; }
 .result-table tbody td:first-child, .result-table tbody td:last-child { color: #17253a; font-weight: 900; }
-.result-table .region-cn, .result-table tbody tr:hover .region-cn { color: #172129; background: #f7dce7 !important; font-weight: 900; }
-.result-table .region-apac, .result-table tbody tr:hover .region-apac { color: #172129; background: #d9f0f8 !important; font-weight: 900; }
+.result-table .region-cn, .result-table tbody tr:hover .region-cn { color: #172129; background: #efb8cf !important; font-weight: 900; }
+.result-table .region-apac, .result-table tbody tr:hover .region-apac { color: #172129; background: #afe0f0 !important; font-weight: 900; }
 .result-table .qualified-player { background: #fff1ad !important; }
 .result-table tbody tr:hover .qualified-player { background: #fff1ad !important; }
 .result-table .champion-player, .result-table tbody tr:hover .champion-player { color: #765116; background: linear-gradient(90deg,#fff1b8,#ffe28a,#fff1b8) !important; font-weight: 950; letter-spacing: .04em; }
