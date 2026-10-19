@@ -1,29 +1,5 @@
-@import url("./common-overrides.css?v=20261019-international");
+@import url("./common-overrides.css?v=20261019-cleanup2");
 @import url("./cn-vs-worlds-table-fix.css");
-
-/* CN vs JP 1:3 homepage banner */
-body #past-tournaments .cn-jp-card.gradient-banner-card::before {
-  background-image:
-    linear-gradient(90deg, rgba(7,14,28,.68), rgba(7,14,28,.34) 52%, rgba(7,14,28,.10)),
-    url('/tournaments/cn-vs-jp/banner-art.webp?v=20261019b') !important;
-  background-size: cover, cover !important;
-  background-position: center, center center !important;
-  background-repeat: no-repeat !important;
-}
-
-/* CN vs JP 1:4 page header */
-body:has(a[href="https://www.iyingdi.com/tz/post/5609636"]) .tournament-hero {
-  background: #071421 !important;
-}
-
-body:has(a[href="https://www.iyingdi.com/tz/post/5609636"]) .tournament-hero-image {
-  display: block !important;
-  content: url('/tournaments/cn-vs-jp/banner-art.webp?v=20261019b') !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center center !important;
-}
 
 /* Keep every page's return link label consistent. */
 .back-link {
