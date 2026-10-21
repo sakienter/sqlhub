@@ -355,6 +355,8 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 .duo-cup-two-card{--wipe-image:url('/tournaments/bff-cup-2/bff-cup-2-banner.webp?v=20261021')}
 #past-tournaments .duo-tournament-card::before{background-image:linear-gradient(90deg,rgba(7,14,28,.76),rgba(7,14,28,.32) 58%,rgba(7,14,28,.06)),var(--wipe-image);filter:saturate(.94) contrast(1.03)}
 #past-tournaments .duo-cup-one-card::before,#past-tournaments .duo-cup-two-card::before{background-image:linear-gradient(90deg,rgba(7,14,28,.28),rgba(7,14,28,.08) 58%,rgba(7,14,28,.18)),var(--wipe-image),var(--wipe-image);background-size:cover,contain,cover;background-position:center,center,center;background-repeat:no-repeat}
+#past-tournaments .duo-card-date{position:absolute;left:18px;bottom:14px;z-index:2;color:#fff;font-size:15px;font-weight:950;letter-spacing:.08em;line-height:1.2;text-shadow:0 2px 12px rgba(0,0,0,.8);transition:transform .36s var(--wipe-easing),text-shadow .36s var(--wipe-easing)}
+#past-tournaments .duo-tournament-card:hover .duo-card-date{transform:translateX(3px);text-shadow:0 3px 16px rgba(0,0,0,.9)}
 .cn-apac-card{--wipe-image:url('/tournaments/cn-vs-apac/banner-art.webp?v=20261019');--wipe-image-position:center 45%}
 .tournament-card-twdm{--wipe-image:url('/tournaments/twdm/banner.webp');--wipe-image-position:center 42%}
 .tournament-card-uratop{--wipe-image:url('/tournaments/uratop/banner.webp');--wipe-image-position:center 42%}
