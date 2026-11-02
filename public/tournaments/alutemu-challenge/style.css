@@ -32,6 +32,16 @@
     .rules-copy strong{font-weight:950}
     .restriction-examples{margin:10px 0 0;padding-left:1.3rem}
     .restriction-examples li{margin:5px 0}
+    .challenge-results{display:grid;gap:0}
+    .challenge-result{padding:22px 0;border-bottom:1px solid rgba(16,38,56,.14);color:#182128;font-size:15px;font-weight:700;line-height:1.85}
+    .challenge-result:first-child{padding-top:0}
+    .challenge-result:last-child{padding-bottom:0;border-bottom:0}
+    .challenge-result h3{margin:0 0 10px;color:#102638;font-size:21px;font-weight:950}
+    .challenge-result ul{margin:0;padding-left:1.3rem}
+    .challenge-result li{padding:2px 0}
+    .challenge-outcome{margin:12px 0 0;color:#8a3540;font-weight:950}
+    .challenge-winner{margin:3px 0 0;font-size:17px;font-weight:950}
+    .challenge-winner strong{margin-right:8px;color:#687782;font-size:14px}
     .form-link-pending{display:inline-flex;margin:4px 0 12px;padding:10px 16px;color:#fff;background:#163b63;border:1px solid rgba(255,255,255,.2);border-radius:8px;box-shadow:0 8px 18px rgba(3,22,43,.22);font-size:14px;font-weight:950}
     .event-links{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 4px}
     .entry-link{display:inline-flex;align-items:center;min-height:44px;margin:0;padding:0 18px;color:#fff;background:#163b63;border:1px solid #163b63;border-radius:8px;box-shadow:0 6px 15px rgba(3,22,43,.18);font-size:14px;font-weight:950;text-decoration:none;transition:background .18s ease,transform .18s ease,box-shadow .18s ease}
