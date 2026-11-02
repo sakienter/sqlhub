@@ -405,12 +405,13 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 }
 
 /* Upcoming tournament announcement */
-.next-event-teaser{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:280px;padding:48px 24px;text-align:center;background:radial-gradient(ellipse at 15% 100%,#0d5669 0,transparent 55%),radial-gradient(ellipse at 100% 0,#602b48 0,transparent 50%),#091824;color:#fff;border-radius:10px}
-.next-event-teaser::before{content:"";position:absolute;inset:-80%;z-index:-1;background:linear-gradient(115deg,transparent 43%,rgba(108,218,237,.1) 49%,rgba(255,255,255,.16) 50%,transparent 57%);animation:next-event-light 9s ease-in-out infinite;pointer-events:none}
-.next-event-eyebrow{margin:0 0 20px;color:#9ed8df;font-size:11px;font-weight:800;letter-spacing:.34em}
+.next-event-teaser{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:280px;padding:48px 24px;text-align:center;background:radial-gradient(ellipse at 100% 100%,rgba(180,20,35,.25) 0,transparent 52%),linear-gradient(125deg,#080808,#202020 55%,#0a0a0a);color:#fff;border-radius:10px}
+.next-event-teaser::before{content:"";position:absolute;inset:-80%;z-index:-1;background:linear-gradient(115deg,transparent 43%,rgba(210,25,40,.14) 49%,rgba(255,255,255,.16) 50%,transparent 57%);animation:next-event-light 9s ease-in-out infinite;pointer-events:none}
+.next-event-eyebrow{margin:0 0 20px;color:#f04b55;font-size:11px;font-weight:800;letter-spacing:.34em}
 .next-event-teaser h2{margin:0;color:#fff;font-size:clamp(36px,7vw,86px);font-weight:950;line-height:1.1;letter-spacing:-.035em;text-shadow:0 4px 26px rgba(0,0,0,.25)}
-.next-event-teaser h2 span{color:#b5e7ed}
-.next-event-note{margin:22px 0 0;color:#b9c8d1;font-size:13px;letter-spacing:.12em}
+.next-event-teaser h2 span{color:#fff}
+.next-event-teaser h2::after{content:"";display:block;width:52px;height:3px;margin:24px auto 0;background:#e3293a;box-shadow:0 0 22px rgba(227,41,58,.4)}
+.next-event-note{margin:22px 0 0;color:#bdbdbd;font-size:13px;letter-spacing:.12em}
 @keyframes next-event-light{0%,100%{transform:translateX(-18%) rotate(-8deg);opacity:.3}50%{transform:translateX(18%) rotate(8deg);opacity:1}}
 @media(max-width:640px){.next-event-teaser{min-height:220px;padding:36px 16px}.next-event-eyebrow{font-size:10px;letter-spacing:.24em}}
 @media(prefers-reduced-motion:reduce){.next-event-teaser::before{animation:none}}
