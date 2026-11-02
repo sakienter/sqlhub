@@ -48,10 +48,14 @@
     .archive-artwork img{display:block;width:100%;height:auto}
     .archive-links{grid-column:1;grid-row:1;display:flex;flex-direction:column;gap:28px;min-width:0}
     .archive-links::before{content:"大会の記録";color:#102638;font-size:28px;font-weight:900;line-height:1.4}
-    .archive-link{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0;color:#163b63;border-bottom:1px solid rgba(22,59,99,.2);font-size:18px;font-weight:800;text-decoration:none;line-height:1.6}
-    .archive-link:hover{color:#8a3540}
-    .archive-link:focus-visible{outline:2px solid #163b63;outline-offset:6px}
-    .archive-arrow{font-size:20px;font-weight:400}
+    .archive-link{--archive-accent:#b92332;position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 16px;color:#163b63;border-bottom:1px solid rgba(22,59,99,.2);font-size:18px;font-weight:800;text-decoration:none;line-height:1.6;transition:color .25s ease,border-color .25s ease,box-shadow .25s ease}
+    .archive-link[href*="twitch.tv"]{--archive-accent:#7040bb}
+    .archive-link::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,var(--archive-accent),#152a43);transform:translateX(-101%);transition:transform .35s cubic-bezier(.22,1,.36,1)}
+    .archive-link:focus-visible{color:#fff;border-color:var(--archive-accent);outline:2px solid var(--archive-accent);outline-offset:4px}
+    .archive-link:focus-visible::before{transform:translateX(0)}
+    .archive-arrow{flex-shrink:0;font-size:23px;font-weight:400;transition:transform .3s cubic-bezier(.22,1,.36,1)}
+    @media(hover:hover){.archive-link:hover{color:#fff;border-color:var(--archive-accent);box-shadow:0 8px 20px rgba(16,38,56,.16)}.archive-link:hover::before{transform:translateX(0)}.archive-link:hover .archive-arrow{transform:translate(3px,-3px)}}
+    @media(prefers-reduced-motion:reduce){.archive-link,.archive-link::before,.archive-arrow{transition:none}}
     .form-link-pending{display:inline-flex;margin:4px 0 12px;padding:10px 16px;color:#fff;background:#163b63;border:1px solid rgba(255,255,255,.2);border-radius:8px;box-shadow:0 8px 18px rgba(3,22,43,.22);font-size:14px;font-weight:950}
     .event-links{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 4px}
     .entry-link{display:inline-flex;align-items:center;min-height:44px;margin:0;padding:0 18px;color:#fff;background:#163b63;border:1px solid #163b63;border-radius:8px;box-shadow:0 6px 15px rgba(3,22,43,.18);font-size:14px;font-weight:950;text-decoration:none;transition:background .18s ease,transform .18s ease,box-shadow .18s ease}
