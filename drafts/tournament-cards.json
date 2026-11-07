@@ -1,0 +1,26 @@
+[
+  {
+    "slot": "A",
+    "title": "スタドレメラトニン杯",
+    "href": "/tournaments/studore-melatonin-cup/",
+    "image": "/tournaments/studore-melatonin-cup/banner.png",
+    "subtitle": null,
+    "published": false
+  },
+  {
+    "slot": "B",
+    "title": "三位一体",
+    "href": "/tournaments/sanmi-ittai/",
+    "image": "/tournaments/sanmi-ittai/banner.png",
+    "subtitle": "2026 Nov",
+    "published": false
+  },
+  {
+    "slot": "C",
+    "title": "ピンゾロ杯",
+    "href": "/tournaments/pinzoro-cup/",
+    "image": "/tournaments/pinzoro-cup/banner.png",
+    "subtitle": "2026 Nov",
+    "published": false
+  }
+]
