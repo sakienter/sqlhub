@@ -4,3 +4,8 @@
 .trinity-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 66%}
 .trinity-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.12),transparent 35%,rgba(10,6,20,.12) 75%,rgba(10,6,20,.55));pointer-events:none}
 @media(max-width:640px){.trinity-hero img{object-fit:contain}}
+
+/* Keep the complete artwork visible within the shared header dimensions. */
+.trinity-hero::before{content:"";position:absolute;inset:-24px;z-index:-1;background:url('./banner.png') center/cover no-repeat;filter:blur(20px) brightness(.48);pointer-events:none}
+.trinity-hero img{position:relative;inset:auto;z-index:0;width:100%;height:100%;object-fit:contain;object-position:center}
+.trinity-hero::after{background:linear-gradient(90deg,rgba(10,6,20,.16),transparent 24%,transparent 76%,rgba(10,6,20,.16))}
