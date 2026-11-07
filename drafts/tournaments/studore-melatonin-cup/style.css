@@ -4,3 +4,5 @@
 .trinity-hero img{position:static;display:block;width:100%;height:auto;object-fit:contain}
 .trinity-hero::before,.trinity-hero::after{content:none}
 @media(max-width:640px){.trinity-hero{height:auto;min-height:0;border-radius:10px}}
+
+.melatonin-details{margin:0 0 28px}.melatonin-details>div{display:grid;grid-template-columns:140px minmax(0,1fr);gap:20px;padding:20px 0;border-bottom:1px solid rgba(24,39,51,.14)}.melatonin-details>div:first-child{padding-top:0}.melatonin-details dt{color:#65727d;font-weight:800}.melatonin-details dd{margin:0;font-size:18px;font-weight:850}.melatonin-rules{font-weight:700;line-height:1.95}.melatonin-rules h3{margin:0 0 18px;font-size:22px}.melatonin-rules ul{padding-left:1.35em;margin:0 0 24px}.melatonin-rules li{margin:0 0 14px}.melatonin-rules small{display:block;margin-top:5px;font-size:13px;font-weight:500;color:#687782}.melatonin-rules p{margin:8px 0}@media(max-width:640px){.melatonin-details>div{grid-template-columns:70px minmax(0,1fr);gap:12px}.melatonin-details dd{font-size:16px}}
