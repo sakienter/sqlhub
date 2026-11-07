@@ -415,3 +415,5 @@ body:has(.hub-hero) .hub-hero .cache-note{display:block!important;min-height:0!i
 @keyframes next-event-light{0%,100%{transform:translateX(-18%) rotate(-8deg);opacity:.3}50%{transform:translateX(18%) rotate(8deg);opacity:1}}
 @media(max-width:640px){.next-event-teaser{min-height:220px;padding:36px 16px}.next-event-eyebrow{font-size:10px;letter-spacing:.24em}}
 @media(prefers-reduced-motion:reduce){.next-event-teaser::before{animation:none}}
+
+.upcoming-tournament-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.upcoming-tournament-grid .next-event-teaser{min-height:220px;padding:32px 18px}.upcoming-tournament-grid h2{font-size:clamp(26px,3vw,44px)}.upcoming-tournament-grid .next-event-eyebrow{font-size:10px;letter-spacing:.18em}@media(max-width:800px){.upcoming-tournament-grid{grid-template-columns:1fr}.upcoming-tournament-grid .next-event-teaser{min-height:190px}}
